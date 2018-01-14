@@ -9,32 +9,29 @@ public class TestBpmnXml {
 
         BpmnXmlWrapper bpmnXmlWrapper = new BpmnXmlWrapper();
 
-        bpmnXmlWrapper.createPool("process1", "Piscina");
+        // Create structure
+        String processId = "Process1";
+        bpmnXmlWrapper.createPool(processId, "Pool");
+        LaneSet laneSet1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess(processId), "LaneSet1", "LaneSet Name", LaneSet.class);
+        Lane lane1 = bpmnXmlWrapper.createElement(laneSet1, "Lane1", "Lane1 Name", Lane.class);
+        Lane lane2 = bpmnXmlWrapper.createElement(laneSet1, "Lane2", "Lane2 Name", Lane.class);
 
-        LaneSet laneSet1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess("process1"), "LaneSet1", "Nome da pool", LaneSet.class);
+        // Create Flow Elements
+        StartEvent startEvent1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess(processId), "StartEvent1", "StartEvent1 Name", StartEvent.class);
+        Task task1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess(processId), "Task1", "Task1 Name", Task.class);
+        SubProcess subprocess1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess(processId), "Subprocess1", "Subprocess1 Name", SubProcess.class);
+        Gateway gateway1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess(processId), "Gateway1", "Gateway1 Name", EventBasedGateway.class);
+        EndEvent endEvent1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess(processId), "EndEvent1", "EndEvent1 Name", EndEvent.class);
 
-        Lane lane1 = bpmnXmlWrapper.createElement(laneSet1, "Raia1", "lane1", Lane.class);
+        // Create Sequence Flow
+        bpmnXmlWrapper.createSequenceFlow(bpmnXmlWrapper.getProcess(processId), "SequenceFlow1 Name", startEvent1, task1);
+        bpmnXmlWrapper.createSequenceFlow(bpmnXmlWrapper.getProcess(processId), "SequenceFlow2 Name", task1, subprocess1);
+        bpmnXmlWrapper.createSequenceFlow(bpmnXmlWrapper.getProcess(processId), "SequenceFlow3 Name", subprocess1, endEvent1);
 
-        Lane lane2 = bpmnXmlWrapper.createElement(laneSet1, "Raia2", "lane2", Lane.class);
-
-        // create elements
-        StartEvent startEvent1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess("process1"), "EventoInicio1", "Nome do evento de inicio", StartEvent.class);
-
-        Task task1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess("process1"), "Tarefa1", "Nome da tarefa 1", Task.class);
-        SubProcess task2 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess("process1"), "Tarefa2", "Nome da tarefa 2", SubProcess.class);
-
-        EndEvent endEvent1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess("process1"), "EventoFim1", "Nome do evento de fim", EndEvent.class);
-
-        Gateway gateway1 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getProcess("process1"), "gateway1", "Nome do gateway", EventBasedGateway.class);
-
-        bpmnXmlWrapper.createSequenceFlow(bpmnXmlWrapper.getProcess("process1"), "Nome do arco", startEvent1, task1);
-        bpmnXmlWrapper.createSequenceFlow(bpmnXmlWrapper.getProcess("process1"), "Nome do arco 2", task1, task2);
-        bpmnXmlWrapper.createSequenceFlow(bpmnXmlWrapper.getProcess("process1"), "Nome do arco 3", task2, endEvent1);
-
-        // Relacionar lanes
+        // Create relation between Flow Elements and Lanes
         lane1.getFlowNodeRefs().add(startEvent1);
         lane1.getFlowNodeRefs().add(task1);
-        lane1.getFlowNodeRefs().add(task2);
+        lane1.getFlowNodeRefs().add(subprocess1);
         lane2.getFlowNodeRefs().add(gateway1);
         lane1.getFlowNodeRefs().add(endEvent1);
 
