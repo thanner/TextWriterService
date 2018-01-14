@@ -1,8 +1,12 @@
 package br.edu.ufrgs.inf.bpm.wrapper;
 
 
+import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
+import net.didion.jwnl.JWNLException;
 import org.camunda.bpm.model.bpmn.instance.*;
 import processToText.dataModel.process.ProcessModel;
+
+import java.io.IOException;
 
 public class TestBpmnXml {
     public static void main(String[] args) {
@@ -43,19 +47,12 @@ public class TestBpmnXml {
 
         processModel.print();
 
-        // create process
-        /*
-        Process process2 = bpmnXmlWrapper.createElement(bpmnXmlWrapper.getDefinitions(), "Process2", Process.class);
-        participant2.setProcess(process2);
-
-        StartEvent startEvent2 = bpmnXmlWrapper.createElement(process2, "EventoInicio2", StartEvent.class);
-        Task task3 = bpmnXmlWrapper.createElement(process2, "Tarefa3", Task.class);
-        EndEvent endEvent2 = bpmnXmlWrapper.createElement(process2, "EventoFim2", EndEvent.class);
-
-        bpmnXmlWrapper.createSequenceFlow(process2, startEvent2, task3);
-        bpmnXmlWrapper.createSequenceFlow(process2, task3, endEvent2);
-
-        System.out.println(bpmnXmlWrapper.getBpmnXmlString());
-        */
+        String text = "";
+        try {
+            text = TextGenerator.generateText(processModel, 0);
+        } catch (IOException | JWNLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Text: " + text);
     }
 }

@@ -52,7 +52,7 @@ public class TextGenerator {
 
         // Convert to Text
         TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false);
-        // FIXME: ERRO NO TextPlanner -> convertActivities
+        // FIXME: ERRO NO TextPlanner
         converter.convertToText(rpst.getRoot(), 0);
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 
