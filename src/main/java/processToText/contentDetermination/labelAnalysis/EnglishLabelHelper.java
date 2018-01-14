@@ -57,8 +57,9 @@ public class EnglishLabelHelper {
      * @param wordnet
      * @param ri_wordnet
      */
-    public EnglishLabelHelper(Dictionary wordnet) {
+    public EnglishLabelHelper(Dictionary wordnet, MaxentTagger maxentTagger) {
         this.wordnet = wordnet;
+        this.tagger = maxentTagger;
     }
 
     public EnglishLabelHelper() throws JWNLException, IOException {

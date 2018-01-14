@@ -564,6 +564,8 @@ public class TextPlanner {
         boolean planned = false;
 
         Activity activity = process.getActivity(Integer.parseInt(node.getEntry().getId()));
+
+        // FIXME: ACTIVITY.GETANNOTATIONS.GET(0) Está retornando null. Deveria?
         Annotation anno = activity.getAnnotations().get(0);
         ExecutableFragment eFrag = null;
 
