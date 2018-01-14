@@ -31,8 +31,6 @@ public class TextGenerator {
      * Function for generating text from a model. The according process model must be provided to the function.
      */
     public static String generateText(ProcessModel model, int counter) throws IOException, JWNLException {
-
-        // FIXME: Está retornando NULL. Ver primeiro pode resolver o outro problema
         Dictionary dictionary = generateWordNet();
 
         MaxentTagger maxentTagger = new MaxentTagger(TextGenerator.class.getResource("/wsj-0-18-bidirectional-distsim.tagger").openStream());
