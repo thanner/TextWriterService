@@ -49,14 +49,14 @@ public class ProcessModelXmlBuilder {
 
     private String createPool(org.camunda.bpm.model.bpmn.instance.LaneSet pool) {
         int newId = generateModelId(pool.getId());
-        Pool modelPool = new Pool(newId, pool.getName());
+        Pool modelPool = new Pool(newId, getName(pool.getName()));
         poolMap.put(pool.getId(), modelPool);
         return modelPool.getName();
     }
 
     private String createLane(org.camunda.bpm.model.bpmn.instance.Lane lane) {
         int newId = generateModelId(lane.getId());
-        Lane modelLane = new Lane(newId, lane.getName(), getPoolByLane(lane));
+        Lane modelLane = new Lane(newId, getName(lane.getName()), getPoolByLane(lane));
         laneMap.put(lane.getId(), modelLane);
         return modelLane.getName();
     }
@@ -65,7 +65,7 @@ public class ProcessModelXmlBuilder {
         try {
             int newId = generateModelId(activity.getId());
             int activityType = getActivityType(activity.getElementType().getTypeName());
-            Activity modelActivity = new Activity(newId, activity.getName(), getLaneByObject(activity), getPoolByObject(activity), activityType);
+            Activity modelActivity = new Activity(newId, getName(activity.getName()), getLaneByObject(activity), getPoolByObject(activity), activityType);
             elementMap.put(activity.getId(), modelActivity);
             return modelActivity;
         } catch (InvalidObjectException i) {
@@ -78,7 +78,7 @@ public class ProcessModelXmlBuilder {
         try {
             int newId = generateModelId(event.getId());
             int eventType = getEventType(event.getElementType().getTypeName());
-            Event modelEvent = new Event(newId, event.getName(), getLaneByObject(event), getPoolByObject(event), eventType);
+            Event modelEvent = new Event(newId, getName(event.getName()), getLaneByObject(event), getPoolByObject(event), eventType);
             elementMap.put(event.getId(), modelEvent);
             return modelEvent;
         } catch (InvalidObjectException i) {
@@ -91,7 +91,7 @@ public class ProcessModelXmlBuilder {
         try {
             int newId = generateModelId(gateway.getId());
             int gatewayType = getGatewayType(gateway.getElementType().getTypeName());
-            Gateway modelGateway = new Gateway(newId, gateway.getName(), getLaneByObject(gateway), getPoolByObject(gateway), gatewayType);
+            Gateway modelGateway = new Gateway(newId, getName(gateway.getName()), getLaneByObject(gateway), getPoolByObject(gateway), gatewayType);
             elementMap.put(gateway.getId(), modelGateway);
             return modelGateway;
         } catch (InvalidObjectException i) {
@@ -102,7 +102,11 @@ public class ProcessModelXmlBuilder {
 
     private Arc createArc(org.camunda.bpm.model.bpmn.instance.SequenceFlow arc) {
         int newId = generateModelId(arc.getId());
-        return new Arc(newId, arc.getName(), elementMap.get(arc.getSource().getId()), elementMap.get(arc.getTarget().getId()));
+        return new Arc(newId, getName(arc.getName()), elementMap.get(arc.getSource().getId()), elementMap.get(arc.getTarget().getId()));
+    }
+
+    private String getName(String name){
+        return name != null ? name : "";
     }
 
     private int getActivityType(String typeName) throws InvalidObjectException {
