@@ -707,7 +707,7 @@ public class EnglishLabelDeriver implements LabelDeriver {
     }
 
     /**
-     * Returns possible verbs in given label (based on WordNet evaluation)
+     * Returns possible verbs in given label (based on WordNetWrapper evaluation)
      *
      * @param label action-noun label
      * @return list of possible verbs in given action-noun label

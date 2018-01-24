@@ -63,8 +63,8 @@ public class EnglishLabelHelper {
     }
 
     public EnglishLabelHelper() throws JWNLException, IOException {
-        // Initialize WordNet (JWNL)
-        JWNL.initialize(new FileInputStream("src/main/java/processToText/file_properties.xml"));
+        // Initialize WordNetWrapper (JWNL)
+        JWNL.initialize(new FileInputStream("src/main/java/processToText/WordNet_properties.xml"));
         this.wordnet = Dictionary.getInstance();
         tagger = new MaxentTagger("src/main/resources/StanfordParser/wsj-0-18-bidirectional-distsim.tagger");
     }
@@ -578,7 +578,7 @@ public class EnglishLabelHelper {
             props.setAction(getSingularOfNoun(props.getAction()));
             props.setAction(getInfinitiveOfAction(props.getAction()));
 
-            // If WordNet returns infinitive (WordNet might return nothing due to incompleteness) ...
+            // If WordNetWrapper returns infinitive (WordNetWrapper might return nothing due to incompleteness) ...
             if (props.getAction().equals("") == false) {
 
                 // Assign infinitive to action

@@ -75,7 +75,7 @@ public class ReferringExpressionGenerator {
         return textPlan;
     }
 
-    // Checks WordNet HypernymTree whether "role" is a person
+    // Checks WordNetWrapper HypernymTree whether "role" is a person
     private boolean isPerson(String role) {
 
         try {

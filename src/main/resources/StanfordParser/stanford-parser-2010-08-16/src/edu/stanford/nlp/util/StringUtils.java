@@ -1112,7 +1112,7 @@ public class StringUtils {
 
 
   /**
-   * Computes the WordNet 2.0 POS tag corresponding to the PTB POS tag s.
+   * Computes the WordNetWrapper 2.0 POS tag corresponding to the PTB POS tag s.
    *
    * @param s a Penn TreeBank POS tag.
    */

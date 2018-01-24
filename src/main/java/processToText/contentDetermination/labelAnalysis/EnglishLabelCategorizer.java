@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class EnglishLabelCategorizer implements LabelCategorizer {
 
-    private Dictionary wordnet;                    // JWNL - WordNet
+    private Dictionary wordnet;                    // JWNL - WordNetWrapper
     private EnglishLabelHelper lHelper;
     private EnglishLabelDeriver lDeriver;
     private ArrayList<Activity> vosList;        // List for Verb-Object Labels
@@ -50,7 +50,7 @@ public class EnglishLabelCategorizer implements LabelCategorizer {
     }
 
     /**
-     * Initializes WordNet and creates the required dictionary object. In addition some variables are initialized.
+     * Initializes WordNetWrapper and creates the required dictionary object. In addition some variables are initialized.
      */
     private void init() {
 

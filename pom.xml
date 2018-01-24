@@ -59,7 +59,7 @@
             <version>3.8.0</version>
         </dependency>
 
-        <!-- WordNet https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
+        <!-- WordNetWrapper https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
         <dependency>
             <groupId>net.sf.jwordnet</groupId>
             <artifactId>jwnl</artifactId>

@@ -1,5 +1,6 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
+import br.edu.ufrgs.inf.bpm.WordNetWrapper;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.process.ControlFlow;
 import de.hpi.bpt.process.Node;
@@ -31,9 +32,9 @@ public class TextGenerator {
      * Function for generating text from a model. The according process model must be provided to the function.
      */
     public static String generateText(ProcessModel model, int counter) throws IOException, JWNLException {
-        Dictionary dictionary = generateWordNet();
+        Dictionary dictionary = WordNetWrapper.getDictionary();
 
-        MaxentTagger maxentTagger = new MaxentTagger(TextGenerator.class.getResource("/wsj-0-18-bidirectional-distsim.tagger").openStream());
+        MaxentTagger maxentTagger = new MaxentTagger(TextGenerator.class.getResource("/StanfordParser/tagger/wsj-0-18-bidirectional-distsim.tagger").openStream());
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
         EnglishLabelDeriver lDeriver = new EnglishLabelDeriver(lHelper);
 
@@ -75,21 +76,6 @@ public class TextGenerator {
         }
 
         return surfaceRealizer.postProcessText(surfaceText);
-    }
-
-    private static Dictionary generateWordNet() {
-        try {
-            URL _url = TextGenerator.class.getResource("/file_properties.xml");
-            if (_url == null) {
-                File _f = new File("resources/file_properties.xml");
-                JWNL.initialize(new FileInputStream(_f));
-            } else {
-                JWNL.initialize(_url.openStream());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return Dictionary.getInstance();
     }
 
 }
