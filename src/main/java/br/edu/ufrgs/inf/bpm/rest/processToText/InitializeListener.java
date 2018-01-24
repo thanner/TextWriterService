@@ -1,6 +1,6 @@
 package br.edu.ufrgs.inf.bpm.rest.processToText;
 
-import br.edu.ufrgs.inf.bpm.WordNetWrapper;
+import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

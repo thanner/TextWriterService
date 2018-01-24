@@ -9,7 +9,7 @@ import java.io.IOException;
 public class TestBpmnXml {
     public static void main(String[] args) {
         try {
-            String text = FileUtils.readFileToString(new File("src\\main\\resources\\TestData\\BpmnFile\\diagram.bpmn"));
+            String text = FileUtils.readFileToString(new File("src/main/resources/TestData/BpmnFile/diagram.bpmn"));
 
             ApplicationRest applicationRest = new ApplicationRest();
             String newText = applicationRest.getBpmnXml(text).toString();

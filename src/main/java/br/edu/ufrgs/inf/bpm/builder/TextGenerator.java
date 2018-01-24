@@ -1,12 +1,13 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
-import br.edu.ufrgs.inf.bpm.WordNetWrapper;
+import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
+import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
+import br.edu.ufrgs.inf.bpm.util.Path;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.process.ControlFlow;
 import de.hpi.bpt.process.Node;
 import de.hpi.bpt.process.Process;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
-import net.didion.jwnl.JWNL;
 import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.dictionary.Dictionary;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelDeriver;
@@ -18,12 +19,8 @@ import processToText.sentencePlanning.DiscourseMarker;
 import processToText.sentencePlanning.ReferringExpressionGenerator;
 import processToText.sentencePlanning.SentenceAggregator;
 import processToText.sentenceRealization.SurfaceRealizer;
-import processToText.textPlanning.TextPlanner;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class TextGenerator {
@@ -33,8 +30,8 @@ public class TextGenerator {
      */
     public static String generateText(ProcessModel model, int counter) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
-
-        MaxentTagger maxentTagger = new MaxentTagger(TextGenerator.class.getResource("/StanfordParser/tagger/wsj-0-18-bidirectional-distsim.tagger").openStream());
+        // /StanfordParser/tagger/wsj-0-18-bidirectional-distsim.tagger
+        MaxentTagger maxentTagger = new MaxentTagger(TextGenerator.class.getResource(Path.StanfordBidirectionalDistsimPath).openStream());
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
         EnglishLabelDeriver lDeriver = new EnglishLabelDeriver(lHelper);
 

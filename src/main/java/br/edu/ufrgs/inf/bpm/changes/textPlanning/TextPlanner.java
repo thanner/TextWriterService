@@ -1,5 +1,7 @@
-package processToText.textPlanning;
+package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
+
+import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
 import de.hpi.bpt.process.ControlFlow;
@@ -18,7 +20,7 @@ import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.dataModel.process.*;
 import processToText.preprocessing.FormatConverter;
-import processToText.templates.TemplateLoader;
+import processToText.textPlanning.PlanningHelper;
 import processToText.textPlanning.recordClasses.ConverterRecord;
 import processToText.textPlanning.recordClasses.GatewayPropertyRecord;
 import processToText.textPlanning.recordClasses.ModifierRecord;

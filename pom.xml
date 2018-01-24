@@ -30,10 +30,13 @@
                 <directory>src/main/config</directory>
             </resource>
             <resource>
-                <directory>src/main/resources/WordNet</directory>
+                <directory>src/main/resources/SentenceTemplates</directory>
             </resource>
             <resource>
                 <directory>src/main/resources/StanfordParser/tagger</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources/WordNet</directory>
             </resource>
         </resources>
     </build>
@@ -46,11 +49,6 @@
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
             <version>3.8.0</version>
-        </dependency>
-        <!-- Stanford PosTagger https://mvnrepository.com/artifact/edu.stanford.nlp/stanford-pos-tagger -->
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-pos-tagger</artifactId>
         </dependency>
         <!-- Stanford Parser https://mvnrepository.com/artifact/edu.stanford.nlp/stanford-parser -->
         <dependency>
