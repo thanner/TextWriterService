@@ -18,6 +18,36 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.3.1</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Sources -->
+                    <sources>
+                        <source>${basedir}/src/main/resources/xsd</source>
+                    </sources>
+                    <!-- The package of your generated sources -->
+                    <packageName>br.edu.ufrgs.inf.bpm.bpmn</packageName>
+                    <!-- Binding -->
+                    <!--
+                    <xjbSources>
+                        <source>${basedir}/src/main/resources/xjb/Binding.xjb</source>
+                    </xjbSources>
+                    -->
+                    <extension>true</extension>
+                    <addGeneratedAnnotation>true</addGeneratedAnnotation>
+                    <clearOutputDir>true</clearOutputDir>
+                </configuration>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -43,6 +73,7 @@
 
     <dependencies>
 
+
         <!-- Stanford NLP -->
         <!-- Stanford NLP https://mvnrepository.com/artifact/edu.stanford.nlp/stanford-corenlp -->
         <dependency>
@@ -57,11 +88,41 @@
             <version>3.8.0</version>
         </dependency>
 
-        <!-- WordNetWrapper https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
+        <!-- WordNet https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
         <dependency>
             <groupId>net.sf.jwordnet</groupId>
             <artifactId>jwnl</artifactId>
             <version>1.4_rc3</version>
+        </dependency>
+
+        <!-- RealPro - Local -->
+        <dependency>
+            <groupId>cogentex</groupId>
+            <artifactId>com.cogentex.rpw</artifactId>
+            <version>2.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/rpw.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>cogentex</groupId>
+            <artifactId>com.cogentex.rwp-lkb</artifactId>
+            <version>2.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/rpw-lkb.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>cogentex</groupId>
+            <artifactId>com.cogentex.xalan</artifactId>
+            <version>2.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/xalan.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>cogentex</groupId>
+            <artifactId>com.cogentex.xml-apis</artifactId>
+            <version>2.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/xml-apis.jar</systemPath>
         </dependency>
 
         <!-- JBPT -->
@@ -98,33 +159,11 @@
             <version>2.0.7</version>
         </dependency>
 
-        <!-- GSON https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.2</version>
-        </dependency>
-
         <!-- Batik Transcoder https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-transcoder -->
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-transcoder</artifactId>
             <version>1.9.1</version>
-        </dependency>
-
-        <!-- Junit https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <!-- <scope>test</scope> -->
-        </dependency>
-
-        <!-- Xerces Impl https://mvnrepository.com/artifact/xerces/xercesImpl -->
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-            <version>2.11.0</version>
         </dependency>
 
         <!-- BPStruct Local -->
@@ -143,34 +182,47 @@
             <version>5.5.12</version>
         </dependency>
 
-        <!-- RealPro - Local -->
+        <!-- Camunda https://mvnrepository.com/artifact/org.camunda.bpm.model/camunda-bpmn-model -->
         <dependency>
-            <groupId>cogentex</groupId>
-            <artifactId>com.cogentex.rpw</artifactId>
-            <version>2.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/rpw.jar</systemPath>
+            <groupId>org.camunda.bpm.model</groupId>
+            <artifactId>camunda-bpmn-model</artifactId>
+            <version>7.8.0</version>
         </dependency>
+
+        <!-- Xerces Impl https://mvnrepository.com/artifact/xerces/xercesImpl -->
         <dependency>
-            <groupId>cogentex</groupId>
-            <artifactId>com.cogentex.rwp-lkb</artifactId>
-            <version>2.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/rpw-lkb.jar</systemPath>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.11.0</version>
         </dependency>
+
+        <!-- Apache -->
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
-            <groupId>cogentex</groupId>
-            <artifactId>com.cogentex.xalan</artifactId>
-            <version>2.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/xalan.jar</systemPath>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
         </dependency>
+        <!-- LOG https://mvnrepository.com/artifact/commons-logging/commons-logging -->
         <dependency>
-            <groupId>cogentex</groupId>
-            <artifactId>com.cogentex.xml-apis</artifactId>
-            <version>2.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/xml-apis.jar</systemPath>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- Junit https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <!-- <scope>test</scope> -->
+        </dependency>
+
+        <!-- GSON https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.2</version>
         </dependency>
 
         <!-- REST Jersey https://mvnrepository.com/artifact/com.sun.jersey/jersey-client -->
@@ -180,25 +232,11 @@
             <version>1.19.4</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+        <!-- REST https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.0</version>
-        </dependency>
-
-        <!-- Camunda https://mvnrepository.com/artifact/org.camunda.bpm.model/camunda-bpmn-model -->
-        <dependency>
-            <groupId>org.camunda.bpm.model</groupId>
-            <artifactId>camunda-bpmn-model</artifactId>
-            <version>7.8.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.2</version>
         </dependency>
 
     </dependencies>
