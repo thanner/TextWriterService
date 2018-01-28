@@ -72,7 +72,13 @@ public class TextGenerator {
             surfaceText = surfaceRealizer.cleanTextForImperativeStyle(surfaceText, imperativeRole, model.getLanes());
         }
 
-        return surfaceRealizer.postProcessText(surfaceText);
+        surfaceText = surfaceRealizer.postProcessText(surfaceText);
+
+        if(surfaceText.startsWith(" \n")){
+            surfaceText = surfaceText.replaceFirst(" \n", "" );
+        }
+
+        return surfaceText;
     }
 
 }

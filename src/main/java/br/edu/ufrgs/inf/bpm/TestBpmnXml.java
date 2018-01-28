@@ -9,12 +9,12 @@ import java.io.IOException;
 public class TestBpmnXml {
     public static void main(String[] args) {
         try {
-            String text = FileUtils.readFileToString(new File("src/main/resources/TestData/BpmnFile/diagram.bpmn"));
+            String text = FileUtils.readFileToString(new File("src/main/resources/TestData/BpmnFile/diagram2.bpmn"));
 
             ApplicationRest applicationRest = new ApplicationRest();
             String newText = applicationRest.getBpmnXml(text).toString();
 
-            // System.out.println(newText);
+            System.out.println(newText);
         } catch (IOException e){
             e.printStackTrace();
         }
