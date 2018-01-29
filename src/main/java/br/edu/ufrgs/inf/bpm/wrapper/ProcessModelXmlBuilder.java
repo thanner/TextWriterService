@@ -32,17 +32,13 @@ public class ProcessModelXmlBuilder {
         int newId = generateModelId("ProcessModel1");
         ProcessModel processModel = new ProcessModel(newId, "Process Model");
 
-        try {
-            bpmnXmlWrapper = new BpmnXmlWrapper(bpmnString);
-            bpmnXmlWrapper.getModelElementsByType(LaneSet.class).forEach(p -> processModel.addPool(createPool(p)));
-            bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Lane.class).forEach(p -> processModel.addLane(createLane(p)));
-            bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Activity.class).forEach(p -> processModel.addActivity(createActivity(p)));
-            bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Event.class).forEach(p -> processModel.addEvent(createEvent(p)));
-            bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Gateway.class).forEach(p -> processModel.addGateway(createGateway(p)));
-            bpmnXmlWrapper.getModelElementsByType(SequenceFlow.class).forEach(p -> processModel.addArc(createArc(p)));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        bpmnXmlWrapper = new BpmnXmlWrapper(bpmnString);
+        bpmnXmlWrapper.getModelElementsByType(LaneSet.class).forEach(p -> processModel.addPool(createPool(p)));
+        bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Lane.class).forEach(p -> processModel.addLane(createLane(p)));
+        bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Activity.class).forEach(p -> processModel.addActivity(createActivity(p)));
+        bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Event.class).forEach(p -> processModel.addEvent(createEvent(p)));
+        bpmnXmlWrapper.getModelElementsByType(org.camunda.bpm.model.bpmn.instance.Gateway.class).forEach(p -> processModel.addGateway(createGateway(p)));
+        bpmnXmlWrapper.getModelElementsByType(SequenceFlow.class).forEach(p -> processModel.addArc(createArc(p)));
 
         return processModel;
     }

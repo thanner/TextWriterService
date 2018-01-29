@@ -42,7 +42,6 @@
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:4.10.3" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.io7m.xom:xom:1.2.10" level="project" />
-    <orderEntry type="library" name="Maven: xalan:xalan:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.4" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.efficient-java-matrix-library:ejml:0.23" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish:javax.json:1.0.4" level="project" />
@@ -53,7 +52,7 @@
     <orderEntry type="module-library">
       <library name="Maven: cogentex:com.cogentex.rpw:2.2">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/main/resources/RealPro-2.2/lib/rpw.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/main/others/RealPro-2.2/lib/rpw.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -62,16 +61,7 @@
     <orderEntry type="module-library">
       <library name="Maven: cogentex:com.cogentex.rwp-lkb:2.2">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/main/resources/RealPro-2.2/lib/rpw-lkb.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="Maven: cogentex:com.cogentex.xalan:2.2">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/main/resources/RealPro-2.2/lib/xalan.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/main/others/RealPro-2.2/lib/rpw-lkb.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -80,12 +70,14 @@
     <orderEntry type="module-library">
       <library name="Maven: cogentex:com.cogentex.xml-apis:2.2">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/main/resources/RealPro-2.2/lib/xml-apis.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/main/others/RealPro-2.2/lib/xml-apis.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: xalan:xalan:2.7.2" level="project" />
+    <orderEntry type="library" name="Maven: xalan:serializer:2.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.jbpt:jbpt-core:0.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.jbpt:jbpt-petri:0.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.jbpt:jbpt-deco:0.3.1" level="project" />
@@ -117,7 +109,7 @@
     <orderEntry type="module-library">
       <library name="Maven: ee.ut.bpstruct2:bpstruct2:1.0">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/main/resources/bpstruct.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/main/others/bpstruct.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

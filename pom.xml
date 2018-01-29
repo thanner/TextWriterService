@@ -33,7 +33,7 @@
                 <configuration>
                     <!-- Sources -->
                     <sources>
-                        <source>${basedir}/src/main/resources/xsd</source>
+                        <source>${basedir}/src/main/others/xsd</source>
                     </sources>
                     <!-- The package of your generated sources -->
                     <packageName>br.edu.ufrgs.inf.bpm.bpmn</packageName>
@@ -49,30 +49,35 @@
                 </configuration>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <excludes>
-                    <exclude>**</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/config</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources/SentenceTemplates</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources/StanfordParser/tagger</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources/WordNet</directory>
-            </resource>
-        </resources>
     </build>
 
-    <dependencies>
+    <!--
+    <resources>
+        <resource>
+            <directory>src/main/resources/</directory>
+            <excludes>
+                <exclude>**</exclude>
+            </excludes>
+        </resource>
+        <resource>
+            <directory>src/main/config</directory>
+        </resource>
+        <resource>
+            <directory>src/main/resources/SentenceTemplates</directory>
+        </resource>
+        <resource>
+            <directory>src/main/resources/StanfordParser/tagger</directory>
+        </resource>
+        <resource>
+            <directory>src/main/resources/WordNet</directory>
+        </resource>
+        <resource>
+            <directory>src/main/resources/xsd</directory>
+        </resource>
+    </resources>
+    -->
 
+    <dependencies>
 
         <!-- Stanford NLP -->
         <!-- Stanford NLP https://mvnrepository.com/artifact/edu.stanford.nlp/stanford-corenlp -->
@@ -101,28 +106,28 @@
             <artifactId>com.cogentex.rpw</artifactId>
             <version>2.2</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/rpw.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/others/RealPro-2.2/lib/rpw.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>cogentex</groupId>
             <artifactId>com.cogentex.rwp-lkb</artifactId>
             <version>2.2</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/rpw-lkb.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>cogentex</groupId>
-            <artifactId>com.cogentex.xalan</artifactId>
-            <version>2.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/xalan.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/others/RealPro-2.2/lib/rpw-lkb.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>cogentex</groupId>
             <artifactId>com.cogentex.xml-apis</artifactId>
             <version>2.2</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/RealPro-2.2/lib/xml-apis.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/others/RealPro-2.2/lib/xml-apis.jar</systemPath>
+        </dependency>
+
+        <!-- RealPro - Xalan https://mvnrepository.com/artifact/xalan/xalan -->
+        <dependency>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+            <version>2.7.2</version>
         </dependency>
 
         <!-- JBPT -->
@@ -172,7 +177,7 @@
             <artifactId>bpstruct2</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/bpstruct.jar</systemPath>
+            <systemPath>${project.basedir}/src/main/others/bpstruct.jar</systemPath>
         </dependency>
 
         <!-- Itexpdf https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
@@ -238,6 +243,7 @@
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.0</version>
         </dependency>
+
 
     </dependencies>
 

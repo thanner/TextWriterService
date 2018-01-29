@@ -7,10 +7,7 @@ import org.camunda.bpm.model.bpmn.instance.Process;
 import org.camunda.bpm.model.xml.ModelInstance;
 import org.camunda.bpm.model.xml.instance.ModelElementInstance;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,8 +38,9 @@ public class BpmnXmlWrapper {
         init();
     }
 
-    public BpmnXmlWrapper(String bpmnString) throws UnsupportedEncodingException {
-        this.modelInstance = Bpmn.readModelFromStream(new ByteArrayInputStream(bpmnString.getBytes(StandardCharsets.UTF_8.name())));
+    public BpmnXmlWrapper(String bpmnString) {
+        InputStream inputStream = new ByteArrayInputStream(bpmnString.getBytes(StandardCharsets.UTF_8));
+        this.modelInstance = Bpmn.readModelFromStream(inputStream);
         definitions = modelInstance.getDefinitions();
         init();
     }

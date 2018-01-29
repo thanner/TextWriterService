@@ -20,7 +20,7 @@ public class TemplateLoader {
     public static final String RIGID = "Rigid.xml";
     public static final String RIGID_MAIN = "RigidMain.xml";
     public static final String RIGID_DEV = "RigidDeviations.xml";
-    private final String dir = "src/main/java/processToText/templates/";
+    private final String dir = "SentenceTemplates/";
     private String action = "";
     private String object = "";
     private String addition = "";
@@ -30,7 +30,7 @@ public class TemplateLoader {
         object = "";
         addition = "";
         try {
-            File file = new File(TemplateLoader.class.getResource("/" + template).getFile()); //new File(dir + template);
+            File file = new File(TemplateLoader.class.getResource(dir + template).getFile()); //new File(dir + template);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
