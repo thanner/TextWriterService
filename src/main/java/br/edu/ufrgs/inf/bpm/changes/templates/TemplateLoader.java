@@ -20,7 +20,7 @@ public class TemplateLoader {
     public static final String RIGID = "Rigid.xml";
     public static final String RIGID_MAIN = "RigidMain.xml";
     public static final String RIGID_DEV = "RigidDeviations.xml";
-    private final String dir = "SentenceTemplates/";
+    private final String dir = "/SentenceTemplates/";
     private String action = "";
     private String object = "";
     private String addition = "";

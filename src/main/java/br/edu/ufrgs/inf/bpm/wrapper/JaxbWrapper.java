@@ -3,15 +3,11 @@ package br.edu.ufrgs.inf.bpm.wrapper;
 import br.edu.ufrgs.inf.bpm.bpmn.ObjectFactory;
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.util.Path;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import javax.xml.bind.*;
 import javax.xml.namespace.QName;
-import java.io.File;
-import java.io.IOException;
 import java.io.StringWriter;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class JaxbWrapper {
@@ -21,11 +17,6 @@ public class JaxbWrapper {
         try {
             JAXBContext context = JAXBContext.newInstance(Path.packageBpmnPath);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-
-            // File file = (File.createTempFile("diagram", ".bpmn"));
-            // FileUtils.writeStringToFile(file, bpmnString, StandardCharsets.UTF_8);
-
-
             JAXBElement<T> element = (JAXBElement<T>) unmarshaller.unmarshal(IOUtils.toInputStream(bpmnString, StandardCharsets.UTF_8));
             object = element.getValue();
         } catch (JAXBException e) {

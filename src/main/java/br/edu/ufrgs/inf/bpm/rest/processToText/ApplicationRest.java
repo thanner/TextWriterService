@@ -3,7 +3,7 @@ package br.edu.ufrgs.inf.bpm.rest.processToText;
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
-import br.edu.ufrgs.inf.bpm.wrapper.ProcessModelBuilder;
+import br.edu.ufrgs.inf.bpm.builder.ProcessModelBuilder;
 import net.didion.jwnl.JWNLException;
 import processToText.dataModel.process.ProcessModel;
 

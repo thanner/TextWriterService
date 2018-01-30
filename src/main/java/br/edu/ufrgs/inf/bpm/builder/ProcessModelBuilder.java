@@ -1,6 +1,7 @@
-package br.edu.ufrgs.inf.bpm.wrapper;
+package br.edu.ufrgs.inf.bpm.builder;
 
 import br.edu.ufrgs.inf.bpm.bpmn.*;
+import br.edu.ufrgs.inf.bpm.wrapper.ProcessModelWrapper;
 import br.edu.ufrgs.inf.bpm.wrapper.elementType.ActivityType;
 import br.edu.ufrgs.inf.bpm.wrapper.elementType.EventType;
 import br.edu.ufrgs.inf.bpm.wrapper.elementType.GatewayType;
@@ -22,7 +23,6 @@ public class ProcessModelBuilder {
     private Map<String, Lane> laneMap;
     private Map<String, Pool> poolMap;
     private Map<String, Element> elementMap;
-    // private Map<String, Integer> idMap;
     private ProcessModelWrapper processModelWrapper;
 
     public ProcessModelBuilder() {
@@ -30,7 +30,6 @@ public class ProcessModelBuilder {
         laneMap = new HashMap<>();
         poolMap = new HashMap<>();
         elementMap = new HashMap<>();
-        // idMap = new HashMap<>();
     }
 
     public ProcessModel buildProcess(TDefinitions definitions) {
@@ -173,12 +172,7 @@ public class ProcessModelBuilder {
 
     private int generateModelId(String oldId) {
         int newId = genericId++;
-        // idMap.put(oldId, newId);
         return newId;
     }
-
-    // public Map<String, Integer> getIdMap() {
-    //    return idMap;
-    // }
 
 }

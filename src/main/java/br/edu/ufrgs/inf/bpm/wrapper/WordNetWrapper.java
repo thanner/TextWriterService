@@ -22,16 +22,6 @@ public class WordNetWrapper {
 
     public static void generateDictionary() {
         try {
-            /*
-            URL _url = WordNetWrapper.class.getResource(Path.WordNetResourcePath);
-            if (_url == null) {
-                File _f = new File(Path.WordNetPath);
-                JWNL.initialize(new FileInputStream(_f));
-            } else {
-                JWNL.initialize(_url.openStream());
-            }
-            */
-
             InputStream resource = ResourceLoader.getResource(Path.WordNetResourcePath, Path.WordNetPath);
             JWNL.initialize(resource);
         } catch (IOException | JWNLException e) {
