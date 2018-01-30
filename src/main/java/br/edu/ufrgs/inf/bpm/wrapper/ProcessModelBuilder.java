@@ -1,11 +1,19 @@
-/*
 package br.edu.ufrgs.inf.bpm.wrapper;
 
+import br.edu.ufrgs.inf.bpm.bpmn.*;
+import br.edu.ufrgs.inf.bpm.wrapper.elementType.ActivityType;
+import br.edu.ufrgs.inf.bpm.wrapper.elementType.EventType;
+import br.edu.ufrgs.inf.bpm.wrapper.elementType.GatewayType;
 import processToText.dataModel.process.*;
+import processToText.dataModel.process.Activity;
+import processToText.dataModel.process.Event;
+import processToText.dataModel.process.Gateway;
+import processToText.dataModel.process.Lane;
 
-import java.io.InvalidObjectException;
-import java.io.UnsupportedEncodingException;
+import javax.xml.bind.JAXBElement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProcessModelBuilder {
@@ -14,46 +22,65 @@ public class ProcessModelBuilder {
     private Map<String, Lane> laneMap;
     private Map<String, Pool> poolMap;
     private Map<String, Element> elementMap;
-    private Map<String, Integer> idMap;
-    private BpmnXmlWrapper bpmnXmlWrapper;
+    // private Map<String, Integer> idMap;
+    private ProcessModelWrapper processModelWrapper;
 
     public ProcessModelBuilder() {
         genericId = 0;
         laneMap = new HashMap<>();
         poolMap = new HashMap<>();
         elementMap = new HashMap<>();
-        idMap = new HashMap<>();
+        // idMap = new HashMap<>();
     }
 
-    public ProcessModel buildProcess(String bpmnString) {
+    public ProcessModel buildProcess(TDefinitions definitions) {
+        processModelWrapper = new ProcessModelWrapper(definitions);
+
         int newId = generateModelId("ProcessModel1");
         ProcessModel processModel = new ProcessModel(newId, "Process Model");
 
-        try {
-            bpmnXmlWrapper = new BpmnXmlWrapper(bpmnString);
-            bpmnXmlWrapper.getModelElementsByType(LaneSet.class).forEach(p -> processModel.addPool(createPool(p)));
-            bpmnXmlWrapper.getModelElementsByType(TLane.class).forEach(p -> processModel.addLane(createLane(p)));
-            bpmnXmlWrapper.getModelElementsByType(TActivity.class).forEach(p -> processModel.addActivity(createActivity(p)));
-            bpmnXmlWrapper.getModelElementsByType(TEvent.class).forEach(p -> processModel.addEvent(createEvent(p)));
-            bpmnXmlWrapper.getModelElementsByType(TGateway.class).forEach(p -> processModel.addGateway(createGateway(p)));
-            bpmnXmlWrapper.getModelElementsByType(SequenceFlow.class).forEach(p -> processModel.addArc(createArc(p)));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        List<TProcess> processList = processModelWrapper.getProcessList();
+
+        for (TProcess process : processList) {
+
+            processModel.addPool(createPool(process));
+            for(TLaneSet laneSet: process.getLaneSet()){
+                for(TLane lane: laneSet.getLane()){
+                    processModel.addLane(createLane(lane, process));
+                }
+            }
+
+            for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()){
+                if(flowElement.getValue() instanceof TActivity){
+                    processModel.addActivity(createActivity((TActivity) flowElement.getValue()));
+                } else if(flowElement.getValue() instanceof TEvent){
+                    processModel.addEvent(createEvent((TEvent) flowElement.getValue()));
+                } else if(flowElement.getValue() instanceof TGateway){
+                    processModel.addGateway(createGateway((TGateway) flowElement.getValue()));
+                }
+            }
+
+            for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
+                if (flowElement.getValue() instanceof TSequenceFlow) {
+                    processModel.addArc(createArc((TSequenceFlow) flowElement.getValue()));
+                }
+            }
+
         }
 
         return processModel;
     }
 
-    private String createPool(TLaneSet pool) {
-        int newId = generateModelId(pool.getId());
-        Pool modelPool = new Pool(newId, getName(pool.getName()));
-        poolMap.put(pool.getId(), modelPool);
+    private String createPool(TProcess process) {
+        int newId = generateModelId(process.getId());
+        Pool modelPool = new Pool(newId, processModelWrapper.getProcessName(process));
+        poolMap.put(process.getId(), modelPool);
         return modelPool.getName();
     }
 
-    private String createLane(TLane lane) {
+    private String createLane(TLane lane, TProcess process) {
         int newId = generateModelId(lane.getId());
-        Lane modelLane = new Lane(newId, getName(lane.getName()), getPoolByLane(lane));
+        Lane modelLane = new Lane(newId, getName(lane.getName()), poolMap.get(process.getId()));
         laneMap.put(lane.getId(), modelLane);
         return modelLane.getName();
     }
@@ -61,11 +88,11 @@ public class ProcessModelBuilder {
     private Activity createActivity(TActivity activity) {
         try {
             int newId = generateModelId(activity.getId());
-            int activityType = getActivityType(activity.getElementType().getTypeName());
+            int activityType = getActivityType(activity);
             Activity modelActivity = new Activity(newId, getName(activity.getName()), getLaneByObject(activity), getPoolByObject(activity), activityType);
             elementMap.put(activity.getId(), modelActivity);
             return modelActivity;
-        } catch (InvalidObjectException i) {
+        } catch (IllegalArgumentException i) {
             i.printStackTrace();
         }
         return null;
@@ -74,11 +101,11 @@ public class ProcessModelBuilder {
     private Event createEvent(TEvent event) {
         try {
             int newId = generateModelId(event.getId());
-            int eventType = getEventType(event.getElementType().getTypeName());
+            int eventType = getEventType(event);
             Event modelEvent = new Event(newId, getName(event.getName()), getLaneByObject(event), getPoolByObject(event), eventType);
             elementMap.put(event.getId(), modelEvent);
             return modelEvent;
-        } catch (InvalidObjectException i) {
+        } catch (IllegalArgumentException i) {
             i.printStackTrace();
         }
         return null;
@@ -87,11 +114,11 @@ public class ProcessModelBuilder {
     private Gateway createGateway(TGateway gateway) {
         try {
             int newId = generateModelId(gateway.getId());
-            int gatewayType = getGatewayType(gateway.getElementType().getTypeName());
+            int gatewayType = getGatewayType(gateway);
             Gateway modelGateway = new Gateway(newId, getName(gateway.getName()), getLaneByObject(gateway), getPoolByObject(gateway), gatewayType);
             elementMap.put(gateway.getId(), modelGateway);
             return modelGateway;
-        } catch (InvalidObjectException i) {
+        } catch (IllegalArgumentException i) {
             i.printStackTrace();
         }
         return null;
@@ -99,114 +126,59 @@ public class ProcessModelBuilder {
 
     private Arc createArc(TSequenceFlow arc) {
         int newId = generateModelId(arc.getId());
-        return new Arc(newId, getName(arc.getName()), elementMap.get(arc.getSource().getId()), elementMap.get(arc.getTarget().getId()));
+        return new Arc(newId, getName(arc.getName()), elementMap.get(((TFlowNode) arc.getSourceRef()).getId()), elementMap.get(((TFlowNode) arc.getTargetRef()).getId()));
     }
 
     private String getName(String name) {
         return name != null ? name : "";
     }
 
-    private int getActivityType(String typeName) throws InvalidObjectException {
-        switch (typeName) {
-            case "task":
-                return 0;
-            case "subProcess":
-                return 3;
-            default:
-                throw new InvalidObjectException(typeName);
+    private int getActivityType(TActivity activity) throws IllegalArgumentException {
+        try {
+            return ActivityType.valueOf(activity.getClass().getSimpleName()).getValue();
+        } catch(IllegalArgumentException e){
+            throw getIllegalTypeException(activity);
         }
     }
 
-    private int getEventType(String typeName) throws InvalidObjectException {
-        switch (typeName) {
-            case "startEvent":
-                return 1;
-            case "endEvent":
-                return 11;
-            default:
-                throw new InvalidObjectException(typeName);
-        }
-
-        // public static final int START_EVENT = 1;
-        // public static final int START_MSG = 2;
-        // public static final int START_TIMER = 3;
-
-        // public static final int END_EVENT = 11;
-        // public static final int END_ERROR = 12;
-        // public static final int END_SIGNAL = 13;
-        // public static final int END_MSG = 14;
-
-        // public static final int INTM = 21;
-        // public static final int INTM_TIMER = 22;
-        // public static final int INTM_CANCEL = 23;
-        // public static final int INTM_CONDITIONAL = 24;
-        // public static final int INTM_ESCALATION = 25;
-        // public static final int INTM_ERROR = 26;
-
-        // public static final int INTM_ESCALATION_THR = 31;
-        // public static final int INTM_SIGNAL_THR = 32;
-        // public static final int INTM_MULTIPLE_THR = 33;
-        // public static final int INTM_LINK_THR = 34;
-        // public static final int INTM_MSG_THR = 35;
-
-        // public static final int INTM_ESCALATION_CAT = 41;
-        // public static final int INTM_MULTIPLE_CAT = 42;
-        // public static final int INTM_LINK_CAT = 43;
-        // public static final int INTM_MSG_CAT = 44;
-        // public static final int INTM_PMULT_CAT = 45;
-        // public static final int INTM_COMPENSATION_CAT = 46;
-    }
-
-    private int getGatewayType(String typeName) throws InvalidObjectException {
-        switch (typeName) {
-            case "exclusiveGateway":
-                return 0;
-            case "inclusiveGateway":
-                return 1;
-            case "parallelGateway":
-                return 2;
-            case "eventBasedGateway":
-                return 3;
-            default:
-                throw new InvalidObjectException(typeName);
+    private int getEventType(TEvent event) throws IllegalArgumentException {
+        try {
+            return EventType.valueOf(event.getClass().getSimpleName()).getValue();
+        } catch(IllegalArgumentException e){
+            throw getIllegalTypeException(event);
         }
     }
 
-    private Pool getPoolByLane(TLane lane) {
-        ModelElementInstance parent = lane.getParentElement();
-        if (parent.getElementType().getTypeName().equalsIgnoreCase(LaneSet.class.getSimpleName())) {
-            LaneSet laneSet = (LaneSet) parent;
-            return poolMap.get(laneSet.getId());
-        } else {
-            return null;
+    private int getGatewayType(TGateway gateway) throws IllegalArgumentException {
+        try {
+            return GatewayType.valueOf(gateway.getClass().getSimpleName()).getValue();
+        } catch(IllegalArgumentException e){
+            throw getIllegalTypeException(gateway);
         }
     }
 
-    private Pool getPoolByObject(FlowNode flowNode) {
-        LaneSet pool = bpmnXmlWrapper.getPoolByFlowNode(flowNode);
-        if (pool != null) {
-            return poolMap.get(pool.getId());
-        } else {
-            return null;
-        }
+    private IllegalArgumentException getIllegalTypeException(TFlowNode flowNode){
+        return new IllegalArgumentException("Can not find element type (Element: " + flowNode.getClass().getSimpleName() + ". Id: " + flowNode.getId() + ")");
     }
 
-    private Lane getLaneByObject(FlowNode flowNode) {
-        TLane lane = bpmnXmlWrapper.getLaneByFlowNode(flowNode);
-        if (lane != null) {
-            return laneMap.get(lane.getId());
-        } else {
-            return null;
-        }
+    private Pool getPoolByObject(TFlowNode flowNode) {
+        TProcess process = processModelWrapper.getProcessByFlowNode(flowNode);
+        return process != null ? poolMap.get(process.getId()) : null;
+    }
+
+    private Lane getLaneByObject(TFlowNode flowNode) {
+        TLane lane = processModelWrapper.getLaneByFlowNode(flowNode);
+        return lane != null ? laneMap.get(lane.getId()) : null;
     }
 
     private int generateModelId(String oldId) {
         int newId = genericId++;
-        idMap.put(oldId, newId);
+        // idMap.put(oldId, newId);
         return newId;
     }
 
-    public Map<String, Integer> getIdMap() {
-        return idMap;
-    }
-*/
+    // public Map<String, Integer> getIdMap() {
+    //    return idMap;
+    // }
+
+}

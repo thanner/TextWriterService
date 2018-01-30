@@ -1,0 +1,79 @@
+package br.edu.ufrgs.inf.bpm.wrapper;
+
+import br.edu.ufrgs.inf.bpm.bpmn.ObjectFactory;
+import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
+import br.edu.ufrgs.inf.bpm.util.Path;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+
+import javax.xml.bind.*;
+import javax.xml.namespace.QName;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+public class JaxbWrapper {
+
+    public static <T> T convertXMLToObject(String bpmnString) {
+        T object = null;
+        try {
+            JAXBContext context = JAXBContext.newInstance(Path.packageBpmnPath);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            // File file = (File.createTempFile("diagram", ".bpmn"));
+            // FileUtils.writeStringToFile(file, bpmnString, StandardCharsets.UTF_8);
+
+
+            JAXBElement<T> element = (JAXBElement<T>) unmarshaller.unmarshal(IOUtils.toInputStream(bpmnString, StandardCharsets.UTF_8));
+            object = element.getValue();
+        } catch (JAXBException e) {
+            System.err.println(String.format("Exception while unmarshalling: %s", e.getMessage()));
+        }
+        return object;
+    }
+
+    public static <T> String convertObjectToXML(T object) {
+        try {
+            StringWriter stringWriter = new StringWriter();
+            JAXBContext context = JAXBContext.newInstance(object.getClass());
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(new JAXBElement<T>(new QName("uri", "local"), (Class<T>) object.getClass(), object), stringWriter);
+            return stringWriter.toString();
+        } catch (JAXBException e) {
+            System.err.println(String.format("Exception while marshalling: %s", e.getMessage()));
+        }
+        return null;
+    }
+
+    public static <T> String convertToXML(TDefinitions definition) {
+        StringWriter stringWriter = new StringWriter();
+        try {
+            JAXBContext context = JAXBContext.newInstance(Path.packageBpmnPath);
+            Marshaller marshaller = context.createMarshaller();
+            JAXBElement<TDefinitions> element = new ObjectFactory().createDefinitions(definition);
+            // file = File.createTempFile("temp", ".bpmn");
+            marshaller.marshal(element, stringWriter);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return stringWriter.toString();
+    }
+
+    public static <T> String convertObjectToXMLS(T object) {
+        try {
+            StringWriter stringWriter = new StringWriter();
+            JAXBContext context = JAXBContext.newInstance(object.getClass());
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshaller.marshal(object, stringWriter);
+            return stringWriter.toString();
+        } catch (JAXBException e) {
+            System.err.println(String.format("Exception while marshalling: %s", e.getMessage()));
+        }
+        return null;
+    }
+
+}

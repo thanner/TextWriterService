@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.wrapper;
 
 import org.camunda.bpm.model.bpmn.Bpmn;
@@ -166,3 +167,4 @@ public class BpmnXmlWrapper {
         Bpmn.writeModelToFile(file, modelInstance);
     }
 }
+*/

@@ -1,73 +1,90 @@
-package br.edu.ufrgs.inf.bpm.wrapper;/*
 package br.edu.ufrgs.inf.bpm.wrapper;
 
-import processToText.dataModel.process.*;
+import br.edu.ufrgs.inf.bpm.bpmn.*;
+
+import javax.xml.bind.JAXBElement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProcessModelWrapper {
 
-    public void addPool(ProcessModel processModel, String pool) {
-        // process.addPool(new Pool(Integer.parseInt(object.getId()), object.getText()));
-        processModel.addPool(pool);
+    private TDefinitions definitions;
+
+    public ProcessModelWrapper(TDefinitions definitions){
+        this.definitions = definitions;
     }
 
-    public void addLane(ProcessModel processModel, String lane) {
-        // process.addLane(new Lane(Integer.parseInt(object.getId()), object.getText(), getPoolByObject(object)));
-        processModel.addLane(lane);
-    }
-
-    public void addActivity(ProcessModel processModel, br.edu.ufrgs.inf.bpm.process.Activity activity) {
-        processModel.addActivity(getActivity(activity));
-    }
-
-    public void addEvent(ProcessModel processModel, br.edu.ufrgs.inf.bpm.process.Event event) {
-        processModel.addEvent(getEvent(event));
-    }
-
-    public void addGateway(ProcessModel processModel, br.edu.ufrgs.inf.bpm.process.Gateway gateway) {
-        processModel.addGateway(getGateway(gateway));
-    }
-
-    public void addArc(ProcessModel processModel, br.edu.ufrgs.inf.bpm.process.Arc arc) {
-        processModel.addArc(getArc(arc));
-    }
-
-    private Lane getLaneByObject(br.edu.ufrgs.inf.bpm.process.Element object) {
-        return new Lane(object.getLane().getId(), object.getLane().getName(), getPoolByObject(object));
-    }
-
-    private Pool getPoolByObject(br.edu.ufrgs.inf.bpm.process.Element object) {
-        return new Pool(object.getId(), object.getLabel());
-    }
-
-    private Element getElement(br.edu.ufrgs.inf.bpm.process.Element object) {
-        Element element = null;
-
-        if (object instanceof br.edu.ufrgs.inf.bpm.process.Activity) {
-            element = getActivity((br.edu.ufrgs.inf.bpm.process.Activity) object);
-        } else if (object instanceof br.edu.ufrgs.inf.bpm.process.Event) {
-            element = getEvent((br.edu.ufrgs.inf.bpm.process.Event) object);
-        } else if (object instanceof br.edu.ufrgs.inf.bpm.process.Gateway) {
-            element = getGateway((br.edu.ufrgs.inf.bpm.process.Gateway) object);
+    public TProcess getProcessByFlowNode(TFlowNode flowNode){
+        List<TProcess> processList = getProcessList();
+        for(TProcess process: processList) {
+            for (TLaneSet laneSet : process.getLaneSet()) {
+                for (TLane lane : laneSet.getLane()) {
+                    for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
+                        if (flowNodeRefObject.getValue() instanceof TFlowNode) {
+                            TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
+                            if (flowNode.getId().equals(flowNodeAux.getId())) {
+                                return process;
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-        return element;
+        return null;
     }
 
-    private Activity getActivity(br.edu.ufrgs.inf.bpm.process.Activity activity) {
-        return new Activity(activity.getId(), activity.getLabel(), getLaneByObject(activity), getPoolByObject(activity), activity.getType());
+    public TLane getLaneByFlowNode(TFlowNode flowNode){
+        List<TProcess> processList = getProcessList();
+        for(TProcess process: processList) {
+            for (TLaneSet laneSet : process.getLaneSet()) {
+                for (TLane lane : laneSet.getLane()) {
+                    for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
+                        if (flowNodeRefObject.getValue() instanceof TFlowNode) {
+                            TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
+                            if (flowNode.getId().equals(flowNodeAux.getId())) {
+                                return lane;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 
-    private Event getEvent(br.edu.ufrgs.inf.bpm.process.Event event) {
-        return new Event(event.getId(), event.getLabel(), getLaneByObject(event), getPoolByObject(event), event.getType());
+    public List<TCollaboration> getCollaborationList(){
+        List<TCollaboration> collaborationList = new ArrayList<>();
+        List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();
+        for(JAXBElement<? extends TRootElement> rootElement : rootElementList){
+            if(rootElement.getValue() instanceof TCollaboration) {
+                TCollaboration collaboration = (TCollaboration) rootElement.getValue();
+                collaborationList.add(collaboration);
+            }
+        }
+        return collaborationList;
     }
 
-    private Gateway getGateway(br.edu.ufrgs.inf.bpm.process.Gateway gateway) {
-        return new Gateway(gateway.getId(), gateway.getLabel(), getLaneByObject(gateway), getPoolByObject(gateway), gateway.getType());
+    public List<TProcess> getProcessList(){
+        List<TProcess> processList = new ArrayList<>();
+        List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();
+        for(JAXBElement<? extends TRootElement> rootElement : rootElementList){
+            if(rootElement.getValue() instanceof TProcess) {
+                TProcess process = (TProcess) rootElement.getValue();
+                processList.add(process);
+            }
+        }
+        return processList;
     }
 
-    private Arc getArc(br.edu.ufrgs.inf.bpm.process.Arc arc) {
-        return new Arc(arc.getId(), arc.getLabel(), getElement(arc.getSource()), getElement(arc.getTarget()), arc.getType());
+    public String getProcessName(TProcess process){
+        List<TCollaboration> collaborationList = getCollaborationList();
+        for(TCollaboration collaboration: collaborationList){
+            for(TParticipant participant: collaboration.getParticipant()){
+                if(process.getId().equals(participant.getProcessRef().toString())){
+                    return participant.getName();
+                }
+            }
+        }
+        return "";
     }
-
 }
-*/

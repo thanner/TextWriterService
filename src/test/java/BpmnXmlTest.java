@@ -1,3 +1,4 @@
+/*
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnXmlWrapper;
 import br.edu.ufrgs.inf.bpm.wrapper.ProcessModelXmlBuilder;
 import org.camunda.bpm.model.bpmn.instance.*;
@@ -60,3 +61,4 @@ public class BpmnXmlTest {
         Assert.assertEquals("LaneSet Name", activity.getPool().getName());
     }
 }
+*/

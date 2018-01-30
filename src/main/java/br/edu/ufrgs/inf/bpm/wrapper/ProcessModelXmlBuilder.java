@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.wrapper;
 
 import org.camunda.bpm.model.bpmn.instance.FlowNode;
@@ -126,7 +127,6 @@ public class ProcessModelXmlBuilder {
                 throw new InvalidObjectException(typeName);
         }
 
-        /*
             public static final int START_EVENT = 1;
             public static final int START_MSG = 2;
             public static final int START_TIMER = 3;
@@ -155,7 +155,6 @@ public class ProcessModelXmlBuilder {
             public static final int INTM_MSG_CAT = 44;
             public static final int INTM_PMULT_CAT = 45;
             public static final int INTM_COMPENSATION_CAT = 46;
-         */
     }
 
     private int getGatewayType(String typeName) throws InvalidObjectException {
@@ -211,3 +210,4 @@ public class ProcessModelXmlBuilder {
         return idMap;
     }
 }
+*/

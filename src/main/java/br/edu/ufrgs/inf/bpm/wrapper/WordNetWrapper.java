@@ -1,11 +1,12 @@
 package br.edu.ufrgs.inf.bpm.wrapper;
 
 import br.edu.ufrgs.inf.bpm.util.Path;
+import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import net.didion.jwnl.JWNL;
+import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.dictionary.Dictionary;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.net.URL;
 
 public class WordNetWrapper {
@@ -21,6 +22,7 @@ public class WordNetWrapper {
 
     public static void generateDictionary() {
         try {
+            /*
             URL _url = WordNetWrapper.class.getResource(Path.WordNetResourcePath);
             if (_url == null) {
                 File _f = new File(Path.WordNetPath);
@@ -28,9 +30,14 @@ public class WordNetWrapper {
             } else {
                 JWNL.initialize(_url.openStream());
             }
-        } catch (Exception e) {
+            */
+
+            InputStream resource = ResourceLoader.getResource(Path.WordNetResourcePath, Path.WordNetPath);
+            JWNL.initialize(resource);
+        } catch (IOException | JWNLException e) {
             e.printStackTrace();
         }
+
         dictionary = Dictionary.getInstance();
     }
 
