@@ -1581,7 +1581,7 @@
 { phalanx1, crowd,@ (any closely ranked crowd of people) }
 { score, set,@ (a set of twenty members; "a score were sent out but only one returned") }
 { threescore, set,@ (a set with 3 times 20 members) }
-{ synset, set,@ noun.communication:WordNet,;c (a set of one or more synonyms) }
+{ synset, set,@ noun.communication:wordNet,;c (a set of one or more synonyms) }
 { [ combination1, adj.all:integrative^combinatorial,+ verb.social:combine,+ verb.contact:combine3,+ ] unit,@ (a group of people (often temporary) having a common purpose; "they were a winning combination") }
 { [ crew1, verb.competition:crew,+ ] unit,@ company4,#m (the men and women who man a vehicle (ship, aircraft, etc.)) }
 { aircrew, air_crew, crew1,@ (the crew of an aircraft) }

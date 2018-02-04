@@ -598,7 +598,7 @@
 { [ caress, verb.contact:caress,+ ] stroke1,@ (a gentle affectionate stroking (or something resembling it); "he showered her with caresses"; "soft music was a fond caress"; "the caresses of the breeze played over his face") }
 { [ tag, verb.contact:tag1,+ ] touch,@ baseball,;c tag1,;c ((sports) the act of touching a player in a game (which changes their status in the game)) }
 { [ joining, verb.stative:join1,+ verb.contact:join1,+ verb.contact:join,+ ] [ connection, verb.communication:connect,+ verb.social:connect,+ ] [ connexion, verb.social:connect,+ ] change_of_integrity,@ (the act of bringing two things into contact (especially for communication); "the joining of hands around the table"; "there was a connection via the internet") }
-{ hit5, joining,@ (a connection made via the internet to another website; "WordNet gets many hits from users worldwide") }
+{ hit5, joining,@ (a connection made via the internet to another website; "wordNet gets many hits from users worldwide") }
 { [ interconnection, verb.contact:interconnect1,+ ] joining,@ noun.artifact:computer,;c ((computer science) the act of interconnecting (wires or computers or theories etc.)) }
 { [ intersection, verb.motion:intersect,+ ] joining,@ (the act of intersecting (as joining by causing your path to intersect your target's path)) }
 { approximation, bringing_close_together, joining,@ (the act of bringing near or bringing together especially the cut edges of tissue) }

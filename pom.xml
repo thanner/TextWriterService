@@ -63,13 +63,13 @@
             <directory>src/main/config</directory>
         </resource>
         <resource>
-            <directory>src/main/resources/SentenceTemplates</directory>
+            <directory>src/main/resources/sentenceTemplates</directory>
         </resource>
         <resource>
             <directory>src/main/resources/StanfordParser/tagger</directory>
         </resource>
         <resource>
-            <directory>src/main/resources/WordNet</directory>
+            <directory>src/main/resources/wordNet</directory>
         </resource>
         <resource>
             <directory>src/main/resources/xsd</directory>
@@ -93,7 +93,7 @@
             <version>3.8.0</version>
         </dependency>
 
-        <!-- WordNet https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
+        <!-- wordNet https://mvnrepository.com/artifact/net.sf.jwordnet/jwnl -->
         <dependency>
             <groupId>net.sf.jwordnet</groupId>
             <artifactId>jwnl</artifactId>
@@ -202,7 +202,7 @@
         </dependency>
 
         <!-- Apache -->
-        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <!-- IO https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>

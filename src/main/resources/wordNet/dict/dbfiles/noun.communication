@@ -2061,9 +2061,9 @@
 { subdata_base, database,@ (a subset of data in a database that are used in a specific application) }
 { lexical_database, electronic_database,@ (a database of information about words) }
 { machine_readable_dictionary, MRD, electronic_dictionary, lexical_database,@ (a machine-readable version of a standard dictionary; organized alphabetically) }
-{ [ WordNet, noun.communication:trademark,;u ] [ Princeton_WordNet, noun.communication:trademark,;u ] lexical_database,@i (a machine-readable lexical database organized by meanings; developed at Princeton University) }
-{ WordNet3.1", WordNet,@i (the latest publicly released version of WordNet)}
-{ wordnet1, lexical_database,@ (any of the machine-readable lexical databases modeled after the Princeton WordNet) }
+{ [ wordNet, noun.communication:trademark,;u ] [ Princeton_WordNet, noun.communication:trademark,;u ] lexical_database,@i (a machine-readable lexical database organized by meanings; developed at Princeton University) }
+{ WordNet3.1", wordNet,@i (the latest publicly released version of wordNet)}
+{ wordnet1, lexical_database,@ (any of the machine-readable lexical databases modeled after the Princeton wordNet) }
 { basics, rudiments, fact1,@ (a statement of fundamental facts or principles) }
 { index1, index_number, indicant, indicator, fact1,@ (a number or ratio (a value on a scale of measurement) derived from a series of observed facts; can reveal relative changes as a function of time) }
 { body_mass_index, BMI, index1,@ (a measure of someone's weight in relation to height; to calculate one's BMI, multiply one's weight in pounds and divide that by the square of one's height in inches; overweight is a BMI greater than 25; obese is a BMI greater than 30) }

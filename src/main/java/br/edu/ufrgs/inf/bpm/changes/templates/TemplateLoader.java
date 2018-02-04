@@ -1,12 +1,15 @@
 package br.edu.ufrgs.inf.bpm.changes.templates;
 
-import br.edu.ufrgs.inf.bpm.util.Path;
+import br.edu.ufrgs.inf.bpm.util.Paths;
+import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
+import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.io.InputStream;
 
 public class TemplateLoader {
 
@@ -30,10 +33,14 @@ public class TemplateLoader {
         object = "";
         addition = "";
         try {
-            File file = new File(TemplateLoader.class.getResource(Path.SentenceTemplatePath + template).getFile()); //new File(dir + template);
+            // File file = new File(TemplateLoader.class.getResource(Paths.SentenceTemplatePath + "/" + template).getFile()); //new File(dir + template);
+            InputStream inputStream = ResourceLoader.getResource(Paths.SentenceTemplatePath + "/" + template);
+            File tempFile = File.createTempFile("file",".txt");
+            FileUtils.copyInputStreamToFile(inputStream, tempFile);
+
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(file);
+            Document doc = dBuilder.parse(tempFile);
             doc.getDocumentElement().normalize();
 
             NodeList nodes = doc.getElementsByTagName("action");
