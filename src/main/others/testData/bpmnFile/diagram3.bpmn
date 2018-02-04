@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions id="definitions_aec5254b-6cd0-432c-9038-f98525c8eadc" targetNamespace="http://camunda.org/examples" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <collaboration id="Collaboration">
+    <participant id="newId-0" name="Pool" processRef="newId-1"/>
+  </collaboration>
+  <process id="newId-1" name="Pool">
+    <laneSet id="newId-2">
+      <lane id="newId-3" name="small company">
+        <flowNodeRef>newId-9</flowNodeRef>
+        <flowNodeRef>newId-35</flowNodeRef>
+      </lane>
+      <lane id="newId-4" name="sales department">
+        <flowNodeRef>newId-10</flowNodeRef>
+        <flowNodeRef>newId-11</flowNodeRef>
+      </lane>
+      <lane id="newId-5" name="member of the sales department">
+        <flowNodeRef>newId-12</flowNodeRef>
+        <flowNodeRef>newId-13</flowNodeRef>
+        <flowNodeRef>newId-14</flowNodeRef>
+        <flowNodeRef>newId-15</flowNodeRef>
+        <flowNodeRef>newId-16</flowNodeRef>
+        <flowNodeRef>newId-27</flowNodeRef>
+        <flowNodeRef>newId-28</flowNodeRef>
+      </lane>
+      <lane id="newId-6" name="storehouse">
+        <flowNodeRef>newId-17</flowNodeRef>
+        <flowNodeRef>newId-18</flowNodeRef>
+        <flowNodeRef>newId-19</flowNodeRef>
+        <flowNodeRef>newId-20</flowNodeRef>
+        <flowNodeRef>newId-21</flowNodeRef>
+        <flowNodeRef>newId-23</flowNodeRef>
+        <flowNodeRef>newId-24</flowNodeRef>
+        <flowNodeRef>newId-29</flowNodeRef>
+        <flowNodeRef>newId-30</flowNodeRef>
+        <flowNodeRef>newId-33</flowNodeRef>
+        <flowNodeRef>newId-34</flowNodeRef>
+      </lane>
+      <lane id="newId-7" name="engineering department">
+        <flowNodeRef>newId-22</flowNodeRef>
+        <flowNodeRef>newId-25</flowNodeRef>
+        <flowNodeRef>newId-31</flowNodeRef>
+        <flowNodeRef>newId-32</flowNodeRef>
+      </lane>
+      <lane id="newId-8" name="sales department ships">
+        <flowNodeRef>newId-26</flowNodeRef>
+        <flowNodeRef>newId-36</flowNodeRef>
+      </lane>
+    </laneSet>
+    <task id="newId-9" name="manufacture customized bicycles">
+      <incoming>newId-35-newId-9</incoming>
+      <outgoing>newId-9-newId-10</outgoing>
+    </task>
+    <task id="newId-10" name="receive an order">
+      <incoming>newId-9-newId-10</incoming>
+      <outgoing>newId-10-newId-11</outgoing>
+    </task>
+    <task id="newId-11" name="create a new process instance">
+      <incoming>newId-10-newId-11</incoming>
+      <outgoing>newId-11-newId-27</outgoing>
+    </task>
+    <task id="newId-12" name="reject the order">
+      <incoming>newId-27-newId-12</incoming>
+      <outgoing>newId-12-newId-28</outgoing>
+    </task>
+    <task id="newId-13" name="accept the order">
+      <incoming>newId-27-newId-13</incoming>
+      <outgoing>newId-13-newId-28</outgoing>
+    </task>
+    <task id="newId-14" name="finish the process instance in the former case">
+      <incoming>newId-28-newId-14</incoming>
+      <outgoing>newId-14-newId-15</outgoing>
+    </task>
+    <task id="newId-15" name="inform the storehouse in the latter case">
+      <incoming>newId-14-newId-15</incoming>
+      <outgoing>newId-15-newId-16</outgoing>
+    </task>
+    <task id="newId-16" name="inform the engineering department in the latter case">
+      <incoming>newId-15-newId-16</incoming>
+      <outgoing>newId-16-newId-17</outgoing>
+    </task>
+    <task id="newId-17" name="process the part list of the order">
+      <incoming>newId-16-newId-17</incoming>
+      <outgoing>newId-17-newId-18</outgoing>
+    </task>
+    <task id="newId-18" name="check the required quantity of part">
+      <incoming>newId-17-newId-18</incoming>
+      <outgoing>newId-18-newId-29</outgoing>
+    </task>
+    <task id="newId-19" name="reserve procedure">
+      <incoming>newId-29-newId-19</incoming>
+      <outgoing>newId-19-newId-30</outgoing>
+    </task>
+    <task id="newId-20" name="the bicycle is back-ordered">
+      <incoming>newId-29-newId-20</incoming>
+      <outgoing>newId-20-newId-30</outgoing>
+    </task>
+    <task id="newId-21" name="repeat procedure">
+      <incoming>newId-31-newId-21</incoming>
+      <outgoing>newId-21-newId-32</outgoing>
+    </task>
+    <task id="newId-22" name="prepare everything for assembling the of the ordered bicycle in the meantime">
+      <incoming>newId-31-newId-22</incoming>
+      <outgoing>newId-22-newId-32</outgoing>
+    </task>
+    <task id="newId-23" name="back ">
+      <incoming>newId-33-newId-23</incoming>
+      <outgoing>newId-23-newId-34</outgoing>
+    </task>
+    <task id="newId-24" name="finish ">
+      <incoming>newId-34-newId-24</incoming>
+      <outgoing>newId-24-newId-25</outgoing>
+    </task>
+    <task id="newId-25" name="assemble the bicycle">
+      <incoming>newId-24-newId-25</incoming>
+      <outgoing>newId-25-newId-26</outgoing>
+    </task>
+    <task id="newId-26" name="finish the process instance">
+      <incoming>newId-25-newId-26</incoming>
+      <outgoing>newId-26-newId-36</outgoing>
+    </task>
+    <exclusiveGateway id="newId-27">
+      <incoming>newId-11-newId-27</incoming>
+      <outgoing>newId-27-newId-12</outgoing>
+      <outgoing>newId-27-newId-13</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway id="newId-28">
+      <incoming>newId-12-newId-28</incoming>
+      <incoming>newId-13-newId-28</incoming>
+      <outgoing>newId-28-newId-14</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway id="newId-29">
+      <incoming>newId-18-newId-29</incoming>
+      <outgoing>newId-29-newId-19</outgoing>
+      <outgoing>newId-29-newId-20</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway id="newId-30">
+      <incoming>newId-20-newId-30</incoming>
+      <incoming>newId-19-newId-30</incoming>
+      <outgoing>newId-30-newId-31</outgoing>
+    </exclusiveGateway>
+    <parallelGateway id="newId-31">
+      <incoming>newId-30-newId-31</incoming>
+      <outgoing>newId-31-newId-21</outgoing>
+      <outgoing>newId-31-newId-22</outgoing>
+    </parallelGateway>
+    <parallelGateway id="newId-32">
+      <incoming>newId-21-newId-32</incoming>
+      <incoming>newId-22-newId-32</incoming>
+      <outgoing>newId-32-newId-33</outgoing>
+    </parallelGateway>
+    <exclusiveGateway id="newId-33">
+      <incoming>newId-32-newId-33</incoming>
+      <outgoing>newId-33-newId-23</outgoing>
+      <outgoing>newId-33-newId-34</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway id="newId-34">
+      <incoming>newId-23-newId-34</incoming>
+      <incoming>newId-33-newId-34</incoming>
+      <outgoing>newId-34-newId-24</outgoing>
+    </exclusiveGateway>
+    <startEvent id="newId-35">
+      <outgoing>newId-35-newId-9</outgoing>
+    </startEvent>
+    <endEvent id="newId-36">
+      <incoming>newId-26-newId-36</incoming>
+    </endEvent>
+    <sequenceFlow id="newId-9-newId-10" sourceRef="newId-9" targetRef="newId-10"/>
+    <sequenceFlow id="newId-10-newId-11" sourceRef="newId-10" targetRef="newId-11"/>
+    <sequenceFlow id="newId-27-newId-12" sourceRef="newId-27" targetRef="newId-12"/>
+    <sequenceFlow id="newId-27-newId-13" sourceRef="newId-27" targetRef="newId-13"/>
+    <sequenceFlow id="newId-11-newId-27" sourceRef="newId-11" targetRef="newId-27"/>
+    <sequenceFlow id="newId-12-newId-28" sourceRef="newId-12" targetRef="newId-28"/>
+    <sequenceFlow id="newId-13-newId-28" sourceRef="newId-13" targetRef="newId-28"/>
+    <sequenceFlow id="newId-14-newId-15" sourceRef="newId-14" targetRef="newId-15"/>
+    <sequenceFlow id="newId-15-newId-16" sourceRef="newId-15" targetRef="newId-16"/>
+    <sequenceFlow id="newId-16-newId-17" sourceRef="newId-16" targetRef="newId-17"/>
+    <sequenceFlow id="newId-17-newId-18" sourceRef="newId-17" targetRef="newId-18"/>
+    <sequenceFlow id="newId-18-newId-29" sourceRef="newId-18" targetRef="newId-29"/>
+    <sequenceFlow id="newId-20-newId-30" sourceRef="newId-20" targetRef="newId-30"/>
+    <sequenceFlow id="newId-19-newId-30" sourceRef="newId-19" targetRef="newId-30"/>
+    <sequenceFlow id="newId-31-newId-21" sourceRef="newId-31" targetRef="newId-21"/>
+    <sequenceFlow id="newId-31-newId-22" sourceRef="newId-31" targetRef="newId-22"/>
+    <sequenceFlow id="newId-21-newId-32" sourceRef="newId-21" targetRef="newId-32"/>
+    <sequenceFlow id="newId-22-newId-32" sourceRef="newId-22" targetRef="newId-32"/>
+    <sequenceFlow id="newId-33-newId-23" sourceRef="newId-33" targetRef="newId-23"/>
+    <sequenceFlow id="newId-23-newId-34" sourceRef="newId-23" targetRef="newId-34"/>
+    <sequenceFlow id="newId-24-newId-25" sourceRef="newId-24" targetRef="newId-25"/>
+    <sequenceFlow id="newId-25-newId-26" sourceRef="newId-25" targetRef="newId-26"/>
+    <sequenceFlow id="newId-28-newId-14" sourceRef="newId-28" targetRef="newId-14"/>
+    <sequenceFlow id="newId-30-newId-31" sourceRef="newId-30" targetRef="newId-31"/>
+    <sequenceFlow id="newId-32-newId-33" sourceRef="newId-32" targetRef="newId-33"/>
+    <sequenceFlow id="newId-34-newId-24" sourceRef="newId-34" targetRef="newId-24"/>
+    <sequenceFlow id="newId-35-newId-9" sourceRef="newId-35" targetRef="newId-9"/>
+    <sequenceFlow id="newId-26-newId-36" sourceRef="newId-26" targetRef="newId-36"/>
+    <sequenceFlow id="newId-29-newId-19" name="the part is available " sourceRef="newId-29" targetRef="newId-19"/>
+    <sequenceFlow id="newId-29-newId-20" name="the bicycle is not  available " sourceRef="newId-29" targetRef="newId-20"/>
+    <sequenceFlow id="newId-33-newId-34" name="the storehouse reserves  " sourceRef="newId-33" targetRef="newId-34"/>
+  </process>
+</definitions>
