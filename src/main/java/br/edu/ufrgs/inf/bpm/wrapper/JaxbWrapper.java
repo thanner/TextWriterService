@@ -2,7 +2,7 @@ package br.edu.ufrgs.inf.bpm.wrapper;
 
 import br.edu.ufrgs.inf.bpm.bpmn.ObjectFactory;
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
-import br.edu.ufrgs.inf.bpm.util.Path;
+import br.edu.ufrgs.inf.bpm.util.Paths;
 import org.apache.commons.io.IOUtils;
 
 import javax.xml.bind.*;
@@ -15,7 +15,7 @@ public class JaxbWrapper {
     public static <T> T convertXMLToObject(String bpmnString) {
         T object = null;
         try {
-            JAXBContext context = JAXBContext.newInstance(Path.packageBpmnPath);
+            JAXBContext context = JAXBContext.newInstance(Paths.PackageBpmnPath);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             JAXBElement<T> element = (JAXBElement<T>) unmarshaller.unmarshal(IOUtils.toInputStream(bpmnString, StandardCharsets.UTF_8));
             object = element.getValue();
@@ -42,7 +42,7 @@ public class JaxbWrapper {
     public static <T> String convertToXML(TDefinitions definition) {
         StringWriter stringWriter = new StringWriter();
         try {
-            JAXBContext context = JAXBContext.newInstance(Path.packageBpmnPath);
+            JAXBContext context = JAXBContext.newInstance(Paths.PackageBpmnPath);
             Marshaller marshaller = context.createMarshaller();
             JAXBElement<TDefinitions> element = new ObjectFactory().createDefinitions(definition);
             // file = File.createTempFile("temp", ".bpmn");

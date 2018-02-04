@@ -1,8 +1,9 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
+import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
-import br.edu.ufrgs.inf.bpm.util.Path;
+import br.edu.ufrgs.inf.bpm.util.Paths;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.process.ControlFlow;
 import de.hpi.bpt.process.Node;
@@ -30,8 +31,7 @@ public class TextGenerator {
      */
     public static String generateText(ProcessModel model, int counter) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
-        // /StanfordParser/tagger/wsj-0-18-bidirectional-distsim.tagger
-        MaxentTagger maxentTagger = new MaxentTagger(TextGenerator.class.getResource(Path.StanfordBidirectionalDistsimPath).openStream());
+        MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
         EnglishLabelDeriver lDeriver = new EnglishLabelDeriver(lHelper);
 
@@ -49,7 +49,7 @@ public class TextGenerator {
         // Convert to Text
         TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false);
         converter.convertToText(rpst.getRoot(), 0);
-        ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
+        ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan(); // TODO: Acho que é aqui
 
         // Aggregation
         SentenceAggregator sentenceAggregator = new SentenceAggregator(lHelper);
