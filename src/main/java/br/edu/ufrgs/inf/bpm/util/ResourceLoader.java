@@ -1,5 +1,7 @@
 package br.edu.ufrgs.inf.bpm.util;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,6 +17,13 @@ public class ResourceLoader {
         } else {
             return url.openStream();
         }
+    }
+
+    public static File getResourceFile(String resourcePath) throws  IOException {
+        InputStream inputStream = getResource(resourcePath);
+        File tempFile = File.createTempFile("file",".txt");
+        FileUtils.copyInputStreamToFile(inputStream, tempFile);
+        return tempFile;
     }
 
 }
