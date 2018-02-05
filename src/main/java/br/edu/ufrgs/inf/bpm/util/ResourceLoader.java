@@ -10,6 +10,10 @@ import java.net.URL;
 
 public class ResourceLoader {
 
+    public static String getResourcePath(String resourcePath){
+        return ResourceLoader.class.getResource(resourcePath).getPath();
+    }
+
     public static InputStream getResource(String resourcePath) throws IOException {
         URL url = ResourceLoader.class.getResource(resourcePath);
         if (url == null) {

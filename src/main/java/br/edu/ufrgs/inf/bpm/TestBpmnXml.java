@@ -12,7 +12,7 @@ public class TestBpmnXml {
         try {
             // System.out.println(System.getProperty("user.dir"));
 
-            String text = FileUtils.readFileToString(new File("src/main/others/TestData/BpmnFile/diagram2.bpmn"), StandardCharsets.UTF_8);
+            String text = FileUtils.readFileToString(new File("src/main/others/testData/bpmnFile/diagram2.bpmn"), StandardCharsets.UTF_8);
             ApplicationRest applicationRest = new ApplicationRest();
             String newText = applicationRest.getBpmnXml(text).toString();
             System.out.println(newText);
