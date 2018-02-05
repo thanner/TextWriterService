@@ -34,9 +34,7 @@ public class TemplateLoader {
         addition = "";
         try {
             // File file = new File(TemplateLoader.class.getResource(Paths.SentenceTemplatePath + "/" + template).getFile()); //new File(dir + template);
-            InputStream inputStream = ResourceLoader.getResource(Paths.SentenceTemplatePath + "/" + template);
-            File tempFile = File.createTempFile("file",".txt");
-            FileUtils.copyInputStreamToFile(inputStream, tempFile);
+            File tempFile = ResourceLoader.getResourceFile(Paths.SentenceTemplatePath + "/" + template);
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
