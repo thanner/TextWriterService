@@ -7,8 +7,8 @@ import org.apache.commons.io.IOUtils;
 
 import javax.xml.bind.*;
 import javax.xml.namespace.QName;
+import java.io.IOException;
 import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
 
 public class JaxbWrapper {
 
@@ -17,9 +17,9 @@ public class JaxbWrapper {
         try {
             JAXBContext context = JAXBContext.newInstance(Paths.PackageBpmnPath);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            JAXBElement<T> element = (JAXBElement<T>) unmarshaller.unmarshal(IOUtils.toInputStream(bpmnString, StandardCharsets.UTF_8));
+            JAXBElement<T> element = (JAXBElement<T>) unmarshaller.unmarshal(IOUtils.toInputStream(bpmnString, "UTF-8"));
             object = element.getValue();
-        } catch (JAXBException e) {
+        } catch (JAXBException | IOException e) {
             System.err.println(String.format("Exception while unmarshalling: %s", e.getMessage()));
         }
         return object;
