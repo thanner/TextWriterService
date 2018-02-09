@@ -2,16 +2,14 @@ package br.edu.ufrgs.inf.bpm.util;
 
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
+import java.net.URLDecoder;
 
 public class ResourceLoader {
 
-    public static String getResourcePath(String resourcePath){
-        return ResourceLoader.class.getResource(resourcePath).getPath();
+    public static String getResourcePath(String resourcePath) throws UnsupportedEncodingException {
+        return URLDecoder.decode(ResourceLoader.class.getResource(resourcePath).getPath(), "UTF-8");
     }
 
     public static InputStream getResource(String resourcePath) throws IOException {
