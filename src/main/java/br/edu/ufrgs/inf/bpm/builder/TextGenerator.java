@@ -1,5 +1,6 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
+import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
@@ -14,15 +15,20 @@ import net.didion.jwnl.dictionary.Dictionary;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelDeriver;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelHelper;
 import processToText.dataModel.dsynt.DSynTSentence;
+import processToText.dataModel.pnmlReader.PNMLReader;
+import processToText.dataModel.pnmlReader.PetriNet.PetriNet;
+import processToText.dataModel.pnmlReader.PetriNetToProcessConverter;
 import processToText.dataModel.process.ProcessModel;
 import processToText.preprocessing.FormatConverter;
+import processToText.preprocessing.RigidStructurer;
 import processToText.sentencePlanning.DiscourseMarker;
 import processToText.sentencePlanning.ReferringExpressionGenerator;
 import processToText.sentencePlanning.SentenceAggregator;
-import processToText.sentenceRealization.SurfaceRealizer;
+import processToText.textPlanning.PlanningHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TextGenerator {
 
@@ -45,6 +51,19 @@ public class TextGenerator {
         FormatConverter formatConverter = new FormatConverter();
         Process p = formatConverter.transformToRPSTFormat(model);
         RPST<ControlFlow, Node> rpst = new RPST<ControlFlow, Node>(p);
+
+        // Check for Rigids
+        // boolean containsRigids = PlanningHelper.containsRigid(rpst.getRoot(), 1, rpst);
+
+        // Structure Rigid and convert back
+        // if (containsRigids) {
+        //    p = formatConverter.transformToRigidFormat(model);
+        //    RigidStructurer rigidStructurer = new RigidStructurer();
+        //    p = rigidStructurer.structureProcess(p);
+        //    model = formatConverter.transformFromRigidFormat(p);
+        //    p = formatConverter.transformToRPSTFormat(model);
+        //    rpst = new RPST<ControlFlow, Node>(p);
+        // }
 
         // Convert to Text
         TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false);
@@ -74,9 +93,9 @@ public class TextGenerator {
 
         surfaceText = surfaceRealizer.postProcessText(surfaceText);
 
-        if(surfaceText.startsWith(" \n")){
-            surfaceText = surfaceText.replaceFirst(" \n", "" );
-        }
+        // if(surfaceText.startsWith(" \n")){
+        //    surfaceText = surfaceText.replaceFirst(" \n", "" );
+        // }
 
         return surfaceText;
     }

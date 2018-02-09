@@ -45,7 +45,7 @@ public class WordNetWrapper {
         dictionary = Dictionary.getInstance();
     }
 
-    private static void changeWordNetDictionayPath(){
+    public static void changeWordNetDictionayPath(){
         try {
             String filePath = ResourceLoader.getResourcePath(Paths.WordNetPath);
             String dictionaryPath = ResourceLoader.getResourcePath(Paths.WordNetDict);

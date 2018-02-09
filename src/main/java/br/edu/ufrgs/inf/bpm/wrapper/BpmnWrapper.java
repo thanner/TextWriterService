@@ -6,11 +6,11 @@ import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProcessModelWrapper {
+public class BpmnWrapper {
 
     private TDefinitions definitions;
 
-    public ProcessModelWrapper(TDefinitions definitions){
+    public BpmnWrapper(TDefinitions definitions){
         this.definitions = definitions;
     }
 
