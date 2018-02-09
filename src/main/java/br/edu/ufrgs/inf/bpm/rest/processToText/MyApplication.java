@@ -14,7 +14,7 @@ public class MyApplication extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         HashSet h = new HashSet<Class<?>>();
-        h.add( ApplicationRest.class );
+        h.add(ApplicationRest.class);
         return h;
     }
 

@@ -1,10 +1,10 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
-import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
-import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
 import br.edu.ufrgs.inf.bpm.util.Paths;
+import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
+import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.process.ControlFlow;
 import de.hpi.bpt.process.Node;
@@ -15,20 +15,14 @@ import net.didion.jwnl.dictionary.Dictionary;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelDeriver;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelHelper;
 import processToText.dataModel.dsynt.DSynTSentence;
-import processToText.dataModel.pnmlReader.PNMLReader;
-import processToText.dataModel.pnmlReader.PetriNet.PetriNet;
-import processToText.dataModel.pnmlReader.PetriNetToProcessConverter;
 import processToText.dataModel.process.ProcessModel;
 import processToText.preprocessing.FormatConverter;
-import processToText.preprocessing.RigidStructurer;
 import processToText.sentencePlanning.DiscourseMarker;
 import processToText.sentencePlanning.ReferringExpressionGenerator;
 import processToText.sentencePlanning.SentenceAggregator;
-import processToText.textPlanning.PlanningHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class TextGenerator {
 

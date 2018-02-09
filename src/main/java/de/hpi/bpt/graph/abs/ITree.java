@@ -6,13 +6,12 @@ import java.util.Collection;
 
 /**
  * Abstract tree interface
- * 
- * @author Artem Polyvyanyy
  *
  * @param <E> template for edge (extends IEdge)
  * @param <V> template for vertex (extends IVertex)
+ * @author Artem Polyvyanyy
  */
-public interface ITree <E extends IEdge<V>,V extends IVertex> {
+public interface ITree<E extends IEdge<V>, V extends IVertex> {
 
     V getRoot();
 

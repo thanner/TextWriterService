@@ -14,5 +14,5 @@ public class Event extends Node {
         super(name);
     }
 
-	
+
 }

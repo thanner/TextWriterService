@@ -58,8 +58,8 @@ public class SentenceAggregator {
                 //TODO: hier wurde was geändert
                 /*
                  * Dieser else Teil ist neu. Durch ihn springt die Methode jedes mal eine aktivität weiter. wenn dies nicht gemacht wird
-				 * können unter umständen falsche execution orders herbei geführt werden (was bei einem prozess doch eher wichtig ist).
-				 */
+                 * können unter umständen falsche execution orders herbei geführt werden (was bei einem prozess doch eher wichtig ist).
+                 */
                 else {
                     prevRole = currRole;
                     prevFragment = currFragment;

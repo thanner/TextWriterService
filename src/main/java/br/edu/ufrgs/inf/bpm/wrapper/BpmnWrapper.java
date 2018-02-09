@@ -10,13 +10,13 @@ public class BpmnWrapper {
 
     private TDefinitions definitions;
 
-    public BpmnWrapper(TDefinitions definitions){
+    public BpmnWrapper(TDefinitions definitions) {
         this.definitions = definitions;
     }
 
-    public TProcess getProcessByFlowNode(TFlowNode flowNode){
+    public TProcess getProcessByFlowNode(TFlowNode flowNode) {
         List<TProcess> processList = getProcessList();
-        for(TProcess process: processList) {
+        for (TProcess process : processList) {
             for (TLaneSet laneSet : process.getLaneSet()) {
                 for (TLane lane : laneSet.getLane()) {
                     for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
@@ -33,9 +33,9 @@ public class BpmnWrapper {
         return null;
     }
 
-    public TLane getLaneByFlowNode(TFlowNode flowNode){
+    public TLane getLaneByFlowNode(TFlowNode flowNode) {
         List<TProcess> processList = getProcessList();
-        for(TProcess process: processList) {
+        for (TProcess process : processList) {
             for (TLaneSet laneSet : process.getLaneSet()) {
                 for (TLane lane : laneSet.getLane()) {
                     for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
@@ -52,11 +52,11 @@ public class BpmnWrapper {
         return null;
     }
 
-    public List<TCollaboration> getCollaborationList(){
+    public List<TCollaboration> getCollaborationList() {
         List<TCollaboration> collaborationList = new ArrayList<>();
         List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();
-        for(JAXBElement<? extends TRootElement> rootElement : rootElementList){
-            if(rootElement.getValue() instanceof TCollaboration) {
+        for (JAXBElement<? extends TRootElement> rootElement : rootElementList) {
+            if (rootElement.getValue() instanceof TCollaboration) {
                 TCollaboration collaboration = (TCollaboration) rootElement.getValue();
                 collaborationList.add(collaboration);
             }
@@ -64,11 +64,11 @@ public class BpmnWrapper {
         return collaborationList;
     }
 
-    public List<TProcess> getProcessList(){
+    public List<TProcess> getProcessList() {
         List<TProcess> processList = new ArrayList<>();
         List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();
-        for(JAXBElement<? extends TRootElement> rootElement : rootElementList){
-            if(rootElement.getValue() instanceof TProcess) {
+        for (JAXBElement<? extends TRootElement> rootElement : rootElementList) {
+            if (rootElement.getValue() instanceof TProcess) {
                 TProcess process = (TProcess) rootElement.getValue();
                 processList.add(process);
             }
@@ -76,11 +76,11 @@ public class BpmnWrapper {
         return processList;
     }
 
-    public String getProcessName(TProcess process){
+    public String getProcessName(TProcess process) {
         List<TCollaboration> collaborationList = getCollaborationList();
-        for(TCollaboration collaboration: collaborationList){
-            for(TParticipant participant: collaboration.getParticipant()){
-                if(process.getId().equals(participant.getProcessRef().toString())){
+        for (TCollaboration collaboration : collaborationList) {
+            for (TParticipant participant : collaboration.getParticipant()) {
+                if (process.getId().equals(participant.getProcessRef().toString())) {
                     return participant.getName();
                 }
             }

@@ -5,9 +5,13 @@ public enum EventType {
 
     private final int id;
 
-    EventType(int id) {this.id = id;}
+    EventType(int id) {
+        this.id = id;
+    }
 
-    public int getValue() { return id;}
+    public int getValue() {
+        return id;
+    }
 
 
     // public static final int START_EVENT = 1;

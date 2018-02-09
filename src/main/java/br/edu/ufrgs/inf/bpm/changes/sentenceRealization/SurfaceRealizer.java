@@ -52,7 +52,7 @@ public class SurfaceRealizer {
         return s + "</text>";
     }
 
-    private String getIdentation(DSynTSentence s, int level, int lastLevel){
+    private String getIdentation(DSynTSentence s, int level, int lastLevel) {
         String output = "";
         if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
             output = output + "<newline/>";

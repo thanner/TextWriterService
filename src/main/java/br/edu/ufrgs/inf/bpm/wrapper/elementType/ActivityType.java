@@ -5,7 +5,11 @@ public enum ActivityType {
 
     private final int id;
 
-    ActivityType(int id) {this.id = id;}
+    ActivityType(int id) {
+        this.id = id;
+    }
 
-    public int getValue() { return id;}
+    public int getValue() {
+        return id;
+    }
 }

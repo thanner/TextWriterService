@@ -2,7 +2,7 @@ package br.edu.ufrgs.inf.bpm.builder;
 
 public class TextConverter {
 
-    public static String convertText(String text){
+    public static String convertText(String text) {
         return text.replace("<text>", "")
                 .replace("</text>", "")
                 .replace("<algo>", "")

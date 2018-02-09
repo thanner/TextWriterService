@@ -5,7 +5,6 @@ import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.dictionary.Dictionary;
-import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,14 +19,15 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class WordNetWrapper {
 
     private static Dictionary dictionary;
 
-    public static Dictionary getDictionary(){
-        if(dictionary == null){
+    public static Dictionary getDictionary() {
+        if (dictionary == null) {
             generateDictionary();
         }
         return dictionary;
@@ -45,7 +45,7 @@ public class WordNetWrapper {
         dictionary = Dictionary.getInstance();
     }
 
-    public static void changeWordNetDictionayPath(){
+    public static void changeWordNetDictionayPath() {
         try {
             String filePath = ResourceLoader.getResourcePath(Paths.WordNetPath);
             String dictionaryPath = ResourceLoader.getResourcePath(Paths.WordNetDict);
@@ -54,16 +54,15 @@ public class WordNetWrapper {
             Document document = documentBuilder.parse(filePath);
 
             NodeList nList = document.getElementsByTagName("jwnl_properties");
-            for (int i = 0; i < nList.getLength(); i++)
-            {
+            for (int i = 0; i < nList.getLength(); i++) {
                 Node nNode = nList.item(i);
                 Element eElement = (Element) nNode;
-                Element cElement =  (Element) eElement.getElementsByTagName("dictionary").item(0);
+                Element cElement = (Element) eElement.getElementsByTagName("dictionary").item(0);
 
                 NodeList nodeList = cElement.getElementsByTagName("param");
-                for(int j = 0; j < nodeList.getLength(); j++){
+                for (int j = 0; j < nodeList.getLength(); j++) {
                     Element elementJ = (Element) nodeList.item(j);
-                    if(elementJ.getAttribute("name").equals("dictionary_path")){
+                    if (elementJ.getAttribute("name").equals("dictionary_path")) {
                         elementJ.setAttribute("value", dictionaryPath);
                     }
                 }

@@ -6,10 +6,9 @@ import java.util.ArrayList;
 
 /**
  * This NodeList is an abstraction of the underlying list type, which stores vertices.
- * 
- * @author Christian Wiggert
  *
  * @param Implementation of IVertex
+ * @author Christian Wiggert
  */
 public class NodeList<V extends IVertex> extends ArrayList<V> {
 

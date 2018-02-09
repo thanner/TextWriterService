@@ -3,8 +3,8 @@ package de.hpi.bpt.process.epc;
 
 /**
  * EPC non flow object interface
- * @author Artem Polyvyanyy
  *
+ * @author Artem Polyvyanyy
  */
 public interface INonFlowObject extends INode {
 

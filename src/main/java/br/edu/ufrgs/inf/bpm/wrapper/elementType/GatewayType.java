@@ -5,7 +5,11 @@ public enum GatewayType {
 
     private final int id;
 
-    GatewayType(int id) {this.id = id;}
+    GatewayType(int id) {
+        this.id = id;
+    }
 
-    public int getValue() { return id;}
+    public int getValue() {
+        return id;
+    }
 }

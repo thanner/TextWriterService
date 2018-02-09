@@ -8,6 +8,7 @@ package processToText.contentDetermination.support;
  *
  * @author Fabian Friedrich
  * @author Fabian Friedrich
+ * @author Fabian Friedrich
  */
 
 /**
@@ -101,21 +102,21 @@ public class Stemmer {
                                 if (j < 500) j++;
                                 ch = in.read();
                                 if (!Character.isLetter((char) ch)) {
-                       /* to test add(char ch) */
+                                    /* to test add(char ch) */
                                     for (int c = 0; c < j; c++) s.add(w[c]);
 
-                       /* or, to test add(char[] w, int j) */
-                       /* s.add(w, j); */
+                                    /* or, to test add(char[] w, int j) */
+                                    /* s.add(w, j); */
 
                                     s.stem();
                                     {
                                         String u;
 
-                          /* and now, to test toString() : */
+                                        /* and now, to test toString() : */
                                         u = s.toString();
 
-                          /* to test getResultBuffer(), getResultLength() : */
-                          /* u = new String(s.getResultBuffer(), 0, s.getResultLength()); */
+                                        /* to test getResultBuffer(), getResultLength() : */
+                                        /* u = new String(s.getResultBuffer(), 0, s.getResultLength()); */
 
                                         System.out.print(u);
                                     }
@@ -180,7 +181,7 @@ public class Stemmer {
         return i_end;
     }
 
-   /* cons(i) is true <=> b[i] is a consonant. */
+    /* cons(i) is true <=> b[i] is a consonant. */
 
     /**
      * Returns a reference to a character buffer containing the results of
@@ -217,7 +218,7 @@ public class Stemmer {
         }
     }
 
-   /* vowelinstem() is true <=> 0,...j contains a vowel */
+    /* vowelinstem() is true <=> 0,...j contains a vowel */
 
     private final int m() {
         int n = 0;
@@ -245,7 +246,7 @@ public class Stemmer {
         }
     }
 
-   /* doublec(j) is true <=> j,(j-1) contain a double consonant. */
+    /* doublec(j) is true <=> j,(j-1) contain a double consonant. */
 
     private final boolean vowelinstem() {
         int i;
@@ -289,7 +290,7 @@ public class Stemmer {
         return true;
     }
 
-   /* r(s) is used further down. */
+    /* r(s) is used further down. */
 
     private final void setto(String s) {
         int l = s.length();
@@ -324,7 +325,7 @@ public class Stemmer {
         if (m() > 0) setto(s);
     }
 
-   /* step2() turns terminal y to i when there is another vowel in the stem. */
+    /* step2() turns terminal y to i when there is another vowel in the stem. */
 
     private final void step1() {
         if (b[k] == 's') {
@@ -357,7 +358,7 @@ public class Stemmer {
         if (ends("y") && vowelinstem()) b[k] = 'i';
     }
 
-   /* step4() deals with -ic-, -full, -ness etc. similar strategy to step3. */
+    /* step4() deals with -ic-, -full, -ness etc. similar strategy to step3. */
 
     private final void step3() {
         if (k == 0) return; /* For Bug 1 */
@@ -464,7 +465,7 @@ public class Stemmer {
         }
     }
 
-   /* step5() takes off -ant, -ence etc., in context <c>vcvc<v>. */
+    /* step5() takes off -ant, -ence etc., in context <c>vcvc<v>. */
 
     private final void step4() {
         switch (b[k]) {
@@ -507,7 +508,7 @@ public class Stemmer {
         }
     }
 
-   /* step6() removes a final -e if m() > 1. */
+    /* step6() removes a final -e if m() > 1. */
 
     private final void step5() {
         if (k == 0) return; /* for Bug 1 */
@@ -533,15 +534,15 @@ public class Stemmer {
                 if (ends("ant")) break;
                 if (ends("ement")) break;
                 if (ends("ment")) break;
-                    /* element etc. not stripped before the m */
+                /* element etc. not stripped before the m */
                 if (ends("ent")) break;
                 return;
             case 'o':
                 if (ends("ion") && j >= 0 && (b[j] == 's' || b[j] == 't')) break;
-                                    /* j >= 0 fixes Bug 2 */
+                /* j >= 0 fixes Bug 2 */
                 if (ends("ou")) break;
                 return;
-                    /* takes care of -ous */
+            /* takes care of -ous */
             case 's':
                 if (ends("ism")) break;
                 return;

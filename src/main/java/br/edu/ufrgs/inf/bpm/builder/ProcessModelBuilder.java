@@ -6,10 +6,6 @@ import br.edu.ufrgs.inf.bpm.wrapper.elementType.ActivityType;
 import br.edu.ufrgs.inf.bpm.wrapper.elementType.EventType;
 import br.edu.ufrgs.inf.bpm.wrapper.elementType.GatewayType;
 import processToText.dataModel.process.*;
-import processToText.dataModel.process.Activity;
-import processToText.dataModel.process.Event;
-import processToText.dataModel.process.Gateway;
-import processToText.dataModel.process.Lane;
 
 import javax.xml.bind.JAXBElement;
 import java.util.HashMap;
@@ -42,18 +38,18 @@ public class ProcessModelBuilder {
         for (TProcess process : processList) {
 
             processModel.addPool(createPool(process));
-            for(TLaneSet laneSet: process.getLaneSet()){
-                for(TLane lane: laneSet.getLane()){
+            for (TLaneSet laneSet : process.getLaneSet()) {
+                for (TLane lane : laneSet.getLane()) {
                     processModel.addLane(createLane(lane, process));
                 }
             }
 
-            for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()){
-                if(flowElement.getValue() instanceof TActivity){
+            for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
+                if (flowElement.getValue() instanceof TActivity) {
                     processModel.addActivity(createActivity((TActivity) flowElement.getValue()));
-                } else if(flowElement.getValue() instanceof TEvent){
+                } else if (flowElement.getValue() instanceof TEvent) {
                     processModel.addEvent(createEvent((TEvent) flowElement.getValue()));
-                } else if(flowElement.getValue() instanceof TGateway){
+                } else if (flowElement.getValue() instanceof TGateway) {
                     processModel.addGateway(createGateway((TGateway) flowElement.getValue()));
                 }
             }
@@ -134,7 +130,7 @@ public class ProcessModelBuilder {
     private int getActivityType(TActivity activity) throws IllegalArgumentException {
         try {
             return ActivityType.valueOf(activity.getClass().getSimpleName()).getValue();
-        } catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(activity);
         }
     }
@@ -142,7 +138,7 @@ public class ProcessModelBuilder {
     private int getEventType(TEvent event) throws IllegalArgumentException {
         try {
             return EventType.valueOf(event.getClass().getSimpleName()).getValue();
-        } catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(event);
         }
     }
@@ -150,12 +146,12 @@ public class ProcessModelBuilder {
     private int getGatewayType(TGateway gateway) throws IllegalArgumentException {
         try {
             return GatewayType.valueOf(gateway.getClass().getSimpleName()).getValue();
-        } catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(gateway);
         }
     }
 
-    private IllegalArgumentException getIllegalTypeException(TFlowNode flowNode){
+    private IllegalArgumentException getIllegalTypeException(TFlowNode flowNode) {
         return new IllegalArgumentException("Can not find element type (Element: " + flowNode.getClass().getSimpleName() + ". Id: " + flowNode.getId() + ")");
     }
 

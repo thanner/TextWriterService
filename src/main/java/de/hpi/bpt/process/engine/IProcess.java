@@ -5,7 +5,7 @@ import de.hpi.bpt.hypergraph.abs.Vertex;
 import java.util.Set;
 
 /***
- * 
+ *
  * @author Artem Polyvyanyy
  *
  */
