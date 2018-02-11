@@ -2,7 +2,7 @@ package br.edu.ufrgs.inf.bpm;
 
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.builder.ProcessModelBuilder;
-import br.edu.ufrgs.inf.bpm.builder.TextConverter;
+import br.edu.ufrgs.inf.bpm.builder.ProcessXmlConverter;
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
@@ -29,7 +29,7 @@ public class TestBpmnXml {
         }
 
         System.out.println(XmlFormat.format(process));
-        System.out.println(TextConverter.convertText(process));
+        System.out.println(ProcessXmlConverter.convertToText(process));
     }
 
 

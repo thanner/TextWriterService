@@ -1,8 +1,8 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
-public class TextConverter {
+public class ProcessXmlConverter {
 
-    public static String convertText(String text) {
+    public static String convertToText(String text) {
         return text.replace("<text>", "")
                 .replace("</text>", "")
                 .replace("<algo>", "")
