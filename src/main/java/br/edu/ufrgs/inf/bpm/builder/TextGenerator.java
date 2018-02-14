@@ -62,7 +62,7 @@ public class TextGenerator {
         // Convert to Text
         TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false);
         converter.convertToText(rpst.getRoot(), 0);
-        ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan(); // TODO: Acho que é aqui
+        ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 
         // Aggregation
         SentenceAggregator sentenceAggregator = new SentenceAggregator(lHelper);

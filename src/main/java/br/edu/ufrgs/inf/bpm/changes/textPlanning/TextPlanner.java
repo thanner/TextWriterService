@@ -1,6 +1,5 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
-
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
@@ -21,6 +20,7 @@ import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.dataModel.process.*;
 import processToText.preprocessing.FormatConverter;
 import processToText.textPlanning.PlanningHelper;
+import processToText.textPlanning.TextToIntermediateConverter;
 import processToText.textPlanning.recordClasses.ConverterRecord;
 import processToText.textPlanning.recordClasses.GatewayPropertyRecord;
 import processToText.textPlanning.recordClasses.ModifierRecord;
@@ -57,10 +57,10 @@ public class TextPlanner {
         this.lHelper = lHelper;
         this.lDeriver = lDeriver;
         textToIMConverter = new TextToIntermediateConverter(rpst, process, lHelper, imperativeRole, imperative);
-        passedFragments = new ArrayList<ConditionFragment>();
-        sentencePlan = new ArrayList<DSynTSentence>();
-        activitiySentenceMap = new ArrayList<Pair<Integer, DSynTSentence>>();
-        passedMods = new ArrayList<ModifierRecord>();
+        passedFragments = new ArrayList<>();
+        sentencePlan = new ArrayList<>();
+        activitiySentenceMap = new ArrayList<>();
+        passedMods = new ArrayList<>();
         this.imperative = imperative;
         this.imperativeRole = imperativeRole;
         this.isAlternative = isAlternative;
@@ -79,398 +79,381 @@ public class TextPlanner {
 
             // If we face an end event
             end = (PlanningHelper.isEvent(node.getExit()) && orderedTopNodes.indexOf(node) == orderedTopNodes.size() - 1);
-
             int depth = PlanningHelper.getDepth(node, rpst);
 
-
+            // Bond
             if (PlanningHelper.isBond(node)) {
-                // Converter Record
-                ConverterRecord convRecord = null;
-
-                //**************************************  LOOP - SPLIT  **************************************
-                if (PlanningHelper.isLoop(node, rpst)) {
-                    convRecord = getLoopConverterRecord(node);
-                }
-                //**************************************  SKIP - SPLIT  **************************************
-                if (PlanningHelper.isSkip(node, rpst)) {
-                    convRecord = getSkipConverterRecord(orderedTopNodes, node);
-                }
-                //**************************************  XOR - SPLIT  **************************************
-                if (PlanningHelper.isXORSplit(node, rpst)) {
-                    convRecord = getXORConverterRecord(node);
-                }
-                //**************************************  EVENT BASED - SPLIT  **************************************
-                if (PlanningHelper.isEventSplit(node, rpst)) {
-                    convRecord = getXORConverterRecord(node);
-                }
-                //**************************************  OR - SPLIT  **************************************
-                if (PlanningHelper.isORSplit(node, rpst)) {
-                    convRecord = getORConverterRecord(node);
-                }
-                //**************************************  AND - SPLIT  **************************************
-                if (PlanningHelper.isANDSplit(node, rpst)) {
-                    convRecord = getANDConverterRecord(node);
-                }
-
-                // Add pre statements
-                if (convRecord != null && convRecord.preStatements != null) {
-                    for (DSynTSentence preStatement : convRecord.preStatements) {
-                        if (passedFragments.size() > 0) {
-                            if (tagWithBullet) {
-                                preStatement.getExecutableFragment().sen_hasBullet = true;
-                                preStatement.getExecutableFragment().sen_level = level;
-                                passedFragments.get(0).sen_hasBullet = true;
-                                passedFragments.get(0).sen_level = level;
-                                tagWithBullet = false;
-                            }
-                            DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(preStatement.getExecutableFragment(), passedFragments.get(0));
-                            if (passedFragments.size() > 1) {
-                                for (int i = 1; i < passedFragments.size(); i++) {
-                                    dsyntSentence.addCondition(passedFragments.get(i), true);
-                                    dsyntSentence.getConditionFragment().addCondition(passedFragments.get(i));
-                                }
-                            }
-                            passedFragments.clear();
-                            sentencePlan.add(dsyntSentence);
-                        } else {
-                            if (tagWithBullet) {
-                                preStatement.getExecutableFragment().sen_hasBullet = true;
-                                preStatement.getExecutableFragment().sen_level = level;
-                                tagWithBullet = false;
-                            }
-                            preStatement.getExecutableFragment().sen_level = level;
-                            if (passedMods.size() > 0) {
-                                preStatement.getExecutableFragment().addMod(passedMods.get(0).getLemma(), passedMods.get(0));
-                                preStatement.getExecutableFragment().sen_hasConnective = true;
-                                passedMods.clear();
-                            }
-                            sentencePlan.add(new DSynTMainSentence(preStatement.getExecutableFragment()));
-                        }
-                    }
-                }
-
-                // Pass precondition
-                if (convRecord != null && convRecord.pre != null) {
-                    if (passedFragments.size() > 0) {
-                        if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                            ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
-                            eFrag.bo_isSubject = true;
-                            DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
-                            sentencePlan.add(dsyntSentence);
-                            passedFragments.clear();
-                        }
-                    }
-                    passedFragments.add(convRecord.pre);
-                }
-
-                // ################ Convert to Text #################
-                if (PlanningHelper.isLoop(node, rpst) || PlanningHelper.isSkip(node, rpst)) {
-                    convertToText(node, level);
-                }
-                if (PlanningHelper.isXORSplit(node, rpst) || PlanningHelper.isORSplit(node, rpst) || PlanningHelper.isEventSplit(node, rpst)) {
-                    ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
-                    for (RPSTNode<ControlFlow, Node> path : paths) {
-                        tagWithBullet = true;
-                        convertToText(path, level + 1);
-                    }
-                }
-                if (PlanningHelper.isANDSplit(node, rpst)) {
-
-                    ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
-                    for (RPSTNode<ControlFlow, Node> path : paths) {
-                        tagWithBullet = true;
-                        convertToText(path, level + 1);
-                    }
-                }
-
-                // Add post statement to sentence plan
-                if (convRecord != null && convRecord.postStatements != null) {
-                    for (DSynTSentence postStatement : convRecord.postStatements) {
-                        postStatement.getExecutableFragment().sen_level = level;
-                        sentencePlan.add(postStatement);
-                    }
-                }
-
-                // Pass post fragment
-                // Thanner: Modification
-                if (convRecord != null && convRecord.post != null) {
-                    passedFragments.add(convRecord.post);
-                }
-
-                //**************************************  RIGIDS *******************************************
+                handleBond(node, orderedTopNodes, level);
+                // Rigid
             } else if (PlanningHelper.isRigid(node)) {
-
-                ArrayList<Integer> validIDs = new ArrayList<Integer>();
-                validIDs.addAll(process.getActivites().keySet());
-                validIDs.addAll(process.getEvents().keySet());
-
-                // Transforming RPST subtree to Petri Net
-                ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
-
-                TemplateLoader loader = new TemplateLoader();
-                loader.loadTemplate(TemplateLoader.RIGID);
-
-                ExecutableFragment eFrag = new ExecutableFragment(loader.getAction(), loader.getAddition(), loader.getObject(), "");
-                eFrag.bo_hasIndefArticle = true;
-                eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-                sentencePlan.add(new DSynTMainSentence(eFrag));
-
-                loader.loadTemplate(TemplateLoader.RIGID_MAIN);
-                eFrag = new ExecutableFragment(loader.getAction(), loader.getObject(), "", loader.getAddition());
-                eFrag.sen_hasConnective = true;
-                eFrag.bo_hasArticle = false;
-                eFrag.add_hasArticle = false;
-                eFrag.bo_isSubject = true;
-                eFrag.sen_hasColon = true;
-                sentencePlan.add(new DSynTMainSentence(eFrag));
-
-                // processToText.Main run
-                ArrayList<String> mainRun = runSequences.get(0);
-                boolean first = true;
-                for (String id : mainRun) {
-                    if (validIDs.contains(Integer.valueOf(id))) {
-                        convertRigidElement(Integer.valueOf(id), level, first);
-                        first = false;
-                    }
-                }
-
-                loader.loadTemplate(TemplateLoader.RIGID_DEV);
-                eFrag = new ExecutableFragment(loader.getAction(), loader.getObject(), "", loader.getAddition());
-                ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
-                modRecord.addAttribute("adv-type", "sentential");
-                eFrag.addMod("However,", modRecord);
-                eFrag.bo_hasArticle = true;
-                eFrag.bo_isSubject = true;
-                eFrag.sen_hasConnective = true;
-                eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-                sentencePlan.add(new DSynTMainSentence(eFrag));
-
-                // Save ID of first rigid element
-                String rigidStartID = node.getEntry().getId();
-
-                // Deviation runs
-                for (int i = 1; i < runSequences.size(); i++) {
-
-                    // Get run
-                    ArrayList<String> run = runSequences.get(i);
-                    String currentActivity = "";
-                    String previousActivity = "";
-                    String subsequentActivity = "";
-
-                    // Determine number of activities in run (if only one the sequence would be unclear to the reader)
-                    int activityCount = 0;
-                    for (String id : run) {
-                        if (validIDs.contains(Integer.valueOf(id))) {
-                            currentActivity = id;
-                            activityCount++;
-                        }
-                    }
-
-                    // If activity count = 1, add statement or activity to clarify run
-                    if (activityCount == 1) {
-
-                        // Run is alternative start
-                        if (run.get(0) == rigidStartID) {
-                            convertRigidStartActivity(Integer.valueOf(currentActivity), level);
-
-                            // Run just contains single activity (middle of rigid)
-                        } else {
-                            int startId = mainRun.indexOf(run.get(0));
-                            for (int j = startId; j >= 0; j--) {
-                                if (j == 0) {
-                                    System.err.println("No Connection to main run.");
-                                }
-                                if (validIDs.contains(Integer.valueOf(mainRun.get(j)))) {
-                                    previousActivity = mainRun.get(j);
-                                    break;
-                                }
-                            }
-                            convertIsolatedRigidActivity(Integer.valueOf(currentActivity), Integer.valueOf(previousActivity), level);
-                        }
-
-
-                    } else if (activityCount == 0) {
-
-                        boolean foundPrev = false;
-                        boolean foundSub = false;
-
-                        // Try to find previous and subsequent activity in the runs
-                        for (ArrayList<String> r : runSequences) {
-
-                            // considered run contains predecessor
-                            if (r.contains(run.get(0)) && !foundPrev) {
-                                int startId = r.indexOf(run.get(0));
-                                for (int j = startId; j >= 0; j--) {
-                                    if (validIDs.contains(Integer.valueOf(r.get(j)))) {
-                                        previousActivity = r.get(j);
-                                        foundPrev = true;
-                                        break;
-                                    }
-                                }
-                            }
-
-                            // considered run contains predecessor
-                            if (r.contains(run.get(run.size() - 1)) && !foundSub) {
-                                int endId = r.indexOf(run.get(run.size() - 1));
-                                for (int j = endId; j < r.size(); j++) {
-                                    if (validIDs.contains(Integer.valueOf(r.get(j)))) {
-                                        subsequentActivity = r.get(j);
-                                        foundSub = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        if (previousActivity.equals("")) {
-                            convertRigidStartActivity(Integer.valueOf(subsequentActivity), level);
-                        } else if (subsequentActivity.equals("")) {
-                            convertRigidEndActivity(Integer.valueOf(previousActivity), level);
-                        } else {
-                            convertIsolatedRigidActivity(Integer.valueOf(subsequentActivity), Integer.valueOf(previousActivity), level);
-                        }
-
-
-                        // Multiple activities: run is clear
-                    } else {
-                        first = true;
-                        for (String id : run) {
-                            if (validIDs.contains(Integer.valueOf(id))) {
-                                if (first) {
-                                    convertRigidStartActivity(Integer.valueOf(id), level);
-                                    first = false;
-                                } else {
-                                    convertRigidElement(Integer.valueOf(id), level, first);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //**************************************  ACTIVITIES  **************************************
+                handleRigid(node, level);
+                // Activity
             } else if (PlanningHelper.isTask(node.getEntry())) {
-
-                convertActivities(node, level, depth);
-
-                // Handle End Event
+                handleActivities(node, level, depth);
                 if (PlanningHelper.isEvent(node.getExit())) {
-                    end = false;
-                    Event event = process.getEvents().get((Integer.valueOf(node.getExit().getId())));
-                    if (event.getType() == EventType.END_EVENT && orderedTopNodes.indexOf(node) == orderedTopNodes.size() - 1) {
-                        // Adjust level and add to sentence plan
-                        DSynTSentence sen = textToIMConverter.convertEvent(event).preStatements.get(0);
-                        sen.getExecutableFragment().sen_level = level;
-                        if (event.getSubProcessID() > 0) {
-                            sen.getExecutableFragment().sen_level = level + 1;
-                        }
-                        sentencePlan.add(sen);
-                    }
+                    handleEndEvent(node, orderedTopNodes, level);
                 }
-            }
-            //**************************************  EVENTS  **************************************
-//			 else if (PlanningHelper.isEvent(node.getEntry()) && orderedTopNodes.indexOf(node) > 0) {
-            else if (PlanningHelper.isEvent(node.getEntry())) {
-                Event event = process.getEvents().get((Integer.valueOf(node.getEntry().getId())));
-                int currentPosition = orderedTopNodes.indexOf(node);
-                // Start Event
-                if (currentPosition == 0) {
-
-                    // Start event should be printed
-                    if (start == true && isAlternative == false) {
-
-                        // Event is followed by gateway --> full sentence
-                        if (event.getType() == EventType.START_EVENT && currentPosition < orderedTopNodes.size() - 1 && PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1))) {
-                            start = false;
-                            ExecutableFragment eFrag = new ExecutableFragment("start", "process", "", "with a decision");
-                            eFrag.add_hasArticle = false;
-                            eFrag.bo_isSubject = true;
-                            sentencePlan.add(new DSynTMainSentence(eFrag));
-                        }
-                        if (event.getType() != EventType.START_EVENT) {
-                            start = false;
-                            ConverterRecord convRecord = textToIMConverter.convertEvent(event);
-                            if (convRecord != null && convRecord.hasPreStatements() == true) {
-                                sentencePlan.add(convRecord.preStatements.get(0));
-                            }
-                        }
-                    }
-
-
-                    // Intermediate Events
-                } else {
-                    ConverterRecord convRecord = textToIMConverter.convertEvent(event);
-
-                    // Add fragments if applicable
-                    if (convRecord != null && convRecord.pre != null) {
-                        passedFragments.add(convRecord.pre);
-                    }
-
-                    // Adjust level and add to sentence plan (first sentence not indented)
-                    if (convRecord != null && convRecord.hasPreStatements() == true) {
-                        for (int i = 0; i < convRecord.preStatements.size(); i++) {
-
-                            DSynTSentence sen = convRecord.preStatements.get(i);
-
-                            // If only one sentence (e.g. "Intermediate" End Event)
-                            if (convRecord.preStatements.size() == 1) {
-                                sen.getExecutableFragment().sen_level = level;
-                            }
-
-                            if (tagWithBullet == true) {
-                                sen.getExecutableFragment().sen_hasBullet = true;
-                                sen.getExecutableFragment().sen_level = level;
-                                tagWithBullet = false;
-                            }
-
-                            if (i > 0) {
-                                sen.getExecutableFragment().sen_level = level;
-                            }
-                            if (event.getSubProcessID() > 0) {
-                                sen.getExecutableFragment().sen_level = level + 1;
-                            }
-
-                            if (passedMods.size() > 0) {
-                                String mod = passedMods.get(0).getLemma();
-                                if (mod.equals("alternatively,") && sen.getExecutableFragment().sen_hasBullet) {
-                                    passedMods.clear();
-                                } else {
-                                    sen.getExecutableFragment().addMod(passedMods.get(0).getLemma(), passedMods.get(0));
-                                    sen.getExecutableFragment().sen_hasConnective = true;
-                                    passedMods.clear();
-                                }
-                            }
-
-                            if (passedFragments.size() > 0) {
-                                DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(sen.getExecutableFragment(), passedFragments.get(0));
-                                if (passedFragments.size() > 1) {
-                                    for (i = 1; i < passedFragments.size(); i++) {
-                                        dsyntSentence.addCondition(passedFragments.get(i), true);
-                                        dsyntSentence.getConditionFragment().addCondition(passedFragments.get(i));
-                                    }
-                                }
-                                sentencePlan.add(dsyntSentence);
-                                passedFragments.clear();
-                            } else {
-                                if (sen.getClass().toString().endsWith("DSynTConditionSentence")) {
-                                    DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(sen.getExecutableFragment(), ((DSynTConditionSentence) sen).getConditionFragment());
-                                    sentencePlan.add(dsyntSentence);
-                                } else {
-                                    DSynTMainSentence dsyntSentence = new DSynTMainSentence(sen.getExecutableFragment());
-                                    sentencePlan.add(dsyntSentence);
-                                }
-                            }
-                        }
-                    }
-                }
+                // Event
+            } else if (PlanningHelper.isEvent(node.getEntry())) {
+                handleEvent(node, orderedTopNodes, level);
             } else {
                 if (depth > 0) {
                     convertToText(node, level);
                 }
             }
+
             if (end) {
                 Event event = process.getEvents().get((Integer.valueOf(node.getExit().getId())));
                 DSynTSentence sen = textToIMConverter.convertEvent(event).preStatements.get(0);
                 sen.getExecutableFragment().sen_level = level;
                 sentencePlan.add(sen);
+            }
+
+        }
+    }
+
+    private void handleBond(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) throws FileNotFoundException, JWNLException {
+        ConverterRecord convRecord = getConverterRecord(node, orderedTopNodes);
+
+        // Add pre statements
+        addPreStatements(convRecord, level);
+
+        // Pass precondition
+        if (convRecord != null && convRecord.pre != null) {
+            if (passedFragments.size() > 0) {
+                if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
+                    ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
+                    eFrag.bo_isSubject = true;
+                    DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
+                    sentencePlan.add(dsyntSentence);
+                    passedFragments.clear();
+                }
+            }
+            passedFragments.add(convRecord.pre);
+        }
+
+        // Convert to Text
+        convertBondToText(node, level);
+
+        // Add post statement to sentence plan
+        if (convRecord != null && convRecord.postStatements != null) {
+            for (DSynTSentence postStatement : convRecord.postStatements) {
+                postStatement.getExecutableFragment().sen_level = level;
+                sentencePlan.add(postStatement);
+            }
+        }
+
+        // Pass post fragment
+        if (convRecord != null && convRecord.post != null) {
+            passedFragments.add(convRecord.post);
+        }
+    }
+
+    private ConverterRecord getConverterRecord(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {
+        ConverterRecord convRecord = null;
+
+        if (PlanningHelper.isLoop(node, rpst)) {
+            convRecord = getLoopConverterRecord(node);
+        }
+        if (PlanningHelper.isSkip(node, rpst)) {
+            convRecord = getSkipConverterRecord(orderedTopNodes, node);
+        }
+        if (PlanningHelper.isXORSplit(node, rpst)) {
+            convRecord = getXORConverterRecord(node);
+        }
+        if (PlanningHelper.isEventSplit(node, rpst)) {
+            convRecord = getXORConverterRecord(node);
+        }
+        if (PlanningHelper.isORSplit(node, rpst)) {
+            convRecord = getORConverterRecord(node);
+        }
+        if (PlanningHelper.isANDSplit(node, rpst)) {
+            convRecord = getANDConverterRecord(node);
+        }
+
+        return convRecord;
+    }
+
+    /**
+     * Get ConverterRecord for Loop
+     */
+    private ConverterRecord getLoopConverterRecord(RPSTNode<ControlFlow, Node> node) {
+        RPSTNode<ControlFlow, Node> firstNodeInLoop = PlanningHelper.getNextNode(node, rpst);
+        return textToIMConverter.convertLoop(node, firstNodeInLoop);
+    }
+
+    /**
+     * Get ConverterRecord for Skip
+     */
+    private ConverterRecord getSkipConverterRecord(ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, RPSTNode<ControlFlow, Node> node) {
+        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
+
+        // Yes-No Case
+        if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true) {
+
+            // Yes-No Case which is directly leading to the end of the process
+            if (isToEndSkip(orderedTopNodes, node) == true) {
+                return textToIMConverter.convertSkipToEnd(node);
+
+                // General Yes/No-Case
+            } else {
+                return textToIMConverter.convertSkipGeneral(node);
+            }
+
+            // General unlabeled Skip
+        } else {
+            return textToIMConverter.convertSkipGeneralUnlabeled(node);
+        }
+    }
+
+    /**
+     * Get ConverterRecord for XOR
+     */
+    private ConverterRecord getXORConverterRecord(RPSTNode<ControlFlow, Node> node) {
+        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
+
+        // Labeled Case with Yes/No - arcs and Max. Depth of 1
+        if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true && propRec.getMaxPathDepth() == 1) {
+            GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
+
+            // Add sentence
+            for (DSynTSentence s : textToIMConverter.convertXORSimple(node, gwExtractor)) {
+                sentencePlan.add(s);
+            }
+            return null;
+            // General case
+        } else {
+            return textToIMConverter.convertXORGeneral(node);
+        }
+    }
+
+    /**
+     * Get ConverterRecord for OR
+     */
+    private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
+        GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
+
+        // Labeled Case
+        if (orPropRec.isGatewayLabeled() == true) {
+            return null;
+
+            // Unlabeled case
+        } else {
+            return textToIMConverter.convertORSimple(node, null, false);
+        }
+    }
+
+    /**
+     * Get ConverterRecord for AND
+     */
+    private ConverterRecord getANDConverterRecord(RPSTNode<ControlFlow, Node> node) {
+
+        ArrayList<RPSTNode<ControlFlow, Node>> andNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+
+//		// Only General Case, no need for non-bulletin and-branches
+        ConverterRecord rec = textToIMConverter.convertANDGeneral(node, andNodes.size(), null);
+        return rec;
+    }
+
+    private void addPreStatements(ConverterRecord convRecord, int level) {
+        if (convRecord != null && convRecord.preStatements != null) {
+            for (DSynTSentence preStatement : convRecord.preStatements) {
+                if (passedFragments.size() > 0) {
+                    if (tagWithBullet) {
+                        preStatement.getExecutableFragment().sen_hasBullet = true;
+                        preStatement.getExecutableFragment().sen_level = level;
+                        passedFragments.get(0).sen_hasBullet = true;
+                        passedFragments.get(0).sen_level = level;
+                        tagWithBullet = false;
+                    }
+                    DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(preStatement.getExecutableFragment(), passedFragments.get(0));
+                    if (passedFragments.size() > 1) {
+                        for (int i = 1; i < passedFragments.size(); i++) {
+                            dsyntSentence.addCondition(passedFragments.get(i), true);
+                            dsyntSentence.getConditionFragment().addCondition(passedFragments.get(i));
+                        }
+                    }
+                    passedFragments.clear();
+                    sentencePlan.add(dsyntSentence);
+                } else {
+                    if (tagWithBullet) {
+                        preStatement.getExecutableFragment().sen_hasBullet = true;
+                        preStatement.getExecutableFragment().sen_level = level;
+                        tagWithBullet = false;
+                    }
+                    preStatement.getExecutableFragment().sen_level = level;
+                    if (passedMods.size() > 0) {
+                        preStatement.getExecutableFragment().addMod(passedMods.get(0).getLemma(), passedMods.get(0));
+                        preStatement.getExecutableFragment().sen_hasConnective = true;
+                        passedMods.clear();
+                    }
+                    sentencePlan.add(new DSynTMainSentence(preStatement.getExecutableFragment()));
+                }
+            }
+        }
+    }
+
+    private void convertBondToText(RPSTNode<ControlFlow, Node> node, int level) throws FileNotFoundException, JWNLException {
+        if (PlanningHelper.isLoop(node, rpst) || PlanningHelper.isSkip(node, rpst)) {
+            convertToText(node, level);
+        }
+        if (PlanningHelper.isXORSplit(node, rpst) || PlanningHelper.isORSplit(node, rpst) || PlanningHelper.isEventSplit(node, rpst)) {
+            ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+            for (RPSTNode<ControlFlow, Node> path : paths) {
+                tagWithBullet = true;
+                convertToText(path, level + 1);
+            }
+        }
+        if (PlanningHelper.isANDSplit(node, rpst)) {
+
+            ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+            for (RPSTNode<ControlFlow, Node> path : paths) {
+                tagWithBullet = true;
+                convertToText(path, level + 1);
+            }
+        }
+    }
+
+    private void handleRigid(RPSTNode<ControlFlow, Node> node, int level) {
+        ArrayList<Integer> validIDs = new ArrayList<Integer>();
+        validIDs.addAll(process.getActivites().keySet());
+        validIDs.addAll(process.getEvents().keySet());
+
+        // Transforming RPST subtree to Petri Net
+        ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
+
+        TemplateLoader loader = new TemplateLoader();
+        loader.loadTemplate(TemplateLoader.RIGID);
+
+        ExecutableFragment eFrag = new ExecutableFragment(loader.getAction(), loader.getAddition(), loader.getObject(), "");
+        eFrag.bo_hasIndefArticle = true;
+        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        sentencePlan.add(new DSynTMainSentence(eFrag));
+
+        loader.loadTemplate(TemplateLoader.RIGID_MAIN);
+        eFrag = new ExecutableFragment(loader.getAction(), loader.getObject(), "", loader.getAddition());
+        eFrag.sen_hasConnective = true;
+        eFrag.bo_hasArticle = false;
+        eFrag.add_hasArticle = false;
+        eFrag.bo_isSubject = true;
+        eFrag.sen_hasColon = true;
+        sentencePlan.add(new DSynTMainSentence(eFrag));
+
+        // processToText.Main run
+        ArrayList<String> mainRun = runSequences.get(0);
+        boolean first = true;
+        for (String id : mainRun) {
+            if (validIDs.contains(Integer.valueOf(id))) {
+                convertRigidElement(Integer.valueOf(id), level, first);
+                first = false;
+            }
+        }
+
+        loader.loadTemplate(TemplateLoader.RIGID_DEV);
+        eFrag = new ExecutableFragment(loader.getAction(), loader.getObject(), "", loader.getAddition());
+        ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+        modRecord.addAttribute("adv-type", "sentential");
+        eFrag.addMod("However,", modRecord);
+        eFrag.bo_hasArticle = true;
+        eFrag.bo_isSubject = true;
+        eFrag.sen_hasConnective = true;
+        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        sentencePlan.add(new DSynTMainSentence(eFrag));
+
+        // Save ID of first rigid element
+        String rigidStartID = node.getEntry().getId();
+
+        // Deviation runs
+        for (int i = 1; i < runSequences.size(); i++) {
+
+            // Get run
+            ArrayList<String> run = runSequences.get(i);
+            String currentActivity = "";
+            String previousActivity = "";
+            String subsequentActivity = "";
+
+            // Determine number of activities in run (if only one the sequence would be unclear to the reader)
+            int activityCount = 0;
+            for (String id : run) {
+                if (validIDs.contains(Integer.valueOf(id))) {
+                    currentActivity = id;
+                    activityCount++;
+                }
+            }
+
+            // If activity count = 1, add statement or activity to clarify run
+            if (activityCount == 1) {
+                // Run is alternative start
+                if (run.get(0) == rigidStartID) {
+                    convertRigidStartActivity(Integer.valueOf(currentActivity), level);
+                    // Run just contains single activity (middle of rigid)
+                } else {
+                    int startId = mainRun.indexOf(run.get(0));
+                    for (int j = startId; j >= 0; j--) {
+                        if (j == 0) {
+                            System.err.println("No Connection to main run.");
+                        }
+                        if (validIDs.contains(Integer.valueOf(mainRun.get(j)))) {
+                            previousActivity = mainRun.get(j);
+                            break;
+                        }
+                    }
+                    convertIsolatedRigidActivity(Integer.valueOf(currentActivity), Integer.valueOf(previousActivity), level);
+                }
+            } else if (activityCount == 0) {
+
+                boolean foundPrev = false;
+                boolean foundSub = false;
+
+                // Try to find previous and subsequent activity in the runs
+                for (ArrayList<String> r : runSequences) {
+
+                    // considered run contains predecessor
+                    if (r.contains(run.get(0)) && !foundPrev) {
+                        int startId = r.indexOf(run.get(0));
+                        for (int j = startId; j >= 0; j--) {
+                            if (validIDs.contains(Integer.valueOf(r.get(j)))) {
+                                previousActivity = r.get(j);
+                                foundPrev = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // considered run contains predecessor
+                    if (r.contains(run.get(run.size() - 1)) && !foundSub) {
+                        int endId = r.indexOf(run.get(run.size() - 1));
+                        for (int j = endId; j < r.size(); j++) {
+                            if (validIDs.contains(Integer.valueOf(r.get(j)))) {
+                                subsequentActivity = r.get(j);
+                                foundSub = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (previousActivity.equals("")) {
+                    convertRigidStartActivity(Integer.valueOf(subsequentActivity), level);
+                } else if (subsequentActivity.equals("")) {
+                    convertRigidEndActivity(Integer.valueOf(previousActivity), level);
+                } else {
+                    convertIsolatedRigidActivity(Integer.valueOf(subsequentActivity), Integer.valueOf(previousActivity), level);
+                }
+
+
+                // Multiple activities: run is clear
+            } else {
+                first = true;
+                for (String id : run) {
+                    if (validIDs.contains(Integer.valueOf(id))) {
+                        if (first) {
+                            convertRigidStartActivity(Integer.valueOf(id), level);
+                            first = false;
+                        } else {
+                            convertRigidElement(Integer.valueOf(id), level, first);
+                        }
+                    }
+                }
             }
         }
     }
@@ -560,7 +543,7 @@ public class TextPlanner {
         }
     }
 
-    private void convertActivities(RPSTNode<ControlFlow, Node> node, int level, int depth) throws JWNLException, FileNotFoundException {
+    private void handleActivities(RPSTNode<ControlFlow, Node> node, int level, int depth) throws JWNLException, FileNotFoundException {
 
         boolean planned = false;
 
@@ -751,86 +734,112 @@ public class TextPlanner {
         }
     }
 
+    private void handleEvent(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) {
+        Event event = process.getEvents().get((Integer.valueOf(node.getEntry().getId())));
+        int currentPosition = orderedTopNodes.indexOf(node);
+        // Start Event
+        if (currentPosition == 0) {
 
-    /**
-     * Get ConverterRecord for AND
-     */
-    private ConverterRecord getANDConverterRecord(RPSTNode<ControlFlow, Node> node) {
+            // Start event should be printed
+            if (start == true && isAlternative == false) {
 
-        ArrayList<RPSTNode<ControlFlow, Node>> andNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+                // Event is followed by gateway --> full sentence
+                if (event.getType() == EventType.START_EVENT && currentPosition < orderedTopNodes.size() - 1 && PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1))) {
+                    start = false;
+                    ExecutableFragment eFrag = new ExecutableFragment("start", "process", "", "with a decision");
+                    eFrag.add_hasArticle = false;
+                    eFrag.bo_isSubject = true;
+                    sentencePlan.add(new DSynTMainSentence(eFrag));
+                }
+                if (event.getType() != EventType.START_EVENT) {
+                    start = false;
+                    ConverterRecord convRecord = textToIMConverter.convertEvent(event);
+                    if (convRecord != null && convRecord.hasPreStatements() == true) {
+                        sentencePlan.add(convRecord.preStatements.get(0));
+                    }
+                }
+            }
 
-//		// Only General Case, no need for non-bulletin and-branches
-        ConverterRecord rec = textToIMConverter.convertANDGeneral(node, andNodes.size(), null);
-        return rec;
-    }
 
-
-    /**
-     * Get ConverterRecord for OR
-     */
-    private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
-
-        // Labeled Case
-        if (orPropRec.isGatewayLabeled() == true) {
-            return null;
-
-            // Unlabeled case
+            // Intermediate Events
         } else {
-            return textToIMConverter.convertORSimple(node, null, false);
+            ConverterRecord convRecord = textToIMConverter.convertEvent(event);
+
+            // Add fragments if applicable
+            if (convRecord != null && convRecord.pre != null) {
+                passedFragments.add(convRecord.pre);
+            }
+
+            // Adjust level and add to sentence plan (first sentence not indented)
+            if (convRecord != null && convRecord.hasPreStatements() == true) {
+                for (int i = 0; i < convRecord.preStatements.size(); i++) {
+
+                    DSynTSentence sen = convRecord.preStatements.get(i);
+
+                    // If only one sentence (e.g. "Intermediate" End Event)
+                    if (convRecord.preStatements.size() == 1) {
+                        sen.getExecutableFragment().sen_level = level;
+                    }
+
+                    if (tagWithBullet == true) {
+                        sen.getExecutableFragment().sen_hasBullet = true;
+                        sen.getExecutableFragment().sen_level = level;
+                        tagWithBullet = false;
+                    }
+
+                    if (i > 0) {
+                        sen.getExecutableFragment().sen_level = level;
+                    }
+                    if (event.getSubProcessID() > 0) {
+                        sen.getExecutableFragment().sen_level = level + 1;
+                    }
+
+                    if (passedMods.size() > 0) {
+                        String mod = passedMods.get(0).getLemma();
+                        if (mod.equals("alternatively,") && sen.getExecutableFragment().sen_hasBullet) {
+                            passedMods.clear();
+                        } else {
+                            sen.getExecutableFragment().addMod(passedMods.get(0).getLemma(), passedMods.get(0));
+                            sen.getExecutableFragment().sen_hasConnective = true;
+                            passedMods.clear();
+                        }
+                    }
+
+                    if (passedFragments.size() > 0) {
+                        DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(sen.getExecutableFragment(), passedFragments.get(0));
+                        if (passedFragments.size() > 1) {
+                            for (i = 1; i < passedFragments.size(); i++) {
+                                dsyntSentence.addCondition(passedFragments.get(i), true);
+                                dsyntSentence.getConditionFragment().addCondition(passedFragments.get(i));
+                            }
+                        }
+                        sentencePlan.add(dsyntSentence);
+                        passedFragments.clear();
+                    } else {
+                        if (sen.getClass().toString().endsWith("DSynTConditionSentence")) {
+                            DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(sen.getExecutableFragment(), ((DSynTConditionSentence) sen).getConditionFragment());
+                            sentencePlan.add(dsyntSentence);
+                        } else {
+                            DSynTMainSentence dsyntSentence = new DSynTMainSentence(sen.getExecutableFragment());
+                            sentencePlan.add(dsyntSentence);
+                        }
+                    }
+                }
+            }
         }
     }
 
-    /**
-     * Get ConverterRecord for XOR
-     */
-    private ConverterRecord getXORConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
-
-        // Labeled Case with Yes/No - arcs and Max. Depth of 1
-        if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true && propRec.getMaxPathDepth() == 1) {
-            GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
-
-            // Add sentence
-            for (DSynTSentence s : textToIMConverter.convertXORSimple(node, gwExtractor)) {
-                sentencePlan.add(s);
+    private void handleEndEvent(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) {
+        end = false;
+        Event event = process.getEvents().get((Integer.valueOf(node.getExit().getId())));
+        if (event.getType() == EventType.END_EVENT && orderedTopNodes.indexOf(node) == orderedTopNodes.size() - 1) {
+            // Adjust level and add to sentence plan
+            DSynTSentence sen = textToIMConverter.convertEvent(event).preStatements.get(0);
+            sen.getExecutableFragment().sen_level = level;
+            if (event.getSubProcessID() > 0) {
+                sen.getExecutableFragment().sen_level = level + 1;
             }
-            return null;
-            // General case
-        } else {
-            return textToIMConverter.convertXORGeneral(node);
-        }
-    }
-
-    /**
-     * Get ConverterRecord for Loop
-     */
-    private ConverterRecord getLoopConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        RPSTNode<ControlFlow, Node> firstNodeInLoop = PlanningHelper.getNextNode(node, rpst);
-        return textToIMConverter.convertLoop(node, firstNodeInLoop);
-    }
-
-    /**
-     * Get ConverterRecord for Skip
-     */
-    private ConverterRecord getSkipConverterRecord(ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
-
-        // Yes-No Case
-        if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true) {
-
-            // Yes-No Case which is directly leading to the end of the process
-            if (isToEndSkip(orderedTopNodes, node) == true) {
-                return textToIMConverter.convertSkipToEnd(node);
-
-                // General Yes/No-Case
-            } else {
-                return textToIMConverter.convertSkipGeneral(node);
-            }
-
-            // General unlabeled Skip
-        } else {
-            return textToIMConverter.convertSkipGeneralUnlabeled(node);
+            sentencePlan.add(sen);
         }
     }
 
@@ -845,7 +854,6 @@ public class TextPlanner {
         }
         return false;
     }
-
 
     /**
      * Returns role of a fragment.

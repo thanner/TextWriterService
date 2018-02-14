@@ -28,16 +28,33 @@ public class SurfaceRealizer {
         for (DSynTSentence s : sentencePlan) {
             int level = s.getExecutableFragment().sen_level;
 
-            // TODO: esse "algo" deveria ser a tag da atividade
-            String newSentence = "<algo>" + realizeSentence(s) + "</algo>";
+            String resource = s.getExecutableFragment().getRole().trim();
 
-            newSentence = getIdentation(s, level, lastLevel) + newSentence;
+            // TODO: Provavelmente será add uma nova propriedade em abstractfragment para permitir identificar o elemento de processo
+            // Essa propriedade seria modificada no TextPlanner
+
+            String processElement = s.getExecutableFragment().toString();
+            int newLineAmount = getNewLineAmount(s, level, lastLevel);
+            int tabAmount = getTabAmount(s, level, lastLevel);
+            boolean hasBulletPoint = getHasBulletPoint(s);
+
+            String newSentence = "<sentence "
+                    + "resource=\"" + resource + "\" "
+                    + "processElement=\"" + processElement + "\" "
+                    + "newLineAmount=\"" + newLineAmount + "\" "
+                    + "tabAmount=\"" + tabAmount + "\" "
+                    + "hasBulletPoint=\"" + hasBulletPoint + "\" "
+                    + ">" + realizeSentence(s)
+                    + "</sentence>";
+
+            // newSentence = getIdentation(s, level, lastLevel) + newSentence;
 
             // System.out.println("Sentença: " + newSentence);
             // s.getExecutableFragment().getAssociatedActivities().forEach(System.out::println);
             // System.out.print("\n");
 
-            surfaceText.append("<space/>").append(newSentence);
+            // surfaceText.append("<space/>").append(newSentence);
+            surfaceText.append(newSentence);
             lastLevel = level;
         }
         surfaceText.append("</text>");
@@ -50,6 +67,26 @@ public class SurfaceRealizer {
             s = s + " " + realizeMapSentence(dsynt, map) + "\n";
         }
         return s + "</text>";
+    }
+
+    private int getNewLineAmount(DSynTSentence s, int level, int lastLevel) {
+        int newLineAmount = 0;
+        if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
+            newLineAmount = 1;
+        }
+        return newLineAmount;
+    }
+
+    private int getTabAmount(DSynTSentence s, int level, int lastLevel) {
+        int tabAmount = 0;
+        if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
+            tabAmount = level;
+        }
+        return tabAmount;
+    }
+
+    private boolean getHasBulletPoint(DSynTSentence s) {
+        return s.getExecutableFragment().sen_hasBullet;
     }
 
     private String getIdentation(DSynTSentence s, int level, int lastLevel) {
