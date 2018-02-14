@@ -26,6 +26,7 @@ public abstract class DSynTSentence {
     public boolean sen_hasBullet = false;
     protected Document doc;
     protected ExecutableFragment eFrag;
+    protected String processElement; // Thanner
 
     public Document getDSynT() {
         return doc;
@@ -33,6 +34,14 @@ public abstract class DSynTSentence {
 
     public ExecutableFragment getExecutableFragment() {
         return eFrag;
+    }
+
+    public String getProcessElement() {
+        return processElement;
+    }
+
+    public void setProcessElement(String processElement) {
+        this.processElement = processElement;
     }
 
 //	public void mapFragmentAttributes(AbstractFragment f) {

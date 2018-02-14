@@ -1,5 +1,6 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
+import br.edu.ufrgs.inf.bpm.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
@@ -106,6 +107,7 @@ public class TextPlanner {
                 Event event = process.getEvents().get((Integer.valueOf(node.getExit().getId())));
                 DSynTSentence sen = textToIMConverter.convertEvent(event).preStatements.get(0);
                 sen.getExecutableFragment().sen_level = level;
+                sen.setProcessElement("8");
                 sentencePlan.add(sen);
             }
 
@@ -116,7 +118,7 @@ public class TextPlanner {
         ConverterRecord convRecord = getConverterRecord(node, orderedTopNodes);
 
         // Add pre statements
-        addPreStatements(convRecord, level);
+        addBondPreStatements(convRecord, level, node);
 
         // Pass precondition
         if (convRecord != null && convRecord.pre != null) {
@@ -125,6 +127,7 @@ public class TextPlanner {
                     ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
                     eFrag.bo_isSubject = true;
                     DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
+                    dsyntSentence.setProcessElement("10");
                     sentencePlan.add(dsyntSentence);
                     passedFragments.clear();
                 }
@@ -139,6 +142,7 @@ public class TextPlanner {
         if (convRecord != null && convRecord.postStatements != null) {
             for (DSynTSentence postStatement : convRecord.postStatements) {
                 postStatement.getExecutableFragment().sen_level = level;
+                postStatement.setProcessElement("11");
                 sentencePlan.add(postStatement);
             }
         }
@@ -174,17 +178,11 @@ public class TextPlanner {
         return convRecord;
     }
 
-    /**
-     * Get ConverterRecord for Loop
-     */
     private ConverterRecord getLoopConverterRecord(RPSTNode<ControlFlow, Node> node) {
         RPSTNode<ControlFlow, Node> firstNodeInLoop = PlanningHelper.getNextNode(node, rpst);
         return textToIMConverter.convertLoop(node, firstNodeInLoop);
     }
 
-    /**
-     * Get ConverterRecord for Skip
-     */
     private ConverterRecord getSkipConverterRecord(ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
 
@@ -206,9 +204,6 @@ public class TextPlanner {
         }
     }
 
-    /**
-     * Get ConverterRecord for XOR
-     */
     private ConverterRecord getXORConverterRecord(RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
 
@@ -218,6 +213,7 @@ public class TextPlanner {
 
             // Add sentence
             for (DSynTSentence s : textToIMConverter.convertXORSimple(node, gwExtractor)) {
+                s.setProcessElement("9");
                 sentencePlan.add(s);
             }
             return null;
@@ -227,9 +223,6 @@ public class TextPlanner {
         }
     }
 
-    /**
-     * Get ConverterRecord for OR
-     */
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
 
@@ -243,9 +236,6 @@ public class TextPlanner {
         }
     }
 
-    /**
-     * Get ConverterRecord for AND
-     */
     private ConverterRecord getANDConverterRecord(RPSTNode<ControlFlow, Node> node) {
 
         ArrayList<RPSTNode<ControlFlow, Node>> andNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
@@ -255,7 +245,7 @@ public class TextPlanner {
         return rec;
     }
 
-    private void addPreStatements(ConverterRecord convRecord, int level) {
+    private void addBondPreStatements(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
         if (convRecord != null && convRecord.preStatements != null) {
             for (DSynTSentence preStatement : convRecord.preStatements) {
                 if (passedFragments.size() > 0) {
@@ -274,6 +264,7 @@ public class TextPlanner {
                         }
                     }
                     passedFragments.clear();
+                    dsyntSentence.setProcessElement(getProcessElement(node));
                     sentencePlan.add(dsyntSentence);
                 } else {
                     if (tagWithBullet) {
@@ -287,12 +278,39 @@ public class TextPlanner {
                         preStatement.getExecutableFragment().sen_hasConnective = true;
                         passedMods.clear();
                     }
-                    sentencePlan.add(new DSynTMainSentence(preStatement.getExecutableFragment()));
+
+                    DSynTSentence dSynTSentence2 = new DSynTMainSentence(preStatement.getExecutableFragment());
+                    dSynTSentence2.setProcessElement(getProcessElement(node));
+                    sentencePlan.add(dSynTSentence2);
                 }
             }
         }
     }
 
+    private String getProcessElement(RPSTNode<ControlFlow, Node> node) {
+        ProcessElementType processElementType = null;
+
+        if (PlanningHelper.isLoop(node, rpst)) {
+            processElementType = ProcessElementType.LOOP;
+        } else if (PlanningHelper.isSkip(node, rpst)) {
+            processElementType = ProcessElementType.SKIP;
+        } else if (PlanningHelper.isXORSplit(node, rpst)) {
+            processElementType = ProcessElementType.XORSPLIT;
+        } else if (PlanningHelper.isEventSplit(node, rpst)) {
+            processElementType = ProcessElementType.EVENTSPLIT;
+        } else if (PlanningHelper.isORSplit(node, rpst)) {
+            processElementType = ProcessElementType.ORSPLIT;
+        } else if (PlanningHelper.isANDSplit(node, rpst)) {
+            processElementType = ProcessElementType.ANDSPLIT;
+        }
+
+        if (processElementType != null) {
+            return processElementType.getValue();
+        }
+
+        return "unknown";
+    }
+    
     private void convertBondToText(RPSTNode<ControlFlow, Node> node, int level) throws FileNotFoundException, JWNLException {
         if (PlanningHelper.isLoop(node, rpst) || PlanningHelper.isSkip(node, rpst)) {
             convertToText(node, level);
@@ -326,9 +344,12 @@ public class TextPlanner {
         loader.loadTemplate(TemplateLoader.RIGID);
 
         ExecutableFragment eFrag = new ExecutableFragment(loader.getAction(), loader.getAddition(), loader.getObject(), "");
+        DSynTSentence dSynTSentence;
         eFrag.bo_hasIndefArticle = true;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-        sentencePlan.add(new DSynTMainSentence(eFrag));
+        dSynTSentence = new DSynTMainSentence(eFrag);
+        dSynTSentence.setProcessElement("rigid 1");
+        sentencePlan.add(dSynTSentence);
 
         loader.loadTemplate(TemplateLoader.RIGID_MAIN);
         eFrag = new ExecutableFragment(loader.getAction(), loader.getObject(), "", loader.getAddition());
@@ -337,7 +358,9 @@ public class TextPlanner {
         eFrag.add_hasArticle = false;
         eFrag.bo_isSubject = true;
         eFrag.sen_hasColon = true;
-        sentencePlan.add(new DSynTMainSentence(eFrag));
+        dSynTSentence = new DSynTMainSentence(eFrag);
+        dSynTSentence.setProcessElement("rigid 2");
+        sentencePlan.add(dSynTSentence);
 
         // processToText.Main run
         ArrayList<String> mainRun = runSequences.get(0);
@@ -358,7 +381,9 @@ public class TextPlanner {
         eFrag.bo_isSubject = true;
         eFrag.sen_hasConnective = true;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-        sentencePlan.add(new DSynTMainSentence(eFrag));
+        dSynTSentence = new DSynTMainSentence(eFrag);
+        dSynTSentence.setProcessElement("rigid 3");
+        sentencePlan.add(dSynTSentence);
 
         // Save ID of first rigid element
         String rigidStartID = node.getEntry().getId();
@@ -595,6 +620,7 @@ public class TextPlanner {
             }
             correctArticleSettings(eFrag);
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+            dsyntSentence.setProcessElement(ProcessElementType.ACTIVITY.getValue());
             sentencePlan.add(dsyntSentence);
             activitiySentenceMap.add(new Pair<Integer, DSynTSentence>(Integer.valueOf(node.getEntry().getId()), dsyntSentence));
             planned = true;
@@ -674,6 +700,7 @@ public class TextPlanner {
                     dsyntSentence.getConditionFragment().addCondition(passedFragments.get(i));
                 }
             }
+            dsyntSentence.setProcessElement(ProcessElementType.ACTIVITY.getValue());
             sentencePlan.add(dsyntSentence);
             activitiySentenceMap.add(new Pair<Integer, DSynTSentence>(Integer.valueOf(node.getEntry().getId()), dsyntSentence));
             passedFragments.clear();
@@ -683,6 +710,7 @@ public class TextPlanner {
         if (planned == false) {
             correctArticleSettings(eFrag);
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+            dsyntSentence.setProcessElement(ProcessElementType.ACTIVITY.getValue());
             sentencePlan.add(dsyntSentence);
             activitiySentenceMap.add(new Pair<Integer, DSynTSentence>(Integer.valueOf(node.getEntry().getId()), dsyntSentence));
         }
@@ -718,12 +746,15 @@ public class TextPlanner {
                         if (i == 1) {
                             sen.getExecutableFragment().sen_hasBullet = true;
                         }
+                        sen.setProcessElement(ProcessElementType.ACTIVITY.getValue());
                         sentencePlan.add(sen);
                     }
                     converter = null;
 
                     // Print sentence for subsequent normal execution
-                    sentencePlan.add(textToIMConverter.getAttachedEventPostStatement(alternative.getEvents().get(attEvent)));
+                    DSynTSentence dSynTSentence = textToIMConverter.getAttachedEventPostStatement(alternative.getEvents().get(attEvent));
+                    dSynTSentence.setProcessElement(ProcessElementType.ACTIVITY.getValue());
+                    sentencePlan.add(dSynTSentence);
                 }
             }
         }
@@ -749,13 +780,17 @@ public class TextPlanner {
                     ExecutableFragment eFrag = new ExecutableFragment("start", "process", "", "with a decision");
                     eFrag.add_hasArticle = false;
                     eFrag.bo_isSubject = true;
-                    sentencePlan.add(new DSynTMainSentence(eFrag));
+                    DSynTSentence dSynTSentence = new DSynTMainSentence(eFrag);
+                    dSynTSentence.setProcessElement(ProcessElementType.STARTEVENT.getValue());
+                    sentencePlan.add(dSynTSentence);
                 }
                 if (event.getType() != EventType.START_EVENT) {
                     start = false;
                     ConverterRecord convRecord = textToIMConverter.convertEvent(event);
                     if (convRecord != null && convRecord.hasPreStatements() == true) {
-                        sentencePlan.add(convRecord.preStatements.get(0));
+                        DSynTSentence dSynTSentence = convRecord.preStatements.get(0);
+                        dSynTSentence.setProcessElement(ProcessElementType.STARTEVENT.getValue());
+                        sentencePlan.add(dSynTSentence);
                     }
                 }
             }
@@ -813,14 +848,17 @@ public class TextPlanner {
                                 dsyntSentence.getConditionFragment().addCondition(passedFragments.get(i));
                             }
                         }
+                        dsyntSentence.setProcessElement(ProcessElementType.INTERMEDIATEEVENT.getValue());
                         sentencePlan.add(dsyntSentence);
                         passedFragments.clear();
                     } else {
                         if (sen.getClass().toString().endsWith("DSynTConditionSentence")) {
                             DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(sen.getExecutableFragment(), ((DSynTConditionSentence) sen).getConditionFragment());
+                            dsyntSentence.setProcessElement(ProcessElementType.INTERMEDIATEEVENT.getValue());
                             sentencePlan.add(dsyntSentence);
                         } else {
                             DSynTMainSentence dsyntSentence = new DSynTMainSentence(sen.getExecutableFragment());
+                            dsyntSentence.setProcessElement(ProcessElementType.INTERMEDIATEEVENT.getValue());
                             sentencePlan.add(dsyntSentence);
                         }
                     }
@@ -839,6 +877,7 @@ public class TextPlanner {
             if (event.getSubProcessID() > 0) {
                 sen.getExecutableFragment().sen_level = level + 1;
             }
+            sen.setProcessElement(ProcessElementType.ENDEVENT.getValue());
             sentencePlan.add(sen);
         }
     }

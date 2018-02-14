@@ -29,11 +29,7 @@ public class SurfaceRealizer {
             int level = s.getExecutableFragment().sen_level;
 
             String resource = s.getExecutableFragment().getRole().trim();
-
-            // TODO: Provavelmente será add uma nova propriedade em abstractfragment para permitir identificar o elemento de processo
-            // Essa propriedade seria modificada no TextPlanner
-
-            String processElement = s.getExecutableFragment().toString();
+            String processElement = s.getProcessElement();
             int newLineAmount = getNewLineAmount(s, level, lastLevel);
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
