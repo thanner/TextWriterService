@@ -2,7 +2,6 @@ package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import processToText.dataModel.dsynt.DSynTConditionSentence;
@@ -11,6 +10,9 @@ import processToText.dataModel.dsynt.DSynTSentence;
 import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -131,12 +133,15 @@ public class SurfaceRealizer {
     private String realizeSentence(DSynTSentence s) {
         Document xmldoc = s.getDSynT();
         realproManager.realize(xmldoc);
+
+        System.out.println("\n====================================================================================");
         String sentenceString = realproManager.getSentenceString();
 
         // Root
         try {
             System.out.println(sentenceString);
             printDocument(xmldoc, System.out);
+            System.out.println("");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -148,26 +153,59 @@ public class SurfaceRealizer {
     }
 
     // TODO: trabalhando aqui para tentar gerar partes de sentença
+    // TODO: Remover o child quando ele for um verb (verb são novas subsentenças)
     private void printNodes(Node node) {
-        try {
-            Node namedItem = node.getAttributes().getNamedItem("rel");
-            if (namedItem.getNodeValue().equals("ATTR")) {
-                System.out.println("ATTR");
-            }
-            System.out.println(namedItem);
+        // Print subsentence
+        if (isNewSubsentence(node)) {
+            try {
+                Document document = getDsyntDocument(node);
+                realproManager.realize(document);
 
-            Element element = (Element) node;
-            realproManager.realize(element);
-            System.out.println("Node: " + realproManager.getSentenceString());
-        } catch (Exception e) {
-            System.out.println("Not defined");
+                // PRINTS
+                System.out.println("Attribute: " + node.getAttributes().getNamedItem("rel"));
+                System.out.println("Node: " + realproManager.getSentenceString());
+                System.out.print("XML: ");
+                printDocument(document, System.out);
+
+            } catch (Exception e) {
+                System.out.println("Node: Not defined");
+            }
+            System.out.println();
         }
 
+        // NEW NODES
         if (node.hasChildNodes()) {
             NodeList childNodes = node.getChildNodes();
             for (int i = 0; i < childNodes.getLength(); i++) {
                 printNodes(childNodes.item(i));
             }
+        }
+
+    }
+
+    private boolean isNewSubsentence(Node node) {
+        try {
+            return node.getAttributes().getNamedItem("class").getNodeValue().equals("verb");
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private Document getDsyntDocument(Node node) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setNamespaceAware(true);
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document newDocument = builder.newDocument();
+
+            Node importedNode = newDocument.importNode(node, true);
+            Node parentNode = newDocument.createElement("dsynts");
+            parentNode.appendChild(importedNode);
+            newDocument.appendChild(parentNode);
+
+            return newDocument;
+        } catch (ParserConfigurationException e) {
+            return null;
         }
     }
 
