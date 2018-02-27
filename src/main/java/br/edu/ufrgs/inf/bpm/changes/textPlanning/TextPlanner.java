@@ -21,7 +21,6 @@ import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.dataModel.process.*;
 import processToText.preprocessing.FormatConverter;
 import processToText.textPlanning.PlanningHelper;
-import processToText.textPlanning.TextToIntermediateConverter;
 import processToText.textPlanning.recordClasses.ConverterRecord;
 import processToText.textPlanning.recordClasses.GatewayPropertyRecord;
 import processToText.textPlanning.recordClasses.ModifierRecord;

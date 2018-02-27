@@ -2,12 +2,24 @@ package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import processToText.dataModel.dsynt.DSynTConditionSentence;
 import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
 import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,40 +33,17 @@ public class SurfaceRealizer {
         realproManager = new RealProMgr();
     }
 
-    public String realizePlan(ArrayList<DSynTSentence> sentencePlan) {
-        StringBuilder surfaceText = new StringBuilder();
-        int lastLevel = -1;
-        surfaceText.append("<text>");
-        for (DSynTSentence s : sentencePlan) {
-            int level = s.getExecutableFragment().sen_level;
+    public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
-            String resource = s.getExecutableFragment().getRole().trim();
-            String processElement = s.getProcessElement();
-            int newLineAmount = getNewLineAmount(s, level, lastLevel);
-            int tabAmount = getTabAmount(s, level, lastLevel);
-            boolean hasBulletPoint = getHasBulletPoint(s);
-
-            String newSentence = "<sentence "
-                    + "resource=\"" + resource + "\" "
-                    + "processElement=\"" + processElement + "\" "
-                    + "newLineAmount=\"" + newLineAmount + "\" "
-                    + "tabAmount=\"" + tabAmount + "\" "
-                    + "hasBulletPoint=\"" + hasBulletPoint + "\" "
-                    + ">" + realizeSentence(s)
-                    + "</sentence>";
-
-            // newSentence = getIdentation(s, level, lastLevel) + newSentence;
-
-            // System.out.println("Sentença: " + newSentence);
-            // s.getExecutableFragment().getAssociatedActivities().forEach(System.out::println);
-            // System.out.print("\n");
-
-            // surfaceText.append("<space/>").append(newSentence);
-            surfaceText.append(newSentence);
-            lastLevel = level;
-        }
-        surfaceText.append("</text>");
-        return surfaceText.toString();
+        transformer.transform(new DOMSource(doc),
+                new StreamResult(new OutputStreamWriter(out, "UTF-8")));
     }
 
     public String realizeSentenceMap(ArrayList<DSynTSentence> sentencePlan, HashMap<Integer, String> map) {
@@ -85,6 +74,44 @@ public class SurfaceRealizer {
         return s.getExecutableFragment().sen_hasBullet;
     }
 
+    public String realizePlan(ArrayList<DSynTSentence> sentencePlan) {
+        StringBuilder surfaceText = new StringBuilder();
+        int lastLevel = -1;
+        surfaceText.append("<text>");
+        for (DSynTSentence s : sentencePlan) {
+            int level = s.getExecutableFragment().sen_level;
+
+            String resource = s.getExecutableFragment().getRole().trim();
+            String processElement = s.getProcessElement();
+            int newLineAmount = getNewLineAmount(s, level, lastLevel);
+            int tabAmount = getTabAmount(s, level, lastLevel);
+            boolean hasBulletPoint = getHasBulletPoint(s);
+
+            String newSentence = realizeSentence(s);
+
+            String setenceXML = "<sentence "
+                    + "resource=\"" + resource + "\" "
+                    + "processElement=\"" + processElement + "\" "
+                    + "newLineAmount=\"" + newLineAmount + "\" "
+                    + "tabAmount=\"" + tabAmount + "\" "
+                    + "hasBulletPoint=\"" + hasBulletPoint + "\" "
+                    + ">" + newSentence
+                    + "</sentence>";
+
+            // newSentence = getIdentation(s, level, lastLevel) + newSentence;
+
+            // System.out.println("Sentença: " + newSentence);
+            // s.getExecutableFragment().getAssociatedActivities().forEach(System.out::println);
+            // System.out.print("\n");
+
+            // surfaceText.append("<space/>").append(newSentence);
+            surfaceText.append(setenceXML);
+            lastLevel = level;
+        }
+        surfaceText.append("</text>");
+        return surfaceText.toString();
+    }
+
     private String getIdentation(DSynTSentence s, int level, int lastLevel) {
         String output = "";
         if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
@@ -93,7 +120,7 @@ public class SurfaceRealizer {
                 output = output + "<tab/>";
             }
         }
-        if (s.getExecutableFragment().sen_hasBullet == true) {
+        if (s.getExecutableFragment().sen_hasBullet) {
             output = output + "<bulletpoint/>";
         }
         c++;
@@ -102,10 +129,46 @@ public class SurfaceRealizer {
 
     // Realize Sentence
     private String realizeSentence(DSynTSentence s) {
-        // TODO: Existe uma forma de combinar sentenças no getDSynt();
         Document xmldoc = s.getDSynT();
         realproManager.realize(xmldoc);
-        return realproManager.getSentenceString();
+        String sentenceString = realproManager.getSentenceString();
+
+        // Root
+        try {
+            System.out.println(sentenceString);
+            printDocument(xmldoc, System.out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // Print all nodes
+        printNodes(xmldoc);
+        System.out.println("");
+
+        return sentenceString;
+    }
+
+    // TODO: trabalhando aqui para tentar gerar partes de sentença
+    private void printNodes(Node node) {
+        try {
+            Node namedItem = node.getAttributes().getNamedItem("rel");
+            if (namedItem.getNodeValue().equals("ATTR")) {
+                System.out.println("ATTR");
+            }
+            System.out.println(namedItem);
+
+            Element element = (Element) node;
+            realproManager.realize(element);
+            System.out.println("Node: " + realproManager.getSentenceString());
+        } catch (Exception e) {
+            System.out.println("Not defined");
+        }
+
+        if (node.hasChildNodes()) {
+            NodeList childNodes = node.getChildNodes();
+            for (int i = 0; i < childNodes.getLength(); i++) {
+                printNodes(childNodes.item(i));
+            }
+        }
     }
 
     private String realizeMapSentence(DSynTSentence s, HashMap<Integer, String> map) {
