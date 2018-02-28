@@ -1,12 +1,15 @@
 package processToText.dataModel.dsynt;
 
 
+import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import org.apache.xerces.dom.DocumentImpl;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
 
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -21,6 +24,13 @@ public class DSynTMainSentence extends DSynTSentence {
     public DSynTMainSentence(ExecutableFragment eFrag) {
         this.eFrag = eFrag;
         createDSynTRepresentation();
+
+        // TODO: REMOVER
+        try {
+            SurfaceRealizer.printDocument(doc, System.out);
+        } catch (IOException | TransformerException e) {
+            e.printStackTrace();
+        }
     }
 
     public void createDSynTRepresentation() {
@@ -60,6 +70,7 @@ public class DSynTMainSentence extends DSynTSentence {
         if (eFrag.getSentencList().size() > 0) {
             IntermediateToDSynTConverter.createAddSentences(doc, verb, eFrag);
         }
+
     }
 
     public void changeRole() {

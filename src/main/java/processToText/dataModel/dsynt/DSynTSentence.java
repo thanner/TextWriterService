@@ -42,6 +42,9 @@ public abstract class DSynTSentence {
 
     public void setProcessElement(String processElement) {
         this.processElement = processElement;
+
+        // TODO: REMOVER
+        System.out.println(processElement);
     }
 
 //	public void mapFragmentAttributes(AbstractFragment f) {

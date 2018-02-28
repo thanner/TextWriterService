@@ -77,6 +77,10 @@ public class TextPlanner {
         // For each node of current level
         for (RPSTNode<ControlFlow, Node> node : orderedTopNodes) {
 
+            // TODO: REMOVER
+            System.out.println("\nNEW NODE");
+            System.out.println(node.toString());
+
             // If we face an end event
             end = (PlanningHelper.isEvent(node.getExit()) && orderedTopNodes.indexOf(node) == orderedTopNodes.size() - 1);
             int depth = PlanningHelper.getDepth(node, rpst);

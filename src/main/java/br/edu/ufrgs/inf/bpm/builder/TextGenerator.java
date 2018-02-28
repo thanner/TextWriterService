@@ -64,6 +64,19 @@ public class TextGenerator {
         converter.convertToText(rpst.getRoot(), 0);
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 
+        // TODO: Já gera sentenças agregadas (xor-join + activity)
+        /*
+        for(DSynTSentence sentence: sentencePlan) {
+            try {
+                System.out.println("\nNew dsynt");
+                SurfaceRealizer.printDocument(sentence.getDSynT(), System.out);
+                System.out.println(sentence.getProcessElement());
+            } catch (IOException | TransformerException e) {
+                e.printStackTrace();
+            }
+        }
+        */
+
         // Aggregation
         SentenceAggregator sentenceAggregator = new SentenceAggregator(lHelper);
         sentencePlan = sentenceAggregator.performRoleAggregation(sentencePlan, model);

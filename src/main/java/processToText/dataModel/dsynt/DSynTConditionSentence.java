@@ -1,11 +1,15 @@
 package processToText.dataModel.dsynt;
 
 
+import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
+
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
 
 public class DSynTConditionSentence extends DSynTSentence {
 
@@ -29,6 +33,13 @@ public class DSynTConditionSentence extends DSynTSentence {
         this.eFrag = eFrag;
         this.cFrag = cFrag;
         this.createDSynTRepresentation();
+
+        // TODO: REMOVER
+        try {
+            SurfaceRealizer.printDocument(doc, System.out);
+        } catch (IOException | TransformerException e) {
+            e.printStackTrace();
+        }
     }
 
     public void createDSynTRepresentation() {
