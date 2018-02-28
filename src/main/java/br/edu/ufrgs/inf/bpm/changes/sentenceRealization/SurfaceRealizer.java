@@ -158,7 +158,8 @@ public class SurfaceRealizer {
         // Print subsentence
         if (isNewSubsentence(node)) {
             try {
-                Document document = getDsyntDocument(node);
+                Node mainNode = removeOtherSubsentences(node);
+                Document document = getDsyntDocument(mainNode);
                 realproManager.realize(document);
 
                 // PRINTS
@@ -177,10 +178,15 @@ public class SurfaceRealizer {
         if (node.hasChildNodes()) {
             NodeList childNodes = node.getChildNodes();
             for (int i = 0; i < childNodes.getLength(); i++) {
-                printNodes(childNodes.item(i));
+                Node childNode = childNodes.item(i);
+                printNodes(childNode);
             }
         }
 
+    }
+
+    private boolean isDsyntRootNode(Node node) {
+        return node.getNodeName().equals("dsynts");
     }
 
     private boolean isNewSubsentence(Node node) {
@@ -189,6 +195,40 @@ public class SurfaceRealizer {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    private Node removeOtherSubsentences(Node node) {
+        Node mainNode = node.cloneNode(true);
+
+        if (mainNode.hasChildNodes()) {
+            NodeList childNodes = mainNode.getChildNodes();
+            for (int i = 0; i < childNodes.getLength(); i++) {
+                Node childNode = childNodes.item(i);
+                if (isNewSubsentenceDeep(childNode)) {
+                    mainNode.removeChild(childNode);
+                }
+            }
+        }
+
+        return mainNode;
+    }
+
+    private boolean isNewSubsentenceDeep(Node node) {
+        if (isNewSubsentence(node)) {
+            return true;
+        }
+
+        if (node.hasChildNodes()) {
+            NodeList childNodes = node.getChildNodes();
+            for (int i = 0; i < childNodes.getLength(); i++) {
+                Node childNode = childNodes.item(i);
+                if (isNewSubsentenceDeep(childNode)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private Document getDsyntDocument(Node node) {
