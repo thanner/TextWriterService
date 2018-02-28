@@ -4,6 +4,9 @@ package processToText.dataModel.dsynt;
 import org.w3c.dom.Document;
 import processToText.dataModel.intermediate.ExecutableFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class DSynTSentence {
 
     public static final int TYPE_IF = 0;
@@ -26,7 +29,7 @@ public abstract class DSynTSentence {
     public boolean sen_hasBullet = false;
     protected Document doc;
     protected ExecutableFragment eFrag;
-    protected String processElement; // Thanner
+    protected List<String> processElementList = new ArrayList<>(); // Thanner
 
     public Document getDSynT() {
         return doc;
@@ -36,15 +39,12 @@ public abstract class DSynTSentence {
         return eFrag;
     }
 
-    public String getProcessElement() {
-        return processElement;
+    public List<String> getProcessElementList() {
+        return processElementList;
     }
 
-    public void setProcessElement(String processElement) {
-        this.processElement = processElement;
-
-        // TODO: REMOVER
-        System.out.println(processElement);
+    public void addProcessElement(String processElement) {
+        this.processElementList.add(processElement);
     }
 
 //	public void mapFragmentAttributes(AbstractFragment f) {

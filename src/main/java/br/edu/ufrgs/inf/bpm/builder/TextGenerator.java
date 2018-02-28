@@ -21,6 +21,7 @@ import processToText.sentencePlanning.DiscourseMarker;
 import processToText.sentencePlanning.ReferringExpressionGenerator;
 import processToText.sentencePlanning.SentenceAggregator;
 
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -64,20 +65,7 @@ public class TextGenerator {
         converter.convertToText(rpst.getRoot(), 0);
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 
-        // TODO: Já gera sentenças agregadas (xor-join + activity)
-        /*
-        for(DSynTSentence sentence: sentencePlan) {
-            try {
-                System.out.println("\nNew dsynt");
-                SurfaceRealizer.printDocument(sentence.getDSynT(), System.out);
-                System.out.println(sentence.getProcessElement());
-            } catch (IOException | TransformerException e) {
-                e.printStackTrace();
-            }
-        }
-        */
-
-        // Aggregation
+        // Aggregation (Only ROLE aggregation)
         SentenceAggregator sentenceAggregator = new SentenceAggregator(lHelper);
         sentencePlan = sentenceAggregator.performRoleAggregation(sentencePlan, model);
 
@@ -99,6 +87,7 @@ public class TextGenerator {
         }
 
         surfaceText = surfaceRealizer.postProcessText(surfaceText);
+        System.out.println();
 
         // if(surfaceText.startsWith(" \n")){
         //    surfaceText = surfaceText.replaceFirst(" \n", "" );
@@ -106,5 +95,21 @@ public class TextGenerator {
 
         return surfaceText;
     }
+
+    // TODO: Remover
+    /*
+    private static void printSentencePlan(ArrayList<DSynTSentence> sentencePlan, ArrayList<DSynTSentence> sentencePlan2){
+        for(int i = 0; i < sentencePlan.size(); i++) {
+            try {
+                System.out.println("\nDsynt");
+                SurfaceRealizer.printDocument(sentencePlan.get(i).getDSynT(), System.out);
+                System.out.println("\nAggregate");
+                SurfaceRealizer.printDocument(sentencePlan2.get(i).getDSynT(), System.out);
+            } catch (IOException | TransformerException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    */
 
 }

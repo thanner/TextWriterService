@@ -165,4 +165,20 @@ public abstract class AbstractFragment {
     public void setAddition(String addition) {
         this.addition = addition;
     }
+
+
+    /**
+     * Thanner
+     */
+
+    protected String processElement; // Thanner
+
+    public String getProcessElement() {
+        return processElement;
+    }
+
+    public void setProcessElement(String processElement) {
+        this.processElement = processElement;
+    }
+
 }

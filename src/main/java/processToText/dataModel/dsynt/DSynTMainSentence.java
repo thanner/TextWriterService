@@ -26,11 +26,10 @@ public class DSynTMainSentence extends DSynTSentence {
         createDSynTRepresentation();
 
         // TODO: REMOVER
-        try {
-            SurfaceRealizer.printDocument(doc, System.out);
-        } catch (IOException | TransformerException e) {
-            e.printStackTrace();
-        }
+        /*
+        System.out.println("Main");
+        SurfaceRealizer.printDocument(doc, System.out);
+        */
     }
 
     public void createDSynTRepresentation() {

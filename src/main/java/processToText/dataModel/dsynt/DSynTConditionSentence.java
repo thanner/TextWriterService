@@ -1,15 +1,11 @@
 package processToText.dataModel.dsynt;
 
-
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
-
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
 
 public class DSynTConditionSentence extends DSynTSentence {
 
@@ -33,13 +29,6 @@ public class DSynTConditionSentence extends DSynTSentence {
         this.eFrag = eFrag;
         this.cFrag = cFrag;
         this.createDSynTRepresentation();
-
-        // TODO: REMOVER
-        try {
-            SurfaceRealizer.printDocument(doc, System.out);
-        } catch (IOException | TransformerException e) {
-            e.printStackTrace();
-        }
     }
 
     public void createDSynTRepresentation() {
@@ -47,12 +36,18 @@ public class DSynTConditionSentence extends DSynTSentence {
         // Create main sentence and get respective document containing the DSynT
         DSynTMainSentence dSynTMainSentence = new DSynTMainSentence(eFrag);
         doc = dSynTMainSentence.getDSynT();
+
+        // TODO: REMOVER
+        System.out.println("\nAo criar");
+        SurfaceRealizer.printDocument(doc, System.out);
+
         verb = dSynTMainSentence.getVerb();
 
         // Create verb (conditional sentence)
         cVerb = IntermediateToDSynTConverter.createVerb(doc, cFrag, IntermediateToDSynTConverter.VERB_TYPE_CONDITION);
         verb.appendChild(cVerb);
 
+        // TODO: cFrag.hasBO é o responsável por "once one of the branches were executed"
         // Create business object (conditional sentence)
         if (cFrag.hasBO() == true) {
             cObject = IntermediateToDSynTConverter.createBO(doc, cFrag);
@@ -79,6 +74,10 @@ public class DSynTConditionSentence extends DSynTSentence {
         if (cFrag != null) {
             cVerb.appendChild(condition);
         }
+
+        // TODO: REMOVER
+        System.out.println("\nAo colocar primeiro nó");
+        SurfaceRealizer.printDocument(doc, System.out);
     }
 
     /**
@@ -123,6 +122,10 @@ public class DSynTConditionSentence extends DSynTSentence {
         if (cFrag.getAllMods() != null) {
             IntermediateToDSynTConverter.appendMods(doc, cFrag, cVerb2, cObject2);
         }
+
+        // TODO: REMOVER
+        System.out.println("\nAo colocar outro nó");
+        SurfaceRealizer.printDocument(doc, System.out);
     }
 
     public Element getVerb() {

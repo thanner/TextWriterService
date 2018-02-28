@@ -15,11 +15,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -35,17 +33,21 @@ public class SurfaceRealizer {
         realproManager = new RealProMgr();
     }
 
-    public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer = tf.newTransformer();
-        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+    public static void printDocument(Document doc, OutputStream out) {
+        try {
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
-        transformer.transform(new DOMSource(doc),
-                new StreamResult(new OutputStreamWriter(out, "UTF-8")));
+            transformer.transform(new DOMSource(doc),
+                    new StreamResult(new OutputStreamWriter(out, "UTF-8")));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String realizeSentenceMap(ArrayList<DSynTSentence> sentencePlan, HashMap<Integer, String> map) {
@@ -84,7 +86,7 @@ public class SurfaceRealizer {
             int level = s.getExecutableFragment().sen_level;
 
             String resource = s.getExecutableFragment().getRole().trim();
-            String processElement = s.getProcessElement();
+            String processElement = s.getProcessElementList().get(0);
             int newLineAmount = getNewLineAmount(s, level, lastLevel);
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
@@ -93,7 +95,7 @@ public class SurfaceRealizer {
 
             String setenceXML = "<sentence "
                     + "resource=\"" + resource + "\" "
-                    + "processElement=\"" + processElement + "\" "
+                    + "processElementList=\"" + processElement + "\" "
                     + "newLineAmount=\"" + newLineAmount + "\" "
                     + "tabAmount=\"" + tabAmount + "\" "
                     + "hasBulletPoint=\"" + hasBulletPoint + "\" "
@@ -134,20 +136,25 @@ public class SurfaceRealizer {
         Document xmldoc = s.getDSynT();
         realproManager.realize(xmldoc);
 
-        System.out.println("\n====================================================================================");
         String sentenceString = realproManager.getSentenceString();
 
-        // Root
-        try {
-            System.out.println(sentenceString);
-            printDocument(xmldoc, System.out);
-            System.out.println("");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        // Print all nodes
-        printNodes(xmldoc);
-        System.out.println("");
+        /**
+         System.out.println("\n====================================================================================");
+         // Root
+         try {
+         System.out.println(sentenceString);
+         printDocument(xmldoc, System.out);
+         System.out.println("");
+         } catch (Exception e) {
+         e.printStackTrace();
+         }
+         // Print all nodes
+         printNodes(xmldoc);
+         System.out.println("");
+         */
+
+        System.out.println();
+        s.getProcessElementList().forEach(System.out::print);
 
         return sentenceString;
     }
