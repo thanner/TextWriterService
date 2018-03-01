@@ -1,11 +1,9 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.util.DSynTUtil;
+import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import processToText.dataModel.dsynt.DSynTConditionSentence;
 import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
@@ -31,23 +29,6 @@ public class SurfaceRealizer {
 
     public SurfaceRealizer() {
         realproManager = new RealProMgr();
-    }
-
-    public static void printDocument(Document doc, OutputStream out) {
-        try {
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer transformer = tf.newTransformer();
-            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-            transformer.transform(new DOMSource(doc),
-                    new StreamResult(new OutputStreamWriter(out, "UTF-8")));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public String realizeSentenceMap(ArrayList<DSynTSentence> sentencePlan, HashMap<Integer, String> map) {
@@ -78,50 +59,41 @@ public class SurfaceRealizer {
         return s.getExecutableFragment().sen_hasBullet;
     }
 
-    public String realizePlan(ArrayList<DSynTSentence> sentencePlan) {
+    public String generateXMLSentence(ArrayList<DSynTSentence> sentencePlan) {
         StringBuilder surfaceText = new StringBuilder();
         int lastLevel = -1;
+
         surfaceText.append("<text>");
         for (DSynTSentence s : sentencePlan) {
             int level = s.getExecutableFragment().sen_level;
 
             String resource = s.getExecutableFragment().getRole().trim();
-            String processElement = s.getProcessElementDocumentList().get(0).getProcessElement();
             int newLineAmount = getNewLineAmount(s, level, lastLevel);
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
-
             String newSentence = realizeSentence(s.getDSynT());
+            String subsentenceXml = generateXmlSubsentence(s, newSentence);
 
-            System.out.println();
-            System.out.println(newSentence);
-            printDocument(s.getDSynT(), System.out);
+            StringBuilder setenceXML = new StringBuilder();
+            setenceXML.append("<sentence ")
+                    .append("resource=\"").append(resource).append("\" ")
+                    .append("newLineAmount=\"").append(newLineAmount).append("\" ")
+                    .append("tabAmount=\"").append(tabAmount).append("\" ")
+                    .append("hasBulletPoint=\"").append(hasBulletPoint).append("\" ")
+                    .append("value=\"").append(newSentence).append("\" ")
+                    .append(">")
+                    .append(subsentenceXml)
+                    .append("</sentence>");
 
-            List<String> subsentences = realizeSubsentences(s, newSentence);
-
-            String setenceXML = "<sentence "
-                    + "resource=\"" + resource + "\" "
-                    + "processElementList=\"" + processElement + "\" "
-                    + "newLineAmount=\"" + newLineAmount + "\" "
-                    + "tabAmount=\"" + tabAmount + "\" "
-                    + "hasBulletPoint=\"" + hasBulletPoint + "\" "
-                    + ">" + newSentence
-                    + "</sentence>";
-
-            // newSentence = getIdentation(s, level, lastLevel) + newSentence;
-
-            // System.out.println("Sentença: " + newSentence);
-            // s.getExecutableFragment().getAssociatedActivities().forEach(System.out::println);
-            // System.out.print("\n");
-
-            // surfaceText.append("<space/>").append(newSentence);
             surfaceText.append(setenceXML);
             lastLevel = level;
         }
         surfaceText.append("</text>");
+
         return surfaceText.toString();
     }
 
+    /**
     private String getIdentation(DSynTSentence s, int level, int lastLevel) {
         String output = "";
         if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
@@ -136,11 +108,45 @@ public class SurfaceRealizer {
         c++;
         return output;
     }
+    **/
+
+    private String generateXmlSubsentence(DSynTSentence s, String sentence) {
+        StringBuilder subsentenceXML = new StringBuilder();
+        for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
+            String processElement = processElementDocument.getProcessElement();
+            Document document = processElementDocument.getDocument();
+
+            String subsentence = cleanSubsentence(realizeSentence(document));
+            int startIndex = getIndexStartSubstentence(sentence, subsentence);
+            int indexEnd = getIndexEndSubsentence(startIndex, subsentence);
+
+            subsentenceXML.append("<subsentence ")
+                    .append("processElement=\"").append(processElement).append("\" ")
+                    .append("startIndex=\"").append(startIndex).append("\" ")
+                    .append("endIndex=\"").append(indexEnd).append("\" ")
+                    .append(">")
+                    .append("</subsentence>");
+        }
+
+        return subsentenceXML.toString();
+    }
 
     // Realize Sentence
-     private String realizeSentence(Document document){
+    private String realizeSentence(Document document){
         realproManager.realize(document);
         return realproManager.getSentenceString();
+    }
+
+    private String cleanSubsentence(String subsentence){
+        return subsentence.substring(0, subsentence.length() - 1);
+    }
+
+    private int getIndexStartSubstentence(String sentence, String subsentence){
+        return sentence.toLowerCase().indexOf(subsentence.toLowerCase());
+    }
+
+    private int getIndexEndSubsentence(int indexStart, String subsentence){
+        return indexStart + subsentence.length();
     }
 
     /**
@@ -157,23 +163,6 @@ public class SurfaceRealizer {
      printNodes(xmldoc);
      System.out.println("");
      */
-
-    private List<String> realizeSubsentences(DSynTSentence s, String sentence) {
-
-        for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
-            String processElement = processElementDocument.getProcessElement();
-            Document document = processElementDocument.getDocument();
-
-            String subsentence = realizeSentence(document);
-            System.out.println(" . . . .");
-            System.out.println(processElement);
-            System.out.println(subsentence);
-            printDocument(document, System.out);
-
-        }
-
-        return null;
-    }
 
     /*
     // TODO: trabalhando aqui para tentar gerar partes de sentença

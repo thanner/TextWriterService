@@ -21,7 +21,6 @@ import processToText.sentencePlanning.DiscourseMarker;
 import processToText.sentencePlanning.ReferringExpressionGenerator;
 import processToText.sentencePlanning.SentenceAggregator;
 
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -79,7 +78,7 @@ public class TextGenerator {
 
         // Realization
         SurfaceRealizer surfaceRealizer = new SurfaceRealizer();
-        String surfaceText = surfaceRealizer.realizePlan(sentencePlan);
+        String surfaceText = surfaceRealizer.generateXMLSentence(sentencePlan);
 
         // Cleaning
         if (imperative == true) {
