@@ -2488,7 +2488,7 @@
 { Sebastopol, Sevastopol, city,@i Crimea,#p (a city in southern Ukraine on the Black Sea) }
 { Yalta, city,@i Crimea,#p (a resort city in Crimea in the southern Ukraine on the Black Sea; site of the Allied conference between Roosevelt, Stalin, and Churchill in February 1945) }
 
-{ [ Armenia, adj.pert:armenian,+ ] Republic_of_Armenia, Hayastan, Asian_country,@i Transcaucasia,#p noun.group:CIS,#m (a landlocked republic in southwestern Asia; formerly an Asian soviet; modern Armenia is but a fragment of ancient Armenia which was one of the world's oldest civilizations; throughout 2500 years the Armenian people have been invaded and oppressed by their neighbors) }
+{ [ Armenia, adj.pert:armenian,+ ] Republic_of_Armenia, Hayastan, Asian_country,@i Transcaucasia,#p noun.group:CIS,#m (a landlocked republic in southwestern Asia; formerly an Asian soviet; modern Armenia is but a document of ancient Armenia which was one of the world's oldest civilizations; throughout 2500 years the Armenian people have been invaded and oppressed by their neighbors) }
 { Yerevan, Jerevan, Erivan, capital_of_Armenia, national_capital,@i Armenia,#p (capital of Armenia) }
 
 { Azerbaijan, Azerbaijani_Republic, Azerbajdzhan, Azerbajdzhan_Republic, Asian_country,@i Transcaucasia,#p noun.group:CIS,#m (a landlocked republic in southwestern Asia; formerly an Asian soviet) }

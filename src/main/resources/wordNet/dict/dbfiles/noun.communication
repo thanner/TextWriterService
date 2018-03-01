@@ -4209,10 +4209,10 @@
 { dramatic_composition, dramatic_work, writing,@ dramaturgy,#p (a play for performance on the stage or television or in a movie etc.) }
 { [ play1, noun.communication:playlet,+ verb.creation:play4,+ verb.creation:play10,+ verb.creation:play3,+ verb.creation:play2,+ ] [ drama1, adj.pert:dramatic,+ noun.person:dramatist,+ verb.creation:dramatize,+ verb.communication:dramatize1,+ verb.creation:dramatise,+ verb.communication:dramatise1,+ ] dramatic_play, dramatic_composition,@ noun.communication:drama,;c (a dramatic work intended for performance by actors on a stage; "he wrote several plays but only one was produced on Broadway") }
 { afterpiece, piece2,@ (a brief dramatic piece (usually comic) presented after a play) }
-{ [ fragment, adj.all:fractional^fragmentary,+ adj.all:fractional^fragmental,+ verb.change:fragment,+ ] piece2,@ (an incomplete piece; "fragments of a play") }
+{ [ document, adj.all:fractional^fragmentary,+ adj.all:fractional^fragmental,+ verb.change:document,+ ] piece2,@ (an incomplete piece; "fragments of a play") }
 { Grand_Guignol, play1,@ (a play of a macabre or horrific nature) }
 { hiatus, piece2,@ (a missing piece (as a gap in a manuscript)) }
-{ snatch, bit1, fragment,@ (a small fragment; "overheard snatches of their conversation") }
+{ snatch, bit1, document,@ (a small document; "overheard snatches of their conversation") }
 { theater_of_the_absurd, play1,@ (plays stressing the irrational or illogical aspects of life, usually to show that modern life is pointless; "Samuel Beckett and Eugene Ionesco have written plays for the theater of the absurd") }
 { [ prologue, verb.communication:prologize,+ ] introduction,@ dramatic_composition,#p (an introduction to a play) }
 { [ playlet, noun.communication:play3,+ noun.communication:play1,+ ] play1,@ (a short play) }
@@ -5719,7 +5719,7 @@
 { [ interrogation3, verb.communication:interrogate9,+ ] transmission,@ (a transmission that will trigger an answering transmission from a transponder) }
 { motet, musical_composition,@ (an unaccompanied choral composition with sacred lyrics; intended to be sung as part of a church service; originated in the 13th century) }
 { [ negation1, verb.communication:negate,+ ] statement,@ (a negative statement; a statement that is a refusal or denial of some other statement) }
-{ packet, message1,@ noun.cognition:computer_science,;c ((computer science) a message or message fragment) }
+{ packet, message1,@ noun.cognition:computer_science,;c ((computer science) a message or message document) }
 { program_music, programme_music, musical_composition,@ (musical compositions intended to evoke images or remind the listener of events) }
 { incidental_music, musical_composition,@ (music composed to accompany the action of a drama or to fill intervals between scenes) }
 { slanguage, language,@ (language characterized by excessive use of slang or cant) }

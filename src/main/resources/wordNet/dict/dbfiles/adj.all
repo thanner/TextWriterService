@@ -3714,7 +3714,7 @@
 { [ FRACTIONAL, noun.artifact:fraction,+ WHOLE,!] INCOMPLETE,^ noun.state:wholeness,= (constituting or comprising a part or fraction of a possible whole or entirety; "a fractional share of the vote"; "a partial dose") }
 { [ aliquot, noun.quantity:aliquot,+ ] (signifying an exact divisor or factor of a quantity) }
 { [ divisional, noun.cognition:division,+ ] (constituting a division or an aliquot part of the basic monetary unit; "American divisional (fractional) coins include the dime and the nickel"; "fractional currency is currency in denominations less than the basic monetary unit") }
-{ [ fragmental, noun.object:fragment1,+ noun.communication:fragment,+ noun.artifact:fragment,+ ] [ fragmentary, noun.object:fragment1,+ noun.communication:fragment,+ noun.artifact:fragment,+ ] (consisting of small disconnected parts; "fragmentary remains") }
+{ [ fragmental, noun.object:fragment1,+ noun.communication:document,+ noun.artifact:document,+ ] [ fragmentary, noun.object:fragment1,+ noun.communication:document,+ noun.artifact:document,+ ] (consisting of small disconnected parts; "fragmentary remains") }
 { half(a), (consisting of one of two equivalent parts in value or quantity; "a half chicken"; "lasted a half hour") }
 { halfway, (including only half or a portion; "halfway measures") }
 { waist-length, ((of clothing) extending only to the waist) }]

@@ -3616,7 +3616,7 @@
 { [ accommodational, noun.act:accommodation1,+ noun.act:accommodation1,\ ] (of or relating to the accommodation of the lens of the eye; "accommodational strain")}
 { [ acculturational, noun.cognition:acculturation1,+ noun.act:acculturation,+ noun.cognition:acculturation1,\ ] [ acculturative, verb.change:acculturate,+ noun.cognition:acculturation1,\ ] (of or relating to acculturation) }
 { [ centromeric, noun.body:centromere,+ noun.body:centromere,\ ] (pertaining to the dense specialized portion of a chromosome to which the spindle attaches during mitosis) }
-{ [ acentric, noun.body:centromere,\ ] (lacking a centromere; "an acentric chromosome fragment") }
+{ [ acentric, noun.body:centromere,\ ] (lacking a centromere; "an acentric chromosome document") }
 { [ acrocentric, noun.body:centromere,\ ] (having a subterminal centromere; "an acrocentric chromosome") }
 { [ metacentric, noun.body:centromere,\ ] (having two equal arms because of the median position of the centromere; "a metacentric chromosome") }
 { [ metacentric1, noun.cognition:metacenter,+ noun.cognition:metacenter,\ ] noun.act:shipbuilding,;c (of or relating to the metacenter) }

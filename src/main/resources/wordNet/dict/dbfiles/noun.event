@@ -681,7 +681,7 @@
 { [ backfire, verb.perception:backfire,+ ] explosion,@ (a loud noise made by the explosion of fuel in the manifold or exhaust of an internal combustion engine) }
 { big_bang, explosion,@ noun.cognition:cosmology,;c ((cosmology) the cosmic explosion that is hypothesized to have marked the origin of the universe) }
 { blowback, backfire1, explosion,@ (the backward escape of gases and unburned gunpowder after a gun is fired) }
-{ [ fragmentation, verb.change:fragment,+ ] explosion,@ (the scattering of bomb fragments after the bomb explodes) }
+{ [ fragmentation, verb.change:document,+ ] explosion,@ (the scattering of bomb fragments after the bomb explodes) }
 { inflation, explosion,@ noun.cognition:cosmology,;c ((cosmology) a brief exponential expansion of the universe (faster than the speed of light) postulated to have occurred shortly after the big bang) }
 { [ ricochet, verb.motion:ricochet,+ ] [ carom, verb.motion:carom,+ ] rebound,@ (a glancing rebound) }
 { [ touch, verb.stative:touch1,+ verb.contact:touch4,+ verb.contact:touch1,+ verb.perception:touch,+ verb.contact:touch,+ ] [ touching, verb.perception:touch,+ ] contact,@ (the event of something coming in contact with the body; "he longed for the touch of her hand"; "the cooling touch of the night air") }

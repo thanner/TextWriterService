@@ -1900,7 +1900,7 @@
 { cut2, [ cutting2, verb.contact:cut10,+ ] opening2,@ (the act of penetrating or opening open with a sharp edge; "his cut in the lining revealed the hidden jewels") }
 { [ notch, verb.communication:notch,+ verb.contact:notch,+ ] [ nick, verb.contact:nick,+ verb.contact:nick1,+ ] [ snick, verb.contact:snick,+ ] cut2,@ (a small cut) }
 { [ slash, verb.contact:slash1,+ ] [ gash2, verb.contact:gash,+ ] cut2,@ (a strong sweeping cut made with a sharp instrument) }
-{ [ atomization, verb.change:atomize,+ ] [ atomisation, verb.change:atomise,+ ] [ fragmentation, verb.change:fragment,+ ] division,@ (separating something into fine particles) }
+{ [ atomization, verb.change:atomize,+ ] [ atomisation, verb.change:atomise,+ ] [ fragmentation, verb.change:document,+ ] division,@ (separating something into fine particles) }
 { branching, [ ramification, verb.change:ramify1,+ verb.change:ramify,+ ] [ fork, verb.stative:bifurcate,+ verb.change:bifurcate,+ verb.change:fork,+ ] [ forking, verb.change:fork,+ ] division,@ (the act of branching out or dividing into branches) }
 { [ bifurcation, verb.stative:bifurcate,+ verb.change:bifurcate,+ ] branching,@ (the act of splitting into two branches) }
 { [ trifurcation, verb.change:trifurcate,+ ] branching,@ (the act of splitting into three branches) }

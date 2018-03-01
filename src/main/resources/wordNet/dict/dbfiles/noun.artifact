@@ -9007,7 +9007,7 @@
 { shantung, fabric,@ (a heavy silk fabric with a rough surface (or a cotton imitation)) }
 { [ shaper, verb.change:shape,+ ] shaping_machine, machine_tool,@ (a machine tool for shaping metal or wood) }
 { shaping_tool, tool,@ (a tool for shaping metal) }
-{ shard, sherd, [ fragment, adj.all:fractional^fragmentary,+ adj.all:fractional^fragmental,+ verb.change:fragment,+ ] piece,@ (a broken piece of a brittle artifact) }
+{ shard, sherd, [ document, adj.all:fractional^fragmentary,+ adj.all:fractional^fragmental,+ verb.change:document,+ ] piece,@ (a broken piece of a brittle artifact) }
 { sharkskin, fabric,@ (a smooth crisp fabric) }
 { [ sharp, adj.all:pointed^sharp,+ ] sewing_needle,@ (a long thin sewing needle with a sharp point) }
 { [ sharpener, verb.contact:sharpen,+ ] implement,@ (any implement that is used to make something (an edge or a point) sharper; "a knife sharpener") }

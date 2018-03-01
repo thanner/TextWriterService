@@ -389,7 +389,7 @@
 { local_option, self-government,@ (freedom of a local government to determine by popular vote the applicability of a controversial law in their jurisdiction) }
 { home_rule, self-government,@ (self-government in local matters by a city or county that is part of a national government) }
 { [ autarky, adj.all:independent^autarkical,+ adj.pert:autarkical,+ ] [ autarchy, adj.pert:autarchical,+ ] independence,@ (economic independence as a national policy) }
-{ [ fragmentation, verb.change:fragment,+ ] decomposition,@ (the disintegration of social norms governing behavior and thought and social relationships) }
+{ [ fragmentation, verb.change:document,+ ] decomposition,@ (the disintegration of social norms governing behavior and thought and social relationships) }
 { free_hand, blank_check, freedom,@ (freedom to do as you see fit; "many have doubts about giving him a free hand to attack") }
 { free_rein, play1, freedom,@ (the removal of constraints; "he gave free rein to his impulses"; "they gave full play to the artist's talent") }
 { freedom_of_the_seas, freedom,@ (the right of merchant ships to travel freely in international waters) }

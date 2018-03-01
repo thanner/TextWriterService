@@ -13104,8 +13104,8 @@ fractionation%1:22:00:: 1 2
 fracture%2:30:01:: 1 1
 fragile%5:00:00:breakable:00 1 3
 fragile%5:00:00:delicate:00 2 2
-fragment%1:06:00:: 2 1
-fragment%1:17:01:: 1 7
+document%1:06:00:: 2 1
+document%1:17:01:: 1 7
 fragmentary%5:00:00:fractional:00 1 5
 fragmentation%1:04:00:: 1 1
 fragmented%5:00:00:broken:01 1 1

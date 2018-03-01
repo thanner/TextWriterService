@@ -173,7 +173,7 @@
 { bird's_nest, bird_nest, birdnest, nest,@ (nest where birds lay their eggs and hatch their young) }
 { Biscayne_Bay, bay,@i Atlantic,#p noun.location:Florida,#p (a narrow bay formed by an inlet from the Atlantic Ocean in southeastern Florida) }
 { Bismarck_Sea, sea,@i (an arm of the South Pacific to the southwest of the Bismarck Archipelago) }
-{ bit, [ chip, verb.contact:chip2,+ verb.contact:chip1,+ verb.contact:chip,+ ] [ flake, adj.pert:flaky,+ adj.pert:flakey,+ verb.contact:flake,+ ] fleck, scrap, fragment1,@ (a small fragment of something broken off from the whole; "a bit of rock caught him in the eye") }
+{ bit, [ chip, verb.contact:chip2,+ verb.contact:chip1,+ verb.contact:chip,+ ] [ flake, adj.pert:flaky,+ adj.pert:flakey,+ verb.contact:flake,+ ] fleck, scrap, fragment1,@ (a small document of something broken off from the whole; "a bit of rock caught him in the eye") }
 { black_body, blackbody, full_radiator, noun.Tops:natural_object,@ (a hypothetical object capable of absorbing all the electromagnetic radiation falling on it; "a black body maintained at a constant temperature is a full radiator at that temperature because the radiation reaching and leaving it must be in equilibrium") }
 { Black_Forest, Schwarzwald, forest,@i noun.location:Germany,;r (a hilly forest region in southwestern Germany) }
 { Black_Hills, range,@i noun.location:South_Dakota,#p noun.location:Wyoming,#p (mountains in southwestern South Dakota and northeastern Wyoming; sacred to the Sioux (whites settling in the Black Hills led to the Battle of Little Bighorn); site of Mount Rushmore) }
@@ -210,7 +210,7 @@
 { Brazos, Brazos_River, river,@i noun.location:New_Mexico,#p noun.location:Texas,#p (a river that rises in Mexico and flows across Texas into the Gulf of Mexico) }
 { [ breach, verb.contact:breach,+ ] opening,@ (an opening (especially a gap in a dike or fortification)) }
 { Brenner_Pass, pass,@i noun.location:Austria,#p noun.location:Italy,#p (an Alpine mountain pass connecting Innsbruck in Austria with Bolzano in Italy that has long been a route for trade and for invasions) }
-{ brickbat, fragment1,@ (a fragment of brick used as a weapon) }
+{ brickbat, fragment1,@ (a document of brick used as a weapon) }
 { Bristol_Channel, inlet,@i Atlantic_Ocean,#p (an inlet of the Atlantic Ocean between southern Wales and southwestern England) }
 { brook, creek, stream,@ (a natural stream of water smaller than a river (and often a tributary of a river); "the creek dried up every summer") }
 { brooklet, brook,@ (a small brook) }
@@ -299,13 +299,13 @@
 { Chukchi_Peninsula, peninsula,@i (peninsula of northeastern Siberia across the Bering Strait from northwestern Alaska) }
 { Chukchi_Sea, sea,@i Arctic_Ocean,#p (part of the Arctic Ocean just to the north of the Bering Strait) }
 { Cimarron, Cimarron_River, river,@i noun.location:New_Mexico,#p noun.location:Oklahoma,#p (a river that rises in northeastern New Mexico and flows eastward into Oklahoma where it becomes a tributary of the Arkansas River) }
-{ cinder, [ clinker, verb.change:clinker,+ ] fragment1,@ (a fragment of incombustible matter left after a wood or coal or charcoal fire) }
+{ cinder, [ clinker, verb.change:clinker,+ ] fragment1,@ (a document of incombustible matter left after a wood or coal or charcoal fire) }
 { Circinus, constellation,@i (a small faint constellation in the southern hemisphere near Musca and Triangulum Australe) }
 { cirque, corrie, cwm, basin,@ (a steep-walled semicircular basin in a mountain; may contain a lake) }
 { cirrocumulus, cirrocumulus_cloud, cloud,@ (a cloud at a high altitude consisting of a series of regularly arranged small clouds resembling ripples) }
 { cirrostratus, cirrostratus_cloud, cloud,@ (a thin uniform layer of hazy cloud at high altitude) }
 { cirrus, cirrus_cloud, cloud,@ (a wispy white cloud (usually of fine ice crystals) at a high altitude (4 to 8 miles)) }
-{ [ clast, adj.all:disintegrative^clastic,+ ] fragment1,@ clastic_rock,#p noun.cognition:geology,;c ((geology) a constituent fragment of a clastic rock) }
+{ [ clast, adj.all:disintegrative^clastic,+ ] fragment1,@ clastic_rock,#p noun.cognition:geology,;c ((geology) a constituent document of a clastic rock) }
 { [ clastic_rock, adj.all:disintegrative^clastic,+ ] rock1,@ noun.cognition:geology,;c ((geology) a rock composed of broken pieces of older rocks) }
 { cliff, drop, drop-off, geological_formation,@ (a steep high face of rock; "he stood on a high cliff overlooking the town"; "a steep drop") }
 { Clinch_River, river,@i noun.location:Virginia,#p noun.location:Tennessee,#p (a river that rises in southwestern Virginia and flows generally southwestward across eastern Tennessee to the Tennessee River) }
@@ -446,7 +446,7 @@
 { Elizabeth_River, river,@i noun.location:Virginia,#p (a short river in southeastern Virginia flowing between Norfolk and Portsmouth into Hampton Roads) }
 { El_Libertador, mountain_peak,@i Andes,#p noun.location:Argentina,#p (a mountain in the Andes in Argentina (22,047 feet high)) }
 { El_Muerto, mountain_peak,@i Andes,#p noun.location:Argentina,#p noun.location:Chile,#p (a mountain peak in the Andes on the border between Argentina and Chile (21,457 feet high)) }
-{ ember, [ coal, verb.weather:coal,+ ] fragment1,@ (a hot fragment of wood or coal that is left from a fire and is glowing or smoldering) }
+{ ember, [ coal, verb.weather:coal,+ ] fragment1,@ (a hot document of wood or coal that is left from a fire and is glowing or smoldering) }
 { [ enclosure, verb.stative:enclose,+ ] natural_enclosure, noun.shape:space,@ (a naturally enclosed space) }
 { English_Channel, channel,@i Atlantic,#p (an arm of the Atlantic Ocean that forms a channel between France and Britain) }
 { enterolith, calculus,@ (a calculus occurring in the intestines) }
@@ -473,7 +473,7 @@
 { fault, faulting, geological_fault, shift, [ fracture, verb.change:fracture10,+ ] [ break, verb.change:break,+ ] crack,@ noun.cognition:geology,;c ((geology) a crack in the earth's crust resulting from the displacement of one side with respect to the other; "they built it right over a geological fault"; "he studied the faulting of the earth's crust") }
 { [ feeder, verb.consumption:feed3,+ ] [ tributary, distributary,! ] confluent, affluent, branch1,@ (a branch that flows into the main stream) }
 { fermion, particle,@ (any particle that obeys Fermi-Dirac statistics and is subject to the Pauli exclusion principle) }
-{ filing, fragment1,@ (a fragment rubbed off by the use of a file) }
+{ filing, fragment1,@ (a document rubbed off by the use of a file) }
 { [ finding, verb.perception:find2,+ verb.creation:find,+ verb.communication:find,+ ] noun.Tops:object,@ (something that is found; "the findings in the gastrointestinal tract indicate that he died several hours after dinner"; "an area rich in archaeological findings") }
 { Fingal's_Cave, cave,@i noun.location:Staffa,#p (a large cave with basaltic pillars on Staffa island in Scotland) }
 { fireball2, noun.shape:ball,@ noun.event:nuclear_explosion,#p (the luminous center of a nuclear explosion) }
@@ -509,7 +509,7 @@
 { [ fossil, noun.person:fossilist,+ verb.change:fossilize,+ ] remains,@ (the remains (or an impression) of a plant or animal that existed in a past geological age and that has been excavated from the soil) }
 { Fountain_of_Youth, spring,@ (a fountain described in folk tales as able to make people young again; "Ponce de Leon discovered Florida while searching for the Fountain of Youth") }
 { Fox_River, river,@i noun.location:Wisconsin,#p (a river in Wisconsin that flows into Lake Michigan) }
-{ [ fragment1, adj.all:fractional^fragmentary,+ adj.all:fractional^fragmental,+ verb.change:fragment,+ verb.change:fragmentize,+ ] part,@ (a piece broken off or cut off of something else; "a fragment of rock") }
+{ [ fragment1, adj.all:fractional^fragmentary,+ adj.all:fractional^fragmental,+ verb.change:document,+ verb.change:fragmentize,+ ] part,@ (a piece broken off or cut off of something else; "a document of rock") }
 { free_electron, electron,@ (electron that is not attached to an atom or ion or molecule but is free to move under the influence of an electric field) }
 { Galan, mountain_peak,@i Andes,#p noun.location:Argentina,#p (a mountain peak in the Andes in Argentina (21,654 feet high)) }
 { Galilean_satellite, Galilean, satellite,@ (one of the four satellites of Jupiter that were discovered by Galileo) }
@@ -678,7 +678,7 @@
 { [ ion, adj.pert:ionic,+ verb.change:ionate,+ verb.change:ionize,+ verb.change:ionise,+ ] particle,@ (a particle that is electrically charged (positive or negative); an atom or molecule or group that has lost or gained one or more electrons) }
 { Ionian_Sea, sea,@i Mediterranean,#p (an arm of the Mediterranean Sea between western Greece and southern Italy) }
 { Irish_Sea, sea,@i North_Atlantic,#p (an arm of the North Atlantic between Great Britain and Ireland) }
-{ iron_filing, metal_filing,@ (a fragment of iron rubbed off by the use of a file) }
+{ iron_filing, metal_filing,@ (a document of iron rubbed off by the use of a file) }
 { Irrawaddy, Irrawaddy_River, river,@i (the main river of Myanmar rising in the north and flowing south through the length of Burma to empty into the Andaman Sea) }
 { Irtish, Irtish_River, Irtysh, Irtysh_River, river,@i noun.location:Siberia,#p (an Asian river that rises in the Altai Mountains in northern China and flows generally northwest to become a tributary of the Ob River) }
 { Isere, Isere_River, river,@i noun.location:France,#p (a river in southeastern France; a tributary of the Rhone) }
@@ -861,7 +861,7 @@
 { Mesabi_Range, range,@i noun.location:Minnesota,#p (a range of hills in northeastern Minnesota where rich iron ore deposits were discovered in 1887) }
 { [ meson, adj.pert:mesonic,+ adj.pert:mesic,+ ] mesotron, hadron,@ boson,@ (an elementary particle responsible for the forces in the atomic nucleus; a hadron with a baryon number of 0) }
 { mesosphere, noun.location:layer,@ atmosphere,#p (the atmospheric layer between the stratosphere and the thermosphere) }
-{ metal_filing, filing,@ (a fragment of metal rubbed off by the use of a file) }
+{ metal_filing, filing,@ (a document of metal rubbed off by the use of a file) }
 { [ meteorite, adj.pert:meteoritic,+ adj.pert:meteoritical,+ ] meteoroid,@ (stony or metallic object that is the remains of a meteoroid that has reached the earth's surface) }
 { meteoroid, [ meteor, adj.pert:meteoric,+ ] extraterrestrial_object,@ noun.cognition:astronomy,;c ((astronomy) any of the small solid extraterrestrial bodies that hits the earth's atmosphere) }
 { meteor_swarm, meteoroid,@ (a group of meteoroids with similar paths) }
@@ -1028,7 +1028,7 @@
 { Pangaea, Pangea, continent,@i noun.cognition:plate_tectonics,;c ((plate tectonics) a hypothetical continent including all the landmass of the earth prior to the Triassic period when it split into Laurasia and Gondwanaland) }
 { Para, Para_River, estuary,@i noun.location:Brazil,#p (an estuary in northern Brazil into which the Tocantins River flows) }
 { Parana, Parana_River, river,@i noun.location:Brazil,#p noun.location:Paraguay,#p noun.location:Argentina,#p (a South American river; tributary of Rio de la Plata) }
-{ [ paring, verb.contact:pare1,+ ] [ sliver, adj.pert:slivery,+ verb.change:sliver1,+ verb.social:sliver,+ ] [ shaving, verb.contact:shave3,+ ] fragment1,@ (a thin fragment or slice (especially of wood) that has been shaved from something) }
+{ [ paring, verb.contact:pare1,+ ] [ sliver, adj.pert:slivery,+ verb.change:sliver1,+ verb.social:sliver,+ ] [ shaving, verb.contact:shave3,+ ] fragment1,@ (a thin document or slice (especially of wood) that has been shaved from something) }
 { Parnaiba, Parnahiba, river,@i noun.location:Brazil,#p (a river in northeastern Brazil that flows generally northward to the Atlantic Ocean) }
 { Parnassus, Mount_Parnassus, Liakoura, mountain_peak,@i noun.location:Greece,#p noun.group:Greek_mythology,;c ((Greek mythology) a mountain in central Greece where (according to Greek mythology) the Muses lived; known as the mythological home of music and poetry; "Liakoura is the modern name of Mount Parnassus") }
 { part, piece, noun.Tops:thing,@ unit,#p (a portion of a natural object; "they analyzed the river into three parts"; "he needed a piece of granite") }
@@ -1144,7 +1144,7 @@
 { repressor, represser, agent,@ (an agent that represses) }
 { Republican, Republican_River, river,@i noun.location:Colorado,#p noun.location:Nebraska,#p noun.location:Kansas,#p (a tributary of the Kansas River that flows from eastern Colorado eastward through Nebraska and Kansas) }
 { reservoir, source, noun.Tops:thing,@ (anything (a person or animal or plant or substance) in which an infectious agent normally lives and multiplies; "an infectious agent depends on a reservoir for its survival") }
-{ restriction_fragment, fragment1,@ (the fragment of DNA that is produced by cleaving DNA with a restriction enzyme) }
+{ restriction_fragment, fragment1,@ (the document of DNA that is produced by cleaving DNA with a restriction enzyme) }
 { retardant, retardent, [ retardation, verb.change:retard1,+ ] agent,@ (any agent that retards or delays or hinders; "flame-retardant") }
 { Reticulum, constellation,@i (a small constellation in the southern hemisphere near Dorado and Hydrus) }
 { Rhine, Rhine_River, Rhein, river,@i noun.location:Switzerland,#p noun.location:Germany,#p noun.location:France,#p noun.location:Netherlands,#p (a major European river carrying more traffic than any other river in the world; flows into the North Sea) }
@@ -1226,7 +1226,7 @@
 { Scheldt, Scheldt_River, river,@i noun.location:France,#p noun.location:Belgium,#p (a river that rises in France and flows northeast across Belgium and empties into the North Sea) }
 { [ scintilla, verb.weather:scintillate,+ ] particle,@ (a sparkling glittering particle) }
 { Scorpius, Scorpio, constellation,@i noun.location:zodiac,#p (a large zodiacal constellation between Libra and Sagittarius) }
-{ scraping, fragment1,@ noun.communication:plural,;u ((usually plural) a fragment scraped off of something and collected; "they collected blood scrapings for analysis") }
+{ scraping, fragment1,@ noun.communication:plural,;u ((usually plural) a document scraped off of something and collected; "they collected blood scrapings for analysis") }
 { Sculptor, constellation,@i (a faint constellation in the southern hemisphere near Phoenix and Cetus) }
 { [ scurf, adj.pert:scurfy,+ ] bit,@ noun.cognition:botany,;c ((botany) a covering that resembles scales or bran that covers some plant parts) }
 { sea, body_of_water,@ hydrosphere,#p (a division of an ocean or a large body of salt water partially enclosed by land) }
@@ -1313,8 +1313,8 @@
 { South_Platte, South_Platte_River, river,@i noun.location:Colorado,#p noun.location:Nebraska,#p (a tributary of the Platte River) }
 { South_Sea, sea,@ (any sea to the south of the equator (but especially the South Pacific)) }
 { South_Sea_Islands, island,@ (any islands in the southern or southwestern of central parts of the Pacific Ocean) }
-{ spall, spawl, fragment1,@ (a fragment broken off from the edge or face of stone or ore and having at least one thin edge; "a truck bearing a mound of blue spalls") }
-{ [ spark, verb.weather:spark,+ ] fragment1,@ (a small fragment of a burning substance thrown out by burning material or by friction) }
+{ spall, spawl, fragment1,@ (a document broken off from the edge or face of stone or ore and having at least one thin edge; "a truck bearing a mound of blue spalls") }
+{ [ spark, verb.weather:spark,+ ] fragment1,@ (a small document of a burning substance thrown out by burning material or by friction) }
 { Spica, star,@i Virgo,#m (the brightest star in Virgo) }
 { spit, tongue, cape,@ (a narrow strip of land that juts out into the sea) }
 { splint, paring,@ (a thin sliver of wood; "he lit the fire with a burning splint") }

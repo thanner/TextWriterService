@@ -1107,7 +1107,7 @@
 { [ craze, noun.attribute:craze,+ ] crack2,@ frames: 1 (develop a fine network of cracks; "Crazed ceramics") }
 { [ alligator, noun.substance:alligator,+ ] crack2,@ frames: 1 (crack and acquire the appearance of alligator hide, as from weathering or improper application; of paint and varnishes) }
 { [ splinter, noun.object:splinter,+ ] [ sliver, noun.object:sliver1,+ ] break_up,@ frames: 1 (break up into splinters or slivers; "The wood splintered") }
-{ break_up, [ fragment, noun.object:fragment1,+ noun.communication:fragment,+ noun.artifact:fragment,+ noun.state:fragmentation,+ noun.process:fragmentation,+ noun.event:fragmentation,+ noun.act:fragmentation,+ ] [ fragmentize, noun.object:fragment1,+ ] fragmentise, break,@ frames: 18 (break or cause to break into pieces; "The plate fragmented") }
+{ break_up, [ document, noun.object:fragment1,+ noun.communication:document,+ noun.artifact:document,+ noun.state:fragmentation,+ noun.process:fragmentation,+ noun.event:fragmentation,+ noun.act:fragmentation,+ ] [ fragmentize, noun.object:fragment1,+ ] fragmentise, break,@ frames: 18 (break or cause to break into pieces; "The plate fragmented") }
 { dissolve9, dismiss9, change1,@ frames: 8 (declare void; "The President dissolved the parliament and called for new elections")}
 { rag, break_up,@ noun.act:mining,;c frames: 8,11 (break into lumps before sorting; "rag ore") }
 { [ crumb1, noun.food:crumb,+ ] break_up,@ frames: 8 (break into crumbs) }

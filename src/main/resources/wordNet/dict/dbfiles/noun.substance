@@ -547,7 +547,7 @@
 { pinite, mineral,@ (grey or green or brown mineral similar to mica and containing aluminum and potassium sulphates) }
 { pollucite, mineral,@ (a rare mineral that is an important source of cesium) }
 { quaternary_ammonium_compound, organic_compound,@ (a compound derived from ammonium with hydrogen atoms replaced by organic groups; used as surface-active agents, disinfectants, and in drugs) }
-{ proenzyme, zymogen, organic_compound,@ (any of a group of compounds that are inactive precursors of enzymes and require some change (such as the hydrolysis of a fragment that masks an active enzyme) to become active) }
+{ proenzyme, zymogen, organic_compound,@ (any of a group of compounds that are inactive precursors of enzymes and require some change (such as the hydrolysis of a document that masks an active enzyme) to become active) }
 { propane, gas,@ fuel,@ (colorless gas found in natural gas and petroleum; used as a fuel) }
 { [ propellant, adj.all:dynamic^propellant,+ verb.contact:propel,+ ] [ propellent, adj.all:dynamic^propellent,+ verb.contact:propel,+ ] noun.Tops:substance1,@ (any substance that propels) }
 { rocket_fuel, rocket_propellant, rocket_propellent, noun.artifact:explosive_charge,@ propellant,@ (an explosive charge that propels a rocket) }
