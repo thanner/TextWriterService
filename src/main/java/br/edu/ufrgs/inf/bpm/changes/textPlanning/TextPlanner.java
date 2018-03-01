@@ -154,7 +154,6 @@ public class TextPlanner {
         }
     }
 
-    // TODO: Método que captura o registro de fechamento (XOR-JOIN/AND-JOIN/ETC)
     private ConverterRecord getConverterRecord(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {
         ConverterRecord convRecord = null;
 
@@ -977,7 +976,8 @@ public class TextPlanner {
         return sentencePlan;
     }
 
-    // TODO: AQUI CRIO NÓS COMPOSTOS (OLHAR COM CALMA)
+    // DSYNT CONDITION SENTENCE
+
     private DSynTConditionSentence getDSyntConditionSentence(ExecutableFragment eFrag, List<ConditionFragment> passedFragments, String processElementMain) {
         DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
         if (passedFragments.size() > 1) {

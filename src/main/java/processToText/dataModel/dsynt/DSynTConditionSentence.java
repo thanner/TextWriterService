@@ -45,16 +45,12 @@ public class DSynTConditionSentence extends DSynTSentence {
         doc = dSynTMainSentence.getDSynT();
         verb = dSynTMainSentence.getVerb();
 
-        // TODO: REMOVER
-        // System.out.println("\nAo criar");
-        // SurfaceRealizer.printDocument(doc, System.out);
         documents.add(XmlFormat.getClone(doc));
 
         // Create verb (conditional sentence)
         cVerb = IntermediateToDSynTConverter.createVerb(doc, cFrag, IntermediateToDSynTConverter.VERB_TYPE_CONDITION);
         verb.appendChild(cVerb);
 
-        // TODO: cFrag.hasBO é o responsável por "once one of the branches were executed"
         // Create business object (conditional sentence)
         if (cFrag.hasBO() == true) {
             cObject = IntermediateToDSynTConverter.createBO(doc, cFrag);
@@ -82,11 +78,6 @@ public class DSynTConditionSentence extends DSynTSentence {
             cVerb.appendChild(condition);
         }
 
-        // TODO: REMOVER
-        // System.out.println("\nAo colocar primeiro nó");
-        // SurfaceRealizer.printDocument(doc, System.out);
-        // System.out.println("\ncVerb");
-        // SurfaceRealizer.printDocument(DSynTUtil.getDSynTDocument(cVerb), System.out);
         documents.add(DSynTUtil.getDSynTDocument(cVerb));
     }
 
@@ -133,11 +124,6 @@ public class DSynTConditionSentence extends DSynTSentence {
             IntermediateToDSynTConverter.appendMods(doc, cFrag, cVerb2, cObject2);
         }
 
-        // TODO: REMOVER
-        //System.out.println("\nAo colocar outro nó");
-        //SurfaceRealizer.printDocument(doc, System.out);
-        //System.out.println("\ncVerb2");
-        //SurfaceRealizer.printDocument(, System.out);
         documents.add(DSynTUtil.getDSynTDocument(cVerb2));
     }
 

@@ -31,12 +31,44 @@ public class SurfaceRealizer {
         realproManager = new RealProMgr();
     }
 
-    public String realizeSentenceMap(ArrayList<DSynTSentence> sentencePlan, HashMap<Integer, String> map) {
-        String s = "<text>\n";
-        for (DSynTSentence dsynt : sentencePlan) {
-            s = s + " " + realizeMapSentence(dsynt, map) + "\n";
+    public String generateXMLSentence(ArrayList<DSynTSentence> sentencePlan) {
+        StringBuilder surfaceText = new StringBuilder();
+        int lastLevel = -1;
+
+        surfaceText.append("<text>");
+        for (DSynTSentence s : sentencePlan) {
+            int level = s.getExecutableFragment().sen_level;
+
+            String newSentence = realizeSentence(s.getDSynT());
+            String subsentenceXml = generateXmlSubsentence(s, newSentence);
+            String resource = s.getExecutableFragment().getRole().trim();
+            int newLineAmount = getNewLineAmount(s, level, lastLevel);
+            int tabAmount = getTabAmount(s, level, lastLevel);
+            boolean hasBulletPoint = getHasBulletPoint(s);
+
+            StringBuilder setenceXML = new StringBuilder();
+            setenceXML.append("<sentence ")
+                    .append("resource=\"").append(resource).append("\" ")
+                    .append("newLineAmount=\"").append(newLineAmount).append("\" ")
+                    .append("tabAmount=\"").append(tabAmount).append("\" ")
+                    .append("hasBulletPoint=\"").append(hasBulletPoint).append("\" ")
+                    .append("value=\"").append(newSentence).append("\" ")
+                    .append(">")
+                    .append(subsentenceXml)
+                    .append("</sentence>");
+
+            surfaceText.append(setenceXML);
+            lastLevel = level;
         }
-        return s + "</text>";
+        surfaceText.append("</text>");
+
+        return surfaceText.toString();
+    }
+
+    // Realize Sentence
+    private String realizeSentence(Document document){
+        realproManager.realize(document);
+        return realproManager.getSentenceString();
     }
 
     private int getNewLineAmount(DSynTSentence s, int level, int lastLevel) {
@@ -59,57 +91,6 @@ public class SurfaceRealizer {
         return s.getExecutableFragment().sen_hasBullet;
     }
 
-    public String generateXMLSentence(ArrayList<DSynTSentence> sentencePlan) {
-        StringBuilder surfaceText = new StringBuilder();
-        int lastLevel = -1;
-
-        surfaceText.append("<text>");
-        for (DSynTSentence s : sentencePlan) {
-            int level = s.getExecutableFragment().sen_level;
-
-            String resource = s.getExecutableFragment().getRole().trim();
-            int newLineAmount = getNewLineAmount(s, level, lastLevel);
-            int tabAmount = getTabAmount(s, level, lastLevel);
-            boolean hasBulletPoint = getHasBulletPoint(s);
-            String newSentence = realizeSentence(s.getDSynT());
-            String subsentenceXml = generateXmlSubsentence(s, newSentence);
-
-            StringBuilder setenceXML = new StringBuilder();
-            setenceXML.append("<sentence ")
-                    .append("resource=\"").append(resource).append("\" ")
-                    .append("newLineAmount=\"").append(newLineAmount).append("\" ")
-                    .append("tabAmount=\"").append(tabAmount).append("\" ")
-                    .append("hasBulletPoint=\"").append(hasBulletPoint).append("\" ")
-                    .append("value=\"").append(newSentence).append("\" ")
-                    .append(">")
-                    .append(subsentenceXml)
-                    .append("</sentence>");
-
-            surfaceText.append(setenceXML);
-            lastLevel = level;
-        }
-        surfaceText.append("</text>");
-
-        return surfaceText.toString();
-    }
-
-    /**
-    private String getIdentation(DSynTSentence s, int level, int lastLevel) {
-        String output = "";
-        if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
-            output = output + "<newline/>";
-            for (int i = 1; i <= level; i++) {
-                output = output + "<tab/>";
-            }
-        }
-        if (s.getExecutableFragment().sen_hasBullet) {
-            output = output + "<bulletpoint/>";
-        }
-        c++;
-        return output;
-    }
-    **/
-
     private String generateXmlSubsentence(DSynTSentence s, String sentence) {
         StringBuilder subsentenceXML = new StringBuilder();
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
@@ -131,12 +112,6 @@ public class SurfaceRealizer {
         return subsentenceXML.toString();
     }
 
-    // Realize Sentence
-    private String realizeSentence(Document document){
-        realproManager.realize(document);
-        return realproManager.getSentenceString();
-    }
-
     private String cleanSubsentence(String subsentence){
         return subsentence.substring(0, subsentence.length() - 1);
     }
@@ -149,101 +124,14 @@ public class SurfaceRealizer {
         return indexStart + subsentence.length();
     }
 
-    /**
-     System.out.println("\n====================================================================================");
-     // Root
-     try {
-     System.out.println(sentenceString);
-     printDocument(xmldoc, System.out);
-     System.out.println("");
-     } catch (Exception e) {
-     e.printStackTrace();
-     }
-     // Print all nodes
-     printNodes(xmldoc);
-     System.out.println("");
-     */
-
     /*
-    // TODO: trabalhando aqui para tentar gerar partes de sentença
-    // TODO: Remover o child quando ele for um verb (verb são novas subsentenças)
-    private void printNodes(Node node) {
-        // Print subsentence
-        if (isNewSubsentence(node)) {
-            try {
-                Node mainNode = removeOtherSubsentences(node);
-                Document document = DSynTUtil.getDSynTDocument(mainNode);
-                realproManager.realize(document);
-
-                // PRINTS
-                System.out.println("Attribute: " + node.getAttributes().getNamedItem("rel"));
-                System.out.println("Node: " + realproManager.getSentenceString());
-                System.out.print("XML: ");
-                printDocument(document, System.out);
-
-            } catch (Exception e) {
-                System.out.println("Node: Not defined");
-            }
-            System.out.println();
+    public String realizeSentenceMap(ArrayList<DSynTSentence> sentencePlan, HashMap<Integer, String> map) {
+        String s = "<text>\n";
+        for (DSynTSentence dsynt : sentencePlan) {
+            s = s + " " + realizeMapSentence(dsynt, map) + "\n";
         }
-
-        // NEW NODES
-        if (node.hasChildNodes()) {
-            NodeList childNodes = node.getChildNodes();
-            for (int i = 0; i < childNodes.getLength(); i++) {
-                Node childNode = childNodes.item(i);
-                printNodes(childNode);
-            }
-        }
-
+        return s + "</text>";
     }
-
-    private boolean isDsyntRootNode(Node node) {
-        return node.getNodeName().equals("dsynts");
-    }
-
-    private boolean isNewSubsentence(Node node) {
-        try {
-            return node.getAttributes().getNamedItem("class").getNodeValue().equals("verb");
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    private Node removeOtherSubsentences(Node node) {
-        Node mainNode = node.cloneNode(true);
-
-        if (mainNode.hasChildNodes()) {
-            NodeList childNodes = mainNode.getChildNodes();
-            for (int i = 0; i < childNodes.getLength(); i++) {
-                Node childNode = childNodes.item(i);
-                if (isNewSubsentenceDeep(childNode)) {
-                    mainNode.removeChild(childNode);
-                }
-            }
-        }
-
-        return mainNode;
-    }
-
-    private boolean isNewSubsentenceDeep(Node node) {
-        if (isNewSubsentence(node)) {
-            return true;
-        }
-
-        if (node.hasChildNodes()) {
-            NodeList childNodes = node.getChildNodes();
-            for (int i = 0; i < childNodes.getLength(); i++) {
-                Node childNode = childNodes.item(i);
-                if (isNewSubsentenceDeep(childNode)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-    */
 
     private String realizeMapSentence(DSynTSentence s, HashMap<Integer, String> map) {
         Document xmldoc = s.getDSynT();
@@ -285,6 +173,7 @@ public class SurfaceRealizer {
         realproManager.realize(xmldoc);
         return realproManager.getSentenceString();
     }
+    */
 
     public String postProcessText(String surfaceText) {
         surfaceText = surfaceText.replaceAll("If it is necessary", "If it is necessary,");

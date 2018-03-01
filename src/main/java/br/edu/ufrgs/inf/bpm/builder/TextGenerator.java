@@ -86,7 +86,6 @@ public class TextGenerator {
         }
 
         surfaceText = surfaceRealizer.postProcessText(surfaceText);
-        System.out.println();
 
         // if(surfaceText.startsWith(" \n")){
         //    surfaceText = surfaceText.replaceFirst(" \n", "" );
@@ -94,21 +93,5 @@ public class TextGenerator {
 
         return surfaceText;
     }
-
-    // TODO: Remover
-    /*
-    private static void printSentencePlan(ArrayList<DSynTSentence> sentencePlan, ArrayList<DSynTSentence> sentencePlan2){
-        for(int i = 0; i < sentencePlan.size(); i++) {
-            try {
-                System.out.println("\nDsynt");
-                SurfaceRealizer.printDocument(sentencePlan.get(i).getDSynT(), System.out);
-                System.out.println("\nAggregate");
-                SurfaceRealizer.printDocument(sentencePlan2.get(i).getDSynT(), System.out);
-            } catch (IOException | TransformerException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    */
 
 }
