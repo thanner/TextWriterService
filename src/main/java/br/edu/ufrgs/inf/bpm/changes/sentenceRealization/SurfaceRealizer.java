@@ -91,13 +91,13 @@ public class SurfaceRealizer {
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
 
-            String newSentence = realizeSentence(s);
+            String newSentence = realizeSentence(s.getDSynT());
 
             System.out.println();
             System.out.println(newSentence);
             printDocument(s.getDSynT(), System.out);
 
-            List<String> subsentences = realizeSubsentences(s);
+            List<String> subsentences = realizeSubsentences(s, newSentence);
 
             String setenceXML = "<sentence "
                     + "resource=\"" + resource + "\" "
@@ -138,37 +138,40 @@ public class SurfaceRealizer {
     }
 
     // Realize Sentence
-    private String realizeSentence(DSynTSentence s) {
-        Document xmldoc = s.getDSynT();
-        realproManager.realize(xmldoc);
-        String sentenceString = realproManager.getSentenceString();
-
-        /**
-         System.out.println("\n====================================================================================");
-         // Root
-         try {
-         System.out.println(sentenceString);
-         printDocument(xmldoc, System.out);
-         System.out.println("");
-         } catch (Exception e) {
-         e.printStackTrace();
-         }
-         // Print all nodes
-         printNodes(xmldoc);
-         System.out.println("");
-         */
-
-        return sentenceString;
+     private String realizeSentence(Document document){
+        realproManager.realize(document);
+        return realproManager.getSentenceString();
     }
 
-    private List<String> realizeSubsentences(DSynTSentence s) {
+    /**
+     System.out.println("\n====================================================================================");
+     // Root
+     try {
+     System.out.println(sentenceString);
+     printDocument(xmldoc, System.out);
+     System.out.println("");
+     } catch (Exception e) {
+     e.printStackTrace();
+     }
+     // Print all nodes
+     printNodes(xmldoc);
+     System.out.println("");
+     */
+
+    private List<String> realizeSubsentences(DSynTSentence s, String sentence) {
+
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
             String processElement = processElementDocument.getProcessElement();
             Document document = processElementDocument.getDocument();
 
+            String subsentence = realizeSentence(document);
+            System.out.println(" . . . .");
             System.out.println(processElement);
+            System.out.println(subsentence);
             printDocument(document, System.out);
+
         }
+
         return null;
     }
 
