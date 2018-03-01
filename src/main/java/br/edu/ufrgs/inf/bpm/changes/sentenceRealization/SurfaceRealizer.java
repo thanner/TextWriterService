@@ -1,5 +1,7 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
+import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.util.DSynTUtil;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -10,9 +12,6 @@ import processToText.dataModel.dsynt.DSynTSentence;
 import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -22,6 +21,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class SurfaceRealizer {
@@ -86,12 +86,18 @@ public class SurfaceRealizer {
             int level = s.getExecutableFragment().sen_level;
 
             String resource = s.getExecutableFragment().getRole().trim();
-            String processElement = s.getProcessElementList().get(0);
+            String processElement = s.getProcessElementDocumentList().get(0).getProcessElement();
             int newLineAmount = getNewLineAmount(s, level, lastLevel);
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
 
             String newSentence = realizeSentence(s);
+
+            System.out.println();
+            System.out.println(newSentence);
+            printDocument(s.getDSynT(), System.out);
+
+            List<String> subsentences = realizeSubsentences(s);
 
             String setenceXML = "<sentence "
                     + "resource=\"" + resource + "\" "
@@ -135,7 +141,6 @@ public class SurfaceRealizer {
     private String realizeSentence(DSynTSentence s) {
         Document xmldoc = s.getDSynT();
         realproManager.realize(xmldoc);
-
         String sentenceString = realproManager.getSentenceString();
 
         /**
@@ -153,12 +158,21 @@ public class SurfaceRealizer {
          System.out.println("");
          */
 
-        System.out.println();
-        s.getProcessElementList().forEach(System.out::print);
-
         return sentenceString;
     }
 
+    private List<String> realizeSubsentences(DSynTSentence s) {
+        for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
+            String processElement = processElementDocument.getProcessElement();
+            Document document = processElementDocument.getDocument();
+
+            System.out.println(processElement);
+            printDocument(document, System.out);
+        }
+        return null;
+    }
+
+    /*
     // TODO: trabalhando aqui para tentar gerar partes de sentença
     // TODO: Remover o child quando ele for um verb (verb são novas subsentenças)
     private void printNodes(Node node) {
@@ -166,7 +180,7 @@ public class SurfaceRealizer {
         if (isNewSubsentence(node)) {
             try {
                 Node mainNode = removeOtherSubsentences(node);
-                Document document = getDsyntDocument(mainNode);
+                Document document = DSynTUtil.getDSynTDocument(mainNode);
                 realproManager.realize(document);
 
                 // PRINTS
@@ -237,24 +251,7 @@ public class SurfaceRealizer {
 
         return false;
     }
-
-    private Document getDsyntDocument(Node node) {
-        try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            factory.setNamespaceAware(true);
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document newDocument = builder.newDocument();
-
-            Node importedNode = newDocument.importNode(node, true);
-            Node parentNode = newDocument.createElement("dsynts");
-            parentNode.appendChild(importedNode);
-            newDocument.appendChild(parentNode);
-
-            return newDocument;
-        } catch (ParserConfigurationException e) {
-            return null;
-        }
-    }
+    */
 
     private String realizeMapSentence(DSynTSentence s, HashMap<Integer, String> map) {
         Document xmldoc = s.getDSynT();

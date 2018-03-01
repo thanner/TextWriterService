@@ -166,7 +166,7 @@ public class RealPro_Prog_DSyntS_Building_App
          org.w3c.dom.DocumentFragment fragmentSentence = realproMgr.realize(dsynts);
 
          //If the realization is successful, print the resulting sentence structure
-         //contained in the fragment and replace the DSyntS with the realized DSyntS
+         //contained in the document and replace the DSyntS with the realized DSyntS
          //in the document. Otherwise, print the realization error message.
          if (fragmentSentence.hasChildNodes())
          {
@@ -544,14 +544,14 @@ public class RealPro_DSS_File_App
             System.out.println(realproMgr.toDSSString(dsynts,true,tabulation));
 
             System.out.println("\nRealizing DSyntS...");
-            DocumentFragment fragment = realproMgr.realize(dsynts);
+            DocumentFragment document = realproMgr.realize(dsynts);
 
             //If the realization is successful, print the resulting sentence structure
-            //contained in the fragment, otherwise, print the realization error message
-            if (fragment.hasChildNodes())
+            //contained in the document, otherwise, print the realization error message
+            if (document.hasChildNodes())
             {
                System.out.println("\nResulting sentence structure (XML format):\n");
-               System.out.println(realproMgr.toXMLString(fragment,true,tabulation));
+               System.out.println(realproMgr.toXMLString(document,true,tabulation));
 
                System.out.println("\nResulting sentence string:\n");
                System.out.println(tabulation + realproMgr.getSentenceString());
@@ -780,22 +780,22 @@ public class RealPro_XML_File_App
             System.out.println(realproMgr.toXMLString(dsynts,true,tabulation));
 
             System.out.println("\nRealizing DSyntS...");
-            org.w3c.dom.DocumentFragment fragment = realproMgr.realize(dsynts);
+            org.w3c.dom.DocumentFragment document = realproMgr.realize(dsynts);
 
             //If the realization is successful, print the resulting sentence structure
-            //contained in the fragment and replace the DSyntS with the realized DSyntS
+            //contained in the document and replace the DSyntS with the realized DSyntS
             //in the document. Otherwise, print the realization error message.
-            if (fragment.hasChildNodes())
+            if (document.hasChildNodes())
             {
                System.out.println("\nResulting sentence structure:\n");
-               System.out.println(realproMgr.toXMLString(fragment,true,tabulation));
+               System.out.println(realproMgr.toXMLString(document,true,tabulation));
 
                System.out.println("\nResulting sentence string:\n");
                System.out.println(tabulation + realproMgr.getSentenceString());
 
                System.out.println("\nReplacing DSyntS with realized DSyntS in document...\n");
                org.w3c.dom.Node dsyntsParent = dsynts.getParentNode();
-               dsyntsParent.replaceChild(fragment,dsynts);
+               dsyntsParent.replaceChild(document,dsynts);
             }
             else
             {

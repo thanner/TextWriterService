@@ -720,14 +720,14 @@ public org.w3c.dom.Document <B>realize</B>(org.w3c.dom.Document&nbsp;document)</
 public org.w3c.dom.DocumentFragment <B>realize</B>(org.w3c.dom.Element&nbsp;dsynts)</PRE>
 <DL>
     <DD>Realizes a deep-syntactic structure (DSyntS) received in parameter
-        (<I>dsynts</I>). Returns the resulting sentence contained in a document fragment of type
+        (<I>dsynts</I>). Returns the resulting sentence contained in a document document of type
         <I>org.w3c.dom.DocumentFragment</I>.
         <P>
             If the realization is successful, the returned object contains the resulting sentence structure
             where embedded texts and tags are represented respectively using the classes
             <I>org.w3c.dom.Text</I> and <I>org.w3c.dom.Element</I>.
         <P>
-            If the realization has failed, the returned document fragment contains no sentence structure.
+            If the realization has failed, the returned document document contains no sentence structure.
             A realization error message can be obtained using the method <tt>RealProMgr#getErrorMsg</tt>.
         <P>
     <DD>

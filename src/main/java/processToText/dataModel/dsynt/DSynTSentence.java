@@ -1,6 +1,7 @@
 package processToText.dataModel.dsynt;
 
 
+import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
 import org.w3c.dom.Document;
 import processToText.dataModel.intermediate.ExecutableFragment;
 
@@ -29,7 +30,7 @@ public abstract class DSynTSentence {
     public boolean sen_hasBullet = false;
     protected Document doc;
     protected ExecutableFragment eFrag;
-    protected List<String> processElementList = new ArrayList<>(); // Thanner
+    private List<ProcessElementDocument> processElementDocumentList = new ArrayList<>(); // Thanner
 
     public Document getDSynT() {
         return doc;
@@ -39,12 +40,19 @@ public abstract class DSynTSentence {
         return eFrag;
     }
 
-    public List<String> getProcessElementList() {
-        return processElementList;
+    public List<ProcessElementDocument> getProcessElementDocumentList() {
+        return processElementDocumentList;
     }
 
-    public void addProcessElement(String processElement) {
-        this.processElementList.add(processElement);
+    public void addProcessElementDocument(String processElement) {
+        addProcessElementDocument(processElement, doc);
+    }
+
+    public void addProcessElementDocument(String processElement, Document document) {
+        ProcessElementDocument processElementDocument = new ProcessElementDocument();
+        processElementDocument.setProcessElement(processElement);
+        processElementDocument.setDocument(document);
+        processElementDocumentList.add(processElementDocument);
     }
 
 //	public void mapFragmentAttributes(AbstractFragment f) {

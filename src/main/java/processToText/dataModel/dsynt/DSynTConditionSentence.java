@@ -1,11 +1,16 @@
 package processToText.dataModel.dsynt;
 
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
+import br.edu.ufrgs.inf.bpm.util.DSynTUtil;
+import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DSynTConditionSentence extends DSynTSentence {
 
@@ -25,6 +30,8 @@ public class DSynTConditionSentence extends DSynTSentence {
     private Element object;
     private Element role;
 
+    private List<Document> documents = new ArrayList<>(); // Thanner
+
     public DSynTConditionSentence(ExecutableFragment eFrag, ConditionFragment cFrag) {
         this.eFrag = eFrag;
         this.cFrag = cFrag;
@@ -36,12 +43,12 @@ public class DSynTConditionSentence extends DSynTSentence {
         // Create main sentence and get respective document containing the DSynT
         DSynTMainSentence dSynTMainSentence = new DSynTMainSentence(eFrag);
         doc = dSynTMainSentence.getDSynT();
+        verb = dSynTMainSentence.getVerb();
 
         // TODO: REMOVER
-        System.out.println("\nAo criar");
-        SurfaceRealizer.printDocument(doc, System.out);
-
-        verb = dSynTMainSentence.getVerb();
+        // System.out.println("\nAo criar");
+        // SurfaceRealizer.printDocument(doc, System.out);
+        documents.add(XmlFormat.getClone(doc));
 
         // Create verb (conditional sentence)
         cVerb = IntermediateToDSynTConverter.createVerb(doc, cFrag, IntermediateToDSynTConverter.VERB_TYPE_CONDITION);
@@ -76,8 +83,11 @@ public class DSynTConditionSentence extends DSynTSentence {
         }
 
         // TODO: REMOVER
-        System.out.println("\nAo colocar primeiro nó");
-        SurfaceRealizer.printDocument(doc, System.out);
+        // System.out.println("\nAo colocar primeiro nó");
+        // SurfaceRealizer.printDocument(doc, System.out);
+        // System.out.println("\ncVerb");
+        // SurfaceRealizer.printDocument(DSynTUtil.getDSynTDocument(cVerb), System.out);
+        documents.add(DSynTUtil.getDSynTDocument(cVerb));
     }
 
     /**
@@ -124,8 +134,11 @@ public class DSynTConditionSentence extends DSynTSentence {
         }
 
         // TODO: REMOVER
-        System.out.println("\nAo colocar outro nó");
-        SurfaceRealizer.printDocument(doc, System.out);
+        //System.out.println("\nAo colocar outro nó");
+        //SurfaceRealizer.printDocument(doc, System.out);
+        //System.out.println("\ncVerb2");
+        //SurfaceRealizer.printDocument(, System.out);
+        documents.add(DSynTUtil.getDSynTDocument(cVerb2));
     }
 
     public Element getVerb() {
@@ -140,7 +153,11 @@ public class DSynTConditionSentence extends DSynTSentence {
         return cFrag;
     }
 
-//	public void mapFragmentAttributes(AbstractFragment f) {
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    //	public void mapFragmentAttributes(AbstractFragment f) {
 //		super.mapFragmentAttributes(f);
 //		headPosition = ((ConditionFragment) f).headPosition;
 //		type = ((ConditionFragment) f).type;
