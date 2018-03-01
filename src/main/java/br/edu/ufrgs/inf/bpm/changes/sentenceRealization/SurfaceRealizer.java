@@ -3,6 +3,7 @@ package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import com.cogentex.real.api.RealProMgr;
+import org.python.antlr.ast.For;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTConditionSentence;
 import processToText.dataModel.dsynt.DSynTMainSentence;
@@ -117,7 +118,7 @@ public class SurfaceRealizer {
     }
 
     private int getIndexStartSubstentence(String sentence, String subsentence){
-        return sentence.toLowerCase().indexOf(subsentence.toLowerCase());
+        return postProcessText(sentence).toLowerCase().indexOf(subsentence.toLowerCase());
     }
 
     private int getIndexEndSubsentence(int indexStart, String subsentence){
