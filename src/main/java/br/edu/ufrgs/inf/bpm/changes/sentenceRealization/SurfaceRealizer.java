@@ -28,7 +28,7 @@ public class SurfaceRealizer {
 
             String newSentence = realizeSentence(s.getDSynT());
             String subsentenceXml = generateXmlSubsentence(s, newSentence);
-            String resource = s.getExecutableFragment().getRole().trim();
+            // String resource = s.getExecutableFragment().getRole().trim();
 
             int newLineAmount;
             if (firstLine) {
@@ -43,7 +43,6 @@ public class SurfaceRealizer {
 
             StringBuilder setenceXML = new StringBuilder();
             setenceXML.append("<sentence ")
-                    .append("resource=\"").append(resource).append("\" ")
                     .append("newLineAmount=\"").append(newLineAmount).append("\" ")
                     .append("tabAmount=\"").append(tabAmount).append("\" ")
                     .append("hasBulletPoint=\"").append(hasBulletPoint).append("\" ")
@@ -90,6 +89,7 @@ public class SurfaceRealizer {
         StringBuilder subsentenceXML = new StringBuilder();
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
             String processElement = processElementDocument.getProcessElement();
+            String resource = processElementDocument.getResource();
             Document document = processElementDocument.getDocument();
 
             String subsentence = cleanSubsentence(realizeSentence(document));
@@ -98,6 +98,7 @@ public class SurfaceRealizer {
 
             subsentenceXML.append("<subsentence ")
                     .append("processElement=\"").append(processElement).append("\" ")
+                    .append("resource=\"").append(resource).append("\" ")
                     .append("startIndex=\"").append(startIndex).append("\" ")
                     .append("endIndex=\"").append(indexEnd).append("\" ")
                     .append(">")

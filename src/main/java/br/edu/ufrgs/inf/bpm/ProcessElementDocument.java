@@ -4,8 +4,17 @@ import org.w3c.dom.Document;
 
 public class ProcessElementDocument {
 
+    private String resource;
     private String processElement;
     private Document document;
+
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
 
     public String getProcessElement() {
         return processElement;

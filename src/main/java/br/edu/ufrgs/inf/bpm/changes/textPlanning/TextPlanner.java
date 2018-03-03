@@ -999,8 +999,12 @@ public class TextPlanner {
         for (int i = 0; i < passedFragments.size(); i++) {
             processElement = passedFragments.get(i).getProcessElement();
             document = dSynTSentence.getDocuments().get(i + 1);
-            dSynTSentence.addProcessElementDocument(processElement, document);
+            dSynTSentence.addProcessElementDocument(processElement, "", document);
         }
+    }
+
+    private String getRole(ExecutableFragment eFrag) {
+        return eFrag.getRole().trim();
     }
 
 }

@@ -45,12 +45,21 @@ public abstract class DSynTSentence {
     }
 
     public void addProcessElementDocument(String processElement) {
-        addProcessElementDocument(processElement, doc);
+        addProcessElementDocument(processElement, eFrag.getRole().trim(), doc);
+    }
+
+    public void addProcessElementDocument(String processElement, String role) {
+        addProcessElementDocument(processElement, role, doc);
     }
 
     public void addProcessElementDocument(String processElement, Document document) {
+        addProcessElementDocument(processElement, eFrag.getRole().trim(), document);
+    }
+
+    public void addProcessElementDocument(String processElement, String role, Document document) {
         ProcessElementDocument processElementDocument = new ProcessElementDocument();
         processElementDocument.setProcessElement(processElement);
+        processElementDocument.setResource(role);
         processElementDocument.setDocument(document);
         processElementDocumentList.add(processElementDocument);
     }
