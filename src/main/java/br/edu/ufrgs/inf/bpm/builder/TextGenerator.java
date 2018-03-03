@@ -87,10 +87,6 @@ public class TextGenerator {
 
         surfaceText = surfaceRealizer.postProcessText(surfaceText);
 
-        // if(surfaceText.startsWith(" \n")){
-        //    surfaceText = surfaceText.replaceFirst(" \n", "" );
-        // }
-
         return surfaceText;
     }
 

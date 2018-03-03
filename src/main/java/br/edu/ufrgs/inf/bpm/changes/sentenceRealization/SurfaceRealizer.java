@@ -1,26 +1,11 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import com.cogentex.real.api.RealProMgr;
-import org.python.antlr.ast.For;
 import org.w3c.dom.Document;
-import processToText.dataModel.dsynt.DSynTConditionSentence;
-import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
-import processToText.dataModel.intermediate.ConditionFragment;
-import processToText.dataModel.intermediate.ExecutableFragment;
 
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 
 public class SurfaceRealizer {
@@ -37,13 +22,22 @@ public class SurfaceRealizer {
         int lastLevel = -1;
 
         surfaceText.append("<text>");
+        boolean firstLine = true;
         for (DSynTSentence s : sentencePlan) {
             int level = s.getExecutableFragment().sen_level;
 
             String newSentence = realizeSentence(s.getDSynT());
             String subsentenceXml = generateXmlSubsentence(s, newSentence);
             String resource = s.getExecutableFragment().getRole().trim();
-            int newLineAmount = getNewLineAmount(s, level, lastLevel);
+
+            int newLineAmount;
+            if (firstLine) {
+                newLineAmount = 0;
+                firstLine = false;
+            } else {
+                newLineAmount = getNewLineAmount(s, level, lastLevel);
+            }
+
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
 
