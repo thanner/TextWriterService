@@ -48,16 +48,11 @@ public abstract class DSynTSentence {
         addProcessElementDocument(processElement, eFrag.getRole().trim(), doc);
     }
 
-    public void addProcessElementDocument(String processElement, String role) {
-        addProcessElementDocument(processElement, role, doc);
-    }
-
     public void addProcessElementDocument(String processElement, Document document) {
         addProcessElementDocument(processElement, eFrag.getRole().trim(), document);
     }
 
     public void addProcessElementDocument(String processElement, String role, Document document) {
-        System.out.println(processElement);
         ProcessElementDocument processElementDocument = new ProcessElementDocument();
         processElementDocument.setProcessElement(processElement);
         processElementDocument.setResource(role);

@@ -2,5 +2,5 @@
 <dsynt>
     <action>begin</action>
     <object>process</object>
-    <addition></addition>
+    <addition>when</addition>
 </dsynt>

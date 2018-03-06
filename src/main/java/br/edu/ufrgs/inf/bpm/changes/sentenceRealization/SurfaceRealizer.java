@@ -53,6 +53,9 @@ public class SurfaceRealizer {
 
             surfaceText.append(setenceXML);
             lastLevel = level;
+
+            // System.out.println(newSentence);
+            // XmlFormat.printDocument(s.getDSynT());
         }
         surfaceText.append("</text>");
 
@@ -92,7 +95,7 @@ public class SurfaceRealizer {
             String resource = processElementDocument.getResource();
             Document document = processElementDocument.getDocument();
 
-            System.out.println(realizeSentence(document));
+            // System.out.println("Subsentence: " + realizeSentence(document));
 
             String subsentence = cleanSubsentence(realizeSentence(document));
             int startIndex = getIndexStartSubstentence(sentence, subsentence);

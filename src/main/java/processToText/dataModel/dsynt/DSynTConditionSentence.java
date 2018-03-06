@@ -1,6 +1,5 @@
 package processToText.dataModel.dsynt;
 
-import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.util.DSynTUtil;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;
@@ -92,7 +91,7 @@ public class DSynTConditionSentence extends DSynTSentence {
         // Create coordinating conjunction node
         Element add = doc.createElement("dsyntnode");
         add.setAttribute("rel", "COORD");
-        if (isAnd == true) {
+        if (isAnd) {
             add.setAttribute("lexeme", "AND");
         } else {
             add.setAttribute("lexeme", "OR");
@@ -104,19 +103,19 @@ public class DSynTConditionSentence extends DSynTSentence {
         add.appendChild(cVerb2);
 
         // Create business object (conditional sentence)
-        if (cFrag.hasBO() == true) {
+        if (cFrag.hasBO()) {
             cObject2 = IntermediateToDSynTConverter.createBO(doc, cFrag);
             cVerb2.appendChild(cObject2);
         }
 
         // Create role (conditional sentence)
-        if (cFrag.getRole().equals("") == false) {
+        if (!cFrag.getRole().equals("")) {
             cRole2 = IntermediateToDSynTConverter.createRole(doc, cFrag);
             cVerb2.appendChild(cRole2);
         }
 
         // Create addition
-        if (cFrag.getAddition().equals("") == false) {
+        if (!cFrag.getAddition().equals("")) {
             IntermediateToDSynTConverter.createAddition(doc, cVerb2, cFrag);
         }
 

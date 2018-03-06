@@ -1,15 +1,12 @@
 package processToText.dataModel.dsynt;
 
 
-import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import org.apache.xerces.dom.DocumentImpl;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
 
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
