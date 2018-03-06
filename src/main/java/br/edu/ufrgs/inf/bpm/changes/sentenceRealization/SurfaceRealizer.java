@@ -92,6 +92,8 @@ public class SurfaceRealizer {
             String resource = processElementDocument.getResource();
             Document document = processElementDocument.getDocument();
 
+            System.out.println(realizeSentence(document));
+
             String subsentence = cleanSubsentence(realizeSentence(document));
             int startIndex = getIndexStartSubstentence(sentence, subsentence);
             int indexEnd = getIndexEndSubsentence(startIndex, subsentence);

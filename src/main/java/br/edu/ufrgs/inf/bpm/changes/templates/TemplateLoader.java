@@ -22,6 +22,8 @@ public class TemplateLoader {
     public static final String RIGID = "Rigid.xml";
     public static final String RIGID_MAIN = "RigidMain.xml";
     public static final String RIGID_DEV = "RigidDeviations.xml";
+
+    public static final String START_EVENT = "Start.xml";
     private String action = "";
     private String object = "";
     private String addition = "";

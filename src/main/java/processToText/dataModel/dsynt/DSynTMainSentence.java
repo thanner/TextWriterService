@@ -24,12 +24,6 @@ public class DSynTMainSentence extends DSynTSentence {
     public DSynTMainSentence(ExecutableFragment eFrag) {
         this.eFrag = eFrag;
         createDSynTRepresentation();
-
-        // TODO: REMOVER
-        /*
-        System.out.println("Main");
-        SurfaceRealizer.printDocument(doc, System.out);
-        */
     }
 
     public void createDSynTRepresentation() {

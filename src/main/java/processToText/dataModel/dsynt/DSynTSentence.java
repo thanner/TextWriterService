@@ -57,6 +57,7 @@ public abstract class DSynTSentence {
     }
 
     public void addProcessElementDocument(String processElement, String role, Document document) {
+        System.out.println(processElement);
         ProcessElementDocument processElementDocument = new ProcessElementDocument();
         processElementDocument.setProcessElement(processElement);
         processElementDocument.setResource(role);
