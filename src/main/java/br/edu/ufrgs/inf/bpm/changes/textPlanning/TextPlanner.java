@@ -651,22 +651,15 @@ public class TextPlanner {
 
         ExecutableFragment eFrag = new ExecutableFragment(anno.getActions().get(0), bo, "", anno.getAddition());
         eFrag.addAssociation(activity.getId());
+
+        // TODO: SENTENCE TEMPLATE
         eFrag.addMod("the process begins when", modRecord);
 
         String role = getRole(activity, eFrag);
         eFrag.setRole(role);
-        if (anno.getActions().size() == 2) {
-            ExecutableFragment eFrag2 = null;
-            if (anno.getBusinessObjects().size() == 2) {
-                eFrag2 = new ExecutableFragment(anno.getActions().get(1), anno.getBusinessObjects().get(1), "", "");
-                eFrag2.addAssociation(activity.getId());
-            } else {
-                eFrag2 = new ExecutableFragment(anno.getActions().get(1), "", "", "");
-                eFrag2.addAssociation(activity.getId());
-            }
 
-            correctArticleSettings(eFrag2);
-            eFrag.addSentence(eFrag2);
+        if (anno.getActions().size() == 2) {
+            addExecutableFragment(eFrag, activity, anno);
         }
 
         if (bo.endsWith("s") && lHelper.isNoun(bo.substring(0, bo.length() - 1))) {
@@ -689,6 +682,18 @@ public class TextPlanner {
 
         // TODO: Print
         XmlFormat.printDocument(dsyntSentence.getDSynT());
+    }
+
+    private void addExecutableFragment(ExecutableFragment eFrag, Activity activity, Annotation anno) {
+        ExecutableFragment eFrag2;
+        if (anno.getBusinessObjects().size() == 2) {
+            eFrag2 = new ExecutableFragment(anno.getActions().get(1), anno.getBusinessObjects().get(1), "", "");
+        } else {
+            eFrag2 = new ExecutableFragment(anno.getActions().get(1), "", "", "");
+        }
+        eFrag2.addAssociation(activity.getId());
+        correctArticleSettings(eFrag2);
+        eFrag.addSentence(eFrag2);
     }
 
     private ExecutableFragment handleStandardCase(Activity activity, Annotation anno, int level){
