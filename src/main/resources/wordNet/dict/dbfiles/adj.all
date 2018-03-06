@@ -5063,7 +5063,7 @@
 { light, (demanding little effort; not burdensome; "light housework"; "light exercise") }
 { unexacting, (not rigorous; "relaxed and unexacting standards") }]
 
-[{ [ IMPERATIVE, noun.state:imperativeness,+ BESEECHING,!] ASSERTIVE,^ (requiring attention or action; "as nuclear weapons proliferate, preventing war becomes imperative"; "requests that grew more and more imperative") }
+[{ [ IMPERATIVE, noun.state:imperativeness,+ BESEECHING,!] ASSERTIVE,^ (requiring attention or action; "as nuclear weapons proliferate, preventing war becomes isImperative"; "requests that grew more and more isImperative") }
 { [ adjuratory1, verb.communication:adjure,+ ] (containing a solemn charge or command) }
 { clamant, crying, [ exigent, noun.state:exigency,+ noun.event:exigency,+ ] [ insistent, noun.state:insistency,+ ] [ instant, noun.attribute:instancy,+ ] (demanding attention; "clamant needs"; "a crying need"; "regarded literary questions as exigent and momentous"- H.L.Mencken; "insistent hunger"; "an instant need") }
 { peremptory2, (not allowing contradiction or refusal; "spoke in peremptory tones"; "peremptory commands") }

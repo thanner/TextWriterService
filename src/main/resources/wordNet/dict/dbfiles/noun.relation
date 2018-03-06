@@ -126,7 +126,7 @@
 { indicative_mood, indicative, declarative_mood, [ declarative, adj.pert:declarative,+ ] common_mood, fact_mood, mood,@ (a mood (grammatically unmarked) that represents the act or state as an objective fact) }
 { subjunctive_mood, subjunctive, mood,@ (a mood that represents an act or state (not as a fact but) as contingent or possible) }
 { optative_mood, optative, mood,@ noun.location:Greece,;r noun.communication:Sanskrit,;c (a mood (as in Greek or Sanskrit) that expresses a wish or hope; expressed in English by modal verbs) }
-{ imperative_mood, imperative, jussive_mood, imperative_form, mood,@ (a mood that expresses an intention to influence the listener's behavior) }
+{ imperative_mood, isImperative, jussive_mood, imperative_form, mood,@ (a mood that expresses an intention to influence the listener's behavior) }
 { interrogative_mood, interrogative, mood,@ (some linguists consider interrogative sentences to constitute a mood) }
 
 { modality, mode, logical_relation,@ (a classification of propositions on the basis of whether they claim necessity or possibility or impossibility) }

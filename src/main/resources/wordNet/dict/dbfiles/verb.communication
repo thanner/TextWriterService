@@ -73,7 +73,7 @@
 { [ page, noun.artifact:pager,+ noun.communication:paging,+ ] summon5,@ frames: 9 (contact, as with a pager or by calling somebody's name over a P.A. system) }
 { [ petition, noun.communication:petition,+ noun.person:petitioner1,+ ] request1,@ frames: 9,26,24 (write a petition for something to somebody; request formally and in writing) }
 { [ demand, noun.act:demand,+ noun.communication:demand,+ noun.person:demander,+ ] request1,@ frames: 8,28,26 (request urgently and forcefully; "The victim's family is demanding compensation"; "The boss demanded that he be fired immediately"; "She demanded to see the manager") }
-{ [ adjure, adj.all:imperative^adjuratory1,+ noun.communication:adjuration,+ ] charge1,@ frames: 24 (command solemnly) }
+{ [ adjure, adj.all:isImperative^adjuratory1,+ noun.communication:adjuration,+ ] charge1,@ frames: 24 (command solemnly) }
 { [ appeal, noun.communication:appeal,+ ] [ invoke4, noun.communication:invocation,+ noun.act:invocation1,+ ] request1,@ frames: 12 (request earnestly (something from somebody); ask for aid or protection; "appeal to somebody for help"; "Invoke God in times of trouble")}
 { ask5, [ require1, noun.cognition:requirement1,+ ] [ expect, noun.cognition:expectation,+ ] demand,@ frames: 16,24 (consider obligatory; request and expect; "We require our secretary to be on time"; "Aren't we asking too much of these children?"; "I expect my students to arrive in time for their lessons") }
 { claim1, take, exact1, verb.stative:need,@ frames: 10,11,8,9 (take as an undesirable consequence of some event or state of affairs; "the accident claimed three lives"; "The hard work took its toll on her")}
@@ -122,7 +122,7 @@
 { [ reconcile, noun.act:reconciliation1,+ ] patch_up, make_up, [ conciliate, adj.all:conciliative,+ adj.all:conciliatory4,+ adj.all:conciliatory,+ noun.state:conciliation,+ noun.communication:conciliation,+ ] settle2, agree,@ frames: 2 (come to terms; "After some discussion we finally made up") }
 { [ propitiate, adj.all:conciliatory^propitiative,+ adj.all:conciliatory^propitiatory,+ noun.act:propitiation,+ ] [ appease, adj.all:placable^appeasable,+ noun.person:appeaser,+ ] reconcile,@ frames: 9 (make peace with) }
 { [ apply, noun.communication:application,+ noun.person:applicant,+ noun.person:applier,+ ] request1,@ frames: 27,2,22 (ask (for something); "He applied for a leave of absence"; "She applied for college"; "apply for a job") }
-{ [ urge, adj.all:imperative^urgent,+ noun.communication:urging,+ ] urge_on, [ press, noun.attribute:pressure,+ ] [ exhort, adj.all:encouraging^exhortatory,+ noun.communication:exhortation1,+ noun.communication:exhortation,+ ] advise,@ frames: 24 (force or impel in an indicated direction; "I urged him to finish his studies") }
+{ [ urge, adj.all:isImperative^urgent,+ noun.communication:urging,+ ] urge_on, [ press, noun.attribute:pressure,+ ] [ exhort, adj.all:encouraging^exhortatory,+ noun.communication:exhortation1,+ noun.communication:exhortation,+ ] advise,@ frames: 24 (force or impel in an indicated direction; "I urged him to finish his studies") }
 { [ push1, noun.attribute:push,+ noun.act:push1,+ frames: 2] bear_on, verb.social:push,$ press,@ frames: 8,11,10,9,24 (press, drive, or impel (someone) to action or completion of an action; "He pushed her to finish her doctorate") }
 { [ nudge, noun.person:nudger,+ ] push1,@ frames: 24 (push into action by pestering or annoying gently)}
 { [ persuade, adj.all:susceptible^persuasible,+ adj.all:persuasive,+ noun.communication:persuasion,+ noun.person:persuader,+ dissuade,! frames: 9,24 ] induce,@ frames: 30 (cause somebody to adopt a certain position, belief, or course of action; twist somebody's arm; "You can't persuade me to buy this ugly vase!") }
@@ -1544,7 +1544,7 @@
 { [ communicate2, adj.all:communicative,+ adj.all:communicatory,+ noun.communication:communication1,+ noun.Tops:communication,+ noun.person:communicator,+ noun.communication:communicating,+ ] verb.social:interact,@ frames: 1,2 (be in verbal contact; interchange information or ideas; "He and his sons haven't communicated for years"; "Do you communicate well with your advisor?")}
 { [ etymologize, noun.communication:etymology,+ noun.cognition:etymology,+ ] etymologise, verb.change:derive,@ frames: 2,8 (give the etymology or derivation or suggest an etymology (for a word); "The linguist probably etymologized the words incorrectly"; "Although he is not trained in this, his hobby is etymologizing")}
 { begin4, verb.change:begin,$ frames: 8 (begin to speak, understand, read, and write a language; "She began Russian at an early age"; "We started French in fourth grade")}
-{ stet, direct,@ frames: 2 (printing: direct that a matter marked for omission or correction is to be retained (used in the imperative))}
+{ stet, direct,@ frames: 2 (printing: direct that a matter marked for omission or correction is to be retained (used in the isImperative))}
 { [ reprobate1, noun.state:reprobation,+ ] condemn1,@ noun.cognition:theology,;c frames: 9 (abandon to eternal damnation; "God reprobated the unrepenting sinner")}
 { message, communicate2,@ frames: 2 (send a message; "There is no messaging service at this company")}
 { message1, message,$ communicate1,@ frames: 8 (send as a message; "She messaged the final report by fax")}

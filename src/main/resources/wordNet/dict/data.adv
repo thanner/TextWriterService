@@ -2523,7 +2523,7 @@
 00366590 02 r 01 impassively 0 001 \ 00860747 a 0101 | in an impassive manner; "he submitted impassively to his arrest"  
 00366712 02 r 02 impenitently 0 unrepentantly 0 004 \ 01748158 a 0202 \ 01748158 a 0101 ! 00366906 r 0203 ! 00366906 r 0101 | in an impenitent manner; "he repeated his position unrepentantly"  
 00366906 02 r 03 penitently 0 penitentially 0 repentantly 0 005 ! 00366712 r 0302 \ 01747466 a 0302 \ 01747953 a 0201 ! 00366712 r 0101 \ 01747466 a 0101 | showing remorse  
-00367080 02 r 02 imperatively 0 peremptorily 0 002 \ 00716670 a 0201 \ 00715884 a 0101 | in an imperative and commanding manner  
+00367080 02 r 02 imperatively 0 peremptorily 0 002 \ 00716670 a 0201 \ 00715884 a 0101 | in an isImperative and commanding manner
 00367210 02 r 02 imperceptibly 0 unnoticeably 0 003 \ 01291153 a 0201 ! 00367464 r 0101 \ 01752802 a 0101 | in an imperceptible manner or to an imperceptible degree; "the power of the Secretary of State in London increased gradually but imperceptibly"  
 00367464 02 r 03 perceptibly 0 noticeably 0 observably 0 004 \ 01290488 a 0303 \ 01289803 a 0201 ! 00367210 r 0101 \ 01751027 a 0101 | in a noticeable manner; "he changed noticeably over the years"  
 00367664 02 r 01 imperiously 0 001 \ 01897176 a 0103 | in an imperious manner; "imperiously he cut her short"  

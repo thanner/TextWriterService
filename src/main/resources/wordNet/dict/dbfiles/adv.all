@@ -422,7 +422,7 @@
 { about2, around9, (in or to a reversed position or direction; "about face"; "suddenly she turned around") }
 { about4, around4, (used of movement to or among many different places or in no particular direction; "wandering about with no place to go"; "people were rushing about"; "news gets around (or about)"; "traveled around in Asia"; "he needs advice from someone who's been around"; "she sleeps around") }
 { here_and_there, (in or to various places; first this place and then that; "he worked here and there but never for long in one town"; "we drove here and there in the darkness") }
-{ [ urgently, adj.all:imperative^urgent,\] [ desperately, adj.all:imperative^desperate,\] (with great urgency; "health care reform is needed urgently"; "the soil desperately needed potash") }
+{ [ urgently, adj.all:isImperative^urgent,\] [ desperately, adj.all:isImperative^desperate,\] (with great urgency; "health care reform is needed urgently"; "the soil desperately needed potash") }
 { about5, almost, most2, nearly, near3, nigh1, virtually2, well-nigh, ((of actions or states) slightly short of or not quite accomplished; all but; "the job is (just) about done"; "the baby was almost asleep when the alarm sounded"; "we're almost finished"; "the car all but ran her down"; "he nearly fainted"; "talked for nigh onto 2 hours"; "the recording is well-nigh perfect"; "virtually all the parties signed the contract"; "I was near exhausted by the run"; "most everyone agrees") }
 { [ asexually, adj.all:asexual,\ ] (in an asexual manner; "plants that reproduce asexually") }
 { [ asymptotically, adj.pert:asymptotic,\] (toward an asymptote; "it grew asymptotically") }
@@ -942,7 +942,7 @@
 { [ imperially, adj.pert:imperial,\] (in an imperial manner; "imperially decreed") }
 { [ incestuously, adj.pert:incestuous,\] (by incest; "incestuously conceived") }
 { [ inconceivably, adj.all:unthinkable^inconceivable,\ ] (to an inconceivable degree; "inconceivably small") }
-{ [ insistently, adj.all:imperative^insistent,\ ] (in an insistent manner) }
+{ [ insistently, adj.all:isImperative^insistent,\ ] (in an insistent manner) }
 { [ institutionally, adj.pert:institutional,\] (by an institution; "institutionally controlled") }
 { [ judicially, adj.pert:judicial,\] (in a judicial manner; "judicially controlled process")}
 { [ nasally, adj.pert:nasal,\] (in a nasal manner; "inhaled nasally") }
@@ -2500,7 +2500,7 @@
 { [ impassively, adj.all:unemotional^impassive,\] (in an impassive manner; "he submitted impassively to his arrest") }
 { [ impenitently, adj.all:impenitent,\] [ unrepentantly, adj.all:unrepentant,\] (in an impenitent manner; "he repeated his position unrepentantly") }
 { [ penitently, impenitently,! adj.all:penitent,\] [ penitentially, adj.all:penitent^penitential,\] [ repentantly, unrepentantly,! adj.all:repentant,\] (showing remorse) }
-{ [ imperatively, adj.all:imperative,\] [ peremptorily, adj.all:imperative^peremptory2,\] (in an imperative and commanding manner) }
+{ [ imperatively, adj.all:isImperative,\] [ peremptorily, adj.all:isImperative^peremptory2,\] (in an isImperative and commanding manner) }
 { [ imperceptibly, perceptibly,! adj.all:imperceptible,\] [ unnoticeably, adj.all:unnoticeable,\] (in an imperceptible manner or to an imperceptible degree; "the power of the Secretary of State in London increased gradually but imperceptibly") }
 { [ perceptibly, imperceptibly,! adj.all:perceptible,\] [ noticeably, adj.all:noticeable,\] [observably, adj.all:noticeable^observable,\] (in a noticeable manner; "he changed noticeably over the years") }
 { [imperiously, adj.all:proud^imperious,\] (in an imperious manner; "imperiously he cut her short") }
@@ -2946,7 +2946,7 @@
 { [ presciently, adj.all:discerning^prescient,\] [ cannily, adj.all:smart^canny,\] (with foresight; "more presciently than they superiors, these workers grasped the economic situation") }
 { [ carnally, adj.all:physical^carnal,\] (in a carnal manner) }
 { [ presentably, adj.all:respectable^presentable,\] (in a presentable manner; "years ago in her white-painted infancy it must have hung presentably on the deck of some luxury liner") }
-{ [ pressingly, adj.all:imperative^pressing,\] (in a pressing manner) }
+{ [ pressingly, adj.all:isImperative^pressing,\] (in a pressing manner) }
 { [ presumptuously, adj.all:forward2^presumptuous,\] (in a presumptuous manner; "he presumptuously overstepped the doctor's orders")}
 { [ pretentiously, unpretentiously,! adj.all:pretentious,\] (in a pretentious manner; "this author writes pretentiously") }
 { [ unpretentiously, pretentiously,! adj.all:unpretentious,\] (in an unpretentious manner; "she was unpretentiously dressed even though she was the guest of honor") }

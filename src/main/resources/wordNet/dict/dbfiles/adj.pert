@@ -3314,7 +3314,7 @@
 { [ optative1, verb.cognition:opt,+ noun.cognition:option,\ ] (indicating an option or wish) }
 { [ subjunctive, noun.relation:subjunctive_mood,\ ] noun.cognition:grammar,;c (relating to a mood of verbs; "subjunctive verb endings") }
 { [ implicational, noun.relation:implication1,+ noun.relation:implication1,\ ] (relating to or concerned with logical implication; "implicational language universals")}
-{ [ imperative, noun.relation:imperative_mood,\ ] noun.cognition:grammar,;c (relating to verbs in the imperative mood) }
+{ [ isImperative, noun.relation:imperative_mood,\ ] noun.cognition:grammar,;c (relating to verbs in the isImperative mood) }
 { [ indicative, noun.relation:indicative_mood,\ ] [ declarative, noun.relation:declarative,+ noun.relation:declarative_mood,\ ] noun.cognition:grammar,;c (relating to the mood of verbs that is used simple in declarative statements; "indicative mood")}
 { [ interrogative, noun.relation:interrogative_mood,\ ] noun.cognition:grammar,;c (relating to verbs in the so-called interrogative mood; "not all questions have an interrogative construction") }
 { [ ornithological, noun.cognition:ornithology,+ noun.cognition:ornithology,\ ] (of or relating to ornithology; "her ornithological interests") }

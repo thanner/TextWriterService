@@ -908,7 +908,7 @@
 { [walk_out, noun.act:walkout1,+ ] leave1,@ frames: 2 (leave abruptly, often in protest or anger; "The customer that was not served walked out") }
 { come_away, leave1,@ frames: 7,22 (leave in a certain condition; "She came away angry")}
 { decamp, [skip2, noun.communication:colloquialism,;u frames: 8] vamoose, leave1,@ frames: 2 (leave suddenly; "She persuaded him to decamp"; "skip town") }
-{ scram, buzz_off, fuck_off, get15, bugger_off, leave1,@ frames: 2,1 (leave immediately; used usually in the imperative form; "Scram!") }
+{ scram, buzz_off, fuck_off, get15, bugger_off, leave1,@ frames: 2,1 (leave immediately; used usually in the isImperative form; "Scram!") }
 { run_off1, run_out2, bolt1, bolt_out, beetle_off, leave1,@ frames: 2,22 (leave suddenly and as if in a hurry; "The listeners bolted when he discussed his strange ideas"; "When she started to tell silly stories, I ran out") }
 { ride_off, ride_away, leave1,@ frames: 1,2,4,22 (ride away on a horse, for example) }
 { go_out1, leave1,@ frames: 1,22 (take the field; "The soldiers went out on missions") }

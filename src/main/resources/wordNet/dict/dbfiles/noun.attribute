@@ -3084,9 +3084,9 @@
 { [ essentiality, adj.all:important^essential,+ adj.all:essential,+ inessentiality,!] [ essentialness, adj.all:necessary^essential,+ adj.all:important^essential,+ adj.pert:essential,+ adj.all:essential4,+ adj.all:essential,+ ] importance,@ (basic importance) }
 { [ vitalness, adj.all:essential^vital,+ adj.all:alive1^vital,+ ] essentiality,@ (the quality of being essential to maintain life) }
 { [ indispensability, adj.all:necessary^indispensable,+ adj.all:indispensable,+ dispensability,!] [ indispensableness, adj.all:necessary^indispensable,+ adj.all:indispensable,+ dispensableness,!] [ vitalness1, adj.all:indispensable^vital,+ adj.all:essential^vital,+ ] essentiality,@ (the quality possessed by something that you cannot possibly do without) }
-{ [ urgency, adj.all:imperative^urgent,+ ] importance,@ (pressing importance requiring speedy action; "the urgency of his need") }
+{ [ urgency, adj.all:isImperative^urgent,+ ] importance,@ (pressing importance requiring speedy action; "the urgency of his need") }
 { [ edge1, adj.all:tense3^edgy,+ ] sharpness4, urgency,@ (the attribute of urgency in tone of voice; "his voice had an edge to it") }
-{ imperativeness, [ instancy, adj.all:imperative^instant,+ noun.communication:archaism,;u ] urgency,@ (the quality of being insistent; "he pressed his demand with considerable instancy") }
+{ imperativeness, [ instancy, adj.all:isImperative^instant,+ noun.communication:archaism,;u ] urgency,@ (the quality of being insistent; "he pressed his demand with considerable instancy") }
 { [ weight1, adj.all:important^weighty,+ ] [ weightiness1, adj.all:persuasive^weighty,+ adj.all:important^weighty,+ ] importance,@ (the relative importance granted to something; "his opinion carries great weight"; "the progression implied an increasing weightiness of the items listed") }
 
 { [ unimportance, adj.all:unimportant4,+ adj.all:unimportant,+ importance,!] value,@ (the quality of not being important or worthy of note) }

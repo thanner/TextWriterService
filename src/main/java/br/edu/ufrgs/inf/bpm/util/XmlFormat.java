@@ -68,8 +68,9 @@ public class XmlFormat {
         }
     }
 
-    public static void printDocument(Document doc, OutputStream out) {
+    public static void printDocument(Document doc) {
         try {
+            OutputStream out = System.out;
             TransformerFactory tf = TransformerFactory.newInstance();
             Transformer transformer = tf.newTransformer();
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");

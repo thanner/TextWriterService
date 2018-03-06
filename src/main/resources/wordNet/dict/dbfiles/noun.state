@@ -121,7 +121,7 @@
 { thing, situation,@ (a special situation; "this thing has got to end"; "it is a remarkable thing") }
 { time_bomb, ticking_bomb, situation2,@ (a problematic situation that will eventually become dangerous if not addressed; "India is a demographic time bomb"; "the refugee camp is a ticking bomb waiting to go off") }
 { tinderbox, situation2,@ (a dangerous state of affairs; a situation that is a potential source of violence; "the Balkans are the tinderbox of Europe") }
-{ [ urgency1, adj.all:imperative^urgent,+ ] situation2,@ (an urgent situation calling for prompt action; "I'll be there, barring any urgencies"; "they departed hurriedly because of some great urgency in their affairs") }
+{ [ urgency1, adj.all:isImperative^urgent,+ ] situation2,@ (an urgent situation calling for prompt action; "I'll be there, barring any urgencies"; "they departed hurriedly because of some great urgency in their affairs") }
 { [ congestion1, verb.contact:congest,+ ] [ over-crowding, verb.motion:overcrowd1,+ verb.motion:overcrowd,+ ] crowding,@ (excessive crowding; "traffic congestion") }
 { [ reinstatement, verb.social:reinstate1,+ verb.social:reinstate,+ ] condition,@ (the condition of being reinstated; "her reinstatement to her former office followed quickly") }
 
@@ -612,7 +612,7 @@
 { emergency, temporary_state,@ (a state in which martial law applies; "the governor declared a state of emergency") }
 { [ clutch, verb.cognition:clutch4,+ ] temporary_state,@ (a tense critical situation; "he is a good man in the clutch") }
 { Dunkirk, crisis,@ (a crisis in which a desperate effort is the only alternative to defeat; "the Russians had to pull off a Dunkirk to get out of there") }
-{ [ exigency, adj.all:imperative^exigent,+ ] crisis,@ (a pressing or urgent situation; "the health-care exigency") }
+{ [ exigency, adj.all:isImperative^exigent,+ ] crisis,@ (a pressing or urgent situation; "the health-care exigency") }
 { juncture, critical_point, crossroads, crisis,@ (a crisis situation or point in time when a critical decision must be made; "at that juncture he had no idea what to do"; "he must be made to realize that the company stands at a critical point") }
 { desperate_straits, dire_straits, straits,@ (a state of extreme distress) }
 { [ criticality1, adj.all:critical4,+ ] juncture,@ (a critical state; especially the point at which a nuclear reaction is self-sustaining) }
@@ -2926,7 +2926,7 @@
 { [ requisiteness, adj.all:necessary^requisite,+ ] necessity,@ (the state of being absolutely required) }
 { urgency, necessity,@ (the state of being urgent; an earnest and insistent necessity) }
 { [ hurry, verb.change:hurry1,+ ] haste, urgency,@ (a condition of urgency making it necessary to hurry; "in a hurry to lock the door") }
-{ [ imperativeness, adj.all:imperative,+ ] [ insistence, adj.all:continual^insistent,+ ] [ insistency, adj.all:imperative^insistent,+ ] press, [ pressure, verb.social:pressure1,+ verb.social:pressure,+ verb.stative:press,+ ] urgency,@ (the state of demanding notice or attention; "the insistence of their hunger"; "the press of business matters") }
+{ [ imperativeness, adj.all:isImperative,+ ] [ insistence, adj.all:continual^insistent,+ ] [ insistency, adj.all:isImperative^insistent,+ ] press, [ pressure, verb.social:pressure1,+ verb.social:pressure,+ verb.stative:press,+ ] urgency,@ (the state of demanding notice or attention; "the insistence of their hunger"; "the press of business matters") }
 { [ criticality, adj.all:indispensable^critical,+ adj.all:critical3,+ ] [ criticalness, adj.all:indispensable^critical,+ adj.all:crucial^critical,+ adj.all:critical3,+ ] [ cruciality, adj.all:important^crucial,+ adj.all:crucial,+ ] urgency,@ (a state of critical urgency) }
 
 { [ fullness, adj.all:full,+ emptiness,!] condition,@ (the condition of being filled to capacity) }

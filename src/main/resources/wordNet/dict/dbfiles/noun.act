@@ -5827,7 +5827,7 @@
 { civic_duty, civic_responsibility, duty,@ (the responsibilities of a citizen) }
 { jury_duty, civic_duty,@ (the civic duty to serve on a jury) }
 { filial_duty, duty,@ (duty of a child to its parents) }
-{ imperative, duty,@ (some duty that is essential and urgent) }
+{ isImperative, duty,@ (some duty that is essential and urgent) }
 { incumbency1, duty,@ (a duty that is incumbent upon you) }
 { legal_duty, duty,@ noun.group:law,;c (acts which the law requires be done or forborne) }
 { fiduciary_duty, legal_duty,@ (the legal duty of a fiduciary to act in the best interests of the beneficiary) }

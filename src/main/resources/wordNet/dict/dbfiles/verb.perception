@@ -411,7 +411,7 @@
 { [ wiretap, noun.act:wiretap,+ noun.person:wiretapper,+ ] [ tap, noun.act:tap1,+ noun.person:tapper,+ ] intercept, [ bug, noun.artifact:bug,+ ] eavesdrop,@ frames: 8 (tap a telephone or telegraph wire to get information; "The FBI was tapping the phone line of the suspected spy"; "Is this hotel room bugged?")}
 { catch, take_in, overhear, hear,@ listen,* frames: 8,25 (hear, usually without the knowledge of the speakers; "We overheard the conversation at the next table") }
 { catch12, get13, catch,$ hear,@ frames: 8 (perceive by hearing; "I didn't catch your name"; "She didn't get his name when they met the first time") }
-{ hark, harken, hearken, listen,@ frames: 2,22 (listen; used mostly in the imperative) }
+{ hark, harken, hearken, listen,@ frames: 2,22 (listen; used mostly in the isImperative) }
 { listen_in, [ eavesdrop, noun.person:eavesdropper,+ ] listen,@ frames: 2,22 (listen without the speaker's knowledge; "the jealous man was eavesdropping on his wife's conversations") }
 { deafen, [ deaf, noun.group:deaf,+ ] desensitize,@ frames: 10,9 (make or render deaf; "a deafening noise") }
 { deafen1, make_noise,* frames: 9,10 (be unbearably loud; "a deafening noise") }

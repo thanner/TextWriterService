@@ -355,7 +355,7 @@
 { [continue, discontinue,! ] [ uphold, noun.person:upholder,+ ] carry_on, bear_on1, [ preserve, noun.state:preservation,+ ] verb.stative:continue1,$ verb.motion:continue,$ keep,@ frames: 8,11 (keep or maintain in unaltered condition; cause to remain or last; "preserve the peace in the family"; "continue the family tradition"; "Carry on the old traditions")}
 { [ mummify, noun.state:mummification,+ ] preserve,@ frames: 8 (preserve while making lifeless; "mummified ideas and institutions should be gotten rid of")}
 { shut_off, close_off, discontinue,@ frames: 8,9,11 (stem the flow of; "shut off the gas when you leave for a vacation") }
-{ cheese, stop,@ frames: 8 (used in the imperative (get away, or stop it); "Cheese it!") }
+{ cheese, stop,@ frames: 8 (used in the isImperative (get away, or stop it); "Cheese it!") }
 { [ discontinue, noun.act:discontinuation,+ noun.act:discontinuance,+ continue,! ] [ stop, noun.act:stop2,+ noun.act:stop,+ noun.event:stop,+ noun.act:stoppage,+ frames: 28] [ cease, noun.event:cessation,+ noun.time:cease,+ frames: 28] give_up, quit4, lay_off, frames: 11,8,33 (put an end to a state or an activity; "Quit teasing your little brother") }
 { call_it_quits, call_it_a_day, stop,@ frames: 2 (stop doing what one is doing; "At midnight, the student decided to call it quits and closed his books")}
 { break3, quit4,@ frames: 8 (give up; "break cigarette smoking") }

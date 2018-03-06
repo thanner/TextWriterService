@@ -727,7 +727,7 @@
 { juncture, occasion, happening,@ (an event that occurs at a critical time; "at such junctures he always had an impulse to leave"; "it was needed only on special occasions") }
 { [ climax, adj.all:climactic,+ verb.change:climax,+ ] flood_tide1, juncture,@ (the highest point of anything conceived of as growing or developing or unfolding; "the climax of the artist's career"; "in the flood tide of his success") }
 { conjuncture, juncture,@ (a critical combination of events or circumstances) }
-{ [ emergency, adj.all:sudden^emergent,+ ] [ exigency, adj.all:imperative^exigent,+ ] pinch1, crisis,@ (a sudden unforeseen crisis (usually involving danger) that requires immediate action; "he never knew what to do in an emergency") }
+{ [ emergency, adj.all:sudden^emergent,+ ] [ exigency, adj.all:isImperative^exigent,+ ] pinch1, crisis,@ (a sudden unforeseen crisis (usually involving danger) that requires immediate action; "he never knew what to do in an emergency") }
 { [ crisis, adj.all:crucial^critical,+ ] juncture,@ (a crucial stage or turning point in the course of something; "after the crisis the patient either dies or gets better") }
 { landmark, turning_point, watershed, juncture,@ (an event marking a unique or important historical change of course or one on which important developments depend; "the agreement was a watershed in the history of both nations") }
 { Fall_of_Man, landmark,@ noun.communication:Old_Testament,;c ((Judeo-Christian mythology) when Adam and Eve ate of the fruit of the tree of knowledge of good and evil in the Garden of Eden, God punished them by driving them out of the Garden of Eden and into the world where they would be subject to sickness and pain and eventual death) }

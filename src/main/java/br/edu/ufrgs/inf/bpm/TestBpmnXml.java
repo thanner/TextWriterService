@@ -15,6 +15,10 @@ import java.io.IOException;
 public class TestBpmnXml {
 
     public static void main(String[] args) {
+        System.out.println(getStructuredText());
+    }
+
+    public static String getStructuredText(){
         String process = "";
         try {
             String text = FileUtils.readFileToString(new File("src/main/others/testData/bpmnFile/diagram2.bpmn"), "UTF-8");
@@ -27,9 +31,7 @@ public class TestBpmnXml {
             e.printStackTrace();
         }
 
-        System.out.println(XmlFormat.format(process));
-        // System.out.println(ProcessXmlConverter.convertToText(process));
+        return XmlFormat.format(process);
     }
-
 
 }

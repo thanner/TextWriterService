@@ -9220,7 +9220,7 @@ impendent a 1 2 & + 1 0 00450348
 impending a 1 1 & 1 1 00450348  
 impenetrable a 3 3 ! & + 3 0 01776177 02425186 00537141  
 impenitent a 2 4 ! & ^ + 2 0 01748158 01964665  
-imperative a 2 6 ! & ^ \ + ; 2 1 00715884 03105861  
+isImperative a 2 6 ! & ^ \ + ; 2 1 00715884 03105861
 imperceptible a 1 4 ! & ^ + 1 0 01752802  
 imperfect a 2 5 ! & ^ = + 2 2 01756665 01262463  
 imperfectible a 1 2 & + 1 0 01757608  
