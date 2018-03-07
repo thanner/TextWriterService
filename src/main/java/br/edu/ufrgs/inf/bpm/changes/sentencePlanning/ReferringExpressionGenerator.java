@@ -12,8 +12,6 @@ import net.didion.jwnl.data.list.PointerTargetTree;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelHelper;
 import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
-import processToText.dataModel.intermediate.ExecutableFragment;
-import processToText.dataModel.process.ProcessModel;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,33 +20,18 @@ public class ReferringExpressionGenerator {
 
     private EnglishLabelHelper lHelper;
 
-
     public ReferringExpressionGenerator(EnglishLabelHelper lHelper) {
         this.lHelper = lHelper;
     }
 
-
-    public ArrayList<DSynTSentence> insertReferringExpressions(ArrayList<DSynTSentence> textPlan, boolean male) {
+    public ArrayList<DSynTSentence> insertReferringExpressions(ArrayList<DSynTSentence> textPlan, boolean isMale) {
         Data previousData = new Data();
 
         for (int i = 0; i < textPlan.size(); i++) {
             Data currentData = new Data(textPlan.get(i));
             if (previousData.getRole() != null && previousData.getFragment() != null && previousData.getdSynTSentence() != null) {
                 if (isReferringExpression(previousData, currentData)) {
-
-                    // Insert referring expression
-                    if (isPerson(currentData.getRole())) {
-                        if (male) {
-                            textPlan.get(i).getExecutableFragment().setRole("he");
-                        } else {
-                            // TODO: SHE?
-                            textPlan.get(i).getExecutableFragment().setRole("it");
-                        }
-                    } else {
-                        textPlan.get(i).getExecutableFragment().setRole("it");
-                    }
-
-                    ((DSynTMainSentence) textPlan.get(i)).changeRole();
+                    setReferringExpression(currentData, isMale);
                     // System.out.println("Referring Expression inserted: " + textPlan.get(i).getExecutableFragment().getAction() + " - " + textPlan.get(i).getExecutableFragment().getBo());
                     previousData.cleanData();
                 }
@@ -57,6 +40,16 @@ public class ReferringExpressionGenerator {
             }
         }
         return textPlan;
+    }
+
+    private void setReferringExpression(Data currentData, boolean isMale){
+        if (isPerson(currentData.getRole()) && isMale) {
+                currentData.getFragment().setRole("he");
+        } else {
+            currentData.getFragment().setRole("it");
+        }
+
+        ((DSynTMainSentence) currentData.getdSynTSentence()).changeRole();
     }
 
     private boolean isReferringExpression(Data previousData, Data currentData) {
