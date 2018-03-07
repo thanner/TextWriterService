@@ -1,6 +1,7 @@
 package br.edu.ufrgs.inf.bpm;
 
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
+import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;
 
 public class ProcessElementDocument {
@@ -46,4 +47,11 @@ public class ProcessElementDocument {
     public void setSentence(String sentence) {
         this.sentence = sentence;
     }
+
+    public void fixDocument() {
+        if (document != null) {
+            document = XmlFormat.getClone(document);
+        }
+    }
+
 }

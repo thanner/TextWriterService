@@ -46,7 +46,7 @@ public class SurfaceRealizer {
                     .append("newLineAmount=\"").append(newLineAmount).append("\" ")
                     .append("tabAmount=\"").append(tabAmount).append("\" ")
                     .append("hasBulletPoint=\"").append(hasBulletPoint).append("\" ")
-                    .append("value=\"").append(newSentence).append("\" ")
+                    .append("value=\"").append(newSentence).append(" \" ")
                     .append(">")
                     .append(subsentenceXml)
                     .append("</sentence>");

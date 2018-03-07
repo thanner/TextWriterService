@@ -1,6 +1,6 @@
 package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 
-import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
+import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.data.IndexWord;
 import net.didion.jwnl.data.POS;

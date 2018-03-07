@@ -1,9 +1,8 @@
 package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 
-import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
+import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
-import processToText.dataModel.intermediate.ExecutableFragment;
 
 import java.util.ArrayList;
 

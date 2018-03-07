@@ -1,8 +1,8 @@
 package processToText.dataModel.dsynt;
 
 
-import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.intermediate.ExecutableFragment;
@@ -84,6 +84,12 @@ public abstract class DSynTSentence {
         processElementDocument.setResource(role);
         processElementDocument.setDocument(document);
         processElementDocumentList.add(processElementDocument);
+    }
+
+    public void fixDocuments() {
+        for (ProcessElementDocument processElementDocument : processElementDocumentList) {
+            processElementDocument.fixDocument();
+        }
     }
 
     public DSynTSentenceType getdSynTSentenceType() {

@@ -1,8 +1,8 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
-import br.edu.ufrgs.inf.bpm.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
+import br.edu.ufrgs.inf.bpm.type.ProcessElementType;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
 import de.hpi.bpt.process.ControlFlow;

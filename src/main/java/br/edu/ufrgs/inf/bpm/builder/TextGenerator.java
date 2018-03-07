@@ -72,6 +72,8 @@ public class TextGenerator {
         ReferringExpressionGenerator refExpGenerator = new ReferringExpressionGenerator(lHelper);
         sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, false);
 
+        sentencePlan.forEach(DSynTSentence::fixDocuments);
+
         // Discourse Marker
         DiscourseMarker discourseMarker = new DiscourseMarker();
         sentencePlan = discourseMarker.insertSequenceConnectives(sentencePlan);

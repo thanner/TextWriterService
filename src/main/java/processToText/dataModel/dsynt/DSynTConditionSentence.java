@@ -1,7 +1,7 @@
 package processToText.dataModel.dsynt;
 
-import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
+import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.util.DSynTUtil;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;

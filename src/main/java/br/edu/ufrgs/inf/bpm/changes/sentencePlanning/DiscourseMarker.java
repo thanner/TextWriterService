@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 
-import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
+import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.dsynt.DSynTConditionSentence;
