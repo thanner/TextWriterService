@@ -1,8 +1,10 @@
 package processToText.dataModel.dsynt;
 
 
+import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import processToText.dataModel.intermediate.ExecutableFragment;
 
 import java.util.ArrayList;
@@ -31,6 +33,22 @@ public abstract class DSynTSentence {
     protected Document doc;
     protected ExecutableFragment eFrag;
     private List<ProcessElementDocument> processElementDocumentList = new ArrayList<>(); // Thanner
+    protected DSynTSentenceType dSynTSentenceType;
+    protected Element verb;
+    protected Element object;
+    protected Element role;
+
+    public Element getVerb() {
+        return verb;
+    }
+
+    public Element getObject() {
+        return object;
+    }
+
+    public Element getRole() {
+        return role;
+    }
 
     public Document getDSynT() {
         return doc;
@@ -66,6 +84,10 @@ public abstract class DSynTSentence {
         processElementDocument.setResource(role);
         processElementDocument.setDocument(document);
         processElementDocumentList.add(processElementDocument);
+    }
+
+    public DSynTSentenceType getdSynTSentenceType() {
+        return dSynTSentenceType;
     }
 
 }

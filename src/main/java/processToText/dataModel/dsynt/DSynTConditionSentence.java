@@ -1,5 +1,6 @@
 package processToText.dataModel.dsynt;
 
+import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.util.DSynTUtil;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
@@ -26,15 +27,12 @@ public class DSynTConditionSentence extends DSynTSentence {
     private Element cObject;
     private Element cRole;
 
-    private Element verb;
-    private Element object;
-    private Element role;
-
     private List<Document> documents = new ArrayList<>(); // Thanner
 
     public DSynTConditionSentence(ExecutableFragment eFrag, ConditionFragment cFrag) {
         this.eFrag = eFrag;
         this.cFrag = cFrag;
+        this.dSynTSentenceType = DSynTSentenceType.CONDITION;
         this.createDSynTRepresentation();
     }
 

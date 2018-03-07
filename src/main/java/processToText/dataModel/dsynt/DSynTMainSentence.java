@@ -1,6 +1,7 @@
 package processToText.dataModel.dsynt;
 
 
+import br.edu.ufrgs.inf.bpm.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import org.apache.xerces.dom.DocumentImpl;
 import org.w3c.dom.Document;
@@ -15,12 +16,9 @@ public class DSynTMainSentence extends DSynTSentence {
 
     private Element root;
 
-    private Element verb;
-    private Element object;
-    private Element role;
-
     public DSynTMainSentence(ExecutableFragment eFrag) {
         this.eFrag = eFrag;
+        this.dSynTSentenceType = DSynTSentenceType.MAIN;
         createDSynTRepresentation();
     }
 

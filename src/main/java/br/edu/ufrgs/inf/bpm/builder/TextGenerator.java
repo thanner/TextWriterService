@@ -1,5 +1,7 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
+import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.DiscourseMarker;
+import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.ReferringExpressionGenerator;
 import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.SentenceAggregator;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
@@ -18,8 +20,6 @@ import processToText.contentDetermination.labelAnalysis.EnglishLabelHelper;
 import processToText.dataModel.dsynt.DSynTSentence;
 import processToText.dataModel.process.ProcessModel;
 import processToText.preprocessing.FormatConverter;
-import processToText.sentencePlanning.DiscourseMarker;
-import processToText.sentencePlanning.ReferringExpressionGenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,9 +68,9 @@ public class TextGenerator {
         SentenceAggregator sentenceAggregator = new SentenceAggregator();
         sentencePlan = sentenceAggregator.performRoleAggregation(sentencePlan);
 
-        // Referring Expression
+        // Referring Expression (He, She, It)
         ReferringExpressionGenerator refExpGenerator = new ReferringExpressionGenerator(lHelper);
-        sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, model, false);
+        sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, false);
 
         // Discourse Marker
         DiscourseMarker discourseMarker = new DiscourseMarker();
