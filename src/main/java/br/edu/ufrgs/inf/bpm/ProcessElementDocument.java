@@ -1,5 +1,6 @@
 package br.edu.ufrgs.inf.bpm;
 
+import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import org.w3c.dom.Document;
 
 public class ProcessElementDocument {
@@ -7,6 +8,7 @@ public class ProcessElementDocument {
     private String resource;
     private String processElement;
     private Document document;
+    private String sentence;
 
     public String getResource() {
         return resource;
@@ -24,12 +26,24 @@ public class ProcessElementDocument {
         this.processElement = processElement;
     }
 
-    public Document getDocument() {
-        return document;
-    }
-
     public void setDocument(Document document) {
         this.document = document;
     }
 
+    public String getSentence(){
+        if(sentence != null){
+            return sentence;
+        } else {
+            SurfaceRealizer surfaceRealizer = new SurfaceRealizer();
+            return cleanSubsentence(surfaceRealizer.realizeSentence(document));
+        }
+    }
+
+    private String cleanSubsentence(String subsentence){
+        return subsentence.substring(0, subsentence.length() - 1);
+    }
+
+    public void setSentence(String sentence) {
+        this.sentence = sentence;
+    }
 }

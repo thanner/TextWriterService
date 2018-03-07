@@ -63,7 +63,7 @@ public class SurfaceRealizer {
     }
 
     // Realize Sentence
-    private String realizeSentence(Document document){
+    public String realizeSentence(Document document){
         realproManager.realize(document);
         return realproManager.getSentenceString();
     }
@@ -93,11 +93,10 @@ public class SurfaceRealizer {
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
             String processElement = processElementDocument.getProcessElement();
             String resource = processElementDocument.getResource();
-            Document document = processElementDocument.getDocument();
 
             // System.out.println("Subsentence: " + realizeSentence(document));
 
-            String subsentence = cleanSubsentence(realizeSentence(document));
+            String subsentence = processElementDocument.getSentence();
             int startIndex = getIndexStartSubstentence(sentence, subsentence);
             int indexEnd = getIndexEndSubsentence(startIndex, subsentence);
 
@@ -111,10 +110,6 @@ public class SurfaceRealizer {
         }
 
         return subsentenceXML.toString();
-    }
-
-    private String cleanSubsentence(String subsentence){
-        return subsentence.substring(0, subsentence.length() - 1);
     }
 
     private int getIndexStartSubstentence(String sentence, String subsentence){

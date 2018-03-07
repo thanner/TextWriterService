@@ -687,12 +687,12 @@ public class TextPlanner {
         dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
 
         // SENTENCE TEMPLATE
-        TemplateLoader loader = new TemplateLoader();
-        loader.loadTemplate(TemplateLoader.START_EVENT);
-        ExecutableFragment startEventFrag = new ExecutableFragment(loader.getAction(), "", loader.getObject(), loader.getAddition());
-        startEventFrag.add_hasArticle = false;
-        DSynTMainSentence dSynTStartEvent = new DSynTMainSentence(startEventFrag);
-        dSynTSentence.addProcessElementDocument(ProcessElementType.STARTEVENT.getValue(), "", dSynTStartEvent.getDSynT());
+        //TemplateLoader loader = new TemplateLoader();
+        //loader.loadTemplate(TemplateLoader.START_EVENT);
+        //ExecutableFragment startEventFrag = new ExecutableFragment(loader.getAction(), "", loader.getObject(), loader.getAddition());
+        //startEventFrag.add_hasArticle = false;
+        //DSynTMainSentence dSynTStartEvent = new DSynTMainSentence(startEventFrag);
+        dSynTSentence.addProcessElementDocument(ProcessElementType.STARTEVENT.getValue(), "", Lexemes.startEvent);
 
         // Segestion - Create startElement
         // Element startElement = dsyntSentence.getDSynT().createElement("dsyntnode");
