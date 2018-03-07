@@ -23,7 +23,6 @@ public class TemplateLoader {
     public static final String RIGID_MAIN = "RigidMain.xml";
     public static final String RIGID_DEV = "RigidDeviations.xml";
 
-    public static final String START_EVENT = "Start.xml";
     private String action = "";
     private String object = "";
     private String addition = "";
@@ -33,7 +32,6 @@ public class TemplateLoader {
         object = "";
         addition = "";
         try {
-            // File file = new File(TemplateLoader.class.getResource(Paths.SentenceTemplatePath + "/" + template).getFile()); //new File(dir + template);
             File tempFile = ResourceLoader.getResourceFile(Paths.SentenceTemplatePath + "/" + template, ".xml");
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

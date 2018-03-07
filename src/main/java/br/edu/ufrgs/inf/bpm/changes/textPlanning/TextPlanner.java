@@ -679,29 +679,11 @@ public class TextPlanner {
         sentencePlan.add(dSynTSentence);
     }
 
-    // TODO: PODE SER O CASO DE CRIAR UM addProcessElementDocument QUE ACEITA DSYNT OU STRING COMPLETA
     private void addStartEventFragment(DSynTMainSentence dSynTSentence) {
-        // SHOULD BE SENTENCE TEMPLATE
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
         dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
-
-        // SENTENCE TEMPLATE
-        //TemplateLoader loader = new TemplateLoader();
-        //loader.loadTemplate(TemplateLoader.START_EVENT);
-        //ExecutableFragment startEventFrag = new ExecutableFragment(loader.getAction(), "", loader.getObject(), loader.getAddition());
-        //startEventFrag.add_hasArticle = false;
-        //DSynTMainSentence dSynTStartEvent = new DSynTMainSentence(startEventFrag);
         dSynTSentence.addProcessElementDocument(ProcessElementType.STARTEVENT.getValue(), "", Lexemes.startEvent);
-
-        // Segestion - Create startElement
-        // Element startElement = dsyntSentence.getDSynT().createElement("dsyntnode");
-        // startElement.setAttribute("class", "adverb");
-        // startElement.setAttribute("rel", "ATTR");
-        // startElement.setAttribute("lexeme", "the process begins when"); // To get the lexeme we need realize the loader
-        // startElement.setAttribute("starting_point", "+");
-        // dsyntSentence.getVerb().appendChild(startElement);
-
         dSynTSentence.createDSynTRepresentation();
     }
 
