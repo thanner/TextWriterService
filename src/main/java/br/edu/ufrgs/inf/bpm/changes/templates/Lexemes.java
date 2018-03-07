@@ -8,6 +8,7 @@ public class Lexemes {
     public static String sequenceSentence = "AND"; // "and, in sequence,"
     public static String andCondition = "AND"; // "and, in parallel,"
     public static String orCondition = "OR";
+    public static String SEQUENCEFINAL_CONNECTIVE = "finally";
 
     public static final ArrayList<String> SEQUENCE_CONNECTIVES = new ArrayList<String>() {{
         add("then");

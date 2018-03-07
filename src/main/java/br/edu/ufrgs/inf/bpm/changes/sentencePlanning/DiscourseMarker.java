@@ -24,14 +24,14 @@ public class DiscourseMarker {
             if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
                 DSynTMainSentence dSynTMainSentence = (DSynTMainSentence) dSynTSentence;
                 if (!dSynTMainSentence.getExecutableFragment().sen_hasConnective && index > 0 && !dSynTMainSentence.getExecutableFragment().sen_hasBullet) {
-                    insertConnective(dSynTMainSentence);
+                    insertConnective(dSynTMainSentence, index, textPlan.size());
                 }
             }
 
             if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
                 DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
                 if (!dSynTConditionSentence.getExecutableFragment().sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
-                    insertConnective(dSynTConditionSentence);
+                    insertConnective(dSynTConditionSentence, index, textPlan.size());
                 }
             }
 
@@ -40,16 +40,19 @@ public class DiscourseMarker {
         return textPlan;
     }
 
-    private void insertConnective(DSynTSentence dSynTSentence){
+    private void insertConnective(DSynTSentence dSynTSentence, int index, int textPlanSize){
         Element verb = dSynTSentence.getVerb();
         Document doc = dSynTSentence.getDSynT();
-        // Insert sequence connective
-        // if (index == textPlan.size()-1) {
-        //	IntermediateToDSynTConverter.insertConnective(doc, verb, "finally");
-        // } else {
-        IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQUENCE_CONNECTIVES.get(indexConnectors));
+        if (isLastSentenceText(index, textPlanSize)) {
+        	IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQUENCEFINAL_CONNECTIVE);
+        } else {
+            IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQUENCE_CONNECTIVES.get(indexConnectors));
+        }
         adjustIndexConnectors();
-        // }
+    }
+
+    private boolean isLastSentenceText(int index, int textPlanSize){
+        return index == textPlanSize - 1;
     }
 
     private void adjustIndexConnectors(){
