@@ -9,7 +9,7 @@ public class Lexemes {
     public static String andCondition = "AND"; // "and, in parallel,"
     public static String orCondition = "OR";
 
-    public static final ArrayList<String> SEQ_CONNECTIVES = new ArrayList<String>() {{
+    public static final ArrayList<String> SEQUENCE_CONNECTIVES = new ArrayList<String>() {{
         add("then");
         add("afterwards");
         add("subsequently");

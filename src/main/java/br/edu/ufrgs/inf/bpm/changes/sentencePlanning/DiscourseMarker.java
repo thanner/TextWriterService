@@ -47,14 +47,14 @@ public class DiscourseMarker {
         // if (index == textPlan.size()-1) {
         //	IntermediateToDSynTConverter.insertConnective(doc, verb, "finally");
         // } else {
-        IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQ_CONNECTIVES.get(indexConnectors));
+        IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQUENCE_CONNECTIVES.get(indexConnectors));
         adjustIndexConnectors();
         // }
     }
 
     private void adjustIndexConnectors(){
         indexConnectors++;
-        if (indexConnectors == Lexemes.SEQ_CONNECTIVES.size()) {
+        if (indexConnectors == Lexemes.SEQUENCE_CONNECTIVES.size()) {
             indexConnectors = 0;
         }
     }
