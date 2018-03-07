@@ -1,5 +1,6 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
+import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.SentenceAggregator;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
 import br.edu.ufrgs.inf.bpm.util.Paths;
@@ -19,7 +20,6 @@ import processToText.dataModel.process.ProcessModel;
 import processToText.preprocessing.FormatConverter;
 import processToText.sentencePlanning.DiscourseMarker;
 import processToText.sentencePlanning.ReferringExpressionGenerator;
-import processToText.sentencePlanning.SentenceAggregator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,8 +65,8 @@ public class TextGenerator {
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 
         // Aggregation (Only ROLE aggregation)
-        SentenceAggregator sentenceAggregator = new SentenceAggregator(lHelper);
-        sentencePlan = sentenceAggregator.performRoleAggregation(sentencePlan, model);
+        SentenceAggregator sentenceAggregator = new SentenceAggregator();
+        sentencePlan = sentenceAggregator.performRoleAggregation(sentencePlan);
 
         // Referring Expression
         ReferringExpressionGenerator refExpGenerator = new ReferringExpressionGenerator(lHelper);
@@ -81,7 +81,7 @@ public class TextGenerator {
         String surfaceText = surfaceRealizer.generateXMLSentence(sentencePlan);
 
         // Cleaning
-        if (imperative == true) {
+        if (imperative) {
             surfaceText = surfaceRealizer.cleanTextForImperativeStyle(surfaceText, imperativeRole, model.getLanes());
         }
 

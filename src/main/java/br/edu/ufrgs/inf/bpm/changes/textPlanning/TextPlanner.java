@@ -1,5 +1,6 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
+import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import de.hpi.bpt.graph.algo.rpst.RPST;
@@ -680,12 +681,12 @@ public class TextPlanner {
 
     // TODO: PODE SER O CASO DE CRIAR UM addProcessElementDocument QUE ACEITA DSYNT OU STRING COMPLETA
     private void addStartEventFragment(DSynTMainSentence dSynTSentence) {
-        // TODO: SHOULD BE SENTENCE TEMPLATE
+        // SHOULD BE SENTENCE TEMPLATE
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
-        dSynTSentence.getExecutableFragment().addMod("the process begins when", modRecord);
+        dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
 
-        // TODO: SENTENCE TEMPLATE
+        // SENTENCE TEMPLATE
         TemplateLoader loader = new TemplateLoader();
         loader.loadTemplate(TemplateLoader.START_EVENT);
         ExecutableFragment startEventFrag = new ExecutableFragment(loader.getAction(), "", loader.getObject(), loader.getAddition());

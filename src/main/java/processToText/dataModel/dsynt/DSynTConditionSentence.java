@@ -1,5 +1,6 @@
 package processToText.dataModel.dsynt;
 
+import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.util.DSynTUtil;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;
@@ -92,9 +93,9 @@ public class DSynTConditionSentence extends DSynTSentence {
         Element add = doc.createElement("dsyntnode");
         add.setAttribute("rel", "COORD");
         if (isAnd) {
-            add.setAttribute("lexeme", "AND");
+            add.setAttribute("lexeme", Lexemes.andCondition);
         } else {
-            add.setAttribute("lexeme", "OR");
+            add.setAttribute("lexeme", Lexemes.orCondition);
         }
         cVerb.appendChild(add);
 

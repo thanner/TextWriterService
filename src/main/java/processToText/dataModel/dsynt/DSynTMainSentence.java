@@ -1,6 +1,7 @@
 package processToText.dataModel.dsynt;
 
 
+import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import org.apache.xerces.dom.DocumentImpl;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -78,7 +79,7 @@ public class DSynTMainSentence extends DSynTSentence {
             Element coord = doc.createElement("dsyntnode");
             coord.setAttribute("class", "coordinating_conj");
             coord.setAttribute("rel", "COORD");
-            coord.setAttribute("lexeme", "AND");
+            coord.setAttribute("lexeme", Lexemes.sequenceSentence);
             verb.appendChild(coord);
 
             Element cVerb = IntermediateToDSynTConverter.createVerb(doc, sentences.get(0).getExecutableFragment(), IntermediateToDSynTConverter.VERB_TYPE_SUBCONDITION);

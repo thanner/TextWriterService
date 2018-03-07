@@ -60,21 +60,4 @@ public abstract class DSynTSentence {
         processElementDocumentList.add(processElementDocument);
     }
 
-//	public void mapFragmentAttributes(AbstractFragment f) {
-//		bo_replaceWithPronoun = f.boIsPronoun;
-//		bo_isSubject = f.boIsSubject;
-//		bo_isPlural =f.boIsPlural;
-//		bo_hasArticle  = f.boHasArticle;
-//		bo_hasIndefArticle = f.boHasIndefArticle;
-//		
-//		verb_isPassive = f.verbIsPassive;
-//		verb_isParticiple = f.verbIsParticiple;
-//		verb_isNegated = f.negation;
-//		verb_isPast = f.isPast;
-//		
-//		sen_isCoord = f.isCoord ;
-//		sen_hasConnective = false;
-//		
-//	}
-
 }
