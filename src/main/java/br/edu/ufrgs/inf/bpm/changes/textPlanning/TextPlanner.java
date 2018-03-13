@@ -947,7 +947,7 @@ public class TextPlanner {
         Event event = process.getEvents().get((Integer.valueOf(node.getExit().getId())));
         DSynTSentence sen = textToIMConverter.convertEvent(event).preStatements.get(0);
         sen.getExecutableFragment().sen_level = level;
-        sen.addProcessElementDocument("8");
+        sen.addProcessElementDocument(ProcessElementType.ENDEVENT.getValue());
         sentencePlan.add(sen);
     }
 
