@@ -1,6 +1,7 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.builder.IndexDocumentGenerator;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;
@@ -20,15 +21,12 @@ public class SurfaceRealizer {
     public String generateXMLSentence(ArrayList<DSynTSentence> sentencePlan) {
         StringBuilder surfaceText = new StringBuilder();
         int lastLevel = -1;
+        boolean firstLine = true;
+        IndexDocumentGenerator indexDocumentGenerator = new IndexDocumentGenerator();
 
         surfaceText.append("<text>");
-        boolean firstLine = true;
         for (DSynTSentence s : sentencePlan) {
             int level = s.getExecutableFragment().sen_level;
-
-            String newSentence = realizeSentence(s.getDSynT());
-            String subsentenceXml = generateXmlSubsentence(s, newSentence);
-            // String resource = s.getExecutableFragment().getRole().trim();
 
             int newLineAmount;
             if (firstLine) {
@@ -38,6 +36,9 @@ public class SurfaceRealizer {
                 newLineAmount = getNewLineAmount(s, level, lastLevel);
             }
 
+            String newSentence = realizeSentence(s.getDSynT());
+            String subsentenceXml = generateXmlSubsentence(s, newSentence);
+            String indexSentence = indexDocumentGenerator.getIndex(level, lastLevel);
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
 
@@ -46,6 +47,7 @@ public class SurfaceRealizer {
                     .append("newLineAmount=\"").append(newLineAmount).append("\" ")
                     .append("tabAmount=\"").append(tabAmount).append("\" ")
                     .append("hasBulletPoint=\"").append(hasBulletPoint).append("\" ")
+                    .append("indexSentence=\"").append(indexSentence).append("\" ")
                     .append("value=\"").append(newSentence).append(" \" ")
                     .append(">")
                     .append(subsentenceXml)
