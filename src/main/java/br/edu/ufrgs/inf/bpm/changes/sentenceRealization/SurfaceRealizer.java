@@ -28,6 +28,10 @@ public class SurfaceRealizer {
         for (DSynTSentence s : sentencePlan) {
             int level = s.getExecutableFragment().sen_level;
 
+            String newSentence = realizeSentence(s.getDSynT());
+            String subsentenceXml = generateXmlSubsentence(s, newSentence);
+            String indexSentence = indexDocumentGenerator.getIndex(level, lastLevel, s.getExecutableFragment().sen_hasBullet);
+
             int newLineAmount;
             if (firstLine) {
                 newLineAmount = 0;
@@ -35,10 +39,6 @@ public class SurfaceRealizer {
             } else {
                 newLineAmount = getNewLineAmount(s, level, lastLevel);
             }
-
-            String newSentence = realizeSentence(s.getDSynT());
-            String subsentenceXml = generateXmlSubsentence(s, newSentence);
-            String indexSentence = indexDocumentGenerator.getIndex(level, lastLevel);
             int tabAmount = getTabAmount(s, level, lastLevel);
             boolean hasBulletPoint = getHasBulletPoint(s);
 

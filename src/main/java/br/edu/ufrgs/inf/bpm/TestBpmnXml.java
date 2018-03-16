@@ -21,7 +21,7 @@ public class TestBpmnXml {
     public static String getStructuredText(){
         String process = "";
         try {
-            String text = FileUtils.readFileToString(new File("src/main/others/testData/bpmnFile/diagram2.bpmn"), "UTF-8");
+            String text = FileUtils.readFileToString(new File("src/main/others/testData/bpmnFile/diagram4.bpmn"), "UTF-8");
             TDefinitions definitions = JaxbWrapper.convertXMLToObject(text);
 
             ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();

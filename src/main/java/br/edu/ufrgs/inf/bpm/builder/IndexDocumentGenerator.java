@@ -4,36 +4,65 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IndexDocumentGenerator {
-    private List<Integer> indexList;
+    private List<IndexTuple> indexList;
 
-    public String getIndex(int level, int lastLevel) {
+    public String getIndex(int level, int lastLevel, boolean isParallel) {
         if (indexList == null) {
             generateFirstIndex();
-        } else {
-            incrementNumberIndex(level);
-            if (lastLevel > level) {
-                resetPositionsIndex(level);
-            }
+        } else if (isInNewModelLevel(level, lastLevel)) {
+            createNecessaryIndex(level);
+        } else if (isInSequence(level, lastLevel) && !isParallel) {
+            incrementSequentialIndex(level);
+        } else if (isInParallel(level, lastLevel) && isParallel) {
+            incrementParallelIndex(level);
+        } else if (isOutModelLevel(level, lastLevel)) {
+            incrementSequentialIndex(level);
+            resetPositionsIndex(level);
         }
+
         return generateIndexDocumentString();
+    }
+
+    private boolean isInNewModelLevel(int level, int lastLevel) {
+        return level > lastLevel;
+    }
+
+    private boolean isInSequence(int level, int lastLevel) {
+        return level == lastLevel;
+    }
+
+    private boolean isInParallel(int level, int lastLevel) {
+        return level == lastLevel;
+    }
+
+    private boolean isOutModelLevel(int level, int lastLevel) {
+        return lastLevel > level;
     }
 
     private void generateFirstIndex() {
         indexList = new ArrayList<>();
-        indexList.add(1);
+        indexList.add(new IndexTuple());
+    }
+
+    private void createNecessaryIndex(int level) {
+        while (level + 1 > indexList.size()) {
+            indexList.add(new IndexTuple());
+        }
+    }
+
+    private void incrementSequentialIndex(int level) {
+        int currentIndexLevel = indexList.get(level).getIndexSequence();
+        indexList.get(level).setIndexSequence(currentIndexLevel + 1);
+    }
+
+    private void incrementParallelIndex(int level) {
+        int currentIndexLevel = indexList.get(level).getIndexParallel();
+        indexList.get(level).setIndexSequence(1);
+        indexList.get(level).setIndexParallel(currentIndexLevel + 1);
     }
 
     private void resetPositionsIndex(int level) {
         indexList = indexList.subList(0, level + 1);
-    }
-
-    private void incrementNumberIndex(int level) {
-        while (level + 1 > indexList.size()) {
-            indexList.add(0);
-        }
-
-        int currentIndexLevel = indexList.get(level);
-        indexList.set(level, currentIndexLevel + 1);
     }
 
     private String generateIndexDocumentString() {
