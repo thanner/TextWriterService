@@ -20,16 +20,19 @@ public class SurfaceRealizer {
 
     public String generateXMLSentence(ArrayList<DSynTSentence> sentencePlan) {
         StringBuilder surfaceText = new StringBuilder();
-        int lastLevel = -1;
-        boolean firstLine = true;
-        IndexDocumentGenerator indexDocumentGenerator = new IndexDocumentGenerator();
+        //int lastLevel = -1;
+        //boolean firstLine = true;
+        //IndexDocumentGenerator indexDocumentGenerator = new IndexDocumentGenerator();
 
         surfaceText.append("<text>");
         for (DSynTSentence s : sentencePlan) {
             int level = s.getExecutableFragment().sen_level;
+            boolean isLateral = s.getExecutableFragment().sen_hasBullet;
 
             String newSentence = realizeSentence(s.getDSynT());
             String subsentenceXml = generateXmlSubsentence(s, newSentence);
+
+            /*
             String indexSentence = indexDocumentGenerator.getIndex(level, lastLevel, s.getExecutableFragment().sen_hasBullet);
 
             int newLineAmount;
@@ -40,22 +43,24 @@ public class SurfaceRealizer {
                 newLineAmount = getNewLineAmount(s, level, lastLevel);
             }
             int tabAmount = getTabAmount(s, level, lastLevel);
-            boolean hasBulletPoint = getHasBulletPoint(s);
+            */
 
             StringBuilder setenceXML = new StringBuilder();
             setenceXML.append("<sentence ")
-                    .append("newLineAmount=\"").append(newLineAmount).append("\" ")
-                    .append("tabAmount=\"").append(tabAmount).append("\" ")
-                    .append("hasBulletPoint=\"").append(hasBulletPoint).append("\" ")
-                    .append("indexSentence=\"").append(indexSentence).append("\" ")
+                    //.append("newLineAmount=\"").append(newLineAmount).append("\" ")
+                    //.append("tabAmount=\"").append(tabAmount).append("\" ")
+                    //.append("hasBulletPoint=\"").append(isLateral).append("\" ")
+                    .append("level=\"").append(level).append("\" ")
+                    .append("isLateral=\"").append(isLateral).append("\" ")
+                    //.append("indexSentence=\"").append(indexSentence).append("\" ")
                     .append("value=\"").append(newSentence).append(" \" ")
                     .append(">")
                     .append(subsentenceXml)
                     .append("</sentence>");
 
             surfaceText.append(setenceXML);
-            lastLevel = level;
 
+            // lastLevel = level;
             // System.out.println(newSentence);
             // XmlFormat.printDocument(s.getDSynT());
         }
@@ -70,6 +75,7 @@ public class SurfaceRealizer {
         return realproManager.getSentenceString();
     }
 
+    /*
     private int getNewLineAmount(DSynTSentence s, int level, int lastLevel) {
         int newLineAmount = 0;
         if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
@@ -85,10 +91,7 @@ public class SurfaceRealizer {
         }
         return tabAmount;
     }
-
-    private boolean getHasBulletPoint(DSynTSentence s) {
-        return s.getExecutableFragment().sen_hasBullet;
-    }
+    */
 
     private String generateXmlSubsentence(DSynTSentence s, String sentence) {
         StringBuilder subsentenceXML = new StringBuilder();
