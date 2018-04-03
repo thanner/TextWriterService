@@ -27,7 +27,7 @@ public class ApplicationRest {
     @POST
     @Path("/getText")
     @Consumes(MediaType.TEXT_PLAIN)
-    public Response getBpmnXml(String bpmnString) throws IOException {
+    public Response getBpmnXml(String bpmnString) {
         String process = null;
         try {
             TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
@@ -35,8 +35,8 @@ public class ApplicationRest {
             ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
             ProcessModel processModel = processModelBuilder.buildProcess(definitions);
             process = TextGenerator.generateText(processModel, 0);
-        } catch (JWNLException e) {
-            e.printStackTrace();
+        } catch (JWNLException | IOException e) {
+            return Response.serverError().build();
         }
         return Response.ok().entity(process).build();
     }
