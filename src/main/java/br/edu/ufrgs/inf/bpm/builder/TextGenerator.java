@@ -5,6 +5,7 @@ import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.ReferringExpressionGenerato
 import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.SentenceAggregator;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
+import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
@@ -29,7 +30,7 @@ public class TextGenerator {
     /**
      * Function for generating text from a model. The according process model must be provided to the function.
      */
-    public static String generateText(ProcessModel model, int counter) throws IOException, JWNLException {
+    public static Text generateText(ProcessModel model, int counter) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
         MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
@@ -80,16 +81,17 @@ public class TextGenerator {
 
         // Realization
         SurfaceRealizer surfaceRealizer = new SurfaceRealizer();
-        String surfaceText = surfaceRealizer.generateXMLSentence(sentencePlan);
+        // String surfaceText = surfaceRealizer.generateXMLSentence(sentencePlan);
+        Text text = surfaceRealizer.generateText(sentencePlan);
 
         // Cleaning
-        if (imperative) {
-            surfaceText = surfaceRealizer.cleanTextForImperativeStyle(surfaceText, imperativeRole, model.getLanes());
-        }
+        // if (imperative) {
+        //    surfaceText = surfaceRealizer.cleanTextForImperativeStyle(surfaceText, imperativeRole, model.getLanes());
+        // }
 
-        surfaceText = surfaceRealizer.postProcessText(surfaceText);
+        text = surfaceRealizer.postProcessText(text);
 
-        return surfaceText;
+        return text;
     }
 
 }

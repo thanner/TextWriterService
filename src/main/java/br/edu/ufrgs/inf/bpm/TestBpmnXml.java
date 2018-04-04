@@ -3,7 +3,7 @@ package br.edu.ufrgs.inf.bpm;
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.builder.ProcessModelBuilder;
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.util.XmlFormat;
+import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
 import net.didion.jwnl.JWNLException;
 import org.apache.commons.io.FileUtils;
@@ -19,19 +19,19 @@ public class TestBpmnXml {
     }
 
     public static String getStructuredText(){
-        String process = "";
+        Text text = new Text();
         try {
-            String text = FileUtils.readFileToString(new File("src/main/others/testData/bpmnFile/diagram2.bpmn"), "UTF-8");
-            TDefinitions definitions = JaxbWrapper.convertXMLToObject(text);
+            String process = FileUtils.readFileToString(new File("src/main/others/testData/bpmnFile/diagram2.bpmn"), "UTF-8");
+            TDefinitions definitions = JaxbWrapper.convertXMLToObject(process);
 
             ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
             ProcessModel processModel = processModelBuilder.buildProcess(definitions);
-            process = TextGenerator.generateText(processModel, 0);
+            text = TextGenerator.generateText(processModel, 0);
         } catch (JWNLException | IOException e) {
             e.printStackTrace();
         }
 
-        return XmlFormat.format(process);
+        return text.toString();
     }
 
 }

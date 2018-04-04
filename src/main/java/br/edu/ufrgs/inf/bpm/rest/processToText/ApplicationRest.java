@@ -3,7 +3,9 @@ package br.edu.ufrgs.inf.bpm.rest.processToText;
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.builder.ProcessModelBuilder;
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
+import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
+import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import net.didion.jwnl.JWNLException;
 import processToText.dataModel.process.ProcessModel;
 
@@ -26,19 +28,19 @@ public class ApplicationRest {
 
     @POST
     @Path("/getText")
-    @Consumes(MediaType.TEXT_PLAIN)
-    public Response getBpmnXml(String bpmnString) {
-        String process = null;
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getText(String bpmnString) {
+        Text text;
         try {
             TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
 
             ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
             ProcessModel processModel = processModelBuilder.buildProcess(definitions);
-            process = TextGenerator.generateText(processModel, 0);
+            text = TextGenerator.generateText(processModel, 0);
         } catch (JWNLException | IOException e) {
             return Response.serverError().build();
         }
-        return Response.ok().entity(process).build();
+        return Response.ok().entity(JsonWrapper.getJson(text)).build();
     }
 
 }

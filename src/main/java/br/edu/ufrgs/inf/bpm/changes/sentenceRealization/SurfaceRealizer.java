@@ -1,12 +1,15 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.builder.IndexDocumentGenerator;
+import br.edu.ufrgs.inf.bpm.rest.processToText.model.Sentence;
+import br.edu.ufrgs.inf.bpm.rest.processToText.model.Subsentence;
+import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class SurfaceRealizer {
@@ -16,6 +19,44 @@ public class SurfaceRealizer {
 
     public SurfaceRealizer() {
         realproManager = new RealProMgr();
+    }
+
+    public Text generateText(ArrayList<DSynTSentence> sentencePlan) {
+        Text text = new Text();
+        for (DSynTSentence s : sentencePlan) {
+            Sentence sentence = new Sentence();
+            sentence.setLevel(s.getExecutableFragment().sen_level);
+            sentence.setLateral(s.getExecutableFragment().sen_hasBullet);
+            sentence.setValue(realizeSentence(s.getDSynT()));
+            sentence.setSubsentenceList(getSubsentenceList(s, sentence.getValue()));
+            text.getSentenceList().add(sentence);
+        }
+
+        return text;
+    }
+
+    private List<Subsentence> getSubsentenceList(DSynTSentence s, String sentence) {
+        List<Subsentence> subsentenceList = new ArrayList<>();
+        for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
+            Subsentence subsentence = new Subsentence();
+            subsentence.setProcessElement(processElementDocument.getProcessElement());
+            subsentence.setResource(processElementDocument.getResource());
+
+            String subsentenceText = processElementDocument.getSentence();
+            subsentence.setStartIndex(getIndexStartSubstentence(sentence, subsentenceText));
+            subsentence.setEndIndex(getIndexEndSubsentence(subsentence.getStartIndex(), subsentenceText));
+
+            subsentenceList.add(subsentence);
+        }
+
+        return subsentenceList;
+    }
+
+    public Text postProcessText(Text text) {
+        for (Sentence sentence : text.getSentenceList()) {
+            sentence.setValue(postProcessText(sentence.getValue()));
+        }
+        return text;
     }
 
     public String generateXMLSentence(ArrayList<DSynTSentence> sentencePlan) {
