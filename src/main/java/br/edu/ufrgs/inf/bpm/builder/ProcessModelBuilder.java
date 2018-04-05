@@ -15,6 +15,8 @@ import java.util.Map;
 public class ProcessModelBuilder {
 
     private int genericId;
+    private Map<Integer, String> bpmnIdMap;
+
     private Map<String, Lane> laneMap;
     private Map<String, Pool> poolMap;
     private Map<String, Element> elementMap;
@@ -22,6 +24,8 @@ public class ProcessModelBuilder {
 
     public ProcessModelBuilder() {
         genericId = 0;
+        bpmnIdMap = new HashMap<>();
+
         laneMap = new HashMap<>();
         poolMap = new HashMap<>();
         elementMap = new HashMap<>();
@@ -167,7 +171,11 @@ public class ProcessModelBuilder {
 
     private int generateModelId(String oldId) {
         int newId = genericId++;
+        bpmnIdMap.put(newId, oldId);
         return newId;
     }
 
+    public Map<Integer, String> getBpmnIdMap() {
+        return bpmnIdMap;
+    }
 }

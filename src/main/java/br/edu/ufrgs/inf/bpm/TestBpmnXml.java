@@ -11,6 +11,7 @@ import processToText.dataModel.process.ProcessModel;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class TestBpmnXml {
 
@@ -26,7 +27,9 @@ public class TestBpmnXml {
 
             ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
             ProcessModel processModel = processModelBuilder.buildProcess(definitions);
-            text = TextGenerator.generateText(processModel, 0);
+            Map<Integer, String> bpmnIdMap = processModelBuilder.getBpmnIdMap();
+
+            text = TextGenerator.generateText(processModel, bpmnIdMap, 0);
         } catch (JWNLException | IOException e) {
             e.printStackTrace();
         }

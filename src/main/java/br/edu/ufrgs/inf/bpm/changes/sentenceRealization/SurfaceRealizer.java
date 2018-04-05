@@ -39,6 +39,7 @@ public class SurfaceRealizer {
         List<Subsentence> subsentenceList = new ArrayList<>();
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
             Subsentence subsentence = new Subsentence();
+            subsentence.setProcessElementId(processElementDocument.getProcessElementId());
             subsentence.setProcessElement(processElementDocument.getProcessElement());
             subsentence.setResource(processElementDocument.getResource());
 

@@ -1,10 +1,20 @@
 package br.edu.ufrgs.inf.bpm.rest.processToText.model;
 
 public class Subsentence {
+
+    private String processElementId;
     private String processElement;
     private String resource;
     private int startIndex;
     private int endIndex;
+
+    public String getProcessElementId() {
+        return processElementId;
+    }
+
+    public void setProcessElementId(String processElementId) {
+        this.processElementId = processElementId;
+    }
 
     public String getProcessElement() {
         return processElement;

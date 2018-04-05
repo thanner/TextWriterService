@@ -24,13 +24,14 @@ import processToText.preprocessing.FormatConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TextGenerator {
 
     /**
      * Function for generating text from a model. The according process model must be provided to the function.
      */
-    public static Text generateText(ProcessModel model, int counter) throws IOException, JWNLException {
+    public static Text generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
         MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
@@ -61,7 +62,7 @@ public class TextGenerator {
         // }
 
         // Convert to Text
-        TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false);
+        TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false, bpmnIdMap);
         converter.convertToText(rpst.getRoot(), 0);
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 

@@ -15,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.Map;
 
 // The Java class will be hosted at the URI path "/application"
 @Path("/application")
@@ -36,7 +37,9 @@ public class ApplicationRest {
 
             ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
             ProcessModel processModel = processModelBuilder.buildProcess(definitions);
-            text = TextGenerator.generateText(processModel, 0);
+            Map<Integer, String> bpmnIdMap = processModelBuilder.getBpmnIdMap();
+
+            text = TextGenerator.generateText(processModel, bpmnIdMap, 0);
         } catch (JWNLException | IOException e) {
             return Response.serverError().build();
         }

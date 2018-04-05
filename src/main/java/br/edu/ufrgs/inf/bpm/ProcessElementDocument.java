@@ -7,6 +7,7 @@ import org.w3c.dom.Document;
 public class ProcessElementDocument {
 
     private String resource;
+    private String processElementId;
     private String processElement;
     private Document document;
     private String sentence;
@@ -17,6 +18,14 @@ public class ProcessElementDocument {
 
     public void setResource(String resource) {
         this.resource = resource;
+    }
+
+    public String getProcessElementId() {
+        return this.processElementId;
+    }
+
+    public void setProcessElementId(String processElementId) {
+        this.processElementId = processElementId;
     }
 
     public String getProcessElement() {

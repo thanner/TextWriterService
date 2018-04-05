@@ -171,7 +171,7 @@ public abstract class AbstractFragment {
      * Thanner
      */
 
-    protected String processElement; // Thanner
+    protected String processElement;
 
     public String getProcessElement() {
         return processElement;
