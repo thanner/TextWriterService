@@ -127,7 +127,7 @@ public class TextPlanner {
                     ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
                     eFrag.bo_isSubject = true;
                     DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
-                    dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), "10");
+                    dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElement());
                     sentencePlan.add(dsyntSentence);
                     passedFragments.clear();
                 }
@@ -142,7 +142,7 @@ public class TextPlanner {
         if (convRecord != null && convRecord.postStatements != null) {
             for (DSynTSentence postStatement : convRecord.postStatements) {
                 postStatement.getExecutableFragment().sen_level = level;
-                postStatement.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), "11");
+                postStatement.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElement());
                 sentencePlan.add(postStatement);
             }
         }
@@ -180,7 +180,7 @@ public class TextPlanner {
             convRecord = getANDConverterRecord(node);
             convRecord.post.setProcessElement(ProcessElementType.ANDJOIN.getValue());
         }
-
+        convRecord.post.setProcessElementId(getProcessElementId(node.getExit().getId()));
         return convRecord;
     }
 
@@ -1031,8 +1031,9 @@ public class TextPlanner {
 
         for (int i = 0; i < passedFragments.size(); i++) {
             processElement = passedFragments.get(i).getProcessElement();
+            String processElementId = passedFragments.get(i).getProcessElementId();
             document = dSynTSentence.getDocuments().get(i + 1);
-            dSynTSentence.addProcessElementDocument(getProcessElementId(passedFragments.get(i).getAssociatedActivities().get(0)), processElement, "", document);
+            dSynTSentence.addProcessElementDocument(processElementId, processElement, "", document);
         }
     }
 

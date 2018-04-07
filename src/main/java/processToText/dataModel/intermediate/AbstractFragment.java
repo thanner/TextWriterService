@@ -172,6 +172,7 @@ public abstract class AbstractFragment {
      */
 
     protected String processElement;
+    protected String processElementId;
 
     public String getProcessElement() {
         return processElement;
@@ -181,4 +182,11 @@ public abstract class AbstractFragment {
         this.processElement = processElement;
     }
 
+    public String getProcessElementId() {
+        return processElementId;
+    }
+
+    public void setProcessElementId(String processElementId) {
+        this.processElementId = processElementId;
+    }
 }
