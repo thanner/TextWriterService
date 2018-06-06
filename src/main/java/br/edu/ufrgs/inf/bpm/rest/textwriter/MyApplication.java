@@ -1,4 +1,4 @@
-package br.edu.ufrgs.inf.bpm.rest.processToText;
+package br.edu.ufrgs.inf.bpm.rest.textwriter;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

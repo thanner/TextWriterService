@@ -1,9 +1,9 @@
-package br.edu.ufrgs.inf.bpm.rest.processToText;
+package br.edu.ufrgs.inf.bpm.rest.textwriter;
 
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.builder.ProcessModelBuilder;
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
+import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
 import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import net.didion.jwnl.JWNLException;

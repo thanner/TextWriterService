@@ -5,7 +5,7 @@ import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.ReferringExpressionGenerato
 import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.SentenceAggregator;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
-import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
+import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
