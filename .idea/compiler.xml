@@ -9,5 +9,8 @@
         <module name="textwriter" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="textwriter" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
