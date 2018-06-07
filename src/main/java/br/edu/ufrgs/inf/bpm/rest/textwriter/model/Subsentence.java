@@ -1,4 +1,4 @@
-package br.edu.ufrgs.inf.bpm.rest.processToText.model;
+package br.edu.ufrgs.inf.bpm.rest.textwriter.model;
 
 public class Subsentence {
 

@@ -4,7 +4,7 @@ import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.builder.ProcessModelBuilder;
 import br.edu.ufrgs.inf.bpm.builder.ProcessModelRefinement;
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
+import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
 import net.didion.jwnl.JWNLException;
 import org.apache.commons.io.FileUtils;

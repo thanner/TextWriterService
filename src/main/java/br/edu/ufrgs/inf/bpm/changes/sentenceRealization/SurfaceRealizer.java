@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.rest.processToText.model.Sentence;
-import br.edu.ufrgs.inf.bpm.rest.processToText.model.Subsentence;
-import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
+import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Sentence;
+import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Subsentence;
+import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;
