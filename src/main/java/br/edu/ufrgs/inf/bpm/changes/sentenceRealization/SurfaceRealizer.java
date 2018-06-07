@@ -114,7 +114,8 @@ public class SurfaceRealizer {
     // Realize Sentence
     public String realizeSentence(Document document){
         realproManager.realize(document);
-        return realproManager.getSentenceString();
+        String realized = realproManager.getSentenceString();
+        return realized != null ? realized : "";
     }
 
     /*

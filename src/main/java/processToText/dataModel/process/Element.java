@@ -1,6 +1,5 @@
 package processToText.dataModel.process;
 
-
 public abstract class Element {
 
     private int id;
@@ -41,6 +40,10 @@ public abstract class Element {
         return label;
     }
 
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
     public Lane getLane() {
         return lane;
     }
@@ -48,6 +51,5 @@ public abstract class Element {
     public void setLane(Lane lane) {
         this.lane = lane;
     }
-
 
 }

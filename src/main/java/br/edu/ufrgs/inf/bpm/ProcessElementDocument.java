@@ -50,7 +50,10 @@ public class ProcessElementDocument {
     }
 
     private String cleanSubsentence(String subsentence){
-        return subsentence.substring(0, subsentence.length() - 1);
+        if (subsentence != null && !subsentence.isEmpty()) {
+            return subsentence.substring(0, subsentence.length() - 1);
+        }
+        return "";
     }
 
     public void setSentence(String sentence) {

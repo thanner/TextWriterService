@@ -2,6 +2,7 @@ package br.edu.ufrgs.inf.bpm;
 
 import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.builder.ProcessModelBuilder;
+import br.edu.ufrgs.inf.bpm.builder.ProcessModelRefinement;
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
 import br.edu.ufrgs.inf.bpm.rest.processToText.model.Text;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
@@ -27,6 +28,10 @@ public class TestBpmnXml {
 
             ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
             ProcessModel processModel = processModelBuilder.buildProcess(definitions);
+
+            ProcessModelRefinement processModelRefinement = new ProcessModelRefinement(processModel);
+            processModel = processModelRefinement.refineProcessModel();
+
             Map<Integer, String> bpmnIdMap = processModelBuilder.getBpmnIdMap();
 
             text = TextGenerator.generateText(processModel, bpmnIdMap, 0);
