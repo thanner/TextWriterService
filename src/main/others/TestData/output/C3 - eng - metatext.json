@@ -1,0 +1,179 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the msp goes the measurements of the msp.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "msp",
+          "startIndex": 24,
+          "endIndex": 64
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it checks the received request.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "msp",
+          "startIndex": 6,
+          "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The msp denies the request of the go.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "msp",
+          "startIndex": 0,
+          "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "The msp performs the measurement.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "msp",
+          "startIndex": 0,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 48,
+          "endIndex": 89
+        },
+        {
+          "processElementId": "id-14",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The msp transmits the measured values to the go.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "msp",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The msp informs the go about failure of reading.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "msp",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the go processes the measured values.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 48,
+          "endIndex": 84
+        },
+        {
+          "processElementId": "id-16",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the go sends the changed values to the msp and goes.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 14,
+          "endIndex": 65
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 package processToText.dataModel.dsynt;
 
 
-import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

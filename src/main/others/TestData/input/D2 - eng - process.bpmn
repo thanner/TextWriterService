@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:definitions xmlns="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <ns4:process name="Pool" id="id-0">
+        <ns4:laneSet name="Pool" id="id-1">
+            <ns4:lane name="inq" id="id-2">
+                <ns4:flowNodeRef>id-4</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-5</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-8</ns4:flowNodeRef>
+            </ns4:lane>
+            <ns4:lane name="ip" id="id-3">
+                <ns4:flowNodeRef>id-6</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-7</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-9</ns4:flowNodeRef>
+            </ns4:lane>
+        </ns4:laneSet>
+        <ns4:task name="transmit the transaction" id="id-4">
+            <ns4:incoming>ns4:id-13</ns4:incoming>
+            <ns4:outgoing>ns4:id-10</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="request to the ip" id="id-5">
+            <ns4:incoming>ns4:id-10</ns4:incoming>
+            <ns4:outgoing>ns4:id-11</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="check the request of the inq" id="id-6">
+            <ns4:incoming>ns4:id-11</ns4:incoming>
+            <ns4:outgoing>ns4:id-12</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="answer the question of the inq" id="id-7">
+            <ns4:incoming>ns4:id-12</ns4:incoming>
+            <ns4:outgoing>ns4:id-14</ns4:outgoing>
+        </ns4:task>
+        <ns4:startEvent id="id-8">
+            <ns4:outgoing>ns4:id-13</ns4:outgoing>
+        </ns4:startEvent>
+        <ns4:endEvent id="id-9">
+            <ns4:incoming>ns4:id-14</ns4:incoming>
+        </ns4:endEvent>
+        <ns4:sequenceFlow sourceRef="id-4" targetRef="id-5" name="" id="id-10"/>
+        <ns4:sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-11"/>
+        <ns4:sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-12"/>
+        <ns4:sequenceFlow sourceRef="id-8" targetRef="id-4" name="" id="id-13"/>
+        <ns4:sequenceFlow sourceRef="id-7" targetRef="id-9" name="" id="id-14"/>
+    </ns4:process>
+</ns4:definitions>

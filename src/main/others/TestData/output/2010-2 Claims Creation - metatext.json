@@ -1,0 +1,81 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the claims handler searches a police report related to the car accident.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "claims handler",
+          "startIndex": 24,
+          "endIndex": 95
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it puts the police report related to the car accident in a file together with claim documentation and serves as the who calculates an initial claim as input estimate.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "claims handler",
+          "startIndex": 6,
+          "endIndex": 171
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the claims handler creates the available plan system and baseses.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "claims handler",
+          "startIndex": 12,
+          "endIndex": 76
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the claims manager tries to negotiate a settlement and informs the claimant.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "claims manager",
+          "startIndex": 14,
+          "endIndex": 89
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

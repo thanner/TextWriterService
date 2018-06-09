@@ -1,0 +1,67 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the inq transmits a transaction.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "inq",
+          "startIndex": 24,
+          "endIndex": 55
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it requests to the ip.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "inq",
+          "startIndex": 6,
+          "endIndex": 27
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the ip checks the request of the inq and answers the question.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "ip",
+          "startIndex": 12,
+          "endIndex": 73
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

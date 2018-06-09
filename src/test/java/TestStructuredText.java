@@ -1,5 +1,5 @@
 /*
-import br.edu.ufrgs.inf.bpm.TestBpmnXml;
+import br.edu.ufrgs.inf.bpm.application.TestBpmnXml;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

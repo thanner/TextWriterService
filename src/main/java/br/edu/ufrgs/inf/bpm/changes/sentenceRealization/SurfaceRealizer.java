@@ -1,6 +1,6 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
-import br.edu.ufrgs.inf.bpm.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Sentence;
 import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Subsentence;
 import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;

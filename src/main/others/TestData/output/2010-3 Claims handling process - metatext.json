@@ -1,0 +1,172 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the customer submits a claim.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 24,
+          "endIndex": 52
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it sends.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 6,
+          "endIndex": 14
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the notification department at the car insurer checks the documents.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "notification department at the car insurer",
+          "startIndex": 12,
+          "endIndex": 79
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the handling department picks up the claim and picks up the checks.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "handling department",
+          "startIndex": 14,
+          "endIndex": 80
+        }
+      ]
+    },
+    {
+      "value": "Then, the handling department performs the assessment.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "handling department",
+          "startIndex": 6,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The handling department rejects the claim.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "handling department",
+          "startIndex": 0,
+          "endIndex": 41
+        }
+      ]
+    },
+    {
+      "value": "The handling department phones a garage to authorise the repairs and schedules the payment.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "handling department",
+          "startIndex": 0,
+          "endIndex": 90
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the handling department conducts the outcome is positive.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "handling department",
+          "startIndex": 48,
+          "endIndex": 104
+        },
+        {
+          "processElementId": "id-18",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the handling department sends a letter to the customer and considers the process.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "handling department",
+          "startIndex": 14,
+          "endIndex": 94
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+Jun 09, 2018 1:07:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B8 - eng - process
+Jun 09, 2018 1:07:28 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:07:28 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Active VOS - tutorial - process
+Jun 09, 2018 1:07:30 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:07:30 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Reijers Workflow - shortened - process
+Jun 09, 2018 1:07:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:07:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B7 - eng - process
+Jun 09, 2018 1:07:40 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:07:40 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-2 Conduct Directions Hearing - process
+Jun 09, 2018 1:07:41 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:07:41 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2010-3 Claims handling process - process
+Jun 09, 2018 1:07:50 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:07:50 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B6 - eng - process
+Jun 09, 2018 1:07:51 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:07:51 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - TU Berlin - Supplier Switch - process
+Jun 09, 2018 1:07:52 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:07:52 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2010-2 Claims Creation - process
+Jun 09, 2018 1:07:56 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:07:56 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 150 - Simple HR-Process - eng - process
+Jun 09, 2018 1:07:56 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jun 09, 2018 1:07:56 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - D2 - eng - process
+Jun 09, 2018 1:08:00 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:08:00 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex2 - Computer Repair - process
+Jun 09, 2018 1:08:01 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:01 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-3 repetition-cycles - process
+Jun 09, 2018 1:08:01 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:01 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex1 - process
+Jun 09, 2018 1:08:02 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:02 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - C2 - eng - process
+Jun 09, 2018 1:08:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - ACME - eng - process
+Jun 09, 2018 1:08:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-1 MC Finalise SCT Warrant Possession - process
+Jun 09, 2018 1:08:10 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:08:10 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - BizAgi - tutorial1 - process
+Jun 09, 2018 1:08:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Reijers Workflow - process
+Jun 09, 2018 1:08:12 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:12 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B5.1 - eng  - process
+Jun 09, 2018 1:08:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:08:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 153 - HR Process - HR department - eng - process
+Jun 09, 2018 1:08:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex1 - bycicle manufacturing - process
+Jun 09, 2018 1:08:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.getConverterRecord(TextPlanner.java:165)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.handleBond(TextPlanner.java:118)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:87)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B5.2 - eng - process
+Jun 09, 2018 1:08:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jun 09, 2018 1:08:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - BizAgi - tutorial2 - process
+Jun 09, 2018 1:08:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:75)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:40)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jun 09, 2018 1:08:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - C3 - eng - process
+Jun 09, 2018 1:08:39 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done

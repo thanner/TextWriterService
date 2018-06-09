@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:definitions xmlns="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <ns4:process name="Pool" id="id-0">
+        <ns4:laneSet name="Pool" id="id-1">
+            <ns4:lane name="2:30 pm" id="id-2">
+                <ns4:flowNodeRef>id-4</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-5</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-6</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-7</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-8</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-9</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-10</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-11</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-12</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-13</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-14</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-15</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-18</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-19</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-20</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-21</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-23</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-24</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-27</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-28</ns4:flowNodeRef>
+            </ns4:lane>
+            <ns4:lane name="4:00 pm" id="id-3">
+                <ns4:flowNodeRef>id-16</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-17</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-22</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-25</ns4:flowNodeRef>
+                <ns4:flowNodeRef>id-26</ns4:flowNodeRef>
+            </ns4:lane>
+        </ns4:laneSet>
+        <ns4:task name="check morning to see whether the account defaulter table has new records" id="id-4">
+            <ns4:incoming>ns4:id-44</ns4:incoming>
+            <ns4:outgoing>ns4:id-29</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="back up morning" id="id-5">
+            <ns4:incoming>ns4:id-29</ns4:incoming>
+            <ns4:outgoing>ns4:id-31</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="check the crm system to see whether new returns have been filed" id="id-6">
+            <ns4:incoming>ns4:id-30</ns4:incoming>
+            <ns4:outgoing>ns4:id-39</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="register defaulting accounts" id="id-7">
+            <ns4:incoming>ns4:id-51</ns4:incoming>
+            <ns4:outgoing>ns4:id-32</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="register customers" id="id-8">
+            <ns4:incoming>ns4:id-32</ns4:incoming>
+            <ns4:outgoing>ns4:id-34</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="produce table" id="id-9">
+            <ns4:incoming>ns4:id-52</ns4:incoming>
+            <ns4:outgoing>ns4:id-33</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="default accounts" id="id-10">
+            <ns4:incoming>ns4:id-43</ns4:incoming>
+            <ns4:outgoing>ns4:id-35</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="send to account management" id="id-11">
+            <ns4:incoming>ns4:id-35</ns4:incoming>
+            <ns4:outgoing>ns4:id-36</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="account management" id="id-12">
+            <ns4:incoming>ns4:id-36</ns4:incoming>
+            <ns4:outgoing>ns4:id-37</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="complete all of this" id="id-13">
+            <ns4:incoming>ns4:id-53</ns4:incoming>
+            <ns4:outgoing>ns4:id-38</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="send an alert to the supervisor" id="id-14">
+            <ns4:incoming>ns4:id-38</ns4:incoming>
+            <ns4:outgoing>ns4:id-45</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="complete account report" id="id-15">
+            <ns4:incoming>ns4:id-39</ns4:incoming>
+            <ns4:outgoing>ns4:id-40</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="complete this" id="id-16">
+            <ns4:incoming>ns4:id-41</ns4:incoming>
+            <ns4:outgoing>ns4:id-46</ns4:outgoing>
+        </ns4:task>
+        <ns4:task name="send a message" id="id-17">
+            <ns4:incoming>ns4:id-42</ns4:incoming>
+            <ns4:outgoing>ns4:id-47</ns4:outgoing>
+        </ns4:task>
+        <ns4:exclusiveGateway id="id-18">
+            <ns4:incoming>ns4:id-31</ns4:incoming>
+            <ns4:outgoing>ns4:id-30</ns4:outgoing>
+            <ns4:outgoing>ns4:id-50</ns4:outgoing>
+            <ns4:outgoing>ns4:id-51</ns4:outgoing>
+            <ns4:outgoing>ns4:id-52</ns4:outgoing>
+        </ns4:exclusiveGateway>
+        <ns4:exclusiveGateway id="id-19">
+            <ns4:incoming>ns4:id-33</ns4:incoming>
+            <ns4:incoming>ns4:id-34</ns4:incoming>
+            <ns4:incoming>ns4:id-50</ns4:incoming>
+            <ns4:outgoing>ns4:id-43</ns4:outgoing>
+        </ns4:exclusiveGateway>
+        <ns4:exclusiveGateway id="id-20">
+            <ns4:incoming>ns4:id-37</ns4:incoming>
+            <ns4:outgoing>ns4:id-48</ns4:outgoing>
+            <ns4:outgoing>ns4:id-53</ns4:outgoing>
+        </ns4:exclusiveGateway>
+        <ns4:exclusiveGateway id="id-21">
+            <ns4:incoming>ns4:id-40</ns4:incoming>
+            <ns4:outgoing>ns4:id-49</ns4:outgoing>
+            <ns4:outgoing>ns4:id-54</ns4:outgoing>
+        </ns4:exclusiveGateway>
+        <ns4:exclusiveGateway id="id-22">
+            <ns4:incoming>ns4:id-54</ns4:incoming>
+            <ns4:outgoing>ns4:id-41</ns4:outgoing>
+            <ns4:outgoing>ns4:id-42</ns4:outgoing>
+        </ns4:exclusiveGateway>
+        <ns4:startEvent id="id-23">
+            <ns4:outgoing>ns4:id-44</ns4:outgoing>
+        </ns4:startEvent>
+        <ns4:endEvent id="id-24">
+            <ns4:incoming>ns4:id-45</ns4:incoming>
+        </ns4:endEvent>
+        <ns4:endEvent id="id-25">
+            <ns4:incoming>ns4:id-46</ns4:incoming>
+        </ns4:endEvent>
+        <ns4:endEvent id="id-26">
+            <ns4:incoming>ns4:id-47</ns4:incoming>
+        </ns4:endEvent>
+        <ns4:endEvent id="id-27">
+            <ns4:incoming>ns4:id-48</ns4:incoming>
+        </ns4:endEvent>
+        <ns4:endEvent id="id-28">
+            <ns4:incoming>ns4:id-49</ns4:incoming>
+        </ns4:endEvent>
+        <ns4:sequenceFlow sourceRef="id-4" targetRef="id-5" name="" id="id-29"/>
+        <ns4:sequenceFlow sourceRef="id-18" targetRef="id-6" name="" id="id-30"/>
+        <ns4:sequenceFlow sourceRef="id-5" targetRef="id-18" name="" id="id-31"/>
+        <ns4:sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-32"/>
+        <ns4:sequenceFlow sourceRef="id-9" targetRef="id-19" name="" id="id-33"/>
+        <ns4:sequenceFlow sourceRef="id-8" targetRef="id-19" name="" id="id-34"/>
+        <ns4:sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-35"/>
+        <ns4:sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-36"/>
+        <ns4:sequenceFlow sourceRef="id-12" targetRef="id-20" name="" id="id-37"/>
+        <ns4:sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-38"/>
+        <ns4:sequenceFlow sourceRef="id-6" targetRef="id-15" name="" id="id-39"/>
+        <ns4:sequenceFlow sourceRef="id-15" targetRef="id-21" name="" id="id-40"/>
+        <ns4:sequenceFlow sourceRef="id-22" targetRef="id-16" name="" id="id-41"/>
+        <ns4:sequenceFlow sourceRef="id-22" targetRef="id-17" name="" id="id-42"/>
+        <ns4:sequenceFlow sourceRef="id-19" targetRef="id-10" name="" id="id-43"/>
+        <ns4:sequenceFlow sourceRef="id-23" targetRef="id-4" name="" id="id-44"/>
+        <ns4:sequenceFlow sourceRef="id-14" targetRef="id-24" name="" id="id-45"/>
+        <ns4:sequenceFlow sourceRef="id-16" targetRef="id-25" name="" id="id-46"/>
+        <ns4:sequenceFlow sourceRef="id-17" targetRef="id-26" name="" id="id-47"/>
+        <ns4:sequenceFlow sourceRef="id-20" targetRef="id-27" name="" id="id-48"/>
+        <ns4:sequenceFlow sourceRef="id-21" targetRef="id-28" name="" id="id-49"/>
+        <ns4:sequenceFlow sourceRef="id-18" targetRef="id-19" name="founds no new records " id="id-50"/>
+        <ns4:sequenceFlow sourceRef="id-18" targetRef="id-7" name="new returns  " id="id-51"/>
+        <ns4:sequenceFlow sourceRef="id-18" targetRef="id-9" name="have been not advise  the defaulting client codes " id="id-52"/>
+        <ns4:sequenceFlow sourceRef="id-20" targetRef="id-13" name="all of this is not   " id="id-53"/>
+        <ns4:sequenceFlow sourceRef="id-21" targetRef="id-22" name="files new returns " id="id-54"/>
+    </ns4:process>
+</ns4:definitions>
