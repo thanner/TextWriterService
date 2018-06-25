@@ -18,4 +18,8 @@ public class Text {
         this.sentenceList = sentenceList;
     }
 
+    public void appendSentences(Text newText) {
+        getSentenceList().addAll(newText.getSentenceList());
+    }
+
 }

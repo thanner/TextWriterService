@@ -1,7 +1,7 @@
 {
   "sentenceList": [
     {
-      "value": "The process begins when the mspn registers a measurement at the go.",
+      "value": "The process begins when the mspn sends a dismissal to the mspo.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
@@ -10,7 +10,7 @@
           "processElement": "activity",
           "resource": "mspn",
           "startIndex": 24,
-          "endIndex": 66
+          "endIndex": 62
         },
         {
           "processElementId": "Start event Id",
@@ -22,16 +22,16 @@
       ]
     },
     {
-      "value": "Then, the go examines the application of the mspn.",
+      "value": "Then, the mspo reviews the dismissal.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-5",
           "processElement": "activity",
-          "resource": "go",
+          "resource": "mspo",
           "startIndex": 6,
-          "endIndex": 49
+          "endIndex": 36
         }
       ]
     },
@@ -41,7 +41,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-12",
+          "processElementId": "id-8",
           "processElement": "xorsplit",
           "resource": "",
           "startIndex": 12,
@@ -50,79 +50,86 @@
       ]
     },
     {
-      "value": "The go rejects the application of the mspn.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-6",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 42
-        }
-      ]
-    },
-    {
-      "value": "The go confirms the application of the mspn.",
+      "value": "The mspo confirms the dismissal of the mspn.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
           "processElementId": "id-7",
           "processElement": "activity",
-          "resource": "go",
+          "resource": "mspo",
           "startIndex": 0,
           "endIndex": 43
         }
       ]
     },
     {
-      "value": "Once one of the following branches was executed the go assigns the mspn.",
-      "level": 0,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-8",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 48,
-          "endIndex": 71
-        },
-        {
-          "processElementId": "id-13",
-          "processElement": "xorjoin",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 47
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the go informs the mspo about assignment of the mspn and informs the mpo about assignment.",
-      "level": 0,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-9",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 14,
-          "endIndex": 103
-        }
-      ]
-    },
-    {
-      "value": "Then, the go informs the sp about assignment of the mspn.",
-      "level": 0,
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-11",
-          "processElement": "activity",
-          "resource": "go",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
           "startIndex": 6,
-          "endIndex": 56
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The mspo rejects the dismissal of the mspn.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "mspo",
+          "startIndex": 0,
+          "endIndex": 42
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
         }
       ]
     },
@@ -132,7 +139,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-15",
+          "processElementId": "none",
           "processElement": "endevent",
           "resource": "",
           "startIndex": 9,

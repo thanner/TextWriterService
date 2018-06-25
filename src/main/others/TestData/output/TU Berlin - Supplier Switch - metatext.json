@@ -1,0 +1,886 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the customer initiates a process.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 24,
+          "endIndex": 56
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it conducts and transmits the data.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 6,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer conducts the customer service is a shared service center between the departments.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 12,
+          "endIndex": 105
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the customer service receives the customer data and conducts the customer service bases customer data.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 14,
+          "endIndex": 115
+        }
+      ]
+    },
+    {
+      "value": "Then, the customer service enters the data and compares the data.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 6,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer service checks the data.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 12,
+          "endIndex": 48
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-57",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-68",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The customer service corrects the data and conducts the comparison of data to prevent individual customer data being stored multiple times.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 0,
+          "endIndex": 138
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-58",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-69",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The customer service creates a new customer object and remains the data object.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 0,
+          "endIndex": 78
+        }
+      ]
+    },
+    {
+      "value": "Then, the customer service consists of the name and uses the generated customer object.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 6,
+          "endIndex": 86
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer service carries out the automated check of contract documents in following.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-24",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 12,
+          "endIndex": 99
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-59",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 3,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-70",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 3,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The customer service ares the not generate the contract documents and analyzes the causing issues.",
+      "level": 3,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 0,
+          "endIndex": 97
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer service resolves the causing issues and generates the contract documents again.",
+      "level": 3,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 12,
+          "endIndex": 103
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 3,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-60",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 4,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-71",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 4,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The customer service sends out a confirmation document to the customer stating that switch-over to new supplier can be executed.",
+      "level": 4,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-29",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 0,
+          "endIndex": 127
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the cis sends out the request to the grid operator and puts the question.",
+      "level": 4,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-30",
+          "processElement": "activity",
+          "resource": "cis",
+          "startIndex": 12,
+          "endIndex": 84
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 4,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-61",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 5,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-72",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 5,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The grid operator for supplier concurrence checks the switch-over request.",
+      "level": 5,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-32",
+          "processElement": "activity",
+          "resource": "grid operator for supplier concurrence",
+          "startIndex": 0,
+          "endIndex": 73
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the grid operator transmits a response comment.",
+      "level": 5,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-33",
+          "processElement": "activity",
+          "resource": "grid operator",
+          "startIndex": 12,
+          "endIndex": 58
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 5,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-62",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 6,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-73",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 6,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The grid operator informs the involved suppliers and demands the resolution.",
+      "level": 6,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-34",
+          "processElement": "activity",
+          "resource": "grid operator",
+          "startIndex": 0,
+          "endIndex": 75
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the grid operator communicates the termination of the sales agreement between customer and carries out the termination.",
+      "level": 6,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-36",
+          "processElement": "activity",
+          "resource": "grid operator",
+          "startIndex": 12,
+          "endIndex": 130
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 6,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-63",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 7,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-74",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The customer service creates a cis contract.",
+      "level": 7,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-38",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 0,
+          "endIndex": 43
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-64",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The customer decides to confirm the switch contract.",
+      "level": 8,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-40",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 51
+        }
+      ]
+    },
+    {
+      "value": "The customer decides to withdraw from the switch contract the switch contract.",
+      "level": 8,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-39",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 77
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the customer conducts the acceptance\\/rejection the process flow.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-41",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 48,
+          "endIndex": 112
+        },
+        {
+          "processElementId": "id-65",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the customer conducts the additional constraint is that the customer can only withdraw from the offered contract within 7 days after the 7th day and will the be regard.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-42",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 14,
+          "endIndex": 181
+        }
+      ]
+    },
+    {
+      "value": "Then, the customer accepts and continues.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-44",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 6,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer conducts the not confirmation message by the customer is not necessary and counts.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-46",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 12,
+          "endIndex": 106
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the customer speeds up the switch process and begins.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-48",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 14,
+          "endIndex": 66
+        }
+      ]
+    },
+    {
+      "value": "Then, the grid operator transmits the meter data to the customer service and computes the final billing based.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-50",
+          "processElement": "activity",
+          "resource": "grid operator",
+          "startIndex": 6,
+          "endIndex": 109
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the grid operator sends the final billing based on the meter data to old supplier.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-52",
+          "processElement": "activity",
+          "resource": "grid operator",
+          "startIndex": 12,
+          "endIndex": 93
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the old supplier creates the final billing and sends the final billing.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-53",
+          "processElement": "activity",
+          "resource": "old supplier",
+          "startIndex": 14,
+          "endIndex": 84
+        }
+      ]
+    },
+    {
+      "value": "Then, the old supplier receives the meter data.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-55",
+          "processElement": "activity",
+          "resource": "old supplier",
+          "startIndex": 6,
+          "endIndex": 46
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer service imports the meter data to the systems.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-56",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 12,
+          "endIndex": 70
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-67",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 7,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 6,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 5,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 4,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 3,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

@@ -26,6 +26,7 @@ import processToText.preprocessing.FormatConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class TextGenerator {
@@ -37,8 +38,44 @@ public class TextGenerator {
         ProcessModel processModel = processModelBuilder.buildProcess(definitions);
         Map<Integer, String> bpmnIdMap = processModelBuilder.getBpmnIdMap();
 
+        Text text = new Text();
+        int counter = 0;
+
+        // Multi Pool Model
+        if (processModel.getPools().size() > 1) {
+            HashMap<Integer, ProcessModel> modelsForPools = processModel.getModelForEachPool();
+            Text poolText;
+            for (ProcessModel poolProcessModel : modelsForPools.values()) {
+                poolProcessModel = applyNormalization(poolProcessModel);
+                poolText = generateText(poolProcessModel, bpmnIdMap, counter);
+                text.appendSentences(poolText);
+                // System.out.println(text.replaceAll(" process ", " " + m.getPools().get(0) + " process "));
+            }
+        } else {
+            processModel = applyNormalization(processModel);
+            text = generateText(processModel, bpmnIdMap, counter);
+            // System.out.println(text);
+        }
+        return text;
+    }
+
+    private static ProcessModel applyNormalization(ProcessModel processModel) {
+        processModel.normalize();
+        processModel.normalizeEndEvents();
+        return processModel;
+    }
+
+    /*
+    public static Text generateText(String bpmnString) throws IOException, JWNLException {
+        TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
+
+        ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
+        ProcessModel processModel = processModelBuilder.buildProcess(definitions);
+        Map<Integer, String> bpmnIdMap = processModelBuilder.getBpmnIdMap();
+
         return TextGenerator.generateText(processModel, bpmnIdMap, 0);
     }
+    */
 
     public static Text generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();

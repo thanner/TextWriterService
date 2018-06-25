@@ -1,0 +1,193 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the hr clerk conducts an i is the hr clerk.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "hr clerk",
+          "startIndex": 24,
+          "endIndex": 66
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it reports a vacancy to the hr clerk and creates a job description.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "hr clerk",
+          "startIndex": 6,
+          "endIndex": 72
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the hr clerk conducts the stillask the department again.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "hr clerk",
+          "startIndex": 12,
+          "endIndex": 67
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the department submits the job description for the consideration and waits.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "department",
+          "startIndex": 14,
+          "endIndex": 88
+        }
+      ]
+    },
+    {
+      "value": "Then, the department happens the approval and requests a correction.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "department",
+          "startIndex": 6,
+          "endIndex": 67
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the department corrects the description and submits the description again.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "department",
+          "startIndex": 12,
+          "endIndex": 85
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The department posts the job.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "department",
+          "startIndex": 0,
+          "endIndex": 28
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}
