@@ -127,7 +127,9 @@ public class TextPlanner {
                     ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
                     eFrag.bo_isSubject = true;
                     DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
-                    dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElement());
+                    if (convRecord.post != null) {
+                        dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElement());
+                    }
                     sentencePlan.add(dsyntSentence);
                     passedFragments.clear();
                 }
@@ -158,31 +160,46 @@ public class TextPlanner {
 
         if (PlanningHelper.isLoop(node, rpst)) {
             convRecord = getLoopConverterRecord(node);
-            convRecord.post.setProcessElement(ProcessElementType.LOOP.getValue());
+            setProcessElementData(convRecord.post, node, ProcessElementType.XORSPLIT.getValue());
         }
         if (PlanningHelper.isSkip(node, rpst)) {
             convRecord = getSkipConverterRecord(orderedTopNodes, node);
-            convRecord.post.setProcessElement(ProcessElementType.SKIP.getValue());
+            convRecord.pre.setProcessElement(ProcessElementType.XORSPLIT.getValue());
+            convRecord.pre.setProcessElementId(getProcessElementId(node.getEntry().getId()));
         }
         if (PlanningHelper.isXORSplit(node, rpst)) {
             convRecord = getXORConverterRecord(node);
-            convRecord.post.setProcessElement(ProcessElementType.XORJOIN.getValue());
+            setProcessElementData(convRecord.post, node, ProcessElementType.XORJOIN.getValue());
         }
         if (PlanningHelper.isEventSplit(node, rpst)) {
             convRecord = getXORConverterRecord(node);
-            convRecord.post.setProcessElement(ProcessElementType.INTERMEDIATEEVENT.getValue());
+            setProcessElementData(convRecord.post, node, ProcessElementType.INTERMEDIATEEVENT.getValue());
         }
         if (PlanningHelper.isORSplit(node, rpst)) {
             convRecord = getORConverterRecord(node);
-            convRecord.post.setProcessElement(ProcessElementType.ORJOIN.getValue());
+            setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN.getValue());
         }
         if (PlanningHelper.isANDSplit(node, rpst)) {
             convRecord = getANDConverterRecord(node);
-            convRecord.post.setProcessElement(ProcessElementType.ANDJOIN.getValue());
+            setProcessElementData(convRecord.post, node, ProcessElementType.ANDJOIN.getValue());
         }
-        convRecord.post.setProcessElementId(getProcessElementId(node.getExit().getId()));
         return convRecord;
     }
+
+    private void setProcessElementData(ConditionFragment conditionFragment, RPSTNode<ControlFlow, Node> node, String processElement) {
+        conditionFragment.setProcessElement(processElement);
+        conditionFragment.setProcessElementId(getProcessElementId(node.getExit().getId()));
+    }
+
+    /*
+    private String GetConvertRecordProcessElement(RPSTNode<ControlFlow, Node> node, ConverterRecord convRecord) {
+        if (PlanningHelper.isSkip(node, rpst)) {
+            return convRecord.hasPreFragment() ? convRecord.pre.getProcessElement() : null;
+        } else {
+            return convRecord.hasPostFragment() ? convRecord.post.getProcessElement() : null;
+        }
+    }
+    */
 
     private ConverterRecord getLoopConverterRecord(RPSTNode<ControlFlow, Node> node) {
         RPSTNode<ControlFlow, Node> firstNodeInLoop = PlanningHelper.getNextNode(node, rpst);
@@ -684,6 +701,7 @@ public class TextPlanner {
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
         dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
+        // TODO: Arrumar
         dSynTSentence.addProcessElementDocument("Start event Id", ProcessElementType.STARTEVENT.getValue(), "", Lexemes.startEvent);
         dSynTSentence.createDSynTRepresentation();
     }

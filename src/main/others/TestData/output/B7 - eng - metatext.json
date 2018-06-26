@@ -50,20 +50,6 @@
       ]
     },
     {
-      "value": "The go rejects the application of the mspn.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-6",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 42
-        }
-      ]
-    },
-    {
       "value": "The go confirms the application of the mspn.",
       "level": 1,
       "isLateral": true,
@@ -74,6 +60,20 @@
           "resource": "go",
           "startIndex": 0,
           "endIndex": 43
+        }
+      ]
+    },
+    {
+      "value": "The go rejects the application of the mspn.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 42
         }
       ]
     },

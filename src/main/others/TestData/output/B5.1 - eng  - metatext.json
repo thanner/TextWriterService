@@ -36,20 +36,6 @@
       ]
     },
     {
-      "value": "The mpoo announces the self.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-6",
-          "processElement": "activity",
-          "resource": "mpoo",
-          "startIndex": 0,
-          "endIndex": 27
-        }
-      ]
-    },
-    {
       "value": "The mpoo notifies the mpon about no self-dismounting of the mpoo.",
       "level": 1,
       "isLateral": true,
@@ -60,6 +46,20 @@
           "resource": "mpoo",
           "startIndex": 0,
           "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "The mpoo announces the self.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "mpoo",
+          "startIndex": 0,
+          "endIndex": 27
         }
       ]
     },
@@ -85,20 +85,6 @@
       ]
     },
     {
-      "value": "The mpoo performs the final reading.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-9",
-          "processElement": "activity",
-          "resource": "mpoo",
-          "startIndex": 0,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
       "value": "The mpon performs the final reading.",
       "level": 1,
       "isLateral": true,
@@ -107,6 +93,20 @@
           "processElementId": "id-8",
           "processElement": "activity",
           "resource": "mpon",
+          "startIndex": 0,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The mpoo performs the final reading.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "mpoo",
           "startIndex": 0,
           "endIndex": 35
         }
