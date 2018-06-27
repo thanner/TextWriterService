@@ -1,0 +1,81 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the mpon requests a device takeover bid of the mpoo.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "mpon",
+          "startIndex": 24,
+          "endIndex": 75
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the mpoo sends a tender for the equipment takeover to mpon.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "mpoo",
+          "startIndex": 6,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, it places the order.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "mpon",
+          "startIndex": 12,
+          "endIndex": 31
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the mpoo confirms the order of the mpon and sends the master data.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "mpoo",
+          "startIndex": 14,
+          "endIndex": 79
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

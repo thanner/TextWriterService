@@ -1,0 +1,81 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the functional department triggers a process to fill a post.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "functional department",
+          "startIndex": 24,
+          "endIndex": 83
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it advertises the post.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "functional department",
+          "startIndex": 6,
+          "endIndex": 28
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the applicants applies and checks the applications.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "applicants",
+          "startIndex": 12,
+          "endIndex": 62
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, it fills the post and fills the post.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "applicants",
+          "startIndex": 14,
+          "endIndex": 50
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

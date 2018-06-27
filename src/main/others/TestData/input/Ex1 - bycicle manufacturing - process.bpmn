@@ -110,7 +110,6 @@
         <task name="assemble the bicycle" id="id-24">
             <incoming>id-56</incoming>
             <outgoing>id-57</outgoing>
-            <outgoing>id-57</outgoing>
         </task>
         <task name="finish the process instance" id="id-25">
             <incoming>id-57</incoming>

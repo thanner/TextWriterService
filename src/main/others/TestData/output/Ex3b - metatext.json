@@ -1,0 +1,123 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the support finalizes the dates.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "support",
+          "startIndex": 24,
+          "endIndex": 55
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it creates to the meet folders and ensures.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "support",
+          "startIndex": 6,
+          "endIndex": 48
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the support uploads the appropriate documents to the system and advises the committee members.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "support",
+          "startIndex": 12,
+          "endIndex": 105
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the committee members holds the meeting.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "committee members",
+          "startIndex": 14,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Then, the support office produces the minutes including any action points for the each committee member.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "support office",
+          "startIndex": 6,
+          "endIndex": 103
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the coordination unit conducts a qa check.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "coordination unit",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the support officer updates the departmental records.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "support officer",
+          "startIndex": 14,
+          "endIndex": 66
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}
