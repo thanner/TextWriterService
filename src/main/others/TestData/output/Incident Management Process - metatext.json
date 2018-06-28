@@ -1,16 +1,16 @@
 {
   "sentenceList": [
     {
-      "value": "The process begins when the customer receives a customer request for a loan amount.",
+      "value": "The process begins when the customer triggers the shown incident management process of a software manufacturer to request help from account manager.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-3",
+          "processElementId": "id-6",
           "processElement": "activity",
           "resource": "customer",
           "startIndex": -1,
-          "endIndex": 61
+          "endIndex": 126
         },
         {
           "processElementId": "Start event Id",
@@ -22,16 +22,65 @@
       ]
     },
     {
-      "value": "Then, it invokes the risk assessment to assess the request.",
+      "value": "Then, one of the following branches is executed:",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-4",
+          "processElementId": "id-13",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The customer tries to the handle request.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
           "processElement": "activity",
           "resource": "customer",
-          "startIndex": 6,
-          "endIndex": 58
+          "startIndex": 0,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "The customer explains the solution to the customer.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 50
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the account manager hands over the issue to a level support agent.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "account manager",
+          "startIndex": -1,
+          "endIndex": 68
+        },
+        {
+          "processElementId": "id-14",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
         }
       ]
     },
@@ -41,7 +90,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-11",
+          "processElementId": "id-15",
           "processElement": "xorsplit",
           "resource": "",
           "startIndex": 12,
@@ -50,16 +99,16 @@
       ]
     },
     {
-      "value": "The customer conducts the customer is low risk and approves the loan.",
+      "value": "The process is finished.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-5",
-          "processElement": "activity",
-          "resource": "customer",
+          "processElementId": "id-19",
+          "processElement": "intermediateevent",
+          "resource": "",
           "startIndex": 0,
-          "endIndex": 68
+          "endIndex": 23
         }
       ]
     },
@@ -69,8 +118,8 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-15",
-          "processElement": "intermediateevent",
+          "processElementId": "none",
+          "processElement": "endevent",
           "resource": "",
           "startIndex": 14,
           "endIndex": 37
@@ -78,104 +127,111 @@
       ]
     },
     {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "If it is necessary, the customer conducts the loan amount is for $10,000 or more.",
+      "value": "The 2nd level support agent figures out.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-8",
+          "processElementId": "id-10",
           "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 20,
-          "endIndex": 80
-        },
-        {
-          "processElementId": "id-12",
-          "processElement": "xorsplit",
-          "resource": "",
+          "resource": "2nd level support agent",
           "startIndex": 0,
-          "endIndex": 18
+          "endIndex": 39
         }
       ]
     },
     {
-      "value": "Afterwards, the customer sends the request to the approver web service and receives the feedback.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-9",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 12,
-          "endIndex": 96
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-17",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "The customer denies the loan.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-7",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 28
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
+      "value": "Then, one of the following branches is executed:",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-16",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The agent asks a software developer.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "agent",
+          "startIndex": 0,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the account manager explains the solution to the customer in case.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "account manager",
+          "startIndex": 12,
+          "endIndex": 77
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
           "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
           "resource": "",
           "startIndex": 12,
           "endIndex": 35

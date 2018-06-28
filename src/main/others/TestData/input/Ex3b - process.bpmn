@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="support" id="id-2">
+                <flowNodeRef>id-7</flowNodeRef>
+                <flowNodeRef>id-8</flowNodeRef>
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-11</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+            </lane>
+            <lane name="committee members" id="id-3">
+                <flowNodeRef>id-12</flowNodeRef>
+            </lane>
+            <lane name="support office" id="id-4">
+                <flowNodeRef>id-13</flowNodeRef>
+            </lane>
+            <lane name="coordination unit" id="id-5">
+                <flowNodeRef>id-14</flowNodeRef>
+            </lane>
+            <lane name="support officer" id="id-6">
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="finalize the dates" id="id-7">
+            <incoming>id-26</incoming>
+            <outgoing>id-18</outgoing>
+        </task>
+        <task name="create to meet folders" id="id-8">
+            <incoming>id-18</incoming>
+            <outgoing>id-19</outgoing>
+        </task>
+        <task name="ensure " id="id-9">
+            <incoming>id-19</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <task name="upload appropriate documents to system" id="id-10">
+            <incoming>id-20</incoming>
+            <outgoing>id-21</outgoing>
+        </task>
+        <task name="advise committee members" id="id-11">
+            <incoming>id-21</incoming>
+            <outgoing>id-22</outgoing>
+        </task>
+        <task name="hold meeting" id="id-12">
+            <incoming>id-22</incoming>
+            <outgoing>id-23</outgoing>
+        </task>
+        <task name="produce minutes including any action points for each committee member" id="id-13">
+            <incoming>id-23</incoming>
+            <outgoing>id-24</outgoing>
+        </task>
+        <task name="conduct a qa check" id="id-14">
+            <incoming>id-24</incoming>
+            <outgoing>id-25</outgoing>
+        </task>
+        <task name="update departmental records" id="id-15">
+            <incoming>id-25</incoming>
+            <outgoing>id-27</outgoing>
+        </task>
+        <startEvent id="id-16">
+            <outgoing>id-26</outgoing>
+        </startEvent>
+        <endEvent id="id-17">
+            <incoming>id-27</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-18"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-19"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-22"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-23"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-24"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-25"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-7" name="" id="id-26"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-17" name="" id="id-27"/>
+    </process>
+</definitions>

@@ -1,0 +1,95 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the coordination unit at the town planning authority drafts a schedule of the meetings for the next calendar year in november of year.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "coordination unit at the town planning authority",
+          "startIndex": 24,
+          "endIndex": 157
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it adds the draft dates to the calendars.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "coordination unit at the town planning authority",
+          "startIndex": 6,
+          "endIndex": 46
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the support checks the dates and suggests the modifications.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "support",
+          "startIndex": 12,
+          "endIndex": 71
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the coordination unit conducts the rechecks dates and looks.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "coordination unit",
+          "startIndex": 14,
+          "endIndex": 73
+        }
+      ]
+    },
+    {
+      "value": "Then, the coordination unit sends the final schedule of meeting dates to the independent committee members by email.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "coordination unit",
+          "startIndex": 6,
+          "endIndex": 115
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

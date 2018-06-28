@@ -50,12 +50,12 @@
       ]
     },
     {
-      "value": "The member of the sales department rejects the order.",
+      "value": "The member of the sales department accepts the order.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-11",
+          "processElementId": "id-12",
           "processElement": "activity",
           "resource": "member of the sales department",
           "startIndex": 0,
@@ -64,12 +64,12 @@
       ]
     },
     {
-      "value": "The member of the sales department accepts the order.",
+      "value": "The member of the sales department rejects the order.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-12",
+          "processElementId": "id-11",
           "processElement": "activity",
           "resource": "member of the sales department",
           "startIndex": 0,
@@ -141,20 +141,6 @@
       ]
     },
     {
-      "value": "The storehouse reserves the part.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-18",
-          "processElement": "activity",
-          "resource": "storehouse",
-          "startIndex": 0,
-          "endIndex": 32
-        }
-      ]
-    },
-    {
       "value": "The storehouse parts of the is back-ordered.",
       "level": 1,
       "isLateral": true,
@@ -165,6 +151,20 @@
           "resource": "storehouse",
           "startIndex": 0,
           "endIndex": 43
+        }
+      ]
+    },
+    {
+      "value": "The storehouse reserves the part.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "storehouse",
+          "startIndex": 0,
+          "endIndex": 32
         }
       ]
     },
@@ -190,20 +190,6 @@
       ]
     },
     {
-      "value": "The storehouse repeats the procedure.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-20",
-          "processElement": "activity",
-          "resource": "storehouse",
-          "startIndex": 0,
-          "endIndex": 36
-        }
-      ]
-    },
-    {
       "value": "The engineering department prepares the everything for assembling the of the ordered bicycle in the meantime.",
       "level": 1,
       "isLateral": true,
@@ -214,6 +200,20 @@
           "resource": "engineering department",
           "startIndex": 0,
           "endIndex": 108
+        }
+      ]
+    },
+    {
+      "value": "The storehouse repeats the procedure.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "activity",
+          "resource": "storehouse",
+          "startIndex": 0,
+          "endIndex": 36
         }
       ]
     },

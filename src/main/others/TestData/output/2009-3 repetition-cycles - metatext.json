@@ -1,16 +1,16 @@
 {
   "sentenceList": [
     {
-      "value": "The process begins when the customer brings in a defective computer.",
+      "value": "The process begins when the claims officer registers a claim.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-4",
           "processElement": "activity",
-          "resource": "customer",
-          "startIndex": -1,
-          "endIndex": 46
+          "resource": "claims officer",
+          "startIndex": 24,
+          "endIndex": 60
         },
         {
           "processElementId": "Start event Id",
@@ -22,51 +22,30 @@
       ]
     },
     {
-      "value": "Then, the crs checks the defect back and checks the hands back.",
+      "value": "Then, it examines a claim and writes a settlement recommendation.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-5",
           "processElement": "activity",
-          "resource": "crs",
+          "resource": "claims officer",
           "startIndex": 6,
-          "endIndex": 62
+          "endIndex": 64
         }
       ]
     },
     {
-      "value": "If it is necessary, the customer takes the computer home unrepaired.",
+      "value": "Afterwards, the senior claims officer checks the recommendation.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-7",
           "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 20,
-          "endIndex": 67
-        },
-        {
-          "processElementId": "id-14",
-          "processElement": "xorsplit",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 18
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, it consists of the two activities.",
-      "level": 0,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-8",
-          "processElement": "activity",
-          "resource": "customer",
+          "resource": "senior claims officer",
           "startIndex": 12,
-          "endIndex": 45
+          "endIndex": 63
         }
       ]
     },
@@ -76,7 +55,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-16",
+          "processElementId": "id-12",
           "processElement": "xorsplit",
           "resource": "",
           "startIndex": 14,
@@ -85,72 +64,16 @@
       ]
     },
     {
-      "value": "The customer checks the hardware.",
+      "value": "The process is finished.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-9",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 32
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-18",
+          "processElementId": "id-16",
           "processElement": "intermediateevent",
           "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "The customer executes the arbitrary repair activity.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-12",
-          "processElement": "activity",
-          "resource": "customer",
           "startIndex": 0,
-          "endIndex": 51
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-20",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
+          "endIndex": 23
         }
       ]
     },
@@ -169,58 +92,114 @@
       ]
     },
     {
-      "value": "The customer finishes the repair.",
+      "value": "The senior claims officer sends the claim back to the claims and repeats the officer.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-13",
+          "processElementId": "id-8",
           "processElement": "activity",
-          "resource": "customer",
+          "resource": "senior claims officer",
           "startIndex": 0,
-          "endIndex": 32
+          "endIndex": 84
         }
       ]
     },
     {
-      "value": "Afterwards, the process is finished.",
+      "value": "Afterwards, the senior claims officer repeats the recommendation.",
       "level": 1,
       "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-21",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
-      "value": "The customer repairs the hardware whereas second activity checks and tests the proper system functionality.",
-      "level": 1,
-      "isLateral": true,
       "subsentenceList": [
         {
           "processElementId": "id-10",
           "processElement": "activity",
-          "resource": "customer",
+          "resource": "senior claims officer",
+          "startIndex": 12,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "intermediateevent",
+          "resource": "",
           "startIndex": 0,
-          "endIndex": 106
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The senior claims officer claims to handle process proceeds.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "senior claims officer",
+          "startIndex": 0,
+          "endIndex": 59
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
         }
       ]
     },
@@ -230,25 +209,11 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-19",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
           "processElementId": "none",
           "processElement": "endevent",
           "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
+          "startIndex": 6,
+          "endIndex": 29
         }
       ]
     },
