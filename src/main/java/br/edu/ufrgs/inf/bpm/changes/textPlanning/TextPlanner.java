@@ -177,6 +177,7 @@ public class TextPlanner {
         }
         if (PlanningHelper.isORSplit(node, rpst)) {
             convRecord = getORConverterRecord(node);
+            // FIXME: convRecord.post é null aqui
             setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN.getValue());
         }
         if (PlanningHelper.isANDSplit(node, rpst)) {
@@ -364,6 +365,7 @@ public class TextPlanner {
         validIDs.addAll(process.getEvents().keySet());
 
         // Transforming RPST subtree to Petri Net
+        // FIXME: Algo errado no node ou no process?
         ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
 
         addRigid(node);
