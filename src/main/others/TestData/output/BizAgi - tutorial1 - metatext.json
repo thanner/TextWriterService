@@ -64,16 +64,16 @@
       ]
     },
     {
-      "value": "The supervisor approves the request and generates a notification.",
+      "value": "The supervisor rejects the request and returns the application.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-8",
+          "processElementId": "id-9",
           "processElement": "activity",
           "resource": "supervisor",
           "startIndex": 0,
-          "endIndex": 64
+          "endIndex": 62
         }
       ]
     },
@@ -83,7 +83,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-15",
+          "processElementId": "id-14",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,
@@ -106,16 +106,16 @@
       ]
     },
     {
-      "value": "The supervisor rejects the request and returns the application.",
+      "value": "The supervisor approves the request and generates a notification.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-9",
+          "processElementId": "id-8",
           "processElement": "activity",
           "resource": "supervisor",
           "startIndex": 0,
-          "endIndex": 62
+          "endIndex": 64
         }
       ]
     },
@@ -125,7 +125,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-14",
+          "processElementId": "id-15",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 14,

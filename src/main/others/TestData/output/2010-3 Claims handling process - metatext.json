@@ -92,20 +92,6 @@
       ]
     },
     {
-      "value": "The handling department rejects the claim.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-13",
-          "processElement": "activity",
-          "resource": "handling department",
-          "startIndex": 0,
-          "endIndex": 41
-        }
-      ]
-    },
-    {
       "value": "The handling department phones a garage to authorise the repairs and schedules the payment.",
       "level": 1,
       "isLateral": true,
@@ -116,6 +102,20 @@
           "resource": "handling department",
           "startIndex": 0,
           "endIndex": 90
+        }
+      ]
+    },
+    {
+      "value": "The handling department rejects the claim.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "handling department",
+          "startIndex": 0,
+          "endIndex": 41
         }
       ]
     },

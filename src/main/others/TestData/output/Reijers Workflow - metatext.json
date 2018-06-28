@@ -302,6 +302,34 @@
       ]
     },
     {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-73",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
       "value": "The physicians adds the information to the assignment list.",
       "level": 1,
       "isLateral": true,
@@ -316,7 +344,7 @@
       ]
     },
     {
-      "value": "Subsequently, the secretarial office stores the assignment of the patient of the assignment list in the information system and passes the produced registration cards to first.",
+      "value": "Then, the secretarial office stores the assignment of the patient of the assignment list in the information system and passes the produced registration cards to first.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -324,13 +352,13 @@
           "processElementId": "id-46",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 14,
-          "endIndex": 174
+          "startIndex": 6,
+          "endIndex": 166
         }
       ]
     },
     {
-      "value": "Then, the secretarial office keeps the registration and requires the medical file.",
+      "value": "Afterwards, the secretarial office keeps the registration and requires the medical file.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -338,13 +366,13 @@
           "processElementId": "id-48",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 6,
-          "endIndex": 81
+          "startIndex": 12,
+          "endIndex": 87
         }
       ]
     },
     {
-      "value": "Afterwards, the secretarial office prepares a letter to the family doctor of patient requesting for a copy of medical file and sends a letter.",
+      "value": "Subsequently, the secretarial office prepares a letter to the family doctor of patient requesting for a copy of medical file and sends a letter.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -352,13 +380,13 @@
           "processElementId": "id-50",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 12,
-          "endIndex": 141
+          "startIndex": 14,
+          "endIndex": 143
         }
       ]
     },
     {
-      "value": "Subsequently, the secretarial office receives the copy and informs the second intaker.",
+      "value": "Then, the secretarial office receives the copy and informs the second intaker.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -366,13 +394,13 @@
           "processElementId": "id-52",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 14,
-          "endIndex": 85
+          "startIndex": 6,
+          "endIndex": 77
         }
       ]
     },
     {
-      "value": "Then, the secretarial office adds the copy to the patient file and plans a meeting.",
+      "value": "Afterwards, the secretarial office adds the copy to the patient file and plans a meeting.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -380,13 +408,13 @@
           "processElementId": "id-54",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 6,
-          "endIndex": 82
+          "startIndex": 12,
+          "endIndex": 88
         }
       ]
     },
     {
-      "value": "Afterwards, the secretarial office examines the patient to use a standard checklist and fills out the which.",
+      "value": "Subsequently, the secretarial office examines the patient to use a standard checklist and fills out the which.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -394,13 +422,13 @@
           "processElementId": "id-56",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 12,
-          "endIndex": 107
+          "startIndex": 14,
+          "endIndex": 109
         }
       ]
     },
     {
-      "value": "Subsequently, the secretarial office registers the additional observations in a personal notebook and puts a copy.",
+      "value": "Then, the secretarial office registers the additional observations in a personal notebook and puts a copy.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -414,7 +442,7 @@
       ]
     },
     {
-      "value": "Then, the secretarial office adds the standard checklist to the file and plans the first meeting has been receive.",
+      "value": "Afterwards, the secretarial office adds the standard checklist to the file and plans the first meeting has been receive.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -422,13 +450,13 @@
           "processElementId": "id-60",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 6,
-          "endIndex": 113
+          "startIndex": 12,
+          "endIndex": 119
         }
       ]
     },
     {
-      "value": "Afterwards, the physicians uses the dictaphones to record observations made during meetings with patients.",
+      "value": "Subsequently, the physicians uses the dictaphones to record observations made during meetings with patients.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -436,13 +464,13 @@
           "processElementId": "id-62",
           "processElement": "activity",
           "resource": "physicians",
-          "startIndex": 12,
-          "endIndex": 105
+          "startIndex": 14,
+          "endIndex": 107
         }
       ]
     },
     {
-      "value": "Subsequently, the secretarial office types of the out tapes and adds the information.",
+      "value": "Then, the secretarial office types of the out tapes and adds the information.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -450,13 +478,13 @@
           "processElementId": "id-63",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 14,
-          "endIndex": 84
+          "startIndex": 6,
+          "endIndex": 76
         }
       ]
     },
     {
-      "value": "Then, the meetings of the first and second intaker with the patient takes place.",
+      "value": "Afterwards, the meetings of the first and second intaker with the patient takes place.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -464,13 +492,13 @@
           "processElementId": "id-65",
           "processElement": "activity",
           "resource": "meetings of the first and second intaker with the patient",
-          "startIndex": 6,
-          "endIndex": 79
+          "startIndex": 12,
+          "endIndex": 85
         }
       ]
     },
     {
-      "value": "Afterwards, the secretarial office puts the patient and provides the team-leader.",
+      "value": "Subsequently, the secretarial office puts the patient and provides the team-leader.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -478,13 +506,13 @@
           "processElementId": "id-66",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 12,
-          "endIndex": 80
+          "startIndex": 14,
+          "endIndex": 82
         }
       ]
     },
     {
-      "value": "Subsequently, the secretarial office formulates a treatment plan together with the team-leader and ends the intake procedure.",
+      "value": "Then, the secretarial office formulates a treatment plan together with the team-leader and ends the intake procedure.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -492,22 +520,8 @@
           "processElementId": "id-68",
           "processElement": "activity",
           "resource": "secretarial office",
-          "startIndex": 14,
-          "endIndex": 124
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-72",
-          "processElement": "intermediateevent",
-          "resource": "",
           "startIndex": 6,
-          "endIndex": 29
+          "endIndex": 116
         }
       ]
     },
@@ -517,25 +531,11 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "none",
-          "processElement": "endevent",
+          "processElementId": "id-72",
+          "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 12,
           "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "The process is finished.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-73",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 23
         }
       ]
     },

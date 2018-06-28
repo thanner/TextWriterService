@@ -582,20 +582,6 @@
       ]
     },
     {
-      "value": "The customer decides to confirm the switch contract.",
-      "level": 8,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-40",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 51
-        }
-      ]
-    },
-    {
       "value": "The customer decides to withdraw from the switch contract the switch contract.",
       "level": 8,
       "isLateral": true,
@@ -606,6 +592,20 @@
           "resource": "customer",
           "startIndex": 0,
           "endIndex": 77
+        }
+      ]
+    },
+    {
+      "value": "The customer decides to confirm the switch contract.",
+      "level": 8,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-40",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 51
         }
       ]
     },

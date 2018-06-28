@@ -64,16 +64,58 @@
       ]
     },
     {
-      "value": "The mpo rejects the failure of the fault detector.",
+      "value": "The mpo confirms the failure of the fault detector and informs the go.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-7",
+          "processElementId": "id-8",
           "processElement": "activity",
           "resource": "mpo",
           "startIndex": 0,
-          "endIndex": 49
+          "endIndex": 69
+        }
+      ]
+    },
+    {
+      "value": "Then, the mpo informs the msp and faults.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "mpo",
+          "startIndex": 6,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the mpo carrieds out and informs the go about resolution.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "mpo",
+          "startIndex": 12,
+          "endIndex": 68
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the mpo informs the msp about resolution of the interference.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "mpo",
+          "startIndex": 14,
+          "endIndex": 74
         }
       ]
     },
@@ -83,7 +125,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-17",
+          "processElementId": "id-18",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,
@@ -106,58 +148,16 @@
       ]
     },
     {
-      "value": "The mpo confirms the failure of the fault detector and informs the go.",
+      "value": "The mpo rejects the failure of the fault detector.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-8",
+          "processElementId": "id-7",
           "processElement": "activity",
           "resource": "mpo",
           "startIndex": 0,
-          "endIndex": 69
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the mpo informs the msp and faults.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-10",
-          "processElement": "activity",
-          "resource": "mpo",
-          "startIndex": 14,
-          "endIndex": 48
-        }
-      ]
-    },
-    {
-      "value": "Then, the mpo carrieds out and informs the go about resolution.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-12",
-          "processElement": "activity",
-          "resource": "mpo",
-          "startIndex": 6,
-          "endIndex": 62
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the mpo informs the msp about resolution of the interference.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-14",
-          "processElement": "activity",
-          "resource": "mpo",
-          "startIndex": 12,
-          "endIndex": 72
+          "endIndex": 49
         }
       ]
     },
@@ -167,7 +167,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-18",
+          "processElementId": "id-17",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 14,

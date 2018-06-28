@@ -78,20 +78,6 @@
       ]
     },
     {
-      "value": "The room-service manager includes the other alcoholic beverage.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-12",
-          "processElement": "activity",
-          "resource": "room-service manager",
-          "startIndex": 0,
-          "endIndex": 62
-        }
-      ]
-    },
-    {
       "value": "The room-service manager includes the wine.",
       "level": 1,
       "isLateral": true,
@@ -102,6 +88,20 @@
           "resource": "room-service manager",
           "startIndex": 0,
           "endIndex": 42
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager includes the other alcoholic beverage.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 62
         }
       ]
     },
@@ -232,20 +232,6 @@
       ]
     },
     {
-      "value": "The waiter conducts the food is ready.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-19",
-          "processElement": "activity",
-          "resource": "waiter",
-          "startIndex": 0,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
       "value": "The waiter wines the is ready.",
       "level": 1,
       "isLateral": true,
@@ -256,6 +242,20 @@
           "resource": "waiter",
           "startIndex": 0,
           "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The waiter conducts the food is ready.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 0,
+          "endIndex": 37
         }
       ]
     },

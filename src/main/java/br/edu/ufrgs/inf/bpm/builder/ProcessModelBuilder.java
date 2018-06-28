@@ -141,7 +141,8 @@ public class ProcessModelBuilder {
 
     private int getEventType(TEvent event) throws IllegalArgumentException {
         try {
-            return EventType.valueOf(event.getClass().getSimpleName()).getValue();
+            EventType eventType = new EventType();
+            return eventType.getEventType(event);
         } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(event);
         }
