@@ -1047,7 +1047,10 @@ public class TextPlanner {
     private void generateProcessElementList(ExecutableFragment eFrag, DSynTConditionSentence dSynTSentence, String processElementMain) {
         String processElement = processElementMain;
         Document document = dSynTSentence.getDocuments().get(0);
-        dSynTSentence.addProcessElementDocument(getProcessElementId(eFrag.getAssociatedActivities().get(0)), processElement, document);
+
+        if (!eFrag.getAssociatedActivities().isEmpty()) {
+            dSynTSentence.addProcessElementDocument(getProcessElementId(eFrag.getAssociatedActivities().get(0)), processElement, document);
+        }
 
         for (int i = 0; i < passedFragments.size(); i++) {
             processElement = passedFragments.get(i).getProcessElement();
