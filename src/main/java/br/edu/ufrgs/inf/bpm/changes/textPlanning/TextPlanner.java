@@ -177,8 +177,9 @@ public class TextPlanner {
         }
         if (PlanningHelper.isORSplit(node, rpst)) {
             convRecord = getORConverterRecord(node);
-            // FIXME: convRecord.post é null aqui
-            setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN.getValue());
+            if (convRecord != null && convRecord.post != null) {
+                setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN.getValue());
+            }
         }
         if (PlanningHelper.isANDSplit(node, rpst)) {
             convRecord = getANDConverterRecord(node);

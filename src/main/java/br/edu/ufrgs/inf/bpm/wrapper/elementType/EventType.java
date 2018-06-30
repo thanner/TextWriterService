@@ -46,6 +46,9 @@ public class EventType {
         } else if (event instanceof TIntermediateCatchEvent) {
             TIntermediateCatchEvent intermediateCatchEvent = (TIntermediateCatchEvent) event;
             return getIntermediateCatchEvent(intermediateCatchEvent);
+        } else if (event instanceof TBoundaryEvent) {
+            TBoundaryEvent boundaryEvent = (TBoundaryEvent) event;
+            return getBoundaryEvent(boundaryEvent);
         } else if (event instanceof TEndEvent) {
             TEndEvent endEvent = (TEndEvent) event;
             return getEndEvent(endEvent);
@@ -88,6 +91,23 @@ public class EventType {
                 return INTM_LINK_CAT;
             } else if (eventDefinition.getValue() instanceof TMessageEventDefinition) {
                 return INTM_MSG_CAT;
+            } else if (eventDefinition.getValue() instanceof TCompensateEventDefinition) {
+                return INTM_COMPENSATION_CAT;
+            }
+        }
+        return INTM;
+    }
+
+    private int getBoundaryEvent(TBoundaryEvent boundaryEvent) {
+        for (JAXBElement<? extends TEventDefinition> eventDefinition : boundaryEvent.getEventDefinition()) {
+            if (eventDefinition.getValue() instanceof TEscalationEventDefinition) {
+                return INTM_ESCALATION_THR;
+            } else if (eventDefinition.getValue() instanceof TSignalEventDefinition) {
+                return INTM_SIGNAL_THR;
+            } else if (eventDefinition.getValue() instanceof TLinkEventDefinition) {
+                return INTM_LINK_THR;
+            } else if (eventDefinition.getValue() instanceof TMessageEventDefinition) {
+                return INTM_MSG_THR;
             } else if (eventDefinition.getValue() instanceof TCompensateEventDefinition) {
                 return INTM_COMPENSATION_CAT;
             }

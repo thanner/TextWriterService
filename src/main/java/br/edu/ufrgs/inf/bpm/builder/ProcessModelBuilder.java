@@ -52,9 +52,17 @@ public class ProcessModelBuilder {
                 if (flowElement.getValue() instanceof TActivity) {
                     processModel.addActivity(createActivity((TActivity) flowElement.getValue()));
                 } else if (flowElement.getValue() instanceof TEvent) {
-                    processModel.addEvent(createEvent((TEvent) flowElement.getValue()));
+                    Event event = createEvent((TEvent) flowElement.getValue());
+                    //if(event.isAttached())
+                    processModel.addEvent(event);
                 } else if (flowElement.getValue() instanceof TGateway) {
                     processModel.addGateway(createGateway((TGateway) flowElement.getValue()));
+                }
+            }
+
+            for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
+                if (flowElement.getValue() instanceof TBoundaryEvent) {
+                    attachEvent((TBoundaryEvent) flowElement.getValue());
                 }
             }
 
@@ -125,6 +133,16 @@ public class ProcessModelBuilder {
     private Arc createArc(TSequenceFlow arc) {
         int newId = generateModelId(arc.getId());
         return new Arc(newId, getName(arc.getName()), elementMap.get(((TFlowNode) arc.getSourceRef()).getId()), elementMap.get(((TFlowNode) arc.getTargetRef()).getId()));
+    }
+
+    private void attachEvent(TBoundaryEvent tBoundaryEvent) {
+        String activityId = tBoundaryEvent.getAttachedToRef().toString();
+        Activity activity = (Activity) elementMap.get(activityId);
+        activity.addAttachedEvent(elementMap.get(tBoundaryEvent.getId()).getId());
+
+        Event event = (Event) elementMap.get(tBoundaryEvent.getId());
+        event.setAttached(true);
+        event.setIsAttachedTo(activity.getId());
     }
 
     private String getName(String name) {

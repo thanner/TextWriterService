@@ -1,0 +1,312 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the mpoo conducts a deregisters at the go.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "mpoo",
+          "startIndex": 24,
+          "endIndex": 65
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the go verifies the deregistration.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 6,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The go confirms the deregistration of the mpoo.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 46
+        }
+      ]
+    },
+    {
+      "value": "The go rejects the deregistration of the mpoo.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the go prepares the readmission of the measuring point.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 48,
+          "endIndex": 102
+        },
+        {
+          "processElementId": "id-21",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the go obliges the mpoo to the continue and continues the operations.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 14,
+          "endIndex": 82
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The go continues the operation.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 30
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the mpoo confirms the continuation to the mpoo.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "mpoo",
+          "startIndex": 14,
+          "endIndex": 60
+        }
+      ]
+    },
+    {
+      "value": "Then, one or more of the following paths is executed.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-23",
+          "processElement": "orsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 52
+        }
+      ]
+    },
+    {
+      "value": "The go performs the equipment acquisition.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 41
+        }
+      ]
+    },
+    {
+      "value": "The go performs the equipment changes.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the go assigns the go as mpo and informs the mpoo about end.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 12,
+          "endIndex": 71
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the go informs the beginning of the assignment of go and informs the mspo about assignment.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 14,
+          "endIndex": 104
+        }
+      ]
+    },
+    {
+      "value": "Then, the go informs the sp about assignment of the go.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 6,
+          "endIndex": 54
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-26",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}
