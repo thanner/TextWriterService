@@ -47,13 +47,17 @@ public class TextGenerator {
             Text poolText;
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 poolProcessModel = applyNormalization(poolProcessModel);
-                poolText = generateText(poolProcessModel, bpmnIdMap, counter);
-                text.appendSentences(poolText);
+                if (!isBlackBox(processModel)) {
+                    poolText = generateText(poolProcessModel, bpmnIdMap, counter);
+                    text.appendSentences(poolText);
+                }
                 // System.out.println(text.replaceAll(" process ", " " + m.getPools().get(0) + " process "));
             }
         } else {
             processModel = applyNormalization(processModel);
-            text = generateText(processModel, bpmnIdMap, counter);
+            if (!isBlackBox(processModel)) {
+                text = generateText(processModel, bpmnIdMap, counter);
+            }
             // System.out.println(text);
         }
         return text;
@@ -63,6 +67,10 @@ public class TextGenerator {
         processModel.normalize();
         processModel.normalizeEndEvents();
         return processModel;
+    }
+
+    private static boolean isBlackBox(ProcessModel processModel) {
+        return processModel.getActivites().isEmpty() && processModel.getEvents().isEmpty() && processModel.getGateways().isEmpty() && processModel.getArcs().isEmpty();
     }
 
     /*
