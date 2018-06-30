@@ -29,20 +29,6 @@
       ]
     },
     {
-      "value": "The employee purchases a product to the require.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-5",
-          "processElement": "activity",
-          "resource": "employee",
-          "startIndex": 0,
-          "endIndex": 47
-        }
-      ]
-    },
-    {
       "value": "The employee purchases the service to the require.",
       "level": 1,
       "isLateral": true,
@@ -53,6 +39,20 @@
           "resource": "employee",
           "startIndex": 0,
           "endIndex": 49
+        }
+      ]
+    },
+    {
+      "value": "The employee purchases a product to the require.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 0,
+          "endIndex": 47
         }
       ]
     },
@@ -316,6 +316,62 @@
       ]
     },
     {
+      "value": "The treasurer sends a message and goes.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "intermediateevent",
+          "resource": "treasurer",
+          "startIndex": 0,
+          "endIndex": 38
+        }
+      ]
+    },
+    {
+      "value": "Then, the supervisor approves the report.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "activity",
+          "resource": "supervisor",
+          "startIndex": 6,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-34",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
       "value": "The process is finished.",
       "level": 2,
       "isLateral": true,
@@ -326,62 +382,6 @@
           "resource": "",
           "startIndex": 0,
           "endIndex": 23
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "The treasurer goes to a supervisor.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-21",
-          "processElement": "activity",
-          "resource": "treasurer",
-          "startIndex": -1,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the supervisor approves the report.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-22",
-          "processElement": "activity",
-          "resource": "supervisor",
-          "startIndex": 12,
-          "endIndex": 46
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-34",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
         }
       ]
     },

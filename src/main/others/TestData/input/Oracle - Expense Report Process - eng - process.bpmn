@@ -1,223 +1,224 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns4:definitions xmlns="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
-    <ns4:process name="Pool" id="id-0">
-        <ns4:laneSet name="Pool" id="id-1">
-            <ns4:lane name="employee" id="id-2">
-                <ns4:flowNodeRef>id-5</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-6</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-7</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-26</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-27</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-36</ns4:flowNodeRef>
-            </ns4:lane>
-            <ns4:lane name="supervisor" id="id-3">
-                <ns4:flowNodeRef>id-8</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-9</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-10</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-11</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-12</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-13</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-14</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-22</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-28</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-29</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-34</ns4:flowNodeRef>
-            </ns4:lane>
-            <ns4:lane name="treasurer" id="id-4">
-                <ns4:flowNodeRef>id-15</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-16</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-17</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-18</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-19</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-20</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-21</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-23</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-24</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-25</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-30</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-31</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-32</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-33</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-35</ns4:flowNodeRef>
-                <ns4:flowNodeRef>id-37</ns4:flowNodeRef>
-            </ns4:lane>
-        </ns4:laneSet>
-        <ns4:task name="purchase a product to require " id="id-5">
-            <ns4:incoming>ns4:id-38</ns4:incoming>
-            <ns4:outgoing>ns4:id-41</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="purchase service to require " id="id-6">
-            <ns4:incoming>ns4:id-39</ns4:incoming>
-            <ns4:incoming>ns4:id-40</ns4:incoming>
-            <ns4:outgoing>ns4:id-42</ns4:outgoing>
-            <ns4:outgoing>ns4:id-43</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="submit an expense report" id="id-7">
-            <ns4:incoming>ns4:id-63</ns4:incoming>
-            <ns4:outgoing>ns4:id-44</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="review the expense report" id="id-8">
-            <ns4:incoming>ns4:id-44</ns4:incoming>
-            <ns4:outgoing>ns4:id-45</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="approve the report" id="id-9">
-            <ns4:incoming>ns4:id-45</ns4:incoming>
-            <ns4:outgoing>ns4:id-46</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="the company has expense rules" id="id-10">
-            <ns4:incoming>ns4:id-46</ns4:incoming>
-            <ns4:outgoing>ns4:id-47</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="circumstances be where the supervisor can accept or reject the report upon first inspection" id="id-11">
-            <ns4:incoming>ns4:id-47</ns4:incoming>
-            <ns4:outgoing>ns4:id-48</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="automate rules to reduce the workload on the supervisor" id="id-12">
-            <ns4:incoming>ns4:id-48</ns4:incoming>
-            <ns4:outgoing>ns4:id-49</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="give a chance to edit" id="id-13">
-            <ns4:incoming>ns4:id-70</ns4:incoming>
-            <ns4:outgoing>ns4:id-51</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="go to the treasurer" id="id-14">
-            <ns4:incoming>ns4:id-71</ns4:incoming>
-            <ns4:outgoing>ns4:id-50</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="check the items" id="id-15">
-            <ns4:incoming>ns4:id-64</ns4:incoming>
-            <ns4:outgoing>ns4:id-52</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="match the items" id="id-16">
-            <ns4:incoming>ns4:id-52</ns4:incoming>
-            <ns4:outgoing>ns4:id-53</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="accept the expenses for processing" id="id-17">
-            <ns4:incoming>ns4:id-72</ns4:incoming>
-            <ns4:outgoing>ns4:id-60</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="do not match the report" id="id-18">
-            <ns4:incoming>ns4:id-54</ns4:incoming>
-            <ns4:outgoing>ns4:id-55</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="send back the report to the employee" id="id-19">
-            <ns4:incoming>ns4:id-66</ns4:incoming>
-            <ns4:outgoing>ns4:id-57</ns4:outgoing>
-        </ns4:task>
-        <ns4:intermediateThrowEvent name="a report returns to the employee " id="id-20">
-            <ns4:incoming>ns4:id-56</ns4:incoming>
-            <ns4:outgoing>ns4:id-58</ns4:outgoing>
-        </ns4:intermediateThrowEvent>
-        <ns4:task name="go to a supervisor" id="id-21">
-            <ns4:incoming>ns4:id-58</ns4:incoming>
-            <ns4:outgoing>ns4:id-59</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="approve the report" id="id-22">
-            <ns4:incoming>ns4:id-59</ns4:incoming>
-            <ns4:outgoing>ns4:id-67</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="move to an automatic activity" id="id-23">
-            <ns4:incoming>ns4:id-60</ns4:incoming>
-            <ns4:outgoing>ns4:id-61</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="wait for the payment confirmation" id="id-24">
-            <ns4:incoming>ns4:id-61</ns4:incoming>
-            <ns4:outgoing>ns4:id-62</ns4:outgoing>
-        </ns4:task>
-        <ns4:task name="confirm the payment" id="id-25">
-            <ns4:incoming>ns4:id-62</ns4:incoming>
-            <ns4:outgoing>ns4:id-74</ns4:outgoing>
-        </ns4:task>
-        <ns4:exclusiveGateway id="id-26">
-            <ns4:incoming>ns4:id-68</ns4:incoming>
-            <ns4:outgoing>ns4:id-38</ns4:outgoing>
-            <ns4:outgoing>ns4:id-39</ns4:outgoing>
-            <ns4:outgoing>ns4:id-40</ns4:outgoing>
-        </ns4:exclusiveGateway>
-        <ns4:exclusiveGateway id="id-27">
-            <ns4:incoming>ns4:id-41</ns4:incoming>
-            <ns4:incoming>ns4:id-42</ns4:incoming>
-            <ns4:incoming>ns4:id-43</ns4:incoming>
-            <ns4:outgoing>ns4:id-63</ns4:outgoing>
-        </ns4:exclusiveGateway>
-        <ns4:exclusiveGateway id="id-28">
-            <ns4:incoming>ns4:id-49</ns4:incoming>
-            <ns4:outgoing>ns4:id-70</ns4:outgoing>
-            <ns4:outgoing>ns4:id-71</ns4:outgoing>
-        </ns4:exclusiveGateway>
-        <ns4:exclusiveGateway id="id-29">
-            <ns4:incoming>ns4:id-50</ns4:incoming>
-            <ns4:incoming>ns4:id-51</ns4:incoming>
-            <ns4:outgoing>ns4:id-64</ns4:outgoing>
-        </ns4:exclusiveGateway>
-        <ns4:exclusiveGateway id="id-30">
-            <ns4:incoming>ns4:id-53</ns4:incoming>
-            <ns4:outgoing>ns4:id-65</ns4:outgoing>
-            <ns4:outgoing>ns4:id-72</ns4:outgoing>
-        </ns4:exclusiveGateway>
-        <ns4:exclusiveGateway id="id-31">
-            <ns4:incoming>ns4:id-65</ns4:incoming>
-            <ns4:outgoing>ns4:id-54</ns4:outgoing>
-            <ns4:outgoing>ns4:id-73</ns4:outgoing>
-        </ns4:exclusiveGateway>
-        <ns4:exclusiveGateway id="id-32">
-            <ns4:incoming>ns4:id-55</ns4:incoming>
-            <ns4:incoming>ns4:id-73</ns4:incoming>
-            <ns4:outgoing>ns4:id-66</ns4:outgoing>
-        </ns4:exclusiveGateway>
-        <ns4:eventBasedGateway id="id-33">
-            <ns4:incoming>ns4:id-57</ns4:incoming>
-            <ns4:outgoing>ns4:id-56</ns4:outgoing>
-            <ns4:outgoing>ns4:id-69</ns4:outgoing>
-        </ns4:eventBasedGateway>
-        <ns4:endEvent id="id-34">
-            <ns4:incoming>ns4:id-67</ns4:incoming>
-        </ns4:endEvent>
-        <ns4:endEvent id="id-35">
-            <ns4:incoming>ns4:id-74</ns4:incoming>
-        </ns4:endEvent>
-        <ns4:startEvent id="id-36">
-            <ns4:outgoing>ns4:id-68</ns4:outgoing>
-        </ns4:startEvent>
-        <ns4:endEvent id="id-37">
-            <ns4:incoming>ns4:id-69</ns4:incoming>
-        </ns4:endEvent>
-        <ns4:sequenceFlow sourceRef="id-26" targetRef="id-5" name="" id="id-38"/>
-        <ns4:sequenceFlow sourceRef="id-26" targetRef="id-6" name="" id="id-39"/>
-        <ns4:sequenceFlow sourceRef="id-26" targetRef="id-6" name="" id="id-40"/>
-        <ns4:sequenceFlow sourceRef="id-5" targetRef="id-27" name="" id="id-41"/>
-        <ns4:sequenceFlow sourceRef="id-6" targetRef="id-27" name="" id="id-42"/>
-        <ns4:sequenceFlow sourceRef="id-6" targetRef="id-27" name="" id="id-43"/>
-        <ns4:sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-44"/>
-        <ns4:sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-45"/>
-        <ns4:sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-46"/>
-        <ns4:sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-47"/>
-        <ns4:sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-48"/>
-        <ns4:sequenceFlow sourceRef="id-12" targetRef="id-28" name="" id="id-49"/>
-        <ns4:sequenceFlow sourceRef="id-14" targetRef="id-29" name="" id="id-50"/>
-        <ns4:sequenceFlow sourceRef="id-13" targetRef="id-29" name="" id="id-51"/>
-        <ns4:sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-52"/>
-        <ns4:sequenceFlow sourceRef="id-16" targetRef="id-30" name="" id="id-53"/>
-        <ns4:sequenceFlow sourceRef="id-31" targetRef="id-18" name="" id="id-54"/>
-        <ns4:sequenceFlow sourceRef="id-18" targetRef="id-32" name="" id="id-55"/>
-        <ns4:sequenceFlow sourceRef="id-33" targetRef="id-20" name="" id="id-56"/>
-        <ns4:sequenceFlow sourceRef="id-19" targetRef="id-33" name="" id="id-57"/>
-        <ns4:sequenceFlow sourceRef="id-20" targetRef="id-21" name="" id="id-58"/>
-        <ns4:sequenceFlow sourceRef="id-21" targetRef="id-22" name="" id="id-59"/>
-        <ns4:sequenceFlow sourceRef="id-17" targetRef="id-23" name="" id="id-60"/>
-        <ns4:sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-61"/>
-        <ns4:sequenceFlow sourceRef="id-24" targetRef="id-25" name="" id="id-62"/>
-        <ns4:sequenceFlow sourceRef="id-27" targetRef="id-7" name="" id="id-63"/>
-        <ns4:sequenceFlow sourceRef="id-29" targetRef="id-15" name="" id="id-64"/>
-        <ns4:sequenceFlow sourceRef="id-30" targetRef="id-31" name="" id="id-65"/>
-        <ns4:sequenceFlow sourceRef="id-32" targetRef="id-19" name="" id="id-66"/>
-        <ns4:sequenceFlow sourceRef="id-22" targetRef="id-34" name="" id="id-67"/>
-        <ns4:sequenceFlow sourceRef="id-36" targetRef="id-26" name="" id="id-68"/>
-        <ns4:sequenceFlow sourceRef="id-33" targetRef="id-37" name="" id="id-69"/>
-        <ns4:sequenceFlow sourceRef="id-28" targetRef="id-13" name="the supervisor rejects the report " id="id-70"/>
-        <ns4:sequenceFlow sourceRef="id-28" targetRef="id-14" name="the supervisor approves the report " id="id-71"/>
-        <ns4:sequenceFlow sourceRef="id-30" targetRef="id-17" name="the list is in order " id="id-72"/>
-        <ns4:sequenceFlow sourceRef="id-31" targetRef="id-32" name="receipts are missing the report " id="id-73"/>
-        <ns4:sequenceFlow sourceRef="id-25" targetRef="id-35" name="" id="id-74"/>
-    </ns4:process>
-</ns4:definitions>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="employee" id="id-2">
+                <flowNodeRef>id-5</flowNodeRef>
+                <flowNodeRef>id-6</flowNodeRef>
+                <flowNodeRef>id-7</flowNodeRef>
+                <flowNodeRef>id-26</flowNodeRef>
+                <flowNodeRef>id-27</flowNodeRef>
+                <flowNodeRef>id-36</flowNodeRef>
+            </lane>
+            <lane name="supervisor" id="id-3">
+                <flowNodeRef>id-8</flowNodeRef>
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-11</flowNodeRef>
+                <flowNodeRef>id-12</flowNodeRef>
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+                <flowNodeRef>id-22</flowNodeRef>
+                <flowNodeRef>id-28</flowNodeRef>
+                <flowNodeRef>id-29</flowNodeRef>
+                <flowNodeRef>id-34</flowNodeRef>
+            </lane>
+            <lane name="treasurer" id="id-4">
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+                <flowNodeRef>id-18</flowNodeRef>
+                <flowNodeRef>id-19</flowNodeRef>
+                <flowNodeRef>id-20</flowNodeRef>
+                <flowNodeRef>id-21</flowNodeRef>
+                <flowNodeRef>id-23</flowNodeRef>
+                <flowNodeRef>id-24</flowNodeRef>
+                <flowNodeRef>id-25</flowNodeRef>
+                <flowNodeRef>id-30</flowNodeRef>
+                <flowNodeRef>id-31</flowNodeRef>
+                <flowNodeRef>id-32</flowNodeRef>
+                <flowNodeRef>id-33</flowNodeRef>
+                <flowNodeRef>id-35</flowNodeRef>
+                <flowNodeRef>id-37</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="purchase a product to require " id="id-5">
+            <incoming>id-38</incoming>
+            <outgoing>id-41</outgoing>
+        </task>
+        <task name="purchase service to require " id="id-6">
+            <incoming>id-39</incoming>
+            <incoming>id-40</incoming>
+            <outgoing>id-42</outgoing>
+            <outgoing>id-43</outgoing>
+        </task>
+        <task name="submit an expense report" id="id-7">
+            <incoming>id-63</incoming>
+            <outgoing>id-44</outgoing>
+        </task>
+        <task name="review the expense report" id="id-8">
+            <incoming>id-44</incoming>
+            <outgoing>id-45</outgoing>
+        </task>
+        <task name="approve the report" id="id-9">
+            <incoming>id-45</incoming>
+            <outgoing>id-46</outgoing>
+        </task>
+        <task name="the company has expense rules" id="id-10">
+            <incoming>id-46</incoming>
+            <outgoing>id-47</outgoing>
+        </task>
+        <task name="circumstances be where the supervisor can accept or reject the report upon first inspection" id="id-11">
+            <incoming>id-47</incoming>
+            <outgoing>id-48</outgoing>
+        </task>
+        <task name="automate rules to reduce the workload on the supervisor" id="id-12">
+            <incoming>id-48</incoming>
+            <outgoing>id-49</outgoing>
+        </task>
+        <task name="give a chance to edit" id="id-13">
+            <incoming>id-70</incoming>
+            <outgoing>id-51</outgoing>
+        </task>
+        <task name="go to the treasurer" id="id-14">
+            <incoming>id-71</incoming>
+            <outgoing>id-50</outgoing>
+        </task>
+        <task name="check the items" id="id-15">
+            <incoming>id-64</incoming>
+            <outgoing>id-52</outgoing>
+        </task>
+        <task name="match the items" id="id-16">
+            <incoming>id-52</incoming>
+            <outgoing>id-53</outgoing>
+        </task>
+        <task name="accept the expenses for processing" id="id-17">
+            <incoming>id-72</incoming>
+            <outgoing>id-60</outgoing>
+        </task>
+        <task name="do not match the report" id="id-18">
+            <incoming>id-54</incoming>
+            <outgoing>id-55</outgoing>
+        </task>
+        <task name="send back the report to the employee" id="id-19">
+            <incoming>id-66</incoming>
+            <outgoing>id-57</outgoing>
+        </task>
+        <intermediateThrowEvent name="a report returns to the employee " id="id-20">
+            <incoming>id-56</incoming>
+            <outgoing>id-58</outgoing>
+            <messageEventDefinition/>
+        </intermediateThrowEvent>
+        <task name="go to a supervisor" id="id-21">
+            <incoming>id-58</incoming>
+            <outgoing>id-59</outgoing>
+        </task>
+        <task name="approve the report" id="id-22">
+            <incoming>id-59</incoming>
+            <outgoing>id-67</outgoing>
+        </task>
+        <task name="move to an automatic activity" id="id-23">
+            <incoming>id-60</incoming>
+            <outgoing>id-61</outgoing>
+        </task>
+        <task name="wait for the payment confirmation" id="id-24">
+            <incoming>id-61</incoming>
+            <outgoing>id-62</outgoing>
+        </task>
+        <task name="confirm the payment" id="id-25">
+            <incoming>id-62</incoming>
+            <outgoing>id-74</outgoing>
+        </task>
+        <exclusiveGateway id="id-26">
+            <incoming>id-68</incoming>
+            <outgoing>id-38</outgoing>
+            <outgoing>id-39</outgoing>
+            <outgoing>id-40</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-27">
+            <incoming>id-41</incoming>
+            <incoming>id-42</incoming>
+            <incoming>id-43</incoming>
+            <outgoing>id-63</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-28">
+            <incoming>id-49</incoming>
+            <outgoing>id-70</outgoing>
+            <outgoing>id-71</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-29">
+            <incoming>id-50</incoming>
+            <incoming>id-51</incoming>
+            <outgoing>id-64</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-30">
+            <incoming>id-53</incoming>
+            <outgoing>id-65</outgoing>
+            <outgoing>id-72</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-31">
+            <incoming>id-65</incoming>
+            <outgoing>id-54</outgoing>
+            <outgoing>id-73</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-32">
+            <incoming>id-55</incoming>
+            <incoming>id-73</incoming>
+            <outgoing>id-66</outgoing>
+        </exclusiveGateway>
+        <eventBasedGateway id="id-33">
+            <incoming>id-57</incoming>
+            <outgoing>id-56</outgoing>
+            <outgoing>id-69</outgoing>
+        </eventBasedGateway>
+        <endEvent id="id-34">
+            <incoming>id-67</incoming>
+        </endEvent>
+        <endEvent id="id-35">
+            <incoming>id-74</incoming>
+        </endEvent>
+        <startEvent id="id-36">
+            <outgoing>id-68</outgoing>
+        </startEvent>
+        <endEvent id="id-37">
+            <incoming>id-69</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-26" targetRef="id-5" name="" id="id-38"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-6" name="" id="id-39"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-6" name="" id="id-40"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-27" name="" id="id-41"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-27" name="" id="id-42"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-27" name="" id="id-43"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-28" name="" id="id-49"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-29" name="" id="id-50"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-29" name="" id="id-51"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-52"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-30" name="" id="id-53"/>
+        <sequenceFlow sourceRef="id-31" targetRef="id-18" name="" id="id-54"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-32" name="" id="id-55"/>
+        <sequenceFlow sourceRef="id-33" targetRef="id-20" name="" id="id-56"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-33" name="" id="id-57"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-21" name="" id="id-58"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-22" name="" id="id-59"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-23" name="" id="id-60"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-61"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-25" name="" id="id-62"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-7" name="" id="id-63"/>
+        <sequenceFlow sourceRef="id-29" targetRef="id-15" name="" id="id-64"/>
+        <sequenceFlow sourceRef="id-30" targetRef="id-31" name="" id="id-65"/>
+        <sequenceFlow sourceRef="id-32" targetRef="id-19" name="" id="id-66"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-34" name="" id="id-67"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-26" name="" id="id-68"/>
+        <sequenceFlow sourceRef="id-33" targetRef="id-37" name="" id="id-69"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-13" name="the supervisor rejects the report " id="id-70"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-14" name="the supervisor approves the report " id="id-71"/>
+        <sequenceFlow sourceRef="id-30" targetRef="id-17" name="the list is in order " id="id-72"/>
+        <sequenceFlow sourceRef="id-31" targetRef="id-32" name="receipts are missing the report " id="id-73"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-35" name="" id="id-74"/>
+    </process>
+</definitions>

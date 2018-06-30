@@ -85,16 +85,16 @@
       ]
     },
     {
-      "value": "The customer generates a message to request outstanding documents to the customer.",
+      "value": "The customer updates the case details.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-12",
+          "processElementId": "id-14",
           "processElement": "activity",
           "resource": "customer",
           "startIndex": 0,
-          "endIndex": 81
+          "endIndex": 37
         }
       ]
     },
@@ -104,7 +104,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-20",
+          "processElementId": "id-21",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,
@@ -127,16 +127,72 @@
       ]
     },
     {
-      "value": "The customer attaches the prerequisite documents and moves the case.",
+      "value": "The customer generates a message to request outstanding documents to the customer.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-10",
+          "processElementId": "id-12",
           "processElement": "activity",
           "resource": "customer",
           "startIndex": 0,
-          "endIndex": 67
+          "endIndex": 81
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The customer sends a message and attaches the prerequisite documents.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "intermediateevent",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 68
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer moves the case to the administration.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 12,
+          "endIndex": 61
         }
       ]
     },
@@ -165,48 +221,6 @@
           "resource": "",
           "startIndex": 6,
           "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "The customer updates the case details.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-14",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-21",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
         }
       ]
     },

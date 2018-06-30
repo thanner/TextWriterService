@@ -148,7 +148,7 @@
       ]
     },
     {
-      "value": "Then, the physicians acts and records the assignments.",
+      "value": "Then, the physicians acts as the second intaker and records the assignments.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
@@ -157,7 +157,7 @@
           "processElement": "activity",
           "resource": "physicians",
           "startIndex": 6,
-          "endIndex": 53
+          "endIndex": 75
         }
       ]
     },

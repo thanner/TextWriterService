@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DI">
     <process name="Pool" id="id-0">
         <laneSet name="Pool" id="id-1">
             <lane name="customer service representative" id="id-2">
@@ -48,6 +48,7 @@
         <intermediateThrowEvent name="the customer sends the completed offer documents " id="id-9">
             <incoming>id-28</incoming>
             <outgoing>id-31</outgoing>
+            <messageEventDefinition/>
         </intermediateThrowEvent>
         <task name="attach prerequisite documents" id="id-10">
             <incoming>id-31</incoming>
@@ -64,6 +65,7 @@
         <intermediateCatchEvent name="receives no answer after 2 weeks" id="id-13">
             <incoming>id-29</incoming>
             <outgoing>id-33</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="update the case details" id="id-14">
             <incoming>id-33</incoming>

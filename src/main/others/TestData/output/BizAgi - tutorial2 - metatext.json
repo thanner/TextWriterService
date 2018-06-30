@@ -92,34 +92,6 @@
       ]
     },
     {
-      "value": "The process is finished.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-32",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 23
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
       "value": "The supervisor returns the request to the petitioner\\/employee.",
       "level": 2,
       "isLateral": true,
@@ -134,7 +106,7 @@
       ]
     },
     {
-      "value": "Subsequently, the process is finished.",
+      "value": "Afterwards, the process is finished.",
       "level": 2,
       "isLateral": false,
       "subsentenceList": [
@@ -142,8 +114,36 @@
           "processElementId": "id-33",
           "processElement": "intermediateevent",
           "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
           "startIndex": 14,
           "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-32",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
         }
       ]
     },

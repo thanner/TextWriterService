@@ -78,20 +78,6 @@
       ]
     },
     {
-      "value": "The room-service manager includes the wine.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-11",
-          "processElement": "activity",
-          "resource": "room-service manager",
-          "startIndex": 0,
-          "endIndex": 42
-        }
-      ]
-    },
-    {
       "value": "The room-service manager includes the other alcoholic beverage.",
       "level": 1,
       "isLateral": true,
@@ -102,6 +88,20 @@
           "resource": "room-service manager",
           "startIndex": 0,
           "endIndex": 62
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager includes the wine.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 42
         }
       ]
     },
@@ -127,20 +127,6 @@
       ]
     },
     {
-      "value": "The room-service manager assigns the order to the waiter.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-13",
-          "processElement": "activity",
-          "resource": "room-service manager",
-          "startIndex": 0,
-          "endIndex": 56
-        }
-      ]
-    },
-    {
       "value": "The room-service manager conducts the kitchen are doing tasks.",
       "level": 1,
       "isLateral": true,
@@ -151,6 +137,20 @@
           "resource": "room-service manager",
           "startIndex": 0,
           "endIndex": 61
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager assigns the order to the waiter.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 56
         }
       ]
     },
@@ -218,12 +218,12 @@
       ]
     },
     {
-      "value": "The waiter carts the is ready.",
+      "value": "The waiter wines the is ready.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-21",
+          "processElementId": "id-20",
           "processElement": "activity",
           "resource": "waiter",
           "startIndex": 0,
@@ -232,12 +232,12 @@
       ]
     },
     {
-      "value": "The waiter wines the is ready.",
+      "value": "The waiter carts the is ready.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-20",
+          "processElementId": "id-21",
           "processElement": "activity",
           "resource": "waiter",
           "startIndex": 0,

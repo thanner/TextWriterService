@@ -36,20 +36,6 @@
       ]
     },
     {
-      "value": "The customer explains the solution to the customer.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-8",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 50
-        }
-      ]
-    },
-    {
       "value": "The customer tries to the handle request.",
       "level": 1,
       "isLateral": true,
@@ -60,6 +46,20 @@
           "resource": "customer",
           "startIndex": 0,
           "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "The customer explains the solution to the customer.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 50
         }
       ]
     },
