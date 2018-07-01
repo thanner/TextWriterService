@@ -92,20 +92,6 @@
       ]
     },
     {
-      "value": "The organization evaluates the severity of the claim.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-6",
-          "processElement": "activity",
-          "resource": "organization",
-          "startIndex": 0,
-          "endIndex": 52
-        }
-      ]
-    },
-    {
       "value": "The organization informs the claimant.",
       "level": 2,
       "isLateral": true,
@@ -116,6 +102,20 @@
           "resource": "organization",
           "startIndex": 0,
           "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The organization evaluates the severity of the claim.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "organization",
+          "startIndex": 0,
+          "endIndex": 52
         }
       ]
     },
@@ -183,20 +183,6 @@
       ]
     },
     {
-      "value": "The organization registers the claim in claims management system.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-11",
-          "processElement": "activity",
-          "resource": "organization",
-          "startIndex": 0,
-          "endIndex": 64
-        }
-      ]
-    },
-    {
       "value": "The organization informs the claimant to update the forms.",
       "level": 2,
       "isLateral": true,
@@ -207,6 +193,20 @@
           "resource": "organization",
           "startIndex": 0,
           "endIndex": 57
+        }
+      ]
+    },
+    {
+      "value": "The organization registers the claim in claims management system.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "organization",
+          "startIndex": 0,
+          "endIndex": 64
         }
       ]
     },

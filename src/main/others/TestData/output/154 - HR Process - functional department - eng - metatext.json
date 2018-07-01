@@ -78,20 +78,6 @@
       ]
     },
     {
-      "value": "The personnel department asks the again for the corrections.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-10",
-          "processElement": "activity",
-          "resource": "personnel department",
-          "startIndex": 0,
-          "endIndex": 59
-        }
-      ]
-    },
-    {
       "value": "The corrections approves the job description.",
       "level": 1,
       "isLateral": true,
@@ -102,6 +88,20 @@
           "resource": "corrections",
           "startIndex": 0,
           "endIndex": 44
+        }
+      ]
+    },
+    {
+      "value": "The personnel department asks the again for the corrections.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "personnel department",
+          "startIndex": 0,
+          "endIndex": 59
         }
       ]
     },

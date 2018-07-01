@@ -127,20 +127,6 @@
       ]
     },
     {
-      "value": "The room-service manager conducts the kitchen are doing tasks.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-14",
-          "processElement": "activity",
-          "resource": "room-service manager",
-          "startIndex": 0,
-          "endIndex": 61
-        }
-      ]
-    },
-    {
       "value": "The room-service manager assigns the order to the waiter.",
       "level": 1,
       "isLateral": true,
@@ -151,6 +137,20 @@
           "resource": "room-service manager",
           "startIndex": 0,
           "endIndex": 56
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager conducts the kitchen are doing tasks.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 61
         }
       ]
     },
@@ -218,12 +218,12 @@
       ]
     },
     {
-      "value": "The waiter wines the is ready.",
+      "value": "The waiter carts the is ready.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-20",
+          "processElementId": "id-21",
           "processElement": "activity",
           "resource": "waiter",
           "startIndex": 0,
@@ -232,12 +232,12 @@
       ]
     },
     {
-      "value": "The waiter carts the is ready.",
+      "value": "The waiter wines the is ready.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-21",
+          "processElementId": "id-20",
           "processElement": "activity",
           "resource": "waiter",
           "startIndex": 0,
@@ -323,34 +323,6 @@
       ]
     },
     {
-      "value": "The process is finished.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-36",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 23
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
       "value": "The waiter waits to does the billing.",
       "level": 1,
       "isLateral": true,
@@ -365,7 +337,7 @@
       ]
     },
     {
-      "value": "Subsequently, the process is finished.",
+      "value": "Afterwards, the process is finished.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -373,8 +345,36 @@
           "processElementId": "id-35",
           "processElement": "intermediateevent",
           "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
           "startIndex": 14,
           "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-36",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
         }
       ]
     },

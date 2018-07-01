@@ -106,16 +106,16 @@
       ]
     },
     {
-      "value": "The ip confirms the changes of the inq.",
+      "value": "The ip rejects the changes of the inq.",
       "level": 2,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-9",
+          "processElementId": "id-10",
           "processElement": "activity",
           "resource": "ip",
           "startIndex": 0,
-          "endIndex": 38
+          "endIndex": 37
         }
       ]
     },
@@ -125,7 +125,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-14",
+          "processElementId": "id-15",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 12,
@@ -148,16 +148,16 @@
       ]
     },
     {
-      "value": "The ip rejects the changes of the inq.",
+      "value": "The ip confirms the changes of the inq.",
       "level": 2,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-10",
+          "processElementId": "id-9",
           "processElement": "activity",
           "resource": "ip",
           "startIndex": 0,
-          "endIndex": 37
+          "endIndex": 38
         }
       ]
     },
@@ -167,7 +167,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-15",
+          "processElementId": "id-14",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,

@@ -169,20 +169,6 @@
       ]
     },
     {
-      "value": "The assistant registry manager posts the envelope to the party.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-19",
-          "processElement": "activity",
-          "resource": "assistant registry manager",
-          "startIndex": 0,
-          "endIndex": 62
-        }
-      ]
-    },
-    {
       "value": "The cashier captures the party details.",
       "level": 1,
       "isLateral": true,
@@ -193,6 +179,20 @@
           "resource": "cashier",
           "startIndex": 0,
           "endIndex": 38
+        }
+      ]
+    },
+    {
+      "value": "The assistant registry manager posts the envelope to the party.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "assistant registry manager",
+          "startIndex": 0,
+          "endIndex": 62
         }
       ]
     },

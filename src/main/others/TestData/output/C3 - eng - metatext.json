@@ -99,12 +99,12 @@
       ]
     },
     {
-      "value": "The msp informs the go about failure of reading.",
+      "value": "The msp transmits the measured values to the go.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-8",
+          "processElementId": "id-9",
           "processElement": "activity",
           "resource": "msp",
           "startIndex": 0,
@@ -113,12 +113,12 @@
       ]
     },
     {
-      "value": "The msp transmits the measured values to the go.",
+      "value": "The msp informs the go about failure of reading.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-9",
+          "processElementId": "id-8",
           "processElement": "activity",
           "resource": "msp",
           "startIndex": 0,

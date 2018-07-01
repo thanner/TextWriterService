@@ -29,34 +29,6 @@
       ]
     },
     {
-      "value": "The go examines the bill.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-11",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 24
-        }
-      ]
-    },
-    {
-      "value": "The go examines the bill.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-7",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 24
-        }
-      ]
-    },
-    {
       "value": "One of the following branches is executed.",
       "level": 1,
       "isLateral": true,
@@ -116,6 +88,34 @@
           "resource": "",
           "startIndex": 0,
           "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The go examines the bill.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 24
+        }
+      ]
+    },
+    {
+      "value": "The go examines the bill.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 24
         }
       ]
     },

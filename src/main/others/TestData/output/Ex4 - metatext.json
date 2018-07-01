@@ -155,104 +155,6 @@
       ]
     },
     {
-      "value": "The employee receives a rejection notice.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-9",
-          "processElement": "activity",
-          "resource": "employee",
-          "startIndex": 0,
-          "endIndex": 40
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-22",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
-      "value": "The employee stops the process and receives the email cancellation notice.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-14",
-          "processElement": "activity",
-          "resource": "employee",
-          "startIndex": 0,
-          "endIndex": 73
-        }
-      ]
-    },
-    {
-      "value": "Then, the employee resubmits the expense report.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-16",
-          "processElement": "activity",
-          "resource": "employee",
-          "startIndex": 6,
-          "endIndex": 47
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-25",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
       "value": "The employee goes to the employee s.",
       "level": 2,
       "isLateral": true,
@@ -267,12 +169,54 @@
       ]
     },
     {
-      "value": "Then, the process is finished.",
+      "value": "Afterwards, the process is finished.",
       "level": 2,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-23",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The employee receives the approval in the progress email.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 0,
+          "endIndex": 56
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-24",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,
@@ -295,16 +239,72 @@
       ]
     },
     {
-      "value": "The employee receives the approval in the progress email.",
+      "value": "The employee stops the process and receives the email cancellation notice.",
       "level": 2,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-12",
+          "processElementId": "id-14",
           "processElement": "activity",
           "resource": "employee",
           "startIndex": 0,
-          "endIndex": 56
+          "endIndex": 73
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the employee resubmits the expense report.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-16",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The employee receives a rejection notice.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 0,
+          "endIndex": 40
         }
       ]
     },
@@ -314,7 +314,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-24",
+          "processElementId": "id-22",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 14,

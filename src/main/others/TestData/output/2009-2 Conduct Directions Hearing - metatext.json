@@ -106,20 +106,6 @@
       ]
     },
     {
-      "value": "The judge hands the files to the associate.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-7",
-          "processElement": "activity",
-          "resource": "judge",
-          "startIndex": 0,
-          "endIndex": 42
-        }
-      ]
-    },
-    {
       "value": "The judge conducts the s .",
       "level": 2,
       "isLateral": true,
@@ -130,6 +116,20 @@
           "resource": "judge",
           "startIndex": 0,
           "endIndex": 25
+        }
+      ]
+    },
+    {
+      "value": "The judge hands the files to the associate.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "judge",
+          "startIndex": 0,
+          "endIndex": 42
         }
       ]
     },

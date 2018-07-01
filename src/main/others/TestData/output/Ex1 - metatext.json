@@ -127,34 +127,6 @@
       ]
     },
     {
-      "value": "The process is finished.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-27",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 23
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
       "value": "The 2:30 pm completes the all of the this and sends the alert.",
       "level": 2,
       "isLateral": true,
@@ -169,7 +141,7 @@
       ]
     },
     {
-      "value": "Afterwards, the process is finished.",
+      "value": "Then, the process is finished.",
       "level": 2,
       "isLateral": false,
       "subsentenceList": [
@@ -177,8 +149,36 @@
           "processElementId": "id-24",
           "processElement": "intermediateevent",
           "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
           "startIndex": 12,
           "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
         }
       ]
     },

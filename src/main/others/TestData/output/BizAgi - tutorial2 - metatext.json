@@ -328,20 +328,6 @@
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-24",
-          "processElement": "activity",
-          "resource": "purchase department",
-          "startIndex": 0,
-          "endIndex": 32
-        }
-      ]
-    },
-    {
-      "value": "The purchase department requires.",
-      "level": 3,
-      "isLateral": true,
-      "subsentenceList": [
-        {
           "processElementId": "id-22",
           "processElement": "activity",
           "resource": "purchase department",
@@ -357,6 +343,20 @@
       "subsentenceList": [
         {
           "processElementId": "id-23",
+          "processElement": "activity",
+          "resource": "purchase department",
+          "startIndex": 0,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "The purchase department requires.",
+      "level": 3,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-24",
           "processElement": "activity",
           "resource": "purchase department",
           "startIndex": 0,

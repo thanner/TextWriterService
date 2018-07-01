@@ -400,16 +400,16 @@
       ]
     },
     {
-      "value": "If it is necessary, the resource provisioning analyzes the this.",
+      "value": "If it is necessary, the resource provisioning creates a notification about the normal service execution.",
       "level": 4,
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-36",
+          "processElementId": "id-35",
           "processElement": "activity",
           "resource": "resource provisioning",
           "startIndex": 20,
-          "endIndex": 63
+          "endIndex": 103
         },
         {
           "processElementId": "id-78",
@@ -421,16 +421,16 @@
       ]
     },
     {
-      "value": "Then, the resource provisioning creates a trouble report and creates a notification about the normal service execution.",
+      "value": "Then, the resource provisioning analyzes the this and creates a trouble report.",
       "level": 4,
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-37",
+          "processElementId": "id-36",
           "processElement": "activity",
           "resource": "resource provisioning",
           "startIndex": 6,
-          "endIndex": 118
+          "endIndex": 78
         }
       ]
     },
@@ -498,20 +498,6 @@
       ]
     },
     {
-      "value": "The resource provisioning sends the trouble report back to the service management.",
-      "level": 5,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-40",
-          "processElement": "activity",
-          "resource": "resource provisioning",
-          "startIndex": 0,
-          "endIndex": 81
-        }
-      ]
-    },
-    {
       "value": "The resource provisioning sends the normal execution notification back to the service management.",
       "level": 5,
       "isLateral": true,
@@ -522,6 +508,20 @@
           "resource": "resource provisioning",
           "startIndex": 0,
           "endIndex": 96
+        }
+      ]
+    },
+    {
+      "value": "The resource provisioning sends the trouble report back to the service management.",
+      "level": 5,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-40",
+          "processElement": "activity",
+          "resource": "resource provisioning",
+          "startIndex": 0,
+          "endIndex": 81
         }
       ]
     },
@@ -855,20 +855,6 @@
       ]
     },
     {
-      "value": "The customer service receives the actual service performance.",
-      "level": 6,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-64",
-          "processElement": "activity",
-          "resource": "customer service",
-          "startIndex": 0,
-          "endIndex": 60
-        }
-      ]
-    },
-    {
       "value": "The customer service receives the problem resolution report.",
       "level": 6,
       "isLateral": true,
@@ -879,6 +865,20 @@
           "resource": "customer service",
           "startIndex": 0,
           "endIndex": 59
+        }
+      ]
+    },
+    {
+      "value": "The customer service receives the actual service performance.",
+      "level": 6,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-64",
+          "processElement": "activity",
+          "resource": "customer service",
+          "startIndex": 0,
+          "endIndex": 60
         }
       ]
     },

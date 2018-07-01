@@ -85,90 +85,6 @@
       ]
     },
     {
-      "value": "The customer executes the arbitrary repair activity.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-12",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 51
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-20",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "The customer repairs the hardware whereas second activity checks and tests the proper system functionality.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-10",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 106
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-19",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 14,
-          "endIndex": 37
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
       "value": "The customer checks the hardware.",
       "level": 1,
       "isLateral": true,
@@ -183,7 +99,7 @@
       ]
     },
     {
-      "value": "Afterwards, the process is finished.",
+      "value": "Then, the process is finished.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -191,8 +107,36 @@
           "processElementId": "id-18",
           "processElement": "intermediateevent",
           "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
           "startIndex": 12,
           "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The customer executes the arbitrary repair activity.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 51
         }
       ]
     },
@@ -202,11 +146,25 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "none",
-          "processElement": "endevent",
+          "processElementId": "id-20",
+          "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 14,
           "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
         }
       ]
     },
@@ -225,12 +183,54 @@
       ]
     },
     {
-      "value": "Then, the process is finished.",
+      "value": "Afterwards, the process is finished.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-21",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The customer repairs the hardware whereas second activity checks and tests the proper system functionality.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 106
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,

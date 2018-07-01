@@ -50,20 +50,6 @@
       ]
     },
     {
-      "value": "The go confirms the deregistration of the mpoo.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-7",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 46
-        }
-      ]
-    },
-    {
       "value": "The go rejects the deregistration of the mpoo.",
       "level": 1,
       "isLateral": true,
@@ -74,6 +60,20 @@
           "resource": "go",
           "startIndex": 0,
           "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "The go confirms the deregistration of the mpoo.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 46
         }
       ]
     },
@@ -197,20 +197,6 @@
       ]
     },
     {
-      "value": "The go performs the equipment acquisition.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-13",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 41
-        }
-      ]
-    },
-    {
       "value": "The go performs the equipment changes.",
       "level": 2,
       "isLateral": true,
@@ -221,6 +207,20 @@
           "resource": "go",
           "startIndex": 0,
           "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The go performs the equipment acquisition.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 41
         }
       ]
     },

@@ -50,16 +50,16 @@
       ]
     },
     {
-      "value": "The mspo confirms the dismissal of the mspn.",
+      "value": "The mspo rejects the dismissal of the mspn.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-7",
+          "processElementId": "id-6",
           "processElement": "activity",
           "resource": "mspo",
           "startIndex": 0,
-          "endIndex": 43
+          "endIndex": 42
         }
       ]
     },
@@ -69,7 +69,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-11",
+          "processElementId": "id-10",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 14,
@@ -92,16 +92,16 @@
       ]
     },
     {
-      "value": "The mspo rejects the dismissal of the mspn.",
+      "value": "The mspo confirms the dismissal of the mspn.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-6",
+          "processElementId": "id-7",
           "processElement": "activity",
           "resource": "mspo",
           "startIndex": 0,
-          "endIndex": 42
+          "endIndex": 43
         }
       ]
     },
@@ -111,7 +111,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-10",
+          "processElementId": "id-11",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 12,
