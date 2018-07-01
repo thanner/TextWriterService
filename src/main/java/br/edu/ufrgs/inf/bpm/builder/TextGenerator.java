@@ -99,12 +99,12 @@ public class TextGenerator {
 
         // Convert to RPST
         FormatConverter formatConverter = new FormatConverter();
-        // TODO: RPST nao esta pegando ROOT (razao: sources ta com size de 2) - ver se o model ou o P esta fazendo isso
+        // TODO: RPST nao esta pegando ROOT
         // TODO: Motivo: sources da RPST está com dois elementos
-        // TODO: Elemento 1: 30 - determine contact details of potential customers (primeira atividade)
-        // TODO: Elemento 2: 36 - try to acquire the customer (atividade disparada quando ocorre um evento de erro em leave the customer alone)
+        // TODO:    Elemento 1: 30 - determine contact details of potential customers (primeira atividade)
+        // TODO:    Elemento 2: 36 - try to acquire the customer (atividade disparada quando ocorre um evento de erro attached em leave the customer alone)
         // TODO: SUPONHO QUE A SOLUÇÃO SEJA MODIFICAR O MODEL PARA QUE O ELEMENTO 2 DEIXE DE SER SOURCE (ver no artigo)
-        // TODO: UMA DAS POSSÍVEIS SOLUÇÕES É FAZER O ATTACHED EVENTS NAS ATIVIDADES (Nao ta funcionando)
+        // TODO: UMA DAS POSSÍVEIS SOLUÇÕES É FAZER O ATTACHED EVENTS NAS ATIVIDADES (Ver o ProcessModelBuilder)
         Process p = formatConverter.transformToRPSTFormat(model);
         RPST<ControlFlow, Node> rpst = new RPST<ControlFlow, Node>(p);
 
