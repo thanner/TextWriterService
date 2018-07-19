@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="customer service" id="id-0">
+        <laneSet name="customer service" id="id-1"/>
+        <intermediateCatchEvent id="id-10">
+            <incoming>id-155</incoming>
+            <outgoing>id-159</outgoing>
+            <messageEventDefinition/>
+        </intermediateCatchEvent>
+        <intermediateThrowEvent id="id-11">
+            <incoming>id-153</incoming>
+            <outgoing>id-155</outgoing>
+            <messageEventDefinition/>
+        </intermediateThrowEvent>
+        <intermediateThrowEvent id="id-12">
+            <incoming>id-149</incoming>
+            <outgoing>id-165</outgoing>
+            <messageEventDefinition/>
+        </intermediateThrowEvent>
+        <endEvent id="id-13">
+            <incoming>id-139</incoming>
+        </endEvent>
+        <endEvent id="id-14">
+            <incoming>id-138</incoming>
+        </endEvent>
+        <exclusiveGateway id="id-15">
+            <incoming>id-109</incoming>
+            <outgoing>id-108</outgoing>
+            <outgoing>id-139</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-16">
+            <incoming>id-104</incoming>
+            <outgoing>id-103</outgoing>
+            <outgoing>id-138</outgoing>
+        </exclusiveGateway>
+        <task name="import the meter data to systems" id="id-17">
+            <incoming>id-157</incoming>
+            <outgoing>id-145</outgoing>
+        </task>
+        <task name="create a cis contract" id="id-18">
+            <incoming>id-159</incoming>
+            <outgoing>id-149</outgoing>
+        </task>
+        <task name="send out a confirmation document to the customer stating that the switch-over to the new supplier can be executed" id="id-19">
+            <incoming>id-108</incoming>
+            <outgoing>id-153</outgoing>
+        </task>
+        <task name="generate the contract documents again" id="id-20">
+            <incoming>id-107</incoming>
+            <outgoing>id-109</outgoing>
+        </task>
+        <task name="resolve the causing issues" id="id-21">
+            <incoming>id-106</incoming>
+            <outgoing>id-107</outgoing>
+        </task>
+        <task name="analyze the causing issues" id="id-22">
+            <incoming>id-105</incoming>
+            <outgoing>id-106</outgoing>
+        </task>
+        <task name="are not generate the contract documents" id="id-23">
+            <incoming>id-103</incoming>
+            <outgoing>id-105</outgoing>
+        </task>
+        <task name="carry out an automated check of the contract documents in the following" id="id-24">
+            <incoming>id-102</incoming>
+            <outgoing>id-104</outgoing>
+        </task>
+        <intermediateCatchEvent id="id-25">
+            <incoming>id-165</incoming>
+            <outgoing>id-157</outgoing>
+            <messageEventDefinition/>
+        </intermediateCatchEvent>
+        <sequenceFlow sourceRef="id-16" targetRef="id-23" name="in case of a negative response, i.e." id="id-103"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-16" name="" id="id-104"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-22" name="" id="id-105"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-21" name="" id="id-106"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-20" name="" id="id-107"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-19" name="in case of a positive response" id="id-108"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-15" name="" id="id-109"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-14" name="" id="id-138"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-13" name="" id="id-139"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-78" name="" id="id-145"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-12" name="" id="id-149"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-11" name="" id="id-153"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-10" name="" id="id-155"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-17" name="" id="id-157"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-18" name="" id="id-159"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-25" name="" id="id-165"/>
+    </process>
+    <process name="customer" id="id-2">
+        <laneSet name="customer" id="id-3"/>
+    </process>
+    <process name="grid operator" id="id-4">
+        <laneSet name="grid operator" id="id-5"/>
+        <endEvent id="id-26">
+            <incoming>id-163</incoming>
+            <messageEventDefinition/>
+        </endEvent>
+        <task name="send the final billing based on the meter data to the old supplier" id="id-27">
+            <incoming>id-130</incoming>
+            <outgoing>id-163</outgoing>
+        </task>
+        <task name="compute the final billing based on the meter data" id="id-28">
+            <incoming>id-129</incoming>
+            <outgoing>id-130</outgoing>
+        </task>
+        <task name="transmit meter data to the customer service" id="id-29">
+            <incoming>id-152</incoming>
+            <outgoing>id-129</outgoing>
+        </task>
+        <intermediateCatchEvent id="id-30">
+            <incoming>id-160</incoming>
+            <outgoing>id-152</outgoing>
+            <messageEventDefinition/>
+        </intermediateCatchEvent>
+        <sequenceFlow sourceRef="id-29" targetRef="id-28" name="" id="id-129"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-27" name="" id="id-130"/>
+        <sequenceFlow sourceRef="id-30" targetRef="id-29" name="" id="id-152"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-26" name="" id="id-163"/>
+    </process>
+    <process name="cis" id="id-6">
+        <laneSet name="cis" id="id-7"/>
+    </process>
+    <process name="old supplier" id="id-8">
+        <laneSet name="old supplier" id="id-9"/>
+    </process>
+</definitions>

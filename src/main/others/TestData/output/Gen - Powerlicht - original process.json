@@ -1,0 +1,235 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the masters conducts a first a new order.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 24,
+          "endIndex": 64
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it determines the necessary parts well and determines the quantities well.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 6,
+          "endIndex": 79
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the masters conducts the information is present and enters.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 12,
+          "endIndex": 70
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, it optimizes the production processes and creates the uniform work packages are minimize.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 14,
+          "endIndex": 102
+        }
+      ]
+    },
+    {
+      "value": "Then, the masters minimizes the setup times and creates a list.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 6,
+          "endIndex": 62
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, it plannings the production system is not coupled correctly to the enterprise resource planning system and transfers the data manually.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 12,
+          "endIndex": 146
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the masters conducts the that is the second step.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 14,
+          "endIndex": 62
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The masters needs to the decide and conducts the data is present.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 0,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the masters schedules the production and receives a notice.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 12,
+          "endIndex": 70
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the employee takes care of the implementation and checks the order again.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 14,
+          "endIndex": 86
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-24",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

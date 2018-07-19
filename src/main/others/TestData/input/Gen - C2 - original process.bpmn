@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="mpo" id="id-0">
+        <laneSet name="mpo" id="id-1"/>
+    </process>
+    <process name="fault detector" id="id-2">
+        <laneSet name="fault detector" id="id-3"/>
+    </process>
+    <process name="msp" id="id-4">
+        <laneSet name="msp" id="id-5"/>
+    </process>
+    <process name="go" id="id-6">
+        <laneSet name="go" id="id-7"/>
+    </process>
+</definitions>

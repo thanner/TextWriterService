@@ -87,4 +87,17 @@ public class BpmnWrapper {
         }
         return "";
     }
+
+    public List<TSequenceFlow> getSequenceFlowList() {
+        List<TSequenceFlow> tSequenceFlowList = new ArrayList<>();
+        for (TProcess tProcess : getProcessList()) {
+            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
+                if (flowElement.getValue() instanceof TSequenceFlow) {
+                    tSequenceFlowList.add((TSequenceFlow) flowElement.getValue());
+                }
+            }
+        }
+        return tSequenceFlowList;
+    }
+
 }
