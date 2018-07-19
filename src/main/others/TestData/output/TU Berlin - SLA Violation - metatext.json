@@ -400,16 +400,16 @@
       ]
     },
     {
-      "value": "If it is necessary, the resource provisioning creates a notification about the normal service execution.",
+      "value": "If it is necessary, the resource provisioning analyzes the this.",
       "level": 4,
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-35",
+          "processElementId": "id-36",
           "processElement": "activity",
           "resource": "resource provisioning",
           "startIndex": 20,
-          "endIndex": 103
+          "endIndex": 63
         },
         {
           "processElementId": "id-78",
@@ -421,16 +421,16 @@
       ]
     },
     {
-      "value": "Then, the resource provisioning analyzes the this and creates a trouble report.",
+      "value": "Then, the resource provisioning creates a trouble report and creates a notification about the normal service execution.",
       "level": 4,
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-36",
+          "processElementId": "id-37",
           "processElement": "activity",
           "resource": "resource provisioning",
           "startIndex": 6,
-          "endIndex": 78
+          "endIndex": 118
         }
       ]
     },
@@ -631,20 +631,6 @@
       ]
     },
     {
-      "value": "The service management creates a request.",
-      "level": 6,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-52",
-          "processElement": "activity",
-          "resource": "service management",
-          "startIndex": 0,
-          "endIndex": 40
-        }
-      ]
-    },
-    {
       "value": "The service management undertakes the corrective actions and creates the problem resolution report.",
       "level": 6,
       "isLateral": true,
@@ -669,6 +655,20 @@
           "resource": "service management",
           "startIndex": 6,
           "endIndex": 101
+        }
+      ]
+    },
+    {
+      "value": "The service management creates a request.",
+      "level": 6,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-52",
+          "processElement": "activity",
+          "resource": "service management",
+          "startIndex": 0,
+          "endIndex": 40
         }
       ]
     },

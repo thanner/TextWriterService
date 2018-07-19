@@ -50,6 +50,48 @@
       ]
     },
     {
+      "value": "The customer conducts the customer is low risk and approves the loan.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 68
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
       "value": "If it is necessary, the customer conducts the loan amount is for $10,000 or more.",
       "level": 1,
       "isLateral": true,
@@ -71,7 +113,7 @@
       ]
     },
     {
-      "value": "Subsequently, the customer sends the request to the approver web service and receives the feedback.",
+      "value": "Afterwards, the customer sends the request to the approver web service and receives the feedback.",
       "level": 1,
       "isLateral": false,
       "subsentenceList": [
@@ -79,50 +121,8 @@
           "processElementId": "id-9",
           "processElement": "activity",
           "resource": "customer",
-          "startIndex": 14,
-          "endIndex": 98
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-17",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
           "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "The customer conducts the customer is low risk and approves the loan.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-5",
-          "processElement": "activity",
-          "resource": "customer",
-          "startIndex": 0,
-          "endIndex": 68
+          "endIndex": 96
         }
       ]
     },
@@ -132,7 +132,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-15",
+          "processElementId": "id-17",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 14,

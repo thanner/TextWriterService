@@ -288,6 +288,34 @@
       ]
     },
     {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-50",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
       "value": "The board wants to check 20,000 eur again and moves back.",
       "level": 2,
       "isLateral": true,
@@ -302,7 +330,7 @@
       ]
     },
     {
-      "value": "Subsequently, the board conducts the should there be a complaint during the commercial audit.",
+      "value": "Then, the board conducts the should there be a complaint during the commercial audit.",
       "level": 2,
       "isLateral": false,
       "subsentenceList": [
@@ -310,13 +338,13 @@
           "processElementId": "id-40",
           "processElement": "activity",
           "resource": "board",
-          "startIndex": 14,
-          "endIndex": 92
+          "startIndex": 6,
+          "endIndex": 84
         }
       ]
     },
     {
-      "value": "Then, the accounting employee resolves the copy of invoice including docket and completes the commercial audit.",
+      "value": "Afterwards, the accounting employee resolves the copy of invoice including docket and completes the commercial audit.",
       "level": 2,
       "isLateral": false,
       "subsentenceList": [
@@ -324,13 +352,13 @@
           "processElementId": "id-41",
           "processElement": "activity",
           "resource": "accounting employee",
-          "startIndex": 6,
-          "endIndex": 110
+          "startIndex": 12,
+          "endIndex": 116
         }
       ]
     },
     {
-      "value": "Afterwards, the accounting employee gives the payment instructions and closes the instance.",
+      "value": "Subsequently, the accounting employee gives the payment instructions and closes the instance.",
       "level": 2,
       "isLateral": false,
       "subsentenceList": [
@@ -338,22 +366,8 @@
           "processElementId": "id-43",
           "processElement": "activity",
           "resource": "accounting employee",
-          "startIndex": 12,
-          "endIndex": 90
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 2,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-48",
-          "processElement": "intermediateevent",
-          "resource": "",
           "startIndex": 14,
-          "endIndex": 37
+          "endIndex": 92
         }
       ]
     },
@@ -363,25 +377,11 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "none",
-          "processElement": "endevent",
+          "processElementId": "id-48",
+          "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,
           "endIndex": 29
-        }
-      ]
-    },
-    {
-      "value": "The process is finished.",
-      "level": 2,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-50",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 23
         }
       ]
     },

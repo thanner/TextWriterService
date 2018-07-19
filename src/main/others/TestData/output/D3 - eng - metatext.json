@@ -29,6 +29,20 @@
       ]
     },
     {
+      "value": "The go examines the bill.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 24
+        }
+      ]
+    },
+    {
       "value": "One of the following branches is executed.",
       "level": 1,
       "isLateral": true,
@@ -76,7 +90,7 @@
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-9",
+          "processElementId": "id-11",
           "processElement": "activity",
           "resource": "go",
           "startIndex": 48,
@@ -106,20 +120,6 @@
       ]
     },
     {
-      "value": "The go examines the bill.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-11",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 24
-        }
-      ]
-    },
-    {
       "value": "Once one of the following branches was executed one of the following branches is executed:",
       "level": 0,
       "isLateral": false,
@@ -137,20 +137,6 @@
           "resource": "",
           "startIndex": 0,
           "endIndex": 47
-        }
-      ]
-    },
-    {
-      "value": "The go rejects the invoice of the mpoo.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-17",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 38
         }
       ]
     },
@@ -179,6 +165,20 @@
           "resource": "go",
           "startIndex": 0,
           "endIndex": 27
+        }
+      ]
+    },
+    {
+      "value": "The go rejects the invoice of the mpoo.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 38
         }
       ]
     },

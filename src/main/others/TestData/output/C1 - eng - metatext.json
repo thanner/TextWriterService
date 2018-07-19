@@ -127,16 +127,16 @@
       ]
     },
     {
-      "value": "The mpo reports the implementation to the sp\\/pu\\/go.",
+      "value": "The mpo notifies the sp\\/pu\\/go about failure of the changes.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-10",
+          "processElementId": "id-11",
           "processElement": "activity",
           "resource": "mpo",
           "startIndex": 0,
-          "endIndex": 52
+          "endIndex": 60
         }
       ]
     },
@@ -146,7 +146,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-16",
+          "processElementId": "id-17",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 12,
@@ -169,16 +169,16 @@
       ]
     },
     {
-      "value": "The mpo notifies the sp\\/pu\\/go about failure of the changes.",
+      "value": "The mpo reports the implementation to the sp\\/pu\\/go.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-11",
+          "processElementId": "id-10",
           "processElement": "activity",
           "resource": "mpo",
           "startIndex": 0,
-          "endIndex": 60
+          "endIndex": 52
         }
       ]
     },
@@ -188,7 +188,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-17",
+          "processElementId": "id-16",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,

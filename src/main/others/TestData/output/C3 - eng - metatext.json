@@ -50,20 +50,6 @@
       ]
     },
     {
-      "value": "The msp performs the measurement.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-7",
-          "processElement": "activity",
-          "resource": "msp",
-          "startIndex": 0,
-          "endIndex": 32
-        }
-      ]
-    },
-    {
       "value": "The msp denies the request of the go.",
       "level": 1,
       "isLateral": true,
@@ -74,6 +60,20 @@
           "resource": "msp",
           "startIndex": 0,
           "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "The msp performs the measurement.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "msp",
+          "startIndex": 0,
+          "endIndex": 32
         }
       ]
     },

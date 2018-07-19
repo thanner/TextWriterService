@@ -169,16 +169,16 @@
       ]
     },
     {
-      "value": "The customer finishes the repair.",
+      "value": "The customer repairs the hardware whereas second activity checks and tests the proper system functionality.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-13",
+          "processElementId": "id-10",
           "processElement": "activity",
           "resource": "customer",
           "startIndex": 0,
-          "endIndex": 32
+          "endIndex": 106
         }
       ]
     },
@@ -188,7 +188,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-21",
+          "processElementId": "id-19",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 12,
@@ -211,16 +211,16 @@
       ]
     },
     {
-      "value": "The customer repairs the hardware whereas second activity checks and tests the proper system functionality.",
+      "value": "The customer finishes the repair.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-10",
+          "processElementId": "id-13",
           "processElement": "activity",
           "resource": "customer",
           "startIndex": 0,
-          "endIndex": 106
+          "endIndex": 32
         }
       ]
     },
@@ -230,7 +230,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-19",
+          "processElementId": "id-21",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,

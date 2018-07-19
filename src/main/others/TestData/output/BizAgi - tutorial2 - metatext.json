@@ -342,7 +342,7 @@
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-23",
+          "processElementId": "id-24",
           "processElement": "activity",
           "resource": "purchase department",
           "startIndex": 0,
@@ -356,7 +356,7 @@
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-24",
+          "processElementId": "id-23",
           "processElement": "activity",
           "resource": "purchase department",
           "startIndex": 0,
