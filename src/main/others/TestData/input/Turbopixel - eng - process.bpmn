@@ -36,14 +36,14 @@
                 <flowNodeRef>id-21</flowNodeRef>
                 <flowNodeRef>id-25</flowNodeRef>
                 <flowNodeRef>id-26</flowNodeRef>
-                <flowNodeRef>id-33</flowNodeRef>
-                <flowNodeRef>id-34</flowNodeRef>
                 <flowNodeRef>id-38</flowNodeRef>
             </lane>
             <lane name="pre-sales employee in case of a technical presentation" id="id-7">
                 <flowNodeRef>id-22</flowNodeRef>
                 <flowNodeRef>id-23</flowNodeRef>
                 <flowNodeRef>id-24</flowNodeRef>
+                <flowNodeRef>id-33</flowNodeRef>
+                <flowNodeRef>id-34</flowNodeRef>
                 <flowNodeRef>id-35</flowNodeRef>
                 <flowNodeRef>id-40</flowNodeRef>
             </lane>
@@ -115,6 +115,7 @@
         <intermediateCatchEvent name="does not contact  a pre-sales employee in case of a technical presentation within 2 weeks" id="id-24">
             <incoming>id-60</incoming>
             <outgoing>id-62</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="call the customer" id="id-25">
             <incoming>id-62</incoming>
@@ -141,9 +142,10 @@
             <outgoing>id-72</outgoing>
             <outgoing>id-73</outgoing>
         </exclusiveGateway>
-        <intermediateCatchEvent id="id-30">
+        <boundaryEvent attachedToRef="id-19" id="id-30">
             <outgoing>id-74</outgoing>
-        </intermediateCatchEvent>
+            <errorEventDefinition/>
+        </boundaryEvent>
         <exclusiveGateway id="id-31">
             <incoming>id-55</incoming>
             <outgoing>id-70</outgoing>

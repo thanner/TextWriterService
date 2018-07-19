@@ -160,7 +160,7 @@
             <incoming>id-91</incoming>
             <outgoing>id-92</outgoing>
         </task>
-        <task name="act " id="id-30">
+        <task name="act as the second intaker" id="id-30">
             <incoming>id-92</incoming>
             <outgoing>id-93</outgoing>
         </task>

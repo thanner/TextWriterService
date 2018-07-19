@@ -190,20 +190,6 @@
       ]
     },
     {
-      "value": "The engineering department prepares the everything for assembling the of the ordered bicycle in the meantime.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-21",
-          "processElement": "activity",
-          "resource": "engineering department",
-          "startIndex": 0,
-          "endIndex": 108
-        }
-      ]
-    },
-    {
       "value": "The storehouse repeats the procedure.",
       "level": 1,
       "isLateral": true,
@@ -214,6 +200,20 @@
           "resource": "storehouse",
           "startIndex": 0,
           "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "The engineering department prepares the everything for assembling the of the ordered bicycle in the meantime.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-21",
+          "processElement": "activity",
+          "resource": "engineering department",
+          "startIndex": 0,
+          "endIndex": 108
         }
       ]
     },

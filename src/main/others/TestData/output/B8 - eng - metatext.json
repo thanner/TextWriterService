@@ -50,20 +50,6 @@
       ]
     },
     {
-      "value": "The go rejects the deregistration of the mspo.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-6",
-          "processElement": "activity",
-          "resource": "go",
-          "startIndex": 0,
-          "endIndex": 45
-        }
-      ]
-    },
-    {
       "value": "The go confirms the deregistration of the mspo.",
       "level": 1,
       "isLateral": true,
@@ -74,6 +60,20 @@
           "resource": "go",
           "startIndex": 0,
           "endIndex": 46
+        }
+      ]
+    },
+    {
+      "value": "The go rejects the deregistration of the mspo.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 45
         }
       ]
     },

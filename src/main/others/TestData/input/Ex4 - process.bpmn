@@ -36,6 +36,7 @@
         <intermediateCatchEvent name="the employee does not have  one " id="id-4">
             <incoming>id-27</incoming>
             <outgoing>id-29</outgoing>
+            <messageEventDefinition/>
         </intermediateCatchEvent>
         <task name="create a new account" id="id-5">
             <incoming>id-29</incoming>
@@ -64,6 +65,7 @@
         <intermediateCatchEvent name="does not complete  the request in 7 days" id="id-11">
             <incoming>id-38</incoming>
             <outgoing>id-40</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="receive an approval in progress email" id="id-12">
             <incoming>id-40</incoming>
@@ -72,6 +74,7 @@
         <intermediateCatchEvent name="does not finish  the request within 30 days" id="id-13">
             <incoming>id-39</incoming>
             <outgoing>id-41</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="stop the process" id="id-14">
             <incoming>id-41</incoming>

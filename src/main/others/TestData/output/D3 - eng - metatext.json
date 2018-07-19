@@ -1,0 +1,221 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process isStarts with a decision.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-26",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "One of the following branches is executed.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 41
+        }
+      ]
+    },
+    {
+      "value": "The go examines the bill.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 24
+        }
+      ]
+    },
+    {
+      "value": "The mpon examines the bill.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "mpon",
+          "startIndex": 0,
+          "endIndex": 26
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the go examines the bill.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 48,
+          "endIndex": 72
+        },
+        {
+          "processElementId": "id-21",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The go examines the bill.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 24
+        }
+      ]
+    },
+    {
+      "value": "The go examines the bill.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 24
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 48,
+          "endIndex": 89
+        },
+        {
+          "processElementId": "id-21",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The go rejects the invoice of the mpoo.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 38
+        }
+      ]
+    },
+    {
+      "value": "The mpon confirms the invoice.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-16",
+          "processElement": "activity",
+          "resource": "mpon",
+          "startIndex": 0,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The go confirms the invoice.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "go",
+          "startIndex": 0,
+          "endIndex": 27
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the mpon rejects the invoice of the mpoo.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "mpon",
+          "startIndex": 48,
+          "endIndex": 88
+        },
+        {
+          "processElementId": "id-23",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

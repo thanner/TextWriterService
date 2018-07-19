@@ -47,13 +47,17 @@ public class TextGenerator {
             Text poolText;
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 poolProcessModel = applyNormalization(poolProcessModel);
-                poolText = generateText(poolProcessModel, bpmnIdMap, counter);
-                text.appendSentences(poolText);
+                if (!isBlackBox(processModel)) {
+                    poolText = generateText(poolProcessModel, bpmnIdMap, counter);
+                    text.appendSentences(poolText);
+                }
                 // System.out.println(text.replaceAll(" process ", " " + m.getPools().get(0) + " process "));
             }
         } else {
             processModel = applyNormalization(processModel);
-            text = generateText(processModel, bpmnIdMap, counter);
+            if (!isBlackBox(processModel)) {
+                text = generateText(processModel, bpmnIdMap, counter);
+            }
             // System.out.println(text);
         }
         return text;
@@ -63,6 +67,10 @@ public class TextGenerator {
         processModel.normalize();
         processModel.normalizeEndEvents();
         return processModel;
+    }
+
+    private static boolean isBlackBox(ProcessModel processModel) {
+        return processModel.getActivites().isEmpty() && processModel.getEvents().isEmpty() && processModel.getGateways().isEmpty() && processModel.getArcs().isEmpty();
     }
 
     /*
@@ -91,6 +99,12 @@ public class TextGenerator {
 
         // Convert to RPST
         FormatConverter formatConverter = new FormatConverter();
+        // TODO: RPST nao esta pegando ROOT
+        // TODO: Motivo: sources da RPST está com dois elementos
+        // TODO:    Elemento 1: 30 - determine contact details of potential customers (primeira atividade)
+        // TODO:    Elemento 2: 36 - try to acquire the customer (atividade disparada quando ocorre um evento de erro attached em leave the customer alone)
+        // TODO: SUPONHO QUE A SOLUÇÃO SEJA MODIFICAR O MODEL PARA QUE O ELEMENTO 2 DEIXE DE SER SOURCE (ver no artigo)
+        // TODO: UMA DAS POSSÍVEIS SOLUÇÕES É FAZER O ATTACHED EVENTS NAS ATIVIDADES (Ver o ProcessModelBuilder)
         Process p = formatConverter.transformToRPSTFormat(model);
         RPST<ControlFlow, Node> rpst = new RPST<ControlFlow, Node>(p);
 
@@ -109,6 +123,7 @@ public class TextGenerator {
 
         // Convert to Text
         TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false, bpmnIdMap);
+        // FIXME: rpst.getRoot() == null (Erro acima)
         converter.convertToText(rpst.getRoot(), 0);
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 

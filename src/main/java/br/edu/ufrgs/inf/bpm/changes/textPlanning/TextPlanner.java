@@ -177,7 +177,9 @@ public class TextPlanner {
         }
         if (PlanningHelper.isORSplit(node, rpst)) {
             convRecord = getORConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN.getValue());
+            if (convRecord != null && convRecord.post != null) {
+                setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN.getValue());
+            }
         }
         if (PlanningHelper.isANDSplit(node, rpst)) {
             convRecord = getANDConverterRecord(node);
@@ -364,6 +366,7 @@ public class TextPlanner {
         validIDs.addAll(process.getEvents().keySet());
 
         // Transforming RPST subtree to Petri Net
+        // FIXME: Algo errado no node ou no process?
         ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
 
         addRigid(node);
@@ -1045,7 +1048,10 @@ public class TextPlanner {
     private void generateProcessElementList(ExecutableFragment eFrag, DSynTConditionSentence dSynTSentence, String processElementMain) {
         String processElement = processElementMain;
         Document document = dSynTSentence.getDocuments().get(0);
-        dSynTSentence.addProcessElementDocument(getProcessElementId(eFrag.getAssociatedActivities().get(0)), processElement, document);
+
+        if (!eFrag.getAssociatedActivities().isEmpty()) {
+            dSynTSentence.addProcessElementDocument(getProcessElementId(eFrag.getAssociatedActivities().get(0)), processElement, document);
+        }
 
         for (int i = 0; i < passedFragments.size(); i++) {
             processElement = passedFragments.get(i).getProcessElement();

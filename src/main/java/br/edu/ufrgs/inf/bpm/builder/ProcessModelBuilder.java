@@ -8,6 +8,7 @@ import br.edu.ufrgs.inf.bpm.wrapper.elementType.GatewayType;
 import processToText.dataModel.process.*;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.namespace.QName;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,11 @@ public class ProcessModelBuilder {
     private Map<String, Lane> laneMap;
     private Map<String, Pool> poolMap;
     private Map<String, Element> elementMap;
+    private Map<String, Arc> tArcMap;
+    private Map<Integer, Arc> arcMap;
+
     private BpmnWrapper processModelWrapper;
+    private Map<Integer, Integer> externalPathInitiators;
 
     public ProcessModelBuilder() {
         genericId = 0;
@@ -29,6 +34,10 @@ public class ProcessModelBuilder {
         laneMap = new HashMap<>();
         poolMap = new HashMap<>();
         elementMap = new HashMap<>();
+        tArcMap = new HashMap<>();
+        arcMap = new HashMap<>();
+
+        externalPathInitiators = new HashMap<>();
     }
 
     public ProcessModel buildProcess(TDefinitions definitions) {
@@ -64,8 +73,16 @@ public class ProcessModelBuilder {
                 }
             }
 
+            for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
+                if (flowElement.getValue() instanceof TBoundaryEvent) {
+                    attachEvent(process, processModel, (TBoundaryEvent) flowElement.getValue());
+                }
+            }
+
+            removeExternalPathInitiators(process, processModel);
         }
 
+        // TODO: verificar build alternative path model
         return processModel;
     }
 
@@ -124,7 +141,32 @@ public class ProcessModelBuilder {
 
     private Arc createArc(TSequenceFlow arc) {
         int newId = generateModelId(arc.getId());
-        return new Arc(newId, getName(arc.getName()), elementMap.get(((TFlowNode) arc.getSourceRef()).getId()), elementMap.get(((TFlowNode) arc.getTargetRef()).getId()));
+        Arc modelArc = new Arc(newId, getName(arc.getName()), elementMap.get(((TFlowNode) arc.getSourceRef()).getId()), elementMap.get(((TFlowNode) arc.getTargetRef()).getId()));
+        arcMap.put(newId, modelArc);
+        tArcMap.put(arc.getId(), modelArc);
+        return modelArc;
+    }
+
+    private void attachEvent(TProcess process, ProcessModel processModel, TBoundaryEvent tBoundaryEvent) {
+        String tActivityId = tBoundaryEvent.getAttachedToRef().getLocalPart();
+        Activity activity = (Activity) elementMap.get(tActivityId);
+        Event event = (Event) elementMap.get(tBoundaryEvent.getId());
+
+        activity.addAttachedEvent(event.getId());
+        event.setAttached(true);
+        event.setIsAttachedTo(activity.getId());
+
+        TActivity tActivity = getTActivityAttached(process, tActivityId);
+        if (tActivity != null) {
+            // if (tActivity.getOutgoing().size() > 1) {
+            // Attached event leads to alternative path
+            externalPathInitiators.put(event.getId(), activity.getId());
+            // } else {
+            // Attached event goes back to standard path
+            //     Arc arc = new Arc(generateModelId("newArc" + genericId), "", activity, event, "VirtualFlow");
+            //    processModel.addArc(arc);
+            // }
+        }
     }
 
     private String getName(String name) {
@@ -141,7 +183,8 @@ public class ProcessModelBuilder {
 
     private int getEventType(TEvent event) throws IllegalArgumentException {
         try {
-            return EventType.valueOf(event.getClass().getSimpleName()).getValue();
+            EventType eventType = new EventType();
+            return eventType.getEventType(event);
         } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(event);
         }
@@ -178,4 +221,90 @@ public class ProcessModelBuilder {
     public Map<Integer, String> getBpmnIdMap() {
         return bpmnIdMap;
     }
+
+    private void removeExternalPathInitiators(TProcess tProcess, ProcessModel processModel) {
+        for (int exPI : externalPathInitiators.keySet()) {
+            ProcessModel alternativePathModel = new ProcessModel(exPI, "");
+
+            // Create start event
+            Event startEvent = new Event(generateModelId("newStartEvent" + genericId), "", processModel.getElem(exPI).getLane(), processModel.getElem(exPI).getPool(), processToText.dataModel.process.EventType.START_EVENT);
+            alternativePathModel.addEvent(startEvent);
+
+            // Reallocate elems to alternative path
+            buildAlternativePathModel(tProcess, exPI, true, processModel, alternativePathModel, exPI);
+
+            // Add arc from artifical start to real start elem
+            Event realStart = (Event) alternativePathModel.getElem(exPI);
+            alternativePathModel.addArc(new Arc(generateModelId("newArc" + genericId), "", startEvent, realStart));
+
+            // Add path to model
+            processModel.addAlternativePath(alternativePathModel, exPI);
+
+        }
+    }
+
+    private TActivity getTActivityAttached(TProcess process, String tActivityId) {
+        TActivity tActivity;
+        for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
+            if (flowElement.getValue() instanceof TActivity) {
+                tActivity = (TActivity) flowElement.getValue();
+                if (tActivity.getId().equals(tActivityId)) {
+                    return tActivity;
+                }
+            }
+        }
+        return null;
+    }
+
+    private void buildAlternativePathModel(TProcess tProcess, int id, boolean isElement, ProcessModel model, ProcessModel alternative, int exPI) {
+        if (isElement) {
+            TFlowNode tFlowNode = getTFlowNode(tProcess, id);
+            if (tFlowNode.getOutgoing().size() > 0) {
+                for (QName qName : tFlowNode.getOutgoing()) {
+                    String idOutgoing = qName.getLocalPart();
+                    int idArc = tArcMap.get(idOutgoing).getId();
+                    buildAlternativePathModel(tProcess, idArc, false, model, alternative, exPI);
+
+                    Element element = model.getElem(id);
+                    if (element != null) {
+                        alternative.addElem(element);
+                        // elementMap.remove(id);
+                        model.removeElem(id);
+                    }
+                    // System.out.println("Elem reallocated: " + id + " " + elem.getLabel() + " --> " + exPI);
+                }
+            } else {
+                Element element = model.getElem(id);
+                if (element != null) {
+                    alternative.addElem(element);
+                    // elementMap.remove(id);
+                    model.removeElem(id);
+                }
+                // System.out.println("Elem reallocated: " + id + " " + elem.getLabel() + " --> " + exPI);
+            }
+        } else {
+            buildAlternativePathModel(tProcess, arcMap.get(id).getTarget().getId(), true, model, alternative, exPI);
+
+            Arc arc = model.getArc(id);
+            if (arc != null) {
+                alternative.addArc(arc);
+                //arcMap.remove(id);
+                model.removeArc(id);
+            }
+            // System.out.println("Arc reallocated: " + id + " --> " + exPI);
+        }
+    }
+
+    private TFlowNode getTFlowNode(TProcess tProcess, int id) {
+        for (JAXBElement<? extends TFlowElement> currentFlowElement : tProcess.getFlowElement()) {
+            if (currentFlowElement.getValue() instanceof TFlowNode) {
+                TFlowNode tFlowNode = (TFlowNode) currentFlowElement.getValue();
+                if (id == elementMap.get(tFlowNode.getId()).getId()) {
+                    return tFlowNode;
+                }
+            }
+        }
+        return null;
+    }
+
 }

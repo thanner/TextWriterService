@@ -120,58 +120,16 @@
       ]
     },
     {
-      "value": "The masters needs to decide are miss and conducts the data is present.",
+      "value": "The process is finished.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-17",
-          "processElement": "activity",
-          "resource": "masters",
-          "startIndex": 0,
-          "endIndex": 69
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the masters schedules the production to the and receives a notice.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-19",
-          "processElement": "activity",
-          "resource": "masters",
-          "startIndex": 12,
-          "endIndex": 77
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the employee takes care of the implementation and checks the order again.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-21",
-          "processElement": "activity",
-          "resource": "employee",
-          "startIndex": 14,
-          "endIndex": 86
-        }
-      ]
-    },
-    {
-      "value": "Then, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-25",
+          "processElementId": "id-26",
           "processElement": "intermediateevent",
           "resource": "",
-          "startIndex": 6,
-          "endIndex": 29
+          "startIndex": 0,
+          "endIndex": 23
         }
       ]
     },
@@ -190,16 +148,58 @@
       ]
     },
     {
-      "value": "The process is finished.",
+      "value": "The masters needs to decide are miss and conducts the data is present.",
       "level": 1,
       "isLateral": true,
       "subsentenceList": [
         {
-          "processElementId": "id-26",
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 0,
+          "endIndex": 69
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the masters schedules the production to the and receives a notice.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "masters",
+          "startIndex": 14,
+          "endIndex": 79
+        }
+      ]
+    },
+    {
+      "value": "Then, the employee takes care of the implementation and checks the order again.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-21",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 6,
+          "endIndex": 78
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
           "processElement": "intermediateevent",
           "resource": "",
-          "startIndex": 0,
-          "endIndex": 23
+          "startIndex": 12,
+          "endIndex": 35
         }
       ]
     },

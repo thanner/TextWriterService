@@ -175,6 +175,7 @@
         <intermediateThrowEvent name="locates the problem " id="id-24">
             <incoming>id-114</incoming>
             <outgoing>id-116</outgoing>
+            <messageEventDefinition/>
         </intermediateThrowEvent>
         <task name="to be " id="id-25">
             <incoming>id-192</incoming>

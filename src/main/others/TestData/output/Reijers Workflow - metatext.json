@@ -176,7 +176,7 @@
       ]
     },
     {
-      "value": "Subsequently, the physicians acts and takes the expertise.",
+      "value": "Subsequently, the physicians acts as the second intaker and takes the expertise.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
@@ -185,7 +185,7 @@
           "processElement": "activity",
           "resource": "physicians",
           "startIndex": 14,
-          "endIndex": 57
+          "endIndex": 79
         }
       ]
     },

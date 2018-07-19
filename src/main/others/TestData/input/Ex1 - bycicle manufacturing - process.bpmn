@@ -29,14 +29,14 @@
                 <flowNodeRef>id-23</flowNodeRef>
                 <flowNodeRef>id-28</flowNodeRef>
                 <flowNodeRef>id-29</flowNodeRef>
+                <flowNodeRef>id-30</flowNodeRef>
+                <flowNodeRef>id-31</flowNodeRef>
                 <flowNodeRef>id-32</flowNodeRef>
                 <flowNodeRef>id-33</flowNodeRef>
             </lane>
             <lane name="engineering department" id="id-6">
                 <flowNodeRef>id-21</flowNodeRef>
                 <flowNodeRef>id-24</flowNodeRef>
-                <flowNodeRef>id-30</flowNodeRef>
-                <flowNodeRef>id-31</flowNodeRef>
             </lane>
             <lane name="sales department ships" id="id-7">
                 <flowNodeRef>id-25</flowNodeRef>

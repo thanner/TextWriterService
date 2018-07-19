@@ -35,6 +35,7 @@
         <intermediateCatchEvent name="the mpoo sends the bill for the temporary continuation of the metering point operations to the go" id="id-6">
             <incoming>id-27</incoming>
             <outgoing>id-31</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="examine the bill" id="id-7">
             <incoming>id-31</incoming>
@@ -44,6 +45,7 @@
         <intermediateCatchEvent name="the mspo sends the bill for the temporary continuation of the measurement to the go" id="id-8">
             <incoming>id-28</incoming>
             <outgoing>id-32</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="examine the bill" id="id-9">
             <incoming>id-32</incoming>
@@ -53,6 +55,7 @@
         <intermediateCatchEvent name="the mspo sends the bill for additional readings to the go" id="id-10">
             <incoming>id-29</incoming>
             <outgoing>id-33</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="examine the bill" id="id-11">
             <incoming>id-33</incoming>
@@ -62,6 +65,7 @@
         <intermediateCatchEvent name="the mpoo sends the bill for the equipment acquisition to the mpon or the go" id="id-12">
             <incoming>id-30</incoming>
             <outgoing>id-44</outgoing>
+            <timerEventDefinition/>
         </intermediateCatchEvent>
         <task name="examine the bill" id="id-13">
             <incoming>id-34</incoming>

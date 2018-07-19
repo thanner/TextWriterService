@@ -1,16 +1,16 @@
 {
   "sentenceList": [
     {
-      "value": "The process begins when the sp\\/pu\\/go requests the changes of the mpo.",
+      "value": "The process begins when the customer service representative sends a mortgage offer to the customer.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-4",
           "processElement": "activity",
-          "resource": "sp\\/pu\\/go",
+          "resource": "customer service representative",
           "startIndex": 24,
-          "endIndex": 70
+          "endIndex": 98
         },
         {
           "processElementId": "Start event Id",
@@ -22,30 +22,51 @@
       ]
     },
     {
-      "value": "Then, it causes a change.",
+      "value": "Then, it waits for a reply.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-5",
           "processElement": "activity",
-          "resource": "sp\\/pu\\/go",
-          "startIndex": 6,
-          "endIndex": 24
+          "resource": "customer service representative",
+          "startIndex": -1,
+          "endIndex": 23
         }
       ]
     },
     {
-      "value": "Afterwards, the mpo reviews the change request.",
+      "value": "If it is necessary, the customer writes the back to decline the mortgage.",
       "level": 0,
       "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-6",
           "processElement": "activity",
-          "resource": "mpo",
+          "resource": "customer",
+          "startIndex": 20,
+          "endIndex": 72
+        },
+        {
+          "processElementId": "id-15",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 18
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the customer updates the case details and archives the work.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "customer",
           "startIndex": 12,
-          "endIndex": 46
+          "endIndex": 71
         }
       ]
     },
@@ -55,7 +76,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-12",
+          "processElementId": "id-17",
           "processElement": "xorsplit",
           "resource": "",
           "startIndex": 14,
@@ -64,121 +85,16 @@
       ]
     },
     {
-      "value": "The mpo rejects the change of the measuring point.",
+      "value": "The customer updates the case details.",
       "level": 1,
       "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-7",
-          "processElement": "activity",
-          "resource": "mpo",
-          "startIndex": 0,
-          "endIndex": 49
-        }
-      ]
-    },
-    {
-      "value": "The mpo confirms the request of the sp\\/pu\\/go.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-8",
-          "processElement": "activity",
-          "resource": "mpo",
-          "startIndex": 0,
-          "endIndex": 46
-        }
-      ]
-    },
-    {
-      "value": "Once one of the following branches was executed the mpo performs the measuring point change.",
-      "level": 0,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-9",
-          "processElement": "activity",
-          "resource": "mpo",
-          "startIndex": 48,
-          "endIndex": 91
-        },
-        {
-          "processElementId": "id-13",
-          "processElement": "xorjoin",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 47
-        }
-      ]
-    },
-    {
-      "value": "Then, one of the following branches is executed:",
-      "level": 0,
-      "isLateral": false,
       "subsentenceList": [
         {
           "processElementId": "id-14",
-          "processElement": "xorsplit",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 47
-        }
-      ]
-    },
-    {
-      "value": "The mpo reports the implementation to the sp\\/pu\\/go.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-10",
           "processElement": "activity",
-          "resource": "mpo",
+          "resource": "customer",
           "startIndex": 0,
-          "endIndex": 52
-        }
-      ]
-    },
-    {
-      "value": "Afterwards, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "id-16",
-          "processElement": "intermediateevent",
-          "resource": "",
-          "startIndex": 12,
-          "endIndex": 35
-        }
-      ]
-    },
-    {
-      "value": "Subsequently, the process is finished.",
-      "level": 1,
-      "isLateral": false,
-      "subsentenceList": [
-        {
-          "processElementId": "none",
-          "processElement": "endevent",
-          "resource": "",
-          "startIndex": 14,
           "endIndex": 37
-        }
-      ]
-    },
-    {
-      "value": "The mpo notifies the sp\\/pu\\/go about failure of the changes.",
-      "level": 1,
-      "isLateral": true,
-      "subsentenceList": [
-        {
-          "processElementId": "id-11",
-          "processElement": "activity",
-          "resource": "mpo",
-          "startIndex": 0,
-          "endIndex": 60
         }
       ]
     },
@@ -188,7 +104,7 @@
       "isLateral": false,
       "subsentenceList": [
         {
-          "processElementId": "id-17",
+          "processElementId": "id-21",
           "processElement": "intermediateevent",
           "resource": "",
           "startIndex": 6,
@@ -207,6 +123,104 @@
           "resource": "",
           "startIndex": 12,
           "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The customer sends a message and attaches the prerequisite documents.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "intermediateevent",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 68
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the customer moves the case to the administration.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 14,
+          "endIndex": 63
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The customer generates a message to request outstanding documents to the customer.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "customer",
+          "startIndex": 0,
+          "endIndex": 81
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
         }
       ]
     },
