@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
-import br.edu.ufrgs.inf.bpm.bpmn.*;
+import br.edu.ufrgs.inf.bpm.bpmn.TActivity;
+import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
+import br.edu.ufrgs.inf.bpm.bpmn.TSequenceFlow;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
-
-import javax.xml.bind.JAXBElement;
 
 public class DefinitionRefinement {
 
@@ -42,14 +42,9 @@ public class DefinitionRefinement {
     }
 
     private void refineActivityLabel() {
-        for (TProcess tProcess : processModelWrapper.getProcessList()) {
-            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
-                if (flowElement.getValue() instanceof TActivity) {
-                    TActivity tActivity = (TActivity) flowElement.getValue();
-                    if (tActivity.getName().replaceAll("\n", "").isEmpty()) {
-                        tActivity.setName("Do activity with id " + tActivity.getId() + "\n");
-                    }
-                }
+        for (TActivity tActivity : processModelWrapper.getActivityList()) {
+            if (tActivity.getName().replaceAll("\n", "").isEmpty()) {
+                tActivity.setName("Do activity with id " + tActivity.getId() + "\n");
             }
         }
     }

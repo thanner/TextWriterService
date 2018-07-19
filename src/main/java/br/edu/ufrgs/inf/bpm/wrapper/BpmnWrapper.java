@@ -100,4 +100,17 @@ public class BpmnWrapper {
         return tSequenceFlowList;
     }
 
+    public List<TActivity> getActivityList() {
+        List<TActivity> tActivityList = new ArrayList<>();
+        for (TProcess tProcess : getProcessList()) {
+            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
+                if (flowElement.getValue() instanceof TActivity) {
+                    tActivityList.add((TActivity) flowElement.getValue());
+                }
+            }
+        }
+        return tActivityList;
+    }
+
+
 }
