@@ -1,0 +1,410 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the guest conducts an evanstonian is an upscale independent hotel.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "guest",
+          "startIndex": 24,
+          "endIndex": 89
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it calls the room service.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "guest",
+          "startIndex": 6,
+          "endIndex": 31
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the room-service manager takes down the order and submits the order ticket.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 12,
+          "endIndex": 86
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, it gives the order to fetch wine to the sommelier and gives the order.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 14,
+          "endIndex": 83
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager includes the other alcoholic beverage.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 62
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager includes the wine.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 42
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the process is split into 2 parallel branches:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-29",
+          "processElement": "andsplit",
+          "resource": "",
+          "startIndex": 48,
+          "endIndex": 93
+        },
+        {
+          "processElementId": "id-28",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager conducts the kitchen are doing tasks.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 61
+        }
+      ]
+    },
+    {
+      "value": "The room-service manager assigns the order to the waiter.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 0,
+          "endIndex": 56
+        }
+      ]
+    },
+    {
+      "value": "Once all 2 branches were executed, the room-service manager conducts the sommelier are doing tasks.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "room-service manager",
+          "startIndex": 35,
+          "endIndex": 98
+        },
+        {
+          "processElementId": "id-30",
+          "processElement": "andjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 33
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the waiter readies a cart and readies the gathers silverware.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-16",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 12,
+          "endIndex": 72
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the waiter conducts the waiter is responsible.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 14,
+          "endIndex": 59
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is split into 3 parallel branches:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-31",
+          "processElement": "andsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 51
+        }
+      ]
+    },
+    {
+      "value": "The waiter carts the is ready.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-21",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 0,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The waiter wines the is ready.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 0,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The waiter conducts the food is ready.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 0,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Once all 3 branches were executed, the waiter delivers the cart to the guest room.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 35,
+          "endIndex": 81
+        },
+        {
+          "processElementId": "id-32",
+          "processElement": "andjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 33
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the waiter returns and debits the account.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-23",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the guest conducts the s account.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "activity",
+          "resource": "guest",
+          "startIndex": 14,
+          "endIndex": 46
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-33",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The waiter waits to does the billing.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-26",
+          "processElement": "activity",
+          "resource": "waiter",
+          "startIndex": 0,
+          "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-35",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-36",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}
