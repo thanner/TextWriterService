@@ -2,6 +2,7 @@ package br.edu.ufrgs.inf.bpm.application;
 
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
 import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
+import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import net.didion.jwnl.JWNLException;
 import org.apache.commons.io.FileUtils;
 
@@ -17,8 +18,12 @@ public class TestBpmnXml {
     public static String getStructuredText(){
         Text metaText = new Text();
         try {
-            String bpmnProcess = FileUtils.readFileToString(new File("src/main/others/apenasteste.bpmn"), "UTF-8");
+            String bpmnProcess = FileUtils.readFileToString(new File("src/main/others/TestData/input/Thanner - Main Test Diagram2.bpmn"), "UTF-8");
+            // metaText = TextGenerator.generateText(bpmnProcess);
+
             metaText = TextGenerator.generateText(bpmnProcess);
+            String metaTextString = JsonWrapper.getJson(metaText);
+            System.out.println(metaTextString);
         } catch (JWNLException | IOException e) {
             e.printStackTrace();
         }

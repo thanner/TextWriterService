@@ -63,7 +63,7 @@ public class BpmnPreProcessor {
             } else {
                 // Participant doesnt exists
                 tParticipant = new TParticipant();
-                tParticipant.setId("Participant " + processId);
+                tParticipant.setId("ParticipantId " + processId);
                 tParticipant.setName("Participant " + processId);
                 tParticipant.setProcessRef(new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", tProcess.getId(), ""));
 
@@ -76,18 +76,24 @@ public class BpmnPreProcessor {
 
     private void adjustLanes() {
         int laneId = 1;
+
         for (TProcess tProcess : processModelWrapper.getProcessList()) {
             TLaneSet tLaneSet = getTLaneSet(tProcess);
-            List<TLane> tLaneList = tLaneSet.getLane();
+            TLane tCandidateLane = null;
 
-            for (JAXBElement<? extends TFlowElement> tFlowElement : tProcess.getFlowElement()) {
-                if (processModelWrapper.getLaneByFlowElement(tFlowElement.getValue()) == null) {
-                    // Se a tlane desse processo já existe
-                    // Usa a tlane
-                    // Senão
-                    // Cria a tLane (Id: laneId | Name: Resource laneId)
+            for (JAXBElement<? extends TFlowElement> jaxbElement : tProcess.getFlowElement()) {
+                TFlowElement tFlowElement = jaxbElement.getValue();
+                if (processModelWrapper.getLaneByFlowElement(tFlowElement) == null) {
 
-                    // Adiciona o elemento na tLane
+                    if (tCandidateLane == null) {
+                        tCandidateLane = new TLane();
+                        tCandidateLane.setId("LaneId " + laneId);
+                        tCandidateLane.setName("Resource " + laneId);
+                        tLaneSet.getLane().add(tCandidateLane);
+                        laneId++;
+                    }
+
+                    tCandidateLane.getFlowNodeRef().add(new ObjectFactory().createTLaneFlowNodeRef(tFlowElement));
                 }
             }
         }
@@ -110,7 +116,8 @@ public class BpmnPreProcessor {
 
     private void adjustActivityLabel() {
         for (TActivity tActivity : processModelWrapper.getActivityList()) {
-            if (tActivity.getName().replaceAll("\n", "").isEmpty()) {
+            String name = tActivity.getName();
+            if (name == null || name.replaceAll("\n", "").isEmpty()) {
                 tActivity.setName("Do activity with id " + tActivity.getId() + "\n");
             }
         }

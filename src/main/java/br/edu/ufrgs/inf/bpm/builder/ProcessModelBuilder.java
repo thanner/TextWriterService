@@ -141,7 +141,7 @@ public class ProcessModelBuilder {
 
     private Arc createArc(TSequenceFlow arc) {
         int newId = generateModelId(arc.getId());
-        Arc modelArc = new Arc(newId, getName(arc.getName()), elementMap.get(((TFlowNode) arc.getSourceRef()).getId()), elementMap.get(((TFlowNode) arc.getTargetRef()).getId()));
+        Arc modelArc = new Arc(newId, getName(arc.getName()), elementMap.get(((TFlowNode) arc.getSourceRef()).getId()), elementMap.get(((TFlowNode) arc.getTargetRef()).getId()), "SequenceFlow");
         arcMap.put(newId, modelArc);
         tArcMap.put(arc.getId(), modelArc);
         return modelArc;
