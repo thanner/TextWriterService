@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.wrapper;
 
 import org.w3c.dom.Document;
@@ -44,3 +45,4 @@ public class DocumentStringWrapper {
         return null;
     }
 }
+*/

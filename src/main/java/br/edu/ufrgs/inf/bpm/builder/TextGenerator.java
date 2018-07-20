@@ -34,9 +34,9 @@ public class TextGenerator {
     public static Text generateText(String bpmnString) throws IOException, JWNLException {
         TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
 
-        DefinitionRefinement definitionRefinement = new DefinitionRefinement(definitions);
-        definitionRefinement.adjustTDefinitions();
-        definitions = definitionRefinement.gettDefinitions();
+        BpmnPreProcessor bpmnPreProcessor = new BpmnPreProcessor(definitions);
+        bpmnPreProcessor.preProcessing();
+        definitions = bpmnPreProcessor.gettDefinitions();
 
         ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
         ProcessModel processModel = processModelBuilder.buildProcess(definitions);

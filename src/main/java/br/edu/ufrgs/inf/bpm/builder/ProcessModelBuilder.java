@@ -1,10 +1,10 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
 import br.edu.ufrgs.inf.bpm.bpmn.*;
+import br.edu.ufrgs.inf.bpm.builder.elementType.ActivityType;
+import br.edu.ufrgs.inf.bpm.builder.elementType.EventType;
+import br.edu.ufrgs.inf.bpm.builder.elementType.GatewayType;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
-import br.edu.ufrgs.inf.bpm.wrapper.elementType.ActivityType;
-import br.edu.ufrgs.inf.bpm.wrapper.elementType.EventType;
-import br.edu.ufrgs.inf.bpm.wrapper.elementType.GatewayType;
 import processToText.dataModel.process.*;
 
 import javax.xml.bind.JAXBElement;

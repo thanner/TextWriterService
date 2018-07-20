@@ -52,6 +52,25 @@ public class BpmnWrapper {
         return null;
     }
 
+    public TLane getLaneByFlowElement(TFlowElement tFlowElement) {
+        List<TProcess> processList = getProcessList();
+        for (TProcess process : processList) {
+            for (TLaneSet laneSet : process.getLaneSet()) {
+                for (TLane lane : laneSet.getLane()) {
+                    for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
+                        if (flowNodeRefObject.getValue() instanceof TFlowNode) {
+                            TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
+                            if (tFlowElement.getId().equals(flowNodeAux.getId())) {
+                                return lane;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     public List<TCollaboration> getCollaborationList() {
         List<TCollaboration> collaborationList = new ArrayList<>();
         List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();
@@ -88,6 +107,30 @@ public class BpmnWrapper {
         return "";
     }
 
+    public TParticipant getParticipantFromProcess(TProcess tProcess) {
+        List<TCollaboration> collaborationList = getCollaborationList();
+        for (TCollaboration collaboration : collaborationList) {
+            for (TParticipant participant : collaboration.getParticipant()) {
+                if (tProcess.getId().equals(participant.getProcessRef().toString())) {
+                    return participant;
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean hasParticipant(TProcess process) {
+        List<TCollaboration> collaborationList = getCollaborationList();
+        for (TCollaboration collaboration : collaborationList) {
+            for (TParticipant participant : collaboration.getParticipant()) {
+                if (process.getId().equals(participant.getProcessRef().toString())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public List<TSequenceFlow> getSequenceFlowList() {
         List<TSequenceFlow> tSequenceFlowList = new ArrayList<>();
         for (TProcess tProcess : getProcessList()) {
@@ -111,6 +154,5 @@ public class BpmnWrapper {
         }
         return tActivityList;
     }
-
 
 }

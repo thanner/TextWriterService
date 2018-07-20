@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.builder;
 
 import java.util.ArrayList;
@@ -76,3 +77,4 @@ public class IndexDocumentGenerator {
         return indexString.toString();
     }
 }
+*/

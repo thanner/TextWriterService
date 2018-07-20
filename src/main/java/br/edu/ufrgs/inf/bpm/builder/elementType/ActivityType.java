@@ -1,4 +1,4 @@
-package br.edu.ufrgs.inf.bpm.wrapper.elementType;
+package br.edu.ufrgs.inf.bpm.builder.elementType;
 
 public enum ActivityType {
     TTask(0), TSubProcess(3);

@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.builder;
 
 public class IndexTuple {
@@ -34,3 +35,4 @@ public class IndexTuple {
         return indexParallel + "-" + indexSequence;
     }
 }
+*/
