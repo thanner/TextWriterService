@@ -18,8 +18,9 @@ public class TestBpmnXml {
     public static String getStructuredText(){
         Text metaText = new Text();
         try {
-            String bpmnProcess = FileUtils.readFileToString(new File("src/main/others/TestData/input/Thanner - Main Test Diagram2.bpmn"), "UTF-8");
+            String bpmnProcess = FileUtils.readFileToString(new File("src/main/others/TestData/input/Thanner - Main Test Diagram3.bpmn"), "UTF-8");
             // metaText = TextGenerator.generateText(bpmnProcess);
+            ApplicationStarter.startApplication();
 
             metaText = TextGenerator.generateText(bpmnProcess);
             String metaTextString = JsonWrapper.getJson(metaText);
