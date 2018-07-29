@@ -1,0 +1,417 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process isStarts with a decision.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-35",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The employee purchases the service to the require.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 0,
+          "endIndex": 49
+        }
+      ]
+    },
+    {
+      "value": "The employee purchases a product to the require.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-5",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the employee submits the expense report.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "employee",
+          "startIndex": 48,
+          "endIndex": 87
+        },
+        {
+          "processElementId": "id-26",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the supervisor reviews the expense report and approves the report.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "supervisor",
+          "startIndex": 12,
+          "endIndex": 77
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the supervisor conducts the company has expense rules and automates the rules.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "supervisor",
+          "startIndex": 14,
+          "endIndex": 91
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The supervisor gives a chance to the edit.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "supervisor",
+          "startIndex": 0,
+          "endIndex": 41
+        }
+      ]
+    },
+    {
+      "value": "The supervisor goes to the treasurer.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "supervisor",
+          "startIndex": 0,
+          "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the treasurer checks the items.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "treasurer",
+          "startIndex": 48,
+          "endIndex": 78
+        },
+        {
+          "processElementId": "id-28",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the treasurer matches the items.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "treasurer",
+          "startIndex": 12,
+          "endIndex": 43
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-29",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The treasurer accepts the expenses and moves.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-16",
+          "processElement": "activity",
+          "resource": "treasurer",
+          "startIndex": 0,
+          "endIndex": 44
+        }
+      ]
+    },
+    {
+      "value": "Then, the treasurer waits for the payment confirmation and confirms the payment.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-23",
+          "processElement": "activity",
+          "resource": "treasurer",
+          "startIndex": 6,
+          "endIndex": 79
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-34",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "If it is necessary, the treasurer does the not match the report.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "treasurer",
+          "startIndex": 20,
+          "endIndex": 63
+        },
+        {
+          "processElementId": "id-30",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 18
+        }
+      ]
+    },
+    {
+      "value": "Then, the treasurer sends back the report to the employee.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "treasurer",
+          "startIndex": 6,
+          "endIndex": 57
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-32",
+          "processElement": "eventsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The treasurer sends a message and goes.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "intermediateevent",
+          "resource": "treasurer",
+          "startIndex": 0,
+          "endIndex": 38
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the supervisor approves the report.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-21",
+          "processElement": "activity",
+          "resource": "supervisor",
+          "startIndex": 14,
+          "endIndex": 48
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-33",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-36",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

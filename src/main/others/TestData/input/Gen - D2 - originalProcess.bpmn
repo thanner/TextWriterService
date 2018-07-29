@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="inq" id="id-0">
+        <laneSet name="inq" id="id-1"/>
+    </process>
+    <process name="ip" id="id-2">
+        <laneSet name="ip" id="id-3"/>
+    </process>
+</definitions>

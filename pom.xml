@@ -131,15 +131,6 @@
             <systemPath>${project.basedir}/src/main/others/RealPro-2.2/lib/xml-apis.jar</systemPath>
         </dependency>
 
-        <!-- RealPro - Xalan https://mvnrepository.com/artifact/xalan/xalan -->
-        <!--
-        <dependency>
-            <groupId>xalan</groupId>
-            <artifactId>xalan</artifactId>
-            <version>2.7.2</version>
-        </dependency>
-        -->
-
         <!-- JBPT -->
         <!-- Business Process Technologies 4 Java https://mvnrepository.com/artifact/org.jbpt/jbpt-core -->
         <dependency>
@@ -167,7 +158,7 @@
         </dependency>
 
         <!-- PDFBox https://mvnrepository.com/artifact/org.pdfbox/pdfbox -->
-        <!-- Atencao, estou usando o PDFBox do apache, se der problema, pegar o do Leopold -->
+        <!-- PDFBox on apache, with problem, use Leopold -->
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
@@ -196,15 +187,6 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.12</version>
         </dependency>
-
-        <!-- Camunda https://mvnrepository.com/artifact/org.camunda.bpm.model/camunda-bpmn-model -->
-        <!--
-        <dependency>
-            <groupId>org.camunda.bpm.model</groupId>
-            <artifactId>camunda-bpmn-model</artifactId>
-            <version>7.8.0</version>
-        </dependency>
-        -->
 
         <!-- Xerces Impl https://mvnrepository.com/artifact/xerces/xercesImpl -->
         <!--
@@ -244,20 +226,25 @@
             <version>2.8.2</version>
         </dependency>
 
-        <!-- REST Jersey https://mvnrepository.com/artifact/com.sun.jersey/jersey-client -->
+        <!-- REST -->
+        <!-- Jersey Server https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server -->
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>1.19.4</version>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>2.27</version>
         </dependency>
-
-        <!-- REST https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+        <!-- REST-WS https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.0</version>
         </dependency>
-
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
 
     </dependencies>
 

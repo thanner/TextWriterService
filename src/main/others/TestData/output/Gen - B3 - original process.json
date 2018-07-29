@@ -1,0 +1,802 @@
+{
+  "sentenceList": [
+    {
+      "value": "Once a message is received the process starts.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-56",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is split into 2 parallel branches:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "andsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 51
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 sends a message and receives a message.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-58",
+          "processElement": "intermediateevent",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "One or more of the following paths is executed.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-40",
+          "processElement": "orsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 46
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 performs the equipment changes.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-26",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 performs the equipment acquisition.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 49
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process ends with a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-60",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "The process begins when the Resource 3 reports a meter operation.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 24,
+          "endIndex": 64
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-62",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The Resource 3 receives a message.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "intermediateevent",
+          "resource": "Resource 3",
+          "startIndex": 0,
+          "endIndex": 33
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one or more of the following paths is executed.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-42",
+          "processElement": "orsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 58
+        }
+      ]
+    },
+    {
+      "value": "The Resource 3 performs the equipment changes.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-24",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "The Resource 3 performs the equipment acquisition.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-23",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 0,
+          "endIndex": 49
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the Resource 3 sends a message and receives a message.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "intermediateevent",
+          "resource": "Resource 3",
+          "startIndex": 14,
+          "endIndex": 67
+        }
+      ]
+    },
+    {
+      "value": "Then, it receives a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "endevent",
+          "resource": "Resource 3",
+          "startIndex": 6,
+          "endIndex": 27
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the Resource 3 receives a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-44",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The Resource 3 informs the go about failure of the entire process.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 0,
+          "endIndex": 65
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process ends with a message.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-64",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The Resource 3 informs the go about successful completion of the entire process.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-28",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 0,
+          "endIndex": 79
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-45",
+          "processElement": "eventsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-54",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The process ends with a message.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-63",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 31
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "Once a message is received the process starts.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-61",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 2 examines the application of the mpon.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 6,
+          "endIndex": 57
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-38",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 confirms the application of the mpon.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 51
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 rejects the application of the mpon.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 50
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the Resource 2 informs the mpoo about registration confirmation of the mpon.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-21",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 48,
+          "endIndex": 123
+        },
+        {
+          "processElementId": "id-39",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the Resource 2 informs the mspo about registration confirmation of the mpon and sends a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 14,
+          "endIndex": 109
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-57",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 informs the mpon about failure of the overall transaction.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 72
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-52",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 confirms the failure of the assignment.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-30",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-46",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-55",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 assigns the mpon and confirms the assignment.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-31",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 59
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-47",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 informs the mpoo about failure of the assignment of mpon.",
+      "level": 3,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-33",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 71
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 informs the mpoo about assignment of the mpon.",
+      "level": 3,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-34",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 60
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-49",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 48,
+          "endIndex": 89
+        },
+        {
+          "processElementId": "id-48",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 informs the mspo about assignment of the mpon.",
+      "level": 3,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-36",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 60
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 informs the mspo about failure of the assignment of mpon.",
+      "level": 3,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-35",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 71
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the Resource 2 informs the sp about assignment of the mpon.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-37",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 48,
+          "endIndex": 106
+        },
+        {
+          "processElementId": "id-50",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-53",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

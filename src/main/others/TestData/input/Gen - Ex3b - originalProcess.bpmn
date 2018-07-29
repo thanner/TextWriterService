@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="support office" id="id-2"/>
+            <lane name="coordination unit" id="id-3"/>
+            <lane name="support officer" id="id-4"/>
+        </laneSet>
+        <endEvent id="id-7">
+            <incoming>id-27</incoming>
+        </endEvent>
+        <startEvent id="id-8">
+            <outgoing>id-26</outgoing>
+        </startEvent>
+        <task name="update departmental records" id="id-9">
+            <incoming>id-25</incoming>
+            <outgoing>id-27</outgoing>
+        </task>
+        <task name="conduct a qa check" id="id-10">
+            <incoming>id-24</incoming>
+            <outgoing>id-25</outgoing>
+        </task>
+        <task name="upload appropriate documents to system" id="id-11">
+            <incoming>id-22</incoming>
+            <outgoing>id-23</outgoing>
+        </task>
+        <task name="create to meet folders" id="id-12">
+            <incoming>id-20</incoming>
+            <outgoing>id-21</outgoing>
+        </task>
+        <task name="finalize the dates" id="id-13">
+            <incoming>id-26</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <task name="produce minutes including any action points for each committee member" id="id-14">
+            <incoming>id-29</incoming>
+            <outgoing>id-24</outgoing>
+        </task>
+        <task name="ensure " id="id-15">
+            <incoming>id-21</incoming>
+            <outgoing>id-22</outgoing>
+        </task>
+        <task name="advise committee members" id="id-16">
+            <incoming>id-23</incoming>
+            <outgoing>id-29</outgoing>
+        </task>
+        <sequenceFlow sourceRef="id-13" targetRef="id-12" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-15" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-11" name="" id="id-22"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-16" name="" id="id-23"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-10" name="" id="id-24"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-9" name="" id="id-25"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-13" name="" id="id-26"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-7" name="" id="id-27"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-14" name="" id="id-29"/>
+    </process>
+    <process name="committee members" id="id-5">
+        <laneSet name="committee members" id="id-6"/>
+    </process>
+</definitions>
