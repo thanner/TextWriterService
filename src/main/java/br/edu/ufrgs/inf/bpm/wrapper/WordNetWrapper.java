@@ -3,7 +3,6 @@ package br.edu.ufrgs.inf.bpm.wrapper;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import net.didion.jwnl.JWNL;
-import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.dictionary.Dictionary;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -38,44 +37,39 @@ public class WordNetWrapper {
             changeWordNetDictionayPath();
             InputStream resource = ResourceLoader.getResource(Paths.WordNetPath);
             JWNL.initialize(resource);
-        } catch (IOException | JWNLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         dictionary = Dictionary.getInstance();
     }
 
-    public static void changeWordNetDictionayPath() {
-        try {
-            String filePath = ResourceLoader.getResourcePath(Paths.WordNetPath);
-            String dictionaryPath = ResourceLoader.getResourcePath(Paths.WordNetDict);
+    public static void changeWordNetDictionayPath() throws IOException, TransformerException, SAXException, ParserConfigurationException {
+        String filePath = ResourceLoader.getResourcePath(Paths.WordNetPath);
+        String dictionaryPath = ResourceLoader.getResourcePath(Paths.WordNetDict);
 
-            DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = documentBuilder.parse(filePath);
+        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        Document document = documentBuilder.parse(filePath);
 
-            NodeList nList = document.getElementsByTagName("jwnl_properties");
-            for (int i = 0; i < nList.getLength(); i++) {
-                Node nNode = nList.item(i);
-                Element eElement = (Element) nNode;
-                Element cElement = (Element) eElement.getElementsByTagName("dictionary").item(0);
+        NodeList nList = document.getElementsByTagName("jwnl_properties");
+        for (int i = 0; i < nList.getLength(); i++) {
+            Node nNode = nList.item(i);
+            Element eElement = (Element) nNode;
+            Element cElement = (Element) eElement.getElementsByTagName("dictionary").item(0);
 
-                NodeList nodeList = cElement.getElementsByTagName("param");
-                for (int j = 0; j < nodeList.getLength(); j++) {
-                    Element elementJ = (Element) nodeList.item(j);
-                    if (elementJ.getAttribute("name").equals("dictionary_path")) {
-                        elementJ.setAttribute("value", dictionaryPath);
-                    }
+            NodeList nodeList = cElement.getElementsByTagName("param");
+            for (int j = 0; j < nodeList.getLength(); j++) {
+                Element elementJ = (Element) nodeList.item(j);
+                if (elementJ.getAttribute("name").equals("dictionary_path")) {
+                    elementJ.setAttribute("value", dictionaryPath);
                 }
             }
-
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(filePath);
-            transformer.transform(source, result);
-
-        } catch (IOException | ParserConfigurationException | SAXException | TransformerException e) {
-            e.printStackTrace();
         }
+
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        DOMSource source = new DOMSource(document);
+        StreamResult result = new StreamResult(filePath);
+        transformer.transform(source, result);
     }
 
 }
