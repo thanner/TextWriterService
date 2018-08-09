@@ -91,9 +91,9 @@ public class DSynTConditionSentence extends DSynTSentence {
         Element add = doc.createElement("dsyntnode");
         add.setAttribute("rel", "COORD");
         if (isAnd) {
-            add.setAttribute("lexeme", Lexemes.andCondition);
+            add.setAttribute("lexeme", Lexemes.AND_CONDITION);
         } else {
-            add.setAttribute("lexeme", Lexemes.orCondition);
+            add.setAttribute("lexeme", Lexemes.OR_CONDITION);
         }
         cVerb.appendChild(add);
 

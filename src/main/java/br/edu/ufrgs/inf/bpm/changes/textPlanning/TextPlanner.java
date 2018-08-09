@@ -703,9 +703,9 @@ public class TextPlanner {
     private void addStartEventFragment(DSynTMainSentence dSynTSentence) {
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
-        dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
+        dSynTSentence.getExecutableFragment().addMod(Lexemes.START_EVENT, modRecord);
         // TODO: Arrumar
-        dSynTSentence.addProcessElementDocument("Start event Id", ProcessElementType.STARTEVENT.getValue(), "", Lexemes.startEvent);
+        dSynTSentence.addProcessElementDocument("Start event Id", ProcessElementType.STARTEVENT.getValue(), "", Lexemes.START_EVENT);
         dSynTSentence.createDSynTRepresentation();
     }
 

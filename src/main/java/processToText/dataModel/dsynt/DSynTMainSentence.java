@@ -77,7 +77,7 @@ public class DSynTMainSentence extends DSynTSentence {
             Element coord = doc.createElement("dsyntnode");
             coord.setAttribute("class", "coordinating_conj");
             coord.setAttribute("rel", "COORD");
-            coord.setAttribute("lexeme", Lexemes.sequenceSentence);
+            coord.setAttribute("lexeme", Lexemes.SENTENCE_AGGREGATION);
             verb.appendChild(coord);
 
             Element cVerb = IntermediateToDSynTConverter.createVerb(doc, sentences.get(0).getExecutableFragment(), IntermediateToDSynTConverter.VERB_TYPE_SUBCONDITION);
