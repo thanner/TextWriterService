@@ -82,7 +82,6 @@ public class ProcessModelBuilder {
             removeExternalPathInitiators(process, processModel);
         }
 
-        // TODO: verificar build alternative path model
         return processModel;
     }
 

@@ -491,7 +491,7 @@ public class TextPlanner {
         eFrag.bo_hasIndefArticle = true;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
         dSynTSentence = new DSynTMainSentence(eFrag);
-        dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), "rigid 1");
+        dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT.getValue());
         sentencePlan.add(dSynTSentence);
     }
 
@@ -508,7 +508,6 @@ public class TextPlanner {
         eFrag.bo_isSubject = true;
         eFrag.sen_hasColon = true;
         dSynTSentence = new DSynTMainSentence(eFrag);
-        dSynTSentence.addProcessElementDocument(getProcessElementId(eFrag.getAssociatedActivities().get(0)), "rigid 2");
         sentencePlan.add(dSynTSentence);
     }
 
@@ -527,7 +526,7 @@ public class TextPlanner {
         eFrag.sen_hasConnective = true;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
         dSynTSentence = new DSynTMainSentence(eFrag);
-        dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), "rigid 3");
+        dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT.getValue());
         sentencePlan.add(dSynTSentence);
     }
 
@@ -548,11 +547,13 @@ public class TextPlanner {
             eFrag.sen_level = level + 1;
 
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+            dsyntSentence.addProcessElementDocument(getProcessElementId(id), ProcessElementType.ACTIVITY.getValue());
             sentencePlan.add(dsyntSentence);
         } else {
         }
     }
 
+    // TODO: O MÉTODO ABAIXO INSERE TEXTO DIRETAMENTE
     private void convertRigidStartActivity(int id, int level) {
         Activity activity = process.getActivity(id);
         if (activity != null) {
@@ -568,11 +569,13 @@ public class TextPlanner {
             eFrag.sen_level = level + 1;
 
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+            dsyntSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY.getValue());
             sentencePlan.add(dsyntSentence);
         } else {
         }
     }
 
+    // TODO: O MÉTODO ABAIXO INSERE TEXTO DIRETAMENTE
     private void convertRigidEndActivity(int id, int level) {
         Activity activity = process.getActivity(id);
         if (activity != null) {
@@ -587,10 +590,12 @@ public class TextPlanner {
             eFrag.sen_level = level + 1;
 
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+            dsyntSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY.getValue());
             sentencePlan.add(dsyntSentence);
         }
     }
 
+    // TODO: O MÉTODO ABAIXO INSERE TEXTO DIRETAMENTE
     private void convertIsolatedRigidActivity(int id, int prevId, int level) {
 
         Activity currActivity = process.getActivity(id);
@@ -613,6 +618,7 @@ public class TextPlanner {
         eFrag.addMod(modLemma, modRecord);
 
         DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+        dsyntSentence.addProcessElementDocument(getProcessElementId(currActivity.getId()), ProcessElementType.ACTIVITY.getValue());
         sentencePlan.add(dsyntSentence);
     }
 
