@@ -367,6 +367,7 @@ public class TextPlanner {
 
         // Transforming RPST subtree to Petri Net
         ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
+        orderRunSequenceBySize(runSequences, validIDs);
 
         addRigid(node);
         addRigidMain();
@@ -476,6 +477,30 @@ public class TextPlanner {
                             convertRigidElement(Integer.valueOf(id), level, first);
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private void orderRunSequenceBySize(ArrayList<ArrayList<String>> runSequences, ArrayList<Integer> activitiesAndEventsIDs) {
+        List<Integer> sizeRunSequence = new ArrayList<>();
+
+        for (ArrayList<String> runSequence : runSequences) {
+            int amountActivitiesAndEvents = 0;
+            for (String elementId : runSequence) {
+                if (activitiesAndEventsIDs.contains(Integer.valueOf(elementId))) {
+                    amountActivitiesAndEvents++;
+                }
+            }
+            sizeRunSequence.add(amountActivitiesAndEvents);
+        }
+
+        // Bubble sort
+        for (int i = 0; i < sizeRunSequence.size(); i++) {
+            for (int j = 0; j < sizeRunSequence.size() - i - 1; j++) {
+                if ((sizeRunSequence.get(j)) < (sizeRunSequence.get(j + 1))) {
+                    Collections.swap(sizeRunSequence, j, j + 1);
+                    Collections.swap(runSequences, j, j + 1);
                 }
             }
         }
