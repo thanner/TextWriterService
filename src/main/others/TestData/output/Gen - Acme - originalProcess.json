@@ -1,0 +1,417 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the acme ag receives the invoices.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "acme ag",
+          "startIndex": 24,
+          "endIndex": 57
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the secretariat receives the invoices in the central inbox and forwards the invoices.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "secretariat",
+          "startIndex": 6,
+          "endIndex": 90
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the accounting employee identifies the charging suppliers in acme financial accounting and creates a new instance.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 12,
+          "endIndex": 125
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the accounting employee checks the invoice items and checks the notes.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-21",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 14,
+          "endIndex": 83
+        }
+      ]
+    },
+    {
+      "value": "Then, the accounting employee goes the docket to the internal mail and goes the copy.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-23",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 6,
+          "endIndex": 84
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the accounting employee sends the docket to the first cost center manager to list and sends the copy.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 12,
+          "endIndex": 112
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the first cost center manager reviews the content and receives the copy.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-26",
+          "processElement": "activity",
+          "resource": "first cost center manager",
+          "startIndex": 14,
+          "endIndex": 85
+        }
+      ]
+    },
+    {
+      "value": "Then, the first cost center manager conducts the everything should be in order and notes the one.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-28",
+          "processElement": "activity",
+          "resource": "first cost center manager",
+          "startIndex": 6,
+          "endIndex": 96
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the first cost center manager returns the copy of invoice to internal mail and passes.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-30",
+          "processElement": "activity",
+          "resource": "first cost center manager",
+          "startIndex": 12,
+          "endIndex": 97
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the first cost center manager moves through the hands of cost center managers and marks the positions.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-32",
+          "processElement": "activity",
+          "resource": "first cost center manager",
+          "startIndex": 14,
+          "endIndex": 115
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The cost center manager rejects the ap and sends back the copy.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-34",
+          "processElement": "activity",
+          "resource": "cost center manager",
+          "startIndex": 0,
+          "endIndex": 62
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the accounting employee conducts the proceede with the clarification with the vendor and consults the cost center managers again.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-35",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 14,
+          "endIndex": 142
+        }
+      ]
+    },
+    {
+      "value": "Then, the accounting employee resolves the inconsistencies and sends the copy.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-37",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 6,
+          "endIndex": 77
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the accounting employee continues and invoices the items be ap.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-39",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 12,
+          "endIndex": 74
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the cost center manager makes to the approval for payment.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "cost center manager",
+          "startIndex": 14,
+          "endIndex": 71
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-16",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-48",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The board wants to check 20,000 eur again and moves back.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-40",
+          "processElement": "activity",
+          "resource": "board",
+          "startIndex": 0,
+          "endIndex": 56
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the board conducts the should there be a complaint.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "board",
+          "startIndex": 14,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "Then, the accounting employee resolves a complaint and completes the commercial audit.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-42",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 6,
+          "endIndex": 85
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the accounting employee gives the payment instructions and closes the instance.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-44",
+          "processElement": "activity",
+          "resource": "accounting employee",
+          "startIndex": 12,
+          "endIndex": 90
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-47",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "none",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

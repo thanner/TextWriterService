@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="go" id="id-0">
+        <laneSet name="go" id="id-1"/>
+        <intermediateThrowEvent id="id-8">
+            <incoming>id-63</incoming>
+            <outgoing>id-64</outgoing>
+            <messageEventDefinition/>
+        </intermediateThrowEvent>
+        <task name="reject the deregistration of the mpoo" id="id-9">
+            <incoming>id-37</incoming>
+            <outgoing>id-40</outgoing>
+        </task>
+        <task name="confirm the deregistration of the mpoo" id="id-10">
+            <incoming>id-38</incoming>
+            <outgoing>id-41</outgoing>
+        </task>
+        <startEvent id="id-11">
+            <outgoing>id-59</outgoing>
+            <messageEventDefinition/>
+        </startEvent>
+        <task name="verify the deregistration" id="id-14">
+            <incoming>id-59</incoming>
+            <outgoing>id-39</outgoing>
+        </task>
+        <task name="prepare the readmission of the measuring point" id="id-15">
+            <incoming>id-54</incoming>
+            <outgoing>id-42</outgoing>
+        </task>
+        <task name="oblige the mpoo to continue" id="id-16">
+            <incoming>id-42</incoming>
+            <outgoing>id-43</outgoing>
+        </task>
+        <task name="perform the equipment acquisition" id="id-18">
+            <incoming>id-44</incoming>
+            <outgoing>id-47</outgoing>
+        </task>
+        <task name="perform equipment changes" id="id-19">
+            <incoming>id-45</incoming>
+            <incoming>id-46</incoming>
+            <outgoing>id-48</outgoing>
+            <outgoing>id-49</outgoing>
+        </task>
+        <task name="assign the go" id="id-20">
+            <incoming>id-55</incoming>
+            <outgoing>id-50</outgoing>
+        </task>
+        <task name="inform the mpoo about the end of the assignment of the mpoo" id="id-21">
+            <incoming>id-50</incoming>
+            <outgoing>id-51</outgoing>
+        </task>
+        <task name="inform the beginning of the assignment of the go" id="id-22">
+            <incoming>id-51</incoming>
+            <outgoing>id-52</outgoing>
+        </task>
+        <task name="inform the mspo about the assignment of the go" id="id-23">
+            <incoming>id-52</incoming>
+            <outgoing>id-53</outgoing>
+        </task>
+        <task name="inform the sp about the assignment of the go" id="id-24">
+            <incoming>id-53</incoming>
+            <outgoing>id-57</outgoing>
+        </task>
+        <exclusiveGateway id="id-25">
+            <incoming>id-39</incoming>
+            <outgoing>id-37</outgoing>
+            <outgoing>id-38</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-26">
+            <incoming>id-40</incoming>
+            <incoming>id-41</incoming>
+            <outgoing>id-54</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-27">
+            <incoming>id-43</incoming>
+            <outgoing>id-58</outgoing>
+            <outgoing>id-63</outgoing>
+        </exclusiveGateway>
+        <inclusiveGateway id="id-28">
+            <incoming>id-62</incoming>
+            <outgoing>id-44</outgoing>
+            <outgoing>id-45</outgoing>
+            <outgoing>id-46</outgoing>
+        </inclusiveGateway>
+        <inclusiveGateway id="id-29">
+            <incoming>id-47</incoming>
+            <incoming>id-48</incoming>
+            <incoming>id-49</incoming>
+            <outgoing>id-55</outgoing>
+        </inclusiveGateway>
+        <endEvent id="id-31">
+            <incoming>id-57</incoming>
+        </endEvent>
+        <endEvent id="id-32">
+            <incoming>id-58</incoming>
+        </endEvent>
+        <intermediateCatchEvent id="id-33">
+            <incoming>id-64</incoming>
+            <outgoing>id-62</outgoing>
+            <messageEventDefinition/>
+        </intermediateCatchEvent>
+        <sequenceFlow sourceRef="id-25" targetRef="id-9" name="" id="id-37"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-10" name="" id="id-38"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-25" name="" id="id-39"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-26" name="" id="id-40"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-26" name="" id="id-41"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-42"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-27" name="" id="id-43"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-18" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-19" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-19" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-29" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-29" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-29" name="" id="id-49"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-21" name="" id="id-50"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-22" name="" id="id-51"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-23" name="" id="id-52"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-53"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-15" name="" id="id-54"/>
+        <sequenceFlow sourceRef="id-29" targetRef="id-20" name="" id="id-55"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-31" name="" id="id-57"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-32" name="" id="id-58"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-14" name="" id="id-59"/>
+        <sequenceFlow sourceRef="id-33" targetRef="id-28" name="" id="id-62"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-8" name="" id="id-63"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-33" name="" id="id-64"/>
+    </process>
+    <process name="sp" id="id-2">
+        <laneSet name="sp" id="id-3"/>
+    </process>
+    <process name="mpoo" id="id-4">
+        <laneSet name="mpoo" id="id-5"/>
+        <intermediateCatchEvent id="id-12">
+            <incoming>id-65</incoming>
+            <outgoing>id-66</outgoing>
+            <messageEventDefinition/>
+        </intermediateCatchEvent>
+        <task name="deregisters at the go" id="id-13">
+            <incoming>id-56</incoming>
+            <outgoing>id-67</outgoing>
+        </task>
+        <task name="confirm the continuation" id="id-17">
+            <incoming>id-60</incoming>
+            <outgoing>id-61</outgoing>
+        </task>
+        <startEvent id="id-30">
+            <outgoing>id-56</outgoing>
+        </startEvent>
+        <intermediateThrowEvent id="id-34">
+            <outgoing>id-65</outgoing>
+            <messageEventDefinition/>
+        </intermediateThrowEvent>
+        <endEvent id="id-35">
+            <incoming>id-66</incoming>
+        </endEvent>
+        <intermediateCatchEvent id="id-36">
+            <incoming>id-67</incoming>
+            <outgoing>id-60</outgoing>
+            <messageEventDefinition/>
+        </intermediateCatchEvent>
+        <sequenceFlow sourceRef="id-30" targetRef="id-13" name="" id="id-56"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-17" name="" id="id-60"/>
+        <sequenceFlow sourceRef="id-17" name="" id="id-61"/>
+        <sequenceFlow sourceRef="id-34" targetRef="id-12" name="" id="id-65"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-35" name="" id="id-66"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-36" name="" id="id-67"/>
+    </process>
+    <process name="mspo" id="id-6">
+        <laneSet name="mspo" id="id-7"/>
+    </process>
+</definitions>

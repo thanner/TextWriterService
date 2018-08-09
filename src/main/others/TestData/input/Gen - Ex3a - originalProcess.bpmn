@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="coordination unit" id="id-2">
+                <flowNodeRef>id-6</flowNodeRef>
+            </lane>
+            <lane name="support" id="id-3"/>
+        </laneSet>
+        <task name="send final schedule of meeting dates to the independent committee members" id="id-6">
+            <incoming>id-20</incoming>
+            <outgoing>id-22</outgoing>
+        </task>
+        <sequenceFlow sourceRef="id-6" targetRef="id-14" name="" id="id-22"/>
+    </process>
+    <process name="committee members" id="id-4">
+        <laneSet name="committee members" id="id-5"/>
+    </process>
+</definitions>

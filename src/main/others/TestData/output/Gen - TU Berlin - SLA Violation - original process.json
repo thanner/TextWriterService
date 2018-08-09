@@ -1,0 +1,977 @@
+{
+  "sentenceList": [
+    {
+      "value": "Once a message is received the process starts.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-96",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 3 enters a problem and compares the problem report.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-29",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 6,
+          "endIndex": 69
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 3 determines the necessary counter measures to include respective priorities and determines the significance.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-31",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 12,
+          "endIndex": 133
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-74",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-93",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The Resource 3 links to the an extra problem and fixes the process.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-33",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 0,
+          "endIndex": 66
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-75",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-94",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "The Resource 3 continues and takes the together the information.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-35",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 0,
+          "endIndex": 63
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 3 creates a detailed problem report and sends the detailed problem report.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-24",
+          "processElement": "activity",
+          "resource": "Resource 3",
+          "startIndex": 6,
+          "endIndex": 92
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process ends with a message.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 43
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "Once a message is received the process starts.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-98",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 1 deals on a first level with violations of quality and receives the detailed problem report.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-37",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": -1,
+          "endIndex": 108
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 1 investigates.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-39",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 12,
+          "endIndex": 39
+        }
+      ]
+    },
+    {
+      "value": "If it is necessary, the Resource 1 sends a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-76",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 18
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-78",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 performs the analysis and performs the based.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-42",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 59
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 sends out the detailed problem report to resource provisioning.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-41",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 77
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the Resource 1 sends a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-79",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 1 receives a message and prepares the final status report based.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "intermediateevent",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 82
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 1 determines the what counter measures should be taken depending on the information in final status report and takes the alternative three process paths.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-54",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 12,
+          "endIndex": 177
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-86",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The process is finished.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-95",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-2",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 sends the actual service performance back to the customer service and detects the no problem.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-56",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 107
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-87",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 requires the minor corrective actions.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-58",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 52
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 creates a request.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-63",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "The Resource 1 undertakes the corrective actions and creates the problem resolution report.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-59",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 90
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the Resource 1 sends out the problem resolution report to the customer service and ends.",
+      "level": 2,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-61",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 14,
+          "endIndex": 101
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the Resource 1 requires the automatic resource restoration.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-64",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 48,
+          "endIndex": 106
+        },
+        {
+          "processElementId": "id-88",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 1 sends the message to resource provisioning.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-65",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 63
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process ends with a message.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-99",
+          "processElement": "intermediateevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 43
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-2",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 37
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-2",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "Once a message is received the process starts.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-102",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-89",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The Resource 5 receives the actual service performance.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-66",
+          "processElement": "activity",
+          "resource": "Resource 5",
+          "startIndex": 0,
+          "endIndex": 54
+        }
+      ]
+    },
+    {
+      "value": "The Resource 5 receives the problem resolution report.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-67",
+          "processElement": "activity",
+          "resource": "Resource 5",
+          "startIndex": 0,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the Resource 5 triggers the i.e..",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-68",
+          "processElement": "activity",
+          "resource": "Resource 5",
+          "startIndex": 48,
+          "endIndex": 80
+        },
+        {
+          "processElementId": "id-90",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 5 creates a report and reports the sla violation rebate.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-69",
+          "processElement": "activity",
+          "resource": "Resource 5",
+          "startIndex": 12,
+          "endIndex": 80
+        }
+      ]
+    },
+    {
+      "value": "Finally, the Resource 5 sends out the report to the customer and completes three activities.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-71",
+          "processElement": "activity",
+          "resource": "Resource 5",
+          "startIndex": 9,
+          "endIndex": 91
+        }
+      ]
+    },
+    {
+      "value": "The process begins when the Resource 4 perceives that the her subscribed service has degraded.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "activity",
+          "resource": "Resource 4",
+          "startIndex": 24,
+          "endIndex": 93
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it sends the list to the customer service department of teleco and sends a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-28",
+          "processElement": "activity",
+          "resource": "Resource 4",
+          "startIndex": 6,
+          "endIndex": 88
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 4 receives a message and receives the report about service performance.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-25",
+          "processElement": "intermediateevent",
+          "resource": "Resource 4",
+          "startIndex": 12,
+          "endIndex": 95
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-92",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "Once a message is received the process starts.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-100",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 2 receives the detailed problem report and checks the detailed problem report.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-44",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 6,
+          "endIndex": 96
+        }
+      ]
+    },
+    {
+      "value": "If it is necessary, the Resource 2 analyzes the this.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-47",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 20,
+          "endIndex": 52
+        },
+        {
+          "processElementId": "id-80",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 18
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 2 creates a trouble report and creates a notification about the normal service execution.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-48",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 12,
+          "endIndex": 113
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-82",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 14,
+          "endIndex": 55
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 includes the trouble report in a status report.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-49",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": -1,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 includes the normal execution in a status report.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-50",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": -1,
+          "endIndex": 66
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-84",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 48,
+          "endIndex": 89
+        },
+        {
+          "processElementId": "id-83",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 sends the trouble report back to the service management.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-51",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 70
+        }
+      ]
+    },
+    {
+      "value": "The Resource 2 sends the normal execution back to the service management.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-52",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 0,
+          "endIndex": 72
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the Resource 2 sends a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-85",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 2 receives a message and happens the on-hold.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "intermediateevent",
+          "resource": "Resource 2",
+          "startIndex": 6,
+          "endIndex": 63
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 2 sends out the status report and terminates the process.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 12,
+          "endIndex": 81
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the Resource 2 receives the restoration request and tracks the possible errors.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 14,
+          "endIndex": 92
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 2 undertakes the necessary corrective actions and creates a trouble-shooting report.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-16",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 6,
+          "endIndex": 102
+        }
+      ]
+    },
+    {
+      "value": "Finally, the Resource 2 sends out the report to the service management.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "Resource 2",
+          "startIndex": 9,
+          "endIndex": 70
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="mail processing unit" id="id-2"/>
+            <lane name="registry" id="id-3"/>
+            <lane name="assistant registry manager" id="id-4"/>
+            <lane name="cashier" id="id-5">
+                <flowNodeRef>id-9</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="capture the party details" id="id-9">
+            <incoming>id-42</incoming>
+            <outgoing>id-45</outgoing>
+        </task>
+        <sequenceFlow sourceRef="id-9" targetRef="id-26" name="" id="id-45"/>
+    </process>
+    <process name="party" id="id-6">
+        <laneSet name="party" id="id-7"/>
+    </process>
+</definitions>

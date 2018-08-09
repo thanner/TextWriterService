@@ -1,28 +1,96 @@
-Jul 20, 2018 1:43:42 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp getInputFiles
-WARNING: InputFiles not loading
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - C1 - eng - process
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:48:06 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Hajo Reijers - phd - originalProcess
+Jul 29, 2018 5:48:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:48:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - HR side 154 - originalProcess
+Jul 29, 2018 5:48:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:48:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B7 - originalProcess
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-37 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-1 - originalProcess
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-4 - original process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - C3 - eng - process
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2010-1 - original process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B8 - eng - process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Active VOS - tutorial - process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-4 event based gateways - process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Oracle - original process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - FD side 153 - original process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Reijers Workflow - shortened - process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B7 - eng - process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: Input File - Gen - Ex4 - original process
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - Powerlicht - original process
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Tutorial - original process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - 2009-2 - original process
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B2 - eng - process
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:43:43 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - 2009-5 - original process
-Jul 20, 2018 1:43:44 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:48:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B3 - originalProcess
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Tutorial - eng - process
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex3 - original process
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-2 Conduct Directions Hearing - process
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - C3 - original process
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-5 - originalProcess
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-45 the target is null
 	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
 	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
@@ -30,86 +98,23 @@ WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-45 the
 	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
 	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
 
-Jul 20, 2018 1:43:44 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Ex2 - original process
-Jul 20, 2018 1:43:44 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - D3 - eng - process
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:43:44 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Ex1 - process
-Jul 20, 2018 1:43:44 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:43:44 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - Ex3a - original process
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-22 the target is null
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B4 - originalProcess
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-61 the target is null
 	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
 	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
 	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
 	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
 	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
 
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Ex1 - bycicle manufacturing - process
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - 2009-1 - original process
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - Ex1 - original process
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - C3 - original process
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - B5.1 - eng  - process
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:43:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Turbopixel - eng - process
-Jul 20, 2018 1:43:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-WARNING: java.lang.NullPointerException
-	at processToText.textPlanning.PlanningHelper.printTree(PlanningHelper.java:649)
-	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.handleActivityAttachedEvents(TextPlanner.java:816)
-	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.handleActivities(TextPlanner.java:657)
-	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:93)
-	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:131)
-	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:63)
-	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
-	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
-
-Jul 20, 2018 1:43:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - Ex3b - original process
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-WARNING: java.lang.NullPointerException
-	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:77)
-	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:131)
-	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:55)
-	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
-	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
-
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Reijers Workflow - process
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - 2010-3 - original process
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - BizAgi - tutorial2 - process
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - 2010-1 - original process
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - Turbopixel - original process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:49:04 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Turbopixel - originalProcess
+Jul 29, 2018 5:49:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-49 the target is null
 	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
 	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
@@ -117,33 +122,568 @@ WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-49 the
 	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
 	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
 
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - Frank Loop Example - original process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:49:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-2 - originalProcess
+Jul 29, 2018 5:49:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B3 - original process
+Jul 29, 2018 5:49:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - D1 - eng - process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:49:05 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2010-3 Claims handling process - process
+Jul 29, 2018 5:49:13 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:13 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B6 - eng - process
+Jul 29, 2018 5:49:13 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Ex2 - process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:49:13 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-3 - originalProcess
+Jul 29, 2018 5:49:14 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:14 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - lemon chicken - process
+Jul 29, 2018 5:49:14 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText already exists
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - Ex2 - original process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Ex3 - original process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - TU Berlin - SLA Violation - process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - Gen - simple 150 - original process
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: MetaText already exists
-Jul 20, 2018 1:47:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Jul 29, 2018 5:49:14 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: Input File - Hajo Reijers - phd - original process
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException
+	at org.jbpt.bp.construct.BPCreatorNet.deriveRelationSet(BPCreatorNet.java:48)
+	at org.jbpt.bp.construct.BPCreatorNet.deriveRelationSet(BPCreatorNet.java:39)
+	at processToText.textPlanning.PlanningHelper.getRunSequencesFromRPSTFragment(PlanningHelper.java:445)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.handleRigid(TextPlanner.java:370)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:90)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:124)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:55)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Incident Management Process - process
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex3 - Hotel Service - process
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - TU Berlin - Supplier Switch - process
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 154 - HR Process - functional department - eng - process
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Frank - loop example - process
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Frank Loop Example - originalProcess
+Jul 29, 2018 5:49:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-3 - original process
+Jul 29, 2018 5:49:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-4 - originalProcess
+Jul 29, 2018 5:49:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Thanner - Main Test Diagram
+Jul 29, 2018 5:49:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at de.hpi.bpt.graph.algo.tctree.TCTreeSkeleton.copyOriginalGraph(TCTreeSkeleton.java:95)
+	at de.hpi.bpt.graph.algo.tctree.TCTree.<init>(TCTree.java:52)
+	at de.hpi.bpt.graph.algo.rpst.RPST.<init>(RPST.java:79)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:107)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:55)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:49:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2010-2 Claims Creation - process
+Jul 29, 2018 5:49:21 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:21 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Hajo Reijers - phd - originalProcess
+Jul 29, 2018 5:49:22 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException
+	at org.jbpt.bp.construct.BPCreatorNet.deriveRelationSet(BPCreatorNet.java:48)
+	at org.jbpt.bp.construct.BPCreatorNet.deriveRelationSet(BPCreatorNet.java:39)
+	at processToText.textPlanning.PlanningHelper.getRunSequencesFromRPSTFragment(PlanningHelper.java:445)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.handleRigid(TextPlanner.java:370)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:90)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:124)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:55)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:49:22 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B8 - originalProcess
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - TU Berlin - SLA Violation - process
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B2 - originalProcess
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-22 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 150 - Simple HR-Process - eng - process
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - TU Berlin - Supplier Switch - original process
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-145 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - D2 - eng - process
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:23 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Powerlicht - originalProcess
+Jul 29, 2018 5:49:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - C1 - eng - process
+Jul 29, 2018 5:49:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:32 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Acme - originalProcess
+Jul 29, 2018 5:49:46 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:46 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Turbopixel - eng - process
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at processToText.textPlanning.PlanningHelper.printTree(PlanningHelper.java:649)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.handleActivityAttachedEvents(TextPlanner.java:816)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.handleActivities(TextPlanner.java:657)
+	at br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner.convertToText(TextPlanner.java:93)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:124)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:63)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex2 - Computer Repair - process
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2010-2 - original process
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B6 - originalProcess
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex4 - original process
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - TU Berlin - SLA Violation - original process
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex1 - original process
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-3 repetition-cycles - process
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:49:47 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - TU Berlin - SLA Violation - originalProcess
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex1 - process
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - C2 - eng - process
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - BizAgi1 - original process
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - ACME - eng - process
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-1 MC Finalise SCT Warrant Possession - process
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex3b - process
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2010-1 - originalProcess
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - D1 - originalProcess
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - BizAgi - tutorial1 - process
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - C2 - original process
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Turbopixel - original process
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-49 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex3a - originalProcess
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-22 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:50:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex2 - originalProcess
+Jul 29, 2018 5:50:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - HR side 154 - original process
+Jul 29, 2018 5:50:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex1 - originalProcess
+Jul 29, 2018 5:50:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - C3 - originalProcess
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex3a - original process
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-22 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-1 - original process
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex2 - original process
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Reijers Workflow - process
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - D1 - eng - process
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:38 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex3b - originalProcess
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex1 - originalProcess
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B5.2 - original process
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex5 - original process
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - simple 150 - original process
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:50:48 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex2 - originalProcess
+Jul 29, 2018 5:50:58 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:50:58 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - TU Berlin - Supplier Switch - originalProcess
+Jul 29, 2018 5:50:59 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-145 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:50:59 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - simple 150 - originalProcess
+Jul 29, 2018 5:51:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Active VOS - originalProcess
+Jul 29, 2018 5:51:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B5.1 - eng  - process
+Jul 29, 2018 5:51:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Oracle - originalProcess
+Jul 29, 2018 5:51:18 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:18 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-5 - original process
+Jul 29, 2018 5:51:18 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-45 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:51:18 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - D2 - originalProcess
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2010-2 - originalProcess
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 153 - HR Process - HR department - eng - process
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex5 - originalProcess
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Powerlicht - original process
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex1 - bycicle manufacturing - process
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:19 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2010-1 Claims Notification - process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B5.2 - eng - process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Frank - loop example - original process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex3a - process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex4 - originalProcess
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - BizAgi2 - originalProcess
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - D3 - originalProcess
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-83 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex2 - process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2010-3 - originalProcess
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2010-3 - original process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Oracle - Expense Report Process - eng - process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex5 - process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Hajo Reijers - phd - original process
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Thanner - Main Test Diagram3
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:51:29 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - C1 - originalProcess
+Jul 29, 2018 5:51:30 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:51:30 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B5.1 - original process
+Jul 29, 2018 5:51:30 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-50 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:51:30 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - FD side 153 - originalProcess
+Jul 29, 2018 5:58:10 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:10 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - BizAgi - tutorial2 - process
+Jul 29, 2018 5:58:10 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:10 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B5.1 - originalProcess
+Jul 29, 2018 5:58:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.IllegalArgumentException: In Sequence Flow with id: id-50 the target is null
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.verifySequenceFlowsWithoutElements(BpmnPreProcessor.java:36)
+	at br.edu.ufrgs.inf.bpm.builder.BpmnPreProcessor.preProcessing(BpmnPreProcessor.java:24)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:38)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:58:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - C3 - eng - process
+Jul 29, 2018 5:58:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - C2 - originalProcess
+Jul 29, 2018 5:58:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Tutorial - originalProcess
+Jul 29, 2018 5:58:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Powerlicht - eng - process
+Jul 29, 2018 5:58:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:16 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Thanner - Main Test Diagram2
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+WARNING: java.lang.NullPointerException
+	at de.hpi.bpt.graph.algo.tctree.TCTreeSkeleton.copyOriginalGraph(TCTreeSkeleton.java:95)
+	at de.hpi.bpt.graph.algo.tctree.TCTree.<init>(TCTree.java:52)
+	at de.hpi.bpt.graph.algo.rpst.RPST.<init>(RPST.java:79)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:107)
+	at br.edu.ufrgs.inf.bpm.builder.TextGenerator.generateText(TextGenerator.java:55)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.generateData(DataGeneratorApp.java:67)
+	at br.edu.ufrgs.inf.bpm.application.DataGeneratorApp.main(DataGeneratorApp.java:28)
+
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - B5.2 - originalProcess
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex3 - originalProcess
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex4 - process
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Active VOS - original process
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex1 - original process
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:17 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Frank - loop example - originalProcess
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex3b - original process
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - B4 - eng - process
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - 2009-2 - original process
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Ex2 - original process
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - BizAgi1 - originalProcess
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - BizAgi2 - original process
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Ex4 - originalProcess
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Frank Loop Example - original process
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists
+Jul 29, 2018 5:58:31 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - 2009-5 PandE - Lodge Originating Document by Post - process
+Jul 29, 2018 5:58:40 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText - Done
+Jul 29, 2018 5:58:40 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - Gen - Acme - original process
+Jul 29, 2018 5:58:40 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: MetaText already exists

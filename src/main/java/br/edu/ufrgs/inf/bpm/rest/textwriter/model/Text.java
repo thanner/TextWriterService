@@ -1,8 +1,10 @@
 package br.edu.ufrgs.inf.bpm.rest.textwriter.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement
 public class Text {
     private List<Sentence> sentenceList;
 

@@ -1,0 +1,130 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the head of the functional department detects a number of the personnel requirements.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-3",
+          "processElement": "activity",
+          "resource": "head of the functional department",
+          "startIndex": 24,
+          "endIndex": 108
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it reports the vacancy and waits.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-4",
+          "processElement": "activity",
+          "resource": "head of the functional department",
+          "startIndex": 6,
+          "endIndex": 38
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The head of the functional department approves the job description.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "head of the functional department",
+          "startIndex": 0,
+          "endIndex": 66
+        }
+      ]
+    },
+    {
+      "value": "The head of the functional department asks the again for the corrections.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-6",
+          "processElement": "activity",
+          "resource": "head of the functional department",
+          "startIndex": 0,
+          "endIndex": 72
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the head of the functional department happens the that the colleague from the hr department still has questions about the tasks and requirementses the before he can describe the job.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "head of the functional department",
+          "startIndex": 48,
+          "endIndex": 229
+        },
+        {
+          "processElementId": "id-11",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the head of the functional department conducts the head of the functional department is available.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "head of the functional department",
+          "startIndex": 14,
+          "endIndex": 111
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

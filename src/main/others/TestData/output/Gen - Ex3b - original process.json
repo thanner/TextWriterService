@@ -1,0 +1,95 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the Resource 1 finalizes the dates.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 24,
+          "endIndex": 58
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it creates to the meet folders and ensures.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 48
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 1 uploads the appropriate documents to the system and advises the committee members.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 12,
+          "endIndex": 108
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, it produces the minutes including any action points for the each committee member and conducts a qa check.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 14,
+          "endIndex": 119
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 1 updates the departmental records.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

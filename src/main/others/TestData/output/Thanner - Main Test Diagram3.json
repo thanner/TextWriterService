@@ -1,0 +1,263 @@
+{
+  "sentenceList": [
+    {
+      "value": "The Developer sends a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "IntermediateThrowEvent_01u7nff",
+          "processElement": "intermediateevent",
+          "resource": "Developer",
+          "startIndex": 0,
+          "endIndex": 29
+        }
+      ]
+    },
+    {
+      "value": "Then, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "ExclusiveGateway_0b57mpx",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the process begins when the Manager does an activity 2.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "Task_01t6jqn",
+          "processElement": "activity",
+          "resource": "Manager",
+          "startIndex": 36,
+          "endIndex": 66
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 35
+        }
+      ]
+    },
+    {
+      "value": "The process is split into 2 parallel branches:",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "ExclusiveGateway_0shuak7",
+          "processElement": "andsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "The Manager does the activity 3.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "Task_0v3e91w",
+          "processElement": "activity",
+          "resource": "Manager",
+          "startIndex": 0,
+          "endIndex": 31
+        }
+      ]
+    },
+    {
+      "value": "The Manager does the activity 4 and do the activity 5.",
+      "level": 2,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "Task_0k7tu8g",
+          "processElement": "activity",
+          "resource": "Manager",
+          "startIndex": 0,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "Once all 2 branches were executed, the Developer does the activity 1.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "Task_037bsxn",
+          "processElement": "activity",
+          "resource": "Developer",
+          "startIndex": 35,
+          "endIndex": 68
+        },
+        {
+          "processElementId": "ExclusiveGateway_1kk4c4s",
+          "processElement": "andjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 33
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "ExclusiveGateway_0tzvbvl",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 48,
+          "endIndex": 89
+        },
+        {
+          "processElementId": "ExclusiveGateway_0almjs5",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "The Developer does the activity 6.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "Task_1f0l3vy",
+          "processElement": "activity",
+          "resource": "Developer",
+          "startIndex": 0,
+          "endIndex": 33
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 1,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "EndEvent_0ztt943",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    },
+    {
+      "value": "Once a message is received the process starts.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "StartEvent_0sol3pe",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 45
+        }
+      ]
+    },
+    {
+      "value": "Then, the Resource 1 does the activity 7.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "Task_1qgfkhi",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 40
+        }
+      ]
+    },
+    {
+      "value": "If it is required, the necessary its are been.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "ExclusiveGateway_1xsadnm",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": -1,
+          "endIndex": 43
+        }
+      ]
+    },
+    {
+      "value": "In that case the Resource 1 continues with do the activity 7.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "ExclusiveGateway_1xsadnm",
+          "processElement": "xorsplit",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 60
+        }
+      ]
+    },
+    {
+      "value": "Once the repetition is finished the Resource 1 sends a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "ExclusiveGateway_1tyv3le",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 31
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the Resource 1 does the activity with the id task 1dini75 and receives a message.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "Task_1dini75",
+          "processElement": "activity",
+          "resource": "Resource 1",
+          "startIndex": 12,
+          "endIndex": 92
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "EndEvent_1ozo9gu",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

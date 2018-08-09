@@ -57,7 +57,7 @@ public class BpmnPreProcessor {
             TParticipant tParticipant = processModelWrapper.getParticipantFromProcess(tProcess);
             // Participant doesnt has a name
             if (tParticipant != null) {
-                if (tParticipant.getName().isEmpty()) {
+                if (tParticipant.getName() == null || tParticipant.getName().isEmpty()) {
                     tParticipant.setName("Participant " + processId++);
                 }
             } else {
@@ -83,17 +83,19 @@ public class BpmnPreProcessor {
 
             for (JAXBElement<? extends TFlowElement> jaxbElement : tProcess.getFlowElement()) {
                 TFlowElement tFlowElement = jaxbElement.getValue();
-                if (processModelWrapper.getLaneByFlowElement(tFlowElement) == null) {
+                if (!(tFlowElement instanceof TSequenceFlow)) {
+                    if (processModelWrapper.getLaneByFlowElement(tFlowElement) == null) {
 
-                    if (tCandidateLane == null) {
-                        tCandidateLane = new TLane();
-                        tCandidateLane.setId("LaneId " + laneId);
-                        tCandidateLane.setName("Resource " + laneId);
-                        tLaneSet.getLane().add(tCandidateLane);
-                        laneId++;
+                        if (tCandidateLane == null) {
+                            tCandidateLane = new TLane();
+                            tCandidateLane.setId("LaneId " + laneId);
+                            tCandidateLane.setName("Resource " + laneId);
+                            tLaneSet.getLane().add(tCandidateLane);
+                            laneId++;
+                        }
+
+                        tCandidateLane.getFlowNodeRef().add(new ObjectFactory().createTLaneFlowNodeRef(tFlowElement));
                     }
-
-                    tCandidateLane.getFlowNodeRef().add(new ObjectFactory().createTLaneFlowNodeRef(tFlowElement));
                 }
             }
         }
