@@ -45,7 +45,7 @@ public class SurfaceRealizer {
 
             String subsentenceText = processElementDocument.getSentence();
             subsentence.setStartIndex(getIndexStartSubstentence(sentence, subsentenceText));
-            subsentence.setEndIndex(getIndexEndSubsentence(subsentence.getStartIndex(), subsentenceText));
+            subsentence.setEndIndex(getIndexEndSubsentence(subsentence.getStartIndex(), postProcessText(subsentenceText)));
 
             subsentenceList.add(subsentence);
         }
@@ -161,7 +161,7 @@ public class SurfaceRealizer {
     }
 
     private int getIndexStartSubstentence(String sentence, String subsentence){
-        return postProcessText(sentence).toLowerCase().indexOf(subsentence.toLowerCase());
+        return postProcessText(sentence).toLowerCase().indexOf(postProcessText(subsentence).toLowerCase());
     }
 
     private int getIndexEndSubsentence(int indexStart, String subsentence){
