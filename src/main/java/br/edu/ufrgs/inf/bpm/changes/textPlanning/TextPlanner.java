@@ -366,7 +366,6 @@ public class TextPlanner {
         validIDs.addAll(process.getEvents().keySet());
 
         // Transforming RPST subtree to Petri Net
-        // FIXME: Algo errado no node ou no process?
         ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
 
         addRigid(node);
