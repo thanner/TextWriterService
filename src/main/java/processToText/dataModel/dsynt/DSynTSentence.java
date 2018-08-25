@@ -62,6 +62,10 @@ public abstract class DSynTSentence {
         return processElementDocumentList;
     }
 
+    public void setProcessElementDocumentList(List<ProcessElementDocument> processElementDocumentList) {
+        this.processElementDocumentList = processElementDocumentList;
+    }
+
     public void addProcessElementDocument(String processElementId, String processElement) {
         addProcessElementDocument(processElementId, processElement, eFrag.getRole().trim(), doc);
     }

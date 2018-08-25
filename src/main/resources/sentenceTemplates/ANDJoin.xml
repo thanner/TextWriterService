@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dsynt>
-    <action>execute</action>
-    <object>all arg branch</object>
+    <action></action>
+    <object>each of these procedure</object>
     <addition></addition>
 </dsynt>

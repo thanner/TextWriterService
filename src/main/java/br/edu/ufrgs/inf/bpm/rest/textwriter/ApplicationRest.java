@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.rest.textwriter;
 
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
@@ -16,6 +17,7 @@ public class ApplicationRest {
 
     @POST
     @Path("/hasConnected")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public boolean hasConnected() {
         return true;
     }
@@ -29,3 +31,4 @@ public class ApplicationRest {
     }
 
 }
+*/

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<application
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:ns="http://br/edu/ufrgs/inf/bpm"
+        xmlns="http://wadl.dev.java.net/2009/02">
+
+    <grammars>
+        <include href="schemas/veiculo.xsd"/>
+    </grammars>
+
+    <resources base="http://localhost:8080/">
+        <resource path="/servicePathName" id="ServiceName">
+
+            <method name="GET" id="search">
+                <request>
+                    <param name="appid" type="xsd:string" style="query" required="true"/>
+                </request>
+                <response>
+                    <representation mediaType="application/xml" element="ns:veiculo"/>
+                </response>
+            </method>
+
+            <method name="POST" id="insert">
+                <request>
+                    <param name="appid" type="xsd:string" style="query" required="true"/>
+                    <param name="results" type="xsd:int" style="query" default="10"/>
+                </request>
+                <response status="200">
+                    <representation mediaType="application/xml" element="xsd:int"/>
+                </response>
+                <response status="400">
+                    <representation mediaType="application/xml" element="xsd:int"/>
+                </response>
+            </method>
+
+        </resource>
+    </resources>
+
+</application>

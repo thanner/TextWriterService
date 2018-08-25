@@ -1,6 +1,7 @@
 package br.edu.ufrgs.inf.bpm.application;
 
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
+import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Sentence;
 import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
 import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import net.didion.jwnl.JWNLException;
@@ -12,7 +13,8 @@ import java.io.IOException;
 public class TestBpmnXml {
 
     public static void main(String[] args) {
-        System.out.println(getStructuredText());
+        getStructuredText();
+        // System.out.println(getStructuredText());
     }
 
     public static String getStructuredText(){
@@ -24,9 +26,13 @@ public class TestBpmnXml {
 
             metaText = TextGenerator.generateText(bpmnProcess);
             String metaTextString = JsonWrapper.getJson(metaText);
-            System.out.println(metaTextString);
+            // System.out.println(metaTextString);
         } catch (JWNLException | IOException e) {
             e.printStackTrace();
+        }
+
+        for (Sentence sentence : metaText.getSentenceList()) {
+            System.out.println(sentence.getValue());
         }
 
         return metaText.toString();

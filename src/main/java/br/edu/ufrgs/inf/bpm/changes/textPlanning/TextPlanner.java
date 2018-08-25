@@ -48,6 +48,7 @@ public class TextPlanner {
     private boolean isStart = true;
     private boolean isEnd = false;
     private Map<Integer, String> bpmnIdMap;
+    private String currentStartEventId = "Unknown Start Event id";
     // private int isolatedXORCount = 0;
     // private ArrayList<Pair<Integer, DSynTSentence>> activitiySentenceMap;
 
@@ -173,7 +174,7 @@ public class TextPlanner {
         }
         if (PlanningHelper.isEventSplit(node, rpst)) {
             convRecord = getXORConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.INTERMEDIATEEVENT.getValue());
+            setProcessElementData(convRecord.post, node, ProcessElementType.EVENTSPLIT.getValue());
         }
         if (PlanningHelper.isORSplit(node, rpst)) {
             convRecord = getORConverterRecord(node);
@@ -513,7 +514,8 @@ public class TextPlanner {
 
         loader.loadTemplate(TemplateLoader.RIGID);
         eFrag = new ExecutableFragment(loader.getAction(), loader.getAddition(), loader.getObject(), "");
-        eFrag.bo_hasIndefArticle = true;
+        //eFrag.bo_hasIndefArticle = true;
+        eFrag.bo_hasArticle = false;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
         dSynTSentence = new DSynTMainSentence(eFrag);
         dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT.getValue());
@@ -734,8 +736,7 @@ public class TextPlanner {
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
         dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
-        // TODO: Arrumar
-        dSynTSentence.addProcessElementDocument("Start event Id", ProcessElementType.STARTEVENT.getValue(), "", Lexemes.startEvent);
+        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT.getValue(), "", Lexemes.startEvent);
         dSynTSentence.createDSynTRepresentation();
     }
 
@@ -928,6 +929,9 @@ public class TextPlanner {
                         sentencePlan.add(dSynTSentence);
                     }
                 }
+
+                // TODO: Add
+                currentStartEventId = getProcessElementId(event.getId());
             }
 
 
@@ -977,6 +981,7 @@ public class TextPlanner {
 
                     if (passedFragments.size() > 0) {
                         DSynTConditionSentence dsyntSentence = getDSyntConditionSentence(sen.getExecutableFragment(), passedFragments, ProcessElementType.INTERMEDIATEEVENT.getValue());
+                        dsyntSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.INTERMEDIATEEVENT.getValue());
                         sentencePlan.add(dsyntSentence);
                         passedFragments.clear();
                     } else {

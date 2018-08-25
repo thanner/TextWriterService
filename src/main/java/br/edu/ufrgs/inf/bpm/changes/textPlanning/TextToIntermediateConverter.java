@@ -55,13 +55,17 @@ public class TextToIntermediateConverter {
         ConverterRecord record = null;
 
         templateLoader.loadTemplate(TemplateLoader.OR);
-        ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), "", "");
+        ExecutableFragment eFrag = new ExecutableFragment(
+                templateLoader.getAction(),
+                templateLoader.getObject(),
+                "", "");
         ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
         modRecord2.addAttribute("adv-type", "sentential");
         eFrag.addMod(templateLoader.getAddition(), modRecord2);
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
-        eFrag.verb_IsPassive = true;
+        // eFrag.verb_IsPassive = true;
+        // eFrag.ver = true;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
         ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
@@ -420,15 +424,21 @@ public class TextToIntermediateConverter {
     public ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node) {
 
         templateLoader.loadTemplate(TemplateLoader.SKIP);
-        ConditionFragment pre = new ConditionFragment(templateLoader.getAction(), templateLoader.getObject(), "", "",
-                ConditionFragment.TYPE_IF, new HashMap<String, ModifierRecord>());
+        ConditionFragment pre = new ConditionFragment(
+                templateLoader.getAction(),
+                templateLoader.getObject(),
+                "",
+                "",
+                ConditionFragment.TYPE_IF,
+                new HashMap<String, ModifierRecord>());
 
         ModifierRecord mod = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         pre.addMod(templateLoader.getAddition(), mod);
-        pre.bo_replaceWithPronoun = true;
-        pre.sen_headPosition = true;
-        pre.sen_isCoord = true;
-        pre.sen_hasComma = true;
+        // pre.bo_replaceWithPronoun = true;
+        //pre.sen_headPosition = true;
+        //pre.sen_isCoord = true;
+        //pre.sen_hasComma = true;
+        // pre.verb_IsPassive = true;
         pre.addAssociation(Integer.valueOf(node.getEntry().getId()));
         return new ConverterRecord(pre, null, null, null);
 
@@ -534,11 +544,14 @@ public class TextToIntermediateConverter {
 
         templateLoader.loadTemplate(TemplateLoader.AND_SPLIT);
         ExecutableFragment eFrag = new ExecutableFragment(
-                templateLoader.getAction(), templateLoader.getObject(), "",
-                templateLoader.getAddition().replace("arg",
-                        Integer.toString(activities)));
+                templateLoader.getAction(),
+                templateLoader.getObject().replace("arg", Integer.toString(activities)),
+                "",
+                templateLoader.getAddition());
         eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = false;
         eFrag.verb_IsPassive = true;
+        eFrag.bo_isPlural = true;
         eFrag.add_hasArticle = false;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
@@ -550,13 +563,12 @@ public class TextToIntermediateConverter {
         ConditionFragment post = new ConditionFragment(
                 templateLoader.getAction(),
                 templateLoader.getObject().replace("arg", Integer.toString(activities)), "", "",
-                ConditionFragment.TYPE_ONCE,
+                ConditionFragment.TYPE_AFTER,
                 new HashMap<String, ModifierRecord>());
-        post.verb_isPast = true;
-        post.verb_IsPassive = true;
         post.bo_isSubject = true;
         post.bo_isPlural = true;
         post.bo_hasArticle = false;
+        post.sen_hasComma = true;
         post.addAssociation(Integer.valueOf(node.getEntry().getId()));
         post.setFragmentType(AbstractFragment.TYPE_JOIN);
 

@@ -40,6 +40,10 @@ public class ProcessElementDocument {
         this.document = document;
     }
 
+    public Document getDocument() {
+        return document;
+    }
+
     public String getSentence(){
         if(sentence != null){
             return sentence;
