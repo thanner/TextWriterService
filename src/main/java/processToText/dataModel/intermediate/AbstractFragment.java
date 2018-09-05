@@ -1,5 +1,6 @@
 package processToText.dataModel.intermediate;
 
+import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import processToText.dataModel.Pair;
 import processToText.textPlanning.recordClasses.ModifierRecord;
 
@@ -166,20 +167,19 @@ public abstract class AbstractFragment {
         this.addition = addition;
     }
 
-
     /**
      * Thanner
      */
 
-    protected String processElement;
+    protected ProcessElementType processElementType;
     protected String processElementId;
 
-    public String getProcessElement() {
-        return processElement;
+    public ProcessElementType getProcessElementType() {
+        return processElementType;
     }
 
-    public void setProcessElement(String processElement) {
-        this.processElement = processElement;
+    public void setProcessElementType(ProcessElementType processElementType) {
+        this.processElementType = processElementType;
     }
 
     public String getProcessElementId() {
@@ -189,4 +189,5 @@ public abstract class AbstractFragment {
     public void setProcessElementId(String processElementId) {
         this.processElementId = processElementId;
     }
+
 }

@@ -1,12 +1,12 @@
 package br.edu.ufrgs.inf.bpm.validation;
 
-import br.edu.ufrgs.inf.bpm.bpmn.*;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Sentence;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Subsentence;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
-import br.edu.ufrgs.inf.bpm.type.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.metatext.TSentence;
+import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
+import br.edu.ufrgs.inf.bpm.metatext.TText;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
+import org.omg.spec.bpmn._20100524.model.*;
 
 import javax.xml.bind.JAXBElement;
 import java.util.ArrayList;
@@ -16,10 +16,10 @@ public class Validation {
 
     private ValidationDataText validationDataText;
 
-    private Text metaText;
+    private TText metaText;
     private List<TProcess> originalProcessList;
 
-    public ValidationDataText getTextValidationData(String processName, String bpmnString, Text metaText) {
+    public ValidationDataText getTextValidationData(String processName, String bpmnString, TText metaText) {
         TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
         BpmnWrapper processModelWrapper = new BpmnWrapper(definitions);
         this.originalProcessList = processModelWrapper.getProcessList();
@@ -39,13 +39,13 @@ public class Validation {
         validateElement(ProcessElementType.ANDJOIN, getProcessElementGatewayList(TParallelGateway.class, false));
         validateElement(ProcessElementType.ORSPLIT, getProcessElementGatewayList(TInclusiveGateway.class, true));
         validateElement(ProcessElementType.ORJOIN, getProcessElementGatewayList(TInclusiveGateway.class, false));
-        validateElement(ProcessElementType.EVENTSPLIT, getProcessElementGatewayList(TEventBasedGateway.class, true));
+        validateElement(ProcessElementType.GATEWAYBASEDEVENTSPLIT, getProcessElementGatewayList(TEventBasedGateway.class, true));
 
         return validationDataText;
     }
 
     private void validateElement(ProcessElementType processElementType, List<String> processElements) {
-        List<String> textElements = getElementsMetaText(processElementType.getValue());
+        List<String> textElements = getElementsMetaText(processElementType.value());
         validateProcessElementType(processElements, textElements, processElementType);
     }
 
@@ -93,10 +93,10 @@ public class Validation {
     private List<String> getElementsMetaText(String elementTypeName) {
         List<String> elementTypeIds = new ArrayList<>();
 
-        for (Sentence sentence : metaText.getSentenceList()) {
-            for (Subsentence subsentence : sentence.getSubsentenceList()) {
-                if (subsentence.getProcessElement().equals(elementTypeName)) {
-                    elementTypeIds.add(subsentence.getProcessElementId());
+        for (TSentence sentence : metaText.getSentenceList()) {
+            for (TSnippet snippet : sentence.getSnippetList()) {
+                if (snippet.getProcessElementType().value().equals(elementTypeName)) {
+                    elementTypeIds.add(snippet.getProcessElementId());
                 }
             }
         }

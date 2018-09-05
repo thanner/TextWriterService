@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.application;
 
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Sentence;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
+import br.edu.ufrgs.inf.bpm.metatext.TSentence;
 import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
+import br.edu.ufrgs.inf.bpm.metatext.TText;
 import net.didion.jwnl.JWNLException;
 import org.apache.commons.io.FileUtils;
 
@@ -18,7 +18,7 @@ public class TestBpmnXml {
     }
 
     public static String getStructuredText(){
-        Text metaText = new Text();
+        TText metaText = new TText();
         try {
             String bpmnProcess = FileUtils.readFileToString(new File("src/main/others/leopold.bpmn"), "UTF-8");
             // metaText = TextGenerator.generateText(bpmnProcess);
@@ -31,7 +31,7 @@ public class TestBpmnXml {
             e.printStackTrace();
         }
 
-        for (Sentence sentence : metaText.getSentenceList()) {
+        for (TSentence sentence : metaText.getSentenceList()) {
             System.out.println(sentence.getValue());
         }
 

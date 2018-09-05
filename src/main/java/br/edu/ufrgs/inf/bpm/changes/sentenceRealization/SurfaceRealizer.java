@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Sentence;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Subsentence;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
+import br.edu.ufrgs.inf.bpm.metatext.TSentence;
+import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
+import br.edu.ufrgs.inf.bpm.metatext.TText;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;
@@ -21,26 +21,26 @@ public class SurfaceRealizer {
         realproManager = new RealProMgr();
     }
 
-    public Text generateText(ArrayList<DSynTSentence> sentencePlan) {
-        Text text = new Text();
+    public TText generateText(ArrayList<DSynTSentence> sentencePlan) {
+        TText text = new TText();
         for (DSynTSentence s : sentencePlan) {
-            Sentence sentence = new Sentence();
+            TSentence sentence = new TSentence();
             sentence.setLevel(s.getExecutableFragment().sen_level);
-            sentence.setLateral(s.getExecutableFragment().sen_hasBullet);
+            sentence.setIslateral(s.getExecutableFragment().sen_hasBullet);
             sentence.setValue(realizeSentence(s.getDSynT()));
-            sentence.setSubsentenceList(getSubsentenceList(s, sentence.getValue()));
+            sentence.getSnippetList().addAll(getSnippetList(s, sentence.getValue()));
             text.getSentenceList().add(sentence);
         }
 
         return text;
     }
 
-    private List<Subsentence> getSubsentenceList(DSynTSentence s, String sentence) {
-        List<Subsentence> subsentenceList = new ArrayList<>();
+    private List<TSnippet> getSnippetList(DSynTSentence s, String sentence) {
+        List<TSnippet> subsentenceList = new ArrayList<>();
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
-            Subsentence subsentence = new Subsentence();
+            TSnippet subsentence = new TSnippet();
             subsentence.setProcessElementId(processElementDocument.getProcessElementId());
-            subsentence.setProcessElement(processElementDocument.getProcessElement());
+            subsentence.setProcessElementType(processElementDocument.getProcessElementType());
             subsentence.setResource(processElementDocument.getResource());
 
             String subsentenceText = processElementDocument.getSentence();
@@ -53,13 +53,14 @@ public class SurfaceRealizer {
         return subsentenceList;
     }
 
-    public Text postProcessText(Text text) {
-        for (Sentence sentence : text.getSentenceList()) {
+    public TText postProcessText(TText text) {
+        for (TSentence sentence : text.getSentenceList()) {
             sentence.setValue(postProcessText(sentence.getValue()));
         }
         return text;
     }
 
+    /**
     public String generateXMLSentence(ArrayList<DSynTSentence> sentencePlan) {
         StringBuilder surfaceText = new StringBuilder();
         //int lastLevel = -1;
@@ -74,18 +75,16 @@ public class SurfaceRealizer {
             String newSentence = realizeSentence(s.getDSynT());
             String subsentenceXml = generateXmlSubsentence(s, newSentence);
 
-            /*
-            String indexSentence = indexDocumentGenerator.getIndex(level, lastLevel, s.getExecutableFragment().sen_hasBullet);
+            //String indexSentence = indexDocumentGenerator.getIndex(level, lastLevel, s.getExecutableFragment().sen_hasBullet);
 
-            int newLineAmount;
-            if (firstLine) {
-                newLineAmount = 0;
-                firstLine = false;
-            } else {
-                newLineAmount = getNewLineAmount(s, level, lastLevel);
-            }
-            int tabAmount = getTabAmount(s, level, lastLevel);
-            */
+            //int newLineAmount;
+            //if (firstLine) {
+            //    newLineAmount = 0;
+            //    firstLine = false;
+            //} else {
+            //    newLineAmount = getNewLineAmount(s, level, lastLevel);
+            //}
+            //int tabAmount = getTabAmount(s, level, lastLevel);
 
             StringBuilder setenceXML = new StringBuilder();
             setenceXML.append("<sentence ")
@@ -111,14 +110,6 @@ public class SurfaceRealizer {
         return surfaceText.toString();
     }
 
-    // Realize Sentence
-    public String realizeSentence(Document document){
-        realproManager.realize(document);
-        String realized = realproManager.getSentenceString();
-        return realized != null ? realized : "";
-    }
-
-    /*
     private int getNewLineAmount(DSynTSentence s, int level, int lastLevel) {
         int newLineAmount = 0;
         if (level != lastLevel || s.getExecutableFragment().sen_hasBullet) {
@@ -134,12 +125,11 @@ public class SurfaceRealizer {
         }
         return tabAmount;
     }
-    */
 
     private String generateXmlSubsentence(DSynTSentence s, String sentence) {
         StringBuilder subsentenceXML = new StringBuilder();
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
-            String processElement = processElementDocument.getProcessElement();
+            String processElementType = processElementDocument.getProcessElementType().value();
             String resource = processElementDocument.getResource();
 
             // System.out.println("Subsentence: " + realizeSentence(document));
@@ -149,7 +139,7 @@ public class SurfaceRealizer {
             int indexEnd = getIndexEndSubsentence(startIndex, subsentence);
 
             subsentenceXML.append("<subsentence ")
-                    .append("processElement=\"").append(processElement).append("\" ")
+                    .append("processElementType=\"").append(processElementType).append("\" ")
                     .append("resource=\"").append(resource).append("\" ")
                     .append("startIndex=\"").append(startIndex).append("\" ")
                     .append("endIndex=\"").append(indexEnd).append("\" ")
@@ -158,6 +148,14 @@ public class SurfaceRealizer {
         }
 
         return subsentenceXML.toString();
+    }
+    **/
+
+    // Realize Sentence
+    public String realizeSentence(Document document){
+        realproManager.realize(document);
+        String realized = realproManager.getSentenceString();
+        return realized != null ? realized : "";
     }
 
     private int getIndexStartSubstentence(String sentence, String subsentence){

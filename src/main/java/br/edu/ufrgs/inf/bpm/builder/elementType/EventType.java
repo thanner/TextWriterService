@@ -1,6 +1,6 @@
 package br.edu.ufrgs.inf.bpm.builder.elementType;
 
-import br.edu.ufrgs.inf.bpm.bpmn.*;
+import org.omg.spec.bpmn._20100524.model.*;
 
 import javax.xml.bind.JAXBElement;
 

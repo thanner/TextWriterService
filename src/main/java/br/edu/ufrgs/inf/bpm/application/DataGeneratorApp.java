@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.application;
 
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.rest.textwriter.model.Text;
+import br.edu.ufrgs.inf.bpm.metatext.TText;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.validation.Validation;
 import br.edu.ufrgs.inf.bpm.validation.ValidationDataText;
@@ -39,10 +39,12 @@ public class DataGeneratorApp {
         File file1 = new File("/Users/thanner/IdeaProjects/textwriter/src/main/others/TestData/input/150 - Simple HR-Process - eng - process.bpmn");
         generateData(file1, false);
 
+        /*
         File file2 = new File("/Users/thanner/IdeaProjects/textwriter/src/main/others/TestData/input/2009-5 PandE - Lodge Originating Document by Post - process.bpmn");
         generateData(file2, false);
 
         generateValidation();
+        */
     }
 
     private static void prepareLogger() {
@@ -80,7 +82,7 @@ public class DataGeneratorApp {
             if (verifyOnlyNewFiles && processFile.exists()) {
                 logger.info("MetaText already exists");
             } else {
-                Text metaText = TextGenerator.generateText(bpmnProcess);
+                TText metaText = TextGenerator.generateText(bpmnProcess);
                 String metaTextString = JsonWrapper.getJson(metaText);
                 FileUtils.writeStringToFile(processFile, metaTextString, "UTF-8");
                 logger.info("MetaText - Done");
