@@ -1,0 +1,235 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the mail processing unit collects a mail from the party.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "mail processing unit",
+          "startIndex": 24,
+          "endIndex": 79
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it clerks the sorts into the various business areas and distributes the mail.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "mail processing unit",
+          "startIndex": 6,
+          "endIndex": 82
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the registry receives the mail and opens the mail.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-10",
+          "processElement": "activity",
+          "resource": "registry",
+          "startIndex": 12,
+          "endIndex": 61
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, it sorts the mail into groups for distribution.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-12",
+          "processElement": "activity",
+          "resource": "registry",
+          "startIndex": 14,
+          "endIndex": 60
+        }
+      ]
+    },
+    {
+      "value": "Then, the assistant registry manager within the registry performs a quality check.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "assistant registry manager within the registry",
+          "startIndex": 6,
+          "endIndex": 81
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, one of the following branches is executed:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-22",
+          "processElement": "xorsplit",
+          "resource": "",
+          "startIndex": 12,
+          "endIndex": 53
+        }
+      ]
+    },
+    {
+      "value": "The assistant registry manager within the registry captures the matter details and provides the matter details.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "assistant registry manager within the registry",
+          "startIndex": 0,
+          "endIndex": 110
+        }
+      ]
+    },
+    {
+      "value": "The assistant registry manager within the registry explains the reason for the rejection.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-14",
+          "processElement": "activity",
+          "resource": "assistant registry manager within the registry",
+          "startIndex": 0,
+          "endIndex": 88
+        }
+      ]
+    },
+    {
+      "value": "Once one of the following branches was executed the assistant registry manager puts the receipt into the an envelope.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-17",
+          "processElement": "activity",
+          "resource": "assistant registry manager",
+          "startIndex": 48,
+          "endIndex": 116
+        },
+        {
+          "processElementId": "id-23",
+          "processElement": "xorjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 47
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the assistant registry manager puts the copied documents into the an envelope.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "assistant registry manager",
+          "startIndex": 14,
+          "endIndex": 91
+        }
+      ]
+    },
+    {
+      "value": "Then, the process is split into 2 parallel branches:",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-24",
+          "processElement": "andsplit",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 51
+        }
+      ]
+    },
+    {
+      "value": "The assistant registry manager posts the envelope to the party.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-19",
+          "processElement": "activity",
+          "resource": "assistant registry manager",
+          "startIndex": 0,
+          "endIndex": 62
+        }
+      ]
+    },
+    {
+      "value": "The cashier captures the party details.",
+      "level": 1,
+      "isLateral": true,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "activity",
+          "resource": "cashier",
+          "startIndex": 0,
+          "endIndex": 38
+        }
+      ]
+    },
+    {
+      "value": "Once all 2 branches were executed, the cashier prints the physical court file.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-21",
+          "processElement": "activity",
+          "resource": "cashier",
+          "startIndex": 35,
+          "endIndex": 77
+        },
+        {
+          "processElementId": "id-25",
+          "processElement": "andjoin",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 33
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-27",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

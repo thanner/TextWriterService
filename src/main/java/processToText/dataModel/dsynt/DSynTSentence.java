@@ -2,6 +2,7 @@ package processToText.dataModel.dsynt;
 
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,7 +33,6 @@ public abstract class DSynTSentence {
     public boolean sen_hasBullet = false;
     protected Document doc;
     protected ExecutableFragment eFrag;
-    private List<ProcessElementDocument> processElementDocumentList = new ArrayList<>(); // Thanner
     protected DSynTSentenceType dSynTSentenceType;
     protected Element verb;
     protected Element object;
@@ -58,31 +58,41 @@ public abstract class DSynTSentence {
         return eFrag;
     }
 
+    /**
+     * Thanner
+     */
+
+    private List<ProcessElementDocument> processElementDocumentList = new ArrayList<>();
+
     public List<ProcessElementDocument> getProcessElementDocumentList() {
         return processElementDocumentList;
     }
 
-    public void addProcessElementDocument(String processElementId, String processElement) {
-        addProcessElementDocument(processElementId, processElement, eFrag.getRole().trim(), doc);
+    public void setProcessElementDocumentList(List<ProcessElementDocument> processElementDocumentList) {
+        this.processElementDocumentList = processElementDocumentList;
     }
 
-    public void addProcessElementDocument(String processElementId, String processElement, Document document) {
-        addProcessElementDocument(processElementId, processElement, eFrag.getRole().trim(), document);
+    public void addProcessElementDocument(String processElementId, ProcessElementType processElementType) {
+        addProcessElementDocument(processElementId, processElementType, eFrag.getRole().trim(), doc);
     }
 
-    public void addProcessElementDocument(String processElementId, String processElement, String role, String sentence) {
+    public void addProcessElementDocument(String processElementId, ProcessElementType processElementType, Document document) {
+        addProcessElementDocument(processElementId, processElementType, eFrag.getRole().trim(), document);
+    }
+
+    public void addProcessElementDocument(String processElementId, ProcessElementType processElementType, String role, String sentence) {
         ProcessElementDocument processElementDocument = new ProcessElementDocument();
         processElementDocument.setProcessElementId(processElementId);
-        processElementDocument.setProcessElement(processElement);
+        processElementDocument.setProcessElementType(processElementType);
         processElementDocument.setResource(role);
         processElementDocument.setSentence(sentence);
         processElementDocumentList.add(processElementDocument);
     }
 
-    public void addProcessElementDocument(String processElementId, String processElement, String role, Document document) {
+    public void addProcessElementDocument(String processElementId, ProcessElementType processElementType, String role, Document document) {
         ProcessElementDocument processElementDocument = new ProcessElementDocument();
         processElementDocument.setProcessElementId(processElementId);
-        processElementDocument.setProcessElement(processElement);
+        processElementDocument.setProcessElementType(processElementType);
         processElementDocument.setResource(role);
         processElementDocument.setDocument(document);
         processElementDocumentList.add(processElementDocument);

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:metatext="http://br/edu/ufrgs/inf/bpm/metatext"
+           targetNamespace="http://br/edu/ufrgs/inf/bpm/metatext">
+
+    <xs:element name="text" type="metatext:tText"/>
+    <xs:complexType name="tText">
+        <xs:sequence>
+            <xs:element name="sentenceList" type="metatext:tSentence" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="sentence" type="metatext:tSentence"/>
+    <xs:complexType name="tSentence">
+        <xs:sequence>
+            <xs:element name="snippetList" type="metatext:tSnippet" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="value" type="xs:string"/>
+        <xs:attribute name="level" type="xs:int"/>
+        <xs:attribute name="islateral" type="xs:boolean"/>
+    </xs:complexType>
+
+    <xs:element name="snippet" type="metatext:tSnippet"/>
+    <xs:complexType name="tSnippet">
+        <xs:attribute name="processElementId" type="xs:string"/>
+        <xs:attribute name="processElementType" type="metatext:processElementType"/>
+        <xs:attribute name="resource" type="xs:string"/>
+        <xs:attribute name="startIndex" type="xs:int"/>
+        <xs:attribute name="endIndex" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:simpleType name="processElementType" final="restriction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="activity"/>
+            <xs:enumeration value="startevent"/>
+            <xs:enumeration value="intermediateevent"/>
+            <xs:enumeration value="endevent"/>
+            <xs:enumeration value="xorsplit"/>
+            <xs:enumeration value="xorjoin"/>
+            <xs:enumeration value="andsplit"/>
+            <xs:enumeration value="andjoin"/>
+            <xs:enumeration value="orsplit"/>
+            <xs:enumeration value="orjoin"/>
+            <xs:enumeration value="gatewaybasedeventsplit"/>
+            <xs:enumeration value="unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

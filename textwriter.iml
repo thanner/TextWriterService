@@ -13,6 +13,7 @@
           <root url="file://$MODULE_DIR$/src/main/config" />
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/target/generated-sources/cxf" />
           <root url="file://$MODULE_DIR$/target/generated-sources/jaxb" />
         </sourceRoots>
       </configuration>

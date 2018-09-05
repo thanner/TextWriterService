@@ -8,7 +8,54 @@
     <artifactId>textwriter</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>TextWriter</name>
+    <description>TextWriter Project</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <cxf.version>3.2.6</cxf.version>
+        <spring.boot.version>2.0.4.RELEASE</spring.boot.version>
+        <spring.cloud.eureka.version>2.0.0.RELEASE</spring.cloud.eureka.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>server</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <finalName>${project.artifactId}</finalName>
+                <defaultGoal>spring-boot:run</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <version>${spring.boot.version}</version>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
+        <finalName>${project.artifactId}</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -18,37 +65,56 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!-- Service Registry -->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.3.1</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <configuration>
+                    <mainClass>br.edu.ufrgs.inf.bpm.service.RegistryServiceProvider</mainClass>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>xjc</id>
                         <goals>
-                            <goal>xjc</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <!-- Sources -->
-                    <sources>
-                        <source>${basedir}/src/main/others/xsd</source>
-                    </sources>
-                    <!-- The package of your generated sources -->
-                    <packageName>br.edu.ufrgs.inf.bpm.bpmn</packageName>
-                    <!-- Binding -->
-                    <!--
-                    <xjbSources>
-                        <source>${basedir}/src/main/resources/xjb/Binding.xjb</source>
-                    </xjbSources>
-                    -->
-                    <extension>true</extension>
-                    <addGeneratedAnnotation>true</addGeneratedAnnotation>
-                    <clearOutputDir>true</clearOutputDir>
-                </configuration>
+            </plugin>
+
+            <!-- WADL  TO JAVA -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-wadl2java-plugin</artifactId>
+                <version>2.4.1</version> <!-- 3.2.6 -->
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${basedir}/target/generated-sources</sourceRoot>
+                            <!--
+                            <wadlOptions>
+                                <wadlOption>
+                                    <wadl>${basedir}/src/resources/wadl/TextWriterContract.wadl</wadl>
+                                    <packagename>br.edu.ufrgs.bpm</packagename>
+                                    <schemaPackagenames>
+                                        <schemaPackagename>http://br/edu/ufrgs/inf/bpm=br.edu.ufrgs.inf.bpm
+                                        </schemaPackagename>
+                                    </schemaPackagenames>
+                                </wadlOption>
+                            </wadlOptions>
+                            -->
+                        </configuration>
+                        <goals>
+                            <goal>wadl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
+
         <resources>
             <resource>
                 <directory>src/main/resources/</directory>
@@ -58,32 +124,6 @@
             </resource>
         </resources>
     </build>
-
-    <!--
-    <resources>
-        <resource>
-            <directory>src/main/resources/</directory>
-            <excludes>
-                <exclude>**</exclude>
-            </excludes>
-        </resource>
-        <resource>
-            <directory>src/main/config</directory>
-        </resource>
-        <resource>
-            <directory>src/main/resources/sentenceTemplates</directory>
-        </resource>
-        <resource>
-            <directory>src/main/resources/StanfordParser/tagger</directory>
-        </resource>
-        <resource>
-            <directory>src/main/resources/wordNet</directory>
-        </resource>
-        <resource>
-            <directory>src/main/resources/xsd</directory>
-        </resource>
-    </resources>
-    -->
 
     <dependencies>
 
@@ -228,22 +268,83 @@
 
         <!-- REST -->
         <!-- Jersey Server https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server -->
+        <!--
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
             <version>2.27</version>
         </dependency>
+        -->
         <!-- REST-WS https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+        <!--
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.0</version>
         </dependency>
+        -->
         <!-- Servlet -->
+        <!--
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
+        </dependency>
+        -->
+
+        <!-- Service Registry - Eureka -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+            <version>${cxf.version}</version>
+            <exclusions><!-- CXF uses java.util.logging by default -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>swagger-ui</artifactId>
+            <version>3.17.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-features-metrics</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <!-- Eureka Service Discovery Client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>${spring.cloud.eureka.version}</version>
+        </dependency>
+        <!-- Actuator Endpoints -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Contract - WADL TO JAVA -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-wadl2java-plugin</artifactId>
+            <version>2.4.1</version>
         </dependency>
 
     </dependencies>

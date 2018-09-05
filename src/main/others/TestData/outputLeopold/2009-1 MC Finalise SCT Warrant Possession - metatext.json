@@ -1,0 +1,137 @@
+{
+  "sentenceList": [
+    {
+      "value": "The process begins when the party sends a possession request asking a warrant to the be released.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-7",
+          "processElement": "activity",
+          "resource": "party",
+          "startIndex": 24,
+          "endIndex": 96
+        },
+        {
+          "processElementId": "Start event Id",
+          "processElement": "startevent",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ]
+    },
+    {
+      "value": "Then, it conducts the to be release .",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-8",
+          "processElement": "activity",
+          "resource": "party",
+          "startIndex": 6,
+          "endIndex": 36
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, the client service back office as part of the small claims registry operations receives the request and retrieves the sct file.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-9",
+          "processElement": "activity",
+          "resource": "client service back office as part of the small claims registry operations",
+          "startIndex": 12,
+          "endIndex": 138
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, it forwards the sct warrant possession to the queensland police and stores the physical sct file.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-11",
+          "processElement": "activity",
+          "resource": "client service back office as part of the small claims registry operations",
+          "startIndex": 14,
+          "endIndex": 110
+        }
+      ]
+    },
+    {
+      "value": "Then, the police conducts the to be send and receives the report.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-13",
+          "processElement": "activity",
+          "resource": "police",
+          "startIndex": 6,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "Afterwards, it retrieves the respective sct file.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-15",
+          "processElement": "activity",
+          "resource": "police",
+          "startIndex": 12,
+          "endIndex": 48
+        }
+      ]
+    },
+    {
+      "value": "Subsequently, the office attaches the new sct document and attaches the stores.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-16",
+          "processElement": "activity",
+          "resource": "office",
+          "startIndex": 14,
+          "endIndex": 78
+        }
+      ]
+    },
+    {
+      "value": "Then, the other internal mc staff receives the physical sct file.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-18",
+          "processElement": "activity",
+          "resource": "other internal mc staff",
+          "startIndex": 6,
+          "endIndex": 64
+        }
+      ]
+    },
+    {
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "isLateral": false,
+      "subsentenceList": [
+        {
+          "processElementId": "id-20",
+          "processElement": "endevent",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ]
+    }
+  ]
+}

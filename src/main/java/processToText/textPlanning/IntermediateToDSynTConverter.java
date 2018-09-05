@@ -293,6 +293,9 @@ public class IntermediateToDSynTConverter {
                 case ConditionFragment.TYPE_IN_CASE:
                     ifNode.setAttribute("lexeme", "in case");
                     break;
+                case ConditionFragment.TYPE_AFTER:
+                    ifNode.setAttribute("lexeme", "after");
+                    break;
             }
             return ifNode;
         } else {

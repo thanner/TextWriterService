@@ -78,8 +78,15 @@ public class WFnet2Processes {
             Set<Flow> toRemove = new HashSet<Flow>();
             for (Flow flow : visited) {
                 for (Flow f : net.getFlow()) {
+                    // TODO: Removed
+                    /*
                     if (f.getSource().getName().substring(0, f.getSource().getName().lastIndexOf("-")).equals(flow.getSource().getName().substring(0, flow.getSource().getName().lastIndexOf("-"))) &&
                             f.getTarget().getName().substring(0, f.getTarget().getName().lastIndexOf("-")).equals(flow.getTarget().getName().substring(0, flow.getTarget().getName().lastIndexOf("-")))) {
+                        toRemove.add(f);
+                    }
+                    */
+                    // TODO: Inserted
+                    if (f.getSource().getId().equals(flow.getSource().getId()) && f.getTarget().getId().equals(flow.getTarget().getId())) {
                         toRemove.add(f);
                     }
                 }

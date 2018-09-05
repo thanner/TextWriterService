@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dsynt>
-    <action>execute</action>
-    <object>paths</object>
-    <addition>one or more of the following</addition>
+    <action>taken</action>
+    <object>the following alternative procedures may be</object>
+    <addition></addition>
 </dsynt>

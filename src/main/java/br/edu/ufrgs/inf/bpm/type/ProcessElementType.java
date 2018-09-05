@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.type;
 
 public enum ProcessElementType {
@@ -22,8 +23,9 @@ public enum ProcessElementType {
         this.value = value;
     }
 
-    public String getValue() {
+    public String value() {
         return value;
     }
 
 }
+*/

@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.wrapper;
 
-import br.edu.ufrgs.inf.bpm.bpmn.ObjectFactory;
-import br.edu.ufrgs.inf.bpm.bpmn.TDefinitions;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import org.apache.commons.io.IOUtils;
+import org.omg.spec.bpmn._20100524.model.ObjectFactory;
+import org.omg.spec.bpmn._20100524.model.TDefinitions;
 
 import javax.xml.bind.*;
 import javax.xml.namespace.QName;

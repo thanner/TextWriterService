@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
-import br.edu.ufrgs.inf.bpm.bpmn.*;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
+import org.omg.spec.bpmn._20100524.model.*;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
@@ -13,22 +13,29 @@ public class BpmnPreProcessor {
     private BpmnWrapper processModelWrapper;
 
     private int laneSetId = 1;
-
+    private int startEventId = 1;
 
     public BpmnPreProcessor(TDefinitions tDefinitions) {
         this.tDefinitions = tDefinitions;
         processModelWrapper = new BpmnWrapper(tDefinitions);
     }
 
+    public TDefinitions gettDefinitions() {
+        return tDefinitions;
+    }
+
     public void preProcessing() throws IllegalArgumentException {
         verifySequenceFlowsWithoutElements();
         adjustPools();
         adjustLanes();
+        adjustStartEvents();
+        adjustEndEvents();
         adjustActivityLabel();
     }
 
     private void verifySequenceFlowsWithoutElements() throws IllegalArgumentException {
-        for (TSequenceFlow tSequenceFlow : processModelWrapper.getSequenceFlowList()) {
+        List<TSequenceFlow> sequenceFlowList = processModelWrapper.getFlowElementList(TSequenceFlow.class);
+        for (TSequenceFlow tSequenceFlow : sequenceFlowList) {
             if (tSequenceFlow.getSourceRef() == null) {
                 throw new IllegalArgumentException("In Sequence Flow with id: " + tSequenceFlow.getId() + " the source is null");
             }
@@ -55,8 +62,8 @@ public class BpmnPreProcessor {
         int processId = 1;
         for (TProcess tProcess : processModelWrapper.getProcessList()) {
             TParticipant tParticipant = processModelWrapper.getParticipantFromProcess(tProcess);
-            // Participant doesnt has a name
             if (tParticipant != null) {
+                // Participant doesnt has a name
                 if (tParticipant.getName() == null || tParticipant.getName().isEmpty()) {
                     tParticipant.setName("Participant " + processId++);
                 }
@@ -117,7 +124,8 @@ public class BpmnPreProcessor {
     }
 
     private void adjustActivityLabel() {
-        for (TActivity tActivity : processModelWrapper.getActivityList()) {
+        List<TActivity> tActivityList = processModelWrapper.getFlowElementList(TActivity.class);
+        for (TActivity tActivity : tActivityList) {
             String name = tActivity.getName();
             if (name == null || name.replaceAll("\n", "").isEmpty()) {
                 tActivity.setName("Do activity with id " + tActivity.getId() + "\n");
@@ -125,7 +133,84 @@ public class BpmnPreProcessor {
         }
     }
 
-    public TDefinitions gettDefinitions() {
-        return tDefinitions;
+    private void adjustStartEvents() {
+        for (TProcess tProcess : processModelWrapper.getProcessList()) {
+            adjustFlowNodeswithoutIncoming(tProcess);
+            adjustNumberStartEvents(tProcess);
+        }
     }
+
+    private void adjustFlowNodeswithoutIncoming(TProcess tProcess) {
+        List<TFlowNode> tFlowNodeWithoutIncoming = processModelWrapper.getFlowNodesWithoutIncoming(tProcess);
+        for (TFlowNode tFlowNode : tFlowNodeWithoutIncoming) {
+            TStartEvent tStartEvent = createStartEvent(tProcess, processModelWrapper.getLaneByFlowElement(tFlowNode));
+            createSequenceFlow(tStartEvent, tFlowNode, tProcess);
+        }
+    }
+
+    private void adjustNumberStartEvents(TProcess tProcess) {
+        List<TStartEvent> tStartEventListOld = processModelWrapper.getFlowElementList(TStartEvent.class, tProcess);
+        if (tStartEventListOld.size() > 1) {
+            List<TLane> tLaneList = processModelWrapper.getLanesByProcess(tProcess);
+            if (tLaneList.size() > 0) {
+                TLane tLane = tLaneList.get(0);
+
+                // Cria novo start event
+                TStartEvent tStartEvent = createStartEvent(tProcess, tLane);
+
+                // Criar arcos do novo start event pros elementos dos antigos start events
+                for (TStartEvent tStartEventOld : tStartEventListOld) {
+                    for (QName qName : tStartEventOld.getOutgoing()) {
+                        String idOutgoing = qName.getLocalPart();
+                        TSequenceFlow tSequenceFlow = processModelWrapper.getFlowElementById(TSequenceFlow.class, idOutgoing);
+                        Object target = tSequenceFlow.getTargetRef();
+                        if (target instanceof TFlowNode) {
+                            createSequenceFlow(tStartEvent, (TFlowNode) target, tProcess);
+                        }
+                    }
+                }
+            }
+
+            // Retirar todos os antigos start events e seus respectivos sequence flows!!!!
+            // TODO: fazer
+        }
+    }
+
+    private void adjustEndEvents() {
+        for (TProcess tProcess : processModelWrapper.getProcessList()) {
+            adjustFlowNodeswithoutOutgoing(tProcess);
+            adjustNumberEndEvents(tProcess);
+        }
+    }
+
+    // TODO: FaZer
+    private void adjustFlowNodeswithoutOutgoing(TProcess tProcess) {
+
+    }
+
+    // TODO: Fazer
+    private void adjustNumberEndEvents(TProcess tProcess) {
+
+    }
+
+    private TStartEvent createStartEvent(TProcess tProcess, TLane tLane) {
+        TStartEvent tStartEvent = new TStartEvent();
+        tStartEvent.setId("StartEvent " + startEventId++);
+        positionFlowNode(tProcess, tLane, tStartEvent, new ObjectFactory().createStartEvent(tStartEvent));
+
+        return tStartEvent;
+    }
+
+    private void createSequenceFlow(TFlowNode source, TFlowNode target, TProcess tProcess) {
+        TSequenceFlow tSequenceFlow = new TSequenceFlow();
+        tSequenceFlow.setSourceRef(source);
+        tSequenceFlow.setTargetRef(target);
+        tProcess.getFlowElement().add(new ObjectFactory().createSequenceFlow(tSequenceFlow));
+    }
+
+    private void positionFlowNode(TProcess tProcess, TLane tLane, TFlowNode tFlowNode, Object jaxbFlowNode) {
+        tProcess.getFlowElement().add((JAXBElement<? extends TFlowElement>) jaxbFlowNode);
+        tLane.getFlowNodeRef().add(new ObjectFactory().createTLaneFlowNodeRef(tFlowNode));
+    }
+
 }

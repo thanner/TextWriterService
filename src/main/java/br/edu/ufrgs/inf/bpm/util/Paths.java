@@ -11,7 +11,7 @@ public class Paths {
     public final static String StanfordBidirectionalDistsimPath = "/stanfordParser/tagger/wsj-0-18-bidirectional-distsim.tagger";
     public final static String SentenceTemplatePath = "/sentenceTemplates";
 
-    public final static String PackageBpmnPath = "br.edu.ufrgs.inf.bpm.bpmn";
+    public final static String PackageBpmnPath = "org.omg.spec.bpmn._20100524.model";
 
     public final static String dataInputPath = "/TestData/input/";
     public final static String dataOutputPath = "/TestData/output/";

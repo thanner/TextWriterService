@@ -1,10 +1,10 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
-import br.edu.ufrgs.inf.bpm.bpmn.*;
 import br.edu.ufrgs.inf.bpm.builder.elementType.ActivityType;
 import br.edu.ufrgs.inf.bpm.builder.elementType.EventType;
 import br.edu.ufrgs.inf.bpm.builder.elementType.GatewayType;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
+import org.omg.spec.bpmn._20100524.model.*;
 import processToText.dataModel.process.*;
 
 import javax.xml.bind.JAXBElement;
@@ -82,7 +82,6 @@ public class ProcessModelBuilder {
             removeExternalPathInitiators(process, processModel);
         }
 
-        // TODO: verificar build alternative path model
         return processModel;
     }
 
@@ -203,12 +202,12 @@ public class ProcessModelBuilder {
     }
 
     private Pool getPoolByObject(TFlowNode flowNode) {
-        TProcess process = processModelWrapper.getProcessByFlowNode(flowNode);
+        TProcess process = processModelWrapper.getProcessByFlowElement(flowNode);
         return process != null ? poolMap.get(process.getId()) : null;
     }
 
     private Lane getLaneByObject(TFlowNode flowNode) {
-        TLane lane = processModelWrapper.getLaneByFlowNode(flowNode);
+        TLane lane = processModelWrapper.getLaneByFlowElement(flowNode);
         return lane != null ? laneMap.get(lane.getId()) : null;
     }
 

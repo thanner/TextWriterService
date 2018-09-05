@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.rest.textwriter;
 
 import javax.ws.rs.ApplicationPath;
@@ -19,3 +20,4 @@ public class MyApplication extends Application {
     }
 
 }
+*/

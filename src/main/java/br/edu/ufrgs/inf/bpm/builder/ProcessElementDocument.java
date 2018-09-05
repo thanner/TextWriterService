@@ -1,6 +1,7 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
+import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;
 
@@ -8,7 +9,7 @@ public class ProcessElementDocument {
 
     private String resource;
     private String processElementId;
-    private String processElement;
+    private ProcessElementType processElement;
     private Document document;
     private String sentence;
 
@@ -28,16 +29,20 @@ public class ProcessElementDocument {
         this.processElementId = processElementId;
     }
 
-    public String getProcessElement() {
+    public ProcessElementType getProcessElementType() {
         return processElement;
     }
 
-    public void setProcessElement(String processElement) {
+    public void setProcessElementType(ProcessElementType processElement) {
         this.processElement = processElement;
     }
 
     public void setDocument(Document document) {
         this.document = document;
+    }
+
+    public Document getDocument() {
+        return document;
     }
 
     public String getSentence(){

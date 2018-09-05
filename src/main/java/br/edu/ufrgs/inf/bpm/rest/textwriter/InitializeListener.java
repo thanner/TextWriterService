@@ -1,3 +1,4 @@
+/*
 package br.edu.ufrgs.inf.bpm.rest.textwriter;
 
 import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
@@ -20,3 +21,4 @@ public class InitializeListener implements ServletContextListener {
     }
 
 }
+*/

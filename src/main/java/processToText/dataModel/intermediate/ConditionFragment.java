@@ -15,6 +15,7 @@ public class ConditionFragment extends AbstractFragment {
     public static final int TYPE_NONE = 4;
     public static final int TYPE_WHEN = 5;
     public static final int TYPE_IN_CASE = 6;
+    public static final int TYPE_AFTER = 7;
 
     public boolean sen_headPosition = true;
     public int type;
