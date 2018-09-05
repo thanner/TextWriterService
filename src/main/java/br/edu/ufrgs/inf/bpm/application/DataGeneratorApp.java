@@ -36,7 +36,7 @@ public class DataGeneratorApp {
         //     generateData(fileEntry, true);
         // }
 
-        File file1 = new File("/Users/thanner/IdeaProjects/textwriter/src/main/others/TestData/input/150 - Simple HR-Process - eng - process.bpmn");
+        File file1 = new File("src/main/others/TestData/diagram.bpmn");
         generateData(file1, false);
 
         /*

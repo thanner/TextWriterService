@@ -3,9 +3,8 @@ package br.edu.ufrgs.inf.bpm.wrapper;
 import org.omg.spec.bpmn._20100524.model.*;
 
 import javax.xml.bind.JAXBElement;
-import java.time.temporal.TemporalAmount;
+import javax.xml.namespace.QName;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class BpmnWrapper {
@@ -211,6 +210,16 @@ public class BpmnWrapper {
         return elementList;
     }
 
+    public List<TFlowElement> getFlowElementList() {
+        List<TFlowElement> elementList = new ArrayList<>();
+        for (TProcess tProcess : getProcessList()) {
+            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
+                elementList.add(flowElement.getValue());
+            }
+        }
+        return elementList;
+    }
+
     public List<TFlowNode> getFlowNodesWithoutIncoming(TProcess tProcess){
         List<TFlowNode> flowNodeWithoutIncomingList = new ArrayList();
         for (TLaneSet laneSet : tProcess.getLaneSet()) {
@@ -256,6 +265,59 @@ public class BpmnWrapper {
             }
         }
         return null;
+    }
+
+    public void deleteFlowElementById(String flowElementId) {
+        for (TProcess tProcess : getProcessList()) {
+            tProcess.getFlowElement().removeIf(flowElement -> flowElement.getValue().getId() != null && flowElement.getValue().getId().equals(flowElementId));
+        }
+    }
+
+    public void deleteFlowElement(TFlowElement flowElementToRemove) {
+        deleteFlowElementById(flowElementToRemove.getId());
+    }
+
+    public void deleteSequenceFlowById(String flowElementId) {
+        TSequenceFlow tSequenceFlow = getFlowElementById(TSequenceFlow.class, flowElementId);
+        deleteSequenceFlow(tSequenceFlow);
+    }
+
+    public void deleteSequenceFlow(TSequenceFlow tSequenceFlow) {
+        if (tSequenceFlow.getSourceRef() instanceof TFlowNode) {
+            TFlowNode source = (TFlowNode) tSequenceFlow.getSourceRef();
+            removeReference(tSequenceFlow.getId(), source.getOutgoing());
+        }
+
+        if (tSequenceFlow.getTargetRef() instanceof TFlowNode) {
+            TFlowNode target = (TFlowNode) tSequenceFlow.getTargetRef();
+            removeReference(tSequenceFlow.getId(), target.getIncoming());
+        }
+
+        deleteFlowElementById(tSequenceFlow.getId());
+    }
+
+    public void removeReference(String elementOfReference, List<QName> referenceList) {
+        referenceList.removeIf(reference -> reference.getLocalPart().equals(elementOfReference));
+    }
+
+    public List<String> getElementsId() {
+        List<String> idList = new ArrayList<>();
+        for (TProcess tProcess : getProcessList()) {
+            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
+                idList.add(flowElement.getValue().getId());
+            }
+        }
+        return idList;
+    }
+
+    public List<String> getElementsName() {
+        List<String> nameList = new ArrayList<>();
+        for (TProcess tProcess : getProcessList()) {
+            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
+                nameList.add(flowElement.getValue().getName());
+            }
+        }
+        return nameList;
     }
 
 }

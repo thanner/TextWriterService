@@ -4,8 +4,10 @@ import br.edu.ufrgs.inf.bpm.util.Paths;
 import org.apache.commons.io.IOUtils;
 import org.omg.spec.bpmn._20100524.model.ObjectFactory;
 import org.omg.spec.bpmn._20100524.model.TDefinitions;
+import org.omg.spec.bpmn._20100524.model.TSequenceFlow;
 
 import javax.xml.bind.*;
+import javax.xml.bind.annotation.XmlSchema;
 import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -65,6 +67,17 @@ public class JaxbWrapper {
             System.err.println(String.format("Exception while marshalling: %s", e.getMessage()));
         }
         return null;
+    }
+
+    public static <T> QName getQName(final Class<T> clazz, TSequenceFlow tSequenceFlow) throws IllegalArgumentException {
+        final String xmlns;
+        final Package aPackage = clazz.getPackage();
+        if (aPackage.isAnnotationPresent(XmlSchema.class)) {
+            xmlns = aPackage.getDeclaredAnnotation(XmlSchema.class).namespace();
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return new QName(xmlns, tSequenceFlow.getId());
     }
 
 }

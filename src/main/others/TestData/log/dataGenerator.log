@@ -1,2 +1,4 @@
-Sep 03, 2018 9:10:07 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - 150 - Simple HR-Process - eng - process
+Sep 05, 2018 4:57:39 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp getInputFiles
+WARNING: InputFiles not loading
+Sep 05, 2018 4:57:40 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - diagram
