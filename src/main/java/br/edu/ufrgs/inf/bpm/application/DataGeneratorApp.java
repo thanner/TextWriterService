@@ -36,7 +36,7 @@ public class DataGeneratorApp {
         //     generateData(fileEntry, true);
         // }
 
-        File file1 = new File("src/main/others/TestData/diagram.bpmn");
+        File file1 = new File("src/main/others/TestData/diagram-slim.bpmn");
         generateData(file1, false);
 
         /*

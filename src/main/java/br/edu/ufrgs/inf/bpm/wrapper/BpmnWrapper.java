@@ -254,6 +254,11 @@ public class BpmnWrapper {
         return flowNodeWithoutOutgoingList;
     }
 
+    /*
+    private TFLowElement getFlowElementById(String flowElementId) {
+    }
+    */
+
     public <T> T getFlowElementById(Class<T> flowElementClass, String flowElementId) {
         for(TProcess tProcess: getProcessList()) {
             for (JAXBElement<? extends TFlowElement> flowElement: tProcess.getFlowElement()){
@@ -270,6 +275,21 @@ public class BpmnWrapper {
     public void deleteFlowElementById(String flowElementId) {
         for (TProcess tProcess : getProcessList()) {
             tProcess.getFlowElement().removeIf(flowElement -> flowElement.getValue().getId() != null && flowElement.getValue().getId().equals(flowElementId));
+
+            for (TLaneSet tLaneSet : tProcess.getLaneSet()) {
+                for (TLane tLane : tLaneSet.getLane()) {
+                    tLane.getFlowNodeRef().removeIf(tFlowNodeRef -> {
+                        if (tFlowNodeRef.getValue() instanceof TFlowElement) {
+                            TFlowElement tFlowElement = (TFlowElement) tFlowNodeRef.getValue();
+                            if (tFlowElement.getId() != null && tFlowElement.getId().equals(flowElementId)) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    });
+                }
+            }
+
         }
     }
 

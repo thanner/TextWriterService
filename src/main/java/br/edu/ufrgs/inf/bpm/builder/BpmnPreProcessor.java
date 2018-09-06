@@ -31,10 +31,6 @@ public class BpmnPreProcessor {
         adjustStartEvents();
         adjustEndEvents();
         adjustActivityLabel();
-
-        // TODO: Erro aqui (VERIFICAR MODELO!)
-        List<TFlowElement> tFlowElementList = processModelWrapper.getFlowElementList();
-        System.out.println("ELement aqui");
     }
 
     private void verifySequenceFlowsWithoutElements() throws IllegalArgumentException {
@@ -160,7 +156,7 @@ public class BpmnPreProcessor {
         for (TFlowNode tFlowNode : tFlowNodeWithoutOutgoing) {
             if (!(tFlowNode instanceof TEndEvent)) {
                 TEndEvent tEndEvent = createEndEvent(tProcess, processModelWrapper.getLaneByFlowElement(tFlowNode));
-                createSequenceFlow(tEndEvent, tFlowNode, tProcess);
+                createSequenceFlow(tFlowNode, tEndEvent, tProcess);
             }
         }
     }
@@ -203,7 +199,7 @@ public class BpmnPreProcessor {
 
                 TEndEvent tEndEvent = createEndEvent(tProcess, tLane);
                 TExclusiveGateway tExclusiveGateway = createExclusiveGateway(tProcess, tLane);
-                createSequenceFlow(tEndEvent, tExclusiveGateway, tProcess);
+                createSequenceFlow(tExclusiveGateway, tEndEvent, tProcess);
 
                 List<TFlowElement> tFlowElementToRemoveList = new ArrayList<>();
                 for (TEndEvent tEndEventOld : tEndEventListOld) {
@@ -262,10 +258,7 @@ public class BpmnPreProcessor {
 
     private void createSequenceFlow(TFlowNode sourceNode, TFlowNode targetNode, TProcess tProcess) {
         TSequenceFlow tSequenceFlow = new TSequenceFlow();
-
         tSequenceFlow.setId(generateId("SequenceFlow"));
-        tSequenceFlow.setSourceRef(sourceNode);
-        tSequenceFlow.setTargetRef(targetNode);
 
         tProcess.getFlowElement().add(new ObjectFactory().createSequenceFlow(tSequenceFlow));
 
