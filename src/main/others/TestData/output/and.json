@@ -7,10 +7,10 @@
           "processElementType": "STARTEVENT",
           "resource": "",
           "startIndex": 0,
-          "endIndex": 36
+          "endIndex": 34
         }
       ],
-      "value": "The process isStarts with a decision.",
+      "value": "The process starts with a decision.",
       "level": 0,
       "islateral": false
     },
@@ -31,14 +31,21 @@
     {
       "snippetList": [
         {
-          "processElementId": "Task_19ii147",
+          "processElementId": "Task_0h1k0f1",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 0,
-          "endIndex": 34
+          "endIndex": 56
+        },
+        {
+          "processElementId": "Task_0flrwh8",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 56
         }
       ],
-      "value": "The Resource 1 does the activity 3.",
+      "value": "The Resource 1 does the activity 1 and do the activity 4.",
       "level": 1,
       "islateral": true
     },
@@ -59,21 +66,14 @@
     {
       "snippetList": [
         {
-          "processElementId": "Task_0h1k0f1",
+          "processElementId": "Task_19ii147",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 0,
-          "endIndex": 56
-        },
-        {
-          "processElementId": "Task_0flrwh8",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 56
+          "endIndex": 34
         }
       ],
-      "value": "The Resource 1 does the activity 1 and do the activity 4.",
+      "value": "The Resource 1 does the activity 3.",
       "level": 1,
       "islateral": true
     },

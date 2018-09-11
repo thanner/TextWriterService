@@ -51,6 +51,9 @@ public class TextPlanner {
     private boolean isEnd = false;
     private Map<Integer, String> bpmnIdMap;
     private String currentStartEventId = "Unknown Start Event id";
+
+    private TemplateLoader loader;
+
     // private int isolatedXORCount = 0;
     // private ArrayList<Pair<Integer, DSynTSentence>> activitiySentenceMap;
 
@@ -68,6 +71,7 @@ public class TextPlanner {
         this.imperativeRole = imperativeRole;
         this.isAlternative = isAlternative;
         this.bpmnIdMap = bpmnIdMap;
+        this.loader = new TemplateLoader();
     }
 
     /**
@@ -115,7 +119,6 @@ public class TextPlanner {
     /**
      * HANDLE BOND
      */
-
     private void handleBond(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) throws FileNotFoundException, JWNLException {
         ConverterRecord convRecord = getConverterRecord(node, orderedTopNodes);
 
@@ -126,7 +129,9 @@ public class TextPlanner {
         if (convRecord != null && convRecord.pre != null) {
             if (passedFragments.size() > 0) {
                 if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                    ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
+                    // TemplateLoader loader = new TemplateLoader();
+                    loader.loadTemplate(TemplateLoader.EMPTYSEQUENCEFLOW);
+                    ExecutableFragment eFrag = new ExecutableFragment(loader.getAction(), loader.getObject(), "", "");
                     eFrag.bo_isSubject = true;
                     DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
                     if (convRecord.post != null) {
@@ -500,7 +505,7 @@ public class TextPlanner {
     }
 
     private void addRigid(RPSTNode<ControlFlow, Node> node) {
-        TemplateLoader loader = new TemplateLoader();
+        // TemplateLoader loader = new TemplateLoader();
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -515,7 +520,7 @@ public class TextPlanner {
     }
 
     private void addRigidMain() {
-        TemplateLoader loader = new TemplateLoader();
+        // TemplateLoader loader = new TemplateLoader();
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -531,7 +536,7 @@ public class TextPlanner {
     }
 
     private void addRigidDev(RPSTNode<ControlFlow, Node> node) {
-        TemplateLoader loader = new TemplateLoader();
+        // TemplateLoader loader = new TemplateLoader();
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -577,8 +582,10 @@ public class TextPlanner {
         Activity activity = process.getActivity(id);
         if (activity != null) {
             Annotation anno1 = activity.getAnnotations().get(0);
-
             ExecutableFragment eFrag = null;
+
+            //TemplateLoader loader = new TemplateLoader();
+            //loader.loadTemplate(TemplateLoader.RIGIDSTARTACTIVITY);
             eFrag = new ExecutableFragment("may", "also begin with " + anno1.getActions().get(0) + "ing " + anno1.getBusinessObjects().get(0), "", anno1.getAddition());
             eFrag.addAssociation(activity.getId());
             String role = getRole(activity, eFrag);
@@ -590,7 +597,6 @@ public class TextPlanner {
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
             dsyntSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY);
             sentencePlan.add(dsyntSentence);
-        } else {
         }
     }
 
@@ -600,7 +606,10 @@ public class TextPlanner {
         if (activity != null) {
             Annotation anno1 = activity.getAnnotations().get(0);
             ExecutableFragment eFrag = null;
-            eFrag = new ExecutableFragment("may", "also isEnd with " + anno1.getActions().get(0) + "ing " + anno1.getBusinessObjects().get(0), "", anno1.getAddition());
+
+            //TemplateLoader loader = new TemplateLoader();
+            //loader.loadTemplate(TemplateLoader.RIGIDENDACTIVITY);
+            eFrag = new ExecutableFragment("may", "also end with " + anno1.getActions().get(0) + "ing " + anno1.getBusinessObjects().get(0), "", anno1.getAddition());
             eFrag.addAssociation(activity.getId());
             String role = getRole(activity, eFrag);
             eFrag.setRole(role);
@@ -616,18 +625,18 @@ public class TextPlanner {
 
     // TODO: O MÉTODO ABAIXO INSERE TEXTO DIRETAMENTE
     private void convertIsolatedRigidActivity(int id, int prevId, int level) {
-
         Activity currActivity = process.getActivity(id);
         Activity prevActivity = process.getActivity(prevId);
         Annotation currAnno = currActivity.getAnnotations().get(0);
         Annotation prevAnno = prevActivity.getAnnotations().get(0);
-
 
         ExecutableFragment eFrag = null;
         String modLemma = "after " + prevAnno.getActions().get(0) + "ing " + prevAnno.getBusinessObjects().get(0);
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("adv-type", "sentential");
 
+        //TemplateLoader loader = new TemplateLoader();
+        //loader.loadTemplate(TemplateLoader.ISOLATEDRIGIDACTIVITY);
         eFrag = new ExecutableFragment("may", "also " + currAnno.getActions().get(0) + " the " + currAnno.getBusinessObjects().get(0), "", "");
         String role = getRole(currActivity, eFrag);
         eFrag.setRole(role);
@@ -892,7 +901,6 @@ public class TextPlanner {
     /**
      * HANDLE EVENT
      */
-
     private void handleEvent(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) {
         Event event = process.getEvents().get((Integer.valueOf(node.getEntry().getId())));
         int currentPosition = orderedTopNodes.indexOf(node);
@@ -905,7 +913,9 @@ public class TextPlanner {
                 // Event is followed by gateway --> full sentence
                 if (event.getType() == EventType.START_EVENT && currentPosition < orderedTopNodes.size() - 1 && PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1))) {
                     isStart = false;
-                    ExecutableFragment eFrag = new ExecutableFragment("isStart", "process", "", "with a decision");
+                    // TemplateLoader loader = new TemplateLoader();
+                    loader.loadTemplate(TemplateLoader.STARTDECISION);
+                    ExecutableFragment eFrag = new ExecutableFragment(loader.getAction(), loader.getObject(), "", loader.getAddition());
                     eFrag.add_hasArticle = false;
                     eFrag.bo_isSubject = true;
                     DSynTSentence dSynTSentence = new DSynTMainSentence(eFrag);
@@ -922,7 +932,6 @@ public class TextPlanner {
                     }
                 }
 
-                // TODO: Add
                 currentStartEventId = getProcessElementId(event.getId());
             }
 

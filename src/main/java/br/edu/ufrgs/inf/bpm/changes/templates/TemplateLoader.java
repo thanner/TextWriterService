@@ -22,6 +22,11 @@ public class TemplateLoader {
     public static final String RIGID = "Rigid.xml";
     public static final String RIGID_MAIN = "RigidMain.xml";
     public static final String RIGID_DEV = "RigidDeviations.xml";
+    public static final String STARTDECISION = "StartDecision.xml";
+    public static final String EMPTYSEQUENCEFLOW = "EmptySequenceFLow.xml";
+    //public static final String RIGIDSTARTACTIVITY = "RigidStartActivity.xml";
+    //public static final String RIGIDENDACTIVITY = "RigidEndActivity.xml";
+    //public static final String ISOLATEDRIGIDACTIVITY = "IsolatedRigidActivity.xml";
 
     private String action = "";
     private String object = "";
