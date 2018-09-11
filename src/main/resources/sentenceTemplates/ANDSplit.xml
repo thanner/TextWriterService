@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dsynt>
+    <object>@number procedure</object>
     <action>execute</action>
-    <object>arg procedure</object>
     <addition>in an arbitrary order</addition>
 </dsynt>

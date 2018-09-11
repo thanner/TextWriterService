@@ -1,6 +1,4 @@
-Sep 06, 2018 4:00:02 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp getInputFiles
-WARNING: InputFiles not loading
-Sep 06, 2018 4:00:02 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - diagram-slim
-Sep 06, 2018 4:00:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Sep 10, 2018 3:47:35 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - and
+Sep 10, 2018 3:47:45 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText - Done

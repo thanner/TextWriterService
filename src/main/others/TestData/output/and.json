@@ -1,0 +1,95 @@
+{
+  "sentenceList": [
+    {
+      "snippetList": [
+        {
+          "processElementId": "StartEvent_1",
+          "processElementType": "STARTEVENT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 36
+        }
+      ],
+      "value": "The process isStarts with a decision.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "ExclusiveGateway_1jc0ool",
+          "processElementType": "ANDSPLIT",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 53
+        }
+      ],
+      "value": "Then, 3 procedures are executed in an arbitrary order.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_19ii147",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 34
+        }
+      ],
+      "value": "The Resource 1 does the activity 3.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_1ighr2w",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 34
+        }
+      ],
+      "value": "The Resource 1 does the activity 2.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0h1k0f1",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 56
+        },
+        {
+          "processElementId": "Task_0flrwh8",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 56
+        }
+      ],
+      "value": "The Resource 1 does the activity 1 and do the activity 4.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "EndEvent_0ztnmur",
+          "processElementType": "ENDEVENT",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ],
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "islateral": false
+    }
+  ]
+}

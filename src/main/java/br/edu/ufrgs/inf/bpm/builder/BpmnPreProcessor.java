@@ -122,7 +122,7 @@ public class BpmnPreProcessor {
         for (TActivity tActivity : tActivityList) {
             String name = tActivity.getName();
             if (name == null || name.replaceAll("\n", "").isEmpty()) {
-                tActivity.setName("Do activity with id " + tActivity.getId() + "\n");
+                tActivity.setName("Do unlabeled activity (id: " + tActivity.getId() + ")\n");
             }
         }
     }

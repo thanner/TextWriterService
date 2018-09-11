@@ -36,8 +36,11 @@ public class DataGeneratorApp {
         //     generateData(fileEntry, true);
         // }
 
-        File file1 = new File("src/main/others/TestData/diagram-slim.bpmn");
-        generateData(file1, false);
+        // File file1 = new File("src/main/others/TestData/xor.bpmn");
+        // generateData(file1, false);
+
+        File file2 = new File("src/main/others/TestData/and.bpmn");
+        generateData(file2, false);
 
         /*
         File file2 = new File("/Users/thanner/IdeaProjects/textwriter/src/main/others/TestData/input/2009-5 PandE - Lodge Originating Document by Post - process.bpmn");

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1fi7m35" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:task id="Task_0q2fedy">
+      <bpmn:incoming>SequenceFlow_01tnbj6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_068ys2g</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0hr8sgu">
+      <bpmn:outgoing>SequenceFlow_01tnbj6</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_005i9p7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_01tnbj6" sourceRef="ExclusiveGateway_0hr8sgu" targetRef="Task_0q2fedy" />
+    <bpmn:task id="Task_17w5y3h">
+      <bpmn:incoming>SequenceFlow_005i9p7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0q096nd</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="SequenceFlow_005i9p7" sourceRef="ExclusiveGateway_0hr8sgu" targetRef="Task_17w5y3h" />
+    <bpmn:exclusiveGateway id="ExclusiveGateway_1q6kstq">
+      <bpmn:incoming>SequenceFlow_0q096nd</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1a5yy5i</bpmn:incoming>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_0q096nd" sourceRef="Task_17w5y3h" targetRef="ExclusiveGateway_1q6kstq" />
+    <bpmn:task id="Task_0mzpr4d">
+      <bpmn:incoming>SequenceFlow_068ys2g</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1a5yy5i</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="SequenceFlow_068ys2g" sourceRef="Task_0q2fedy" targetRef="Task_0mzpr4d" />
+    <bpmn:sequenceFlow id="SequenceFlow_1a5yy5i" sourceRef="Task_0mzpr4d" targetRef="ExclusiveGateway_1q6kstq" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Task_0q2fedy_di" bpmnElement="Task_0q2fedy">
+        <dc:Bounds x="371" y="108" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0hr8sgu_di" bpmnElement="ExclusiveGateway_0hr8sgu" isMarkerVisible="true">
+        <dc:Bounds x="251" y="222" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_01tnbj6_di" bpmnElement="SequenceFlow_01tnbj6">
+        <di:waypoint x="276" y="222" />
+        <di:waypoint x="276" y="148" />
+        <di:waypoint x="371" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_17w5y3h_di" bpmnElement="Task_17w5y3h">
+        <dc:Bounds x="449" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_005i9p7_di" bpmnElement="SequenceFlow_005i9p7">
+        <di:waypoint x="276" y="272" />
+        <di:waypoint x="276" y="370" />
+        <di:waypoint x="449" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ExclusiveGateway_1q6kstq_di" bpmnElement="ExclusiveGateway_1q6kstq" isMarkerVisible="true">
+        <dc:Bounds x="646" y="222" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0q096nd_di" bpmnElement="SequenceFlow_0q096nd">
+        <di:waypoint x="549" y="370" />
+        <di:waypoint x="671" y="370" />
+        <di:waypoint x="671" y="272" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0mzpr4d_di" bpmnElement="Task_0mzpr4d">
+        <dc:Bounds x="498" y="108" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_068ys2g_di" bpmnElement="SequenceFlow_068ys2g">
+        <di:waypoint x="471" y="148" />
+        <di:waypoint x="498" y="148" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1a5yy5i_di" bpmnElement="SequenceFlow_1a5yy5i">
+        <di:waypoint x="598" y="148" />
+        <di:waypoint x="671" y="148" />
+        <di:waypoint x="671" y="222" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

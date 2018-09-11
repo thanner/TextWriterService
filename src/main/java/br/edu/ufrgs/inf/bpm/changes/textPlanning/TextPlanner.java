@@ -2,7 +2,6 @@ package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
-// import br.edu.ufrgs.inf.bpm.type.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
@@ -30,13 +29,15 @@ import processToText.textPlanning.recordClasses.ModifierRecord;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+// import br.edu.ufrgs.inf.bpm.type.ProcessElementType;
+
 public class TextPlanner {
 
     private RPST<ControlFlow, Node> rpst;
     private ProcessModel process;
     private static String[] quantifiers = {"a", "the", "all", "any", "more", "most", "none", "some", "such", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
     private EnglishLabelHelper lHelper;
-    private TextToIntermediateConverter textToIMConverter;
+    private TextToIntermediateConverter textToIntermediateConverter;
     private ArrayList<ConditionFragment> passedFragments;
     private ArrayList<DSynTSentence> sentencePlan;
     private EnglishLabelDeriver lDeriver;
@@ -58,7 +59,7 @@ public class TextPlanner {
         this.process = process;
         this.lHelper = lHelper;
         this.lDeriver = lDeriver;
-        textToIMConverter = new TextToIntermediateConverter(rpst, process, lHelper, imperativeRole, isImperative);
+        textToIntermediateConverter = new TextToIntermediateConverter(rpst, process, lHelper, imperativeRole, isImperative);
         passedFragments = new ArrayList<>();
         sentencePlan = new ArrayList<>();
         // activitiySentenceMap = new ArrayList<>();
@@ -70,10 +71,9 @@ public class TextPlanner {
     }
 
     /**
-     * Text Planning processToText.Main
-     *
-     * @throws FileNotFoundException
+     * Convert
      */
+
     public void convertToText(RPSTNode<ControlFlow, Node> root, int level) throws JWNLException, FileNotFoundException {
         // Order nodes of current level with respect to control flow
         ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes = PlanningHelper.sortTreeLevel(root, root.getEntry(), rpst);
@@ -190,24 +190,9 @@ public class TextPlanner {
         return convRecord;
     }
 
-    private void setProcessElementData(ConditionFragment conditionFragment, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
-        conditionFragment.setProcessElementType(processElementType);
-        conditionFragment.setProcessElementId(getProcessElementId(node.getExit().getId()));
-    }
-
-    /*
-    private String GetConvertRecordProcessElement(RPSTNode<ControlFlow, Node> node, ConverterRecord convRecord) {
-        if (PlanningHelper.isSkip(node, rpst)) {
-            return convRecord.hasPreFragment() ? convRecord.pre.getProcessElementType() : null;
-        } else {
-            return convRecord.hasPostFragment() ? convRecord.post.getProcessElementType() : null;
-        }
-    }
-    */
-
     private ConverterRecord getLoopConverterRecord(RPSTNode<ControlFlow, Node> node) {
         RPSTNode<ControlFlow, Node> firstNodeInLoop = PlanningHelper.getNextNode(node, rpst);
-        return textToIMConverter.convertLoop(node, firstNodeInLoop);
+        return textToIntermediateConverter.convertLoop(node, firstNodeInLoop);
     }
 
     private ConverterRecord getSkipConverterRecord(ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, RPSTNode<ControlFlow, Node> node) {
@@ -216,14 +201,14 @@ public class TextPlanner {
         if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true) {
             // Yes-No Case which is directly leading to the isEnd of the process
             if (isToEndSkip(orderedTopNodes, node) == true) {
-                return textToIMConverter.convertSkipToEnd(node);
+                return textToIntermediateConverter.convertSkipToEnd(node);
                 // General Yes/No-Case
             } else {
-                return textToIMConverter.convertSkipGeneral(node);
+                return textToIntermediateConverter.convertSkipGeneral(node);
             }
             // General unlabeled Skip
         } else {
-            return textToIMConverter.convertSkipGeneralUnlabeled(node);
+            return textToIntermediateConverter.convertSkipGeneralUnlabeled(node);
         }
     }
 
@@ -243,14 +228,15 @@ public class TextPlanner {
         if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true && propRec.getMaxPathDepth() == 1) {
             GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
             // Add sentence
-            for (DSynTSentence s : textToIMConverter.convertXORSimple(node, gwExtractor)) {
-                s.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
-                sentencePlan.add(s);
+            for (DSynTSentence dSynTSentence : textToIntermediateConverter.convertXORSimple(node, gwExtractor)) {
+                dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
+                sentencePlan.add(dSynTSentence);
             }
             return null;
             // General case
         } else {
-            return textToIMConverter.convertXORGeneral(node);
+            ArrayList<RPSTNode<ControlFlow, Node>> xorNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+            return textToIntermediateConverter.convertXORGeneral(node, xorNodes.size());
         }
     }
 
@@ -263,7 +249,7 @@ public class TextPlanner {
 
             // Unlabeled case
         } else {
-            return textToIMConverter.convertORSimple(node, null, false);
+            return textToIntermediateConverter.convertORSimple(node, null, false);
         }
     }
 
@@ -272,8 +258,13 @@ public class TextPlanner {
         ArrayList<RPSTNode<ControlFlow, Node>> andNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
 
         // Only General Case, no need for non-bulletin and-branches
-        ConverterRecord rec = textToIMConverter.convertANDGeneral(node, andNodes.size(), null);
+        ConverterRecord rec = textToIntermediateConverter.convertANDGeneral(node, andNodes.size(), null);
         return rec;
+    }
+
+    private void setProcessElementData(ConditionFragment conditionFragment, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
+        conditionFragment.setProcessElementType(processElementType);
+        conditionFragment.setProcessElementId(getProcessElementId(node.getExit().getId()));
     }
 
     private void addBondPreStatements(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
@@ -861,7 +852,7 @@ public class TextPlanner {
                 }
 
                 // Print sentence for subsequent normal execution
-                DSynTSentence dSynTSentence = textToIMConverter.getAttachedEventPostStatement(alternative.getEvents().get(attEvent));
+                DSynTSentence dSynTSentence = textToIntermediateConverter.getAttachedEventPostStatement(alternative.getEvents().get(attEvent));
                 dSynTSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY);
                 sentencePlan.add(dSynTSentence);
             }
@@ -923,7 +914,7 @@ public class TextPlanner {
                 }
                 if (event.getType() != EventType.START_EVENT) {
                     isStart = false;
-                    ConverterRecord convRecord = textToIMConverter.convertEvent(event);
+                    ConverterRecord convRecord = textToIntermediateConverter.convertEvent(event);
                     if (convRecord != null && convRecord.hasPreStatements() == true) {
                         DSynTSentence dSynTSentence = convRecord.preStatements.get(0);
                         dSynTSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.STARTEVENT);
@@ -938,7 +929,7 @@ public class TextPlanner {
 
             // Intermediate Events
         } else {
-            ConverterRecord convRecord = textToIMConverter.convertEvent(event);
+            ConverterRecord convRecord = textToIntermediateConverter.convertEvent(event);
 
             // Add fragments if applicable
             if (convRecord != null && convRecord.pre != null) {
@@ -1003,7 +994,7 @@ public class TextPlanner {
 
     private void handleEndEvent(RPSTNode<ControlFlow, Node> node, int level) {
         Event event = process.getEvents().get((Integer.valueOf(node.getExit().getId())));
-        DSynTSentence sen = textToIMConverter.convertEvent(event).preStatements.get(0);
+        DSynTSentence sen = textToIntermediateConverter.convertEvent(event).preStatements.get(0);
         sen.getExecutableFragment().sen_level = level;
         sen.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.ENDEVENT);
         sentencePlan.add(sen);
@@ -1014,7 +1005,7 @@ public class TextPlanner {
         Event event = process.getEvents().get((Integer.valueOf(node.getExit().getId())));
         if (event.getType() == EventType.END_EVENT && orderedTopNodes.indexOf(node) == orderedTopNodes.size() - 1) {
             // Adjust level and add to sentence plan
-            DSynTSentence sen = textToIMConverter.convertEvent(event).preStatements.get(0);
+            DSynTSentence sen = textToIntermediateConverter.convertEvent(event).preStatements.get(0);
             sen.getExecutableFragment().sen_level = level;
             if (event.getSubProcessID() > 0) {
                 sen.getExecutableFragment().sen_level = level + 1;

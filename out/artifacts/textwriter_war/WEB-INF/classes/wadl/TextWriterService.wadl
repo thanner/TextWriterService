@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<application
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:bpmn20="http://www.omg.org/spec/BPMN/20100524/MODEL"
+        xmlns="http://wadl.dev.java.net/2009/02">
+
+    <grammars>
+        <include href="schemas/MetaText.xsd"/>
+        <include href="schemas/BPMN20.xsd"/>
+    </grammars>
+
+    <resources>
+        <resource path="/service" id="br.edu.ufrgs.inf.bpm.service.ITextWriterService">
+            <resource path="/generateText">
+                <method name="POST" id="generateText">
+                    <request>
+                        <param name="arroooooooooo"/>
+                        <representation mediaType="application/xml"/>
+                    </request>
+                    <response>
+                        <representation mediaType="application/json"/>
+                        <representation mediaType="application/xml"/>
+                    </response>
+                </method>
+            </resource>
+
+            <!--
+            <request>
+                <param name="bpmnString" style="query" type="xsd:string" />
+
+                <representation mediaType="application/xml" element="bpmn20:definitions">
+                    <param name="aff" style="plain" type="xsd:anyURI" path="/bpmn20:definitions">
+                        <link resource_type="#bpmn20:definitions" rel="self"/>
+                    </param>
+                    <param type="xsd:string" name="grant_type" style="query" default="authorization_code"/>
+                </representation>
+
+            </request>
+            <response>
+                <representation mediaType="application/json"/>
+            </response>
+            -->
+
+            <!--
+            <method name="POST" id="insert">
+                <request>
+                    <param name="appid" type="metatext:sentence" style="query" required="true"/>
+                    <param name="results" type="metatext:as" style="query" />
+                    <param name="c" type="metatext:sentence" style="header"/>
+                    <param name="e" type="metatext:sentence" style="matrix"/>
+                </request>
+                <response status="200">
+                    <representation mediaType="application/xml" element="xsd:int"/>
+                </response>
+                <response status="400">
+                    <representation mediaType="application/xml" element="xsd:int"/>
+                </response>
+            </method>
+            -->
+
+        </resource>
+    </resources>
+
+</application>

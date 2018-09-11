@@ -50,8 +50,7 @@ public class TextToIntermediateConverter {
 
     // The following optional parallel paths are available.
 
-    public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node,
-                                           GatewayExtractor gwExtractor, boolean labeled) {
+    public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor, boolean labeled) {
         ConverterRecord record = null;
 
         templateLoader.loadTemplate(TemplateLoader.OR);
@@ -78,8 +77,7 @@ public class TextToIntermediateConverter {
     // XOR - SPLIT
     // *********************************************************************************************
 
-    public ArrayList<DSynTSentence> convertXORSimple(
-            RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
+    public ArrayList<DSynTSentence> convertXORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
 
         ExecutableFragment eFragYes = null;
         ExecutableFragment eFragNo = null;
@@ -102,8 +100,8 @@ public class TextToIntermediateConverter {
                                 Annotation anno = a.getAnnotations().get(0);
                                 String action = anno.getActions().get(0);
                                 String bo = anno.getBusinessObjects().get(0);
-                                //
                                 role = a.getLane().getName();
+
                                 // role = getRole(tNode);
 
                                 String addition = anno.getAddition();
@@ -164,28 +162,31 @@ public class TextToIntermediateConverter {
         return sentences;
     }
 
-    public ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node) {
-
-        // One of the following branches is executed. (And then use bullet
-        // points for structuring)
-
+    public ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
         templateLoader.loadTemplate(TemplateLoader.XOR);
 
-        ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(),
-                templateLoader.getObject(), "", "");
+        ExecutableFragment eFrag = new ExecutableFragment(
+                templateLoader.getAction(),
+                templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
+                "",
+                ""
+        );
         eFrag.bo_isSubject = true;
-        eFrag.verb_IsPassive = true;
         eFrag.bo_hasArticle = false;
+        eFrag.verb_IsPassive = true;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-
         ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
-        ConditionFragment post = new ConditionFragment(templateLoader.getAction(),
-                templateLoader.getObject(), "", "",
+        ConditionFragment post = new ConditionFragment(
+                templateLoader.getAction(),
+                templateLoader.getObject(),
+                "",
+                "",
                 ConditionFragment.TYPE_ONCE,
-                new HashMap<String, ModifierRecord>());
+                new HashMap<String, ModifierRecord>()
+        );
         post.verb_isPast = true;
         post.verb_IsPassive = true;
         post.bo_isSubject = true;
@@ -195,7 +196,6 @@ public class TextToIntermediateConverter {
         post.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
         return new ConverterRecord(null, post, preStatements, null, null);
-
     }
 
     // *********************************************************************************************
@@ -536,8 +536,7 @@ public class TextToIntermediateConverter {
     // AND - SPLIT
     // *********************************************************************************************
 
-    public ConverterRecord convertANDGeneral(RPSTNode<ControlFlow, Node> node,
-                                             int activities, ArrayList<Node> conditionNodes) {
+    public ConverterRecord convertANDGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures, ArrayList<Node> conditionNodes) {
 
         // The process is split into three parallel branches. (And then use
         // bullet points for structuring)
@@ -545,9 +544,10 @@ public class TextToIntermediateConverter {
         templateLoader.loadTemplate(TemplateLoader.AND_SPLIT);
         ExecutableFragment eFrag = new ExecutableFragment(
                 templateLoader.getAction(),
-                templateLoader.getObject().replace("arg", Integer.toString(activities)),
+                templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
                 "",
-                templateLoader.getAddition());
+                templateLoader.getAddition()
+        );
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
         eFrag.verb_IsPassive = true;
@@ -562,9 +562,12 @@ public class TextToIntermediateConverter {
         templateLoader.loadTemplate(TemplateLoader.AND_JOIN);
         ConditionFragment post = new ConditionFragment(
                 templateLoader.getAction(),
-                templateLoader.getObject().replace("arg", Integer.toString(activities)), "", "",
+                templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
+                "",
+                "",
                 ConditionFragment.TYPE_AFTER,
-                new HashMap<String, ModifierRecord>());
+                new HashMap<String, ModifierRecord>()
+        );
         post.bo_isSubject = true;
         post.bo_isPlural = true;
         post.bo_hasArticle = false;
@@ -578,8 +581,7 @@ public class TextToIntermediateConverter {
     /**
      * Converts a simple and construct.
      */
-    public ConverterRecord convertANDSimple(RPSTNode<ControlFlow, Node> node,
-                                            int activities, ArrayList<Node> conditionNodes) {
+    public ConverterRecord convertANDSimple(RPSTNode<ControlFlow, Node> node, int activities, ArrayList<Node> conditionNodes) {
 
         // get last element of both branches and combine them to a post condition
         // if one of them is a gateway, include gateway post condition in the and post condition
@@ -590,7 +592,7 @@ public class TextToIntermediateConverter {
         if (activities == 1) {
             modRecord.setLemma(Phrases.AND_SIMPLE_SINGLE);
         } else {
-            modRecord.setLemma(Phrases.AND_SIMPLE_MULT.replace("arg", Integer.toString(activities)));
+            modRecord.setLemma(Phrases.AND_SIMPLE_MULT.replace("@number", Integer.toString(activities)));
         }
 
         // Determine postcondition
@@ -861,11 +863,14 @@ public class TextToIntermediateConverter {
         }
     }
 
+    // *********************************************************************************************
+    // Attached Event
+    // *********************************************************************************************
+
     /**
      * Returns Sentence for attached Event.
      */
-    private DSynTConditionSentence getAttachedEventSentence(Event event,
-                                                            ConditionFragment cFrag) {
+    private DSynTConditionSentence getAttachedEventSentence(Event event, ConditionFragment cFrag) {
         ExecutableFragment eFrag = new ExecutableFragment("cancel", "it", "",
                 "");
         eFrag.verb_IsPassive = true;
@@ -965,6 +970,10 @@ public class TextToIntermediateConverter {
         }
     }
 
+    // *********************************************************************************************
+    // Event
+    // *********************************************************************************************
+
     /**
      * Returns record with sentence for throwing events.
      */
@@ -975,8 +984,7 @@ public class TextToIntermediateConverter {
         return new ConverterRecord(null, null, preSentences, null);
     }
 
-    private ConverterRecord getEventSentence(ExecutableFragment eFrag,
-                                             ConditionFragment cFrag) {
+    private ConverterRecord getEventSentence(ExecutableFragment eFrag, ConditionFragment cFrag) {
         DSynTConditionSentence msen = new DSynTConditionSentence(eFrag, cFrag);
         ArrayList<DSynTSentence> preSentences = new ArrayList<DSynTSentence>();
         preSentences.add(msen);
@@ -986,14 +994,17 @@ public class TextToIntermediateConverter {
     /**
      * Returns sentence for intermediate events.
      */
-    private DSynTConditionSentence getIntermediateEventSentence(Event event,
-                                                                ConditionFragment cFrag) {
+    private DSynTConditionSentence getIntermediateEventSentence(Event event, ConditionFragment cFrag) {
         ExecutableFragment eFrag = new ExecutableFragment("continue",
                 "process", "", "");
         eFrag.bo_isSubject = true;
         DSynTConditionSentence sen = new DSynTConditionSentence(eFrag, cFrag);
         return sen;
     }
+
+    // *********************************************************************************************
+    // Others
+    // *********************************************************************************************
 
     /**
      * Configures condition fragment in a standard fashion.
