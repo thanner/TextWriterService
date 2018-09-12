@@ -69,9 +69,9 @@ public class TextPlanner {
         this.loader = new TemplateLoader();
     }
 
-    /**
-     * Convert
-     */
+    // *********************************************************************************************
+    // Convert
+    // *********************************************************************************************
 
     public void convertToText(RPSTNode<ControlFlow, Node> root, int level) throws JWNLException, FileNotFoundException {
         // Order nodes of current level with respect to control flow
@@ -112,9 +112,9 @@ public class TextPlanner {
         }
     }
 
-    /**
-     * HANDLE BOND
-     */
+    // *********************************************************************************************
+    // HANDLE BOND
+    // *********************************************************************************************
 
     private void handleBond(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) throws FileNotFoundException, JWNLException {
         ConverterRecord convRecord = getConverterRecord(node, orderedTopNodes);
@@ -353,9 +353,9 @@ public class TextPlanner {
         return ProcessElementType.UNKNOWN;
     }
 
-    /**
-     * HANDLE RIGID
-     */
+    // *********************************************************************************************
+    // HANDLE RIGID
+    // *********************************************************************************************
 
     private void handleRigid(RPSTNode<ControlFlow, Node> node, int level) {
         ArrayList<Integer> validIDs = new ArrayList<Integer>();
@@ -647,9 +647,9 @@ public class TextPlanner {
         sentencePlan.add(dsyntSentence);
     }
 
-    /**
-     * HANDLE ACTIVITIES
-     */
+    // *********************************************************************************************
+    // HANDLE ACTIVITIES
+    // *********************************************************************************************
 
     private void handleActivities(RPSTNode<ControlFlow, Node> node, int level, int depth) throws JWNLException, FileNotFoundException {
         Activity activity = process.getActivity(Integer.parseInt(node.getEntry().getId()));
@@ -895,9 +895,9 @@ public class TextPlanner {
 
     }
 
-    /**
-     * HANDLE EVENT
-     */
+    // *********************************************************************************************
+    // HANDLE EVENT
+    // *********************************************************************************************
 
     private void handleEvent(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) {
         Event event = process.getEvents().get((Integer.valueOf(node.getEntry().getId())));
@@ -1029,9 +1029,9 @@ public class TextPlanner {
         }
     }
 
-    /**
-     * OTHERS
-     */
+    // *********************************************************************************************
+    // OTHERS
+    // *********************************************************************************************
 
     private String getRole(Activity a, AbstractFragment frag) {
         if (a.getLane() == null) {
@@ -1070,9 +1070,9 @@ public class TextPlanner {
         return sentencePlan;
     }
 
-    /**
-     * DSynt
-     */
+    // *********************************************************************************************
+    // DSynt
+    // *********************************************************************************************
 
     private DSynTConditionSentence getDSyntConditionSentence(ExecutableFragment eFrag, List<ConditionFragment> passedFragments, ProcessElementType processElementTypeMain) {
         DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
@@ -1103,9 +1103,9 @@ public class TextPlanner {
         }
     }
 
-    /**
-     * Generate executable fragment
-     */
+    // *********************************************************************************************
+    // Generate executable fragment
+    // *********************************************************************************************
 
     private ExecutableFragment generateExecutableFragment(TemplateLoaderType template, String role) {
         loader.loadTemplate(template);

@@ -493,6 +493,7 @@ public class TextToIntermediateConverter {
             eFrag.setBo("it");
             eFrag.bo_hasArticle = false;
             eFrag.bo_isSubject = true;
+
             cFrag.verb_IsPassive = true;
             cFrag.setBo("it");
             cFrag.bo_hasArticle = false;
@@ -665,6 +666,7 @@ public class TextToIntermediateConverter {
 
             // ERROR EVENT
             case EventType.INTM_ERROR:
+                // handleIntermediateError(event, cFrag);
                 String error = event.getLabel();
 
                 if (error.equals("")) {
@@ -684,6 +686,7 @@ public class TextToIntermediateConverter {
 
             // TIMER EVENT
             case EventType.INTM_TIMER:
+                // handleIntermediateTimer(event, cFrag, eFrag, role);
                 String limit = event.getLabel();
 
                 if (limit.equals("")) {
@@ -705,6 +708,7 @@ public class TextToIntermediateConverter {
 
             // MESSAGE EVENT (CATCHING)
             case EventType.INTM_MSG_CAT:
+                // handleIntermediateMessageCatch(cFrag, eFrag, role);
                 eFrag = new ExecutableFragment("receive", "a message", role, "",
                         new HashMap<String, ModifierRecord>());
                 eFrag.bo_hasArticle = false;
@@ -713,6 +717,7 @@ public class TextToIntermediateConverter {
 
             // ESCALATION EVENT (CATCHING)
             case EventType.INTM_ESCALATION_CAT:
+                // handleIntermediateEscalationCatch(cFrag);
                 cFrag = new ConditionFragment("", "of an escalation", "", "",
                         ConditionFragment.TYPE_IN_CASE,
                         new HashMap<String, ModifierRecord>());
@@ -724,77 +729,20 @@ public class TextToIntermediateConverter {
             // START / END EVENTS
             // ***************************************************************
 
-            // END EVENT
-            case EventType.END_EVENT:
-                if (event.getSubProcessID() > 0) {
-                    eFrag = new ExecutableFragment("finish", "subprocess", "", "");
-                } else {
-                    eFrag = new ExecutableFragment("finish", "process", "", "");
-                }
-                eFrag.verb_IsPassive = true;
-                eFrag.bo_isSubject = true;
-                eFrag.bo_hasArticle = true;
-                return getEventSentence(eFrag);
-
-            // ERROR EVENT
-            case EventType.END_ERROR:
-                eFrag = new ExecutableFragment("end", "process", "",
-                        "with an error");
-                eFrag.bo_isSubject = true;
-                eFrag.bo_hasArticle = true;
-                eFrag.add_hasArticle = false;
-                return getEventSentence(eFrag);
-
-            case EventType.END_SIGNAL:
-                eFrag = new ExecutableFragment("end", "process", "",
-                        "with a signal.");
-                eFrag.bo_isSubject = true;
-                eFrag.bo_hasArticle = true;
-                eFrag.add_hasArticle = false;
-                return getEventSentence(eFrag);
-
-            case EventType.END_MSG:
-                eFrag = new ExecutableFragment("end", "process", "",
-                        "with a message");
-                eFrag.bo_isSubject = true;
-                eFrag.bo_hasArticle = true;
-                eFrag.add_hasArticle = false;
-                return getEventSentence(eFrag);
-
             case EventType.START_EVENT:
-                eFrag = new ExecutableFragment("contain", "subprocess", "",
-                        "the following steps");
-                eFrag.bo_isSubject = true;
-                eFrag.bo_hasArticle = true;
-                eFrag.add_hasArticle = false;
-                eFrag.sen_hasBullet = true;
-                return getEventSentence(eFrag);
-
-            // START EVENT
+                return handleStartEvent();
             case EventType.START_MSG:
-                cFrag = new ConditionFragment("receive", "message", "", "",
-                        ConditionFragment.TYPE_ONCE);
-                cFrag.bo_isSubject = true;
-                cFrag.verb_IsPassive = true;
-                cFrag.bo_hasArticle = true;
-                cFrag.bo_hasIndefArticle = true;
-                eFrag = new ExecutableFragment("start", "process", "", "");
-                eFrag.bo_isSubject = true;
-                eFrag.bo_hasArticle = true;
-                return getEventSentence(eFrag, cFrag);
-
-            // TIMER START EVENT
+                return handleStartEventMessage();
             case EventType.START_TIMER:
-                cFrag = new ConditionFragment("fulfill", "time condition", "", "",
-                        ConditionFragment.TYPE_ONCE);
-                cFrag.bo_isSubject = true;
-                cFrag.verb_IsPassive = true;
-                cFrag.bo_hasArticle = true;
-                cFrag.bo_hasIndefArticle = true;
-                eFrag = new ExecutableFragment("start", "process", "", "");
-                eFrag.bo_isSubject = true;
-                eFrag.bo_hasArticle = true;
-                return getEventSentence(eFrag, cFrag);
+                return handleStartEventTimer();
+            case EventType.END_EVENT:
+                return handleEndEvent(event);
+            case EventType.END_MSG:
+                return handleEndEventMessage();
+            case EventType.END_ERROR:
+                return handleEndEventError(event);
+            case EventType.END_SIGNAL:
+                return handleEndEventSignal();
 
             // ***************************************************************
             // THROWING EVENTS
@@ -843,15 +791,13 @@ public class TextToIntermediateConverter {
                 return null;
         }
 
-        // Handling of intermediate Events (up until now only condition is
-        // provided)
+        // Handling of intermediate Events (up until now only condition is provided)
 
         // Attached Event
         if (event.isAttached()) {
             preSentences = new ArrayList<DSynTSentence>();
             preSentences.add(getAttachedEventSentence(event, cFrag));
             return new ConverterRecord(null, null, preSentences, null);
-
             // Non-attached Event
         } else {
             preSentences = new ArrayList<DSynTSentence>();
@@ -864,6 +810,135 @@ public class TextToIntermediateConverter {
         }
     }
 
+    private ConverterRecord handleStartEvent() {
+        ExecutableFragment eFrag = new ExecutableFragment("contain", "subprocess", "", "the following steps");
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = true;
+        eFrag.add_hasArticle = false;
+        eFrag.sen_hasBullet = true;
+        return getEventSentence(eFrag);
+    }
+
+    private ConverterRecord handleStartEventMessage() {
+        ConditionFragment cFrag = new ConditionFragment("receive", "message", "", "", ConditionFragment.TYPE_ONCE);
+        cFrag.bo_isSubject = true;
+        cFrag.verb_IsPassive = true;
+        cFrag.bo_hasArticle = true;
+        cFrag.bo_hasIndefArticle = true;
+
+        ExecutableFragment eFrag = new ExecutableFragment("start", "process", "", "");
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = true;
+
+        return getEventSentence(eFrag, cFrag);
+    }
+
+    private ConverterRecord handleStartEventTimer() {
+        ConditionFragment cFrag = new ConditionFragment("fulfill", "time condition", "", "", ConditionFragment.TYPE_ONCE);
+        cFrag.bo_isSubject = true;
+        cFrag.verb_IsPassive = true;
+        cFrag.bo_hasArticle = true;
+        cFrag.bo_hasIndefArticle = true;
+
+        ExecutableFragment eFrag = new ExecutableFragment("start", "process", "", "");
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = true;
+
+        return getEventSentence(eFrag, cFrag);
+    }
+
+    private ConverterRecord handleEndEvent(Event event) {
+        ExecutableFragment eFrag;
+        if (event.getSubProcessID() > 0) {
+            eFrag = new ExecutableFragment("finish", "subprocess", "", "");
+        } else {
+            eFrag = new ExecutableFragment("finish", "process", "", "");
+        }
+        eFrag.verb_IsPassive = true;
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = true;
+        return getEventSentence(eFrag);
+    }
+
+    private ConverterRecord handleEndEventMessage() {
+        ExecutableFragment eFrag = new ExecutableFragment("end", "process", "", "with a message");
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = true;
+        eFrag.add_hasArticle = false;
+        return getEventSentence(eFrag);
+    }
+
+    private ConverterRecord handleEndEventError(Event event) {
+        ExecutableFragment eFrag = new ExecutableFragment("end", "process", "", "with an error");
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = true;
+        eFrag.add_hasArticle = false;
+        return getEventSentence(eFrag);
+    }
+
+    private ConverterRecord handleEndEventSignal() {
+        ExecutableFragment eFrag = new ExecutableFragment("end", "process", "", "with a signal.");
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = true;
+        eFrag.add_hasArticle = false;
+        return getEventSentence(eFrag);
+    }
+
+    /*
+    private void handleIntermediateError(Event event, ConditionFragment cFrag) {
+        String error = event.getLabel();
+
+        if (error.equals("")) {
+            cFrag = new ConditionFragment("occur", "error", "", "", ConditionFragment.TYPE_IF,
+                    new HashMap<String, ModifierRecord>());
+            cFrag.bo_hasIndefArticle = true;
+        } else {
+            cFrag = new ConditionFragment("occur", "error '" + error + "'", "", "", ConditionFragment.TYPE_IF,
+                    new HashMap<String, ModifierRecord>());
+            cFrag.bo_hasArticle = true;
+        }
+        cFrag.bo_isSubject = true;
+        if (event.isAttached()) {
+            cFrag.setAddition("while latter task is executed,");
+        }
+    }
+
+    private void handleIntermediateTimer(Event event, ConditionFragment cFrag, ExecutableFragment eFrag, String role) {
+        String limit = event.getLabel();
+
+        if (limit.equals("")) {
+            eFrag = new ExecutableFragment("wait", "up to a certain time", role, "", new HashMap<String, ModifierRecord>());
+            eFrag.bo_hasArticle = false;
+        } else {
+            eFrag = new ExecutableFragment("wait", "up to the time limit of " + limit, role, "",
+                    new HashMap<String, ModifierRecord>());
+            eFrag.bo_hasArticle = false;
+        }
+        if (event.isAttached()) {
+            cFrag = new ConditionFragment("reach", "time limit", "", "", ConditionFragment.TYPE_IN_CASE,
+                    new HashMap<String, ModifierRecord>());
+            cFrag.bo_hasArticle = true;
+            cFrag.bo_isSubject = true;
+            cFrag.setAddition("while latter task is executed,");
+        }
+    }
+
+    private void handleIntermediateMessageCatch(ConditionFragment cFrag, ExecutableFragment eFrag, String role) {
+        eFrag = new ExecutableFragment("receive", "a message", role, "",
+                new HashMap<String, ModifierRecord>());
+        eFrag.bo_hasArticle = false;
+        cFrag = null;
+    }
+
+    private void handleIntermediateEscalationCatch(ConditionFragment cFrag) {
+        cFrag = new ConditionFragment("", "of an escalation", "", "",
+                ConditionFragment.TYPE_IN_CASE,
+                new HashMap<String, ModifierRecord>());
+        cFrag.bo_hasArticle = false;
+        cFrag.bo_isSubject = true;
+    }
+    */
+
     // *********************************************************************************************
     // Attached Event
     // *********************************************************************************************
@@ -871,6 +946,7 @@ public class TextToIntermediateConverter {
     /**
      * Returns Sentence for attached Event.
      */
+
     private DSynTConditionSentence getAttachedEventSentence(Event event, ConditionFragment cFrag) {
         ExecutableFragment eFrag = new ExecutableFragment("cancel", "it", "",
                 "");

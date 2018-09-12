@@ -31,27 +31,6 @@
     {
       "snippetList": [
         {
-          "processElementId": "Task_0h1k0f1",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 56
-        },
-        {
-          "processElementId": "Task_0flrwh8",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 56
-        }
-      ],
-      "value": "The Resource 1 does the activity 1 and do the activity 4.",
-      "level": 1,
-      "islateral": true
-    },
-    {
-      "snippetList": [
-        {
           "processElementId": "Task_19ii147",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
@@ -74,6 +53,27 @@
         }
       ],
       "value": "The Resource 1 does the activity 2.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0h1k0f1",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 56
+        },
+        {
+          "processElementId": "Task_0flrwh8",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 56
+        }
+      ],
+      "value": "The Resource 1 does the activity 1 and do the activity 4.",
       "level": 1,
       "islateral": true
     },
