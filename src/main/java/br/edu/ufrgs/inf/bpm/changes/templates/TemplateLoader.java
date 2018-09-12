@@ -11,33 +11,16 @@ import java.io.File;
 
 public class TemplateLoader {
 
-    public static final String AND_SPLIT = "ANDSplit.xml";
-    public static final String AND_JOIN = "ANDJoin.xml";
-    public static final String AND_JOIN_SIMPLE = "ANDJoinSimple.xml";
-    public static final String SKIP = "Skip.xml";
-    public static final String LOOP_SPLIT = "LoopSplit.xml";
-    public static final String LOOP_JOIN = "LoopJoin.xml";
-    public static final String XOR = "XOR.xml";
-    public static final String OR = "OR.xml";
-    public static final String RIGID = "Rigid.xml";
-    public static final String RIGID_MAIN = "RigidMain.xml";
-    public static final String RIGID_DEV = "RigidDeviations.xml";
-    public static final String STARTDECISION = "StartDecision.xml";
-    public static final String EMPTYSEQUENCEFLOW = "EmptySequenceFLow.xml";
-    //public static final String RIGIDSTARTACTIVITY = "RigidStartActivity.xml";
-    //public static final String RIGIDENDACTIVITY = "RigidEndActivity.xml";
-    //public static final String ISOLATEDRIGIDACTIVITY = "IsolatedRigidActivity.xml";
-
     private String action = "";
     private String object = "";
     private String addition = "";
 
-    public void loadTemplate(String template) {
+    public void loadTemplate(TemplateLoaderType template) {
         action = "";
         object = "";
         addition = "";
         try {
-            File tempFile = ResourceLoader.getResourceFile(Paths.SentenceTemplatePath + "/" + template, ".xml");
+            File tempFile = ResourceLoader.getResourceFile(Paths.SentenceTemplatePath + "/" + template.getTemplateLoader(), ".xml");
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

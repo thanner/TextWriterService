@@ -2,6 +2,7 @@ package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
 import br.edu.ufrgs.inf.bpm.changes.templates.Phrases;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
+import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
 import de.hpi.bpt.process.ControlFlow;
@@ -53,7 +54,7 @@ public class TextToIntermediateConverter {
     public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor, boolean labeled) {
         ConverterRecord record = null;
 
-        templateLoader.loadTemplate(TemplateLoader.OR);
+        templateLoader.loadTemplate(TemplateLoaderType.OR);
         ExecutableFragment eFrag = new ExecutableFragment(
                 templateLoader.getAction(),
                 templateLoader.getObject(),
@@ -163,7 +164,7 @@ public class TextToIntermediateConverter {
     }
 
     public ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
-        templateLoader.loadTemplate(TemplateLoader.XOR);
+        templateLoader.loadTemplate(TemplateLoaderType.XOR);
 
         ExecutableFragment eFrag = new ExecutableFragment(
                 templateLoader.getAction(),
@@ -215,7 +216,7 @@ public class TextToIntermediateConverter {
             GatewayExtractor gwExtractor = new GatewayExtractor(node.getExit(), lHelper);
 
             // Generate general statement about loop
-            templateLoader.loadTemplate(TemplateLoader.LOOP_SPLIT);
+            templateLoader.loadTemplate(TemplateLoaderType.LOOP_SPLIT);
             String role = getRole(node);
             ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), role, "");
             eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
@@ -340,7 +341,7 @@ public class TextToIntermediateConverter {
 
         // Unlabeled case
         else {
-            templateLoader.loadTemplate(TemplateLoader.SKIP);
+            templateLoader.loadTemplate(TemplateLoaderType.SKIP);
             ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), "", "");
             ModifierRecord modRecord = new ModifierRecord(
                     ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
@@ -393,7 +394,7 @@ public class TextToIntermediateConverter {
             }
 
             // Determine postcondition
-            templateLoader.loadTemplate(TemplateLoader.LOOP_JOIN);
+            templateLoader.loadTemplate(TemplateLoaderType.LOOP_JOIN);
             ConditionFragment post = new ConditionFragment(templateLoader.getAction(), templateLoader.getObject(), "", "", ConditionFragment.TYPE_ONCE,
                     new HashMap<String, ModifierRecord>());
             post.verb_IsPassive = true;
@@ -423,7 +424,7 @@ public class TextToIntermediateConverter {
 
     public ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node) {
 
-        templateLoader.loadTemplate(TemplateLoader.SKIP);
+        templateLoader.loadTemplate(TemplateLoaderType.SKIP);
         ConditionFragment pre = new ConditionFragment(
                 templateLoader.getAction(),
                 templateLoader.getObject(),
@@ -541,7 +542,7 @@ public class TextToIntermediateConverter {
         // The process is split into three parallel branches. (And then use
         // bullet points for structuring)
 
-        templateLoader.loadTemplate(TemplateLoader.AND_SPLIT);
+        templateLoader.loadTemplate(TemplateLoaderType.AND_SPLIT);
         ExecutableFragment eFrag = new ExecutableFragment(
                 templateLoader.getAction(),
                 templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
@@ -559,7 +560,7 @@ public class TextToIntermediateConverter {
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
-        templateLoader.loadTemplate(TemplateLoader.AND_JOIN);
+        templateLoader.loadTemplate(TemplateLoaderType.AND_JOIN);
         ConditionFragment post = new ConditionFragment(
                 templateLoader.getAction(),
                 templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
@@ -610,7 +611,7 @@ public class TextToIntermediateConverter {
 
         // Only if no other arc flows into join gateway, join condition is passed
         if (arcs == 2) {
-            templateLoader.loadTemplate(TemplateLoader.AND_JOIN_SIMPLE);
+            templateLoader.loadTemplate(TemplateLoaderType.AND_JOIN_SIMPLE);
             if (conditionNodes.size() == 1) {
                 Activity a = process.getActivity(Integer.valueOf(conditionNodes.get(0).getId()));
                 String verb = a.getAnnotations().get(0).getActions().get(0);

@@ -52,20 +52,6 @@
     {
       "snippetList": [
         {
-          "processElementId": "Task_1ighr2w",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 34
-        }
-      ],
-      "value": "The Resource 1 does the activity 2.",
-      "level": 1,
-      "islateral": true
-    },
-    {
-      "snippetList": [
-        {
           "processElementId": "Task_19ii147",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
@@ -74,6 +60,20 @@
         }
       ],
       "value": "The Resource 1 does the activity 3.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_1ighr2w",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 34
+        }
+      ],
+      "value": "The Resource 1 does the activity 2.",
       "level": 1,
       "islateral": true
     },
