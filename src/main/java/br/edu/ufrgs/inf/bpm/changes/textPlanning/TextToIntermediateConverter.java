@@ -649,10 +649,6 @@ public class TextToIntermediateConverter {
 
     public ConverterRecord convertEvent(Event event) {
 
-        ConditionFragment cFrag = null;
-        ExecutableFragment eFrag = null;
-        ArrayList<DSynTSentence> preSentences;
-
         String role = event.getLane().getName();
         if (role.equals("")) {
             role = event.getPool().getName();
@@ -666,69 +662,17 @@ public class TextToIntermediateConverter {
 
             // ERROR EVENT
             case EventType.INTM_ERROR:
-                // handleIntermediateError(event, cFrag);
-                String error = event.getLabel();
-
-                if (error.equals("")) {
-                    cFrag = new ConditionFragment("occur", "error", "", "", ConditionFragment.TYPE_IF,
-                            new HashMap<String, ModifierRecord>());
-                    cFrag.bo_hasIndefArticle = true;
-                } else {
-                    cFrag = new ConditionFragment("occur", "error '" + error + "'", "", "", ConditionFragment.TYPE_IF,
-                            new HashMap<String, ModifierRecord>());
-                    cFrag.bo_hasArticle = true;
-                }
-                cFrag.bo_isSubject = true;
-                if (event.isAttached()) {
-                    cFrag.setAddition("while latter task is executed,");
-                }
-                break;
-
-            // TIMER EVENT
+                return handleIntermediateError(event);
             case EventType.INTM_TIMER:
-                // handleIntermediateTimer(event, cFrag, eFrag, role);
-                String limit = event.getLabel();
-
-                if (limit.equals("")) {
-                    eFrag = new ExecutableFragment("wait", "up to a certain time", role, "", new HashMap<String, ModifierRecord>());
-                    eFrag.bo_hasArticle = false;
-                } else {
-                    eFrag = new ExecutableFragment("wait", "up to the time limit of " + limit, role, "",
-                            new HashMap<String, ModifierRecord>());
-                    eFrag.bo_hasArticle = false;
-                }
-                if (event.isAttached()) {
-                    cFrag = new ConditionFragment("reach", "time limit", "", "", ConditionFragment.TYPE_IN_CASE,
-                            new HashMap<String, ModifierRecord>());
-                    cFrag.bo_hasArticle = true;
-                    cFrag.bo_isSubject = true;
-                    cFrag.setAddition("while latter task is executed,");
-                }
-                break;
-
-            // MESSAGE EVENT (CATCHING)
+                return handleIntermediateTimer(event, role);
             case EventType.INTM_MSG_CAT:
-                // handleIntermediateMessageCatch(cFrag, eFrag, role);
-                eFrag = new ExecutableFragment("receive", "a message", role, "",
-                        new HashMap<String, ModifierRecord>());
-                eFrag.bo_hasArticle = false;
-                cFrag = null;
-                break;
-
-            // ESCALATION EVENT (CATCHING)
+                return handleIntermediateMessageCatch(event, role);
             case EventType.INTM_ESCALATION_CAT:
-                // handleIntermediateEscalationCatch(cFrag);
-                cFrag = new ConditionFragment("", "of an escalation", "", "",
-                        ConditionFragment.TYPE_IN_CASE,
-                        new HashMap<String, ModifierRecord>());
-                cFrag.bo_hasArticle = false;
-                cFrag.bo_isSubject = true;
-                break;
+                return handleIntermediateEscalationCatch(event);
 
             // ***************************************************************
             // START / END EVENTS
             // ***************************************************************
-
             case EventType.START_EVENT:
                 return handleStartEvent();
             case EventType.START_MSG:
@@ -743,64 +687,98 @@ public class TextToIntermediateConverter {
                 return handleEndEventError(event);
             case EventType.END_SIGNAL:
                 return handleEndEventSignal();
-
             // ***************************************************************
             // THROWING EVENTS
             // ***************************************************************
-
-            // MESSAGE EVENT
             case EventType.INTM_MSG_THR:
-                eFrag = new ExecutableFragment("send", "message", event.getLane()
-                        .getName(), "");
-                eFrag.bo_hasIndefArticle = true;
-                return getEventSentence(eFrag);
-
-            // ESCALATION EVENT
+                return handleIntermediateMessageThrow(event);
             case EventType.INTM_ESCALATION_THR:
-                eFrag = new ExecutableFragment("trigger", "escalation", event
-                        .getLane().getName(), "");
-                eFrag.bo_hasIndefArticle = true;
-                return getEventSentence(eFrag);
-
-            // LINK EVENT
+                return handleIntermediateEscalationThrow(event);
             case EventType.INTM_LINK_THR:
-                eFrag = new ExecutableFragment("send", "signal", event.getLane()
-                        .getName(), "");
-                eFrag.bo_hasIndefArticle = true;
-                return getEventSentence(eFrag);
-
-            // MULTIPLE TRIGGER
+                return handleIntermediateLinkThrow(event);
             case EventType.INTM_MULTIPLE_THR:
-                eFrag = new ExecutableFragment("cause", "multiple trigger", event
-                        .getLane().getName(), "");
-                eFrag.bo_hasArticle = false;
-                eFrag.bo_isPlural = true;
-                return getEventSentence(eFrag);
-
-            // SIGNAL EVENT
+                return handleIntermediateMultipleThrow(event);
             case EventType.INTM_SIGNAL_THR:
-                eFrag = new ExecutableFragment("send", "signal", event.getLane()
-                        .getName(), "");
-                eFrag.bo_hasArticle = true;
-                eFrag.bo_hasIndefArticle = true;
-                eFrag.bo_isPlural = true;
-                return getEventSentence(eFrag);
+                return handleIntermediateSignalThrow(event);
 
             default:
                 System.out.println("NON-COVERED EVENT " + event.getType());
                 return null;
         }
+    }
 
-        // Handling of intermediate Events (up until now only condition is provided)
+    private ConverterRecord handleIntermediateError(Event event) {
+        String error = event.getLabel();
+        ExecutableFragment eFrag = null;
+        ConditionFragment cFrag = null;
+
+        if (error.equals("")) {
+            cFrag = new ConditionFragment("occur", "error", "", "", ConditionFragment.TYPE_IF, new HashMap<>());
+            cFrag.bo_hasIndefArticle = true;
+        } else {
+            cFrag = new ConditionFragment("occur", "error '" + error + "'", "", "", ConditionFragment.TYPE_IF, new HashMap<>());
+            cFrag.bo_hasArticle = true;
+        }
+        cFrag.bo_isSubject = true;
+        if (event.isAttached()) {
+            cFrag.setAddition("while latter task is executed,");
+        }
+
+        return handleCatchEvent(event, eFrag, cFrag);
+    }
+
+    private ConverterRecord handleIntermediateTimer(Event event, String role) {
+        String limit = event.getLabel();
+        ExecutableFragment eFrag = null;
+        ConditionFragment cFrag = null;
+
+        if (limit.equals("")) {
+            eFrag = new ExecutableFragment("wait", "up to a certain time", role, "", new HashMap<>());
+            eFrag.bo_hasArticle = false;
+        } else {
+            eFrag = new ExecutableFragment("wait", "up to the time limit of " + limit, role, "", new HashMap<>());
+            eFrag.bo_hasArticle = false;
+        }
+        if (event.isAttached()) {
+            cFrag = new ConditionFragment("reach", "time limit", "", "", ConditionFragment.TYPE_IN_CASE, new HashMap<>());
+            cFrag.bo_hasArticle = true;
+            cFrag.bo_isSubject = true;
+            cFrag.setAddition("while latter task is executed,");
+        }
+
+        return handleCatchEvent(event, eFrag, cFrag);
+    }
+
+    private ConverterRecord handleIntermediateMessageCatch(Event event, String role) {
+        ExecutableFragment eFrag = new ExecutableFragment("receive", "a message", role, "", new HashMap<>());
+        eFrag.bo_hasArticle = false;
+
+        ConditionFragment cFrag = null;
+
+        return handleCatchEvent(event, eFrag, cFrag);
+    }
+
+    private ConverterRecord handleIntermediateEscalationCatch(Event event) {
+        ExecutableFragment eFrag = null;
+
+        ConditionFragment cFrag = new ConditionFragment("", "of an escalation", "", "", ConditionFragment.TYPE_IN_CASE, new HashMap<>());
+        cFrag.bo_hasArticle = false;
+        cFrag.bo_isSubject = true;
+
+        return handleCatchEvent(event, eFrag, cFrag);
+    }
+
+    private ConverterRecord handleCatchEvent(Event event, ExecutableFragment eFrag, ConditionFragment cFrag) {
+        ArrayList<DSynTSentence> preSentences = new ArrayList<>();
 
         // Attached Event
         if (event.isAttached()) {
-            preSentences = new ArrayList<DSynTSentence>();
             preSentences.add(getAttachedEventSentence(event, cFrag));
             return new ConverterRecord(null, null, preSentences, null);
+
             // Non-attached Event
         } else {
-            preSentences = new ArrayList<DSynTSentence>();
+            preSentences = new ArrayList<>();
             if (cFrag != null) {
                 preSentences.add(getIntermediateEventSentence(event, cFrag));
             } else {
@@ -884,60 +862,38 @@ public class TextToIntermediateConverter {
         return getEventSentence(eFrag);
     }
 
-    /*
-    private void handleIntermediateError(Event event, ConditionFragment cFrag) {
-        String error = event.getLabel();
-
-        if (error.equals("")) {
-            cFrag = new ConditionFragment("occur", "error", "", "", ConditionFragment.TYPE_IF,
-                    new HashMap<String, ModifierRecord>());
-            cFrag.bo_hasIndefArticle = true;
-        } else {
-            cFrag = new ConditionFragment("occur", "error '" + error + "'", "", "", ConditionFragment.TYPE_IF,
-                    new HashMap<String, ModifierRecord>());
-            cFrag.bo_hasArticle = true;
-        }
-        cFrag.bo_isSubject = true;
-        if (event.isAttached()) {
-            cFrag.setAddition("while latter task is executed,");
-        }
+    private ConverterRecord handleIntermediateMessageThrow(Event event) {
+        ExecutableFragment eFrag = new ExecutableFragment("send", "message", event.getLane().getName(), "");
+        eFrag.bo_hasIndefArticle = true;
+        return getEventSentence(eFrag);
     }
 
-    private void handleIntermediateTimer(Event event, ConditionFragment cFrag, ExecutableFragment eFrag, String role) {
-        String limit = event.getLabel();
-
-        if (limit.equals("")) {
-            eFrag = new ExecutableFragment("wait", "up to a certain time", role, "", new HashMap<String, ModifierRecord>());
-            eFrag.bo_hasArticle = false;
-        } else {
-            eFrag = new ExecutableFragment("wait", "up to the time limit of " + limit, role, "",
-                    new HashMap<String, ModifierRecord>());
-            eFrag.bo_hasArticle = false;
-        }
-        if (event.isAttached()) {
-            cFrag = new ConditionFragment("reach", "time limit", "", "", ConditionFragment.TYPE_IN_CASE,
-                    new HashMap<String, ModifierRecord>());
-            cFrag.bo_hasArticle = true;
-            cFrag.bo_isSubject = true;
-            cFrag.setAddition("while latter task is executed,");
-        }
+    private ConverterRecord handleIntermediateEscalationThrow(Event event) {
+        ExecutableFragment eFrag = new ExecutableFragment("trigger", "escalation", event.getLane().getName(), "");
+        eFrag.bo_hasIndefArticle = true;
+        return getEventSentence(eFrag);
     }
 
-    private void handleIntermediateMessageCatch(ConditionFragment cFrag, ExecutableFragment eFrag, String role) {
-        eFrag = new ExecutableFragment("receive", "a message", role, "",
-                new HashMap<String, ModifierRecord>());
+    private ConverterRecord handleIntermediateLinkThrow(Event event) {
+        ExecutableFragment eFrag = new ExecutableFragment("send", "signal", event.getLane().getName(), "");
+        eFrag.bo_hasIndefArticle = true;
+        return getEventSentence(eFrag);
+    }
+
+    private ConverterRecord handleIntermediateMultipleThrow(Event event) {
+        ExecutableFragment eFrag = new ExecutableFragment("cause", "multiple trigger", event.getLane().getName(), "");
         eFrag.bo_hasArticle = false;
-        cFrag = null;
+        eFrag.bo_isPlural = true;
+        return getEventSentence(eFrag);
     }
 
-    private void handleIntermediateEscalationCatch(ConditionFragment cFrag) {
-        cFrag = new ConditionFragment("", "of an escalation", "", "",
-                ConditionFragment.TYPE_IN_CASE,
-                new HashMap<String, ModifierRecord>());
-        cFrag.bo_hasArticle = false;
-        cFrag.bo_isSubject = true;
+    private ConverterRecord handleIntermediateSignalThrow(Event event) {
+        ExecutableFragment eFrag = new ExecutableFragment("send", "signal", event.getLane().getName(), "");
+        eFrag.bo_hasArticle = true;
+        eFrag.bo_hasIndefArticle = true;
+        eFrag.bo_isPlural = true;
+        return getEventSentence(eFrag);
     }
-    */
 
     // *********************************************************************************************
     // Attached Event
