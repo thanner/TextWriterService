@@ -53,4 +53,16 @@ public class TemplateLoader {
         return addition;
     }
 
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public void setObject(String object) {
+        this.object = object;
+    }
+
+    public void setAddition(String addition) {
+        this.addition = addition;
+    }
+
 }

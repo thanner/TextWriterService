@@ -1,5 +1,6 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
+import br.edu.ufrgs.inf.bpm.builder.FragmentGenerator;
 import br.edu.ufrgs.inf.bpm.changes.templates.Phrases;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
@@ -23,6 +24,7 @@ import processToText.textPlanning.recordClasses.ModifierRecord;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TextToIntermediateConverter {
 
@@ -164,14 +166,10 @@ public class TextToIntermediateConverter {
     }
 
     public ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
-        templateLoader.loadTemplate(TemplateLoaderType.XOR);
+        Map<String, String> modificationMap = new HashMap<>();
+        modificationMap.put("@number", Integer.toString(amountProcedures));
 
-        ExecutableFragment eFrag = new ExecutableFragment(
-                templateLoader.getAction(),
-                templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
-                "",
-                ""
-        );
+        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.XOR, modificationMap);
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
         eFrag.verb_IsPassive = true;
@@ -180,14 +178,8 @@ public class TextToIntermediateConverter {
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
-        ConditionFragment post = new ConditionFragment(
-                templateLoader.getAction(),
-                templateLoader.getObject(),
-                "",
-                "",
-                ConditionFragment.TYPE_ONCE,
-                new HashMap<String, ModifierRecord>()
-        );
+        // TODO: DEVERIA SER ASSIM MESMO? XOR_JOIN?
+        ConditionFragment post = FragmentGenerator.generateConditionFragment(TemplateLoaderType.XOR, modificationMap, ConditionFragment.TYPE_ONCE);
         post.verb_isPast = true;
         post.verb_IsPassive = true;
         post.bo_isSubject = true;
@@ -504,14 +496,11 @@ public class TextToIntermediateConverter {
         ExecutableFragment eFrag2 = new ExecutableFragment("finish", "process instance", "", "");
         eFrag2.verb_IsPassive = true;
         eFrag2.bo_isSubject = true;
-        ConditionFragment cFrag2 = new ConditionFragment("be", "case", "this", "", ConditionFragment.TYPE_IF,
-                new HashMap<String, ModifierRecord>());
+        ConditionFragment cFrag2 = new ConditionFragment("be", "case", "this", "", ConditionFragment.TYPE_IF, new HashMap<>());
         cFrag2.verb_isNegated = true;
 
         // Determine precondition
-        ConditionFragment pre = new ConditionFragment(gwExtractor.getVerb(),
-                gwExtractor.getObject(), "", "", ConditionFragment.TYPE_IF,
-                new HashMap<String, ModifierRecord>());
+        ConditionFragment pre = new ConditionFragment(gwExtractor.getVerb(), gwExtractor.getObject(), "", "", ConditionFragment.TYPE_IF, new HashMap<>());
         pre.verb_IsPassive = true;
         pre.sen_headPosition = true;
         pre.bo_isSubject = true;
@@ -539,37 +528,21 @@ public class TextToIntermediateConverter {
     // *********************************************************************************************
 
     public ConverterRecord convertANDGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures, ArrayList<Node> conditionNodes) {
+        Map<String, String> modificationMap = new HashMap<>();
+        modificationMap.put("@number", Integer.toString(amountProcedures));
 
-        // The process is split into three parallel branches. (And then use
-        // bullet points for structuring)
-
-        templateLoader.loadTemplate(TemplateLoaderType.AND_SPLIT);
-        ExecutableFragment eFrag = new ExecutableFragment(
-                templateLoader.getAction(),
-                templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
-                "",
-                templateLoader.getAddition()
-        );
+        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.AND_SPLIT, modificationMap);
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
-        eFrag.verb_IsPassive = true;
         eFrag.bo_isPlural = true;
+        eFrag.verb_IsPassive = true;
         eFrag.add_hasArticle = false;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-
-        ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
+        ArrayList<DSynTSentence> preStatements = new ArrayList<>();
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
-        templateLoader.loadTemplate(TemplateLoaderType.AND_JOIN);
-        ConditionFragment post = new ConditionFragment(
-                templateLoader.getAction(),
-                templateLoader.getObject().replace("@number", Integer.toString(amountProcedures)),
-                "",
-                "",
-                ConditionFragment.TYPE_AFTER,
-                new HashMap<String, ModifierRecord>()
-        );
+        ConditionFragment post = FragmentGenerator.generateConditionFragment(TemplateLoaderType.AND_JOIN, modificationMap, ConditionFragment.TYPE_AFTER);
         post.bo_isSubject = true;
         post.bo_isPlural = true;
         post.bo_hasArticle = false;
@@ -580,9 +553,6 @@ public class TextToIntermediateConverter {
         return new ConverterRecord(null, post, preStatements, null, null);
     }
 
-    /**
-     * Converts a simple and construct.
-     */
     public ConverterRecord convertANDSimple(RPSTNode<ControlFlow, Node> node, int activities, ArrayList<Node> conditionNodes) {
 
         // get last element of both branches and combine them to a post condition
@@ -647,6 +617,10 @@ public class TextToIntermediateConverter {
         return new ConverterRecord(null, post, null, null, modRecord);
     }
 
+    // ***************************************************************
+    // EVENTS
+    // ***************************************************************
+
     public ConverterRecord convertEvent(Event event) {
 
         String role = event.getLane().getName();
@@ -655,12 +629,6 @@ public class TextToIntermediateConverter {
         }
 
         switch (event.getType()) {
-
-            // ***************************************************************
-            // INTERMEDIATE (CATCHING) EVENTS
-            // ***************************************************************
-
-            // ERROR EVENT
             case EventType.INTM_ERROR:
                 return handleIntermediateError(event);
             case EventType.INTM_TIMER:
@@ -670,9 +638,6 @@ public class TextToIntermediateConverter {
             case EventType.INTM_ESCALATION_CAT:
                 return handleIntermediateEscalationCatch(event);
 
-            // ***************************************************************
-            // START / END EVENTS
-            // ***************************************************************
             case EventType.START_EVENT:
                 return handleStartEvent();
             case EventType.START_MSG:
@@ -687,9 +652,7 @@ public class TextToIntermediateConverter {
                 return handleEndEventError(event);
             case EventType.END_SIGNAL:
                 return handleEndEventSignal();
-            // ***************************************************************
-            // THROWING EVENTS
-            // ***************************************************************
+
             case EventType.INTM_MSG_THR:
                 return handleIntermediateMessageThrow(event);
             case EventType.INTM_ESCALATION_THR:
@@ -780,7 +743,7 @@ public class TextToIntermediateConverter {
         } else {
             preSentences = new ArrayList<>();
             if (cFrag != null) {
-                preSentences.add(getIntermediateEventSentence(event, cFrag));
+                preSentences.add(getIntermediateEventSentence(cFrag));
             } else {
                 preSentences.add(new DSynTMainSentence(eFrag));
             }
@@ -904,8 +867,7 @@ public class TextToIntermediateConverter {
      */
 
     private DSynTConditionSentence getAttachedEventSentence(Event event, ConditionFragment cFrag) {
-        ExecutableFragment eFrag = new ExecutableFragment("cancel", "it", "",
-                "");
+        ExecutableFragment eFrag = new ExecutableFragment("cancel", "it", "", "");
         eFrag.verb_IsPassive = true;
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
@@ -925,86 +887,80 @@ public class TextToIntermediateConverter {
         return sen;
     }
 
-    // For attached events only
     public DSynTConditionSentence getAttachedEventPostStatement(Event event) {
-        ModifierRecord modRecord;
-        ModifierRecord modRecord2;
-        ExecutableFragment eFrag;
-        ConditionFragment cFrag;
-
         switch (event.getType()) {
-
             case EventType.INTM_TIMER:
-                modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV,
-                        ModifierRecord.TARGET_VERB);
-                eFrag = new ExecutableFragment("continue", "process", "", "");
-                eFrag.bo_isSubject = true;
-                modRecord.addAttribute("adv-type", "sent-final");
-                modRecord.addAttribute("rheme", "+");
-                eFrag.addMod("normally", modRecord);
-
-                cFrag = new ConditionFragment("complete", "the task", "",
-                        "within the time limit", ConditionFragment.TYPE_IF,
-                        new HashMap<String, ModifierRecord>());
-                cFrag.sen_hasConnective = true;
-                cFrag.add_hasArticle = false;
-                modRecord2 = new ModifierRecord(ModifierRecord.TYPE_PREP,
-                        ModifierRecord.TARGET_VERB);
-                modRecord2.addAttribute("adv-type", "sentential");
-                cFrag.addMod("otherwise", modRecord2);
-                configureFragment(cFrag);
-                return new DSynTConditionSentence(eFrag, cFrag);
-
+                return handleIntermediateTimerAttached();
             case EventType.INTM_ERROR:
-                modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV,
-                        ModifierRecord.TARGET_VERB);
-                eFrag = new ExecutableFragment("continue", "process", "", "");
-                eFrag.bo_isSubject = true;
-                modRecord.addAttribute("adv-type", "sent-final");
-                modRecord.addAttribute("rheme", "+");
-                eFrag.addMod("normally", modRecord);
-
-                cFrag = new ConditionFragment("complete", "the task", "",
-                        "without error", ConditionFragment.TYPE_IF,
-                        new HashMap<String, ModifierRecord>());
-                cFrag.sen_hasConnective = true;
-                cFrag.add_hasArticle = false;
-                modRecord2 = new ModifierRecord(ModifierRecord.TYPE_PREP,
-                        ModifierRecord.TARGET_VERB);
-                modRecord2.addAttribute("adv-type", "sentential");
-                cFrag.addMod("otherwise", modRecord2);
-                configureFragment(cFrag);
-                return new DSynTConditionSentence(eFrag, cFrag);
-
+                return handleIntermediateErrorAttached();
             case EventType.INTM_ESCALATION_CAT:
-                modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV,
-                        ModifierRecord.TARGET_VERB);
-                eFrag = new ExecutableFragment("continue", "process", "", "");
-                eFrag.bo_isSubject = true;
-                modRecord.addAttribute("adv-type", "sent-final");
-                modRecord.addAttribute("rheme", "+");
-                eFrag.addMod("normally", modRecord);
-
-                cFrag = new ConditionFragment("complete", "the task", "",
-                        "without escalation", ConditionFragment.TYPE_IF,
-                        new HashMap<String, ModifierRecord>());
-                cFrag.sen_hasConnective = true;
-                cFrag.add_hasArticle = false;
-                modRecord2 = new ModifierRecord(ModifierRecord.TYPE_PREP,
-                        ModifierRecord.TARGET_VERB);
-                modRecord2.addAttribute("adv-type", "sentential");
-                cFrag.addMod("otherwise", modRecord2);
-                configureFragment(cFrag);
-                return new DSynTConditionSentence(eFrag, cFrag);
-
+                return handleIntermediateEscalationCatchAttached();
             default:
                 System.out.println("NON-COVERED EVENT " + event.getType());
                 return null;
         }
     }
 
+    private DSynTConditionSentence handleIntermediateTimerAttached() {
+        ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+        ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
+        eFrag.bo_isSubject = true;
+        modRecord.addAttribute("adv-type", "sent-final");
+        modRecord.addAttribute("rheme", "+");
+        eFrag.addMod("normally", modRecord);
+
+        ConditionFragment cFrag = new ConditionFragment("complete", "the task", "", "within the time limit", ConditionFragment.TYPE_IF, new HashMap<>());
+        cFrag.sen_hasConnective = true;
+        cFrag.add_hasArticle = false;
+        ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_PREP, ModifierRecord.TARGET_VERB);
+        modRecord2.addAttribute("adv-type", "sentential");
+        cFrag.addMod("otherwise", modRecord2);
+        configureFragment(cFrag);
+
+        return new DSynTConditionSentence(eFrag, cFrag);
+    }
+
+    private DSynTConditionSentence handleIntermediateErrorAttached() {
+        ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+        ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
+        eFrag.bo_isSubject = true;
+        modRecord.addAttribute("adv-type", "sent-final");
+        modRecord.addAttribute("rheme", "+");
+        eFrag.addMod("normally", modRecord);
+
+        ConditionFragment cFrag = new ConditionFragment("complete", "the task", "", "without error", ConditionFragment.TYPE_IF, new HashMap<>());
+        cFrag.sen_hasConnective = true;
+        cFrag.add_hasArticle = false;
+        ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_PREP, ModifierRecord.TARGET_VERB);
+        modRecord2.addAttribute("adv-type", "sentential");
+        cFrag.addMod("otherwise", modRecord2);
+        configureFragment(cFrag);
+
+        return new DSynTConditionSentence(eFrag, cFrag);
+    }
+
+    private DSynTConditionSentence handleIntermediateEscalationCatchAttached() {
+        ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+        ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
+        eFrag.bo_isSubject = true;
+        modRecord.addAttribute("adv-type", "sent-final");
+        modRecord.addAttribute("rheme", "+");
+        eFrag.addMod("normally", modRecord);
+
+        ConditionFragment cFrag = new ConditionFragment("complete", "the task", "", "without escalation", ConditionFragment.TYPE_IF, new HashMap<>());
+        cFrag.sen_hasConnective = true;
+        cFrag.add_hasArticle = false;
+        ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_PREP, ModifierRecord.TARGET_VERB);
+        modRecord2.addAttribute("adv-type", "sentential");
+        cFrag.addMod("otherwise", modRecord2);
+        configureFragment(cFrag);
+
+        return new DSynTConditionSentence(eFrag, cFrag);
+    }
+
+
     // *********************************************************************************************
-    // Event
+    // Event Sentence
     // *********************************************************************************************
 
     /**
@@ -1012,14 +968,14 @@ public class TextToIntermediateConverter {
      */
     private ConverterRecord getEventSentence(ExecutableFragment eFrag) {
         DSynTMainSentence msen = new DSynTMainSentence(eFrag);
-        ArrayList<DSynTSentence> preSentences = new ArrayList<DSynTSentence>();
+        ArrayList<DSynTSentence> preSentences = new ArrayList<>();
         preSentences.add(msen);
         return new ConverterRecord(null, null, preSentences, null);
     }
 
     private ConverterRecord getEventSentence(ExecutableFragment eFrag, ConditionFragment cFrag) {
         DSynTConditionSentence msen = new DSynTConditionSentence(eFrag, cFrag);
-        ArrayList<DSynTSentence> preSentences = new ArrayList<DSynTSentence>();
+        ArrayList<DSynTSentence> preSentences = new ArrayList<>();
         preSentences.add(msen);
         return new ConverterRecord(null, null, preSentences, null);
     }
@@ -1027,12 +983,11 @@ public class TextToIntermediateConverter {
     /**
      * Returns sentence for intermediate events.
      */
-    private DSynTConditionSentence getIntermediateEventSentence(Event event, ConditionFragment cFrag) {
-        ExecutableFragment eFrag = new ExecutableFragment("continue",
-                "process", "", "");
+    private DSynTConditionSentence getIntermediateEventSentence(ConditionFragment cFrag) {
+        ExecutableFragment eFrag = new ExecutableFragment("continue", "process", "", "");
         eFrag.bo_isSubject = true;
-        DSynTConditionSentence sen = new DSynTConditionSentence(eFrag, cFrag);
-        return sen;
+        DSynTConditionSentence dSynTConditionSentence = new DSynTConditionSentence(eFrag, cFrag);
+        return dSynTConditionSentence;
     }
 
     // *********************************************************************************************

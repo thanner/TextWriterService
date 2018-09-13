@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
+import br.edu.ufrgs.inf.bpm.builder.FragmentGenerator;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
-import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
 import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import de.hpi.bpt.graph.algo.rpst.RPST;
@@ -51,7 +51,7 @@ public class TextPlanner {
     private Map<Integer, String> bpmnIdMap;
     private String currentStartEventId = "Unknown Start Event id";
 
-    private TemplateLoader loader;
+    //private TemplateLoader loader;
 
     public TextPlanner(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelDeriver lDeriver, EnglishLabelHelper lHelper, String imperativeRole, boolean isImperative, boolean isAlternative, Map<Integer, String> bpmnIdMap) throws FileNotFoundException, JWNLException {
         this.rpst = rpst;
@@ -66,7 +66,7 @@ public class TextPlanner {
         this.imperativeRole = imperativeRole;
         this.isAlternative = isAlternative;
         this.bpmnIdMap = bpmnIdMap;
-        this.loader = new TemplateLoader();
+        //this.loader = new TemplateLoader();
     }
 
     // *********************************************************************************************
@@ -123,10 +123,11 @@ public class TextPlanner {
         addBondPreStatements(convRecord, level, node);
 
         // Pass precondition
+        // TODO: Join?
         if (convRecord != null && convRecord.pre != null) {
             if (passedFragments.size() > 0) {
                 if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                    ExecutableFragment eFrag = generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
+                    ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
                     eFrag.bo_isSubject = true;
                     DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
                     if (convRecord.post != null) {
@@ -139,7 +140,7 @@ public class TextPlanner {
             passedFragments.add(convRecord.pre);
         }
 
-        // Convert to Text
+        // Convert branches to Text
         convertBondToText(node, level);
 
         // Add post statement to sentence plan
@@ -236,11 +237,9 @@ public class TextPlanner {
 
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
-
         // Labeled Case
-        if (orPropRec.isGatewayLabeled() == true) {
+        if (orPropRec.isGatewayLabeled()) {
             return null;
-
             // Unlabeled case
         } else {
             return textToIntermediateConverter.convertORSimple(node, null, false);
@@ -252,8 +251,8 @@ public class TextPlanner {
         ArrayList<RPSTNode<ControlFlow, Node>> andNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
 
         // Only General Case, no need for non-bulletin and-branches
-        ConverterRecord rec = textToIntermediateConverter.convertANDGeneral(node, andNodes.size(), null);
-        return rec;
+        ConverterRecord converterRecord = textToIntermediateConverter.convertANDGeneral(node, andNodes.size(), null);
+        return converterRecord;
     }
 
     private void setProcessElementData(ConditionFragment conditionFragment, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
@@ -302,6 +301,7 @@ public class TextPlanner {
         if (PlanningHelper.isLoop(node, rpst) || PlanningHelper.isSkip(node, rpst)) {
             convertToText(node, level);
         }
+
         if (PlanningHelper.isXORSplit(node, rpst) || PlanningHelper.isORSplit(node, rpst) || PlanningHelper.isEventSplit(node, rpst)) {
             ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
             for (RPSTNode<ControlFlow, Node> path : paths) {
@@ -309,14 +309,15 @@ public class TextPlanner {
                 convertToText(path, level + 1);
             }
         }
-        if (PlanningHelper.isANDSplit(node, rpst)) {
 
+        if (PlanningHelper.isANDSplit(node, rpst)) {
             ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
             for (RPSTNode<ControlFlow, Node> path : paths) {
                 isTagWithBullet = true;
                 convertToText(path, level + 1);
             }
         }
+
     }
 
     private void addBondPostStatement(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
@@ -508,8 +509,10 @@ public class TextPlanner {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
-        loader.loadTemplate(TemplateLoaderType.RIGID);
-        eFrag = new ExecutableFragment(loader.getAction(), loader.getAddition(), loader.getObject(), "");
+        // loader.loadTemplate(TemplateLoaderType.RIGID);
+        // eFrag = new ExecutableFragment(loader.getAction(), loader.getAddition(), loader.getObject(), "");
+
+        eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.RIGID);
         //eFrag.bo_hasIndefArticle = true;
         eFrag.bo_hasArticle = false;
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
@@ -523,7 +526,7 @@ public class TextPlanner {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
-        eFrag = generateExecutableFragment(TemplateLoaderType.RIGID_MAIN);
+        eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.RIGID_MAIN);
         eFrag.sen_hasConnective = true;
         eFrag.bo_hasArticle = false;
         eFrag.add_hasArticle = false;
@@ -538,7 +541,7 @@ public class TextPlanner {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
-        eFrag = generateExecutableFragment(TemplateLoaderType.RIGID_DEV);
+        eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.RIGID_DEV);
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("adv-type", "sentential");
         eFrag.addMod("However,", modRecord);
@@ -920,7 +923,7 @@ public class TextPlanner {
             if (event.getType() == EventType.START_EVENT && currentPosition < orderedTopNodes.size() - 1 && PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1))) {
                 isStart = false;
 
-                ExecutableFragment eFrag = generateExecutableFragment(TemplateLoaderType.STARTDECISION);
+                ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.STARTDECISION);
                 eFrag.add_hasArticle = false;
                 eFrag.bo_isSubject = true;
                 DSynTSentence dSynTSentence = new DSynTMainSentence(eFrag);
@@ -1101,19 +1104,6 @@ public class TextPlanner {
             document = dSynTSentence.getDocuments().get(i + 1);
             dSynTSentence.addProcessElementDocument(processElementId, processElementType, "", document);
         }
-    }
-
-    // *********************************************************************************************
-    // Generate executable fragment
-    // *********************************************************************************************
-
-    private ExecutableFragment generateExecutableFragment(TemplateLoaderType template, String role) {
-        loader.loadTemplate(template);
-        return new ExecutableFragment(loader.getAction(), loader.getObject(), role, loader.getAddition());
-    }
-
-    private ExecutableFragment generateExecutableFragment(TemplateLoaderType template) {
-        return generateExecutableFragment(template, "");
     }
 
 }
