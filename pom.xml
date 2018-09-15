@@ -237,6 +237,13 @@
         </dependency>
         -->
 
+        <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>62.1</version>
+        </dependency>
+
         <!-- Apache -->
         <!-- IO https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>

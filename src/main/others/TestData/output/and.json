@@ -31,6 +31,20 @@
     {
       "snippetList": [
         {
+          "processElementId": "Task_19ii147",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 34
+        }
+      ],
+      "value": "The Resource 1 does the activity 3.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
           "processElementId": "Task_0h1k0f1",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
@@ -66,16 +80,16 @@
     {
       "snippetList": [
         {
-          "processElementId": "Task_19ii147",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
+          "processElementId": "ExclusiveGateway_1jc0ool",
+          "processElementType": "ANDJOIN",
+          "resource": "",
           "startIndex": 0,
-          "endIndex": 34
+          "endIndex": 52
         }
       ],
-      "value": "The Resource 1 does the activity 3.",
-      "level": 1,
-      "islateral": true
+      "value": "After each of these procedures the process continues.",
+      "level": 0,
+      "islateral": false
     },
     {
       "snippetList": [

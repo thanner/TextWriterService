@@ -7,10 +7,10 @@
           "processElementType": "STARTEVENT",
           "resource": "",
           "startIndex": 0,
-          "endIndex": 36
+          "endIndex": 34
         }
       ],
-      "value": "The process isStarts with a decision.",
+      "value": "The process starts with a decision.",
       "level": 0,
       "islateral": false
     },
@@ -31,6 +31,20 @@
     {
       "snippetList": [
         {
+          "processElementId": "Task_17w5y3h",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 61
+        }
+      ],
+      "value": "The Resource 1 does the unlabeled activity (id: task 17w5y3h).",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
           "processElementId": "Task_0q2fedy",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
@@ -46,20 +60,6 @@
         }
       ],
       "value": "The Resource 1 does the unlabeled activity (id: task 0q2fedy) and do the unlabeled activity (id: task 0mzpr4d).",
-      "level": 1,
-      "islateral": true
-    },
-    {
-      "snippetList": [
-        {
-          "processElementId": "Task_17w5y3h",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 61
-        }
-      ],
-      "value": "The Resource 1 does the unlabeled activity (id: task 17w5y3h).",
       "level": 1,
       "islateral": true
     },

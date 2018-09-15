@@ -11,6 +11,9 @@ public class Lexemes {
         add("after that");
         add("subsequently");
     }};
+
+    public static final String LATERAL_CONNECTIVE = "in the @ordinal procedure";
+
     public static final String SENTENCE_AGGREGATION = "AND";
     public static final String AND_CONDITION = "AND";
     public static final String OR_CONDITION = "OR";

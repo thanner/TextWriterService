@@ -51,8 +51,6 @@ public class TextPlanner {
     private Map<Integer, String> bpmnIdMap;
     private String currentStartEventId = "Unknown Start Event id";
 
-    //private TemplateLoader loader;
-
     public TextPlanner(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelDeriver lDeriver, EnglishLabelHelper lHelper, String imperativeRole, boolean isImperative, boolean isAlternative, Map<Integer, String> bpmnIdMap) throws FileNotFoundException, JWNLException {
         this.rpst = rpst;
         this.process = process;
@@ -123,7 +121,8 @@ public class TextPlanner {
         addBondPreStatements(convRecord, level, node);
 
         // Pass precondition
-        // TODO: Join?
+        // TODO: Entender porque isso está aqui...
+        /*
         if (convRecord != null && convRecord.pre != null) {
             if (passedFragments.size() > 0) {
                 if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
@@ -139,6 +138,7 @@ public class TextPlanner {
             }
             passedFragments.add(convRecord.pre);
         }
+        */
 
         // Convert branches to Text
         convertBondToText(node, level);
@@ -150,6 +150,27 @@ public class TextPlanner {
         if (convRecord != null && convRecord.post != null) {
             passedFragments.add(convRecord.post);
         }
+
+        // TODO: ...e não aqui
+        // TODO: Adicionei pra servir de JOIN
+        if (passedFragments.size() > 0) {
+            if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
+                ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
+                eFrag.sen_level = level;
+                eFrag.bo_isSubject = true;
+
+                ConditionFragment cFrag = passedFragments.get(0);
+                cFrag.sen_level = level;
+
+                DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, cFrag);
+                if (convRecord.post != null) {
+                    dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
+                }
+                sentencePlan.add(dsyntSentence);
+                passedFragments.clear();
+            }
+        }
+
     }
 
     private ConverterRecord getConverterRecord(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {

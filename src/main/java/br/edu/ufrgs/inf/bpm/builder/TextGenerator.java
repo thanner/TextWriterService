@@ -56,7 +56,6 @@ public class TextGenerator {
                     text.getSentenceList().addAll(poolText.getSentenceList());
                     counter++;
                 }
-                // System.out.println(text.replaceAll(" process ", " " + m.getPools().get(0) + " process "));
             }
         } else {
             processModel = applyNormalization(processModel);
@@ -111,6 +110,7 @@ public class TextGenerator {
 
         // Convert to Text
         TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false, bpmnIdMap);
+        // processToText.textPlanning.TextPlanner converter = new processToText.textPlanning.TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false);
         converter.convertToText(rpst.getRoot(), 0);
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();
 
@@ -124,7 +124,7 @@ public class TextGenerator {
 
         sentencePlan.forEach(DSynTSentence::fixDocuments);
 
-        // Discourse Marker
+        // Discourse Marker (After, Then, In sequence)
         DiscourseMarker discourseMarker = new DiscourseMarker();
         sentencePlan = discourseMarker.insertSequenceConnectives(sentencePlan);
 
