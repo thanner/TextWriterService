@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dsynt>
-    <action>taken</action>
-    <object>the following alternative procedures may be</object>
+    <object>@number alternative procedures may be</object>
+    <action>execute</action>
     <addition></addition>
 </dsynt>
