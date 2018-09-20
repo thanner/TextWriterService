@@ -31,14 +31,14 @@
     {
       "snippetList": [
         {
-          "processElementId": "Task_19ii147",
+          "processElementId": "Task_1ighr2w",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 0,
           "endIndex": 34
         }
       ],
-      "value": "The Resource 1 does the activity 3.",
+      "value": "The Resource 1 does the activity 2.",
       "level": 1,
       "islateral": true
     },
@@ -48,32 +48,32 @@
           "processElementId": "Task_0h1k0f1",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 56
+          "startIndex": 17,
+          "endIndex": 78
         },
         {
           "processElementId": "Task_0flrwh8",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 56
+          "startIndex": 17,
+          "endIndex": 78
         }
       ],
-      "value": "The Resource 1 does the activity 1 and do the activity 4.",
+      "value": "In the meantime, the Resource 1 does the activity 1 and then do the activity 4.",
       "level": 1,
       "islateral": true
     },
     {
       "snippetList": [
         {
-          "processElementId": "Task_1ighr2w",
+          "processElementId": "Task_19ii147",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 34
+          "startIndex": 18,
+          "endIndex": 52
         }
       ],
-      "value": "The Resource 1 does the activity 2.",
+      "value": "At the same time, the Resource 1 does the activity 3.",
       "level": 1,
       "islateral": true
     },

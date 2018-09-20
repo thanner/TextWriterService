@@ -53,26 +53,26 @@ public class TextToIntermediateConverter {
 
     // The following optional parallel paths are available.
 
-    public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor, boolean labeled) {
-        ConverterRecord record = null;
+    public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor, boolean labeled, int amountProcedures) {
+        Map<String, String> modificationMap = new HashMap<>();
+        modificationMap.put("@number", Integer.toString(amountProcedures));
 
-        templateLoader.loadTemplate(TemplateLoaderType.OR);
-        ExecutableFragment eFrag = new ExecutableFragment(
-                templateLoader.getAction(),
-                templateLoader.getObject(),
-                "", "");
+        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.OR, modificationMap);
+
         ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
         modRecord2.addAttribute("adv-type", "sentential");
         eFrag.addMod(templateLoader.getAddition(), modRecord2);
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
-        // eFrag.verb_IsPassive = true;
-        // eFrag.ver = true;
+        eFrag.verb_IsPassive = true;
+        eFrag.add_hasArticle = false;
+
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
         ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
         preStatements.add(new DSynTMainSentence(eFrag));
-        record = new ConverterRecord(null, null, preStatements, null);
+        // TODO: Não tá fazendo o jOIN pq n tem um POST
+        ConverterRecord record = new ConverterRecord(null, null, preStatements, null);
         return record;
     }
 

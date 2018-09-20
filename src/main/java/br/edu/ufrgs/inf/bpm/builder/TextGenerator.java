@@ -52,7 +52,7 @@ public class TextGenerator {
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 poolProcessModel = applyNormalization(poolProcessModel);
                 if (!isBlackBox(processModel)) {
-                    poolText = generateText(poolProcessModel, bpmnIdMap, counter);
+                    poolText = generateText(poolProcessModel, bpmnIdMap, counter, definitions);
                     text.getSentenceList().addAll(poolText.getSentenceList());
                     counter++;
                 }
@@ -60,7 +60,7 @@ public class TextGenerator {
         } else {
             processModel = applyNormalization(processModel);
             if (!isBlackBox(processModel)) {
-                text = generateText(processModel, bpmnIdMap, counter);
+                text = generateText(processModel, bpmnIdMap, counter, definitions);
             }
         }
         return text;
@@ -78,7 +78,7 @@ public class TextGenerator {
         return processModel.getActivites().isEmpty() && processModel.getEvents().isEmpty() && processModel.getGateways().isEmpty() && processModel.getArcs().isEmpty();
     }
 
-    public static TText generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter) throws IOException, JWNLException {
+    public static TText generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
         MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
@@ -124,9 +124,9 @@ public class TextGenerator {
 
         sentencePlan.forEach(DSynTSentence::fixDocuments);
 
-        // Discourse Marker (After, Then, In sequence)
+        // Discourse Marker (After, Then, In sequence, In the first procedure, In the meantime)
         DiscourseMarker discourseMarker = new DiscourseMarker();
-        sentencePlan = discourseMarker.insertSequenceConnectives(sentencePlan);
+        sentencePlan = discourseMarker.insertSequenceConnectives(sentencePlan, tDefinitions);
 
         // Realization
         SurfaceRealizer surfaceRealizer = new SurfaceRealizer();

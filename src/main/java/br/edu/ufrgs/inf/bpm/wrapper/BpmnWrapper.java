@@ -259,6 +259,17 @@ public class BpmnWrapper {
     }
     */
 
+    public TFlowElement getFlowElementById(String flowElementId) {
+        for (TProcess tProcess : getProcessList()) {
+            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
+                if (flowElement.getValue().getId().equals(flowElementId)) {
+                    return flowElement.getValue();
+                }
+            }
+        }
+        return null;
+    }
+
     public <T> T getFlowElementById(Class<T> flowElementClass, String flowElementId) {
         for(TProcess tProcess: getProcessList()) {
             for (JAXBElement<? extends TFlowElement> flowElement: tProcess.getFlowElement()){
@@ -338,6 +349,21 @@ public class BpmnWrapper {
             }
         }
         return nameList;
+    }
+
+    public List<TFlowElement> getFlowElementSourceList(TFlowNode tFlowNode) {
+        List<TFlowElement> elementSourceList = new ArrayList<>();
+        for (QName qName : tFlowNode.getIncoming()) {
+            TFlowElement tFlowElement = getFlowElementById(qName.getLocalPart());
+            if (tFlowElement instanceof TSequenceFlow) {
+                TSequenceFlow tSequenceFlow = (TSequenceFlow) tFlowElement;
+                Object source = tSequenceFlow.getSourceRef();
+                if (source instanceof TFlowElement) {
+                    elementSourceList.add((TFlowElement) source);
+                }
+            }
+        }
+        return elementSourceList;
     }
 
 }

@@ -178,7 +178,7 @@ public class TextPlanner {
 
         if (PlanningHelper.isLoop(node, rpst)) {
             convRecord = getLoopConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.XORSPLIT);
+            setProcessElementData(convRecord, node, ProcessElementType.XORSPLIT);
         }
         if (PlanningHelper.isSkip(node, rpst)) {
             convRecord = getSkipConverterRecord(orderedTopNodes, node);
@@ -187,21 +187,19 @@ public class TextPlanner {
         }
         if (PlanningHelper.isXORSplit(node, rpst)) {
             convRecord = getXORConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.XORJOIN);
+            setProcessElementData(convRecord, node, ProcessElementType.XORJOIN);
         }
         if (PlanningHelper.isEventSplit(node, rpst)) {
             convRecord = getXORConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.GATEWAYBASEDEVENTSPLIT);
+            setProcessElementData(convRecord, node, ProcessElementType.GATEWAYBASEDEVENTSPLIT);
         }
         if (PlanningHelper.isORSplit(node, rpst)) {
             convRecord = getORConverterRecord(node);
-            if (convRecord != null && convRecord.post != null) {
-                setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN);
-            }
+            setProcessElementData(convRecord, node, ProcessElementType.ORJOIN);
         }
         if (PlanningHelper.isANDSplit(node, rpst)) {
             convRecord = getANDConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.ANDJOIN);
+            setProcessElementData(convRecord, node, ProcessElementType.ANDJOIN);
         }
         return convRecord;
     }
@@ -258,12 +256,14 @@ public class TextPlanner {
 
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
+        // TODO: Já tem o método pra saber se o gateway possui label?
         // Labeled Case
         if (orPropRec.isGatewayLabeled()) {
             return null;
             // Unlabeled case
         } else {
-            return textToIntermediateConverter.convertORSimple(node, null, false);
+            ArrayList<RPSTNode<ControlFlow, Node>> orNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+            return textToIntermediateConverter.convertORSimple(node, null, false, orNodes.size());
         }
     }
 
@@ -276,9 +276,11 @@ public class TextPlanner {
         return converterRecord;
     }
 
-    private void setProcessElementData(ConditionFragment conditionFragment, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
-        conditionFragment.setProcessElementType(processElementType);
-        conditionFragment.setProcessElementId(getProcessElementId(node.getExit().getId()));
+    private void setProcessElementData(ConverterRecord convRecord, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
+        if (convRecord != null && convRecord.post != null) {
+            convRecord.post.setProcessElementType(processElementType);
+            convRecord.post.setProcessElementId(getProcessElementId(node.getExit().getId()));
+        }
     }
 
     private void addBondPreStatements(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {

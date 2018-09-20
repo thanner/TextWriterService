@@ -12,9 +12,14 @@ public class Lexemes {
         add("subsequently");
     }};
 
-    public static final String LATERAL_CONNECTIVE = "in the @ordinal procedure";
+    public static final ArrayList<String> PARALLEL_CONNECTIVES = new ArrayList<String>() {{
+        add("in the meantime");
+        add("at the same time");
+    }};
 
-    public static final String SENTENCE_AGGREGATION = "AND";
+    public static final String ORDINAL_CONNECTIVE = "in the @ordinal procedure";
+
+    public static final String SENTENCE_AGGREGATION = "and then";
     public static final String AND_CONDITION = "AND";
     public static final String OR_CONDITION = "OR";
 
