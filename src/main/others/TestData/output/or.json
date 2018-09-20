@@ -1,0 +1,95 @@
+{
+  "sentenceList": [
+    {
+      "snippetList": [
+        {
+          "processElementId": "StartEvent_1",
+          "processElementType": "STARTEVENT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 34
+        }
+      ],
+      "value": "The process starts with a decision.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "ExclusiveGateway_1jc0ool",
+          "processElementType": "ORSPLIT",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 46
+        }
+      ],
+      "value": "Then, 3 alternative procedures may be executed.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_19ii147",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 24,
+          "endIndex": 58
+        }
+      ],
+      "value": "In the first procedure, the Resource 1 does the activity 3.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0h1k0f1",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 25,
+          "endIndex": 86
+        },
+        {
+          "processElementId": "Task_0flrwh8",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 25,
+          "endIndex": 86
+        }
+      ],
+      "value": "In the second procedure, the Resource 1 does the activity 1 and then do the activity 4.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_1ighr2w",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 24,
+          "endIndex": 58
+        }
+      ],
+      "value": "In the third procedure, the Resource 1 does the activity 2.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "EndEvent_0ztnmur",
+          "processElementType": "ENDEVENT",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ],
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "islateral": false
+    }
+  ]
+}

@@ -52,6 +52,7 @@ public class DiscourseMarker {
                         insertSequentialConnective(dSynTMainSentence, index, textPlan.size());
                     }
                 }
+                // TODO: Adicionar JOIN Connectives
 
                 lastLevel = currentLevel;
             }
@@ -151,7 +152,7 @@ public class DiscourseMarker {
         Element verb = dSynTSentence.getVerb();
         Document doc = dSynTSentence.getDSynT();
         if (isLastSentenceText(index, textPlanSize)) {
-            IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQUENCEFINAL_CONNECTIVE);
+            IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQUENCE_FINAL_CONNECTIVE);
         } else {
             IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.SEQUENCE_CONNECTIVES.get(indexSequentialConnectors));
         }
@@ -164,7 +165,6 @@ public class DiscourseMarker {
         IntermediateToDSynTConverter.insertConnective(doc, verb, Lexemes.PARALLEL_CONNECTIVES.get(indexParallelConnectors));
         adjustIndexParallelConnectors();
     }
-
 
     private boolean isLastSentenceText(int index, int textPlanSize) {
         return index == textPlanSize - 1;

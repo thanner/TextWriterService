@@ -759,8 +759,8 @@ public class TextPlanner {
     private void addStartEventFragment(DSynTMainSentence dSynTSentence) {
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
-        dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
-        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT, "", Lexemes.startEvent);
+        dSynTSentence.getExecutableFragment().addMod(Lexemes.START_EVENT_CONNECTIVE, modRecord);
+        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT, "", Lexemes.START_EVENT_CONNECTIVE);
         dSynTSentence.createDSynTRepresentation();
     }
 

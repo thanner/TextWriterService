@@ -71,9 +71,8 @@ public class TextToIntermediateConverter {
 
         ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
         preStatements.add(new DSynTMainSentence(eFrag));
-        // TODO: Não tá fazendo o jOIN pq n tem um POST
-        ConverterRecord record = new ConverterRecord(null, null, preStatements, null);
-        return record;
+
+        return new ConverterRecord(null, null, preStatements, null);
     }
 
     // *********************************************************************************************
@@ -178,7 +177,8 @@ public class TextToIntermediateConverter {
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
-        // TODO: DEVERIA SER ASSIM MESMO? XOR_JOIN?
+        // JOIN
+        /*
         ConditionFragment post = FragmentGenerator.generateConditionFragment(TemplateLoaderType.XOR, modificationMap, ConditionFragment.TYPE_ONCE);
         post.verb_isPast = true;
         post.verb_IsPassive = true;
@@ -187,8 +187,9 @@ public class TextToIntermediateConverter {
         post.bo_hasArticle = false;
         post.setFragmentType(AbstractFragment.TYPE_JOIN);
         post.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        */
 
-        return new ConverterRecord(null, post, preStatements, null, null);
+        return new ConverterRecord(null, null, preStatements, null, null);
     }
 
     // *********************************************************************************************
@@ -542,6 +543,8 @@ public class TextToIntermediateConverter {
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
+        // JOIN
+        /*
         ConditionFragment post = FragmentGenerator.generateConditionFragment(TemplateLoaderType.AND_JOIN, modificationMap, ConditionFragment.TYPE_AFTER);
         post.bo_isSubject = true;
         post.bo_isPlural = true;
@@ -549,8 +552,9 @@ public class TextToIntermediateConverter {
         post.sen_hasComma = true;
         post.addAssociation(Integer.valueOf(node.getEntry().getId()));
         post.setFragmentType(AbstractFragment.TYPE_JOIN);
+        */
 
-        return new ConverterRecord(null, post, preStatements, null, null);
+        return new ConverterRecord(null, null, preStatements, null, null);
     }
 
     public ConverterRecord convertANDSimple(RPSTNode<ControlFlow, Node> node, int activities, ArrayList<Node> conditionNodes) {
