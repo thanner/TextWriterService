@@ -2,6 +2,7 @@ package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
+import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import com.ibm.icu.text.RuleBasedNumberFormat;
@@ -21,54 +22,35 @@ public class DiscourseMarker {
     private Set<String> parallelGatewayIndexSet = new HashSet<>();
     private BpmnWrapper bpmnWrapper;
 
-    private int lastLevel = -1;
+    private int lastLevel;
+    private int currentLevel;
 
     private int indexSequentialConnectors = 0;
     private int indexParallelConnectors = 0;
 
-    public ArrayList<DSynTSentence> insertSequenceConnectives(ArrayList<DSynTSentence> textPlan, TDefinitions tDefinitions) {
+    public ArrayList<DSynTSentence> insertConnectives(ArrayList<DSynTSentence> textPlan, TDefinitions tDefinitions) {
         bpmnWrapper = new BpmnWrapper(tDefinitions);
+        lastLevel = -1;
 
         for (int index = 0; index < textPlan.size(); index++) {
-
             DSynTSentence dSynTSentence = textPlan.get(index);
-            int currentLevel = dSynTSentence.getExecutableFragment().sen_level;
+            currentLevel = dSynTSentence.getExecutableFragment().sen_level;
 
             if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
                 DSynTMainSentence dSynTMainSentence = (DSynTMainSentence) dSynTSentence;
                 if (!dSynTMainSentence.getExecutableFragment().sen_hasConnective && index > 0) {
-                    if (dSynTMainSentence.getExecutableFragment().sen_hasBullet) {
-                        // Is a lateral sequence
-                        if (isAddParallelDiscourseMarker(dSynTMainSentence)) {
-                            // Source is a parallel gateway (in the meantime, at the same time)
-                            insertParallelConnective(dSynTMainSentence);
-                        } else if (isAddExclusiveDiscourseMarker(dSynTMainSentence)) {
-                            // Source is a exclusive/inclusive gateway (first, second, third)
-                            adjustOrdinalIndex(currentLevel);
-                            insertOrdinalConnective(dSynTMainSentence, currentLevel);
-                        }
-                    } else {
-                        if (isAddExclusiveJoinDiscourseMarker(dSynTSentence)) {
-                            insertConnective(dSynTSentence, Lexemes.XOR_JOIN_CONNECTIVE);
-                        } else if (isAddInclusiveJoinDiscourseMarker(dSynTSentence)) {
-                            insertConnective(dSynTSentence, Lexemes.OR_JOIN_CONNECTIVE);
-                        } else if (isAddParallelJoinDiscourseMarker(dSynTSentence)) {
-                            insertConnective(dSynTSentence, Lexemes.AND_JOIN_CONNECTIVE);
-                        } else {
-                            // Is a sequence (then, next, after)
-                            insertSequentialConnective(dSynTMainSentence, index, textPlan.size());
-                        }
-                    }
+                    insertConnectives(dSynTSentence, index, textPlan.size());
                 }
-
                 lastLevel = currentLevel;
             }
 
             if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
                 DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
                 if (!dSynTConditionSentence.getExecutableFragment().sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
-                    insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
+                    //insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
+                    insertConnectives(dSynTSentence, index, textPlan.size());
                 }
+                lastLevel = currentLevel;
             }
 
         }
@@ -76,32 +58,33 @@ public class DiscourseMarker {
         return textPlan;
     }
 
-    private boolean isAddExclusiveJoinDiscourseMarker(DSynTSentence dSynTSentence) {
-        return isAddJoinDiscourseMarker(dSynTSentence, TExclusiveGateway.class);
-    }
 
-    private boolean isAddInclusiveJoinDiscourseMarker(DSynTSentence dSynTSentence) {
-        return isAddJoinDiscourseMarker(dSynTSentence, TInclusiveGateway.class);
-    }
-
-    private boolean isAddParallelJoinDiscourseMarker(DSynTSentence dSynTSentence) {
-        return isAddJoinDiscourseMarker(dSynTSentence, TParallelGateway.class);
-    }
-
-    private boolean isAddJoinDiscourseMarker(DSynTSentence dSynTSentence, Class gatewayClass) {
-        for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
-            TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
-            if (tFlowElement instanceof TFlowNode) {
-                for (TFlowElement tFlowElementSource : bpmnWrapper.getFlowNodeSourceList((TFlowNode) tFlowElement)) {
-                    if (gatewayClass.isInstance(tFlowElementSource)) {
-                        if (bpmnWrapper.isGatewayJoin((TGateway) tFlowElementSource)) {
-                            return true;
-                        }
-                    }
+    private void insertConnectives(DSynTSentence dSynTSentence, int index, int textPlanSize) {
+        if (isAddExclusiveJoinDiscourseMarker(dSynTSentence)) {
+            insertConnective(dSynTSentence, Lexemes.XOR_JOIN_CONNECTIVE);
+        } else if (isAddInclusiveJoinDiscourseMarker(dSynTSentence)) {
+            insertConnective(dSynTSentence, Lexemes.OR_JOIN_CONNECTIVE);
+        } else if (isAddParallelJoinDiscourseMarker(dSynTSentence)) {
+            insertConnective(dSynTSentence, Lexemes.AND_JOIN_CONNECTIVE);
+        } else {
+            if (dSynTSentence.getExecutableFragment().sen_hasBullet) {
+                // Is a lateral sequence
+                if (isAddParallelDiscourseMarker(dSynTSentence)) {
+                    // Source is a parallel gateway (in the meantime, at the same time)
+                    insertParallelConnective(dSynTSentence);
+                } else if (isAddExclusiveInclusiveDiscourseMarker(dSynTSentence)) {
+                    // Source is a exclusive/inclusive gateway (first, second, third)
+                    adjustOrdinalIndex(currentLevel);
+                    insertOrdinalConnective(dSynTSentence, currentLevel);
+                }
+            } else {
+                if (isAddFinalDiscourseMarker(index, textPlanSize)) {
+                    insertConnective(dSynTSentence, Lexemes.SEQUENCE_FINAL_CONNECTIVE);
+                } else {
+                    insertSequentialConnective(dSynTSentence);
                 }
             }
         }
-        return false;
     }
 
     private boolean isAddParallelDiscourseMarker(DSynTSentence dSynTSentence) {
@@ -123,9 +106,10 @@ public class DiscourseMarker {
             }
         }
         return false;
+        // return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ANDSPLIT);
     }
 
-    private boolean isAddExclusiveDiscourseMarker(DSynTSentence dSynTSentence) {
+    private boolean isAddExclusiveInclusiveDiscourseMarker(DSynTSentence dSynTSentence) {
         for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
             TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
             if (tFlowElement instanceof TFlowNode) {
@@ -137,37 +121,53 @@ public class DiscourseMarker {
             }
         }
         return false;
+        // return isAddDiscourseMarker(dSynTSentence, ProcessElementType.XORSPLIT) || isAddDiscourseMarker(dSynTSentence, ProcessElementType.ORSPLIT);
     }
 
-    private void adjustOrdinalIndex(int currentLevel) {
-        if (currentLevel == lastLevel) {
-            int currentOrdinal = getCurrentOrdinal(currentLevel);
-            levelOrdinalMap.put(currentLevel, currentOrdinal + 1);
-        } else if (currentLevel > lastLevel) {
-            levelOrdinalMap.put(currentLevel, 1);
-        } else {
-            removeSubLevels(currentLevel);
-            int currentOrdinal = getCurrentOrdinal(currentLevel);
-            levelOrdinalMap.put(currentLevel, currentOrdinal + 1);
-        }
+    private boolean isAddExclusiveJoinDiscourseMarker(DSynTSentence dSynTSentence) {
+        //return isAddJoinDiscourseMarker(dSynTSentence, TExclusiveGateway.class);
+        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.XORJOIN);
     }
 
-    private void removeSubLevels(int currentLevel) {
-        Iterator iterator = levelOrdinalMap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry pair = (Map.Entry) iterator.next();
-            int keyLevel = (int) pair.getKey();
-            if (keyLevel > currentLevel) {
-                iterator.remove();
+    private boolean isAddInclusiveJoinDiscourseMarker(DSynTSentence dSynTSentence) {
+        //return isAddJoinDiscourseMarker(dSynTSentence, TInclusiveGateway.class);
+        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ORJOIN);
+    }
+
+    private boolean isAddParallelJoinDiscourseMarker(DSynTSentence dSynTSentence) {
+        //return isAddJoinDiscourseMarker(dSynTSentence, TParallelGateway.class);
+        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ANDJOIN);
+    }
+
+    private boolean isAddDiscourseMarker(DSynTSentence dSynTSentence, ProcessElementType processElementType) {
+        for (ProcessElementDocument processElementDocument : dSynTSentence.getProcessElementDocumentList()) {
+            if (processElementDocument.getProcessElementType().equals(processElementType)) {
+                return true;
             }
         }
+        return false;
     }
 
-    private int getCurrentOrdinal(int currentLevel) {
-        if (!levelOrdinalMap.containsKey(currentLevel)) {
-            levelOrdinalMap.put(currentLevel, 1);
+    /*
+    private boolean isAddJoinDiscourseMarker(DSynTSentence dSynTSentence, Class gatewayClass) {
+        for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
+            TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
+            if (tFlowElement instanceof TFlowNode) {
+                for (TFlowElement tFlowElementSource : bpmnWrapper.getFlowNodeSourceList((TFlowNode) tFlowElement)) {
+                    if (gatewayClass.isInstance(tFlowElementSource)) {
+                        if (bpmnWrapper.isGatewayJoin((TGateway) tFlowElementSource)) {
+                            return true;
+                        }
+                    }
+                }
+            }
         }
-        return levelOrdinalMap.get(currentLevel);
+        return false;
+    }
+    */
+
+    private boolean isAddFinalDiscourseMarker(int index, int textPlanSize) {
+        return index == textPlanSize - 1;
     }
 
     private void insertOrdinalConnective(DSynTSentence dSynTSentence, int currentLevel) {
@@ -181,13 +181,35 @@ public class DiscourseMarker {
         return ruleBasedNumberFormat.format(ordinalInt, "%spellout-ordinal");
     }
 
-    private void insertSequentialConnective(DSynTSentence dSynTSentence, int index, int textPlanSize) {
-        if (isLastSentenceText(index, textPlanSize)) {
-            insertConnective(dSynTSentence, Lexemes.SEQUENCE_FINAL_CONNECTIVE);
+    private void adjustOrdinalIndex(int currentLevel) {
+        if (currentLevel == lastLevel) {
+            int currentOrdinal = getCurrentOrdinalIndex(currentLevel);
+            levelOrdinalMap.put(currentLevel, currentOrdinal + 1);
+        } else if (currentLevel > lastLevel) {
+            levelOrdinalMap.put(currentLevel, 1);
         } else {
-            insertConnective(dSynTSentence, Lexemes.SEQUENCE_CONNECTIVES.get(indexSequentialConnectors));
+            removeSubLevels(currentLevel);
+            int currentOrdinal = getCurrentOrdinalIndex(currentLevel);
+            levelOrdinalMap.put(currentLevel, currentOrdinal + 1);
         }
-        adjustIndexSequentialConnectors();
+    }
+
+    private int getCurrentOrdinalIndex(int currentLevel) {
+        if (!levelOrdinalMap.containsKey(currentLevel)) {
+            levelOrdinalMap.put(currentLevel, 1);
+        }
+        return levelOrdinalMap.get(currentLevel);
+    }
+
+    private void removeSubLevels(int currentLevel) {
+        Iterator iterator = levelOrdinalMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry pair = (Map.Entry) iterator.next();
+            int keyLevel = (int) pair.getKey();
+            if (keyLevel > currentLevel) {
+                iterator.remove();
+            }
+        }
     }
 
     private void insertParallelConnective(DSynTSentence dSynTSentence) {
@@ -195,14 +217,15 @@ public class DiscourseMarker {
         adjustIndexParallelConnectors();
     }
 
+    private void insertSequentialConnective(DSynTSentence dSynTSentence) {
+        insertConnective(dSynTSentence, Lexemes.SEQUENCE_CONNECTIVES.get(indexSequentialConnectors));
+        adjustIndexSequentialConnectors();
+    }
+
     private void insertConnective(DSynTSentence dSynTSentence, String lexeme) {
         Element verb = dSynTSentence.getVerb();
         Document doc = dSynTSentence.getDSynT();
         IntermediateToDSynTConverter.insertConnective(doc, verb, lexeme);
-    }
-
-    private boolean isLastSentenceText(int index, int textPlanSize) {
-        return index == textPlanSize - 1;
     }
 
     private void adjustIndexSequentialConnectors() {

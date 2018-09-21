@@ -126,7 +126,7 @@ public class TextGenerator {
 
         // Discourse Marker (After, Then, In sequence, In the first procedure, In the meantime)
         DiscourseMarker discourseMarker = new DiscourseMarker();
-        sentencePlan = discourseMarker.insertSequenceConnectives(sentencePlan, tDefinitions);
+        sentencePlan = discourseMarker.insertConnectives(sentencePlan, tDefinitions);
 
         // Realization
         SurfaceRealizer surfaceRealizer = new SurfaceRealizer();

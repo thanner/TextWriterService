@@ -150,27 +150,38 @@ public class TextPlanner {
             passedFragments.add(convRecord.post);
         }
 
+        RPSTNode<ControlFlow, Node> nextNode = PlanningHelper.getNextNode(node, rpst);
+
         // JOIN
         if (passedFragments.size() > 0) {
             if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                // TODO: Verificar se existe alguma informação em passedFragments/Node que diz se o próximo elemento é um JOIN.
-                // TODO: SE NÃO FOR, NEM CRIA A SENTENÇA "THE PROCESS CONTINUES"
-                ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
-                eFrag.sen_level = level;
-                eFrag.bo_isSubject = true;
+                if (isNextNodeAJoin(node)) {
+                    ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
+                    eFrag.sen_level = level;
+                    eFrag.bo_isSubject = true;
+                    eFrag.sen_hasConnective = false;
 
-                ConditionFragment cFrag = passedFragments.get(0);
-                cFrag.sen_level = level;
+                    //ConditionFragment cFrag = passedFragments.get(0);
+                    //cFrag.sen_level = level;
 
-                DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, cFrag);
-                if (convRecord.post != null) {
-                    dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
+                    //DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, cFrag);
+                    DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+                    if (convRecord.post != null) {
+                        dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
+                    }
+                    sentencePlan.add(dsyntSentence);
                 }
-                sentencePlan.add(dsyntSentence);
                 passedFragments.clear();
             }
         }
 
+    }
+
+    // TODO: Verificar se existe alguma informação em passedFragments/Node que diz se o próximo elemento é um JOIN.
+    // TODO: SE NÃO FOR, NEM CRIA A SENTENÇA "THE PROCESS CONTINUES"
+    private boolean isNextNodeAJoin(RPSTNode<ControlFlow, Node> node) {
+        //PlanningHelper.algumaCoisa(node)?
+        return true;
     }
 
     private ConverterRecord getConverterRecord(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {
@@ -325,22 +336,17 @@ public class TextPlanner {
             convertToText(node, level);
         }
 
-        if (PlanningHelper.isXORSplit(node, rpst) || PlanningHelper.isORSplit(node, rpst) || PlanningHelper.isEventSplit(node, rpst)) {
+        if (isSplit(node)) {
             ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
             for (RPSTNode<ControlFlow, Node> path : paths) {
                 isTagWithBullet = true;
                 convertToText(path, level + 1);
             }
         }
+    }
 
-        if (PlanningHelper.isANDSplit(node, rpst)) {
-            ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
-            for (RPSTNode<ControlFlow, Node> path : paths) {
-                isTagWithBullet = true;
-                convertToText(path, level + 1);
-            }
-        }
-
+    private boolean isSplit(RPSTNode<ControlFlow, Node> node) {
+        return PlanningHelper.isXORSplit(node, rpst) || PlanningHelper.isORSplit(node, rpst) || PlanningHelper.isANDSplit(node, rpst) || PlanningHelper.isEventSplit(node, rpst);
     }
 
     private void addBondPostStatement(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
