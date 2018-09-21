@@ -85,6 +85,7 @@ public class DSynTMainSentence extends DSynTSentence {
 
             Element cObject = IntermediateToDSynTConverter.createBO(doc, sentences.get(0).getExecutableFragment());
             cVerb.appendChild(cObject);
+
         }
     }
 

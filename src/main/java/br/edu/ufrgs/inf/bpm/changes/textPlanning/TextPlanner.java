@@ -51,8 +51,6 @@ public class TextPlanner {
     private Map<Integer, String> bpmnIdMap;
     private String currentStartEventId = "Unknown Start Event id";
 
-    //private TemplateLoader loader;
-
     public TextPlanner(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelDeriver lDeriver, EnglishLabelHelper lHelper, String imperativeRole, boolean isImperative, boolean isAlternative, Map<Integer, String> bpmnIdMap) throws FileNotFoundException, JWNLException {
         this.rpst = rpst;
         this.process = process;
@@ -123,7 +121,8 @@ public class TextPlanner {
         addBondPreStatements(convRecord, level, node);
 
         // Pass precondition
-        // TODO: Join?
+        // TODO: Entender porque isso está aqui...
+        /*
         if (convRecord != null && convRecord.pre != null) {
             if (passedFragments.size() > 0) {
                 if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
@@ -139,6 +138,7 @@ public class TextPlanner {
             }
             passedFragments.add(convRecord.pre);
         }
+        */
 
         // Convert branches to Text
         convertBondToText(node, level);
@@ -150,6 +150,27 @@ public class TextPlanner {
         if (convRecord != null && convRecord.post != null) {
             passedFragments.add(convRecord.post);
         }
+
+        // TODO: ...e não aqui
+        // TODO: Adicionei pra servir de JOIN
+        if (passedFragments.size() > 0) {
+            if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
+                ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
+                eFrag.sen_level = level;
+                eFrag.bo_isSubject = true;
+
+                ConditionFragment cFrag = passedFragments.get(0);
+                cFrag.sen_level = level;
+
+                DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, cFrag);
+                if (convRecord.post != null) {
+                    dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
+                }
+                sentencePlan.add(dsyntSentence);
+                passedFragments.clear();
+            }
+        }
+
     }
 
     private ConverterRecord getConverterRecord(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {
@@ -157,7 +178,7 @@ public class TextPlanner {
 
         if (PlanningHelper.isLoop(node, rpst)) {
             convRecord = getLoopConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.XORSPLIT);
+            setProcessElementData(convRecord, node, ProcessElementType.XORSPLIT);
         }
         if (PlanningHelper.isSkip(node, rpst)) {
             convRecord = getSkipConverterRecord(orderedTopNodes, node);
@@ -166,21 +187,19 @@ public class TextPlanner {
         }
         if (PlanningHelper.isXORSplit(node, rpst)) {
             convRecord = getXORConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.XORJOIN);
+            setProcessElementData(convRecord, node, ProcessElementType.XORJOIN);
         }
         if (PlanningHelper.isEventSplit(node, rpst)) {
             convRecord = getXORConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.GATEWAYBASEDEVENTSPLIT);
+            setProcessElementData(convRecord, node, ProcessElementType.GATEWAYBASEDEVENTSPLIT);
         }
         if (PlanningHelper.isORSplit(node, rpst)) {
             convRecord = getORConverterRecord(node);
-            if (convRecord != null && convRecord.post != null) {
-                setProcessElementData(convRecord.post, node, ProcessElementType.ORJOIN);
-            }
+            setProcessElementData(convRecord, node, ProcessElementType.ORJOIN);
         }
         if (PlanningHelper.isANDSplit(node, rpst)) {
             convRecord = getANDConverterRecord(node);
-            setProcessElementData(convRecord.post, node, ProcessElementType.ANDJOIN);
+            setProcessElementData(convRecord, node, ProcessElementType.ANDJOIN);
         }
         return convRecord;
     }
@@ -237,12 +256,14 @@ public class TextPlanner {
 
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
+        // TODO: Já tem o método pra saber se o gateway possui label?
         // Labeled Case
         if (orPropRec.isGatewayLabeled()) {
             return null;
             // Unlabeled case
         } else {
-            return textToIntermediateConverter.convertORSimple(node, null, false);
+            ArrayList<RPSTNode<ControlFlow, Node>> orNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+            return textToIntermediateConverter.convertORSimple(node, null, false, orNodes.size());
         }
     }
 
@@ -255,9 +276,11 @@ public class TextPlanner {
         return converterRecord;
     }
 
-    private void setProcessElementData(ConditionFragment conditionFragment, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
-        conditionFragment.setProcessElementType(processElementType);
-        conditionFragment.setProcessElementId(getProcessElementId(node.getExit().getId()));
+    private void setProcessElementData(ConverterRecord convRecord, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
+        if (convRecord != null && convRecord.post != null) {
+            convRecord.post.setProcessElementType(processElementType);
+            convRecord.post.setProcessElementId(getProcessElementId(node.getExit().getId()));
+        }
     }
 
     private void addBondPreStatements(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
@@ -736,8 +759,8 @@ public class TextPlanner {
     private void addStartEventFragment(DSynTMainSentence dSynTSentence) {
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
-        dSynTSentence.getExecutableFragment().addMod(Lexemes.startEvent, modRecord);
-        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT, "", Lexemes.startEvent);
+        dSynTSentence.getExecutableFragment().addMod(Lexemes.START_EVENT_CONNECTIVE, modRecord);
+        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT, "", Lexemes.START_EVENT_CONNECTIVE);
         dSynTSentence.createDSynTRepresentation();
     }
 

@@ -53,27 +53,26 @@ public class TextToIntermediateConverter {
 
     // The following optional parallel paths are available.
 
-    public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor, boolean labeled) {
-        ConverterRecord record = null;
+    public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor, boolean labeled, int amountProcedures) {
+        Map<String, String> modificationMap = new HashMap<>();
+        modificationMap.put("@number", Integer.toString(amountProcedures));
 
-        templateLoader.loadTemplate(TemplateLoaderType.OR);
-        ExecutableFragment eFrag = new ExecutableFragment(
-                templateLoader.getAction(),
-                templateLoader.getObject(),
-                "", "");
+        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.OR, modificationMap);
+
         ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
         modRecord2.addAttribute("adv-type", "sentential");
         eFrag.addMod(templateLoader.getAddition(), modRecord2);
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
-        // eFrag.verb_IsPassive = true;
-        // eFrag.ver = true;
+        eFrag.verb_IsPassive = true;
+        eFrag.add_hasArticle = false;
+
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
         ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
         preStatements.add(new DSynTMainSentence(eFrag));
-        record = new ConverterRecord(null, null, preStatements, null);
-        return record;
+
+        return new ConverterRecord(null, null, preStatements, null);
     }
 
     // *********************************************************************************************
@@ -178,7 +177,8 @@ public class TextToIntermediateConverter {
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
-        // TODO: DEVERIA SER ASSIM MESMO? XOR_JOIN?
+        // JOIN
+        /*
         ConditionFragment post = FragmentGenerator.generateConditionFragment(TemplateLoaderType.XOR, modificationMap, ConditionFragment.TYPE_ONCE);
         post.verb_isPast = true;
         post.verb_IsPassive = true;
@@ -187,8 +187,9 @@ public class TextToIntermediateConverter {
         post.bo_hasArticle = false;
         post.setFragmentType(AbstractFragment.TYPE_JOIN);
         post.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        */
 
-        return new ConverterRecord(null, post, preStatements, null, null);
+        return new ConverterRecord(null, null, preStatements, null, null);
     }
 
     // *********************************************************************************************
@@ -542,6 +543,8 @@ public class TextToIntermediateConverter {
         preStatements.add(new DSynTMainSentence(eFrag));
 
         // Statement about negative case (process is finished)
+        // JOIN
+        /*
         ConditionFragment post = FragmentGenerator.generateConditionFragment(TemplateLoaderType.AND_JOIN, modificationMap, ConditionFragment.TYPE_AFTER);
         post.bo_isSubject = true;
         post.bo_isPlural = true;
@@ -549,8 +552,9 @@ public class TextToIntermediateConverter {
         post.sen_hasComma = true;
         post.addAssociation(Integer.valueOf(node.getEntry().getId()));
         post.setFragmentType(AbstractFragment.TYPE_JOIN);
+        */
 
-        return new ConverterRecord(null, post, preStatements, null, null);
+        return new ConverterRecord(null, null, preStatements, null, null);
     }
 
     public ConverterRecord convertANDSimple(RPSTNode<ControlFlow, Node> node, int activities, ArrayList<Node> conditionNodes) {

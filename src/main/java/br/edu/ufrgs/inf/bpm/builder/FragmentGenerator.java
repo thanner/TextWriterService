@@ -10,38 +10,30 @@ import java.util.Map;
 
 public class FragmentGenerator {
 
-    private static TemplateLoader loader = new TemplateLoader();
+    private static TemplateLoader templateLoader = new TemplateLoader();
 
-    public static ExecutableFragment generateExecutableFragment(TemplateLoaderType template) {
-        return generateExecutableFragment(template, "", new HashMap<>());
+    public static ExecutableFragment generateExecutableFragment(TemplateLoaderType templateLoaderType) {
+        return generateExecutableFragment(templateLoaderType, new HashMap<>());
     }
 
-    public static ExecutableFragment generateExecutableFragment(TemplateLoaderType template, String role) {
-        return generateExecutableFragment(template, role, new HashMap<>());
+    public static ExecutableFragment generateExecutableFragment(TemplateLoaderType templateLoaderType, Map<String, String> modificationMap) {
+        templateLoader.loadTemplate(templateLoaderType);
+        adjustModifications(modificationMap);
+        return new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), "", templateLoader.getAddition());
     }
 
-    public static ExecutableFragment generateExecutableFragment(TemplateLoaderType template, Map<String, String> modificationMap) {
-        return generateExecutableFragment(template, "", modificationMap);
+    public static ConditionFragment generateConditionFragment(TemplateLoaderType templateLoaderType, Map<String, String> modificationMap, int conditionFragment) {
+        templateLoader.loadTemplate(templateLoaderType);
+        adjustModifications(modificationMap);
+        return new ConditionFragment(templateLoader.getAction(), templateLoader.getObject(), "", templateLoader.getAddition(), conditionFragment, new HashMap<>());
     }
 
-    public static ExecutableFragment generateExecutableFragment(TemplateLoaderType template, String role, Map<String, String> modificationMap) {
-        loader.loadTemplate(template);
-        handlePlaceholders(modificationMap);
-        return new ExecutableFragment(loader.getAction(), loader.getObject(), role, loader.getAddition());
-    }
-
-    private static void handlePlaceholders(Map<String, String> modificationMap) {
+    private static void adjustModifications(Map<String, String> modificationMap) {
         for (Map.Entry<String, String> modification : modificationMap.entrySet()) {
-            loader.setAction(loader.getAction().replace(modification.getKey(), modification.getValue()));
-            loader.setObject(loader.getObject().replace(modification.getKey(), modification.getValue()));
-            loader.setAddition(loader.getAddition().replace(modification.getKey(), modification.getValue()));
+            templateLoader.setAction(templateLoader.getAction().replaceAll(modification.getKey(), modification.getValue()));
+            templateLoader.setObject(templateLoader.getObject().replaceAll(modification.getKey(), modification.getValue()));
+            templateLoader.setAddition(templateLoader.getAddition().replaceAll(modification.getKey(), modification.getValue()));
         }
-    }
-
-    public static ConditionFragment generateConditionFragment(TemplateLoaderType template, Map<String, String> modificationMap, int conditionFragmentType) {
-        loader.loadTemplate(template);
-        handlePlaceholders(modificationMap);
-        return new ConditionFragment(loader.getAction(), loader.getObject(), "", loader.getAddition(), conditionFragmentType, new HashMap<>());
     }
 
 }
