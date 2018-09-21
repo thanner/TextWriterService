@@ -26,8 +26,8 @@ public class Lexemes {
     public static final String AND_CONDITION = "AND";
     public static final String OR_CONDITION = "OR";
 
-    public static final String AND_JOIN_CONNECTIVE = "after each of these procedures";
-    public static final String XOR_JOIN_CONNECTIVE = "after one of these procedures";
+    public static final String AND_JOIN_CONNECTIVE = "after each case"; //after each of these procedures
+    public static final String XOR_JOIN_CONNECTIVE = "in any case"; //after one of these procedures
     public static final String OR_JOIN_CONNECTIVE = "afterwards";
 
     // public static String sequenceSentence = "AND"; // "and, in sequence,"

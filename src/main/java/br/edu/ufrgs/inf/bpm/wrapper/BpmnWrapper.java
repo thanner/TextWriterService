@@ -351,7 +351,7 @@ public class BpmnWrapper {
         return nameList;
     }
 
-    public List<TFlowElement> getFlowElementSourceList(TFlowNode tFlowNode) {
+    public List<TFlowElement> getFlowNodeSourceList(TFlowNode tFlowNode) {
         List<TFlowElement> elementSourceList = new ArrayList<>();
         for (QName qName : tFlowNode.getIncoming()) {
             TFlowElement tFlowElement = getFlowElementById(qName.getLocalPart());
@@ -364,6 +364,14 @@ public class BpmnWrapper {
             }
         }
         return elementSourceList;
+    }
+
+    public boolean isGatewaySplit(TGateway tGateway) {
+        return tGateway.getIncoming().size() < tGateway.getOutgoing().size();
+    }
+
+    public boolean isGatewayJoin(TGateway tGateway) {
+        return tGateway.getIncoming().size() > tGateway.getOutgoing().size();
     }
 
 }

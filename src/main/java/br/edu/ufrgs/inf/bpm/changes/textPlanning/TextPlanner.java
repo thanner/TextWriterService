@@ -121,7 +121,6 @@ public class TextPlanner {
         addBondPreStatements(convRecord, level, node);
 
         // Pass precondition
-        // TODO: Entender porque isso está aqui...
         /*
         if (convRecord != null && convRecord.pre != null) {
             if (passedFragments.size() > 0) {
@@ -151,10 +150,11 @@ public class TextPlanner {
             passedFragments.add(convRecord.post);
         }
 
-        // TODO: ...e não aqui
-        // TODO: Adicionei pra servir de JOIN
+        // JOIN
         if (passedFragments.size() > 0) {
             if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
+                // TODO: Verificar se existe alguma informação em passedFragments/Node que diz se o próximo elemento é um JOIN.
+                // TODO: SE NÃO FOR, NEM CRIA A SENTENÇA "THE PROCESS CONTINUES"
                 ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
                 eFrag.sen_level = level;
                 eFrag.bo_isSubject = true;
