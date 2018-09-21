@@ -1,6 +1,6 @@
-Sep 21, 2018 3:21:24 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp getInputFiles
+Sep 21, 2018 3:28:57 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp getInputFiles
 WARNING: InputFiles not loading
-Sep 21, 2018 3:21:25 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - and
-Sep 21, 2018 3:22:27 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Sep 21, 2018 3:28:59 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - xor
+Sep 21, 2018 3:29:10 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText - Done
