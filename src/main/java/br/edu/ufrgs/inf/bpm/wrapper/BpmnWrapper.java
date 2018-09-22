@@ -366,12 +366,31 @@ public class BpmnWrapper {
         return elementSourceList;
     }
 
+    public List<TFlowElement> getFlowNodeTargetList(TFlowNode tFlowNode) {
+        List<TFlowElement> elementTargetList = new ArrayList<>();
+        for (QName qName : tFlowNode.getOutgoing()) {
+            TFlowElement tFlowElement = getFlowElementById(qName.getLocalPart());
+            if (tFlowElement instanceof TSequenceFlow) {
+                TSequenceFlow tSequenceFlow = (TSequenceFlow) tFlowElement;
+                Object target = tSequenceFlow.getTargetRef();
+                if (target instanceof TFlowElement) {
+                    elementTargetList.add((TFlowElement) target);
+                }
+            }
+        }
+        return elementTargetList;
+    }
+
     public boolean isGatewaySplit(TGateway tGateway) {
         return tGateway.getIncoming().size() < tGateway.getOutgoing().size();
     }
 
     public boolean isGatewayJoin(TGateway tGateway) {
         return tGateway.getIncoming().size() > tGateway.getOutgoing().size();
+    }
+
+    public TDefinitions getDefinitions() {
+        return this.definitions;
     }
 
 }

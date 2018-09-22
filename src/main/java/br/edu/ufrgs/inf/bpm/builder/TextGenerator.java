@@ -109,7 +109,7 @@ public class TextGenerator {
         // }
 
         // Convert to Text
-        TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false, bpmnIdMap);
+        TextPlanner converter = new TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false, bpmnIdMap, tDefinitions);
         // processToText.textPlanning.TextPlanner converter = new processToText.textPlanning.TextPlanner(rpst, model, lDeriver, lHelper, imperativeRole, imperative, false);
         converter.convertToText(rpst.getRoot(), 0);
         ArrayList<DSynTSentence> sentencePlan = converter.getSentencePlan();

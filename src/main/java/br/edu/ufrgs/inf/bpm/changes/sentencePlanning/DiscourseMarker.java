@@ -60,6 +60,8 @@ public class DiscourseMarker {
 
 
     private void insertConnectives(DSynTSentence dSynTSentence, int index, int textPlanSize) {
+        List<ProcessElementDocument> processElementDocumentList = dSynTSentence.getProcessElementDocumentList();
+
         if (isAddExclusiveJoinDiscourseMarker(dSynTSentence)) {
             insertConnective(dSynTSentence, Lexemes.XOR_JOIN_CONNECTIVE);
         } else if (isAddInclusiveJoinDiscourseMarker(dSynTSentence)) {
@@ -125,21 +127,26 @@ public class DiscourseMarker {
     }
 
     private boolean isAddExclusiveJoinDiscourseMarker(DSynTSentence dSynTSentence) {
-        //return isAddJoinDiscourseMarker(dSynTSentence, TExclusiveGateway.class);
-        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.XORJOIN);
+        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.XORJOIN, TExclusiveGateway.class);
     }
 
     private boolean isAddInclusiveJoinDiscourseMarker(DSynTSentence dSynTSentence) {
-        //return isAddJoinDiscourseMarker(dSynTSentence, TInclusiveGateway.class);
-        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ORJOIN);
+        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ORJOIN, TInclusiveGateway.class);
     }
 
     private boolean isAddParallelJoinDiscourseMarker(DSynTSentence dSynTSentence) {
-        //return isAddJoinDiscourseMarker(dSynTSentence, TParallelGateway.class);
-        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ANDJOIN);
+        return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ANDJOIN, TParallelGateway.class);
     }
 
-    private boolean isAddDiscourseMarker(DSynTSentence dSynTSentence, ProcessElementType processElementType) {
+    private boolean isAddDiscourseMarker(DSynTSentence dSynTSentence, ProcessElementType processElementType, Class gatewayClass) {
+        if (dSynTSentence.getExecutableFragment().isJoinSentence) {
+            return isAddDiscourseMarkerJoinSentence(dSynTSentence, processElementType);
+        } else {
+            return isAddJoinDiscourseMarkerNormalSentence(dSynTSentence, gatewayClass);
+        }
+    }
+
+    private boolean isAddDiscourseMarkerJoinSentence(DSynTSentence dSynTSentence, ProcessElementType processElementType) {
         for (ProcessElementDocument processElementDocument : dSynTSentence.getProcessElementDocumentList()) {
             if (processElementDocument.getProcessElementType().equals(processElementType)) {
                 return true;
@@ -148,8 +155,7 @@ public class DiscourseMarker {
         return false;
     }
 
-    /*
-    private boolean isAddJoinDiscourseMarker(DSynTSentence dSynTSentence, Class gatewayClass) {
+    private boolean isAddJoinDiscourseMarkerNormalSentence(DSynTSentence dSynTSentence, Class gatewayClass) {
         for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
             TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
             if (tFlowElement instanceof TFlowNode) {
@@ -164,7 +170,6 @@ public class DiscourseMarker {
         }
         return false;
     }
-    */
 
     private boolean isAddFinalDiscourseMarker(int index, int textPlanSize) {
         return index == textPlanSize - 1;

@@ -66,13 +66,21 @@ public class TextToIntermediateConverter {
         eFrag.bo_hasArticle = false;
         eFrag.verb_IsPassive = true;
         eFrag.add_hasArticle = false;
-
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-
         ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
         preStatements.add(new DSynTMainSentence(eFrag));
 
-        return new ConverterRecord(null, null, preStatements, null);
+        // JOIN
+        ConditionFragment post = FragmentGenerator.generateConditionFragment(TemplateLoaderType.OR, modificationMap, ConditionFragment.TYPE_ONCE);
+        post.verb_isPast = true;
+        post.verb_IsPassive = true;
+        post.bo_isSubject = true;
+        post.bo_isPlural = false;
+        post.bo_hasArticle = false;
+        post.setFragmentType(AbstractFragment.TYPE_JOIN);
+        post.addAssociation(Integer.valueOf(node.getEntry().getId()));
+
+        return new ConverterRecord(null, post, preStatements, null);
     }
 
     // *********************************************************************************************

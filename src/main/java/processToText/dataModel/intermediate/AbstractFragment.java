@@ -51,6 +51,7 @@ public abstract class AbstractFragment {
     public boolean sen_hasColon = false;
     public boolean sen_before = false;
     public boolean role_isImperative = false;
+    public boolean isJoinSentence = false;
     private String action;
     private String bo;
     private String role;

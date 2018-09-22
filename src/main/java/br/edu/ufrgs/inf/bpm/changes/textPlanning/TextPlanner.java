@@ -4,12 +4,17 @@ import br.edu.ufrgs.inf.bpm.builder.FragmentGenerator;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
 import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
 import de.hpi.bpt.process.ControlFlow;
 import de.hpi.bpt.process.Node;
 import de.hpi.bpt.process.Process;
 import net.didion.jwnl.JWNLException;
+import org.omg.spec.bpmn._20100524.model.TDefinitions;
+import org.omg.spec.bpmn._20100524.model.TFlowElement;
+import org.omg.spec.bpmn._20100524.model.TFlowNode;
+import org.omg.spec.bpmn._20100524.model.TGateway;
 import org.w3c.dom.Document;
 import processToText.contentDetermination.extraction.GatewayExtractor;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelDeriver;
@@ -50,8 +55,9 @@ public class TextPlanner {
     private boolean isEnd = false;
     private Map<Integer, String> bpmnIdMap;
     private String currentStartEventId = "Unknown Start Event id";
+    private BpmnWrapper bpmnWrapper;
 
-    public TextPlanner(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelDeriver lDeriver, EnglishLabelHelper lHelper, String imperativeRole, boolean isImperative, boolean isAlternative, Map<Integer, String> bpmnIdMap) throws FileNotFoundException, JWNLException {
+    public TextPlanner(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelDeriver lDeriver, EnglishLabelHelper lHelper, String imperativeRole, boolean isImperative, boolean isAlternative, Map<Integer, String> bpmnIdMap, TDefinitions tDefinitions) throws FileNotFoundException, JWNLException {
         this.rpst = rpst;
         this.process = process;
         this.lHelper = lHelper;
@@ -64,6 +70,7 @@ public class TextPlanner {
         this.imperativeRole = imperativeRole;
         this.isAlternative = isAlternative;
         this.bpmnIdMap = bpmnIdMap;
+        this.bpmnWrapper = new BpmnWrapper(tDefinitions);
         //this.loader = new TemplateLoader();
     }
 
@@ -150,16 +157,16 @@ public class TextPlanner {
             passedFragments.add(convRecord.post);
         }
 
-        RPSTNode<ControlFlow, Node> nextNode = PlanningHelper.getNextNode(node, rpst);
-
         // JOIN
         if (passedFragments.size() > 0) {
             if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                if (isNextNodeAJoin(node)) {
+                if (isNextElementAJoin(convRecord.post)) {
                     ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
                     eFrag.sen_level = level;
                     eFrag.bo_isSubject = true;
                     eFrag.sen_hasConnective = false;
+
+                    eFrag.isJoinSentence = true;
 
                     //ConditionFragment cFrag = passedFragments.get(0);
                     //cFrag.sen_level = level;
@@ -177,11 +184,19 @@ public class TextPlanner {
 
     }
 
-    // TODO: Verificar se existe alguma informação em passedFragments/Node que diz se o próximo elemento é um JOIN.
-    // TODO: SE NÃO FOR, NEM CRIA A SENTENÇA "THE PROCESS CONTINUES"
-    private boolean isNextNodeAJoin(RPSTNode<ControlFlow, Node> node) {
-        //PlanningHelper.algumaCoisa(node)?
-        return true;
+    private boolean isNextElementAJoin(ConditionFragment conditionFragment) {
+        TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(conditionFragment.getProcessElementId());
+        if (tFlowElement instanceof TFlowNode) {
+            for (TFlowElement tFlowElementTarget : bpmnWrapper.getFlowNodeTargetList((TFlowNode) tFlowElement)) {
+                if (tFlowElementTarget instanceof TGateway) {
+                    if (bpmnWrapper.isGatewayJoin((TGateway) tFlowElementTarget)) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
     private ConverterRecord getConverterRecord(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {
@@ -873,7 +888,7 @@ public class TextPlanner {
                 FormatConverter rpstConverter = new FormatConverter();
                 Process p = rpstConverter.transformToRPSTFormat(alternative);
                 RPST<ControlFlow, Node> rpst = new RPST<ControlFlow, Node>(p);
-                TextPlanner converter = new TextPlanner(rpst, alternative, lDeriver, lHelper, imperativeRole, isImperative, true, bpmnIdMap);
+                TextPlanner converter = new TextPlanner(rpst, alternative, lDeriver, lHelper, imperativeRole, isImperative, true, bpmnIdMap, bpmnWrapper.getDefinitions());
                 PlanningHelper.printTree(rpst.getRoot(), 0, rpst);
                 converter.convertToText(rpst.getRoot(), level + 1);
                 ArrayList<DSynTSentence> subSentencePlan = converter.getSentencePlan();
