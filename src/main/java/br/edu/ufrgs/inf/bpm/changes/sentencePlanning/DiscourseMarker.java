@@ -14,6 +14,7 @@ import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
 import processToText.textPlanning.IntermediateToDSynTConverter;
 
+import javax.xml.namespace.QName;
 import java.util.*;
 
 public class DiscourseMarker {
@@ -63,21 +64,26 @@ public class DiscourseMarker {
         List<ProcessElementDocument> processElementDocumentList = dSynTSentence.getProcessElementDocumentList();
 
         if (isAddExclusiveJoinDiscourseMarker(dSynTSentence)) {
-            insertConnective(dSynTSentence, Lexemes.XOR_JOIN_CONNECTIVE);
+            insertJoinConnective(dSynTSentence, Lexemes.XOR_JOIN_CONNECTIVE, TExclusiveGateway.class, ProcessElementType.XORJOIN);
         } else if (isAddInclusiveJoinDiscourseMarker(dSynTSentence)) {
-            insertConnective(dSynTSentence, Lexemes.OR_JOIN_CONNECTIVE);
+            insertJoinConnective(dSynTSentence, Lexemes.OR_JOIN_CONNECTIVE, TInclusiveGateway.class, ProcessElementType.ORJOIN);
         } else if (isAddParallelJoinDiscourseMarker(dSynTSentence)) {
-            insertConnective(dSynTSentence, Lexemes.AND_JOIN_CONNECTIVE);
+            insertJoinConnective(dSynTSentence, Lexemes.AND_JOIN_CONNECTIVE, TParallelGateway.class, ProcessElementType.ANDJOIN);
         } else {
+            // Is a lateral sequence
             if (dSynTSentence.getExecutableFragment().sen_hasBullet) {
-                // Is a lateral sequence
                 if (isAddParallelDiscourseMarker(dSynTSentence)) {
                     // Source is a parallel gateway (in the meantime, at the same time)
                     insertParallelConnective(dSynTSentence);
                 } else if (isAddExclusiveInclusiveDiscourseMarker(dSynTSentence)) {
-                    // Source is a exclusive/inclusive gateway (first, second, third)
-                    adjustOrdinalIndex(currentLevel);
-                    insertOrdinalConnective(dSynTSentence, currentLevel);
+                    // Source is a exclusive/inclusive gateway
+                    if (allGatewayPathsHasLabels(dSynTSentence)) {
+                        String condition = getCondition(dSynTSentence);
+                        insertIfConnective(dSynTSentence, condition);
+                    } else {
+                        adjustOrdinalIndex(currentLevel);
+                        insertOrdinalConnective(dSynTSentence, currentLevel);
+                    }
                 }
             } else {
                 if (isAddFinalDiscourseMarker(index, textPlanSize)) {
@@ -87,6 +93,57 @@ public class DiscourseMarker {
                 }
             }
         }
+    }
+
+    private String getCondition(DSynTSentence dSynTSentence) {
+        TFlowNode tFlowNode = getFlowNodeHasGatewayAsSource(dSynTSentence);
+        TGateway tGateway = getGatewaySource(dSynTSentence);
+        assert tFlowNode != null;
+        for (QName qName : tFlowNode.getIncoming()) {
+            TSequenceFlow sequenceFlow = (TSequenceFlow) bpmnWrapper.getFlowElementByQName(qName);
+            if (sequenceFlow.getSourceRef().equals(tGateway)) {
+                return sequenceFlow.getName();
+            }
+        }
+        return "unknown";
+    }
+
+    private boolean allGatewayPathsHasLabels(DSynTSentence dSynTSentence) {
+        TGateway tGateway = getGatewaySource(dSynTSentence);
+        if (tGateway != null) {
+            return bpmnWrapper.isAllGatewayPathsHasLabels(tGateway);
+        } else {
+            return false;
+        }
+    }
+
+    private TGateway getGatewaySource(DSynTSentence dSynTSentence) {
+        for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
+            TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
+            if (tFlowElement instanceof TFlowNode) {
+                for (TFlowElement tFlowElementSource : bpmnWrapper.getFlowNodeSourceList((TFlowNode) tFlowElement)) {
+                    if (tFlowElementSource instanceof TGateway) {
+                        return (TGateway) tFlowElementSource;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private TFlowNode getFlowNodeHasGatewayAsSource(DSynTSentence dSynTSentence) {
+        for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
+            TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
+            if (tFlowElement instanceof TFlowNode) {
+                TFlowNode tFlowNode = (TFlowNode) tFlowElement;
+                for (TFlowElement tFlowElementSource : bpmnWrapper.getFlowNodeSourceList((TFlowNode) tFlowElement)) {
+                    if (tFlowElementSource instanceof TGateway) {
+                        return tFlowNode;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     private boolean isAddParallelDiscourseMarker(DSynTSentence dSynTSentence) {
@@ -175,6 +232,11 @@ public class DiscourseMarker {
         return index == textPlanSize - 1;
     }
 
+    private void insertIfConnective(DSynTSentence dSynTSentence, String condition) {
+        String lexeme = Lexemes.IF_CONNECTIVE.replace("@condition", condition.trim());
+        insertConnective(dSynTSentence, lexeme);
+    }
+
     private void insertOrdinalConnective(DSynTSentence dSynTSentence, int currentLevel) {
         int ordinalInt = levelOrdinalMap.get(currentLevel);
         String lexeme = Lexemes.ORDINAL_CONNECTIVE.replaceAll("@ordinal", getOrdinal(ordinalInt));
@@ -225,6 +287,58 @@ public class DiscourseMarker {
     private void insertSequentialConnective(DSynTSentence dSynTSentence) {
         insertConnective(dSynTSentence, Lexemes.SEQUENCE_CONNECTIVES.get(indexSequentialConnectors));
         adjustIndexSequentialConnectors();
+    }
+
+    private void insertJoinConnective(DSynTSentence dSynTSentence, String lexeme, Class gatewayClass, ProcessElementType processElementType) {
+        TGateway tGateway = getGateway(dSynTSentence, gatewayClass, processElementType);
+        String gatewayId = "";
+        if (tGateway != null) {
+            gatewayId = tGateway.getId();
+            removeCurrentReferences(gatewayId, dSynTSentence.getProcessElementDocumentList());
+        }
+
+        ProcessElementDocument processElementDocument = new ProcessElementDocument();
+        processElementDocument.setProcessElementId(gatewayId);
+        processElementDocument.setProcessElementType(processElementType);
+        processElementDocument.setSentence(lexeme);
+        processElementDocument.setResource("");
+        dSynTSentence.getProcessElementDocumentList().add(processElementDocument);
+
+        insertConnective(dSynTSentence, lexeme);
+    }
+
+    private TGateway getGateway(DSynTSentence dSynTSentence, Class gatewayClass, ProcessElementType processElementType) {
+        if (dSynTSentence.getExecutableFragment().isJoinSentence) {
+            for (ProcessElementDocument processElementDocument : dSynTSentence.getProcessElementDocumentList()) {
+                if (processElementDocument.getProcessElementType().equals(processElementType)) {
+                    return (TGateway) bpmnWrapper.getFlowElementById(processElementDocument.getProcessElementId());
+                }
+            }
+        } else {
+            for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
+                TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
+                if (tFlowElement instanceof TFlowNode) {
+                    for (TFlowElement tFlowElementSource : bpmnWrapper.getFlowNodeSourceList((TFlowNode) tFlowElement)) {
+                        if (gatewayClass.isInstance(tFlowElementSource)) {
+                            if (bpmnWrapper.isGatewayJoin((TGateway) tFlowElementSource)) {
+                                return (TGateway) tFlowElementSource;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private void removeCurrentReferences(String processElementId, List<ProcessElementDocument> processElementDocumentList) {
+        Iterator iterator = processElementDocumentList.iterator();
+        while (iterator.hasNext()) {
+            ProcessElementDocument processElementDocument = (ProcessElementDocument) iterator.next();
+            if (processElementDocument.getProcessElementId().equals(processElementId)) {
+                iterator.remove();
+            }
+        }
     }
 
     private void insertConnective(DSynTSentence dSynTSentence, String lexeme) {

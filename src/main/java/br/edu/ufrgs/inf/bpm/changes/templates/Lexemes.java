@@ -19,7 +19,9 @@ public class Lexemes {
 
     public static final String ORDINAL_CONNECTIVE = "in the @ordinal procedure";
 
-    public static final String START_EVENT_CONNECTIVE = "the process starts with";
+    public static final String IF_CONNECTIVE = "if condition \"@condition\"";
+
+    public static final String START_EVENT_CONNECTIVE = "the process starts when"; // TODO: Pode ser with, mas ai deixa de ser does e vira doing
     public static final String SEQUENCE_FINAL_CONNECTIVE = "finally";
 
     public static final String SENTENCE_AGGREGATION = "and then";

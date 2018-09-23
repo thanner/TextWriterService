@@ -283,6 +283,10 @@ public class BpmnWrapper {
         return null;
     }
 
+    public TFlowElement getFlowElementByQName(QName qName) {
+        return getFlowElementById(qName.getLocalPart());
+    }
+
     public void deleteFlowElementById(String flowElementId) {
         for (TProcess tProcess : getProcessList()) {
             tProcess.getFlowElement().removeIf(flowElement -> flowElement.getValue().getId() != null && flowElement.getValue().getId().equals(flowElementId));
@@ -354,7 +358,7 @@ public class BpmnWrapper {
     public List<TFlowElement> getFlowNodeSourceList(TFlowNode tFlowNode) {
         List<TFlowElement> elementSourceList = new ArrayList<>();
         for (QName qName : tFlowNode.getIncoming()) {
-            TFlowElement tFlowElement = getFlowElementById(qName.getLocalPart());
+            TFlowElement tFlowElement = getFlowElementByQName(qName);
             if (tFlowElement instanceof TSequenceFlow) {
                 TSequenceFlow tSequenceFlow = (TSequenceFlow) tFlowElement;
                 Object source = tSequenceFlow.getSourceRef();
@@ -369,7 +373,7 @@ public class BpmnWrapper {
     public List<TFlowElement> getFlowNodeTargetList(TFlowNode tFlowNode) {
         List<TFlowElement> elementTargetList = new ArrayList<>();
         for (QName qName : tFlowNode.getOutgoing()) {
-            TFlowElement tFlowElement = getFlowElementById(qName.getLocalPart());
+            TFlowElement tFlowElement = getFlowElementByQName(qName);
             if (tFlowElement instanceof TSequenceFlow) {
                 TSequenceFlow tSequenceFlow = (TSequenceFlow) tFlowElement;
                 Object target = tSequenceFlow.getTargetRef();
@@ -379,6 +383,18 @@ public class BpmnWrapper {
             }
         }
         return elementTargetList;
+    }
+
+    public boolean isAllGatewayPathsHasLabels(TGateway tGateway) {
+        for (QName qName : tGateway.getOutgoing()) {
+            TFlowElement tFlowElement = getFlowElementByQName(qName);
+            if (tFlowElement instanceof TSequenceFlow) {
+                if (tFlowElement.getName().isEmpty()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean isGatewaySplit(TGateway tGateway) {
@@ -392,5 +408,4 @@ public class BpmnWrapper {
     public TDefinitions getDefinitions() {
         return this.definitions;
     }
-
 }

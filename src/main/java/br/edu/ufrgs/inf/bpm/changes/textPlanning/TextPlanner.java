@@ -123,65 +123,66 @@ public class TextPlanner {
 
     private void handleBond(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) throws FileNotFoundException, JWNLException {
         ConverterRecord convRecord = getConverterRecord(node, orderedTopNodes);
+        // Nor simple
+        if (convRecord != null) {
+            // Add pre statements
+            addBondPreStatements(convRecord, level, node);
 
-        // Add pre statements
-        addBondPreStatements(convRecord, level, node);
+            // Pass precondition
+            /*
+            if (convRecord != null && convRecord.pre != null) {
+                if (passedFragments.size() > 0) {
+                    if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
+                        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
+                        eFrag.bo_isSubject = true;
+                        DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
+                        if (convRecord.post != null) {
+                            dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
+                        }
+                        sentencePlan.add(dsyntSentence);
+                        passedFragments.clear();
+                    }
+                }
+                passedFragments.add(convRecord.pre);
+            }
+            */
 
-        // Pass precondition
-        /*
-        if (convRecord != null && convRecord.pre != null) {
+            // Convert branches to Text
+            convertBondToText(node, level);
+
+            // Add post statement to sentence plan
+            addBondPostStatement(convRecord, level, node);
+
+            // Pass post fragment
+            if (convRecord != null && convRecord.post != null) {
+                passedFragments.add(convRecord.post);
+            }
+
+            // JOIN
             if (passedFragments.size() > 0) {
                 if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                    ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
-                    eFrag.bo_isSubject = true;
-                    DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, passedFragments.get(0));
-                    if (convRecord.post != null) {
-                        dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
+                    if (isNextElementAJoin(convRecord.post)) {
+                        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
+                        eFrag.sen_level = level;
+                        eFrag.bo_isSubject = true;
+                        eFrag.sen_hasConnective = false;
+
+                        eFrag.isJoinSentence = true;
+
+                        //ConditionFragment cFrag = passedFragments.get(0);
+                        //cFrag.sen_level = level;
+
+                        //DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, cFrag);
+                        DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+                        if (convRecord.post != null) {
+                            dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
+                        }
+                        sentencePlan.add(dsyntSentence);
                     }
-                    sentencePlan.add(dsyntSentence);
                     passedFragments.clear();
                 }
             }
-            passedFragments.add(convRecord.pre);
         }
-        */
-
-        // Convert branches to Text
-        convertBondToText(node, level);
-
-        // Add post statement to sentence plan
-        addBondPostStatement(convRecord, level, node);
-
-        // Pass post fragment
-        if (convRecord != null && convRecord.post != null) {
-            passedFragments.add(convRecord.post);
-        }
-
-        // JOIN
-        if (passedFragments.size() > 0) {
-            if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                if (isNextElementAJoin(convRecord.post)) {
-                    ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
-                    eFrag.sen_level = level;
-                    eFrag.bo_isSubject = true;
-                    eFrag.sen_hasConnective = false;
-
-                    eFrag.isJoinSentence = true;
-
-                    //ConditionFragment cFrag = passedFragments.get(0);
-                    //cFrag.sen_level = level;
-
-                    //DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, cFrag);
-                    DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
-                    if (convRecord.post != null) {
-                        dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
-                    }
-                    sentencePlan.add(dsyntSentence);
-                }
-                passedFragments.clear();
-            }
-        }
-
     }
 
     private boolean isNextElementAJoin(ConditionFragment conditionFragment) {
@@ -263,11 +264,10 @@ public class TextPlanner {
     }
 
     private ConverterRecord getXORConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
-        // Labeled Case with Yes/No - arcs and Max. Depth of 1
-        if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true && propRec.getMaxPathDepth() == 1) {
+        GatewayPropertyRecord xorPropertyRecord = new GatewayPropertyRecord(node, rpst, process);
+        if (xorPropertyRecord.isGatewayLabeled() && xorPropertyRecord.hasYNArcs() && xorPropertyRecord.getMaxPathDepth() == 1) {
             GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
-            // Add sentence
+            // Labeled Case with Yes/No - arcs and Max. Depth of 1
             for (DSynTSentence dSynTSentence : textToIntermediateConverter.convertXORSimple(node, gwExtractor)) {
                 dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
                 sentencePlan.add(dSynTSentence);
@@ -281,10 +281,9 @@ public class TextPlanner {
     }
 
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
-        // TODO: Já tem o método pra saber se o gateway possui label?
+        GatewayPropertyRecord orPropertyRecord = new GatewayPropertyRecord(node, rpst, process);
         // Labeled Case
-        if (orPropRec.isGatewayLabeled()) {
+        if (orPropertyRecord.isGatewayLabeled()) {
             return null;
             // Unlabeled case
         } else {
@@ -294,12 +293,8 @@ public class TextPlanner {
     }
 
     private ConverterRecord getANDConverterRecord(RPSTNode<ControlFlow, Node> node) {
-
         ArrayList<RPSTNode<ControlFlow, Node>> andNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
-
-        // Only General Case, no need for non-bulletin and-branches
-        ConverterRecord converterRecord = textToIntermediateConverter.convertANDGeneral(node, andNodes.size(), null);
-        return converterRecord;
+        return textToIntermediateConverter.convertANDGeneral(node, andNodes.size());
     }
 
     private void setProcessElementData(ConverterRecord convRecord, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {

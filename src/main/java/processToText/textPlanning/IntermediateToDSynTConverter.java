@@ -310,7 +310,6 @@ public class IntermediateToDSynTConverter {
         mod.setAttribute("lexeme", lemma);
         mod.setAttribute("punct", "comma");
         verb.appendChild(mod);
-
     }
 
 }

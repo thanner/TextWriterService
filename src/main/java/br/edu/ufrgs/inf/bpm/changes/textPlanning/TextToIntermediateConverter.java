@@ -100,49 +100,35 @@ public class TextToIntermediateConverter {
                 if (tNode.getEntry() == node.getEntry()) {
                     for (Arc arc : process.getArcs().values()) {
                         System.out.println(arc.getLabel());
-                        if (arc.getSource().getId() == Integer.valueOf(tNode
-                                .getEntry().getId())
-                                && arc.getTarget().getId() == Integer
-                                .valueOf(tNode.getExit().getId())) {
+                        if (arc.getSource().getId() == Integer.valueOf(tNode.getEntry().getId()) &&
+                                arc.getTarget().getId() == Integer.valueOf(tNode.getExit().getId())) {
                             if (arc.getLabel().toLowerCase().equals("yes")) {
-                                Activity a = process.getActivity(Integer
-                                        .valueOf(tNode.getExit().getId()));
+                                Activity a = process.getActivity(Integer.valueOf(tNode.getExit().getId()));
                                 Annotation anno = a.getAnnotations().get(0);
                                 String action = anno.getActions().get(0);
                                 String bo = anno.getBusinessObjects().get(0);
                                 role = a.getLane().getName();
-
                                 // role = getRole(tNode);
-
                                 String addition = anno.getAddition();
-                                eFragYes = new ExecutableFragment(action, bo,
-                                        role, addition);
-                                eFragYes.addAssociation(Integer.valueOf(node
-                                        .getExit().getId()));
+
+                                eFragYes = new ExecutableFragment(action, bo, role, addition);
+                                eFragYes.addAssociation(Integer.valueOf(node.getExit().getId()));
                             }
                             if (arc.getLabel().toLowerCase().equals("no")) {
-                                Activity a = process.getActivity(Integer
-                                        .valueOf(tNode.getExit().getId()));
+                                Activity a = process.getActivity(Integer.valueOf(tNode.getExit().getId()));
                                 Annotation anno = a.getAnnotations().get(0);
                                 String action = anno.getActions().get(0);
                                 String bo = anno.getBusinessObjects().get(0);
-
                                 role = a.getLane().getName();
                                 // role = getRole(tNode);
-
                                 String addition = anno.getAddition();
-                                eFragNo = new ExecutableFragment(action, bo,
-                                        role, addition);
 
-                                ModifierRecord modRecord = new ModifierRecord(
-                                        ModifierRecord.TYPE_ADV,
-                                        ModifierRecord.TARGET_VERB);
-                                modRecord
-                                        .addAttribute("adv-type", "sentential");
+                                eFragNo = new ExecutableFragment(action, bo, role, addition);
+                                ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+                                modRecord.addAttribute("adv-type", "sentential");
                                 eFragNo.addMod("otherwise", modRecord);
                                 eFragNo.sen_hasConnective = true;
-                                eFragNo.addAssociation(Integer.valueOf(node
-                                        .getExit().getId()));
+                                eFragNo.addAssociation(Integer.valueOf(node.getExit().getId()));
                             }
                         }
                     }
@@ -157,19 +143,65 @@ public class TextToIntermediateConverter {
         cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
         // If imperative mode
-        if (imperative == true && imperativeRole.equals(role) == true) {
+        if (imperative && imperativeRole.equals(role)) {
             eFragNo.setRole("");
             eFragNo.verb_isImperative = true;
             eFragYes.setRole("");
             eFragYes.verb_isImperative = true;
         }
-        DSynTConditionSentence dsyntSentence1 = new DSynTConditionSentence(
-                eFragYes, cFrag);
+
+        DSynTConditionSentence dsyntSentence1 = new DSynTConditionSentence(eFragYes, cFrag);
         DSynTMainSentence dsyntSentence2 = new DSynTMainSentence(eFragNo);
         ArrayList<DSynTSentence> sentences = new ArrayList<DSynTSentence>();
         sentences.add(dsyntSentence1);
         sentences.add(dsyntSentence2);
+
         return sentences;
+    }
+
+    /*
+    public List<DSynTSentence> convertXORLabeled(RPSTNode<ControlFlow,Node> node, GatewayExtractor gwExtractor) {
+        List<DSynTSentence> sentences = new ArrayList<>();
+
+        String role = "";
+
+        ArrayList<RPSTNode<ControlFlow, Node>> pNodeList = new ArrayList<>();
+        pNodeList.addAll(rpst.getChildren(node));
+        for (RPSTNode<ControlFlow, Node> pNode : pNodeList) {
+            for (RPSTNode<ControlFlow, Node> tNode : rpst.getChildren(pNode)) {
+                if (tNode.getEntry() == node.getEntry()) {
+                    for (Arc arc : process.getArcs().values()) {
+                        if (arc.getSource().getId() == Integer.valueOf(tNode.getEntry().getId())
+                                && arc.getTarget().getId() == Integer.valueOf(tNode.getExit().getId())) {
+                            Activity a = process.getActivity(Integer.valueOf(tNode.getExit().getId()));
+                            Annotation anno = a.getAnnotations().get(0);
+                            String action = anno.getActions().get(0);
+                            String bo = anno.getBusinessObjects().get(0);
+                            role = a.getLane().getName();
+                            // role = getRole(tNode);
+                            String addition = anno.getAddition();
+
+                            ExecutableFragment eFrag = new ExecutableFragment(action, bo, role, addition);
+                            eFrag.addAssociation(Integer.valueOf(node.getExit().getId()));
+                            DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, createConditionalFragment(node, gwExtractor));
+                            sentences.add(dsyntSentence);
+                        }
+                    }
+                }
+            }
+        }
+
+        return sentences;
+    }
+    */
+
+    private ConditionFragment createConditionalFragment(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
+        ConditionFragment cFrag = new ConditionFragment(gwExtractor.getVerb(),
+                gwExtractor.getObject(), "", "", ConditionFragment.TYPE_IF,
+                gwExtractor.getModList());
+        cFrag.bo_replaceWithPronoun = true;
+        cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        return cFrag;
     }
 
     public ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
@@ -534,7 +566,7 @@ public class TextToIntermediateConverter {
     // AND - SPLIT
     // *********************************************************************************************
 
-    public ConverterRecord convertANDGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures, ArrayList<Node> conditionNodes) {
+    public ConverterRecord convertANDGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
         Map<String, String> modificationMap = new HashMap<>();
         modificationMap.put("@number", Integer.toString(amountProcedures));
 
