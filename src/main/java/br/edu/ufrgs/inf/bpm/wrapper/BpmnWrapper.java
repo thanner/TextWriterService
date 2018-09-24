@@ -389,7 +389,7 @@ public class BpmnWrapper {
         for (QName qName : tGateway.getOutgoing()) {
             TFlowElement tFlowElement = getFlowElementByQName(qName);
             if (tFlowElement instanceof TSequenceFlow) {
-                if (tFlowElement.getName().isEmpty()) {
+                if (tFlowElement.getName() == null || tFlowElement.getName().isEmpty()) {
                     return false;
                 }
             }

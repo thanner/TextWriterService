@@ -21,7 +21,8 @@ public class Lexemes {
 
     public static final String IF_CONNECTIVE = "if condition \"@condition\"";
 
-    public static final String START_EVENT_CONNECTIVE = "the process starts when"; // TODO: Pode ser with, mas ai deixa de ser does e vira doing
+    public static final String START_EVENT_CONNECTIVE = "the process starts when";
+    public static final String START_EVENT_WHEN_CONNECTIVE = "when the process starts,";
     public static final String SEQUENCE_FINAL_CONNECTIVE = "finally";
 
     public static final String SENTENCE_AGGREGATION = "and then";

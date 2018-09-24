@@ -123,13 +123,13 @@ public class TextPlanner {
 
     private void handleBond(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) throws FileNotFoundException, JWNLException {
         ConverterRecord convRecord = getConverterRecord(node, orderedTopNodes);
-        // Nor simple
+
         if (convRecord != null) {
             // Add pre statements
             addBondPreStatements(convRecord, level, node);
 
             // Pass precondition
-            /*
+            /**
             if (convRecord != null && convRecord.pre != null) {
                 if (passedFragments.size() > 0) {
                     if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
@@ -145,7 +145,7 @@ public class TextPlanner {
                 }
                 passedFragments.add(convRecord.pre);
             }
-            */
+             **/
 
             // Convert branches to Text
             convertBondToText(node, level);
@@ -154,7 +154,7 @@ public class TextPlanner {
             addBondPostStatement(convRecord, level, node);
 
             // Pass post fragment
-            if (convRecord != null && convRecord.post != null) {
+            if (convRecord.post != null) {
                 passedFragments.add(convRecord.post);
             }
 
@@ -166,13 +166,8 @@ public class TextPlanner {
                         eFrag.sen_level = level;
                         eFrag.bo_isSubject = true;
                         eFrag.sen_hasConnective = false;
-
                         eFrag.isJoinSentence = true;
 
-                        //ConditionFragment cFrag = passedFragments.get(0);
-                        //cFrag.sen_level = level;
-
-                        //DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, cFrag);
                         DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
                         if (convRecord.post != null) {
                             dsyntSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), convRecord.post.getProcessElementType());
@@ -185,6 +180,9 @@ public class TextPlanner {
         }
     }
 
+    // TODO: Próximo elemento é um gateway? (ver método isFollowedByGateway)
+    // TODO: 1) int currentPosition = orderedTopNodes.indexOf(node);
+    // TODO: 2) PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1);
     private boolean isNextElementAJoin(ConditionFragment conditionFragment) {
         TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(conditionFragment.getProcessElementId());
         if (tFlowElement instanceof TFlowNode) {
@@ -239,9 +237,9 @@ public class TextPlanner {
     private ConverterRecord getSkipConverterRecord(ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
         // Yes-No Case
-        if (propRec.isGatewayLabeled() == true && propRec.hasYNArcs() == true) {
+        if (propRec.isGatewayLabeled() && propRec.hasYNArcs()) {
             // Yes-No Case which is directly leading to the isEnd of the process
-            if (isToEndSkip(orderedTopNodes, node) == true) {
+            if (isToEndSkip(orderedTopNodes, node)) {
                 return textToIntermediateConverter.convertSkipToEnd(node);
                 // General Yes/No-Case
             } else {
@@ -307,35 +305,45 @@ public class TextPlanner {
     private void addBondPreStatements(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
         if (convRecord != null && convRecord.preStatements != null) {
             for (DSynTSentence preStatement : convRecord.preStatements) {
-                if (passedFragments.size() > 0) {
-                    if (isTagWithBullet) {
-                        preStatement.getExecutableFragment().sen_hasBullet = true;
-                        preStatement.getExecutableFragment().sen_level = level;
-                        passedFragments.get(0).sen_hasBullet = true;
-                        passedFragments.get(0).sen_level = level;
-                        isTagWithBullet = false;
-                    }
-                    DSynTConditionSentence dsyntSentence = getDSyntConditionSentence(preStatement.getExecutableFragment(), passedFragments, getProcessElementType(node));
-                    passedFragments.clear();
-                    sentencePlan.add(dsyntSentence);
+                if (isStart) {
+                    isStart = false;
+
+                    DSynTMainSentence dSynTSentence = new DSynTMainSentence(preStatement.getExecutableFragment());
+                    dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
+                    addStartEventFragment(dSynTSentence, Lexemes.START_EVENT_WHEN_CONNECTIVE);
+
+                    sentencePlan.add(dSynTSentence);
                 } else {
-                    if (isTagWithBullet) {
-                        preStatement.getExecutableFragment().sen_hasBullet = true;
+                    if (passedFragments.size() > 0) {
+                        if (isTagWithBullet) {
+                            preStatement.getExecutableFragment().sen_hasBullet = true;
+                            preStatement.getExecutableFragment().sen_level = level;
+                            isTagWithBullet = false;
+
+                            passedFragments.get(0).sen_hasBullet = true;
+                            passedFragments.get(0).sen_level = level;
+                        }
+                        DSynTConditionSentence dsyntSentence = getDSyntConditionSentence(preStatement.getExecutableFragment(), passedFragments, getProcessElementType(node));
+                        passedFragments.clear();
+                        sentencePlan.add(dsyntSentence);
+                    } else {
+                        if (isTagWithBullet) {
+                            preStatement.getExecutableFragment().sen_hasBullet = true;
+                            preStatement.getExecutableFragment().sen_level = level;
+                            isTagWithBullet = false;
+                        }
                         preStatement.getExecutableFragment().sen_level = level;
-                        isTagWithBullet = false;
-                    }
-                    preStatement.getExecutableFragment().sen_level = level;
-                    if (passedMods.size() > 0) {
-                        preStatement.getExecutableFragment().addMod(passedMods.get(0).getLemma(), passedMods.get(0));
-                        preStatement.getExecutableFragment().sen_hasConnective = true;
-                        passedMods.clear();
-                    }
+                        if (passedMods.size() > 0) {
+                            preStatement.getExecutableFragment().addMod(passedMods.get(0).getLemma(), passedMods.get(0));
+                            preStatement.getExecutableFragment().sen_hasConnective = true;
+                            passedMods.clear();
+                        }
 
-                    DSynTSentence dSynTSentence2 = new DSynTMainSentence(preStatement.getExecutableFragment());
+                        DSynTSentence dSynTSentence2 = new DSynTMainSentence(preStatement.getExecutableFragment());
 
-                    // HASHMAP DE NODEID (ProcessModel) COM BPMNID (Modelo original)
-                    dSynTSentence2.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
-                    sentencePlan.add(dSynTSentence2);
+                        dSynTSentence2.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
+                        sentencePlan.add(dSynTSentence2);
+                    }
                 }
             }
         }
@@ -765,18 +773,18 @@ public class TextPlanner {
         // Original DSYNT
         DSynTMainSentence dSynTSentence = new DSynTMainSentence(eFrag);
         dSynTSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY);
-        addStartEventFragment(dSynTSentence);
+        addStartEventFragment(dSynTSentence, Lexemes.START_EVENT_CONNECTIVE);
 
         // activitiySentenceMap.add(new Pair<>(Integer.valueOf(node.getEntry().getId()), dsyntSentence));
         // XmlFormat.printDocument(startEventDsynt.getDSynT());
         sentencePlan.add(dSynTSentence);
     }
 
-    private void addStartEventFragment(DSynTMainSentence dSynTSentence) {
+    private void addStartEventFragment(DSynTMainSentence dSynTSentence, String lexeme) {
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
-        dSynTSentence.getExecutableFragment().addMod(Lexemes.START_EVENT_CONNECTIVE, modRecord);
-        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT, "", Lexemes.START_EVENT_CONNECTIVE);
+        dSynTSentence.getExecutableFragment().addMod(lexeme, modRecord);
+        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT, "", lexeme);
         dSynTSentence.createDSynTRepresentation();
     }
 
@@ -956,23 +964,28 @@ public class TextPlanner {
 
     private void handleStartEvent(Event event, int currentPosition, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {
         // Start event should be printed
-        if (isStart == true && isAlternative == false) {
+        if (isStart && !isAlternative) {
 
             // Event is followed by gateway --> full sentence
-            if (event.getType() == EventType.START_EVENT && currentPosition < orderedTopNodes.size() - 1 && PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1))) {
+            /*
+            if (isFollowedByGateway(event, currentPosition, orderedTopNodes)) {
                 isStart = false;
 
                 ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.STARTDECISION);
                 eFrag.add_hasArticle = false;
                 eFrag.bo_isSubject = true;
+
                 DSynTSentence dSynTSentence = new DSynTMainSentence(eFrag);
                 dSynTSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.STARTEVENT);
                 sentencePlan.add(dSynTSentence);
             }
+            */
+
             if (event.getType() != EventType.START_EVENT) {
                 isStart = false;
+
                 ConverterRecord convRecord = textToIntermediateConverter.convertEvent(event);
-                if (convRecord != null && convRecord.hasPreStatements() == true) {
+                if (convRecord != null && convRecord.hasPreStatements()) {
                     DSynTSentence dSynTSentence = convRecord.preStatements.get(0);
                     dSynTSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.STARTEVENT);
                     sentencePlan.add(dSynTSentence);
@@ -981,6 +994,10 @@ public class TextPlanner {
 
             currentStartEventId = getProcessElementId(event.getId());
         }
+    }
+
+    private boolean isFollowedByGateway(Event event, int currentPosition, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes) {
+        return event.getType() == EventType.START_EVENT && currentPosition < orderedTopNodes.size() - 1 && PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1));
     }
 
     private void handleIntermediateEvent(Event event, int level) {
