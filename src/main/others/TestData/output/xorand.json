@@ -1,0 +1,130 @@
+{
+  "sentenceList": [
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_06csn4l",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 24,
+          "endIndex": 57
+        },
+        {
+          "processElementId": "StartEvent_1",
+          "processElementType": "STARTEVENT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ],
+      "value": "The process starts when the Resource 1 does an activity 1.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "ExclusiveGateway_0rvgy2q",
+          "processElementType": "XORSPLIT",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 53
+        }
+      ],
+      "value": "Then, one of the 2 alternative procedures is executed.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0c5pkdw",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 18,
+          "endIndex": 52
+        }
+      ],
+      "value": "If condition \"b\", the Resource 1 does the activity 2.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "ExclusiveGateway_1unw8cr",
+          "processElementType": "ANDSPLIT",
+          "resource": "",
+          "startIndex": 18,
+          "endIndex": 65
+        }
+      ],
+      "value": "If condition \"a\", 2 procedures are executed in an arbitrary order.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0zml9lz",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 0,
+          "endIndex": 34
+        }
+      ],
+      "value": "The Resource 1 does the activity 3.",
+      "level": 2,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_1i517j0",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 17,
+          "endIndex": 49
+        }
+      ],
+      "value": "In the meantime, the Resource 1 does the activity.",
+      "level": 2,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "ExclusiveGateway_1unw8cr",
+          "processElementType": "ANDJOIN",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 15
+        }
+      ],
+      "value": "After each case, the process continues.",
+      "level": 1,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "EndEvent_0xpws45",
+          "processElementType": "ENDEVENT",
+          "resource": "",
+          "startIndex": 13,
+          "endIndex": 36
+        },
+        {
+          "processElementId": "ExclusiveGateway_0q9dqv6",
+          "processElementType": "XORJOIN",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 11
+        }
+      ],
+      "value": "In any case, the process is finished.",
+      "level": 0,
+      "islateral": false
+    }
+  ]
+}
