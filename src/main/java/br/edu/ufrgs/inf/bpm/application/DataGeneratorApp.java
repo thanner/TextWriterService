@@ -39,7 +39,7 @@ public class DataGeneratorApp {
         // File file1 = new File("src/main/others/TestData/xor.bpmn");
         // generateData(file1, false);
 
-        File file2 = new File("src/main/others/TestData/xorAnd.bpmn");
+        File file2 = new File("src/main/others/TestData/rigid.bpmn");
         generateData(file2, false);
 
         /*
