@@ -414,8 +414,11 @@ public class TextPlanner {
         ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
         orderRunSequenceBySize(runSequences, validIDs);
 
-        addRigid(node);
-        addRigidMain();
+        // TODO: REMOVER
+        printRunsequences(runSequences);
+
+        addRigidStatement(node);
+        addRigidMainStatement();
 
         // processToText.Main run
         ArrayList<String> mainRun = runSequences.get(0);
@@ -427,7 +430,7 @@ public class TextPlanner {
             }
         }
 
-        addRigidDev(node);
+        addRigidDevStatement(node);
 
         // Save ID of first rigid element
         String rigidStartID = node.getEntry().getId();
@@ -443,6 +446,7 @@ public class TextPlanner {
 
             // Determine number of activities in run (if only one the sequence would be unclear to the reader)
             int activityCount = 0;
+            // TODO: Se alguma "atividade"(?) já foi descrita, não levar ela em consideração (validIDs)
             for (String id : run) {
                 if (validIDs.contains(Integer.valueOf(id))) {
                     currentActivity = id;
@@ -527,6 +531,36 @@ public class TextPlanner {
         }
     }
 
+    private void printRunsequences(ArrayList<ArrayList<String>> runSequences) {
+        int i = 0;
+
+        System.out.println();
+        System.out.println("Indices");
+        for (int elemId = 0; elemId < 100; elemId++) {
+            Element element = process.getElem(elemId);
+            if (element != null) {
+                System.out.println("- " + element.getId() + " " + element.getLabel().trim());
+            }
+        }
+
+        System.out.println();
+        System.out.println("Esperado");
+        System.out.println("G1 - Do activity 2 - G3 - G2 - Do activity 3 - G4");
+        System.out.println("G1 (Faltando) - Do activity 2 - G3 - Do activity 4 - G4 : (5 6 7 10 11)");
+        System.out.println("G1 - G2 - Do activity 3 - G4");
+        System.out.println();
+
+        for (ArrayList<String> runSequence : runSequences) {
+            System.out.println("Run sequence " + i);
+            for (String elem : runSequence) {
+                Element element = process.getElem(Integer.parseInt(elem));
+                System.out.println("- " + element.getId() + " " + element.getLabel().trim());
+            }
+            System.out.println();
+            i++;
+        }
+    }
+
     private void orderRunSequenceBySize(ArrayList<ArrayList<String>> runSequences, ArrayList<Integer> activitiesAndEventsIDs) {
         List<Integer> sizeRunSequence = new ArrayList<>();
 
@@ -551,8 +585,7 @@ public class TextPlanner {
         }
     }
 
-    private void addRigid(RPSTNode<ControlFlow, Node> node) {
-
+    private void addRigidStatement(RPSTNode<ControlFlow, Node> node) {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -568,8 +601,7 @@ public class TextPlanner {
         sentencePlan.add(dSynTSentence);
     }
 
-    private void addRigidMain() {
-
+    private void addRigidMainStatement() {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -583,8 +615,7 @@ public class TextPlanner {
         sentencePlan.add(dSynTSentence);
     }
 
-    private void addRigidDev(RPSTNode<ControlFlow, Node> node) {
-
+    private void addRigidDevStatement(RPSTNode<ControlFlow, Node> node) {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -620,7 +651,6 @@ public class TextPlanner {
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
             dsyntSentence.addProcessElementDocument(getProcessElementId(id), ProcessElementType.ACTIVITY);
             sentencePlan.add(dsyntSentence);
-        } else {
         }
     }
 
