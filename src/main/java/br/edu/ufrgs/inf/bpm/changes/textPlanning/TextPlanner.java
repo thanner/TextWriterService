@@ -410,10 +410,14 @@ public class TextPlanner {
         validIDs.addAll(process.getActivites().keySet());
         validIDs.addAll(process.getEvents().keySet());
 
+        // TODO: REMOVER
+        printImportantData();
+
         // Transforming RPST subtree to Petri Net
         ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
         orderRunSequenceBySize(runSequences, validIDs);
-
+        runSequences = completeRunSequences(runSequences, node);
+        
         // TODO: REMOVER
         printRunsequences(runSequences);
 
@@ -531,9 +535,33 @@ public class TextPlanner {
         }
     }
 
-    private void printRunsequences(ArrayList<ArrayList<String>> runSequences) {
-        int i = 0;
+    // TODO: FAZER
+    private ArrayList<ArrayList<String>> completeRunSequences(ArrayList<ArrayList<String>> runSequenceList, RPSTNode<ControlFlow, Node> node) {
+        String rigidEntryId = node.getEntry().getId();
+        String rigidExitId = node.getExit().getId();
+        ArrayList<ArrayList<String>> newRunSequenceList = new ArrayList<>();
 
+        /*
+        for(ArrayList<String> runSequence: runSequenceList){
+            ArrayList<String> newRunSequence = new ArrayList<>();
+            // O sequence inicia do nó inicial
+            if(runSequence.get(0).equals(rigidEntryId)){
+                newRunSequence.addAll(runSequence);
+            } else {
+                // O sequence inicia de outro nó
+                newRunSequence
+            }
+
+            // Termina com o nó
+
+            newRunSequenceList.add(newRunSequence);
+        }
+        */
+
+        return newRunSequenceList;
+    }
+
+    private void printImportantData() {
         System.out.println();
         System.out.println("Indices");
         for (int elemId = 0; elemId < 100; elemId++) {
@@ -549,6 +577,10 @@ public class TextPlanner {
         System.out.println("G1 (Faltando) - Do activity 2 - G3 - Do activity 4 - G4 : (5 6 7 10 11)");
         System.out.println("G1 - G2 - Do activity 3 - G4");
         System.out.println();
+    }
+
+    private void printRunsequences(ArrayList<ArrayList<String>> runSequences) {
+        int i = 0;
 
         for (ArrayList<String> runSequence : runSequences) {
             System.out.println("Run sequence " + i);
@@ -647,6 +679,7 @@ public class TextPlanner {
                 eFrag.sen_hasBullet = true;
             }
             eFrag.sen_level = level + 1;
+            eFrag.isRigidSentence = true;
 
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
             dsyntSentence.addProcessElementDocument(getProcessElementId(id), ProcessElementType.ACTIVITY);
@@ -670,6 +703,7 @@ public class TextPlanner {
             eFrag.bo_hasArticle = false;
             eFrag.sen_hasBullet = true;
             eFrag.sen_level = level + 1;
+            eFrag.isRigidSentence = true;
 
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
             dsyntSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY);
@@ -693,6 +727,7 @@ public class TextPlanner {
             eFrag.bo_hasArticle = false;
             eFrag.sen_hasBullet = true;
             eFrag.sen_level = level + 1;
+            eFrag.isRigidSentence = true;
 
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
             dsyntSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY);
@@ -720,6 +755,7 @@ public class TextPlanner {
         eFrag.bo_hasArticle = false;
         eFrag.sen_hasBullet = true;
         eFrag.sen_level = level + 1;
+        eFrag.isRigidSentence = true;
         eFrag.addMod(modLemma, modRecord);
 
         DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);

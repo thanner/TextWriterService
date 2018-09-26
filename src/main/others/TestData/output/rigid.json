@@ -47,27 +47,20 @@
           "processElementId": "Task_0m8ayjy",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 13,
-          "endIndex": 74
+          "startIndex": 0,
+          "endIndex": 61
         },
         {
           "processElementId": "Task_0x3tez7",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 13,
-          "endIndex": 74
-        },
-        {
-          "processElementId": "ExclusiveGateway_13hknen",
-          "processElementType": "XORJOIN",
-          "resource": "",
           "startIndex": 0,
-          "endIndex": 11
+          "endIndex": 61
         }
       ],
-      "value": "In any case, the Resource 1 does the activity 2 and then do the activity 3.",
+      "value": "The Resource 1 does the activity 2 and then do the activity 3.",
       "level": 1,
-      "islateral": false
+      "islateral": true
     },
     {
       "snippetList": [
@@ -89,27 +82,27 @@
           "processElementId": "Task_15pwl2u",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 13,
-          "endIndex": 74
-        },
+          "startIndex": 0,
+          "endIndex": 64
+        }
+      ],
+      "value": "After doing activity 2 the Resource 1 may also do the activity 4.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
         {
           "processElementId": "Task_0x3tez7",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 13,
-          "endIndex": 74
-        },
-        {
-          "processElementId": "ExclusiveGateway_13hknen",
-          "processElementType": "XORJOIN",
-          "resource": "",
           "startIndex": 0,
-          "endIndex": 11
+          "endIndex": 51
         }
       ],
-      "value": "In any case, the Resource 1 does the activity 4 and then do the activity 3.",
+      "value": "The Resource 1 may also begin with doing activity 3.",
       "level": 1,
-      "islateral": false
+      "islateral": true
     },
     {
       "snippetList": [

@@ -95,7 +95,6 @@ public class ProcessCover {
             if (this.coveredTransitions.containsAll(this.originativeNetSystem.getTransitions())) return;
 
             Process pi = this.stack.pop();
-            // TODO: ACHO QUE ESSA LINHA + alguma coisa que n sei
             this.coveredTransitions.addAll(pi.getCoveredTransitions());
 
             if (!pi.isSafe())

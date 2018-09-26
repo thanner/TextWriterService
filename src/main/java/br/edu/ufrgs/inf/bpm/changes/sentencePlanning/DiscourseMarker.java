@@ -10,8 +10,8 @@ import org.omg.spec.bpmn._20100524.model.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.dsynt.DSynTConditionSentence;
-import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
+import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
 
 import javax.xml.namespace.QName;
@@ -35,23 +35,27 @@ public class DiscourseMarker {
 
         for (int index = 0; index < textPlan.size(); index++) {
             DSynTSentence dSynTSentence = textPlan.get(index);
-            currentLevel = dSynTSentence.getExecutableFragment().sen_level;
+            ExecutableFragment eFrag = dSynTSentence.getExecutableFragment();
+            currentLevel = eFrag.sen_level;
 
-            if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
-                DSynTMainSentence dSynTMainSentence = (DSynTMainSentence) dSynTSentence;
-                if (!dSynTMainSentence.getExecutableFragment().sen_hasConnective && index > 0) {
-                    insertConnectives(dSynTSentence, index, textPlan.size());
-                }
-                lastLevel = currentLevel;
-            }
+            if (!eFrag.isRigidSentence) {
 
-            if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
-                DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
-                if (!dSynTConditionSentence.getExecutableFragment().sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
-                    //insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
-                    insertConnectives(dSynTSentence, index, textPlan.size());
+                if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
+                    if (!eFrag.sen_hasConnective && index > 0) {
+                        insertConnectives(dSynTSentence, index, textPlan.size());
+                    }
+                    lastLevel = currentLevel;
                 }
-                lastLevel = currentLevel;
+
+                if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
+                    DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
+                    if (!eFrag.sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
+                        //insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
+                        insertConnectives(dSynTSentence, index, textPlan.size());
+                    }
+                    lastLevel = currentLevel;
+                }
+
             }
 
         }
