@@ -1,0 +1,67 @@
+{
+  "sentenceList": [
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_1oaiqpc",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 24,
+          "endIndex": 57
+        },
+        {
+          "processElementId": "StartEvent_1",
+          "processElementType": "STARTEVENT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ],
+      "value": "The process starts when the Resource 1 does an activity 1.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0bez43o",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 19,
+          "endIndex": 53
+        },
+        {
+          "processElementId": "ExclusiveGateway_0xk6y0s",
+          "processElementType": "XORSPLIT",
+          "resource": "",
+          "startIndex": -1,
+          "endIndex": 11
+        }
+      ],
+      "value": "Then, if required, the Resource 1 does the activity 2.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "EndEvent_086w81z",
+          "processElementType": "ENDEVENT",
+          "resource": "",
+          "startIndex": 13,
+          "endIndex": 36
+        },
+        {
+          "processElementId": "ExclusiveGateway_02k208t",
+          "processElementType": "XORJOIN",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 11
+        }
+      ],
+      "value": "In any case, the process is finished.",
+      "level": 0,
+      "islateral": false
+    }
+  ]
+}

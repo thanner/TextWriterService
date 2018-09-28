@@ -88,6 +88,8 @@ public class SurfaceRealizer {
         surfaceText = surfaceText.replaceAll(" the a ", " a ");
         surfaceText = surfaceText.replaceAll("branches were executed ", "branches were executed, ");
 
+        surfaceText = surfaceText.replaceAll("if required", "if required,");
+
         return surfaceText;
     }
 

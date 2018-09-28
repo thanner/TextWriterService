@@ -47,7 +47,9 @@ public class DiscourseMarker {
 
             if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
                 DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
-                if (!eFrag.sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
+                // TODO Testar se precisa
+                // if (!eFrag.sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
+                if (!eFrag.sen_hasConnective && index > 0) {
                     //insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
                     insertConnectives(dSynTSentence, index, textPlan.size());
                 }

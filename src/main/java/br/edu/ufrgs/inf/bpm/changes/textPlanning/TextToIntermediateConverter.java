@@ -454,23 +454,20 @@ public class TextToIntermediateConverter {
     // *********************************************************************************************
 
     public ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node) {
-
-        templateLoader.loadTemplate(TemplateLoaderType.SKIP);
-        ConditionFragment pre = new ConditionFragment(
-                templateLoader.getAction(),
-                templateLoader.getObject(),
-                "",
-                "",
-                ConditionFragment.TYPE_IF,
-                new HashMap<String, ModifierRecord>());
+        Map<String, String> modificationMap = new HashMap<>();
+        ConditionFragment pre = FragmentGenerator.generateConditionFragment(TemplateLoaderType.SKIP, modificationMap, ConditionFragment.TYPE_IF);
 
         ModifierRecord mod = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         pre.addMod(templateLoader.getAddition(), mod);
-        // pre.bo_replaceWithPronoun = true;
+        //pre.bo_replaceWithPronoun = true;
         //pre.sen_headPosition = true;
         //pre.sen_isCoord = true;
         //pre.sen_hasComma = true;
-        // pre.verb_IsPassive = true;
+        //pre.verb_IsPassive = true;
+
+        pre.add_hasArticle = false;
+        pre.sen_hasComma = true;
+
         pre.addAssociation(Integer.valueOf(node.getEntry().getId()));
         return new ConverterRecord(pre, null, null, null);
 
@@ -482,8 +479,7 @@ public class TextToIntermediateConverter {
      */
     public ConverterRecord convertSkipGeneral(RPSTNode<ControlFlow, Node> node) {
         // Derive information from the gateway
-        GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(),
-                lHelper);
+        GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
 
         // Generate general statement about upcoming decision
         ConditionFragment pre = new ConditionFragment(gwExtractor.getVerb(),

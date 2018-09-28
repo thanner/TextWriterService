@@ -118,13 +118,9 @@ public class TextGenerator {
         SentenceAggregator sentenceAggregator = new SentenceAggregator();
         sentencePlan = sentenceAggregator.performRoleAggregation(sentencePlan);
 
-        // processToText.sentencePlanning.SentenceAggregator sentenceAggregator = new processToText.sentencePlanning.SentenceAggregator(lHelper);
-        //        sentencePlan = sentenceAggregator.performRoleAggregation(sentencePlan, model);
-
         // Referring Expression (He, She, It)
         ReferringExpressionGenerator refExpGenerator = new ReferringExpressionGenerator(lHelper);
         sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, false);
-
         sentencePlan.forEach(DSynTSentence::fixDocuments);
 
         // Discourse Marker (After, Then, In sequence, In the first procedure, In the meantime)

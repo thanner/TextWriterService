@@ -1,4 +1,6 @@
-Sep 27, 2018 8:59:15 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - aggregation
-Sep 27, 2018 8:59:26 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Sep 28, 2018 1:07:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp getInputFiles
+WARNING: InputFiles not loading
+Sep 28, 2018 1:07:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - skip2
+Sep 28, 2018 1:07:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText - Done

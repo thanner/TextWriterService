@@ -128,9 +128,8 @@ public class TextPlanner {
             // Add pre statements
             addBondPreStatements(convRecord, level, node);
 
-            // Pass precondition
-            /**
-            if (convRecord != null && convRecord.pre != null) {
+            // Pass precondition (if it is necessary)
+            if (convRecord.pre != null) {
                 if (passedFragments.size() > 0) {
                     if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
                         ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
@@ -145,7 +144,6 @@ public class TextPlanner {
                 }
                 passedFragments.add(convRecord.pre);
             }
-             **/
 
             // Convert branches to Text
             convertBondToText(node, level);
