@@ -414,8 +414,75 @@ public class TextPlanner {
         ArrayList<ArrayList<String>> runSequences = PlanningHelper.getRunSequencesFromRPSTFragment(node, process);
         orderRunSequenceBySize(runSequences, validIDs);
 
-        addRigid(node);
-        addRigidMain();
+        if (isHandleRigidCompletePaths(runSequences)) {
+            runSequences = completeRunSequences(runSequences, node);
+            handleRigidCompletePaths(node, runSequences, level);
+        } else {
+            handleRigidFragmented(node, runSequences, validIDs, level);
+        }
+
+        // TODO: REMOVER
+        // printImportantData();
+        // TODO: REMOVER
+        // printRunsequences(runSequences);
+
+    }
+
+    private void printImportantData() {
+        System.out.println();
+        System.out.println("Indices");
+        for (int elemId = 0; elemId < 100; elemId++) {
+            Element element = process.getElem(elemId);
+            if (element != null) {
+                System.out.println("- " + element.getId() + " " + element.getLabel().trim());
+            }
+        }
+
+        System.out.println();
+        System.out.println("Esperado");
+        System.out.println("G1 - Do activity 2 - G3 - G2 - Do activity 3 - G4");
+        System.out.println("G1 (Faltando) - Do activity 2 - G3 - Do activity 4 - G4 : (5 6 7 10 11)");
+        System.out.println("G1 - G2 - Do activity 3 - G4");
+        System.out.println();
+    }
+
+    private void printRunsequences(ArrayList<ArrayList<String>> runSequences) {
+        int i = 0;
+
+        for (ArrayList<String> runSequence : runSequences) {
+            System.out.println("Run sequence " + i);
+            for (String elem : runSequence) {
+                Element element = process.getElem(Integer.parseInt(elem));
+                System.out.println("- " + element.getId() + " " + element.getLabel().trim());
+            }
+            System.out.println();
+            i++;
+        }
+    }
+
+    private boolean isHandleRigidCompletePaths(ArrayList<ArrayList<String>> runSequences) {
+        return true;
+    }
+
+    private void handleRigidCompletePaths(RPSTNode<ControlFlow, Node> node, ArrayList<ArrayList<String>> runSequences, int level) {
+        addRigidStatement(node, runSequences.size());
+
+        for (ArrayList<String> runSequence : runSequences) {
+            boolean first = true;
+            for (String id : runSequence) {
+                Activity activity = process.getActivity(Integer.parseInt(id));
+                if (activity != null) {
+                    addRigidPathStatement(activity, level, first);
+                    first = false;
+                }
+            }
+        }
+
+    }
+
+    private void handleRigidFragmented(RPSTNode<ControlFlow, Node> node, ArrayList<ArrayList<String>> runSequences, ArrayList<Integer> validIDs, int level) {
+        addRigidStatement(node);
+        addRigidMainStatement();
 
         // processToText.Main run
         ArrayList<String> mainRun = runSequences.get(0);
@@ -427,7 +494,7 @@ public class TextPlanner {
             }
         }
 
-        addRigidDev(node);
+        addRigidDevStatement(node);
 
         // Save ID of first rigid element
         String rigidStartID = node.getEntry().getId();
@@ -527,6 +594,58 @@ public class TextPlanner {
         }
     }
 
+    private ArrayList<ArrayList<String>> completeRunSequences(ArrayList<ArrayList<String>> rigidRunSequenceList, RPSTNode<ControlFlow, Node> node) {
+        String rigidEntryId = node.getEntry().getId();
+        String rigidExitId = node.getExit().getId();
+        ArrayList<ArrayList<String>> newRunSequenceList = new ArrayList<>();
+
+        ArrayList<ArrayList<String>> rigidCompletePaths = getCompletePaths(rigidRunSequenceList, rigidEntryId, rigidExitId);
+
+        for (ArrayList<String> rigidRunSequence : rigidRunSequenceList) {
+            ArrayList<String> newRunSequence = new ArrayList<>();
+
+            // Sequence ligado ao start
+            if (rigidRunSequence.get(0).equals(rigidEntryId)) {
+                newRunSequence.addAll(rigidRunSequence);
+            } else {
+                for (ArrayList<String> runSequenceAux : rigidCompletePaths) {
+                    int index = runSequenceAux.indexOf(rigidRunSequence.get(0));
+                    if (index >= 0) {
+                        newRunSequence.addAll(runSequenceAux.subList(0, index));
+                        newRunSequence.addAll(rigidRunSequence);
+                    }
+                }
+            }
+
+            // Sequence não ligado ao end
+            int lastRigidRunSequenceId = rigidRunSequence.size() - 1;
+            if (!rigidRunSequence.get(lastRigidRunSequenceId).equals(rigidExitId)) {
+                for (ArrayList<String> runSequenceAux : rigidCompletePaths) {
+                    int index = runSequenceAux.indexOf(rigidRunSequence.get(lastRigidRunSequenceId));
+                    if (index >= 0) {
+                        newRunSequence.addAll(runSequenceAux.subList(index + 1, runSequenceAux.size()));
+                    }
+                }
+            }
+
+            newRunSequenceList.add(newRunSequence);
+        }
+
+        return newRunSequenceList;
+    }
+
+    private ArrayList<ArrayList<String>> getCompletePaths(ArrayList<ArrayList<String>> rigidRunSequenceList, String rigidEntryId, String rigidExitId) {
+        ArrayList<ArrayList<String>> rigidCompletePaths = new ArrayList<>();
+
+        for (ArrayList<String> runSequence : rigidRunSequenceList) {
+            if (runSequence.get(0).equals(rigidEntryId) && runSequence.get(runSequence.size() - 1).equals(rigidExitId)) {
+                rigidCompletePaths.add(runSequence);
+            }
+        }
+
+        return rigidCompletePaths;
+    }
+
     private void orderRunSequenceBySize(ArrayList<ArrayList<String>> runSequences, ArrayList<Integer> activitiesAndEventsIDs) {
         List<Integer> sizeRunSequence = new ArrayList<>();
 
@@ -551,25 +670,33 @@ public class TextPlanner {
         }
     }
 
-    private void addRigid(RPSTNode<ControlFlow, Node> node) {
+    private void addRigidStatement(RPSTNode<ControlFlow, Node> node) {
+        addRigidStatement(node, 0);
+    }
 
+    private void addRigidStatement(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
-        // loader.loadTemplate(TemplateLoaderType.RIGID);
-        // eFrag = new ExecutableFragment(loader.getAction(), loader.getAddition(), loader.getObject(), "");
+        if (amountProcedures > 0) {
+            Map<String, String> modificationMap = new HashMap<>();
+            modificationMap.put("@number", Integer.toString(amountProcedures));
+            eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.XOR, modificationMap);
+        } else {
+            eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.RIGID);
+        }
 
-        eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.RIGID);
-        //eFrag.bo_hasIndefArticle = true;
+        eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = false;
+        eFrag.verb_IsPassive = true;
+
         eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
         dSynTSentence = new DSynTMainSentence(eFrag);
         dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
         sentencePlan.add(dSynTSentence);
     }
 
-    private void addRigidMain() {
-
+    private void addRigidMainStatement() {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -583,8 +710,7 @@ public class TextPlanner {
         sentencePlan.add(dSynTSentence);
     }
 
-    private void addRigidDev(RPSTNode<ControlFlow, Node> node) {
-
+    private void addRigidDevStatement(RPSTNode<ControlFlow, Node> node) {
         DSynTSentence dSynTSentence;
         ExecutableFragment eFrag;
 
@@ -599,6 +725,26 @@ public class TextPlanner {
         dSynTSentence = new DSynTMainSentence(eFrag);
         dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
         sentencePlan.add(dSynTSentence);
+    }
+
+    private void addRigidPathStatement(Activity activity, int level, boolean first) {
+        Annotation anno1 = activity.getAnnotations().get(0);
+
+        ExecutableFragment eFrag = null;
+        eFrag = new ExecutableFragment(anno1.getActions().get(0), anno1.getBusinessObjects().get(0), "", anno1.getAddition());
+        eFrag.addAssociation(activity.getId());
+        String role = getRole(activity, eFrag);
+        eFrag.setRole(role);
+
+        if (first) {
+            eFrag.sen_hasBullet = true;
+        }
+        eFrag.sen_level = level + 1;
+        eFrag.isRigidPath = true;
+
+        DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
+        dsyntSentence.addProcessElementDocument(getProcessElementId(activity.getId()), ProcessElementType.ACTIVITY);
+        sentencePlan.add(dsyntSentence);
     }
 
     private void convertRigidElement(int id, int level, boolean first) {
@@ -620,11 +766,9 @@ public class TextPlanner {
             DSynTMainSentence dsyntSentence = new DSynTMainSentence(eFrag);
             dsyntSentence.addProcessElementDocument(getProcessElementId(id), ProcessElementType.ACTIVITY);
             sentencePlan.add(dsyntSentence);
-        } else {
         }
     }
 
-    // TODO: O MÉTODO ABAIXO INSERE TEXTO DIRETAMENTE
     private void convertRigidStartActivity(int id, int level) {
         Activity activity = process.getActivity(id);
         if (activity != null) {
@@ -647,7 +791,6 @@ public class TextPlanner {
         }
     }
 
-    // TODO: O MÉTODO ABAIXO INSERE TEXTO DIRETAMENTE
     private void convertRigidEndActivity(int id, int level) {
         Activity activity = process.getActivity(id);
         if (activity != null) {
@@ -670,7 +813,6 @@ public class TextPlanner {
         }
     }
 
-    // TODO: O MÉTODO ABAIXO INSERE TEXTO DIRETAMENTE
     private void convertIsolatedRigidActivity(int id, int prevId, int level) {
         Activity currActivity = process.getActivity(id);
         Activity prevActivity = process.getActivity(prevId);
@@ -759,6 +901,7 @@ public class TextPlanner {
         if (bo.endsWith("s") && lHelper.isNoun(bo.substring(0, bo.length() - 1))) {
             eFrag.bo_hasArticle = true;
         } else {
+            // Num texto original, isso faz sentido
             eFrag.bo_hasIndefArticle = true;
         }
 

@@ -28,7 +28,7 @@ public class SentenceAggregator {
 
                     // Conduct role aggregation
                     ((DSynTMainSentence) previousData.getdSynTSentence()).addCoordSentences(coordSentences);
-                    addMappedElements(((DSynTMainSentence) previousData.getdSynTSentence()), coordSentences);
+                    addProcessElementDocuments(((DSynTMainSentence) previousData.getdSynTSentence()), coordSentences);
 
                     // Prepare to be deleted
                     toBeDeleted.add(i - deleteCount);
@@ -51,7 +51,8 @@ public class SentenceAggregator {
     }
 
     private boolean isAggregation(Data previousData, Data currentData){
-        return currentData.getRole().equals(previousData.getRole()) && !currentData.getRole().equals("") &&
+        return //currentData.getRole().equals(previousData.getRole()) &&
+                !currentData.getRole().equals("") &&
                 !currentData.getFragment().sen_hasBullet &&
                 currentData.getFragment().sen_level == previousData.getFragment().sen_level &&
                 previousData.getdSynTSentence().getExecutableFragment().getListSize() == 0 &&
@@ -60,7 +61,7 @@ public class SentenceAggregator {
                 previousData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN);
     }
 
-    private void addMappedElements(DSynTMainSentence dSynTMainSentence, ArrayList<DSynTMainSentence> coordSentences) {
+    private void addProcessElementDocuments(DSynTMainSentence dSynTMainSentence, ArrayList<DSynTMainSentence> coordSentences) {
         for (DSynTMainSentence coordSentence : coordSentences) {
             List<ProcessElementDocument> aggregatedElementDocumentList = coordSentence.getProcessElementDocumentList();
             for (ProcessElementDocument aggregatedElement : aggregatedElementDocumentList) {

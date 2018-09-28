@@ -86,7 +86,8 @@ public class BpmnPreProcessor {
             for (JAXBElement<? extends TFlowElement> jaxbElement : tProcess.getFlowElement()) {
                 TFlowElement tFlowElement = jaxbElement.getValue();
                 if (!(tFlowElement instanceof TSequenceFlow)) {
-                    if (processModelWrapper.getLaneByFlowElement(tFlowElement) == null) {
+                    TLane tLane = processModelWrapper.getLaneByFlowElement(tFlowElement);
+                    if (tLane == null) {
 
                         if (tCandidateLane == null) {
                             tCandidateLane = new TLane();
@@ -96,6 +97,8 @@ public class BpmnPreProcessor {
                         }
 
                         tCandidateLane.getFlowNodeRef().add(new ObjectFactory().createTLaneFlowNodeRef(tFlowElement));
+                    } else if (tLane.getName() == null || tLane.getName().equals("")) {
+                        tLane.setName(generateName("Resource"));
                     }
                 }
             }

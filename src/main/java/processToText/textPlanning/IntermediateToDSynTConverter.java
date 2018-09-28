@@ -201,6 +201,14 @@ public class IntermediateToDSynTConverter {
         return role;
     }
 
+    public static Element createSameRoleAggregation(Document doc) {
+        Element role = doc.createElement("dsyntnode");
+        role.setAttribute("class", "proper_noun");
+        role.setAttribute("rel", "I");
+        role.setAttribute("lexeme", "");
+        return role;
+    }
+
     /**
      * Adds addition to given DSynT representation
      */

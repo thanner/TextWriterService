@@ -28,16 +28,10 @@
           "processElementType": "XORSPLIT",
           "resource": "",
           "startIndex": 6,
-          "endIndex": 62
+          "endIndex": 53
         }
       ],
-      "value": "Then, one the of the following alternative procedures is taken.",
-      "level": 0,
-      "islateral": false
-    },
-    {
-      "snippetList": [],
-      "value": "One option from start to end is the following.",
+      "value": "Then, one of the 3 alternative procedures is executed.",
       "level": 0,
       "islateral": false
     },
@@ -47,53 +41,39 @@
           "processElementId": "Task_0m8ayjy",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 13,
-          "endIndex": 74
+          "startIndex": 24,
+          "endIndex": 87
         },
         {
           "processElementId": "Task_0x3tez7",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 13,
-          "endIndex": 74
-        },
-        {
-          "processElementId": "ExclusiveGateway_13hknen",
-          "processElementType": "XORJOIN",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 11
+          "startIndex": 24,
+          "endIndex": 87
         }
       ],
-      "value": "In any case, the Resource 1 does the activity 2 and then do the activity 3.",
+      "value": "In the first procedure, the Resource 1 does the activity 2 and then does the activity 3.",
       "level": 1,
       "islateral": true
     },
     {
       "snippetList": [
         {
-          "processElementId": "ExclusiveGateway_0bkbf2o",
-          "processElementType": "XORSPLIT",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 53
-        }
-      ],
-      "value": "However, the region allows for a number of deviations.",
-      "level": 0,
-      "islateral": false
-    },
-    {
-      "snippetList": [
+          "processElementId": "Task_0m8ayjy",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 25,
+          "endIndex": 88
+        },
         {
           "processElementId": "Task_15pwl2u",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 24,
+          "startIndex": 25,
           "endIndex": 88
         }
       ],
-      "value": "In the first procedure, after doing activity 2 the Resource 1 may also do the activity 4.",
+      "value": "In the second procedure, the Resource 1 does the activity 2 and then does the activity 4.",
       "level": 1,
       "islateral": true
     },
@@ -103,18 +83,11 @@
           "processElementId": "Task_0x3tez7",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 13,
-          "endIndex": 64
-        },
-        {
-          "processElementId": "ExclusiveGateway_13hknen",
-          "processElementType": "XORJOIN",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 11
+          "startIndex": 24,
+          "endIndex": 58
         }
       ],
-      "value": "In any case, the Resource 1 may also begin with doing activity 3.",
+      "value": "In the third procedure, the Resource 1 does the activity 3.",
       "level": 1,
       "islateral": true
     },
