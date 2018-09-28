@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0i8cx71" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_1wc1dqf">
+    <bpmn:participant id="Participant_0u6v4mi" name="process" processRef="Process_1" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1nlolmi">
+      <bpmn:lane id="Lane_1o23r26">
+        <bpmn:flowNodeRef>Task_1fpjr16</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_09h6vdc</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1f1s5ot</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0n3qfme</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0gi0arn">
+        <bpmn:flowNodeRef>EndEvent_033f4mw</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1cg4vf0</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:task id="Task_1fpjr16" name="Do activity 1&#10;">
+      <bpmn:incoming>SequenceFlow_1q459wl</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1b4h2wv</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_09h6vdc" name="Do activity 2&#10;">
+      <bpmn:incoming>SequenceFlow_1b4h2wv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_07wlaw2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_1f1s5ot" name="Do activity 3&#10;">
+      <bpmn:incoming>SequenceFlow_07wlaw2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_18t1bct</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="SequenceFlow_1q459wl" sourceRef="StartEvent_1" targetRef="Task_1fpjr16" />
+    <bpmn:sequenceFlow id="SequenceFlow_1b4h2wv" sourceRef="Task_1fpjr16" targetRef="Task_09h6vdc" />
+    <bpmn:sequenceFlow id="SequenceFlow_07wlaw2" sourceRef="Task_09h6vdc" targetRef="Task_1f1s5ot" />
+    <bpmn:sequenceFlow id="SequenceFlow_0tedepo" sourceRef="Task_1cg4vf0" targetRef="EndEvent_033f4mw" />
+    <bpmn:endEvent id="EndEvent_033f4mw">
+      <bpmn:incoming>SequenceFlow_0tedepo</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Task_0n3qfme" name="Do activity 4&#10;">
+      <bpmn:incoming>SequenceFlow_18t1bct</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ydlx1e</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="SequenceFlow_18t1bct" sourceRef="Task_1f1s5ot" targetRef="Task_0n3qfme" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ydlx1e" sourceRef="Task_0n3qfme" targetRef="Task_1cg4vf0" />
+    <bpmn:task id="Task_1cg4vf0" name="Do activity 5&#10;">
+      <bpmn:incoming>SequenceFlow_1ydlx1e</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0tedepo</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1q459wl</bpmn:outgoing>
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1wc1dqf">
+      <bpmndi:BPMNShape id="Participant_0u6v4mi_di" bpmnElement="Participant_0u6v4mi">
+        <dc:Bounds x="123" y="59.5" width="931" height="312.5" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="222" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1fpjr16_di" bpmnElement="Task_1fpjr16">
+        <dc:Bounds x="302" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_09h6vdc_di" bpmnElement="Task_09h6vdc">
+        <dc:Bounds x="468" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1f1s5ot_di" bpmnElement="Task_1f1s5ot">
+        <dc:Bounds x="618" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1cg4vf0_di" bpmnElement="Task_1cg4vf0">
+        <dc:Bounds x="773" y="271" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_033f4mw_di" bpmnElement="EndEvent_033f4mw">
+        <dc:Bounds x="964" y="293" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1q459wl_di" bpmnElement="SequenceFlow_1q459wl">
+        <di:waypoint x="258" y="120" />
+        <di:waypoint x="302" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1b4h2wv_di" bpmnElement="SequenceFlow_1b4h2wv">
+        <di:waypoint x="402" y="120" />
+        <di:waypoint x="468" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_07wlaw2_di" bpmnElement="SequenceFlow_07wlaw2">
+        <di:waypoint x="568" y="120" />
+        <di:waypoint x="618" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0tedepo_di" bpmnElement="SequenceFlow_0tedepo">
+        <di:waypoint x="873" y="311" />
+        <di:waypoint x="964" y="311" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Lane_1o23r26_di" bpmnElement="Lane_1o23r26">
+        <dc:Bounds x="153" y="59.5" width="901" height="156.5" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0gi0arn_di" bpmnElement="Lane_0gi0arn">
+        <dc:Bounds x="153" y="216" width="901" height="156" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_0n3qfme_di" bpmnElement="Task_0n3qfme">
+        <dc:Bounds x="773" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_18t1bct_di" bpmnElement="SequenceFlow_18t1bct">
+        <di:waypoint x="718" y="120" />
+        <di:waypoint x="773" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ydlx1e_di" bpmnElement="SequenceFlow_1ydlx1e">
+        <di:waypoint x="823" y="160" />
+        <di:waypoint x="823" y="271" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

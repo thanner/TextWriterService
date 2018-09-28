@@ -38,24 +38,20 @@ public class DiscourseMarker {
             ExecutableFragment eFrag = dSynTSentence.getExecutableFragment();
             currentLevel = eFrag.sen_level;
 
-            if (!eFrag.isRigidSentence) {
-
-                if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
-                    if (!eFrag.sen_hasConnective && index > 0) {
-                        insertConnectives(dSynTSentence, index, textPlan.size());
-                    }
-                    lastLevel = currentLevel;
+            if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
+                if (!eFrag.sen_hasConnective && index > 0) {
+                    insertConnectives(dSynTSentence, index, textPlan.size());
                 }
+                lastLevel = currentLevel;
+            }
 
-                if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
-                    DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
-                    if (!eFrag.sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
-                        //insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
-                        insertConnectives(dSynTSentence, index, textPlan.size());
-                    }
-                    lastLevel = currentLevel;
+            if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
+                DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
+                if (!eFrag.sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
+                    //insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
+                    insertConnectives(dSynTSentence, index, textPlan.size());
                 }
-
+                lastLevel = currentLevel;
             }
 
         }
@@ -65,9 +61,14 @@ public class DiscourseMarker {
 
 
     private void insertConnectives(DSynTSentence dSynTSentence, int index, int textPlanSize) {
-        List<ProcessElementDocument> processElementDocumentList = dSynTSentence.getProcessElementDocumentList();
-
-        if (isAddExclusiveJoinDiscourseMarker(dSynTSentence)) {
+        if (isRigidSentencePath(dSynTSentence)) {
+            if (isNewPath(dSynTSentence)) {
+                adjustOrdinalIndex(currentLevel);
+                insertOrdinalConnective(dSynTSentence, currentLevel);
+            } else {
+                insertSequentialConnective(index, textPlanSize, dSynTSentence);
+            }
+        } else if (isAddExclusiveJoinDiscourseMarker(dSynTSentence)) {
             insertJoinConnective(dSynTSentence, Lexemes.XOR_JOIN_CONNECTIVE, TExclusiveGateway.class, ProcessElementType.XORJOIN);
         } else if (isAddInclusiveJoinDiscourseMarker(dSynTSentence)) {
             insertJoinConnective(dSynTSentence, Lexemes.OR_JOIN_CONNECTIVE, TInclusiveGateway.class, ProcessElementType.ORJOIN);
@@ -75,12 +76,12 @@ public class DiscourseMarker {
             insertJoinConnective(dSynTSentence, Lexemes.AND_JOIN_CONNECTIVE, TParallelGateway.class, ProcessElementType.ANDJOIN);
         } else {
             // Is a lateral sequence
-            if (dSynTSentence.getExecutableFragment().sen_hasBullet) {
-                if (isAddParallelDiscourseMarker(dSynTSentence)) {
-                    // Source is a parallel gateway (in the meantime, at the same time)
+            if (isNewPath(dSynTSentence)) {
+                // Source is a parallel gateway (in the meantime, at the same time)
+                if (isParallelPathDiscourseMarker(dSynTSentence)) {
                     insertParallelConnective(dSynTSentence);
-                } else if (isAddExclusiveInclusiveDiscourseMarker(dSynTSentence)) {
                     // Source is a exclusive/inclusive gateway
+                } else if (isExclusivePathDiscourseMarkers(dSynTSentence)) {
                     if (allGatewayPathsHasLabels(dSynTSentence)) {
                         String condition = getCondition(dSynTSentence);
                         insertIfConnective(dSynTSentence, condition);
@@ -90,13 +91,10 @@ public class DiscourseMarker {
                     }
                 }
             } else {
-                if (isAddFinalDiscourseMarker(index, textPlanSize)) {
-                    insertConnective(dSynTSentence, Lexemes.SEQUENCE_FINAL_CONNECTIVE);
-                } else {
-                    insertSequentialConnective(dSynTSentence);
-                }
+                insertSequentialConnective(index, textPlanSize, dSynTSentence);
             }
         }
+
     }
 
     private String getCondition(DSynTSentence dSynTSentence) {
@@ -110,6 +108,14 @@ public class DiscourseMarker {
             }
         }
         return "unknown";
+    }
+
+    private boolean isRigidSentencePath(DSynTSentence dSynTSentence) {
+        return dSynTSentence.getExecutableFragment().isRigidPath;
+    }
+
+    private boolean isNewPath(DSynTSentence dSynTSentence) {
+        return dSynTSentence.getExecutableFragment().sen_hasBullet;
     }
 
     private boolean allGatewayPathsHasLabels(DSynTSentence dSynTSentence) {
@@ -150,7 +156,7 @@ public class DiscourseMarker {
         return null;
     }
 
-    private boolean isAddParallelDiscourseMarker(DSynTSentence dSynTSentence) {
+    private boolean isParallelPathDiscourseMarker(DSynTSentence dSynTSentence) {
         for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
             TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
             if (tFlowElement instanceof TFlowNode) {
@@ -172,7 +178,7 @@ public class DiscourseMarker {
         // return isAddDiscourseMarker(dSynTSentence, ProcessElementType.ANDSPLIT);
     }
 
-    private boolean isAddExclusiveInclusiveDiscourseMarker(DSynTSentence dSynTSentence) {
+    private boolean isExclusivePathDiscourseMarkers(DSynTSentence dSynTSentence) {
         for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
             TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
             if (tFlowElement instanceof TFlowNode) {
@@ -183,6 +189,7 @@ public class DiscourseMarker {
                 }
             }
         }
+
         return false;
         // return isAddDiscourseMarker(dSynTSentence, ProcessElementType.XORSPLIT) || isAddDiscourseMarker(dSynTSentence, ProcessElementType.ORSPLIT);
     }
@@ -286,6 +293,14 @@ public class DiscourseMarker {
     private void insertParallelConnective(DSynTSentence dSynTSentence) {
         insertConnective(dSynTSentence, Lexemes.PARALLEL_CONNECTIVES.get(indexParallelConnectors));
         adjustIndexParallelConnectors();
+    }
+
+    private void insertSequentialConnective(int index, int textPlanSize, DSynTSentence dSynTSentence) {
+        if (isAddFinalDiscourseMarker(index, textPlanSize)) {
+            insertConnective(dSynTSentence, Lexemes.SEQUENCE_FINAL_CONNECTIVE);
+        } else {
+            insertSequentialConnective(dSynTSentence);
+        }
     }
 
     private void insertSequentialConnective(DSynTSentence dSynTSentence) {

@@ -80,12 +80,21 @@ public class DSynTMainSentence extends DSynTSentence {
             coord.setAttribute("lexeme", Lexemes.SENTENCE_AGGREGATION);
             verb.appendChild(coord);
 
-            Element cVerb = IntermediateToDSynTConverter.createVerb(doc, sentences.get(0).getExecutableFragment(), IntermediateToDSynTConverter.VERB_TYPE_SUBCONDITION);
+            ExecutableFragment cFrag = sentences.get(0).getExecutableFragment();
+
+            Element cVerb = IntermediateToDSynTConverter.createVerb(doc, cFrag, IntermediateToDSynTConverter.VERB_TYPE_SUBCONDITION);
             coord.appendChild(cVerb);
 
-            Element cObject = IntermediateToDSynTConverter.createBO(doc, sentences.get(0).getExecutableFragment());
+            Element cObject = IntermediateToDSynTConverter.createBO(doc, cFrag);
             cVerb.appendChild(cObject);
 
+            Element cRole;
+            if (eFrag.getRole().equals(cFrag.getRole())) {
+                cRole = IntermediateToDSynTConverter.createSameRoleAggregation(doc);
+            } else {
+                cRole = IntermediateToDSynTConverter.createRole(doc, cFrag);
+            }
+            cVerb.appendChild(cRole);
         }
     }
 

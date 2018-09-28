@@ -52,7 +52,7 @@ public abstract class AbstractFragment {
     public boolean sen_before = false;
     public boolean role_isImperative = false;
     public boolean isJoinSentence = false;
-    public boolean isRigidSentence = false;
+    public boolean isRigidPath = false;
     private String action;
     private String bo;
     private String role;

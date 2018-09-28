@@ -348,6 +348,14 @@ public class BpmnWrapper {
     public List<String> getElementsName() {
         List<String> nameList = new ArrayList<>();
         for (TProcess tProcess : getProcessList()) {
+            nameList.add(tProcess.getName());
+
+            for (TLaneSet laneSet : tProcess.getLaneSet()) {
+                for (TLane tLane : laneSet.getLane()) {
+                    nameList.add(tLane.getName());
+                }
+            }
+
             for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
                 nameList.add(flowElement.getValue().getName());
             }

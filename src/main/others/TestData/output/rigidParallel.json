@@ -7,7 +7,7 @@
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 24,
-          "endIndex": 57
+          "endIndex": 61
         },
         {
           "processElementId": "StartEvent_1",
@@ -17,7 +17,7 @@
           "endIndex": 23
         }
       ],
-      "value": "The process starts when the Resource 1 does an activity 1.",
+      "value": "The process starts when the Resource 1 does an activity 1 (4).",
       "level": 0,
       "islateral": false
     },
@@ -28,10 +28,10 @@
           "processElementType": "XORSPLIT",
           "resource": "",
           "startIndex": 6,
-          "endIndex": 53
+          "endIndex": 62
         }
       ],
-      "value": "Then, one of the 3 alternative procedures is executed.",
+      "value": "Then, one the of the following alternative procedures is taken.",
       "level": 0,
       "islateral": false
     },
@@ -42,38 +42,17 @@
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 24,
-          "endIndex": 87
-        },
-        {
-          "processElementId": "Task_0x3tez7",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 24,
-          "endIndex": 87
-        }
-      ],
-      "value": "In the first procedure, the Resource 1 does the activity 2 and then does the activity 3.",
-      "level": 1,
-      "islateral": true
-    },
-    {
-      "snippetList": [
-        {
-          "processElementId": "Task_0m8ayjy",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 25,
-          "endIndex": 88
+          "endIndex": 94
         },
         {
           "processElementId": "Task_15pwl2u",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 25,
-          "endIndex": 88
+          "startIndex": 24,
+          "endIndex": 94
         }
       ],
-      "value": "In the second procedure, the Resource 1 does the activity 2 and then does the activity 4.",
+      "value": "In the first procedure, the Resource 1 does the activity 2 (6) and then do the activity 4 (10).",
       "level": 1,
       "islateral": true
     },
@@ -83,13 +62,20 @@
           "processElementId": "Task_0x3tez7",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 24,
-          "endIndex": 58
+          "startIndex": 17,
+          "endIndex": 55
+        },
+        {
+          "processElementId": "ExclusiveGateway_13hknen",
+          "processElementType": "ANDJOIN",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 15
         }
       ],
-      "value": "In the third procedure, the Resource 1 does the activity 3.",
+      "value": "After each case, the Resource 1 does the activity 3 (9).",
       "level": 1,
-      "islateral": true
+      "islateral": false
     },
     {
       "snippetList": [
@@ -97,18 +83,18 @@
           "processElementId": "EndEvent_1rtx6zz",
           "processElementType": "ENDEVENT",
           "resource": "",
-          "startIndex": 13,
-          "endIndex": 36
+          "startIndex": 17,
+          "endIndex": 40
         },
         {
           "processElementId": "ExclusiveGateway_00et72n",
-          "processElementType": "XORJOIN",
+          "processElementType": "ANDJOIN",
           "resource": "",
           "startIndex": 0,
-          "endIndex": 11
+          "endIndex": 15
         }
       ],
-      "value": "In any case, the process is finished.",
+      "value": "After each case, the process is finished.",
       "level": 0,
       "islateral": false
     }
