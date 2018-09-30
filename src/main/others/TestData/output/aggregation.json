@@ -28,17 +28,17 @@
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 6,
-          "endIndex": 57
+          "endIndex": 28
         },
         {
           "processElementId": "Task_1f1s5ot",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 6,
+          "startIndex": 38,
           "endIndex": 57
         }
       ],
-      "value": "Then, it does the activity 2 and then does the activity 3.",
+      "value": "Next, it does the activity 2 and then does the activity 3.",
       "level": 0,
       "islateral": false
     },
@@ -48,18 +48,18 @@
           "processElementId": "Task_0n3qfme",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 6,
-          "endIndex": 84
+          "startIndex": 12,
+          "endIndex": 46
         },
         {
           "processElementId": "Task_1cg4vf0",
           "processElementType": "ACTIVITY",
           "resource": "Resource 2",
-          "startIndex": 6,
-          "endIndex": 84
+          "startIndex": 56,
+          "endIndex": 90
         }
       ],
-      "value": "Next, the Resource 1 does the activity 4 and then the Resource 2 does the activity 5.",
+      "value": "After that, the Resource 1 does the activity 4 and then the Resource 2 does the activity 5.",
       "level": 0,
       "islateral": false
     },

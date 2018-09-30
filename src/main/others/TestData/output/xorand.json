@@ -45,7 +45,7 @@
           "endIndex": 52
         }
       ],
-      "value": "If condition (b), the Resource 1 does the activity 2.",
+      "value": "If condition \"b\", the Resource 1 does the activity 2.",
       "level": 1,
       "islateral": true
     },
@@ -59,7 +59,7 @@
           "endIndex": 65
         }
       ],
-      "value": "If condition (a), 2 procedures are executed in an arbitrary order.",
+      "value": "If condition \"a\", 2 procedures are executed in an arbitrary order.",
       "level": 1,
       "islateral": true
     },

@@ -4,6 +4,7 @@ package processToText.dataModel.dsynt;
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
+import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.apache.xerces.dom.DocumentImpl;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -17,6 +18,7 @@ import java.util.List;
 public class DSynTMainSentence extends DSynTSentence {
 
     private Element root;
+    private Document originalDSynT = null;
 
     public DSynTMainSentence(ExecutableFragment eFrag) {
         this.eFrag = eFrag;
@@ -62,15 +64,29 @@ public class DSynTMainSentence extends DSynTSentence {
             IntermediateToDSynTConverter.createAddSentences(doc, verb, eFrag);
         }
 
+        originalDSynT = XmlFormat.getClone(doc);
     }
 
     public void changeRole() {
         // Create role
-        if (eFrag.getRole().equals("") == false) {
+        if (!eFrag.getRole().equals("")) {
             verb.removeChild(role);
             role = IntermediateToDSynTConverter.createRole(doc, eFrag);
             verb.appendChild(role);
+
+            // Change role in original dsynt
+            updateRoleOriginalDSynt();
         }
+    }
+
+    private void updateRoleOriginalDSynt() {
+        DSynTMainSentence dSynTUnique = new DSynTMainSentence(eFrag);
+        dSynTUnique.getVerb().removeChild(dSynTUnique.getRole());
+        Element newRole = IntermediateToDSynTConverter.createRole(dSynTUnique.doc, eFrag);
+        dSynTUnique.getVerb().appendChild(newRole);
+        originalDSynT = dSynTUnique.doc;
+        ProcessElementDocument currentProcessDocument = this.getProcessElementDocumentList().get(0);
+        currentProcessDocument.setDocument(originalDSynT);
     }
 
     public void addCoordSentences(ArrayList<DSynTMainSentence> sentences) {
@@ -81,16 +97,16 @@ public class DSynTMainSentence extends DSynTSentence {
     }
 
     public void addCoordSentences(DSynTMainSentence coordSentence, String lexeme, boolean coordUseRole) {
-        Element coord = doc.createElement("dsyntnode");
-        coord.setAttribute("class", "coordinating_conj");
-        coord.setAttribute("rel", "COORD");
-        coord.setAttribute("lexeme", lexeme);
-        verb.appendChild(coord);
+        Element coordElement = doc.createElement("dsyntnode");
+        coordElement.setAttribute("class", "coordinating_conj");
+        coordElement.setAttribute("rel", "COORD");
+        coordElement.setAttribute("lexeme", lexeme);
+        verb.appendChild(coordElement);
 
         ExecutableFragment cFrag = coordSentence.getExecutableFragment();
 
         Element cVerb = IntermediateToDSynTConverter.createVerb(doc, cFrag, IntermediateToDSynTConverter.VERB_TYPE_SUBCONDITION);
-        coord.appendChild(cVerb);
+        coordElement.appendChild(cVerb);
 
         Element cObject = IntermediateToDSynTConverter.createBO(doc, cFrag);
         cVerb.appendChild(cObject);
@@ -99,20 +115,30 @@ public class DSynTMainSentence extends DSynTSentence {
             Element cRole;
             if (eFrag.getRole().equals(cFrag.getRole())) {
                 cRole = IntermediateToDSynTConverter.createSameRoleAggregation(doc);
+                updateRoleCoordSentence(coordSentence);
             } else {
                 cRole = IntermediateToDSynTConverter.createRole(doc, cFrag);
             }
             cVerb.appendChild(cRole);
         }
 
-        addProcessElementDocuments(coordSentence);
+        updateProcessElementDocuments();
+        addCoordProcessElementDocuments(coordSentence);
     }
 
-    private void addProcessElementDocuments(DSynTMainSentence coordSentence) {
+    private void updateRoleCoordSentence(DSynTMainSentence coordSentence) {
+        coordSentence.getVerb().removeChild(coordSentence.getRole());
+        Element newRole = IntermediateToDSynTConverter.createSameRoleAggregation(coordSentence.doc);
+        coordSentence.getVerb().appendChild(newRole);
+    }
+
+    private void updateProcessElementDocuments() {
+        ProcessElementDocument currentProcessDocument = this.getProcessElementDocumentList().get(0);
+        currentProcessDocument.setDocument(originalDSynT);
+    }
+
+    private void addCoordProcessElementDocuments(DSynTMainSentence coordSentence) {
         List<ProcessElementDocument> aggregatedElementDocumentList = coordSentence.getProcessElementDocumentList();
-        for (ProcessElementDocument aggregatedElement : aggregatedElementDocumentList) {
-            aggregatedElement.setDocument(this.getProcessElementDocumentList().get(0).getDocument());
-        }
         this.getProcessElementDocumentList().addAll(aggregatedElementDocumentList);
     }
 
