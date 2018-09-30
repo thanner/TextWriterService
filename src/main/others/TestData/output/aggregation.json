@@ -1,0 +1,81 @@
+{
+  "sentenceList": [
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_1fpjr16",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 24,
+          "endIndex": 57
+        },
+        {
+          "processElementId": "StartEvent_1",
+          "processElementType": "STARTEVENT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 23
+        }
+      ],
+      "value": "The process starts when the Resource 1 does an activity 1.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_09h6vdc",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 57
+        },
+        {
+          "processElementId": "Task_1f1s5ot",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 57
+        }
+      ],
+      "value": "Then, it does the activity 2 and then does the activity 3.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0n3qfme",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 6,
+          "endIndex": 84
+        },
+        {
+          "processElementId": "Task_1cg4vf0",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 2",
+          "startIndex": 6,
+          "endIndex": 84
+        }
+      ],
+      "value": "Next, the Resource 1 does the activity 4 and then the Resource 2 does the activity 5.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "EndEvent_033f4mw",
+          "processElementType": "ENDEVENT",
+          "resource": "",
+          "startIndex": 9,
+          "endIndex": 32
+        }
+      ],
+      "value": "Finally, the process is finished.",
+      "level": 0,
+      "islateral": false
+    }
+  ]
+}

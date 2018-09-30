@@ -1,12 +1,10 @@
 package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 
-import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import processToText.dataModel.dsynt.DSynTMainSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SentenceAggregator {
 
@@ -28,7 +26,6 @@ public class SentenceAggregator {
 
                     // Conduct role aggregation
                     ((DSynTMainSentence) previousData.getdSynTSentence()).addCoordSentences(coordSentences);
-                    addProcessElementDocuments(((DSynTMainSentence) previousData.getdSynTSentence()), coordSentences);
 
                     // Prepare to be deleted
                     toBeDeleted.add(i - deleteCount);
@@ -58,18 +55,8 @@ public class SentenceAggregator {
                 previousData.getdSynTSentence().getExecutableFragment().getListSize() == 0 &&
                 !currentData.getFragment().sen_hasConnective && !previousData.getFragment().sen_hasConnective &&
                 currentData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN) &&
-                previousData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN);
-    }
-
-    private void addProcessElementDocuments(DSynTMainSentence dSynTMainSentence, ArrayList<DSynTMainSentence> coordSentences) {
-        for (DSynTMainSentence coordSentence : coordSentences) {
-            List<ProcessElementDocument> aggregatedElementDocumentList = coordSentence.getProcessElementDocumentList();
-            for (ProcessElementDocument aggregatedElement : aggregatedElementDocumentList) {
-                aggregatedElement.setDocument(dSynTMainSentence.getProcessElementDocumentList().get(0).getDocument());
-            }
-
-            dSynTMainSentence.getProcessElementDocumentList().addAll(aggregatedElementDocumentList);
-        }
+                        previousData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN) &&
+                        !previousData.getFragment().isJoinSentence;
     }
 
 }

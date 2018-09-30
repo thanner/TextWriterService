@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Lexemes {
 
     public static final ArrayList<String> SEQUENCE_CONNECTIVES = new ArrayList<String>() {{
-        add("then");
+        //add("then"); // TODO: Used in aggregation
         add("next");
-        add("afterwards");
+        //add("afterwards"); // TODO: Used in OR Join
         add("after that");
         add("subsequently");
     }};
@@ -26,6 +26,10 @@ public class Lexemes {
     public static final String SEQUENCE_FINAL_CONNECTIVE = "finally";
 
     public static final String SENTENCE_AGGREGATION = "and then";
+    public static final String SIMPLE_XOR_START_CONNECTIVE = "must either";
+    public static final String SIMPLE_XOR_AGGREGATION_CONNECTIVE = "or";
+
+
     public static final String AND_CONDITION = "AND";
     public static final String OR_CONDITION = "OR";
 

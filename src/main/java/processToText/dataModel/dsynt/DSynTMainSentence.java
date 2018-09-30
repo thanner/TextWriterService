@@ -1,6 +1,7 @@
 package processToText.dataModel.dsynt;
 
 
+import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import org.apache.xerces.dom.DocumentImpl;
@@ -10,6 +11,7 @@ import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DSynTMainSentence extends DSynTSentence {
@@ -73,21 +75,27 @@ public class DSynTMainSentence extends DSynTSentence {
 
     public void addCoordSentences(ArrayList<DSynTMainSentence> sentences) {
         if (sentences.size() == 1) {
+            DSynTMainSentence coordSentence = sentences.get(0);
+            addCoordSentences(coordSentence, Lexemes.SENTENCE_AGGREGATION, true);
+        }
+    }
 
-            Element coord = doc.createElement("dsyntnode");
-            coord.setAttribute("class", "coordinating_conj");
-            coord.setAttribute("rel", "COORD");
-            coord.setAttribute("lexeme", Lexemes.SENTENCE_AGGREGATION);
-            verb.appendChild(coord);
+    public void addCoordSentences(DSynTMainSentence coordSentence, String lexeme, boolean coordUseRole) {
+        Element coord = doc.createElement("dsyntnode");
+        coord.setAttribute("class", "coordinating_conj");
+        coord.setAttribute("rel", "COORD");
+        coord.setAttribute("lexeme", lexeme);
+        verb.appendChild(coord);
 
-            ExecutableFragment cFrag = sentences.get(0).getExecutableFragment();
+        ExecutableFragment cFrag = coordSentence.getExecutableFragment();
 
-            Element cVerb = IntermediateToDSynTConverter.createVerb(doc, cFrag, IntermediateToDSynTConverter.VERB_TYPE_SUBCONDITION);
-            coord.appendChild(cVerb);
+        Element cVerb = IntermediateToDSynTConverter.createVerb(doc, cFrag, IntermediateToDSynTConverter.VERB_TYPE_SUBCONDITION);
+        coord.appendChild(cVerb);
 
-            Element cObject = IntermediateToDSynTConverter.createBO(doc, cFrag);
-            cVerb.appendChild(cObject);
+        Element cObject = IntermediateToDSynTConverter.createBO(doc, cFrag);
+        cVerb.appendChild(cObject);
 
+        if (coordUseRole) {
             Element cRole;
             if (eFrag.getRole().equals(cFrag.getRole())) {
                 cRole = IntermediateToDSynTConverter.createSameRoleAggregation(doc);
@@ -96,6 +104,16 @@ public class DSynTMainSentence extends DSynTSentence {
             }
             cVerb.appendChild(cRole);
         }
+
+        addProcessElementDocuments(coordSentence);
+    }
+
+    private void addProcessElementDocuments(DSynTMainSentence coordSentence) {
+        List<ProcessElementDocument> aggregatedElementDocumentList = coordSentence.getProcessElementDocumentList();
+        for (ProcessElementDocument aggregatedElement : aggregatedElementDocumentList) {
+            aggregatedElement.setDocument(this.getProcessElementDocumentList().get(0).getDocument());
+        }
+        this.getProcessElementDocumentList().addAll(aggregatedElementDocumentList);
     }
 
     public Element getVerb() {

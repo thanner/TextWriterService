@@ -34,8 +34,8 @@
           "processElementId": "ExclusiveGateway_0xk6y0s",
           "processElementType": "XORSPLIT",
           "resource": "",
-          "startIndex": -1,
-          "endIndex": 11
+          "startIndex": 6,
+          "endIndex": 19
         }
       ],
       "value": "Then, if required, the Resource 1 does the activity 2.",

@@ -157,10 +157,14 @@ public class IntermediateToDSynTConverter {
                     }
                     break;
                 case ModifierRecord.TARGET_ROLE:
-                    objectRoot.appendChild(mod);
+                    if (objectRoot != null) {
+                        objectRoot.appendChild(mod);
+                    }
                     break;
                 case ModifierRecord.TARGET_BO:
-                    objectRoot.appendChild(mod);
+                    if (objectRoot != null) {
+                        objectRoot.appendChild(mod);
+                    }
                     break;
             }
 

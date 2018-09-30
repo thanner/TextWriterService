@@ -53,8 +53,12 @@ public class TextPlanner {
     private boolean isTagWithBullet = false;
     private boolean isStart = true;
     private boolean isEnd = false;
+    private boolean isLoop = false;
+
     private Map<Integer, String> bpmnIdMap;
-    private String currentStartEventId = "Unknown Start Event id";
+
+    private Event currentStartEvent;
+    private String currentBpmnStartEventId = "Unknown Start Event id";
     private BpmnWrapper bpmnWrapper;
 
     public TextPlanner(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelDeriver lDeriver, EnglishLabelHelper lHelper, String imperativeRole, boolean isImperative, boolean isAlternative, Map<Integer, String> bpmnIdMap, TDefinitions tDefinitions) throws FileNotFoundException, JWNLException {
@@ -78,7 +82,12 @@ public class TextPlanner {
     // Convert
     // *********************************************************************************************
 
+
     public void convertToText(RPSTNode<ControlFlow, Node> root, int level) throws JWNLException, FileNotFoundException {
+        convertToText(root, level, false);
+    }
+
+    public void convertToText(RPSTNode<ControlFlow, Node> root, int level, boolean isInsideLoop) throws JWNLException, FileNotFoundException {
         // Order nodes of current level with respect to control flow
         ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes = PlanningHelper.sortTreeLevel(root, root.getEntry(), rpst);
         // For each node of current level
@@ -90,7 +99,7 @@ public class TextPlanner {
 
             // Bond
             if (PlanningHelper.isBond(node)) {
-                handleBond(node, orderedTopNodes, level);
+                handleBond(node, orderedTopNodes, level, isInsideLoop, root);
                 // Rigid
             } else if (PlanningHelper.isRigid(node)) {
                 handleRigid(node, level);
@@ -106,7 +115,7 @@ public class TextPlanner {
                 // Subprocess
             } else {
                 if (depth > 0) {
-                    convertToText(node, level);
+                    convertToText(node, level, isInsideLoop);
                 }
             }
 
@@ -121,7 +130,7 @@ public class TextPlanner {
     // HANDLE BOND
     // *********************************************************************************************
 
-    private void handleBond(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level) throws FileNotFoundException, JWNLException {
+    private void handleBond(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, int level, boolean isInsideLoop, RPSTNode<ControlFlow, Node> root) throws FileNotFoundException, JWNLException {
         ConverterRecord convRecord = getConverterRecord(node, orderedTopNodes);
 
         if (convRecord != null) {
@@ -159,7 +168,7 @@ public class TextPlanner {
             // JOIN
             if (passedFragments.size() > 0) {
                 if (passedFragments.get(0).getFragmentType() == AbstractFragment.TYPE_JOIN) {
-                    if (isNextElementAJoin(convRecord.post)) {
+                    if (isNextElementAJoin(convRecord.post) || isNextElementLoop(node, orderedTopNodes, isInsideLoop)) {
                         ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.EMPTYSEQUENCEFLOW);
                         eFrag.sen_level = level;
                         eFrag.bo_isSubject = true;
@@ -193,6 +202,13 @@ public class TextPlanner {
             }
         }
 
+        return false;
+    }
+
+    private boolean isNextElementLoop(RPSTNode<ControlFlow, Node> node, ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, boolean isInsideLoop) {
+        if (isInsideLoop) {
+            return orderedTopNodes.get(orderedTopNodes.size() - 2).equals(node);
+        }
         return false;
     }
 
@@ -254,26 +270,37 @@ public class TextPlanner {
         int currentPosition = orderedTopNodes.indexOf(node);
         if (currentPosition < orderedTopNodes.size() - 1) {
             Node potEndNode = orderedTopNodes.get(currentPosition + 1).getExit();
-            return PlanningHelper.isEndEvent(potEndNode, process) == true;
+            return PlanningHelper.isEndEvent(potEndNode, process);
         }
         return false;
     }
 
     private ConverterRecord getXORConverterRecord(RPSTNode<ControlFlow, Node> node) {
         GatewayPropertyRecord xorPropertyRecord = new GatewayPropertyRecord(node, rpst, process);
-        if (xorPropertyRecord.isGatewayLabeled() && xorPropertyRecord.hasYNArcs() && xorPropertyRecord.getMaxPathDepth() == 1) {
+        if (xorPropertyRecord.getMaxPathDepth() == 1) {
             GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
-            // Labeled Case with Yes/No - arcs and Max. Depth of 1
-            for (DSynTSentence dSynTSentence : textToIntermediateConverter.convertXORSimple(node, gwExtractor)) {
-                dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
-                sentencePlan.add(dSynTSentence);
+            if (xorPropertyRecord.isGatewayLabeled() && xorPropertyRecord.hasYNArcs()) {
+                // Labeled Case with Yes/No - arcs and Max. Depth of 1
+                for (DSynTSentence dSynTSentence : textToIntermediateConverter.convertXORSimpleYesNo(node, gwExtractor)) {
+                    dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
+                    sentencePlan.add(dSynTSentence);
+                }
+                return null;
             }
-            return null;
-            // General case
-        } else {
-            ArrayList<RPSTNode<ControlFlow, Node>> xorNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
-            return textToIntermediateConverter.convertXORGeneral(node, xorNodes.size());
+            // TODO: TENTATIVA SIMPLE XOR
+            /*
+            else if (xorPropertyRecord.getOutgoingArcs() == 2 && xorPropertyRecord.getMaxPathActivityNumber() == 1 && isSameRole(node)) {
+                DSynTMainSentence dSynTSentence = textToIntermediateConverter.convertXORSimple(node, bpmnIdMap);
+                addSentenceSimpleBond(dSynTSentence, node, ProcessElementType.XORSPLIT);
+                //dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), ProcessElementType.XORSPLIT);
+                //sentencePlan.add(dSynTSentence);
+                return null;
+            }
+            */
         }
+        // General case
+        ArrayList<RPSTNode<ControlFlow, Node>> xorNodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+        return textToIntermediateConverter.convertXORGeneral(node, xorNodes.size());
     }
 
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
@@ -293,6 +320,46 @@ public class TextPlanner {
         return textToIntermediateConverter.convertANDGeneral(node, andNodes.size());
     }
 
+    public boolean isSameRole(RPSTNode<ControlFlow, Node> node) {
+        boolean isFirstPath = true;
+        String firstRole = "";
+
+        ArrayList<RPSTNode<ControlFlow, Node>> pNodeList = new ArrayList<>(rpst.getChildren(node));
+        for (RPSTNode<ControlFlow, Node> pNode : pNodeList) {
+            for (RPSTNode<ControlFlow, Node> tNode : rpst.getChildren(pNode)) {
+                if (tNode.getEntry() == node.getEntry()) {
+                    for (Arc arc : process.getArcs().values()) {
+                        if (arc.getSource().getId() == Integer.valueOf(tNode.getEntry().getId()) && arc.getTarget().getId() == Integer.valueOf(tNode.getExit().getId())) {
+                            Activity activity = process.getActivity(Integer.valueOf(tNode.getExit().getId()));
+                            String role = activity.getLane().getName();
+                            if (isFirstPath) {
+                                firstRole = role;
+                                isFirstPath = false;
+                            } else {
+                                if (!firstRole.equals(role)) {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    // TODO: FAZER
+    private void addSentenceSimpleBond(DSynTMainSentence dSynTSentence, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
+        if (isStart) {
+            isStart = false;
+            //dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
+            //addStartEventFragment(dSynTSentence, Lexemes.START_EVENT_WHEN_CONNECTIVE);
+        }
+        dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), processElementType);
+
+        sentencePlan.add(dSynTSentence);
+    }
+
     private void setProcessElementData(ConverterRecord convRecord, RPSTNode<ControlFlow, Node> node, ProcessElementType processElementType) {
         if (convRecord != null && convRecord.post != null) {
             convRecord.post.setProcessElementType(processElementType);
@@ -303,6 +370,7 @@ public class TextPlanner {
     private void addBondPreStatements(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
         if (convRecord != null && convRecord.preStatements != null) {
             for (DSynTSentence preStatement : convRecord.preStatements) {
+                changeFragmentByLoop(preStatement.getExecutableFragment());
                 if (isStart) {
                     isStart = false;
 
@@ -347,9 +415,24 @@ public class TextPlanner {
         }
     }
 
+    private void changeFragmentByLoop(AbstractFragment eFrag) {
+        if (isLoop) {
+            isLoop = false;
+            eFrag.isLoop = true;
+        }
+    }
+
     private void convertBondToText(RPSTNode<ControlFlow, Node> node, int level) throws FileNotFoundException, JWNLException {
-        if (PlanningHelper.isLoop(node, rpst) || PlanningHelper.isSkip(node, rpst)) {
+        if (PlanningHelper.isSkip(node, rpst)) {
+            if (isStart) {
+                createSentenceStartDecision();
+            }
             convertToText(node, level);
+        }
+
+        if (PlanningHelper.isLoop(node, rpst)) {
+            isLoop = true;
+            convertToText(node, level, true);
         }
 
         if (isSplit(node)) {
@@ -419,43 +502,6 @@ public class TextPlanner {
             handleRigidFragmented(node, runSequences, validIDs, level);
         }
 
-        // TODO: REMOVER
-        // printImportantData();
-        // TODO: REMOVER
-        // printRunsequences(runSequences);
-
-    }
-
-    private void printImportantData() {
-        System.out.println();
-        System.out.println("Indices");
-        for (int elemId = 0; elemId < 100; elemId++) {
-            Element element = process.getElem(elemId);
-            if (element != null) {
-                System.out.println("- " + element.getId() + " " + element.getLabel().trim());
-            }
-        }
-
-        System.out.println();
-        System.out.println("Esperado");
-        System.out.println("G1 - Do activity 2 - G3 - G2 - Do activity 3 - G4");
-        System.out.println("G1 (Faltando) - Do activity 2 - G3 - Do activity 4 - G4 : (5 6 7 10 11)");
-        System.out.println("G1 - G2 - Do activity 3 - G4");
-        System.out.println();
-    }
-
-    private void printRunsequences(ArrayList<ArrayList<String>> runSequences) {
-        int i = 0;
-
-        for (ArrayList<String> runSequence : runSequences) {
-            System.out.println("Run sequence " + i);
-            for (String elem : runSequence) {
-                Element element = process.getElem(Integer.parseInt(elem));
-                System.out.println("- " + element.getId() + " " + element.getLabel().trim());
-            }
-            System.out.println();
-            i++;
-        }
     }
 
     private boolean isHandleRigidCompletePaths(ArrayList<ArrayList<String>> runSequences) {
@@ -854,6 +900,7 @@ public class TextPlanner {
 
         // Standard case
         ExecutableFragment eFrag = handleStandardCase(activity, anno, level);
+        changeFragmentByLoop(eFrag);
 
         if (isImperative && imperativeRole.equals(eFrag.getRole())) {
             correctArticleSettings(eFrag);
@@ -925,7 +972,7 @@ public class TextPlanner {
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("starting_point", "+");
         dSynTSentence.getExecutableFragment().addMod(lexeme, modRecord);
-        dSynTSentence.addProcessElementDocument(currentStartEventId, ProcessElementType.STARTEVENT, "", lexeme);
+        dSynTSentence.addProcessElementDocument(currentBpmnStartEventId, ProcessElementType.STARTEVENT, "", lexeme);
         dSynTSentence.createDSynTRepresentation();
     }
 
@@ -1110,15 +1157,7 @@ public class TextPlanner {
             // Event is followed by gateway --> full sentence
             /*
             if (isFollowedByGateway(event, currentPosition, orderedTopNodes)) {
-                isStart = false;
-
-                ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.STARTDECISION);
-                eFrag.add_hasArticle = false;
-                eFrag.bo_isSubject = true;
-
-                DSynTSentence dSynTSentence = new DSynTMainSentence(eFrag);
-                dSynTSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.STARTEVENT);
-                sentencePlan.add(dSynTSentence);
+                createSentenceStartDecision(event);
             }
             */
 
@@ -1133,7 +1172,24 @@ public class TextPlanner {
                 }
             }
 
-            currentStartEventId = getProcessElementId(event.getId());
+            currentStartEvent = event;
+            currentBpmnStartEventId = getProcessElementId(event.getId());
+        }
+    }
+
+    private void createSentenceStartDecision() {
+        if (currentStartEvent != null) {
+            isStart = false;
+
+            ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.STARTDECISION);
+            eFrag.add_hasArticle = false;
+            eFrag.bo_isSubject = true;
+
+            eFrag.isSentenceStartDecision = true;
+
+            DSynTSentence dSynTSentence = new DSynTMainSentence(eFrag);
+            dSynTSentence.addProcessElementDocument(getProcessElementId(currentStartEvent.getId()), ProcessElementType.STARTEVENT);
+            sentencePlan.add(dSynTSentence);
         }
     }
 

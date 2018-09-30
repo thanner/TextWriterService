@@ -8,6 +8,7 @@ public enum TemplateLoaderType {
     SKIP("Skip.xml"),
     LOOP_SPLIT("LoopSplit.xml"),
     LOOP_JOIN("LoopJoin.xml"),
+    LOOP_SKIP("LoopSkip.xml"),
     XOR("XOR.xml"),
     OR("OR.xml"),
     RIGID("Rigid.xml"),

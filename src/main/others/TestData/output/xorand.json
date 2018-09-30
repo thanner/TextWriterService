@@ -45,7 +45,7 @@
           "endIndex": 52
         }
       ],
-      "value": "If condition \"b\", the Resource 1 does the activity 2.",
+      "value": "If condition (b), the Resource 1 does the activity 2.",
       "level": 1,
       "islateral": true
     },
@@ -59,22 +59,8 @@
           "endIndex": 65
         }
       ],
-      "value": "If condition \"a\", 2 procedures are executed in an arbitrary order.",
+      "value": "If condition (a), 2 procedures are executed in an arbitrary order.",
       "level": 1,
-      "islateral": true
-    },
-    {
-      "snippetList": [
-        {
-          "processElementId": "Task_0zml9lz",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 0,
-          "endIndex": 34
-        }
-      ],
-      "value": "The Resource 1 does the activity 3.",
-      "level": 2,
       "islateral": true
     },
     {
@@ -83,11 +69,25 @@
           "processElementId": "Task_1i517j0",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
-          "startIndex": 17,
-          "endIndex": 49
+          "startIndex": 0,
+          "endIndex": 32
         }
       ],
-      "value": "In the meantime, the Resource 1 does the activity.",
+      "value": "The Resource 1 does the activity.",
+      "level": 2,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0zml9lz",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 17,
+          "endIndex": 51
+        }
+      ],
+      "value": "In the meantime, the Resource 1 does the activity 3.",
       "level": 2,
       "islateral": true
     },

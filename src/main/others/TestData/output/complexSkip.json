@@ -1,0 +1,116 @@
+{
+  "sentenceList": [
+    {
+      "snippetList": [
+        {
+          "processElementId": "StartEvent_1",
+          "processElementType": "STARTEVENT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 34
+        }
+      ],
+      "value": "The process starts with a decision.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_1oeoj9a",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 13,
+          "endIndex": 47
+        },
+        {
+          "processElementId": "ExclusiveGateway_0vgkrkr",
+          "processElementType": "XORSPLIT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 13
+        }
+      ],
+      "value": "If required, the Resource 1 does the activity 1.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "ExclusiveGateway_0ua7pzv",
+          "processElementType": "XORSPLIT",
+          "resource": "",
+          "startIndex": 6,
+          "endIndex": 53
+        }
+      ],
+      "value": "Then, one of the 2 alternative procedures is executed.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_08yewaw",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 24,
+          "endIndex": 58
+        }
+      ],
+      "value": "In the first procedure, the Resource 1 does the activity 2.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0srv22o",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 25,
+          "endIndex": 59
+        }
+      ],
+      "value": "In the second procedure, the Resource 1 does the activity 3.",
+      "level": 1,
+      "islateral": true
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "ExclusiveGateway_0ua7pzv",
+          "processElementType": "XORJOIN",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 11
+        }
+      ],
+      "value": "In any case, the process continues.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "EndEvent_1cwva45",
+          "processElementType": "ENDEVENT",
+          "resource": "",
+          "startIndex": 13,
+          "endIndex": 36
+        },
+        {
+          "processElementId": "ExclusiveGateway_15r0m3j",
+          "processElementType": "XORJOIN",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 11
+        }
+      ],
+      "value": "In any case, the process is finished.",
+      "level": 0,
+      "islateral": false
+    }
+  ]
+}

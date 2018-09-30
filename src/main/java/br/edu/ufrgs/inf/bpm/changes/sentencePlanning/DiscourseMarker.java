@@ -11,6 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import processToText.dataModel.dsynt.DSynTConditionSentence;
 import processToText.dataModel.dsynt.DSynTSentence;
+import processToText.dataModel.intermediate.ConditionFragment;
 import processToText.dataModel.intermediate.ExecutableFragment;
 import processToText.textPlanning.IntermediateToDSynTConverter;
 
@@ -21,6 +22,8 @@ public class DiscourseMarker {
 
     private Map<Integer, Integer> levelOrdinalMap = new HashMap<>();
     private Set<String> parallelGatewayIndexSet = new HashSet<>();
+    // private Set<QName> pathsVisited = new HashSet<>();
+
     private BpmnWrapper bpmnWrapper;
 
     private int lastLevel;
@@ -35,25 +38,26 @@ public class DiscourseMarker {
 
         for (int index = 0; index < textPlan.size(); index++) {
             DSynTSentence dSynTSentence = textPlan.get(index);
-            ExecutableFragment eFrag = dSynTSentence.getExecutableFragment();
-            currentLevel = eFrag.sen_level;
+            // updateVisitedPaths(dSynTSentence);
 
-            if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
-                if (!eFrag.sen_hasConnective && index > 0) {
-                    insertConnectives(dSynTSentence, index, textPlan.size());
-                }
-                lastLevel = currentLevel;
-            }
+            if (hasDiscourseMarker(textPlan, index)) {
+                ExecutableFragment eFrag = dSynTSentence.getExecutableFragment();
+                currentLevel = eFrag.sen_level;
 
-            if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
-                DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
-                // TODO Testar se precisa
-                // if (!eFrag.sen_hasConnective && index > 0 && !dSynTConditionSentence.getConditionFragment().sen_headPosition) {
-                if (!eFrag.sen_hasConnective && index > 0) {
-                    //insertSequentialConnective(dSynTConditionSentence, index, textPlan.size());
+                if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.MAIN)) {
                     insertConnectives(dSynTSentence, index, textPlan.size());
+                    lastLevel = currentLevel;
                 }
-                lastLevel = currentLevel;
+
+                if (dSynTSentence.getdSynTSentenceType().equals(DSynTSentenceType.CONDITION)) {
+                    DSynTConditionSentence dSynTConditionSentence = (DSynTConditionSentence) dSynTSentence;
+                    ConditionFragment cFrag = dSynTConditionSentence.getConditionFragment();
+                    if (!cFrag.sen_headPosition || cFrag.skip) {
+                        insertConnectives(dSynTSentence, index, textPlan.size());
+                    }
+                    lastLevel = currentLevel;
+                }
+
             }
 
         }
@@ -61,6 +65,26 @@ public class DiscourseMarker {
         return textPlan;
     }
 
+    /*
+    private void updateVisitedPaths(DSynTSentence dSynTSentence) {
+        for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
+            TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
+            if(tFlowElement instanceof TFlowNode) {
+                //pathsVisited.addAll(((TFlowNode) tFlowElement).getIncoming());
+                pathsVisited.addAll(((TFlowNode) tFlowElement).getOutgoing());
+            }
+        }
+    }
+    */
+
+    private boolean hasDiscourseMarker(ArrayList<DSynTSentence> textPlan, int index) {
+        if (index > 0) {
+            ExecutableFragment currentExecutableFragment = textPlan.get(index).getExecutableFragment();
+            ExecutableFragment previousExecutableFragment = textPlan.get(index - 1).getExecutableFragment();
+            return currentExecutableFragment.sen_canAddDiscourseMarker && !currentExecutableFragment.sen_hasConnective && !previousExecutableFragment.isSentenceStartDecision;
+        }
+        return false;
+    }
 
     private void insertConnectives(DSynTSentence dSynTSentence, int index, int textPlanSize) {
         if (isRigidSentencePath(dSynTSentence)) {
@@ -210,10 +234,14 @@ public class DiscourseMarker {
 
     private boolean isAddDiscourseMarker(DSynTSentence dSynTSentence, ProcessElementType processElementType, Class gatewayClass) {
         if (dSynTSentence.getExecutableFragment().isJoinSentence) {
-            return isAddDiscourseMarkerJoinSentence(dSynTSentence, processElementType);
+            return isAddDiscourseMarkerJoinSentence(dSynTSentence, processElementType) && !isJoinLoop(dSynTSentence);
         } else {
-            return isAddJoinDiscourseMarkerNormalSentence(dSynTSentence, gatewayClass);
+            return isAddJoinDiscourseMarkerNormalSentence(dSynTSentence, gatewayClass) && !isJoinLoop(dSynTSentence);
         }
+    }
+
+    private boolean isJoinLoop(DSynTSentence dSynTSentence) {
+        return dSynTSentence.getExecutableFragment().isLoop;
     }
 
     private boolean isAddDiscourseMarkerJoinSentence(DSynTSentence dSynTSentence, ProcessElementType processElementType) {
@@ -240,6 +268,22 @@ public class DiscourseMarker {
         }
         return false;
     }
+
+    /*
+    private boolean isJoinLoop(DSynTSentence dSynTSentence){
+        for (ProcessElementDocument processElement : dSynTSentence.getProcessElementDocumentList()) {
+            TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
+            if (tFlowElement instanceof TGateway) {
+                for(QName qName: ((TGateway) tFlowElement).getIncoming()){
+                    if(!pathsVisited.contains(qName)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    */
 
     private boolean isAddFinalDiscourseMarker(int index, int textPlanSize) {
         return index == textPlanSize - 1;

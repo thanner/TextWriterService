@@ -1,6 +1,4 @@
-Sep 28, 2018 1:07:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp getInputFiles
-WARNING: InputFiles not loading
-Sep 28, 2018 1:07:03 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
-INFO: Input File - skip2
-Sep 28, 2018 1:07:11 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+Sep 30, 2018 4:53:30 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
+INFO: Input File - simpleXor
+Sep 30, 2018 4:53:40 PM br.edu.ufrgs.inf.bpm.application.DataGeneratorApp generateData
 INFO: MetaText - Done

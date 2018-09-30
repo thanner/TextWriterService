@@ -51,8 +51,15 @@ public abstract class AbstractFragment {
     public boolean sen_hasColon = false;
     public boolean sen_before = false;
     public boolean role_isImperative = false;
+
+    public boolean sen_canAddDiscourseMarker = true;
+
     public boolean isJoinSentence = false;
     public boolean isRigidPath = false;
+    public boolean isSentenceStartDecision = false;
+    public boolean skip = false;
+    public boolean isLoop = false;
+
     private String action;
     private String bo;
     private String role;

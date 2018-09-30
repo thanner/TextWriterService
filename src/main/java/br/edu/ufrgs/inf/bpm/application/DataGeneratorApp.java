@@ -36,14 +36,29 @@ public class DataGeneratorApp {
         //     generateData(fileEntry, true);
         // }
 
-        // File file1 = new File("src/main/others/TestData/xor.bpmn");
-        // generateData(file1, false);
+        /*
+        File file = new File("src/main/others/TestData/xor.bpmn");
+        generateData(file, false);
 
-        // File file2 = new File("src/main/others/TestData/skip.bpmn");
-        // generateData(file2, false);
+        file = new File("src/main/others/TestData/xorAnd.bpmn");
+        generateData(file, false);
 
-        File file2 = new File("src/main/others/TestData/skip2.bpmn");
+        file = new File("src/main/others/TestData/andXor.bpmn");
+        generateData(file, false);
+
+        file = new File("src/main/others/TestData/skip.bpmn");
+        generateData(file, false);
+
+        file = new File("src/main/others/TestData/loop.bpmn");
+        generateData(file, false);
+
+        */
+
+        File file2 = new File("src/main/others/TestData/simpleXor.bpmn");
         generateData(file2, false);
+
+        // file2 = new File("src/main/others/TestData/skip2.bpmn");
+        // generateData(file2, false);
 
         /*
         File file2 = new File("/Users/thanner/IdeaProjects/textwriter/src/main/others/TestData/input/2009-5 PandE - Lodge Originating Document by Post - process.bpmn");

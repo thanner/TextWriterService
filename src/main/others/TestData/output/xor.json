@@ -3,28 +3,21 @@
     {
       "snippetList": [
         {
+          "processElementId": "ExclusiveGateway_0hr8sgu",
+          "processElementType": "XORSPLIT",
+          "resource": "",
+          "startIndex": 25,
+          "endIndex": 72
+        },
+        {
           "processElementId": "StartEvent 1",
           "processElementType": "STARTEVENT",
           "resource": "",
           "startIndex": 0,
-          "endIndex": 34
+          "endIndex": 24
         }
       ],
-      "value": "The process starts with a decision.",
-      "level": 0,
-      "islateral": false
-    },
-    {
-      "snippetList": [
-        {
-          "processElementId": "ExclusiveGateway_0hr8sgu",
-          "processElementType": "XORSPLIT",
-          "resource": "",
-          "startIndex": 6,
-          "endIndex": 53
-        }
-      ],
-      "value": "Then, one of the 2 alternative procedures is executed.",
+      "value": "When the process starts, one of the 2 alternative procedures is executed.",
       "level": 0,
       "islateral": false
     },
@@ -35,17 +28,17 @@
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 24,
-          "endIndex": 139
+          "endIndex": 141
         },
         {
           "processElementId": "Task_0mzpr4d",
           "processElementType": "ACTIVITY",
           "resource": "Resource 1",
           "startIndex": 24,
-          "endIndex": 139
+          "endIndex": 141
         }
       ],
-      "value": "In the first procedure, the Resource 1 does the unlabeled activity (id: task 0q2fedy) and then do the unlabeled activity (id: task 0mzpr4d).",
+      "value": "In the first procedure, the Resource 1 does the unlabeled activity (id: task 0q2fedy) and then does the unlabeled activity (id: task 0mzpr4d).",
       "level": 1,
       "islateral": true
     },
@@ -66,25 +59,18 @@
     {
       "snippetList": [
         {
-          "processElementId": "ExclusiveGateway_0hr8sgu",
-          "processElementType": "XORJOIN",
-          "resource": "",
-          "startIndex": 0,
-          "endIndex": 75
-        }
-      ],
-      "value": "Once one of the 2 alternative procedures was executed the process continues.",
-      "level": 0,
-      "islateral": false
-    },
-    {
-      "snippetList": [
-        {
           "processElementId": "EndEvent 1",
           "processElementType": "ENDEVENT",
           "resource": "",
           "startIndex": 13,
           "endIndex": 36
+        },
+        {
+          "processElementId": "ExclusiveGateway_1q6kstq",
+          "processElementType": "XORJOIN",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 11
         }
       ],
       "value": "In any case, the process is finished.",

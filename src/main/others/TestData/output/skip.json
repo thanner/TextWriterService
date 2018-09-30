@@ -3,21 +3,35 @@
     {
       "snippetList": [
         {
-          "processElementId": "Task_0bez43o",
-          "processElementType": "ACTIVITY",
-          "resource": "Resource 1",
-          "startIndex": 24,
-          "endIndex": 57
-        },
-        {
           "processElementId": "StartEvent_1",
           "processElementType": "STARTEVENT",
           "resource": "",
           "startIndex": 0,
-          "endIndex": 23
+          "endIndex": 34
         }
       ],
-      "value": "The process starts when the Resource 1 does an activity 1.",
+      "value": "The process starts with a decision.",
+      "level": 0,
+      "islateral": false
+    },
+    {
+      "snippetList": [
+        {
+          "processElementId": "Task_0bez43o",
+          "processElementType": "ACTIVITY",
+          "resource": "Resource 1",
+          "startIndex": 13,
+          "endIndex": 47
+        },
+        {
+          "processElementId": "ExclusiveGateway_0xk6y0s",
+          "processElementType": "XORSPLIT",
+          "resource": "",
+          "startIndex": 0,
+          "endIndex": 13
+        }
+      ],
+      "value": "If required, the Resource 1 does the activity 1.",
       "level": 0,
       "islateral": false
     },

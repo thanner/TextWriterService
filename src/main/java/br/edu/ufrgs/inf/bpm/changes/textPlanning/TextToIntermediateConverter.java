@@ -1,9 +1,11 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
 import br.edu.ufrgs.inf.bpm.builder.FragmentGenerator;
+import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.changes.templates.Phrases;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
+import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
 import de.hpi.bpt.process.ControlFlow;
@@ -24,6 +26,7 @@ import processToText.textPlanning.recordClasses.ModifierRecord;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TextToIntermediateConverter {
@@ -87,7 +90,7 @@ public class TextToIntermediateConverter {
     // XOR - SPLIT
     // *********************************************************************************************
 
-    public ArrayList<DSynTSentence> convertXORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
+    public ArrayList<DSynTSentence> convertXORSimpleYesNo(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
 
         ExecutableFragment eFragYes = null;
         ExecutableFragment eFragNo = null;
@@ -99,7 +102,6 @@ public class TextToIntermediateConverter {
             for (RPSTNode<ControlFlow, Node> tNode : rpst.getChildren(pNode)) {
                 if (tNode.getEntry() == node.getEntry()) {
                     for (Arc arc : process.getArcs().values()) {
-                        System.out.println(arc.getLabel());
                         if (arc.getSource().getId() == Integer.valueOf(tNode.getEntry().getId()) &&
                                 arc.getTarget().getId() == Integer.valueOf(tNode.getExit().getId())) {
                             if (arc.getLabel().toLowerCase().equals("yes")) {
@@ -159,49 +161,59 @@ public class TextToIntermediateConverter {
         return sentences;
     }
 
-    /*
-    public List<DSynTSentence> convertXORLabeled(RPSTNode<ControlFlow,Node> node, GatewayExtractor gwExtractor) {
-        List<DSynTSentence> sentences = new ArrayList<>();
+    public DSynTMainSentence convertXORSimple(RPSTNode<ControlFlow, Node> node, Map<Integer, String> bpmnIdMap) {
 
+        List<DSynTMainSentence> dSynTSentenceList = new ArrayList<>();
         String role = "";
+        boolean isFirst = true;
 
-        ArrayList<RPSTNode<ControlFlow, Node>> pNodeList = new ArrayList<>();
-        pNodeList.addAll(rpst.getChildren(node));
+        ArrayList<RPSTNode<ControlFlow, Node>> pNodeList = new ArrayList<>(rpst.getChildren(node));
         for (RPSTNode<ControlFlow, Node> pNode : pNodeList) {
             for (RPSTNode<ControlFlow, Node> tNode : rpst.getChildren(pNode)) {
                 if (tNode.getEntry() == node.getEntry()) {
                     for (Arc arc : process.getArcs().values()) {
-                        if (arc.getSource().getId() == Integer.valueOf(tNode.getEntry().getId())
-                                && arc.getTarget().getId() == Integer.valueOf(tNode.getExit().getId())) {
-                            Activity a = process.getActivity(Integer.valueOf(tNode.getExit().getId()));
-                            Annotation anno = a.getAnnotations().get(0);
+                        if (arc.getSource().getId() == Integer.valueOf(tNode.getEntry().getId()) && arc.getTarget().getId() == Integer.valueOf(tNode.getExit().getId())) {
+                            Activity activity = process.getActivity(Integer.valueOf(tNode.getExit().getId()));
+                            Annotation anno = activity.getAnnotations().get(0);
                             String action = anno.getActions().get(0);
                             String bo = anno.getBusinessObjects().get(0);
-                            role = a.getLane().getName();
-                            // role = getRole(tNode);
+                            role = activity.getLane().getName();
                             String addition = anno.getAddition();
 
+                            if (isFirst) {
+                                addition = "can either";
+                            }
+
                             ExecutableFragment eFrag = new ExecutableFragment(action, bo, role, addition);
+
+                            if (isFirst) {
+                                eFrag.add_hasArticle = false;
+                                isFirst = false;
+                            }
+
                             eFrag.addAssociation(Integer.valueOf(node.getExit().getId()));
-                            DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(eFrag, createConditionalFragment(node, gwExtractor));
-                            sentences.add(dsyntSentence);
+
+                            if (imperative && imperativeRole.equals(role)) {
+                                eFrag.setRole("");
+                                eFrag.verb_isImperative = true;
+                            }
+
+                            DSynTMainSentence dSynTMainSentence = new DSynTMainSentence(eFrag);
+                            String processElementId = bpmnIdMap.getOrDefault(activity.getId(), "none");
+                            dSynTMainSentence.addProcessElementDocument(processElementId, ProcessElementType.ACTIVITY);
+
+                            dSynTSentenceList.add(dSynTMainSentence);
                         }
                     }
                 }
             }
         }
 
-        return sentences;
-    }
-    */
+        DSynTMainSentence dSynTMainSentence = dSynTSentenceList.get(0);
 
-    private ConditionFragment createConditionalFragment(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
-        ConditionFragment cFrag = new ConditionFragment(gwExtractor.getVerb(),
-                gwExtractor.getObject(), "", "", ConditionFragment.TYPE_IF,
-                gwExtractor.getModList());
-        cFrag.bo_replaceWithPronoun = true;
-        cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-        return cFrag;
+        dSynTMainSentence.addCoordSentences(dSynTSentenceList.get(1), Lexemes.SIMPLE_XOR_AGGREGATION_CONNECTIVE, false);
+
+        return dSynTMainSentence;
     }
 
     public ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
@@ -239,214 +251,209 @@ public class TextToIntermediateConverter {
      * sentences.
      */
     public ConverterRecord convertLoop(RPSTNode<ControlFlow, Node> node, RPSTNode<ControlFlow, Node> firstActivity) {
-
-        // Labeled Case
         if (node.getExit().getName().equals("") == false) {
+            return convertLoopLabeledCase(node, firstActivity);
+        } else {
+            return convertLoopUnlabeledCase(node, firstActivity);
+        }
+    }
 
-            // Derive information from the gateway
-            GatewayExtractor gwExtractor = new GatewayExtractor(node.getExit(), lHelper);
+    private ConverterRecord convertLoopLabeledCase(RPSTNode<ControlFlow, Node> node, RPSTNode<ControlFlow, Node> firstActivity) {
+        // Derive information from the gateway
+        GatewayExtractor gwExtractor = new GatewayExtractor(node.getExit(), lHelper);
 
-            // Generate general statement about loop
-            templateLoader.loadTemplate(TemplateLoaderType.LOOP_SPLIT);
-            String role = getRole(node);
-            ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), role, "");
-            eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-            ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
-            eFrag.addMod(templateLoader.getAddition(), modRecord);
-            eFrag.bo_isPlural = true;
+        // Generate general statement about loop
+        templateLoader.loadTemplate(TemplateLoaderType.LOOP_SPLIT);
+        String role = getRole(node);
+        ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), role, "");
+        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
+        eFrag.addMod(templateLoader.getAddition(), modRecord);
+        eFrag.bo_isPlural = true;
 
-            ExecutableFragment eFrag2 = new ExecutableFragment("continue", "", "", "");
-            eFrag2.addAssociation(Integer.valueOf(node.getEntry().getId()));
-            eFrag.addSentence(eFrag2);
-            if (role.equals("")) {
-                eFrag.verb_IsPassive = true;
-                eFrag.bo_isSubject = true;
-                eFrag2.verb_IsPassive = true;
-                eFrag2.setBo("it");
-                eFrag2.bo_isSubject = true;
-                eFrag2.bo_hasArticle = false;
-            }
-
-            role = "";
-            ConditionFragment cFrag = null;
-            Activity a = process.getActivity(Integer.valueOf(firstActivity.getExit().getId()));
-            Event e = process.getEvent(Integer.valueOf(firstActivity.getExit().getId()));
-            Gateway g = process.getGateway(Integer.valueOf(firstActivity.getExit().getId()));
-            if (a != null) {
-                role = a.getLane().getName();
-                if (role.equals("")) {
-                    role = a.getPool().getName();
-                }
-                ExecutableFragment eFrag3 = new ExecutableFragment(a
-                        .getAnnotations().get(0).getActions().get(0), a
-                        .getAnnotations().get(0).getBusinessObjects().get(0),
-                        "", "");
-                eFrag3.addAssociation(a.getId());
-                eFrag3.sen_isCoord = false;
-                eFrag3.verb_isParticiple = true;
-                ModifierRecord modRecord2 = new ModifierRecord(
-                        ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
-                modRecord2.addAttribute("adv-type", "sentential");
-                eFrag3.addMod("with", modRecord2);
-                eFrag2.addSentence(eFrag3);
-
-                cFrag = new ConditionFragment(gwExtractor.getVerb(),
-                        gwExtractor.getObject(), "", "",
-                        ConditionFragment.TYPE_AS_LONG_AS,
-                        new HashMap<String, ModifierRecord>(
-                                gwExtractor.getModList()));
-                cFrag.verb_IsPassive = true;
-                cFrag.bo_isSubject = true;
-                cFrag.sen_headPosition = true;
-                cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-            } else if (e != null) {
-                role = e.getLane().getName();
-                if (role.equals("")) {
-                    role = e.getPool().getName();
-                }
-
-                ExecutableFragment eFrag3 = new ExecutableFragment("continue", "loop", "", "");
-                eFrag3.addAssociation(e.getId());
-                eFrag3.sen_isCoord = false;
-                eFrag3.verb_isParticiple = true;
-                ModifierRecord modRecord2 = new ModifierRecord(
-                        ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
-                modRecord2.addAttribute("adv-type", "sentential");
-                eFrag3.addMod("with", modRecord2);
-                eFrag2.addSentence(eFrag3);
-
-                cFrag = new ConditionFragment(gwExtractor.getVerb(),
-                        gwExtractor.getObject(), "", "",
-                        ConditionFragment.TYPE_AS_LONG_AS,
-                        new HashMap<String, ModifierRecord>(
-                                gwExtractor.getModList()));
-                cFrag.verb_IsPassive = true;
-                cFrag.bo_isSubject = true;
-                cFrag.sen_headPosition = true;
-                cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-            } else {
-                // Gateway
-
-                role = g.getLane().getName();
-                if (role.equals("")) {
-                    role = g.getPool().getName();
-                }
-
-                ExecutableFragment eFrag3 = new ExecutableFragment("repeat", "loop", "", "");
-                eFrag3.addAssociation(g.getId());
-                eFrag3.sen_isCoord = false;
-                eFrag3.verb_isParticiple = true;
-                eFrag2.addSentence(eFrag3);
-                cFrag = new ConditionFragment(gwExtractor.getVerb(),
-                        gwExtractor.getObject(), "", "",
-                        ConditionFragment.TYPE_AS_LONG_AS,
-                        new HashMap<String, ModifierRecord>(
-                                gwExtractor.getModList()));
-                cFrag.verb_IsPassive = true;
-                cFrag.bo_isSubject = true;
-                cFrag.sen_headPosition = true;
-                cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-            }
-
-            // Determine postcondition
-            gwExtractor.negateGatewayLabel();
-            ConditionFragment post = new ConditionFragment(
-                    gwExtractor.getVerb(), gwExtractor.getObject(), "", "",
-                    ConditionFragment.TYPE_ONCE, gwExtractor.getModList());
-            post.verb_IsPassive = true;
-            post.bo_isSubject = true;
-            post.setFragmentType(AbstractFragment.TYPE_JOIN);
-            post.addAssociation(Integer.valueOf(node.getEntry().getId()));
-
-            // If imperative mode
-            if (imperative == true && imperativeRole.equals(role) == true) {
-                eFrag.setRole("");
-                eFrag.verb_isImperative = true;
-                eFrag2.verb_isImperative = true;
-            }
-
-            ArrayList<DSynTSentence> postStatements = new ArrayList<DSynTSentence>();
-            postStatements.add(new DSynTConditionSentence(eFrag, cFrag));
-            return new ConverterRecord(null, post, null, postStatements);
+        ExecutableFragment eFrag2 = new ExecutableFragment("continue", "", "", "");
+        eFrag2.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        eFrag.addSentence(eFrag2);
+        if (role.equals("")) {
+            eFrag.verb_IsPassive = true;
+            eFrag.bo_isSubject = true;
+            eFrag2.verb_IsPassive = true;
+            eFrag2.setBo("it");
+            eFrag2.bo_isSubject = true;
+            eFrag2.bo_hasArticle = false;
         }
 
-        // Unlabeled case
-        else {
-            templateLoader.loadTemplate(TemplateLoaderType.SKIP);
-            ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), "", "");
-            ModifierRecord modRecord = new ModifierRecord(
-                    ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
-            eFrag.addMod(templateLoader.getAddition(), modRecord);
-            eFrag.bo_isPlural = true;
-            eFrag.bo_isSubject = true;
-            eFrag.verb_IsPassive = true;
+        role = "";
+        ConditionFragment cFrag = null;
+        Activity a = process.getActivity(Integer.valueOf(firstActivity.getExit().getId()));
+        Event e = process.getEvent(Integer.valueOf(firstActivity.getExit().getId()));
+        Gateway g = process.getGateway(Integer.valueOf(firstActivity.getExit().getId()));
+        if (a != null) {
+            role = a.getLane().getName();
+            if (role.equals("")) {
+                role = a.getPool().getName();
+            }
+            ExecutableFragment eFrag3 = new ExecutableFragment(a
+                    .getAnnotations().get(0).getActions().get(0), a
+                    .getAnnotations().get(0).getBusinessObjects().get(0),
+                    "", "");
+            eFrag3.addAssociation(a.getId());
+            eFrag3.sen_isCoord = false;
+            eFrag3.verb_isParticiple = true;
+            ModifierRecord modRecord2 = new ModifierRecord(
+                    ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+            modRecord2.addAttribute("adv-type", "sentential");
+            eFrag3.addMod("with", modRecord2);
+            eFrag2.addSentence(eFrag3);
 
-            ConditionFragment cFrag = new ConditionFragment("require", "dummy",
-                    "", "", ConditionFragment.TYPE_IF,
-                    new HashMap<String, ModifierRecord>());
-            cFrag.bo_replaceWithPronoun = true;
+            cFrag = new ConditionFragment(gwExtractor.getVerb(),
+                    gwExtractor.getObject(), "", "",
+                    ConditionFragment.TYPE_AS_LONG_AS,
+                    new HashMap<String, ModifierRecord>(
+                            gwExtractor.getModList()));
             cFrag.verb_IsPassive = true;
             cFrag.bo_isSubject = true;
             cFrag.sen_headPosition = true;
-
-            ExecutableFragment eFrag2 = new ExecutableFragment("continue", "",
-                    "", "");
-
-            // Determine role
-            String role = "";
-            Activity a = process.getActivity(Integer.valueOf(firstActivity
-                    .getExit().getId()));
-            if (a != null) {
-                role = a.getLane().getName();
-                if (role.equals("")) {
-                    role = a.getPool().getName();
-                }
-                eFrag2.setRole(role);
-                ModifierRecord modRecord3 = new ModifierRecord(
-                        ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
-                modRecord3.addAttribute("adv-type", "sentential");
-                eFrag2.addMod("in that case", modRecord3);
-                eFrag2.sen_hasConnective = true;
-
-                ExecutableFragment eFrag3 = new ExecutableFragment(a
-                        .getAnnotations().get(0).getActions().get(0), a
-                        .getAnnotations().get(0).getBusinessObjects().get(0),
-                        "", a.getAnnotations().get(0).getAddition());
-                eFrag3.sen_isCoord = false;
-                eFrag3.verb_isParticiple = true;
-                ModifierRecord modRecord2 = new ModifierRecord(
-                        ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
-                modRecord2.addAttribute("adv-type", "sentential");
-                eFrag3.addMod("with", modRecord2);
-                eFrag2.addSentence(eFrag3);
-
-            } else {
-                eFrag2 = null;
+            cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        } else if (e != null) {
+            role = e.getLane().getName();
+            if (role.equals("")) {
+                role = e.getPool().getName();
             }
 
-            // Determine postcondition
-            templateLoader.loadTemplate(TemplateLoaderType.LOOP_JOIN);
-            ConditionFragment post = new ConditionFragment(templateLoader.getAction(), templateLoader.getObject(), "", "", ConditionFragment.TYPE_ONCE,
-                    new HashMap<String, ModifierRecord>());
-            post.verb_IsPassive = true;
-            post.bo_isSubject = true;
-            post.setFragmentType(AbstractFragment.TYPE_JOIN);
+            ExecutableFragment eFrag3 = new ExecutableFragment("continue", "loop", "", "");
+            eFrag3.addAssociation(e.getId());
+            eFrag3.sen_isCoord = false;
+            eFrag3.verb_isParticiple = true;
+            ModifierRecord modRecord2 = new ModifierRecord(
+                    ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+            modRecord2.addAttribute("adv-type", "sentential");
+            eFrag3.addMod("with", modRecord2);
+            eFrag2.addSentence(eFrag3);
 
-            // If imperative mode
-            if (imperative == true && imperativeRole.equals(role) == true) {
-                eFrag.setRole("");
-                eFrag.verb_isImperative = true;
-                eFrag2.verb_isImperative = true;
+            cFrag = new ConditionFragment(gwExtractor.getVerb(),
+                    gwExtractor.getObject(), "", "",
+                    ConditionFragment.TYPE_AS_LONG_AS,
+                    new HashMap<String, ModifierRecord>(
+                            gwExtractor.getModList()));
+            cFrag.verb_IsPassive = true;
+            cFrag.bo_isSubject = true;
+            cFrag.sen_headPosition = true;
+            cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        } else {
+            // Gateway
+
+            role = g.getLane().getName();
+            if (role.equals("")) {
+                role = g.getPool().getName();
             }
 
-            ArrayList<DSynTSentence> postStatements = new ArrayList<DSynTSentence>();
-            postStatements.add(new DSynTConditionSentence(eFrag, cFrag));
-            if (eFrag2 != null) {
-                postStatements.add(new DSynTMainSentence(eFrag2));
-            }
-            return new ConverterRecord(null, post, null, postStatements);
+            ExecutableFragment eFrag3 = new ExecutableFragment("repeat", "loop", "", "");
+            eFrag3.addAssociation(g.getId());
+            eFrag3.sen_isCoord = false;
+            eFrag3.verb_isParticiple = true;
+            eFrag2.addSentence(eFrag3);
+            cFrag = new ConditionFragment(gwExtractor.getVerb(),
+                    gwExtractor.getObject(), "", "",
+                    ConditionFragment.TYPE_AS_LONG_AS,
+                    new HashMap<String, ModifierRecord>(
+                            gwExtractor.getModList()));
+            cFrag.verb_IsPassive = true;
+            cFrag.bo_isSubject = true;
+            cFrag.sen_headPosition = true;
+            cFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
         }
 
+        // Determine postcondition
+        gwExtractor.negateGatewayLabel();
+        ConditionFragment post = new ConditionFragment(
+                gwExtractor.getVerb(), gwExtractor.getObject(), "", "",
+                ConditionFragment.TYPE_ONCE, gwExtractor.getModList());
+        post.verb_IsPassive = true;
+        post.bo_isSubject = true;
+        post.setFragmentType(AbstractFragment.TYPE_JOIN);
+        post.addAssociation(Integer.valueOf(node.getEntry().getId()));
+
+        // If imperative mode
+        if (imperative == true && imperativeRole.equals(role) == true) {
+            eFrag.setRole("");
+            eFrag.verb_isImperative = true;
+            eFrag2.verb_isImperative = true;
+        }
+
+        ArrayList<DSynTSentence> postStatements = new ArrayList<DSynTSentence>();
+        postStatements.add(new DSynTConditionSentence(eFrag, cFrag));
+        return new ConverterRecord(null, post, null, postStatements);
+    }
+
+    private ConverterRecord convertLoopUnlabeledCase(RPSTNode<ControlFlow, Node> node, RPSTNode<ControlFlow, Node> firstActivity) {
+
+        templateLoader.loadTemplate(TemplateLoaderType.LOOP_SPLIT);
+        ExecutableFragment eFrag = new ExecutableFragment(templateLoader.getAction(), templateLoader.getObject(), "", "");
+        ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
+        eFrag.addMod(templateLoader.getAddition(), modRecord);
+        eFrag.bo_isPlural = true;
+        eFrag.bo_isSubject = true;
+        eFrag.verb_IsPassive = true;
+
+        ConditionFragment cFrag = new ConditionFragment("require", "dummy", "", "", ConditionFragment.TYPE_IF, new HashMap<>());
+        cFrag.bo_replaceWithPronoun = true;
+        cFrag.verb_IsPassive = true;
+        cFrag.bo_isSubject = true;
+        cFrag.sen_headPosition = true;
+
+        // In that case the Resource 1 continues with do the activity 2.
+        // Determine repetition
+        ExecutableFragment eFrag2 = new ExecutableFragment("continue", "", "", "");
+        String role = "";
+        Activity activity = process.getActivity(Integer.valueOf(firstActivity.getExit().getId()));
+        if (activity != null) {
+            role = activity.getLane().getName();
+            if (role.equals("")) {
+                role = activity.getPool().getName();
+            }
+            eFrag2.setRole(role);
+            ModifierRecord modRecord3 = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+            modRecord3.addAttribute("adv-type", "sentential");
+            eFrag2.addMod("in that case", modRecord3);
+            eFrag2.sen_hasConnective = true;
+
+            Annotation annotation = activity.getAnnotations().get(0);
+            ExecutableFragment eFrag3 = new ExecutableFragment(annotation.getActions().get(0), annotation.getBusinessObjects().get(0), "", annotation.getAddition());
+            eFrag3.sen_isCoord = false;
+            eFrag3.verb_isParticiple = true;
+
+            ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+            modRecord2.addAttribute("adv-type", "sentential");
+            eFrag3.addMod("with", modRecord2);
+            eFrag2.addSentence(eFrag3);
+        } else {
+            eFrag2 = null;
+        }
+
+        // Determine postcondition
+        templateLoader.loadTemplate(TemplateLoaderType.LOOP_JOIN);
+        ConditionFragment post = new ConditionFragment(templateLoader.getAction(), templateLoader.getObject(), "", "", ConditionFragment.TYPE_ONCE, new HashMap<>());
+        post.verb_IsPassive = true;
+        post.bo_isSubject = true;
+        post.setFragmentType(AbstractFragment.TYPE_JOIN);
+
+        // If imperative mode
+        if (imperative && imperativeRole.equals(role)) {
+            eFrag.setRole("");
+            eFrag.verb_isImperative = true;
+            if (eFrag2 != null) {
+                eFrag2.verb_isImperative = true;
+            }
+        }
+
+        ArrayList<DSynTSentence> postStatements = new ArrayList<>();
+        postStatements.add(new DSynTConditionSentence(eFrag, cFrag));
+        if (eFrag2 != null) {
+            postStatements.add(new DSynTMainSentence(eFrag2));
+        }
+
+        return new ConverterRecord(null, post, null, postStatements);
     }
 
     // *********************************************************************************************
@@ -467,6 +474,7 @@ public class TextToIntermediateConverter {
 
         pre.add_hasArticle = false;
         pre.sen_hasComma = true;
+        pre.skip = true;
 
         pre.addAssociation(Integer.valueOf(node.getEntry().getId()));
         return new ConverterRecord(pre, null, null, null);
