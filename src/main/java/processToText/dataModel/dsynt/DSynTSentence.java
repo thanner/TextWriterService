@@ -84,7 +84,8 @@ public abstract class DSynTSentence {
         ProcessElementDocument processElementDocument = new ProcessElementDocument();
         processElementDocument.setProcessElementId(processElementId);
         processElementDocument.setProcessElementType(processElementType);
-        processElementDocument.setResource(role);
+        processElementDocument.setResourceName(role);
+        processElementDocument.setResourceNameText(role);
         processElementDocument.setSentence(sentence);
         processElementDocumentList.add(processElementDocument);
     }
@@ -93,7 +94,8 @@ public abstract class DSynTSentence {
         ProcessElementDocument processElementDocument = new ProcessElementDocument();
         processElementDocument.setProcessElementId(processElementId);
         processElementDocument.setProcessElementType(processElementType);
-        processElementDocument.setResource(role);
+        processElementDocument.setResourceName(role);
+        processElementDocument.setResourceNameText(role);
         processElementDocument.setDocument(document);
         processElementDocumentList.add(processElementDocument);
     }

@@ -13,18 +13,29 @@
     <xs:element name="sentence" type="metatext:tSentence"/>
     <xs:complexType name="tSentence">
         <xs:sequence>
-            <xs:element name="snippetList" type="metatext:tSnippet" maxOccurs="unbounded"/>
+            <xs:element name="value" type="xs:string"/>
+            <xs:element name="snippetList" type="metatext:tSnippet" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="value" type="xs:string"/>
         <xs:attribute name="level" type="xs:int"/>
-        <xs:attribute name="islateral" type="xs:boolean"/>
+        <xs:attribute name="isLateral" type="xs:boolean"/>
     </xs:complexType>
 
     <xs:element name="snippet" type="metatext:tSnippet"/>
     <xs:complexType name="tSnippet">
+        <xs:all>
+            <xs:element name="resource" type="metatext:tResource" nillable="true"/>
+        </xs:all>
+        <xs:attribute name="startIndex" type="xs:int"/>
+        <xs:attribute name="endIndex" type="xs:int"/>
         <xs:attribute name="processElementId" type="xs:string"/>
         <xs:attribute name="processElementType" type="metatext:processElementType"/>
-        <xs:attribute name="resource" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="resource" type="metatext:tResource"/>
+    <xs:complexType name="tResource">
+        <xs:all>
+            <xs:element name="name" type="xs:string"/>
+        </xs:all>
         <xs:attribute name="startIndex" type="xs:int"/>
         <xs:attribute name="endIndex" type="xs:int"/>
     </xs:complexType>

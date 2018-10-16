@@ -7,19 +7,12 @@ import org.w3c.dom.Document;
 
 public class ProcessElementDocument {
 
-    private String resource;
     private String processElementId;
     private ProcessElementType processElement;
+    private String resourceName;
+    private String resourceNameText;
     private Document document;
     private String sentence;
-
-    public String getResource() {
-        return resource;
-    }
-
-    public void setResource(String resource) {
-        this.resource = resource;
-    }
 
     public String getProcessElementId() {
         return this.processElementId;
@@ -31,6 +24,22 @@ public class ProcessElementDocument {
 
     public ProcessElementType getProcessElementType() {
         return processElement;
+    }
+
+    public String getResourceName() {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
+    public String getResourceNameText() {
+        return resourceNameText;
+    }
+
+    public void setResourceNameText(String resourceNameText) {
+        this.resourceNameText = resourceNameText;
     }
 
     public void setProcessElementType(ProcessElementType processElement) {

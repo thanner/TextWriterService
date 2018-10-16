@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Lexemes {
 
     public static final ArrayList<String> SEQUENCE_CONNECTIVES = new ArrayList<String>() {{
-        //add("then"); // TODO: Used in aggregation
+        //add("then"); // Used in aggregation
         add("next");
-        //add("afterwards"); // TODO: Used in OR Join
+        //add("afterwards"); // Used in OR Join
         add("after that");
         add("subsequently");
     }};
@@ -19,7 +19,7 @@ public class Lexemes {
 
     public static final String ORDINAL_CONNECTIVE = "in the @ordinal procedure";
 
-    public static final String IF_CONNECTIVE = "if condition \"@condition\"";
+    public static final String IF_CONNECTIVE = "if \"@condition\"";
 
     public static final String START_EVENT_CONNECTIVE = "the process starts when";
     public static final String START_EVENT_WHEN_CONNECTIVE = "when the process starts,";

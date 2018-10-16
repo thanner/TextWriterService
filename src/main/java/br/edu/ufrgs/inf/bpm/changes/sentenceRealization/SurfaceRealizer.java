@@ -1,6 +1,7 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.metatext.TResource;
 import br.edu.ufrgs.inf.bpm.metatext.TSentence;
 import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
 import br.edu.ufrgs.inf.bpm.metatext.TText;
@@ -21,12 +22,19 @@ public class SurfaceRealizer {
         realproManager = new RealProMgr();
     }
 
+    public TText postProcessText(TText text) {
+        for (TSentence sentence : text.getSentenceList()) {
+            sentence.setValue(postProcessText(sentence.getValue()));
+        }
+        return text;
+    }
+
     public TText generateText(ArrayList<DSynTSentence> sentencePlan) {
         TText text = new TText();
         for (DSynTSentence s : sentencePlan) {
             TSentence sentence = new TSentence();
             sentence.setLevel(s.getExecutableFragment().sen_level);
-            sentence.setIslateral(s.getExecutableFragment().sen_hasBullet);
+            sentence.setIsLateral(s.getExecutableFragment().sen_hasBullet);
             sentence.setValue(realizeSentence(s.getDSynT()));
             sentence.getSnippetList().addAll(getSnippetList(s, sentence.getValue()));
             text.getSentenceList().add(sentence);
@@ -36,28 +44,38 @@ public class SurfaceRealizer {
     }
 
     private List<TSnippet> getSnippetList(DSynTSentence s, String sentence) {
-        List<TSnippet> subsentenceList = new ArrayList<>();
+        List<TSnippet> snippetList = new ArrayList<>();
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
-            TSnippet subsentence = new TSnippet();
-            subsentence.setProcessElementId(processElementDocument.getProcessElementId());
-            subsentence.setProcessElementType(processElementDocument.getProcessElementType());
-            subsentence.setResource(processElementDocument.getResource());
+            String sentenceSnippet = postProcessText(processElementDocument.getSentence());
 
-            String subsentenceText = processElementDocument.getSentence();
-            subsentence.setStartIndex(getIndexStartSubstentence(sentence, subsentenceText));
-            subsentence.setEndIndex(getIndexEndSubsentence(subsentence.getStartIndex(), postProcessText(subsentenceText)));
+            TSnippet snippet = new TSnippet();
+            snippet.setProcessElementId(processElementDocument.getProcessElementId());
+            snippet.setProcessElementType(processElementDocument.getProcessElementType());
 
-            subsentenceList.add(subsentence);
+            snippet.setStartIndex(getIndexStart(sentence, sentenceSnippet));
+            snippet.setEndIndex(getIndexEnd(snippet.getStartIndex(), sentenceSnippet));
+
+            snippet.setResource(generateResource(processElementDocument, sentenceSnippet, snippet.getStartIndex()));
+
+            snippetList.add(snippet);
         }
 
-        return subsentenceList;
+        return snippetList;
     }
 
-    public TText postProcessText(TText text) {
-        for (TSentence sentence : text.getSentenceList()) {
-            sentence.setValue(postProcessText(sentence.getValue()));
+    private TResource generateResource(ProcessElementDocument processElementDocument, String sentenceSnippet, Integer snippetStartIndex) {
+        TResource tResource = new TResource();
+        if (!processElementDocument.getResourceNameText().isEmpty()) {
+            tResource.setName(processElementDocument.getResourceName());
+
+            Integer resourceStartIndexInSnippet = getIndexStart(sentenceSnippet, processElementDocument.getResourceNameText());
+            if (resourceStartIndexInSnippet != null) {
+                Integer resourceStartIndex = resourceStartIndexInSnippet + snippetStartIndex;
+                tResource.setStartIndex(resourceStartIndex);
+                tResource.setEndIndex(getIndexEnd(resourceStartIndex, processElementDocument.getResourceNameText()));
+            }
         }
-        return text;
+        return tResource;
     }
 
     // Realize Sentence
@@ -67,13 +85,24 @@ public class SurfaceRealizer {
         return realized != null ? realized : "";
     }
 
-    private int getIndexStartSubstentence(String sentence, String subsentence){
-        return postProcessText(sentence).toLowerCase().indexOf(postProcessText(subsentence).toLowerCase());
+    private Integer getIndexStart(String sentence, String sentenceSnippet) {
+        Integer integer = postProcessText(sentence).toLowerCase().indexOf(postProcessText(sentenceSnippet).toLowerCase());
+        if (integer == -1) {
+            integer = null;
+        }
+
+        return integer;
     }
 
-    private int getIndexEndSubsentence(int indexStart, String subsentence){
-        return indexStart + subsentence.length();
+    private Integer getIndexEnd(Integer indexStart, String sentenceSnippet) {
+        if (indexStart == null) {
+            return null;
+        } else {
+            return indexStart + sentenceSnippet.length();
+        }
     }
+
+
 
     public String postProcessText(String surfaceText) {
         surfaceText = surfaceText.replaceAll("If it is necessary", "If it is necessary,");

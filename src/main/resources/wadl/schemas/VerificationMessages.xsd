@@ -10,14 +10,16 @@
     <xs:element name="bpmnVerification" type="verification:tBpmnVerification"/>
     <xs:complexType name="tBpmnVerification">
         <xs:sequence>
-            <xs:element name="messageList" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="messageList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:element name="message" type="verification:tMessage"/>
     <xs:complexType name="tMessage">
+        <xs:all>
+            <xs:element name="description" type="xs:string"/>
+        </xs:all>
         <xs:attribute name="processElementId" type="xs:string"/>
-        <xs:attribute name="descripti" type="xs:string"/>
     </xs:complexType>
 
 </xs:schema>
