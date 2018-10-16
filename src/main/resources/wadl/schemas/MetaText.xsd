@@ -14,6 +14,7 @@
     <xs:complexType name="tProcess">
         <xs:sequence>
             <xs:element name="processName" type="xs:string"/>
+            <xs:element name="processId" type="xs:string"/>
             <xs:element name="sentenceList" type="metatext:tSentence" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>

@@ -47,21 +47,26 @@ public class TextGenerator {
         int counter = 0;
 
         // Multi Pool Model
+        TProcess poolText;
+        HashMap<Integer, ProcessModel> modelsForPools = processModel.getModelForEachPool();
         if (processModel.getPools().size() > 1) {
-            HashMap<Integer, ProcessModel> modelsForPools = processModel.getModelForEachPool();
-            TProcess poolText;
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 poolProcessModel = applyNormalization(poolProcessModel);
                 if (!isBlackBox(processModel)) {
-                    poolText = generateText(poolProcessModel, bpmnIdMap, counter, definitions);
+                    String processId = bpmnIdMap.get(poolProcessModel.getId());
+                    poolText = generateText(poolProcessModel, bpmnIdMap, counter, definitions, processId);
                     text.getProcessList().add(poolText);
                     counter++;
                 }
             }
         } else {
             processModel = applyNormalization(processModel);
-            if (!isBlackBox(processModel)) {
-                text.getProcessList().add(generateText(processModel, bpmnIdMap, counter, definitions));
+            for (ProcessModel poolProcessModel : modelsForPools.values()) {
+                if (!isBlackBox(processModel)) {
+                    String processId = bpmnIdMap.get(poolProcessModel.getId());
+                    poolText = generateText(processModel, bpmnIdMap, counter, definitions, processId);
+                    text.getProcessList().add(poolText);
+                }
             }
         }
         return text;
@@ -79,7 +84,7 @@ public class TextGenerator {
         return processModel.getActivites().isEmpty() && processModel.getEvents().isEmpty() && processModel.getGateways().isEmpty() && processModel.getArcs().isEmpty();
     }
 
-    public static TProcess generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions) throws IOException, JWNLException {
+    public static TProcess generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions, String processId) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
         MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
@@ -139,7 +144,13 @@ public class TextGenerator {
 
         processText = surfaceRealizer.postProcessText(processText);
 
-        processText.setProcessName("Process \"" + model.getPools().get(0) + "\": ");
+        if (!model.getPools().isEmpty()) {
+            processText.setProcessName(model.getPools().get(0));
+        } else {
+            processText.setProcessName("Unknown");
+        }
+
+        processText.setProcessId(processId);
 
         return processText;
     }

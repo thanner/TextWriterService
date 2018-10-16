@@ -1,7 +1,8 @@
 {
   "processList": [
     {
-      "processName": "Process \"process\": ",
+      "processName": "process",
+      "processId": "Process_1",
       "sentenceList": [
         {
           "value": "The process starts when the Resource 1 does an activity 1.",
