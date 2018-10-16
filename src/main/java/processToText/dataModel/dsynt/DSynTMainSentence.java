@@ -87,8 +87,6 @@ public class DSynTMainSentence extends DSynTSentence {
         originalDSynT = dSynTUnique.doc;
         ProcessElementDocument currentProcessDocument = this.getProcessElementDocumentList().get(0);
         currentProcessDocument.setDocument(originalDSynT);
-
-        currentProcessDocument.setResourceNameText(eFrag.getRole());
     }
 
     public void addCoordSentences(ArrayList<DSynTMainSentence> sentences) {

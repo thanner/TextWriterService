@@ -6,6 +6,14 @@
     <xs:element name="text" type="metatext:tText"/>
     <xs:complexType name="tText">
         <xs:sequence>
+            <xs:element name="processList" type="metatext:tProcess" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="process" type="metatext:tProcess"/>
+    <xs:complexType name="tProcess">
+        <xs:sequence>
+            <xs:element name="processName" type="xs:string"/>
             <xs:element name="sentenceList" type="metatext:tSentence" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
@@ -22,22 +30,11 @@
 
     <xs:element name="snippet" type="metatext:tSnippet"/>
     <xs:complexType name="tSnippet">
-        <xs:all>
-            <xs:element name="resource" type="metatext:tResource" nillable="true"/>
-        </xs:all>
         <xs:attribute name="startIndex" type="xs:int"/>
         <xs:attribute name="endIndex" type="xs:int"/>
+        <xs:attribute name="resource" type="xs:string"/>
         <xs:attribute name="processElementId" type="xs:string"/>
         <xs:attribute name="processElementType" type="metatext:processElementType"/>
-    </xs:complexType>
-
-    <xs:element name="resource" type="metatext:tResource"/>
-    <xs:complexType name="tResource">
-        <xs:all>
-            <xs:element name="name" type="xs:string"/>
-        </xs:all>
-        <xs:attribute name="startIndex" type="xs:int"/>
-        <xs:attribute name="endIndex" type="xs:int"/>
     </xs:complexType>
 
     <xs:simpleType name="processElementType" final="restriction">

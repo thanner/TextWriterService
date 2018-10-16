@@ -367,7 +367,6 @@ public class DiscourseMarker {
         processElementDocument.setProcessElementType(processElementType);
         processElementDocument.setSentence(lexeme);
         processElementDocument.setResourceName("");
-        processElementDocument.setResourceNameText("");
         dSynTSentence.getProcessElementDocumentList().add(processElementDocument);
 
         insertConnective(dSynTSentence, lexeme);

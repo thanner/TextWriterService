@@ -1,99 +1,86 @@
 {
-  "sentenceList": [
+  "processList": [
     {
-      "value": "The process starts when the Resource 1 does an activity 1.",
-      "snippetList": [
+      "processName": "Process \"process\": ",
+      "sentenceList": [
         {
-          "resource": {
-            "name": "Resource 1",
-            "startIndex": 28,
-            "endIndex": 38
-          },
-          "startIndex": 24,
-          "endIndex": 57,
-          "processElementId": "Task_1fpjr16",
-          "processElementType": "ACTIVITY"
+          "value": "The process starts when the Resource 1 does an activity 1.",
+          "snippetList": [
+            {
+              "startIndex": 24,
+              "endIndex": 57,
+              "resource": "Resource 1",
+              "processElementId": "Task_1fpjr16",
+              "processElementType": "ACTIVITY"
+            },
+            {
+              "startIndex": 0,
+              "endIndex": 23,
+              "resource": "",
+              "processElementId": "StartEvent_1",
+              "processElementType": "STARTEVENT"
+            }
+          ],
+          "level": 0,
+          "isLateral": false
         },
         {
-          "resource": {},
-          "startIndex": 0,
-          "endIndex": 23,
-          "processElementId": "StartEvent_1",
-          "processElementType": "STARTEVENT"
-        }
-      ],
-      "level": 0,
-      "isLateral": false
-    },
-    {
-      "value": "Next, it does the activity 2 and then does the activity 3.",
-      "snippetList": [
-        {
-          "resource": {
-            "name": "Resource 1",
-            "startIndex": 6,
-            "endIndex": 8
-          },
-          "startIndex": 6,
-          "endIndex": 28,
-          "processElementId": "Task_09h6vdc",
-          "processElementType": "ACTIVITY"
+          "value": "Next, it does the activity 2 and then does the activity 3.",
+          "snippetList": [
+            {
+              "startIndex": 6,
+              "endIndex": 28,
+              "resource": "Resource 1",
+              "processElementId": "Task_09h6vdc",
+              "processElementType": "ACTIVITY"
+            },
+            {
+              "startIndex": 38,
+              "endIndex": 57,
+              "resource": "Resource 1",
+              "processElementId": "Task_1f1s5ot",
+              "processElementType": "ACTIVITY"
+            }
+          ],
+          "level": 0,
+          "isLateral": false
         },
         {
-          "resource": {
-            "name": "Resource 1"
-          },
-          "startIndex": 38,
-          "endIndex": 57,
-          "processElementId": "Task_1f1s5ot",
-          "processElementType": "ACTIVITY"
-        }
-      ],
-      "level": 0,
-      "isLateral": false
-    },
-    {
-      "value": "After that, the Resource 1 does the activity 4 and then the Resource 2 does the activity 5.",
-      "snippetList": [
-        {
-          "resource": {
-            "name": "Resource 1",
-            "startIndex": 16,
-            "endIndex": 26
-          },
-          "startIndex": 12,
-          "endIndex": 46,
-          "processElementId": "Task_0n3qfme",
-          "processElementType": "ACTIVITY"
+          "value": "After that, the Resource 1 does the activity 4 and then the Resource 2 does the activity 5.",
+          "snippetList": [
+            {
+              "startIndex": 12,
+              "endIndex": 46,
+              "resource": "Resource 1",
+              "processElementId": "Task_0n3qfme",
+              "processElementType": "ACTIVITY"
+            },
+            {
+              "startIndex": 56,
+              "endIndex": 90,
+              "resource": "Resource 2",
+              "processElementId": "Task_1cg4vf0",
+              "processElementType": "ACTIVITY"
+            }
+          ],
+          "level": 0,
+          "isLateral": false
         },
         {
-          "resource": {
-            "name": "Resource 2",
-            "startIndex": 60,
-            "endIndex": 70
-          },
-          "startIndex": 56,
-          "endIndex": 90,
-          "processElementId": "Task_1cg4vf0",
-          "processElementType": "ACTIVITY"
+          "value": "Finally, the process is finished.",
+          "snippetList": [
+            {
+              "startIndex": 9,
+              "endIndex": 32,
+              "resource": "",
+              "processElementId": "EndEvent_033f4mw",
+              "processElementType": "ENDEVENT"
+            }
+          ],
+          "level": 0,
+          "isLateral": false
         }
-      ],
-      "level": 0,
-      "isLateral": false
-    },
-    {
-      "value": "Finally, the process is finished.",
-      "snippetList": [
-        {
-          "resource": {},
-          "startIndex": 9,
-          "endIndex": 32,
-          "processElementId": "EndEvent_033f4mw",
-          "processElementType": "ENDEVENT"
-        }
-      ],
-      "level": 0,
-      "isLateral": false
+      ]
     }
   ]
 }

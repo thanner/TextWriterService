@@ -1,10 +1,9 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.metatext.TResource;
+import br.edu.ufrgs.inf.bpm.metatext.TProcess;
 import br.edu.ufrgs.inf.bpm.metatext.TSentence;
 import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
-import br.edu.ufrgs.inf.bpm.metatext.TText;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;
@@ -22,25 +21,25 @@ public class SurfaceRealizer {
         realproManager = new RealProMgr();
     }
 
-    public TText postProcessText(TText text) {
-        for (TSentence sentence : text.getSentenceList()) {
+    public TProcess postProcessText(TProcess textProcess) {
+        for (TSentence sentence : textProcess.getSentenceList()) {
             sentence.setValue(postProcessText(sentence.getValue()));
         }
-        return text;
+        return textProcess;
     }
 
-    public TText generateText(ArrayList<DSynTSentence> sentencePlan) {
-        TText text = new TText();
+    public TProcess generateText(ArrayList<DSynTSentence> sentencePlan) {
+        TProcess textProcess = new TProcess();
         for (DSynTSentence s : sentencePlan) {
             TSentence sentence = new TSentence();
             sentence.setLevel(s.getExecutableFragment().sen_level);
             sentence.setIsLateral(s.getExecutableFragment().sen_hasBullet);
             sentence.setValue(realizeSentence(s.getDSynT()));
             sentence.getSnippetList().addAll(getSnippetList(s, sentence.getValue()));
-            text.getSentenceList().add(sentence);
+            textProcess.getSentenceList().add(sentence);
         }
 
-        return text;
+        return textProcess;
     }
 
     private List<TSnippet> getSnippetList(DSynTSentence s, String sentence) {
@@ -55,7 +54,7 @@ public class SurfaceRealizer {
             snippet.setStartIndex(getIndexStart(sentence, sentenceSnippet));
             snippet.setEndIndex(getIndexEnd(snippet.getStartIndex(), sentenceSnippet));
 
-            snippet.setResource(generateResource(processElementDocument, sentenceSnippet, snippet.getStartIndex()));
+            snippet.setResource(processElementDocument.getResourceName());
 
             snippetList.add(snippet);
         }
@@ -63,23 +62,8 @@ public class SurfaceRealizer {
         return snippetList;
     }
 
-    private TResource generateResource(ProcessElementDocument processElementDocument, String sentenceSnippet, Integer snippetStartIndex) {
-        TResource tResource = new TResource();
-        if (!processElementDocument.getResourceNameText().isEmpty()) {
-            tResource.setName(processElementDocument.getResourceName());
-
-            Integer resourceStartIndexInSnippet = getIndexStart(sentenceSnippet, processElementDocument.getResourceNameText());
-            if (resourceStartIndexInSnippet != null) {
-                Integer resourceStartIndex = resourceStartIndexInSnippet + snippetStartIndex;
-                tResource.setStartIndex(resourceStartIndex);
-                tResource.setEndIndex(getIndexEnd(resourceStartIndex, processElementDocument.getResourceNameText()));
-            }
-        }
-        return tResource;
-    }
-
     // Realize Sentence
-    public String realizeSentence(Document document){
+    public String realizeSentence(Document document) {
         realproManager.realize(document);
         String realized = realproManager.getSentenceString();
         return realized != null ? realized : "";
@@ -101,7 +85,6 @@ public class SurfaceRealizer {
             return indexStart + sentenceSnippet.length();
         }
     }
-
 
 
     public String postProcessText(String surfaceText) {

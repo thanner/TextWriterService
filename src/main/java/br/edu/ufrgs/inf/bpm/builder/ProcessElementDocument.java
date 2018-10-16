@@ -10,7 +10,6 @@ public class ProcessElementDocument {
     private String processElementId;
     private ProcessElementType processElement;
     private String resourceName;
-    private String resourceNameText;
     private Document document;
     private String sentence;
 
@@ -32,14 +31,6 @@ public class ProcessElementDocument {
 
     public void setResourceName(String resourceName) {
         this.resourceName = resourceName;
-    }
-
-    public String getResourceNameText() {
-        return resourceNameText;
-    }
-
-    public void setResourceNameText(String resourceNameText) {
-        this.resourceNameText = resourceNameText;
     }
 
     public void setProcessElementType(ProcessElementType processElement) {

@@ -1,9 +1,10 @@
 package br.edu.ufrgs.inf.bpm.application;
 
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
+import br.edu.ufrgs.inf.bpm.metatext.TProcess;
 import br.edu.ufrgs.inf.bpm.metatext.TSentence;
-import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import br.edu.ufrgs.inf.bpm.metatext.TText;
+import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import net.didion.jwnl.JWNLException;
 import org.apache.commons.io.FileUtils;
 
@@ -31,8 +32,10 @@ public class TestBpmnXml {
             e.printStackTrace();
         }
 
-        for (TSentence sentence : metaText.getSentenceList()) {
-            System.out.println(sentence.getValue());
+        for (TProcess process : metaText.getProcessList()) {
+            for (TSentence sentence : process.getSentenceList()) {
+                System.out.println(sentence.getValue());
+            }
         }
 
         return metaText.toString();

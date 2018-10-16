@@ -60,17 +60,22 @@ public class BpmnPreProcessor {
         }
 
         for (TProcess tProcess : processModelWrapper.getProcessList()) {
+            if (tProcess.getName() == null || tProcess.getName().isEmpty()) {
+                tProcess.setName(generateName("Process"));
+            }
+            String processName = tProcess.getName();
+
             TParticipant tParticipant = processModelWrapper.getParticipantFromProcess(tProcess);
             if (tParticipant != null) {
                 // Participant doesnt has a name
                 if (tParticipant.getName() == null || tParticipant.getName().isEmpty()) {
-                    tParticipant.setName(generateName("Participant"));
+                    tParticipant.setName(processName);
                 }
             } else {
                 // Participant doesnt exists
                 tParticipant = new TParticipant();
                 tParticipant.setId(generateId("Participant"));
-                tParticipant.setName(generateName("Participant"));
+                tParticipant.setName(generateName(processName));
                 tParticipant.setProcessRef(new QName("http://www.omg.org/spec/BPMN/20100524/MODEL", tProcess.getId(), ""));
 
                 tCollaboration.getParticipant().add(tParticipant);

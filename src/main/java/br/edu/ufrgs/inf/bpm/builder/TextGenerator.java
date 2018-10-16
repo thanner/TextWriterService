@@ -5,6 +5,7 @@ import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.ReferringExpressionGenerato
 import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.SentenceAggregator;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
+import br.edu.ufrgs.inf.bpm.metatext.TProcess;
 import br.edu.ufrgs.inf.bpm.metatext.TText;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
@@ -48,19 +49,19 @@ public class TextGenerator {
         // Multi Pool Model
         if (processModel.getPools().size() > 1) {
             HashMap<Integer, ProcessModel> modelsForPools = processModel.getModelForEachPool();
-            TText poolText;
+            TProcess poolText;
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 poolProcessModel = applyNormalization(poolProcessModel);
                 if (!isBlackBox(processModel)) {
                     poolText = generateText(poolProcessModel, bpmnIdMap, counter, definitions);
-                    text.getSentenceList().addAll(poolText.getSentenceList());
+                    text.getProcessList().add(poolText);
                     counter++;
                 }
             }
         } else {
             processModel = applyNormalization(processModel);
             if (!isBlackBox(processModel)) {
-                text = generateText(processModel, bpmnIdMap, counter, definitions);
+                text.getProcessList().add(generateText(processModel, bpmnIdMap, counter, definitions));
             }
         }
         return text;
@@ -78,7 +79,7 @@ public class TextGenerator {
         return processModel.getActivites().isEmpty() && processModel.getEvents().isEmpty() && processModel.getGateways().isEmpty() && processModel.getArcs().isEmpty();
     }
 
-    public static TText generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions) throws IOException, JWNLException {
+    public static TProcess generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
         MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
@@ -129,16 +130,18 @@ public class TextGenerator {
 
         // Realization
         SurfaceRealizer surfaceRealizer = new SurfaceRealizer();
-        TText text = surfaceRealizer.generateText(sentencePlan);
+        TProcess processText = surfaceRealizer.generateText(sentencePlan);
 
         // Cleaning
         // if (imperative) {
         //    surfaceText = surfaceRealizer.cleanTextForImperativeStyle(surfaceText, imperativeRole, model.getLanes());
         // }
 
-        text = surfaceRealizer.postProcessText(text);
+        processText = surfaceRealizer.postProcessText(processText);
 
-        return text;
+        processText.setProcessName("Process \"" + model.getPools().get(0) + "\": ");
+
+        return processText;
     }
 
 }
