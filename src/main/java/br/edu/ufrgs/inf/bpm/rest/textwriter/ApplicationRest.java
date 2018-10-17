@@ -24,7 +24,7 @@ public class ApplicationRest {
     @Consumes(MediaType.APPLICATION_XML)
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public TText getText(@BeanParam String bpmnString) throws IOException, JWNLException {
-        // return TextGenerator.generateText(bpmnString);
+        // return TextGenerator.generateMetaText(bpmnString);
         return new TText();
     }
 

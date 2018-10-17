@@ -93,12 +93,10 @@ public class Validation {
     private List<String> getElementsMetaText(String elementTypeName) {
         List<String> elementTypeIds = new ArrayList<>();
 
-        for (br.edu.ufrgs.inf.bpm.metatext.TProcess process : metaText.getProcessList()) {
-            for (TSentence sentence : process.getSentenceList()) {
-                for (TSnippet snippet : sentence.getSnippetList()) {
-                    if (snippet.getProcessElementType().value().equals(elementTypeName)) {
-                        elementTypeIds.add(snippet.getProcessElementId());
-                    }
+        for (TSentence sentence : metaText.getSentenceList()) {
+            for (TSnippet snippet : sentence.getSnippetList()) {
+                if (snippet.getProcessElementType().value().equals(elementTypeName)) {
+                    elementTypeIds.add(snippet.getProcessElementId());
                 }
             }
         }

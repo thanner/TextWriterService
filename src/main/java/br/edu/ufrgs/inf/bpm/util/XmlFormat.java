@@ -1,6 +1,5 @@
 package br.edu.ufrgs.inf.bpm.util;
 
-import org.apache.batik.dom.util.DocumentFactory;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;

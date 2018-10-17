@@ -5,10 +5,13 @@ import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.ReferringExpressionGenerato
 import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.SentenceAggregator;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
-import br.edu.ufrgs.inf.bpm.metatext.TProcess;
+import br.edu.ufrgs.inf.bpm.metatext.TMetaText;
+import br.edu.ufrgs.inf.bpm.metatext.TSentence;
+import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
 import br.edu.ufrgs.inf.bpm.metatext.TText;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
+import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
 import br.edu.ufrgs.inf.bpm.wrapper.WordNetWrapper;
 import de.hpi.bpt.graph.algo.rpst.RPST;
@@ -30,9 +33,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TextGenerator {
+public class MetaTextGenerator {
 
-    public static TText generateText(String bpmnString) throws IOException, JWNLException {
+    public static TMetaText generateMetaText(String bpmnString) throws IOException, JWNLException {
+        TMetaText tMetaText = new TMetaText();
+        TText text = new TText();
+
         TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
 
         BpmnPreProcessor bpmnPreProcessor = new BpmnPreProcessor(definitions);
@@ -43,19 +49,18 @@ public class TextGenerator {
         ProcessModel processModel = processModelBuilder.buildProcess(definitions);
         Map<Integer, String> bpmnIdMap = processModelBuilder.getBpmnIdMap();
 
-        TText text = new TText();
         int counter = 0;
 
         // Multi Pool Model
-        TProcess poolText;
+        TText poolText;
         HashMap<Integer, ProcessModel> modelsForPools = processModel.getModelForEachPool();
         if (processModel.getPools().size() > 1) {
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 poolProcessModel = applyNormalization(poolProcessModel);
                 if (!isBlackBox(processModel)) {
                     String processId = bpmnIdMap.get(poolProcessModel.getId());
-                    poolText = generateText(poolProcessModel, bpmnIdMap, counter, definitions, processId);
-                    text.getProcessList().add(poolText);
+                    poolText = generateMetaText(poolProcessModel, bpmnIdMap, counter, definitions);
+                    text.getSentenceList().addAll(poolText.getSentenceList());
                     counter++;
                 }
             }
@@ -64,12 +69,15 @@ public class TextGenerator {
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 if (!isBlackBox(processModel)) {
                     String processId = bpmnIdMap.get(poolProcessModel.getId());
-                    poolText = generateText(processModel, bpmnIdMap, counter, definitions, processId);
-                    text.getProcessList().add(poolText);
+                    poolText = generateMetaText(processModel, bpmnIdMap, counter, definitions);
+                    text.getSentenceList().addAll(poolText.getSentenceList());
                 }
             }
         }
-        return text;
+
+        tMetaText.setText(text);
+        tMetaText.getProcessList().addAll(MetaTextProcessGenerator.generateMetaTextProcess(definitions));
+        return tMetaText;
     }
 
     private static ProcessModel applyNormalization(ProcessModel processModel) {
@@ -84,7 +92,7 @@ public class TextGenerator {
         return processModel.getActivites().isEmpty() && processModel.getEvents().isEmpty() && processModel.getGateways().isEmpty() && processModel.getArcs().isEmpty();
     }
 
-    public static TProcess generateText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions, String processId) throws IOException, JWNLException {
+    public static TText generateMetaText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
         MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
@@ -135,15 +143,18 @@ public class TextGenerator {
 
         // Realization
         SurfaceRealizer surfaceRealizer = new SurfaceRealizer();
-        TProcess processText = surfaceRealizer.generateText(sentencePlan);
+        TText tText = surfaceRealizer.generateText(sentencePlan);
 
         // Cleaning
         // if (imperative) {
         //    surfaceText = surfaceRealizer.cleanTextForImperativeStyle(surfaceText, imperativeRole, model.getLanes());
         // }
 
-        processText = surfaceRealizer.postProcessText(processText);
+        tText = surfaceRealizer.postProcessText(tText);
 
+        addResourceIds(tText, tDefinitions);
+
+        /*
         if (!model.getPools().isEmpty()) {
             processText.setProcessName(model.getPools().get(0));
         } else {
@@ -151,8 +162,19 @@ public class TextGenerator {
         }
 
         processText.setProcessId(processId);
+        */
 
-        return processText;
+        return tText;
     }
+
+    private static void addResourceIds(TText tText, TDefinitions tDefinitions) {
+        BpmnWrapper bpmnWrapper = new BpmnWrapper(tDefinitions);
+        for (TSentence tSentence : tText.getSentenceList()) {
+            for (TSnippet tSnippet : tSentence.getSnippetList()) {
+                tSnippet.setResourceId(bpmnWrapper.getLaneIdByFlowElementId(tSnippet.getProcessElementId()));
+            }
+        }
+    }
+
 
 }

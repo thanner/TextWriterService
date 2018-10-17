@@ -3,26 +3,27 @@ package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 import processToText.dataModel.dsynt.DSynTSentence;
 import processToText.dataModel.intermediate.ExecutableFragment;
 
-public class Data{
+public class Data {
     private String role;
     private ExecutableFragment fragment;
     private DSynTSentence dSynTSentence;
 
-    public Data(){}
+    public Data() {
+    }
 
-    public Data(DSynTSentence dSynTSentence){
+    public Data(DSynTSentence dSynTSentence) {
         role = dSynTSentence.getExecutableFragment().getRole();
         fragment = dSynTSentence.getExecutableFragment();
         this.dSynTSentence = dSynTSentence;
     }
 
-    public void setValues(Data data){
+    public void setValues(Data data) {
         role = data.role;
         fragment = data.fragment;
         dSynTSentence = data.dSynTSentence;
     }
 
-    public void cleanData(){
+    public void cleanData() {
         role = null;
         fragment = null;
         dSynTSentence = null;

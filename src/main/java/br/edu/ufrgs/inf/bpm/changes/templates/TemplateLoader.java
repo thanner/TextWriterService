@@ -45,20 +45,20 @@ public class TemplateLoader {
         return action;
     }
 
-    public String getObject() {
-        return object;
-    }
-
-    public String getAddition() {
-        return addition;
-    }
-
     public void setAction(String action) {
         this.action = action;
     }
 
+    public String getObject() {
+        return object;
+    }
+
     public void setObject(String object) {
         this.object = object;
+    }
+
+    public String getAddition() {
+        return addition;
     }
 
     public void setAddition(String addition) {

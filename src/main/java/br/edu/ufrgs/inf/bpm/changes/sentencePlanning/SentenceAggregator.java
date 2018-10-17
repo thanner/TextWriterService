@@ -47,14 +47,14 @@ public class SentenceAggregator {
         return textPlan;
     }
 
-    private boolean isAggregation(Data previousData, Data currentData){
+    private boolean isAggregation(Data previousData, Data currentData) {
         return //currentData.getRole().equals(previousData.getRole()) &&
                 !currentData.getRole().equals("") &&
-                !currentData.getFragment().sen_hasBullet &&
-                currentData.getFragment().sen_level == previousData.getFragment().sen_level &&
-                previousData.getdSynTSentence().getExecutableFragment().getListSize() == 0 &&
-                !currentData.getFragment().sen_hasConnective && !previousData.getFragment().sen_hasConnective &&
-                currentData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN) &&
+                        !currentData.getFragment().sen_hasBullet &&
+                        currentData.getFragment().sen_level == previousData.getFragment().sen_level &&
+                        previousData.getdSynTSentence().getExecutableFragment().getListSize() == 0 &&
+                        !currentData.getFragment().sen_hasConnective && !previousData.getFragment().sen_hasConnective &&
+                        currentData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN) &&
                         previousData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN) &&
                         !previousData.getFragment().isJoinSentence;
     }

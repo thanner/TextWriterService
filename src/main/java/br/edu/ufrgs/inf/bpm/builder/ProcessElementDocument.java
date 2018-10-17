@@ -25,6 +25,10 @@ public class ProcessElementDocument {
         return processElement;
     }
 
+    public void setProcessElementType(ProcessElementType processElement) {
+        this.processElement = processElement;
+    }
+
     public String getResourceName() {
         return resourceName;
     }
@@ -33,20 +37,16 @@ public class ProcessElementDocument {
         this.resourceName = resourceName;
     }
 
-    public void setProcessElementType(ProcessElementType processElement) {
-        this.processElement = processElement;
+    public Document getDocument() {
+        return document;
     }
 
     public void setDocument(Document document) {
         this.document = document;
     }
 
-    public Document getDocument() {
-        return document;
-    }
-
-    public String getSentence(){
-        if(sentence != null){
+    public String getSentence() {
+        if (sentence != null) {
             return sentence;
         } else {
             SurfaceRealizer surfaceRealizer = new SurfaceRealizer();
@@ -54,15 +54,15 @@ public class ProcessElementDocument {
         }
     }
 
-    private String cleanSubsentence(String subsentence){
+    public void setSentence(String sentence) {
+        this.sentence = sentence;
+    }
+
+    private String cleanSubsentence(String subsentence) {
         if (subsentence != null && !subsentence.isEmpty()) {
             return subsentence.substring(0, subsentence.length() - 1);
         }
         return "";
-    }
-
-    public void setSentence(String sentence) {
-        this.sentence = sentence;
     }
 
     public void fixDocument() {

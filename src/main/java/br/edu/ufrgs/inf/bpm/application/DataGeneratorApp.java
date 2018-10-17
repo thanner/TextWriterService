@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.application;
 
-import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.metatext.TText;
+import br.edu.ufrgs.inf.bpm.builder.MetaTextGenerator;
+import br.edu.ufrgs.inf.bpm.metatext.TMetaText;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.validation.Validation;
 import br.edu.ufrgs.inf.bpm.validation.ValidationDataText;
@@ -103,13 +103,13 @@ public class DataGeneratorApp {
             if (verifyOnlyNewFiles && processFile.exists()) {
                 logger.info("MetaText already exists");
             } else {
-                TText metaText = TextGenerator.generateText(bpmnProcess);
+                TMetaText metaText = MetaTextGenerator.generateMetaText(bpmnProcess);
                 String metaTextString = JsonWrapper.getJson(metaText);
                 FileUtils.writeStringToFile(processFile, metaTextString, "UTF-8");
                 logger.info("MetaText - Done");
 
                 Validation validation = new Validation();
-                validationDataTextList.add(validation.getTextValidationData(inputFileName, bpmnProcess, metaText));
+                validationDataTextList.add(validation.getTextValidationData(inputFileName, bpmnProcess, metaText.getText()));
             }
 
         } catch (Exception e) {

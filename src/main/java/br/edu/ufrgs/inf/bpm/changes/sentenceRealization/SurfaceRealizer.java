@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.metatext.TProcess;
 import br.edu.ufrgs.inf.bpm.metatext.TSentence;
 import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
+import br.edu.ufrgs.inf.bpm.metatext.TText;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;
@@ -21,25 +21,25 @@ public class SurfaceRealizer {
         realproManager = new RealProMgr();
     }
 
-    public TProcess postProcessText(TProcess textProcess) {
-        for (TSentence sentence : textProcess.getSentenceList()) {
+    public TText postProcessText(TText tText) {
+        for (TSentence sentence : tText.getSentenceList()) {
             sentence.setValue(postProcessText(sentence.getValue()));
         }
-        return textProcess;
+        return tText;
     }
 
-    public TProcess generateText(ArrayList<DSynTSentence> sentencePlan) {
-        TProcess textProcess = new TProcess();
+    public TText generateText(ArrayList<DSynTSentence> sentencePlan) {
+        TText tText = new TText();
         for (DSynTSentence s : sentencePlan) {
             TSentence sentence = new TSentence();
             sentence.setLevel(s.getExecutableFragment().sen_level);
-            sentence.setIsLateral(s.getExecutableFragment().sen_hasBullet);
+            sentence.setLateral(s.getExecutableFragment().sen_hasBullet);
             sentence.setValue(realizeSentence(s.getDSynT()));
             sentence.getSnippetList().addAll(getSnippetList(s, sentence.getValue()));
-            textProcess.getSentenceList().add(sentence);
+            tText.getSentenceList().add(sentence);
         }
 
-        return textProcess;
+        return tText;
     }
 
     private List<TSnippet> getSnippetList(DSynTSentence s, String sentence) {
@@ -54,7 +54,8 @@ public class SurfaceRealizer {
             snippet.setStartIndex(getIndexStart(sentence, sentenceSnippet));
             snippet.setEndIndex(getIndexEnd(snippet.getStartIndex(), sentenceSnippet));
 
-            snippet.setResource(processElementDocument.getResourceName());
+            // TODO: Fazer
+            //snippet.setResource(processElementDocument.getResourceName());
 
             snippetList.add(snippet);
         }

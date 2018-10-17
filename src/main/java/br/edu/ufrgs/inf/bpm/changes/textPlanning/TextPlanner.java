@@ -37,9 +37,9 @@ import java.util.*;
 
 public class TextPlanner {
 
+    private static String[] quantifiers = {"a", "the", "all", "any", "more", "most", "none", "some", "such", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
     private RPST<ControlFlow, Node> rpst;
     private ProcessModel process;
-    private static String[] quantifiers = {"a", "the", "all", "any", "more", "most", "none", "some", "such", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
     private EnglishLabelHelper lHelper;
     private TextToIntermediateConverter textToIntermediateConverter;
     private ArrayList<ConditionFragment> passedFragments;

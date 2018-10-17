@@ -63,6 +63,17 @@ public class BpmnWrapper {
         return null;
     }
 
+    public String getLaneIdByFlowElementId(String elementId) {
+        TFlowElement tFlowElement = getFlowElementById(elementId);
+        if (tFlowElement != null) {
+            TLane tLane = getLaneByFlowElement(tFlowElement);
+            if (tLane != null) {
+                return tLane.getId();
+            }
+        }
+        return null;
+    }
+
     public List<TCollaboration> getCollaborationList() {
         List<TCollaboration> collaborationList = new ArrayList<>();
         List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();
@@ -79,7 +90,7 @@ public class BpmnWrapper {
         List<TProcess> processList = new ArrayList<>();
 
         List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();
-        for(JAXBElement<? extends TRootElement> root : rootElementList){
+        for (JAXBElement<? extends TRootElement> root : rootElementList) {
             if (root.getValue() instanceof TProcess) {
                 TProcess process = (TProcess) root.getValue();
                 processList.add(process);
@@ -192,7 +203,7 @@ public class BpmnWrapper {
     }
     */
 
-    public <T> List<T> getFlowElementList(Class flowElementClass){
+    public <T> List<T> getFlowElementList(Class flowElementClass) {
         List<T> elementList = new ArrayList<>();
         for (TProcess tProcess : getProcessList()) {
             elementList.addAll(getFlowElementList(flowElementClass, tProcess));
@@ -200,7 +211,7 @@ public class BpmnWrapper {
         return elementList;
     }
 
-    public <T> List<T> getFlowElementList(Class<T> flowElementClass, TProcess tProcess){
+    public <T> List<T> getFlowElementList(Class<T> flowElementClass, TProcess tProcess) {
         List<T> elementList = new ArrayList<>();
         for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
             if (flowElementClass.isInstance(flowElement.getValue())) {
@@ -220,14 +231,14 @@ public class BpmnWrapper {
         return elementList;
     }
 
-    public List<TFlowNode> getFlowNodesWithoutIncoming(TProcess tProcess){
+    public List<TFlowNode> getFlowNodesWithoutIncoming(TProcess tProcess) {
         List<TFlowNode> flowNodeWithoutIncomingList = new ArrayList();
         for (TLaneSet laneSet : tProcess.getLaneSet()) {
             for (TLane lane : laneSet.getLane()) {
                 for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
                     if (flowNodeRefObject.getValue() instanceof TFlowNode) {
                         TFlowNode tFlowNode = (TFlowNode) flowNodeRefObject.getValue();
-                        if(tFlowNode.getIncoming() == null || tFlowNode.getIncoming().isEmpty()){
+                        if (tFlowNode.getIncoming() == null || tFlowNode.getIncoming().isEmpty()) {
                             flowNodeWithoutIncomingList.add(tFlowNode);
                         }
                     }
@@ -237,14 +248,14 @@ public class BpmnWrapper {
         return flowNodeWithoutIncomingList;
     }
 
-    public List<TFlowNode> getFlowNodesWithoutOutgoing(TProcess tProcess){
+    public List<TFlowNode> getFlowNodesWithoutOutgoing(TProcess tProcess) {
         List<TFlowNode> flowNodeWithoutOutgoingList = new ArrayList();
         for (TLaneSet laneSet : tProcess.getLaneSet()) {
             for (TLane lane : laneSet.getLane()) {
                 for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
                     if (flowNodeRefObject.getValue() instanceof TFlowNode) {
                         TFlowNode tFlowNode = (TFlowNode) flowNodeRefObject.getValue();
-                        if(tFlowNode.getOutgoing() == null || tFlowNode.getOutgoing().isEmpty()){
+                        if (tFlowNode.getOutgoing() == null || tFlowNode.getOutgoing().isEmpty()) {
                             flowNodeWithoutOutgoingList.add(tFlowNode);
                         }
                     }
@@ -271,8 +282,8 @@ public class BpmnWrapper {
     }
 
     public <T> T getFlowElementById(Class<T> flowElementClass, String flowElementId) {
-        for(TProcess tProcess: getProcessList()) {
-            for (JAXBElement<? extends TFlowElement> flowElement: tProcess.getFlowElement()){
+        for (TProcess tProcess : getProcessList()) {
+            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
                 if (flowElement.getValue().getId().equals(flowElementId)) {
                     if (flowElementClass.isInstance(flowElement.getValue())) {
                         return (T) flowElement.getValue();

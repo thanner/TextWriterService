@@ -1,41 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:metatext="http://br/edu/ufrgs/inf/bpm/metatext"
+           xmlns:mt="http://br/edu/ufrgs/inf/bpm/metatext"
            targetNamespace="http://br/edu/ufrgs/inf/bpm/metatext">
 
-    <xs:element name="text" type="metatext:tText"/>
-    <xs:complexType name="tText">
+    <xs:element name="metaText" type="mt:tMetaText"/>
+    <xs:complexType name="tMetaText">
         <xs:sequence>
-            <xs:element name="processList" type="metatext:tProcess" maxOccurs="unbounded"/>
+            <xs:element name="processList" type="mt:tProcess" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="text" type="mt:tText"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:element name="process" type="metatext:tProcess"/>
+    <xs:element name="process" type="mt:tProcess"/>
     <xs:complexType name="tProcess">
         <xs:sequence>
-            <xs:element name="processName" type="xs:string"/>
-            <xs:element name="processId" type="xs:string"/>
-            <xs:element name="sentenceList" type="metatext:tSentence" maxOccurs="unbounded"/>
+            <xs:element name="resourceList" type="mt:tResource" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="resource" type="mt:tResource"/>
+    <xs:complexType name="tResource">
+        <xs:attribute name="id" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="text" type="mt:tText"/>
+    <xs:complexType name="tText">
+        <xs:sequence>
+            <xs:element name="sentenceList" type="mt:tSentence" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:element name="sentence" type="metatext:tSentence"/>
+    <xs:element name="sentence" type="mt:tSentence"/>
     <xs:complexType name="tSentence">
         <xs:sequence>
             <xs:element name="value" type="xs:string"/>
-            <xs:element name="snippetList" type="metatext:tSnippet" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="snippetList" type="mt:tSnippet" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute name="level" type="xs:int"/>
-        <xs:attribute name="isLateral" type="xs:boolean"/>
+        <xs:attribute name="lateral" type="xs:boolean"/>
     </xs:complexType>
 
-    <xs:element name="snippet" type="metatext:tSnippet"/>
+    <xs:element name="snippet" type="mt:tSnippet"/>
     <xs:complexType name="tSnippet">
         <xs:attribute name="startIndex" type="xs:int"/>
         <xs:attribute name="endIndex" type="xs:int"/>
-        <xs:attribute name="resource" type="xs:string"/>
+        <xs:attribute name="resourceId" type="xs:string"/>
         <xs:attribute name="processElementId" type="xs:string"/>
-        <xs:attribute name="processElementType" type="metatext:processElementType"/>
+        <xs:attribute name="processElementType" type="mt:processElementType"/>
     </xs:complexType>
 
     <xs:simpleType name="processElementType" final="restriction">

@@ -1,9 +1,8 @@
 package br.edu.ufrgs.inf.bpm.application;
 
-import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.metatext.TProcess;
+import br.edu.ufrgs.inf.bpm.builder.MetaTextGenerator;
+import br.edu.ufrgs.inf.bpm.metatext.TMetaText;
 import br.edu.ufrgs.inf.bpm.metatext.TSentence;
-import br.edu.ufrgs.inf.bpm.metatext.TText;
 import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import net.didion.jwnl.JWNLException;
 import org.apache.commons.io.FileUtils;
@@ -18,24 +17,22 @@ public class TestBpmnXml {
         // System.out.println(getStructuredText());
     }
 
-    public static String getStructuredText(){
-        TText metaText = new TText();
+    public static String getStructuredText() {
+        TMetaText metaText = new TMetaText();
         try {
             String bpmnProcess = FileUtils.readFileToString(new File("src/main/others/leopold.bpmn"), "UTF-8");
-            // metaText = TextGenerator.generateText(bpmnProcess);
+            // metaText = TextGenerator.generateMetaText(bpmnProcess);
             ApplicationStarter.startApplication();
 
-            metaText = TextGenerator.generateText(bpmnProcess);
+            metaText = MetaTextGenerator.generateMetaText(bpmnProcess);
             String metaTextString = JsonWrapper.getJson(metaText);
             // System.out.println(metaTextString);
         } catch (JWNLException | IOException e) {
             e.printStackTrace();
         }
 
-        for (TProcess process : metaText.getProcessList()) {
-            for (TSentence sentence : process.getSentenceList()) {
-                System.out.println(sentence.getValue());
-            }
+        for (TSentence sentence : metaText.getText().getSentenceList()) {
+            System.out.println(sentence.getValue());
         }
 
         return metaText.toString();

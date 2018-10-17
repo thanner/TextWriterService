@@ -42,9 +42,9 @@ public class ReferringExpressionGenerator {
         return textPlan;
     }
 
-    private void setReferringExpression(Data currentData, boolean isMale){
+    private void setReferringExpression(Data currentData, boolean isMale) {
         if (isPerson(currentData.getRole()) && isMale) {
-                currentData.getFragment().setRole("he");
+            currentData.getFragment().setRole("he");
         } else {
             currentData.getFragment().setRole("it");
         }
