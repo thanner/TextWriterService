@@ -171,7 +171,7 @@ public class MetaTextGenerator {
         BpmnWrapper bpmnWrapper = new BpmnWrapper(tDefinitions);
         for (TSentence tSentence : tText.getSentenceList()) {
             for (TSnippet tSnippet : tSentence.getSnippetList()) {
-                tSnippet.setResourceId(bpmnWrapper.getLaneIdByFlowElementId(tSnippet.getProcessElementId()));
+                tSnippet.setResourceId(bpmnWrapper.getInternalLaneIdByFlowElementId(tSnippet.getProcessElementId()));
             }
         }
     }

@@ -20,7 +20,7 @@ public class MetaTextProcessGenerator {
             tProcess.setId(processModel.getId());
             tProcess.setName(processModel.getName());
 
-            for (TLane laneModel : bpmnWrapper.getLanesByProcess(processModel)) {
+            for (TLane laneModel : bpmnWrapper.getDeepLanesByProcess(processModel)) {
                 TResource tResource = new TResource();
                 tResource.setId(laneModel.getId());
                 tResource.setName(laneModel.getName());

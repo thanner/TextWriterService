@@ -54,7 +54,7 @@ public class DataGeneratorApp {
 
         */
 
-        File file2 = new File("src/main/others/TestData/aggregation.bpmn");
+        File file2 = new File("src/main/others/TestData/multiplelevellane.bpmn");
         generateData(file2, false);
 
         // file2 = new File("src/main/others/TestData/skip2.bpmn");

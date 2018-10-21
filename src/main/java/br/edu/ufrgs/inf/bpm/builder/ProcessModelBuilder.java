@@ -51,15 +51,13 @@ public class ProcessModelBuilder {
         for (TProcess process : processList) {
 
             processModel.addPool(createPool(process));
-            for (TLaneSet laneSet : process.getLaneSet()) {
-                for (TLane lane : laneSet.getLane()) {
-                    processModel.addLane(createLane(lane, process));
-                }
+            for (TLaneSet tLaneSet : process.getLaneSet()) {
+                getLanes(tLaneSet, processModel, process);
             }
 
             for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
                 if (flowElement.getValue() instanceof TActivity) {
-                    processModel.addActivity(createActivity((TActivity) flowElement.getValue()));
+                    processModel.addActivity(createActivity((TActivity) flowElement.getValue(), processModel));
                 } else if (flowElement.getValue() instanceof TEvent) {
                     processModel.addEvent(createEvent((TEvent) flowElement.getValue()));
                 } else if (flowElement.getValue() instanceof TGateway) {
@@ -92,6 +90,15 @@ public class ProcessModelBuilder {
         return modelPool.getName();
     }
 
+    private void getLanes(TLaneSet tLaneSet, ProcessModel processModel, TProcess process) {
+        if (tLaneSet != null) {
+            for (TLane lane : tLaneSet.getLane()) {
+                processModel.addLane(createLane(lane, process));
+                getLanes(lane.getChildLaneSet(), processModel, process);
+            }
+        }
+    }
+
     private String createLane(TLane lane, TProcess process) {
         int newId = generateModelId(lane.getId());
         Lane modelLane = new Lane(newId, getName(lane.getName()), poolMap.get(process.getId()));
@@ -99,17 +106,56 @@ public class ProcessModelBuilder {
         return modelLane.getName();
     }
 
-    private Activity createActivity(TActivity activity) {
+    private Activity createActivity(TActivity activity, ProcessModel processModel) {
         try {
             int newId = generateModelId(activity.getId());
             int activityType = getActivityType(activity);
             Activity modelActivity = new Activity(newId, getName(activity.getName()), getLaneByObject(activity), getPoolByObject(activity), activityType);
             elementMap.put(activity.getId(), modelActivity);
+            if (activity instanceof TSubProcess) {
+                createSubProcessElements((TSubProcess) activity, modelActivity, processModel);
+            }
             return modelActivity;
         } catch (IllegalArgumentException i) {
             i.printStackTrace();
         }
         return null;
+    }
+
+    // TODO: Todos os elementos dentro dele vão receber subprocessId
+    private void createSubProcessElements(TSubProcess tSubProcess, Activity activityModel, ProcessModel processModel) {
+        System.out.println();
+        /*
+        for (TLaneSet laneSet : tSubProcess.getLaneSet()) {
+            for (TLane lane : laneSet.getLane()) {
+                processModel.addLane(createLane(lane, tSubProcess));
+            }
+        }
+
+        for (JAXBElement<? extends TFlowElement> flowElement : tSubProcess.getFlowElement()) {
+            if (flowElement.getValue() instanceof TActivity) {
+                processModel.addActivity(createActivity((TActivity) flowElement.getValue(), processModel));
+            } else if (flowElement.getValue() instanceof TEvent) {
+                processModel.addEvent(createEvent((TEvent) flowElement.getValue()));
+            } else if (flowElement.getValue() instanceof TGateway) {
+                processModel.addGateway(createGateway((TGateway) flowElement.getValue()));
+            }
+        }
+
+        for (JAXBElement<? extends TFlowElement> flowElement : tSubProcess.getFlowElement()) {
+            if (flowElement.getValue() instanceof TSequenceFlow) {
+                processModel.addArc(createArc((TSequenceFlow) flowElement.getValue()));
+            }
+        }
+
+        for (JAXBElement<? extends TFlowElement> flowElement : tSubProcess.getFlowElement()) {
+            if (flowElement.getValue() instanceof TBoundaryEvent) {
+                attachEvent(tSubProcess, processModel, (TBoundaryEvent) flowElement.getValue());
+            }
+        }
+
+        removeExternalPathInitiators(tSubProcess, processModel);
+        */
     }
 
     private Event createEvent(TEvent event) {
@@ -207,7 +253,7 @@ public class ProcessModelBuilder {
     }
 
     private Lane getLaneByObject(TFlowNode flowNode) {
-        TLane lane = processModelWrapper.getLaneByFlowElement(flowNode);
+        TLane lane = processModelWrapper.getInternalLaneByFlowElement(flowNode);
         return lane != null ? laneMap.get(lane.getId()) : null;
     }
 

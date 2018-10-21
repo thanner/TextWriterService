@@ -25,6 +25,25 @@ public class BpmnWrapper {
         return tLaneList;
     }
 
+    public List<TLane> getDeepLanesByProcess(TProcess tProcess) {
+        List<TLane> tLaneList = new ArrayList<>();
+        for (TLaneSet laneSet : tProcess.getLaneSet()) {
+            tLaneList.addAll(getLanesByLaneSet(laneSet));
+        }
+        return tLaneList;
+    }
+
+    public List<TLane> getLanesByLaneSet(TLaneSet tLaneSet) {
+        List<TLane> tLaneList = new ArrayList<>();
+        if (tLaneSet != null) {
+            tLaneList.addAll(tLaneSet.getLane());
+            for (TLane tLane : tLaneSet.getLane()) {
+                tLaneList.addAll(getLanesByLaneSet(tLane.getChildLaneSet()));
+            }
+        }
+        return tLaneList;
+    }
+
     public TProcess getProcessByFlowElement(TFlowElement tFlowElement) {
         List<TProcess> processList = getProcessList();
         for (TProcess process : processList) {
@@ -67,6 +86,51 @@ public class BpmnWrapper {
         TFlowElement tFlowElement = getFlowElementById(elementId);
         if (tFlowElement != null) {
             TLane tLane = getLaneByFlowElement(tFlowElement);
+            if (tLane != null) {
+                return tLane.getId();
+            }
+        }
+        return null;
+    }
+
+    public TLane getInternalLaneByFlowElement(TFlowElement tFlowElement) {
+        List<TProcess> processList = getProcessList();
+        for (TProcess process : processList) {
+            for (TLaneSet laneSet : process.getLaneSet()) {
+                TLane tLane = getTLane(laneSet, tFlowElement);
+                if (tLane != null) {
+                    return tLane;
+                }
+            }
+        }
+        return null;
+    }
+
+    private TLane getTLane(TLaneSet tLaneSet, TFlowElement tFlowElement) {
+        if (tLaneSet != null) {
+            for (TLane lane : tLaneSet.getLane()) {
+                TLane tLane = getTLane(lane.getChildLaneSet(), tFlowElement);
+                if (tLane != null) {
+                    return tLane;
+                }
+
+                for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
+                    if (flowNodeRefObject.getValue() instanceof TFlowNode) {
+                        TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
+                        if (tFlowElement.getId().equals(flowNodeAux.getId())) {
+                            return lane;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public String getInternalLaneIdByFlowElementId(String elementId) {
+        TFlowElement tFlowElement = getFlowElementById(elementId);
+        if (tFlowElement != null) {
+            TLane tLane = getInternalLaneByFlowElement(tFlowElement);
             if (tLane != null) {
                 return tLane.getId();
             }
@@ -123,48 +187,6 @@ public class BpmnWrapper {
         return null;
     }
 
-        /*
-    public TProcess getProcessByFlowNode(TFlowNode flowNode) {
-        List<TProcess> processList = getProcessList();
-        for (TProcess process : processList) {
-            for (TLaneSet laneSet : process.getLaneSet()) {
-                for (TLane lane : laneSet.getLane()) {
-                    for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
-                        if (flowNodeRefObject.getValue() instanceof TFlowNode) {
-                            TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
-                            if (flowNode.getId().equals(flowNodeAux.getId())) {
-                                return process;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return null;
-    }
-    */
-
-    /*
-    public TLane getLaneByFlowNode(TFlowNode flowNode) {
-        List<TProcess> processList = getProcessList();
-        for (TProcess process : processList) {
-            for (TLaneSet laneSet : process.getLaneSet()) {
-                for (TLane lane : laneSet.getLane()) {
-                    for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
-                        if (flowNodeRefObject.getValue() instanceof TFlowNode) {
-                            TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
-                            if (flowNode.getId().equals(flowNodeAux.getId())) {
-                                return lane;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return null;
-    }
-    */
-
     public boolean hasParticipant(TProcess process) {
         List<TCollaboration> collaborationList = getCollaborationList();
         for (TCollaboration collaboration : collaborationList) {
@@ -176,32 +198,6 @@ public class BpmnWrapper {
         }
         return false;
     }
-
-    /*
-    public List<TSequenceFlow> getSequenceFlowList() {
-        List<TSequenceFlow> tSequenceFlowList = new ArrayList<>();
-        for (TProcess tProcess : getProcessList()) {
-            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
-                if (flowElement.getValue() instanceof TSequenceFlow) {
-                    tSequenceFlowList.add((TSequenceFlow) flowElement.getValue());
-                }
-            }
-        }
-        return tSequenceFlowList;
-    }
-
-    public List<TActivity> getActivityList() {
-        List<TActivity> tActivityList = new ArrayList<>();
-        for (TProcess tProcess : getProcessList()) {
-            for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {
-                if (flowElement.getValue() instanceof TActivity) {
-                    tActivityList.add((TActivity) flowElement.getValue());
-                }
-            }
-        }
-        return tActivityList;
-    }
-    */
 
     public <T> List<T> getFlowElementList(Class flowElementClass) {
         List<T> elementList = new ArrayList<>();
@@ -427,4 +423,5 @@ public class BpmnWrapper {
     public TDefinitions getDefinitions() {
         return this.definitions;
     }
+
 }
