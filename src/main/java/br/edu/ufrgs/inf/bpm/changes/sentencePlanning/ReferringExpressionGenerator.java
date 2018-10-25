@@ -33,11 +33,12 @@ public class ReferringExpressionGenerator {
                 if (isReferringExpression(previousData, currentData)) {
                     setReferringExpression(currentData, isMale);
                     // System.out.println("Referring Expression inserted: " + textPlan.get(i).getExecutableFragment().getAction() + " - " + textPlan.get(i).getExecutableFragment().getBo());
-                    previousData.cleanData();
+                    //previousData.cleanData();
                 }
-            } else {
-                previousData.setValues(currentData);
             }
+            //} else {
+            previousData.setValues(currentData);
+            //}
         }
         return textPlan;
     }

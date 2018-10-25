@@ -22,6 +22,7 @@ import processToText.dataModel.process.*;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PlanningHelper {
 
@@ -717,6 +718,21 @@ public class PlanningHelper {
             }
         }
         return true;
+    }
+
+
+    public static int getOutputCount(RPSTNode<ControlFlow, Node> node, RPST<ControlFlow, Node> rpst) {
+        ArrayList<RPSTNode<ControlFlow, Node>> nodes = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
+        return nodes.size();
+    }
+
+    public static int getOutputWithoutSkipCount(RPSTNode<ControlFlow, Node> node, RPST<ControlFlow, Node> rpst) {
+        ArrayList<RPSTNode<ControlFlow, Node>> nodes = sortTreeLevel(node, node.getEntry(), rpst);
+        return nodes.stream().filter(n -> !isSkipNode(n)).collect(Collectors.toList()).size();
+    }
+
+    public static boolean isSkipNode(RPSTNode<ControlFlow, Node> node) {
+        return isTrivial(node);
     }
 
 }

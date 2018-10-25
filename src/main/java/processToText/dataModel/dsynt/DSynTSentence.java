@@ -62,6 +62,8 @@ public abstract class DSynTSentence {
      * Thanner
      */
 
+    public abstract void createDSynTRepresentation();
+
     private List<ProcessElementDocument> processElementDocumentList = new ArrayList<>();
 
     public List<ProcessElementDocument> getProcessElementDocumentList() {

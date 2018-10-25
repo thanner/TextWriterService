@@ -134,7 +134,7 @@ public class MetaTextGenerator {
 
         // Referring Expression (He, She, It)
         ReferringExpressionGenerator refExpGenerator = new ReferringExpressionGenerator(lHelper);
-        sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, false);
+        sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, true);
         sentencePlan.forEach(DSynTSentence::fixDocuments);
 
         // Discourse Marker (After, Then, In sequence, In the first procedure, In the meantime)

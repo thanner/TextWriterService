@@ -477,7 +477,35 @@ public class TextToIntermediateConverter {
         pre.skip = true;
 
         pre.addAssociation(Integer.valueOf(node.getEntry().getId()));
+
         return new ConverterRecord(pre, null, null, null);
+
+    }
+
+    public ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
+        Map<String, String> modificationMap = new HashMap<>();
+        modificationMap.put("@number", Integer.toString(amountProcedures));
+
+        ConditionFragment pre = FragmentGenerator.generateConditionFragment(TemplateLoaderType.SKIP, modificationMap, ConditionFragment.TYPE_IF);
+
+        ModifierRecord mod = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
+        pre.addMod(templateLoader.getAddition(), mod);
+
+        pre.add_hasArticle = false;
+        pre.sen_hasComma = true;
+        pre.skip = true;
+
+        pre.addAssociation(Integer.valueOf(node.getEntry().getId()));
+
+        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.XOR, modificationMap);
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = false;
+        eFrag.verb_IsPassive = true;
+        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
+        preStatements.add(new DSynTConditionSentence(eFrag, pre));
+
+        return new ConverterRecord(null, null, preStatements, null);
 
     }
 

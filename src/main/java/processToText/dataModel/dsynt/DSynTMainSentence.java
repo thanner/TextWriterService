@@ -111,6 +111,10 @@ public class DSynTMainSentence extends DSynTSentence {
         Element cObject = IntermediateToDSynTConverter.createBO(doc, cFrag);
         cVerb.appendChild(cObject);
 
+        if (!cFrag.getAddition().isEmpty()) {
+            IntermediateToDSynTConverter.createAddition(doc, cVerb, cFrag);
+        }
+
         if (coordUseRole) {
             Element cRole;
             if (eFrag.getRole().equals(cFrag.getRole())) {

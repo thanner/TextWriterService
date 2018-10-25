@@ -385,6 +385,17 @@ public class BpmnWrapper {
         return elementSourceList;
     }
 
+    public List<TSequenceFlow> getSequenceFlowSourceList(TFlowNode tFlowNode) {
+        List<TSequenceFlow> tSequenceFlowList = new ArrayList<>();
+        for (QName qName : tFlowNode.getIncoming()) {
+            TFlowElement tFlowElement = getFlowElementByQName(qName);
+            if (tFlowElement instanceof TSequenceFlow) {
+                tSequenceFlowList.add((TSequenceFlow) tFlowElement);
+            }
+        }
+        return tSequenceFlowList;
+    }
+
     public List<TFlowElement> getFlowNodeTargetList(TFlowNode tFlowNode) {
         List<TFlowElement> elementTargetList = new ArrayList<>();
         for (QName qName : tFlowNode.getOutgoing()) {
@@ -398,6 +409,17 @@ public class BpmnWrapper {
             }
         }
         return elementTargetList;
+    }
+
+    public List<TSequenceFlow> getSequenceFlowTargetList(TFlowNode tFlowNode) {
+        List<TSequenceFlow> tSequenceFlowList = new ArrayList<>();
+        for (QName qName : tFlowNode.getOutgoing()) {
+            TFlowElement tFlowElement = getFlowElementByQName(qName);
+            if (tFlowElement instanceof TSequenceFlow) {
+                tSequenceFlowList.add((TSequenceFlow) tFlowElement);
+            }
+        }
+        return tSequenceFlowList;
     }
 
     public boolean isAllGatewayPathsHasLabels(TGateway tGateway) {

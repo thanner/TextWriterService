@@ -13,11 +13,11 @@ import java.util.List;
 public class BpmnPreProcessor {
 
     private TDefinitions tDefinitions;
-    private BpmnWrapper processModelWrapper;
+    private BpmnWrapper bpmnWrapper;
 
     public BpmnPreProcessor(TDefinitions tDefinitions) {
         this.tDefinitions = tDefinitions;
-        processModelWrapper = new BpmnWrapper(tDefinitions);
+        bpmnWrapper = new BpmnWrapper(tDefinitions);
     }
 
     public TDefinitions gettDefinitions() {
@@ -34,7 +34,7 @@ public class BpmnPreProcessor {
     }
 
     private void verifySequenceFlowsWithoutElements() throws IllegalArgumentException {
-        List<TSequenceFlow> sequenceFlowList = processModelWrapper.getFlowElementList(TSequenceFlow.class);
+        List<TSequenceFlow> sequenceFlowList = bpmnWrapper.getFlowElementList(TSequenceFlow.class);
         for (TSequenceFlow tSequenceFlow : sequenceFlowList) {
             if (tSequenceFlow.getSourceRef() == null) {
                 throw new IllegalArgumentException("In Sequence Flow with id: " + tSequenceFlow.getId() + " the source is null");
@@ -48,7 +48,7 @@ public class BpmnPreProcessor {
     private void adjustPools() {
         TCollaboration tCollaboration;
 
-        List<TCollaboration> tCollaborationList = processModelWrapper.getCollaborationList();
+        List<TCollaboration> tCollaborationList = bpmnWrapper.getCollaborationList();
         if (tCollaborationList.isEmpty()) {
             tCollaboration = new TCollaboration();
             tCollaboration.setId(generateId("Collaboration"));
@@ -59,13 +59,13 @@ public class BpmnPreProcessor {
             tCollaboration = tCollaborationList.get(0);
         }
 
-        for (TProcess tProcess : processModelWrapper.getProcessList()) {
+        for (TProcess tProcess : bpmnWrapper.getProcessList()) {
             if (tProcess.getName() == null || tProcess.getName().isEmpty()) {
                 tProcess.setName(generateName("Process"));
             }
             String processName = tProcess.getName();
 
-            TParticipant tParticipant = processModelWrapper.getParticipantFromProcess(tProcess);
+            TParticipant tParticipant = bpmnWrapper.getParticipantFromProcess(tProcess);
             if (tParticipant != null) {
                 // Participant doesnt has a name
                 if (tParticipant.getName() == null || tParticipant.getName().isEmpty()) {
@@ -84,14 +84,14 @@ public class BpmnPreProcessor {
     }
 
     private void adjustLanes() {
-        for (TProcess tProcess : processModelWrapper.getProcessList()) {
+        for (TProcess tProcess : bpmnWrapper.getProcessList()) {
             TLaneSet tLaneSet = getTLaneSet(tProcess);
             TLane tCandidateLane = null;
 
             for (JAXBElement<? extends TFlowElement> jaxbElement : tProcess.getFlowElement()) {
                 TFlowElement tFlowElement = jaxbElement.getValue();
                 if (!(tFlowElement instanceof TSequenceFlow)) {
-                    TLane tLane = processModelWrapper.getLaneByFlowElement(tFlowElement);
+                    TLane tLane = bpmnWrapper.getLaneByFlowElement(tFlowElement);
                     if (tLane == null) {
 
                         if (tCandidateLane == null) {
@@ -126,7 +126,7 @@ public class BpmnPreProcessor {
     }
 
     private void adjustActivityLabel() {
-        List<TActivity> tActivityList = processModelWrapper.getFlowElementList(TActivity.class);
+        List<TActivity> tActivityList = bpmnWrapper.getFlowElementList(TActivity.class);
         for (TActivity tActivity : tActivityList) {
             String name = tActivity.getName();
             if (name == null || name.replaceAll("\n", "").isEmpty()) {
@@ -136,43 +136,85 @@ public class BpmnPreProcessor {
     }
 
     private void adjustStartEvents() {
-        for (TProcess tProcess : processModelWrapper.getProcessList()) {
+        for (TProcess tProcess : bpmnWrapper.getProcessList()) {
+            adjustStartEventsWithMultipleOutgoing(tProcess);
             adjustFlowNodeswithoutIncoming(tProcess);
             adjustNumberStartEvents(tProcess);
         }
     }
 
     private void adjustEndEvents() {
-        for (TProcess tProcess : processModelWrapper.getProcessList()) {
+        for (TProcess tProcess : bpmnWrapper.getProcessList()) {
+            adjustEndEventsWithMultipleIncoming(tProcess);
             adjustFlowNodeswithoutOutgoing(tProcess);
             adjustNumberEndEvents(tProcess);
         }
     }
 
+    private void adjustStartEventsWithMultipleOutgoing(TProcess tProcess) {
+        for (TStartEvent tStartEvent : bpmnWrapper.getFlowElementList(TStartEvent.class, tProcess)) {
+            List<TFlowElement> targetElementList = bpmnWrapper.getFlowNodeTargetList(tStartEvent);
+            if (targetElementList.size() > 1) {
+                for (TSequenceFlow tSequenceFlow : bpmnWrapper.getSequenceFlowTargetList(tStartEvent)) {
+                    bpmnWrapper.deleteSequenceFlow(tSequenceFlow);
+                }
+
+                TExclusiveGateway tExclusiveGateway = createExclusiveGateway(tProcess, bpmnWrapper.getLaneByFlowElement(tStartEvent));
+                createSequenceFlow(tStartEvent, tExclusiveGateway, tProcess);
+                for (TFlowElement targetElement : targetElementList) {
+                    if (targetElement instanceof TFlowNode) {
+                        TFlowNode targetNode = (TFlowNode) targetElement;
+                        createSequenceFlow(tExclusiveGateway, targetNode, tProcess);
+                    }
+                }
+            }
+        }
+    }
+
+    private void adjustEndEventsWithMultipleIncoming(TProcess tProcess) {
+        for (TEndEvent tEndEvent : bpmnWrapper.getFlowElementList(TEndEvent.class, tProcess)) {
+            List<TFlowElement> sourceElementList = bpmnWrapper.getFlowNodeSourceList(tEndEvent);
+            if (sourceElementList.size() > 1) {
+                for (TSequenceFlow tSequenceFlow : bpmnWrapper.getSequenceFlowSourceList(tEndEvent)) {
+                    bpmnWrapper.deleteSequenceFlow(tSequenceFlow);
+                }
+
+                TExclusiveGateway tExclusiveGateway = createExclusiveGateway(tProcess, bpmnWrapper.getLaneByFlowElement(tEndEvent));
+                createSequenceFlow(tExclusiveGateway, tEndEvent, tProcess);
+                for (TFlowElement sourceElement : sourceElementList) {
+                    if (sourceElement instanceof TFlowNode) {
+                        TFlowNode sourceNode = (TFlowNode) sourceElement;
+                        createSequenceFlow(sourceNode, tExclusiveGateway, tProcess);
+                    }
+                }
+            }
+        }
+    }
+
     private void adjustFlowNodeswithoutIncoming(TProcess tProcess) {
-        List<TFlowNode> tFlowNodeWithoutIncoming = processModelWrapper.getFlowNodesWithoutIncoming(tProcess);
+        List<TFlowNode> tFlowNodeWithoutIncoming = bpmnWrapper.getFlowNodesWithoutIncoming(tProcess);
         for (TFlowNode tFlowNode : tFlowNodeWithoutIncoming) {
             if (!(tFlowNode instanceof TStartEvent)) {
-                TStartEvent tStartEvent = createStartEvent(tProcess, processModelWrapper.getLaneByFlowElement(tFlowNode));
+                TStartEvent tStartEvent = createStartEvent(tProcess, bpmnWrapper.getLaneByFlowElement(tFlowNode));
                 createSequenceFlow(tStartEvent, tFlowNode, tProcess);
             }
         }
     }
 
     private void adjustFlowNodeswithoutOutgoing(TProcess tProcess) {
-        List<TFlowNode> tFlowNodeWithoutOutgoing = processModelWrapper.getFlowNodesWithoutOutgoing(tProcess);
+        List<TFlowNode> tFlowNodeWithoutOutgoing = bpmnWrapper.getFlowNodesWithoutOutgoing(tProcess);
         for (TFlowNode tFlowNode : tFlowNodeWithoutOutgoing) {
             if (!(tFlowNode instanceof TEndEvent)) {
-                TEndEvent tEndEvent = createEndEvent(tProcess, processModelWrapper.getLaneByFlowElement(tFlowNode));
+                TEndEvent tEndEvent = createEndEvent(tProcess, bpmnWrapper.getLaneByFlowElement(tFlowNode));
                 createSequenceFlow(tFlowNode, tEndEvent, tProcess);
             }
         }
     }
 
     private void adjustNumberStartEvents(TProcess tProcess) {
-        List<TStartEvent> tStartEventListOld = processModelWrapper.getFlowElementList(TStartEvent.class, tProcess);
+        List<TStartEvent> tStartEventListOld = bpmnWrapper.getFlowElementList(TStartEvent.class, tProcess);
         if (tStartEventListOld.size() > 1) {
-            List<TLane> tLaneList = processModelWrapper.getLanesByProcess(tProcess);
+            List<TLane> tLaneList = bpmnWrapper.getLanesByProcess(tProcess);
             if (tLaneList.size() > 0) {
                 TLane tLane = tLaneList.get(0);
 
@@ -184,7 +226,7 @@ public class BpmnPreProcessor {
                 for (TStartEvent tStartEventOld : tStartEventListOld) {
                     for (QName qNameStartEventOld : tStartEventOld.getOutgoing()) {
                         String idOutgoing = qNameStartEventOld.getLocalPart();
-                        TSequenceFlow tSequenceFlowOld = processModelWrapper.getFlowElementById(TSequenceFlow.class, idOutgoing);
+                        TSequenceFlow tSequenceFlowOld = bpmnWrapper.getFlowElementById(TSequenceFlow.class, idOutgoing);
                         Object target = tSequenceFlowOld.getTargetRef();
                         if (target instanceof TFlowNode) {
                             createSequenceFlow(tExclusiveGateway, (TFlowNode) target, tProcess);
@@ -199,9 +241,9 @@ public class BpmnPreProcessor {
     }
 
     private void adjustNumberEndEvents(TProcess tProcess) {
-        List<TEndEvent> tEndEventListOld = processModelWrapper.getFlowElementList(TEndEvent.class, tProcess);
+        List<TEndEvent> tEndEventListOld = bpmnWrapper.getFlowElementList(TEndEvent.class, tProcess);
         if (tEndEventListOld.size() > 1) {
-            List<TLane> tLaneList = processModelWrapper.getLanesByProcess(tProcess);
+            List<TLane> tLaneList = bpmnWrapper.getLanesByProcess(tProcess);
             if (tLaneList.size() > 0) {
                 TLane tLane = tLaneList.get(0);
 
@@ -213,7 +255,7 @@ public class BpmnPreProcessor {
                 for (TEndEvent tEndEventOld : tEndEventListOld) {
                     for (QName qNameEndEventOld : tEndEventOld.getIncoming()) {
                         String idIncoming = qNameEndEventOld.getLocalPart();
-                        TSequenceFlow tSequenceFlowOld = processModelWrapper.getFlowElementById(TSequenceFlow.class, idIncoming);
+                        TSequenceFlow tSequenceFlowOld = bpmnWrapper.getFlowElementById(TSequenceFlow.class, idIncoming);
                         Object source = tSequenceFlowOld.getSourceRef();
                         if (source instanceof TFlowNode) {
                             createSequenceFlow((TFlowNode) source, tExclusiveGateway, tProcess);
@@ -233,9 +275,9 @@ public class BpmnPreProcessor {
         while (flowElementIterator.hasNext()) {
             TFlowElement flowElementToRemove = flowElementIterator.next();
             if (flowElementToRemove instanceof TSequenceFlow) {
-                processModelWrapper.deleteSequenceFlow((TSequenceFlow) flowElementToRemove);
+                bpmnWrapper.deleteSequenceFlow((TSequenceFlow) flowElementToRemove);
             } else {
-                processModelWrapper.deleteFlowElement(flowElementToRemove);
+                bpmnWrapper.deleteFlowElement(flowElementToRemove);
             }
         }
     }
@@ -288,7 +330,7 @@ public class BpmnPreProcessor {
 
     private String generateId(String idName) {
         int idValue = 1;
-        List<String> idList = processModelWrapper.getElementsId();
+        List<String> idList = bpmnWrapper.getElementsId();
 
         String newId;
         do {
@@ -300,7 +342,7 @@ public class BpmnPreProcessor {
 
     private String generateName(String name) {
         int idValue = 1;
-        List<String> idList = processModelWrapper.getElementsName();
+        List<String> idList = bpmnWrapper.getElementsName();
 
         String newName;
         do {

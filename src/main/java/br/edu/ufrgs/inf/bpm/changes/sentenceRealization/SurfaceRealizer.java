@@ -22,8 +22,8 @@ public class SurfaceRealizer {
     }
 
     public TText postProcessText(TText tText) {
-        for (TSentence sentence : tText.getSentenceList()) {
-            sentence.setValue(postProcessText(sentence.getValue()));
+        for (TSentence tSentence : tText.getSentenceList()) {
+            tSentence.setValue(postProcessText(tSentence.getValue()));
         }
         return tText;
     }
@@ -45,17 +45,17 @@ public class SurfaceRealizer {
     private List<TSnippet> getSnippetList(DSynTSentence s, String sentence) {
         List<TSnippet> snippetList = new ArrayList<>();
         for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
-            String sentenceSnippet = postProcessText(processElementDocument.getSentence());
-
             TSnippet snippet = new TSnippet();
             snippet.setProcessElementId(processElementDocument.getProcessElementId());
             snippet.setProcessElementType(processElementDocument.getProcessElementType());
 
-            snippet.setStartIndex(getIndexStart(sentence, sentenceSnippet));
-            snippet.setEndIndex(getIndexEnd(snippet.getStartIndex(), sentenceSnippet));
+            snippet.setStartIndex(getIndexStart(sentence, processElementDocument));
+            snippet.setEndIndex(getIndexEnd(snippet.getStartIndex(), processElementDocument));
 
-            // TODO: Fazer
-            //snippet.setResource(processElementDocument.getResourceName());
+            if (snippet.getStartIndex() == null && snippet.getEndIndex() == null) {
+                snippet.setStartIndex(0);
+                snippet.setEndIndex(0);
+            }
 
             snippetList.add(snippet);
         }
@@ -70,8 +70,10 @@ public class SurfaceRealizer {
         return realized != null ? realized : "";
     }
 
-    private Integer getIndexStart(String sentence, String sentenceSnippet) {
-        Integer integer = postProcessText(sentence).toLowerCase().indexOf(postProcessText(sentenceSnippet).toLowerCase());
+    private Integer getIndexStart(String sentence, ProcessElementDocument processElementDocument) {
+        String originalSentence = getSentenceForIndex(sentence).toLowerCase();
+        String sentenceSnippet = getSentenceForIndex(processElementDocument.getSentence()).toLowerCase();
+        Integer integer = originalSentence.indexOf(sentenceSnippet);
         if (integer == -1) {
             integer = null;
         }
@@ -79,7 +81,8 @@ public class SurfaceRealizer {
         return integer;
     }
 
-    private Integer getIndexEnd(Integer indexStart, String sentenceSnippet) {
+    private Integer getIndexEnd(Integer indexStart, ProcessElementDocument processElementDocument) {
+        String sentenceSnippet = getSentenceForIndex(processElementDocument.getSentence());
         if (indexStart == null) {
             return null;
         } else {
@@ -87,6 +90,9 @@ public class SurfaceRealizer {
         }
     }
 
+    private String getSentenceForIndex(String sentence) {
+        return postProcessText(sentence).trim();
+    }
 
     public String postProcessText(String surfaceText) {
         surfaceText = surfaceText.replaceAll("If it is necessary", "If it is necessary,");
