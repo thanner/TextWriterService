@@ -261,11 +261,6 @@ public class BpmnWrapper {
         return flowNodeWithoutOutgoingList;
     }
 
-    /*
-    private TFLowElement getFlowElementById(String flowElementId) {
-    }
-    */
-
     public TFlowElement getFlowElementById(String flowElementId) {
         for (TProcess tProcess : getProcessList()) {
             for (JAXBElement<? extends TFlowElement> flowElement : tProcess.getFlowElement()) {

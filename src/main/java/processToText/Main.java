@@ -27,8 +27,8 @@ import java.util.HashMap;
 
 public class Main {
 
-    private static EnglishLabelHelper lHelper;
-    private static EnglishLabelDeriver lDeriver;
+    public static EnglishLabelHelper lHelper;
+    public static EnglishLabelDeriver lDeriver;
 
     /**
      * processToText.Main function.

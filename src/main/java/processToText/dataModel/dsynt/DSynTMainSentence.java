@@ -85,8 +85,11 @@ public class DSynTMainSentence extends DSynTSentence {
         Element newRole = IntermediateToDSynTConverter.createRole(dSynTUnique.doc, eFrag);
         dSynTUnique.getVerb().appendChild(newRole);
         originalDSynT = dSynTUnique.doc;
-        ProcessElementDocument currentProcessDocument = this.getProcessElementDocumentList().get(0);
-        currentProcessDocument.setDocument(originalDSynT);
+
+        if (this.getProcessElementDocumentList() != null && !this.getProcessElementDocumentList().isEmpty()) {
+            ProcessElementDocument currentProcessDocument = this.getProcessElementDocumentList().get(0);
+            currentProcessDocument.setDocument(originalDSynT);
+        }
     }
 
     public void addCoordSentences(ArrayList<DSynTMainSentence> sentences) {

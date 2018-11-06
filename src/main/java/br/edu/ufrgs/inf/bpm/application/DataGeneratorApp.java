@@ -54,13 +54,14 @@ public class DataGeneratorApp {
 
         */
 
-        File file = new File("src/main/others/TestData/input/153 - HR Process - HR department - eng - process.bpmn");
-        generateData(file, false);
+        // File file2 = new File("src/main/others/TestData/input/2009-2 Conduct Directions Hearing - process.bpmn");
+
+        // File file2 = new File("src/main/others/TestData/agreg.bpmn");
 
         // File file2 = new File("src/main/others/TestData/input/2009-2 Conduct Directions Hearing - process.bpmn");
 
-        //File file2 = new File("src/main/others/TestData/diagramaVerificar.bpmn");
-        //generateData(file2, false);
+        File file2 = new File("src/main/others/TestData/3.2 - Conduct Directions Hearing - originalProcess.bpmn");
+        generateData(file2, false);
 
         //generateData(file2, false);
 

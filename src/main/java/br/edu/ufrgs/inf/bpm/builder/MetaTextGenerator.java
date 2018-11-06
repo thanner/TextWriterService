@@ -22,6 +22,7 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.dictionary.Dictionary;
 import org.omg.spec.bpmn._20100524.model.TDefinitions;
+import processToText.Main;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelDeriver;
 import processToText.contentDetermination.labelAnalysis.EnglishLabelHelper;
 import processToText.dataModel.dsynt.DSynTSentence;
@@ -35,7 +36,15 @@ import java.util.Map;
 
 public class MetaTextGenerator {
 
+    public static EnglishLabelHelper lHelper;
+    public static EnglishLabelDeriver lDeriver;
+
     public static TMetaText generateMetaText(String bpmnString) throws IOException, JWNLException {
+        Dictionary dictionary = WordNetWrapper.getDictionary();
+        MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
+        lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
+        lDeriver = new EnglishLabelDeriver(lHelper);
+
         TMetaText tMetaText = new TMetaText();
         TText text = new TText();
 
@@ -58,7 +67,7 @@ public class MetaTextGenerator {
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 poolProcessModel = applyNormalization(poolProcessModel);
                 if (!isBlackBox(processModel)) {
-                    String processId = bpmnIdMap.get(poolProcessModel.getId());
+                    // String processId = bpmnIdMap.get(poolProcessModel.getId());
                     poolText = generateMetaText(poolProcessModel, bpmnIdMap, counter, definitions);
                     text.getSentenceList().addAll(poolText.getSentenceList());
                     counter++;
@@ -68,7 +77,7 @@ public class MetaTextGenerator {
             processModel = applyNormalization(processModel);
             for (ProcessModel poolProcessModel : modelsForPools.values()) {
                 if (!isBlackBox(processModel)) {
-                    String processId = bpmnIdMap.get(poolProcessModel.getId());
+                    // String processId = bpmnIdMap.get(poolProcessModel.getId());
                     poolText = generateMetaText(processModel, bpmnIdMap, counter, definitions);
                     text.getSentenceList().addAll(poolText.getSentenceList());
                 }
@@ -77,7 +86,49 @@ public class MetaTextGenerator {
 
         tMetaText.setText(text);
         tMetaText.getProcessList().addAll(MetaTextProcessGenerator.generateMetaTextProcess(definitions));
+
         return tMetaText;
+    }
+
+    public static void generateOriginalText(String bpmnString) throws IOException, JWNLException {
+        Dictionary dictionary = WordNetWrapper.getDictionary();
+        MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
+        Main.lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
+        Main.lDeriver = new EnglishLabelDeriver(lHelper);
+
+        TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
+
+        // Necessary
+        BpmnPreProcessor bpmnPreProcessor = new BpmnPreProcessor(definitions);
+        bpmnPreProcessor.preProcessing();
+        definitions = bpmnPreProcessor.gettDefinitions();
+
+        ProcessModelBuilder processModelBuilder = new ProcessModelBuilder();
+        ProcessModel processModel = processModelBuilder.buildProcess(definitions);
+
+        int counter = 0;
+
+        // Multi Pool Model
+        TText poolText;
+        HashMap<Integer, ProcessModel> modelsForPools = processModel.getModelForEachPool();
+        if (processModel.getPools().size() > 1) {
+            for (ProcessModel poolProcessModel : modelsForPools.values()) {
+                poolProcessModel = applyNormalization(poolProcessModel);
+                if (!isBlackBox(processModel)) {
+                    System.out.println(Main.toText(poolProcessModel, counter));
+                    System.out.println();
+                    counter++;
+                }
+            }
+        } else {
+            processModel = applyNormalization(processModel);
+            for (ProcessModel poolProcessModel : modelsForPools.values()) {
+                if (!isBlackBox(processModel)) {
+                    System.out.println(Main.toText(poolProcessModel, counter));
+                    System.out.println();
+                }
+            }
+        }
     }
 
     private static ProcessModel applyNormalization(ProcessModel processModel) {
@@ -93,11 +144,6 @@ public class MetaTextGenerator {
     }
 
     public static TText generateMetaText(ProcessModel model, Map<Integer, String> bpmnIdMap, int counter, TDefinitions tDefinitions) throws IOException, JWNLException {
-        Dictionary dictionary = WordNetWrapper.getDictionary();
-        MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
-        EnglishLabelHelper lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
-        EnglishLabelDeriver lDeriver = new EnglishLabelDeriver(lHelper);
-
         String imperativeRole = "";
         boolean imperative = false;
 

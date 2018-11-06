@@ -5,7 +5,17 @@ import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;
 
+import java.util.Comparator;
+
 public class ProcessElementDocument {
+
+    public static final Comparator<ProcessElementDocument> PER_LENGTH = (a1, a2) -> {
+        SurfaceRealizer surfaceRealizer = new SurfaceRealizer();
+        Integer sizeA1 = surfaceRealizer.getSentenceForIndex(a1.getSentence()).length();
+        Integer sizeA2 = surfaceRealizer.getSentenceForIndex(a2.getSentence()).length();
+
+        return sizeA2.compareTo(sizeA1);
+    };
 
     private String processElementId;
     private ProcessElementType processElement;

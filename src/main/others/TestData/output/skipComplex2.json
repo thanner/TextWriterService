@@ -1,0 +1,88 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, if required, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 78,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0i7vumt",
+            "processElementType": "ORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 does the activity 5.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1llh6an",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 does the activity 6.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1aywduy",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Afterwards, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0pmrq0m",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 10,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0poc44k",
+            "processElementType": "ORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -482,7 +482,7 @@ public class TextToIntermediateConverter {
 
     }
 
-    public ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
+    public ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node, int amountProcedures, boolean isXorSkip) {
         Map<String, String> modificationMap = new HashMap<>();
         modificationMap.put("@number", Integer.toString(amountProcedures));
 
@@ -497,16 +497,43 @@ public class TextToIntermediateConverter {
 
         pre.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
-        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.XOR, modificationMap);
-        eFrag.bo_isSubject = true;
-        eFrag.bo_hasArticle = false;
-        eFrag.verb_IsPassive = true;
-        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        ExecutableFragment eFrag;
+        eFrag = isXorSkip ? getXorEFrag(node, amountProcedures) : getOrEFrag(node, amountProcedures);
+
         ArrayList<DSynTSentence> preStatements = new ArrayList<DSynTSentence>();
         preStatements.add(new DSynTConditionSentence(eFrag, pre));
 
         return new ConverterRecord(null, null, preStatements, null);
 
+    }
+
+    public ExecutableFragment getXorEFrag(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
+        Map<String, String> modificationMap = new HashMap<>();
+        modificationMap.put("@number", Integer.toString(amountProcedures));
+
+        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.XOR, modificationMap);
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = false;
+        eFrag.verb_IsPassive = true;
+        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        return eFrag;
+    }
+
+    public ExecutableFragment getOrEFrag(RPSTNode<ControlFlow, Node> node, int amountProcedures) {
+        Map<String, String> modificationMap = new HashMap<>();
+        modificationMap.put("@number", Integer.toString(amountProcedures));
+
+        ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
+        modRecord2.addAttribute("adv-type", "sentential");
+
+        ExecutableFragment eFrag = FragmentGenerator.generateExecutableFragment(TemplateLoaderType.OR, modificationMap);
+        eFrag.addMod(templateLoader.getAddition(), modRecord2);
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = false;
+        eFrag.verb_IsPassive = true;
+        eFrag.add_hasArticle = false;
+        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
+        return eFrag;
     }
 
     /**

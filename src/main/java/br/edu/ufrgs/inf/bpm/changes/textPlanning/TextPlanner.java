@@ -219,7 +219,8 @@ public class TextPlanner {
             convRecord = getLoopConverterRecord(node);
             setProcessElementData(convRecord, node, ProcessElementType.XORSPLIT);
         }
-        if (PlanningHelper.isSkip(node, rpst)) {
+
+        if (PlanningHelper.isXORSkip(node, rpst) || PlanningHelper.isORSkip(node, rpst)) {
             convRecord = getSkipConverterRecord(orderedTopNodes, node);
 
             if (convRecord.pre != null) {
@@ -236,7 +237,7 @@ public class TextPlanner {
             }
 
         }
-        if (PlanningHelper.isXORSplit(node, rpst)) {
+        if (PlanningHelper.isXORSplit(node, rpst) && !PlanningHelper.isXORSkip(node, rpst)) {
             convRecord = getXORConverterRecord(node);
             setProcessElementData(convRecord, node, ProcessElementType.XORJOIN);
         }
@@ -244,7 +245,7 @@ public class TextPlanner {
             convRecord = getXORConverterRecord(node);
             setProcessElementData(convRecord, node, ProcessElementType.GATEWAYBASEDEVENTSPLIT);
         }
-        if (PlanningHelper.isORSplit(node, rpst)) {
+        if (PlanningHelper.isORSplit(node, rpst) && !PlanningHelper.isORSkip(node, rpst)) {
             convRecord = getORConverterRecord(node);
             setProcessElementData(convRecord, node, ProcessElementType.ORJOIN);
         }
@@ -277,7 +278,8 @@ public class TextPlanner {
             if (amountPaths == 1) {
                 return textToIntermediateConverter.convertSkipGeneralUnlabeled(node);
             } else {
-                return textToIntermediateConverter.convertSkipGeneralUnlabeled(node, amountPaths);
+                boolean isXorSkip = PlanningHelper.isXORSkip(node, rpst);
+                return textToIntermediateConverter.convertSkipGeneralUnlabeled(node, amountPaths, isXorSkip);
             }
         }
     }
@@ -316,7 +318,7 @@ public class TextPlanner {
             */
         }
         // General case
-        return textToIntermediateConverter.convertXORGeneral(node, PlanningHelper.getOutputCount(node, rpst));
+        return textToIntermediateConverter.convertXORGeneral(node, PlanningHelper.getOutputWithoutSkipCount(node, rpst));
     }
 
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
@@ -326,12 +328,12 @@ public class TextPlanner {
             return null;
             // Unlabeled case
         } else {
-            return textToIntermediateConverter.convertORSimple(node, null, false, PlanningHelper.getOutputCount(node, rpst));
+            return textToIntermediateConverter.convertORSimple(node, null, false, PlanningHelper.getOutputWithoutSkipCount(node, rpst));
         }
     }
 
     private ConverterRecord getANDConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        return textToIntermediateConverter.convertANDGeneral(node, PlanningHelper.getOutputCount(node, rpst));
+        return textToIntermediateConverter.convertANDGeneral(node, PlanningHelper.getOutputWithoutSkipCount(node, rpst));
     }
 
     public boolean isSameRole(RPSTNode<ControlFlow, Node> node) {
@@ -387,13 +389,9 @@ public class TextPlanner {
                 changeFragmentByLoop(preStatement.getExecutableFragment());
                 if (isStart) {
                     isStart = false;
-
-                    //DSynTMainSentence dSynTSentence = new DSynTMainSentence(preStatement.getExecutableFragment());
-                    DSynTSentence dSynTSentence = preStatement;
-                    dSynTSentence.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
-                    addStartEventFragment(dSynTSentence, Lexemes.START_EVENT_WHEN_CONNECTIVE);
-
-                    sentencePlan.add(dSynTSentence);
+                    preStatement.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
+                    addStartEventFragment(preStatement, Lexemes.START_EVENT_WHEN_CONNECTIVE);
+                    sentencePlan.add(preStatement);
                 } else {
                     if (passedFragments.size() > 0) {
                         if (isTagWithBullet) {
@@ -420,10 +418,10 @@ public class TextPlanner {
                             passedMods.clear();
                         }
 
-                        DSynTSentence dSynTSentence2 = new DSynTMainSentence(preStatement.getExecutableFragment());
+                        //DSynTSentence dSynTSentence2 = new DSynTMainSentence(preStatement.getExecutableFragment());
 
-                        dSynTSentence2.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
-                        sentencePlan.add(dSynTSentence2);
+                        preStatement.addProcessElementDocument(getProcessElementId(node.getEntry().getId()), getProcessElementType(node));
+                        sentencePlan.add(preStatement);
                     }
                 }
             }
@@ -438,12 +436,12 @@ public class TextPlanner {
     }
 
     private void convertBondToText(RPSTNode<ControlFlow, Node> node, int level) throws FileNotFoundException, JWNLException {
-        if (PlanningHelper.isSkip(node, rpst)) {
+        if (PlanningHelper.isXORSkip(node, rpst) || PlanningHelper.isORSkip(node, rpst)) {
             if (isStart) {
                 createSentenceStartDecision();
             }
 
-            if (PlanningHelper.getOutputCount(node, rpst) == 2) {
+            if (PlanningHelper.getOutputWithoutSkipCount(node, rpst) == 1) {
                 convertToText(node, level);
             } else {
                 ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
@@ -459,7 +457,7 @@ public class TextPlanner {
             convertToText(node, level, true);
         }
 
-        if (isSplit(node)) {
+        if (isSimpleSplit(node)) {
             ArrayList<RPSTNode<ControlFlow, Node>> paths = PlanningHelper.sortTreeLevel(node, node.getEntry(), rpst);
             for (RPSTNode<ControlFlow, Node> path : paths) {
                 isTagWithBullet = true;
@@ -468,8 +466,11 @@ public class TextPlanner {
         }
     }
 
-    private boolean isSplit(RPSTNode<ControlFlow, Node> node) {
-        return PlanningHelper.isXORSplit(node, rpst) || PlanningHelper.isORSplit(node, rpst) || PlanningHelper.isANDSplit(node, rpst) || PlanningHelper.isEventSplit(node, rpst);
+    private boolean isSimpleSplit(RPSTNode<ControlFlow, Node> node) {
+        if (PlanningHelper.isXORSplit(node, rpst) || PlanningHelper.isORSplit(node, rpst) || PlanningHelper.isANDSplit(node, rpst) || PlanningHelper.isEventSplit(node, rpst)) {
+            return !PlanningHelper.isXORSkip(node, rpst) && !PlanningHelper.isORSkip(node, rpst);
+        }
+        return false;
     }
 
     private void addBondPostStatement(ConverterRecord convRecord, int level, RPSTNode<ControlFlow, Node> node) {
@@ -487,8 +488,10 @@ public class TextPlanner {
 
         if (PlanningHelper.isLoop(node, rpst)) {
             processElementType = ProcessElementType.XORSPLIT;
-        } else if (PlanningHelper.isSkip(node, rpst)) {
+        } else if (PlanningHelper.isXORSkip(node, rpst)) {
             processElementType = ProcessElementType.XORSPLIT;
+        } else if (PlanningHelper.isORSkip(node, rpst)) {
+            processElementType = ProcessElementType.ORSPLIT;
         } else if (PlanningHelper.isXORSplit(node, rpst)) {
             processElementType = ProcessElementType.XORSPLIT;
         } else if (PlanningHelper.isEventSplit(node, rpst)) {

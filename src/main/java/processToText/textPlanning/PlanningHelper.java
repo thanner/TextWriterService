@@ -735,4 +735,38 @@ public class PlanningHelper {
         return isTrivial(node);
     }
 
+
+    /**
+     * Decides whether a given bond is an XOR skip.
+     */
+    public static boolean isXORSkip(RPSTNode<ControlFlow, Node> bond, RPST<ControlFlow, Node> rpst) {
+        if (isBond(bond) && isGateway(bond.getEntry())) {
+            return (((Gateway) bond.getEntry()).isXOR()) && isSplit(bond, rpst) && isNewSkip(bond, rpst);
+        }
+        return false;
+    }
+
+    /**
+     * Decides whether a given bond is an OR skip.
+     */
+    public static boolean isORSkip(RPSTNode<ControlFlow, Node> bond, RPST<ControlFlow, Node> rpst) {
+        if (isBond(bond) && isGateway(bond.getEntry())) {
+            return (((Gateway) bond.getEntry()).isOR()) && isSplit(bond, rpst) && isNewSkip(bond, rpst);
+        }
+        return false;
+    }
+
+    public static boolean isNewSkip(RPSTNode<ControlFlow, Node> bond, RPST<ControlFlow, Node> rpst) {
+        if (isBond(bond) && isGateway(bond.getEntry()) && isSplit(bond, rpst)) {
+            for (RPSTNode<ControlFlow, Node> node : rpst.getChildren((bond))) {
+                if (isTrivial(node) && node.getEntry().equals(bond.getEntry())
+                        && node.getExit().equals(bond.getExit())
+                        && isGateway(node.getExit())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

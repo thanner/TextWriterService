@@ -44,17 +44,30 @@ public class SurfaceRealizer {
 
     private List<TSnippet> getSnippetList(DSynTSentence s, String sentence) {
         List<TSnippet> snippetList = new ArrayList<>();
-        for (ProcessElementDocument processElementDocument : s.getProcessElementDocumentList()) {
+        sentence = getSentenceForIndex(sentence).toLowerCase();
+
+        List<ProcessElementDocument> documentList = s.getProcessElementDocumentList();
+        documentList.sort(ProcessElementDocument.PER_LENGTH);
+
+        List<CollisionPoints> collisionPointsList = new ArrayList<>();
+        for (ProcessElementDocument processElementDocument : documentList) {
             TSnippet snippet = new TSnippet();
             snippet.setProcessElementId(processElementDocument.getProcessElementId());
             snippet.setProcessElementType(processElementDocument.getProcessElementType());
 
-            snippet.setStartIndex(getIndexStart(sentence, processElementDocument));
-            snippet.setEndIndex(getIndexEnd(snippet.getStartIndex(), processElementDocument));
+            String sentenceSnippet = getSentenceForIndex(processElementDocument.getSentence()).toLowerCase();
 
-            if (snippet.getStartIndex() == null && snippet.getEndIndex() == null) {
+            Integer startIndex = getIndexStart(sentence, sentenceSnippet, collisionPointsList, 0);
+            Integer endIndex = getIndexEnd(startIndex, sentenceSnippet);
+
+            if (startIndex == null && endIndex == null) {
                 snippet.setStartIndex(0);
                 snippet.setEndIndex(0);
+            } else {
+                snippet.setStartIndex(startIndex);
+                snippet.setEndIndex(endIndex);
+
+                collisionPointsList.add(new CollisionPoints(startIndex, endIndex));
             }
 
             snippetList.add(snippet);
@@ -70,10 +83,21 @@ public class SurfaceRealizer {
         return realized != null ? realized : "";
     }
 
-    private Integer getIndexStart(String sentence, ProcessElementDocument processElementDocument) {
-        String originalSentence = getSentenceForIndex(sentence).toLowerCase();
-        String sentenceSnippet = getSentenceForIndex(processElementDocument.getSentence()).toLowerCase();
-        Integer integer = originalSentence.indexOf(sentenceSnippet);
+    private Integer getIndexStart(String sentence, String sentenceSnippet, List<CollisionPoints> collisionPointsList, int fromIndex) {
+        Integer integer = sentence.indexOf(sentenceSnippet, fromIndex);
+
+        boolean collide = false;
+        for (CollisionPoints collisionPoints : collisionPointsList) {
+            if (integer == collisionPoints.getStartCollisionPoint()) {
+                collide = true;
+                fromIndex = collisionPoints.getStartCollisionPoint() + 1;
+            }
+        }
+
+        if (collide && fromIndex < sentence.length()) {
+            integer = getIndexStart(sentence, sentenceSnippet, collisionPointsList, fromIndex);
+        }
+
         if (integer == -1) {
             integer = null;
         }
@@ -81,8 +105,7 @@ public class SurfaceRealizer {
         return integer;
     }
 
-    private Integer getIndexEnd(Integer indexStart, ProcessElementDocument processElementDocument) {
-        String sentenceSnippet = getSentenceForIndex(processElementDocument.getSentence());
+    private Integer getIndexEnd(Integer indexStart, String sentenceSnippet) {
         if (indexStart == null) {
             return null;
         } else {
@@ -90,7 +113,7 @@ public class SurfaceRealizer {
         }
     }
 
-    private String getSentenceForIndex(String sentence) {
+    public String getSentenceForIndex(String sentence) {
         return postProcessText(sentence).trim();
     }
 
