@@ -27,7 +27,7 @@ public class DataGeneratorApp {
 
     public static void main(String[] args) {
         prepareLogger();
-        //getInputFiles();
+        getInputFiles();
         ApplicationStarter.startApplication();
 
         File folder = new File(Paths.LocalOthersPath + Paths.dataInputPath);
