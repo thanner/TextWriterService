@@ -1,0 +1,1005 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "customer"
+        },
+        {
+          "id": "id-3",
+          "name": "employee"
+        },
+        {
+          "id": "id-4",
+          "name": "service management"
+        },
+        {
+          "id": "id-5",
+          "name": "resource provisioning"
+        },
+        {
+          "id": "id-6",
+          "name": "customer service"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-7",
+      "name": "customer service department of teleco"
+    },
+    {
+      "id": "id-9",
+      "name": "that"
+    },
+    {
+      "id": "id-11",
+      "name": "billing"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the customer perceives that the her subscribed service has degraded.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 91,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-96",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he sends the list to the customer service department of teleco and then the employee enters a problem.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 68,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 107,
+            "resourceId": "id-3",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the employee compares the problem report to the customer sla to identify and then determines the necessary counter measures to include respective priorities.",
+        "snippetList": [
+          {
+            "startIndex": 94,
+            "endIndex": 168,
+            "resourceId": "id-3",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 84,
+            "resourceId": "id-3",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, he determines the significance of the customer based on information that has been collected during history of contractual relationship and then collects that the .",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 148,
+            "resourceId": "id-3",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 158,
+            "endIndex": 175,
+            "resourceId": "id-3",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the employee links to the an extra problem.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 61,
+            "resourceId": "id-3",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "id-3",
+            "processElementId": "id-76",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the employee fixes the process.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 42,
+            "resourceId": "id-3",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the employee continues.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 49,
+            "resourceId": "id-3",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-3",
+            "processElementId": "id-77",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the employee takes the together the information and then creates a detailed problem report.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 60,
+            "resourceId": "id-3",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 70,
+            "endIndex": 103,
+            "resourceId": "id-3",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-3",
+            "processElementId": "id-78",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he sends the detailed problem report to the service management and then the service management deals on a first level with violations of quality.",
+        "snippetList": [
+          {
+            "startIndex": 78,
+            "endIndex": 150,
+            "resourceId": "id-4",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 68,
+            "resourceId": "id-3",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the service management receives the detailed problem report and then investigates.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 71,
+            "resourceId": "id-4",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 81,
+            "endIndex": 93,
+            "resourceId": "id-4",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the service management sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 65,
+            "resourceId": "id-4",
+            "processElementId": "id-29",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 0,
+            "resourceId": "id-4",
+            "processElementId": "id-79",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, if required, the service management conducts the to be .",
+        "snippetList": [
+          {
+            "startIndex": 26,
+            "endIndex": 67,
+            "resourceId": "id-4",
+            "processElementId": "id-30",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 25,
+            "resourceId": "id-4",
+            "processElementId": "id-81",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-4",
+            "processElementId": "id-80",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the service management sends out the detailed problem report to resource provisioning.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 91,
+            "resourceId": "id-4",
+            "processElementId": "id-31",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the service management performs the analysis.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 69,
+            "resourceId": "id-4",
+            "processElementId": "id-32",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "id-4",
+            "processElementId": "id-82",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the service management performs the based and then creates a trouble report.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 55,
+            "resourceId": "id-4",
+            "processElementId": "id-33",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 65,
+            "endIndex": 89,
+            "resourceId": "id-4",
+            "processElementId": "id-34",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it creates a trouble report and then indicates the type of the problem.",
+        "snippetList": [
+          {
+            "startIndex": 43,
+            "endIndex": 76,
+            "resourceId": "id-4",
+            "processElementId": "id-36",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 33,
+            "resourceId": "id-4",
+            "processElementId": "id-35",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it indicates the type of the problem and then the resource provisioning receives the detailed problem report.",
+        "snippetList": [
+          {
+            "startIndex": 58,
+            "endIndex": 120,
+            "resourceId": "id-5",
+            "processElementId": "id-38",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 48,
+            "resourceId": "id-4",
+            "processElementId": "id-37",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the resource provisioning checks that the .",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 55,
+            "resourceId": "id-5",
+            "processElementId": "id-39",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 66,
+            "resourceId": "id-5",
+            "processElementId": "id-83",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"detects no problems\", the resource provisioning creates a notification about the normal service execution.",
+        "snippetList": [
+          {
+            "startIndex": 26,
+            "endIndex": 109,
+            "resourceId": "id-5",
+            "processElementId": "id-40",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"detects a problem\", the resource provisioning analyzes the this and then creates a trouble report.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 67,
+            "resourceId": "id-5",
+            "processElementId": "id-41",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 77,
+            "endIndex": 101,
+            "resourceId": "id-5",
+            "processElementId": "id-42",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 60,
+            "resourceId": "id-5",
+            "processElementId": "id-85",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-84",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": true
+      },
+      {
+        "value": "In the first procedure, the resource provisioning includes the normal execution in a status report.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 98,
+            "resourceId": "id-5",
+            "processElementId": "id-44",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the resource provisioning includes the trouble report in a status report.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 97,
+            "resourceId": "id-5",
+            "processElementId": "id-43",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 60,
+            "resourceId": "id-5",
+            "processElementId": "id-87",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-86",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the resource provisioning sends the trouble report back to the service management.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 105,
+            "resourceId": "id-5",
+            "processElementId": "id-45",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the resource provisioning sends the normal execution back to the service management.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 108,
+            "resourceId": "id-5",
+            "processElementId": "id-46",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the service management prepares the final status report based on the received information and then determines the what counter measures should be taken depending on the information in final status report.",
+        "snippetList": [
+          {
+            "startIndex": 112,
+            "endIndex": 216,
+            "resourceId": "id-4",
+            "processElementId": "id-48",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 102,
+            "resourceId": "id-4",
+            "processElementId": "id-47",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-88",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it takes the alternative three process paths.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 56,
+            "resourceId": "id-4",
+            "processElementId": "id-49",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the service management sends the actual service performance back to the customer service.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 115,
+            "resourceId": "id-4",
+            "processElementId": "id-50",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-4",
+            "processElementId": "id-89",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the service management detects the no problem.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 51,
+            "resourceId": "id-4",
+            "processElementId": "id-51",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-4",
+            "processElementId": "id-90",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the service management creates a request.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 64,
+            "resourceId": "id-4",
+            "processElementId": "id-57",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the service management undertakes the corrective actions and then creates the problem resolution report.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 81,
+            "resourceId": "id-4",
+            "processElementId": "id-53",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 91,
+            "endIndex": 128,
+            "resourceId": "id-4",
+            "processElementId": "id-54",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, it sends out the problem resolution report to the customer service and then ends.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 80,
+            "resourceId": "id-4",
+            "processElementId": "id-55",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 18,
+            "endIndex": 22,
+            "resourceId": "id-4",
+            "processElementId": "id-56",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the third procedure, the service management requires that the .",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 64,
+            "resourceId": "id-4",
+            "processElementId": "id-52",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the service management requires the automatic resource restoration and then sends the message to resource provisioning.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 79,
+            "resourceId": "id-4",
+            "processElementId": "id-58",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 89,
+            "endIndex": 131,
+            "resourceId": "id-4",
+            "processElementId": "id-59",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-4",
+            "processElementId": "id-91",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the resource provisioning happens within the 2 days.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "id-5",
+            "processElementId": "id-60",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-5",
+            "processElementId": "id-92",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the resource provisioning terminates the process.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 72,
+            "resourceId": "id-5",
+            "processElementId": "id-62",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the resource provisioning sends out the status report.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 78,
+            "resourceId": "id-5",
+            "processElementId": "id-61",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the resource provisioning receives the restoration request and then tracks the possible errors.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 71,
+            "resourceId": "id-5",
+            "processElementId": "id-63",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 81,
+            "endIndex": 107,
+            "resourceId": "id-5",
+            "processElementId": "id-64",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-93",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it undertakes the necessary corrective actions and then creates a trouble-shooting report.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 60,
+            "resourceId": "id-5",
+            "processElementId": "id-65",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 70,
+            "endIndex": 103,
+            "resourceId": "id-5",
+            "processElementId": "id-66",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends out the report to the service management.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 55,
+            "resourceId": "id-5",
+            "processElementId": "id-67",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-6",
+            "processElementId": "id-94",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the customer service receives the problem resolution report.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 83,
+            "resourceId": "id-6",
+            "processElementId": "id-69",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the customer service receives the actual service performance.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 85,
+            "resourceId": "id-6",
+            "processElementId": "id-68",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the customer service triggers the i.e. and then triggers the i.e..",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 51,
+            "resourceId": "id-6",
+            "processElementId": "id-70",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 34,
+            "endIndex": 51,
+            "resourceId": "id-6",
+            "processElementId": "id-71",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-6",
+            "processElementId": "id-95",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it reports the sla violation rebate to billing and then sends out the report to the customer.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 60,
+            "resourceId": "id-6",
+            "processElementId": "id-72",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 70,
+            "endIndex": 106,
+            "resourceId": "id-6",
+            "processElementId": "id-73",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it completes three activities and then the customer receives the report about service performance.",
+        "snippetList": [
+          {
+            "startIndex": 45,
+            "endIndex": 103,
+            "resourceId": "id-2",
+            "processElementId": "id-75",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 35,
+            "resourceId": "id-6",
+            "processElementId": "id-74",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

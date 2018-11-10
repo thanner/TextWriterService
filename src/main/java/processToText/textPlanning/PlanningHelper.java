@@ -11,6 +11,7 @@ import org.jbpt.bp.BehaviouralProfile;
 import org.jbpt.bp.construct.BPCreatorNet;
 import org.jbpt.petri.Flow;
 import org.jbpt.petri.NetSystem;
+import org.jbpt.petri.PetriNet;
 import org.jbpt.petri.Place;
 import org.jbpt.pm.FlowNode;
 import org.jbpt.pm.structure.ProcessModel2NetSystem;
@@ -441,67 +442,67 @@ public class PlanningHelper {
                 }
             }
 
-            // Compute behavioural profile
-            BehaviouralProfile<NetSystem, org.jbpt.petri.Node> bp = BPCreatorNet
-                    .getInstance().deriveRelationSet(ns);
+            if (PetriNet.STRUCTURAL_CHECKS.isWorkflowNet(ns)) {
+                // Compute behavioural profile
+                BehaviouralProfile<NetSystem, org.jbpt.petri.Node> bp = BPCreatorNet.getInstance().deriveRelationSet(ns);
+                // Go through all nodes and add relevant elems
+                ArrayList<org.jbpt.petri.Node> relevantNodes = new ArrayList<org.jbpt.petri.Node>();
+                for (org.jbpt.petri.Node n : ns.getNodes()) {
+                    if (orignalMapping.containsKey(n.getName())) {
+                        String oldProcessID = n.getName();
 
-            // Go through all nodes and add relevant elems
-            ArrayList<org.jbpt.petri.Node> relevantNodes = new ArrayList<org.jbpt.petri.Node>();
-            for (org.jbpt.petri.Node n : ns.getNodes()) {
-                if (orignalMapping.containsKey(n.getName())) {
-                    String oldProcessID = n.getName();
-
-                    // Add relevant activities
-                    for (org.jbpt.pm.Activity a : pm.getActivities()) {
-                        if (a.getId().equals(oldProcessID)) {
-                            relevantNodes.add(n);
-                        }
-                    }
-                    // Add relevant gateways
-                    for (org.jbpt.pm.Gateway g : pm.getGateways()) {
-                        if (g.getId().equals(oldProcessID)) {
-                            relevantNodes.add(n);
-                        }
-                    }
-                }
-            }
-
-            // Go through relevant nodes and build up run sequence (assumption:
-            // only sequence, no concurrent branches)
-            ArrayList<org.jbpt.petri.Node> runSequence = new ArrayList<org.jbpt.petri.Node>();
-            for (org.jbpt.petri.Node relNode : relevantNodes) {
-
-                // If list is empty
-                if (runSequence.size() == 0) {
-                    runSequence.add(relNode);
-                } else {
-
-                    // If element is not already part of the list
-                    if (!runSequence.contains(relNode)) {
-
-                        // Determine correct position of elem
-                        for (int i = 0; i < runSequence.size(); i++) {
-                            String rel = bp.getRelationForEntities(
-                                    runSequence.get(i), relNode).toString();
-                            if (rel.equals("<-")) {
-                                runSequence.add(i, relNode);
-                                break;
+                        // Add relevant activities
+                        for (org.jbpt.pm.Activity a : pm.getActivities()) {
+                            if (a.getId().equals(oldProcessID)) {
+                                relevantNodes.add(n);
                             }
-                            if (i == (runSequence.size() - 1)) {
-                                runSequence.add(relNode);
-                                break;
+                        }
+                        // Add relevant gateways
+                        for (org.jbpt.pm.Gateway g : pm.getGateways()) {
+                            if (g.getId().equals(oldProcessID)) {
+                                relevantNodes.add(n);
                             }
                         }
                     }
                 }
-            }
 
-            // Convert to a list of IDs
-            ArrayList<String> runSequenceIDs = new ArrayList<String>();
-            for (int i = 0; i < runSequence.size(); i++) {
-                runSequenceIDs.add(runSequence.get(i).getName());
+                // Go through relevant nodes and build up run sequence (assumption:
+                // only sequence, no concurrent branches)
+                ArrayList<org.jbpt.petri.Node> runSequence = new ArrayList<org.jbpt.petri.Node>();
+                for (org.jbpt.petri.Node relNode : relevantNodes) {
+
+                    // If list is empty
+                    if (runSequence.size() == 0) {
+                        runSequence.add(relNode);
+                    } else {
+
+                        // If element is not already part of the list
+                        if (!runSequence.contains(relNode)) {
+
+                            // Determine correct position of elem
+                            for (int i = 0; i < runSequence.size(); i++) {
+                                String rel = bp.getRelationForEntities(
+                                        runSequence.get(i), relNode).toString();
+                                if (rel.equals("<-")) {
+                                    runSequence.add(i, relNode);
+                                    break;
+                                }
+                                if (i == (runSequence.size() - 1)) {
+                                    runSequence.add(relNode);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Convert to a list of IDs
+                ArrayList<String> runSequenceIDs = new ArrayList<String>();
+                for (int i = 0; i < runSequence.size(); i++) {
+                    runSequenceIDs.add(runSequence.get(i).getName());
+                }
+                runSequences.add(runSequenceIDs);
             }
-            runSequences.add(runSequenceIDs);
         }
 
         WFnet2Processes wf2pi = null;
@@ -510,24 +511,26 @@ public class PlanningHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (List<org.jbpt.petri.Node> l : wf2pi.getPetriNetPaths()) {
+        if (wf2pi.getPetriNetPaths() != null) {
+            for (List<org.jbpt.petri.Node> l : wf2pi.getPetriNetPaths()) {
 
-            // Go through all nodes and add relevant elems
-            ArrayList<org.jbpt.petri.Node> relevantNodes = new ArrayList<org.jbpt.petri.Node>();
-            for (org.jbpt.petri.Node n : l) {
-                if (orignalMapping.containsKey(n.getName())) {
-                    String oldProcessID = n.getName();
+                // Go through all nodes and add relevant elems
+                ArrayList<org.jbpt.petri.Node> relevantNodes = new ArrayList<org.jbpt.petri.Node>();
+                for (org.jbpt.petri.Node n : l) {
+                    if (orignalMapping.containsKey(n.getName())) {
+                        String oldProcessID = n.getName();
 
-                    // Add relevant activities
-                    for (org.jbpt.pm.Activity a : pm.getActivities()) {
-                        if (a.getId().equals(oldProcessID)) {
-                            relevantNodes.add(n);
+                        // Add relevant activities
+                        for (org.jbpt.pm.Activity a : pm.getActivities()) {
+                            if (a.getId().equals(oldProcessID)) {
+                                relevantNodes.add(n);
+                            }
                         }
-                    }
-                    // Add relevant gateways
-                    for (org.jbpt.pm.Gateway g : pm.getGateways()) {
-                        if (g.getId().equals(oldProcessID)) {
-                            relevantNodes.add(n);
+                        // Add relevant gateways
+                        for (org.jbpt.pm.Gateway g : pm.getGateways()) {
+                            if (g.getId().equals(oldProcessID)) {
+                                relevantNodes.add(n);
+                            }
                         }
                     }
                 }

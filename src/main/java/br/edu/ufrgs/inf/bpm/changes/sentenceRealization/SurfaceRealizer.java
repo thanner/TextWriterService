@@ -98,7 +98,7 @@ public class SurfaceRealizer {
             integer = getIndexStart(sentence, sentenceSnippet, collisionPointsList, fromIndex);
         }
 
-        if (integer == -1) {
+        if (integer == null || integer == -1) {
             integer = null;
         }
 

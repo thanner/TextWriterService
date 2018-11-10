@@ -1,0 +1,412 @@
+{
+  "processList": [
+    {
+      "id": "id-0",
+      "name": "design"
+    },
+    {
+      "id": "id-2",
+      "name": "other department"
+    },
+    {
+      "id": "id-4",
+      "name": "combined design"
+    },
+    {
+      "id": "id-6",
+      "name": "designs"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-8",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 performs a task to the locate.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 68,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-39",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "id-31",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 performs a task to distribute relevant existing designs.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the Resource 1 designs the electrical and physicals the systems.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 80,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-33",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "id-32",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 previouses the electrical and physicals the designs be inputs.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 100,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 existings any is inputs.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 63,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 1 interrupts the development of the design.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 68,
+            "resourceId": "Lane 1",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "id-34",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the Resource 1 stops.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "id-35",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Resource 1 reviews the existing designs in the department and then uses the update plan.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 75,
+            "resourceId": "Lane 1",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 85,
+            "endIndex": 105,
+            "resourceId": "Lane 1",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it uses the existing draft of the electrical\\/physical design and then creates a revised design.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 67,
+            "resourceId": "Lane 1",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 77,
+            "endIndex": 101,
+            "resourceId": "Lane 1",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it completes and then tests the revised design.",
+        "snippetList": [
+          {
+            "startIndex": 34,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "id-36",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"the design passes the test\", the Resource 1 tells the other department.",
+        "snippetList": [
+          {
+            "startIndex": 33,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"the design fails the test\", the Resource 1 sends the design back to the review and then sends the design back to create a new update plan.",
+        "snippetList": [
+          {
+            "startIndex": 32,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 92,
+            "endIndex": 141,
+            "resourceId": "Lane 1",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 1 revises the both of the designs and then combines the both of the designs.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 69,
+            "endIndex": 101,
+            "resourceId": "Lane 1",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "id-37",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it tests the both of the designs.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 38,
+            "resourceId": "Lane 1",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "id-38",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"the designs pass the test\", the Resource 1 deems the designs complete and then sends the designs to the manufacturing process.",
+        "snippetList": [
+          {
+            "startIndex": 83,
+            "endIndex": 129,
+            "resourceId": "Lane 1",
+            "processElementId": "id-30",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 32,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "id-29",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"the combined design fails the test\", the Resource 1 sends the combined design back to initiate design cycle to the beginning.",
+        "snippetList": [
+          {
+            "startIndex": 41,
+            "endIndex": 128,
+            "resourceId": "Lane 1",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="employee" id="id-2">
+                <flowNodeRef>id-7</flowNodeRef>
+                <flowNodeRef>id-8</flowNodeRef>
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-11</flowNodeRef>
+                <flowNodeRef>id-12</flowNodeRef>
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+                <flowNodeRef>id-18</flowNodeRef>
+                <flowNodeRef>id-19</flowNodeRef>
+                <flowNodeRef>id-20</flowNodeRef>
+                <flowNodeRef>id-21</flowNodeRef>
+                <flowNodeRef>id-22</flowNodeRef>
+                <flowNodeRef>id-23</flowNodeRef>
+                <flowNodeRef>id-24</flowNodeRef>
+                <flowNodeRef>id-25</flowNodeRef>
+                <flowNodeRef>id-26</flowNodeRef>
+                <flowNodeRef>id-27</flowNodeRef>
+                <flowNodeRef>id-28</flowNodeRef>
+                <flowNodeRef>id-29</flowNodeRef>
+                <flowNodeRef>id-30</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="receive the expense report" id="id-7">
+            <incoming>id-49</incoming>
+            <outgoing>id-32</outgoing>
+        </task>
+        <intermediateCatchEvent name="the employee does not have  one " id="id-8">
+            <incoming>id-31</incoming>
+            <outgoing>id-33</outgoing>
+            <messageEventDefinition/>
+        </intermediateCatchEvent>
+        <task name="create a new account" id="id-9">
+            <incoming>id-33</incoming>
+            <outgoing>id-34</outgoing>
+        </task>
+        <task name="review report" id="id-10">
+            <incoming>id-34</incoming>
+            <outgoing>id-37</outgoing>
+        </task>
+        <task name="approve amounts under 200 $" id="id-11">
+            <incoming>id-35</incoming>
+            <outgoing>id-39</outgoing>
+        </task>
+        <task name="require approval of the supervisor" id="id-12">
+            <incoming>id-36</incoming>
+            <outgoing>id-38</outgoing>
+        </task>
+        <task name="receive a rejection notice" id="id-13">
+            <incoming>id-40</incoming>
+            <outgoing>id-50</outgoing>
+        </task>
+        <task name="go to the employees" id="id-14">
+            <incoming>id-41</incoming>
+            <outgoing>id-51</outgoing>
+        </task>
+        <intermediateCatchEvent name="does not complete  the request in 7 days" id="id-15">
+            <incoming>id-42</incoming>
+            <outgoing>id-44</outgoing>
+            <timerEventDefinition/>
+        </intermediateCatchEvent>
+        <task name="receive an email approval" id="id-16">
+            <incoming>id-44</incoming>
+            <outgoing>id-52</outgoing>
+        </task>
+        <intermediateCatchEvent name="does not finish  the request within 30 days" id="id-17">
+            <incoming>id-43</incoming>
+            <outgoing>id-45</outgoing>
+            <timerEventDefinition/>
+        </intermediateCatchEvent>
+        <task name="stop the process" id="id-18">
+            <incoming>id-45</incoming>
+            <outgoing>id-46</outgoing>
+        </task>
+        <task name="receive an email cancellation notice" id="id-19">
+            <incoming>id-46</incoming>
+            <outgoing>id-47</outgoing>
+        </task>
+        <task name="resubmit the expense report" id="id-20">
+            <incoming>id-47</incoming>
+            <outgoing>id-53</outgoing>
+        </task>
+        <eventBasedGateway id="id-21">
+            <incoming>id-32</incoming>
+            <outgoing>id-31</outgoing>
+            <outgoing>id-54</outgoing>
+        </eventBasedGateway>
+        <exclusiveGateway id="id-22">
+            <incoming>id-37</incoming>
+            <outgoing>id-35</outgoing>
+            <outgoing>id-36</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-23">
+            <incoming>id-38</incoming>
+            <incoming>id-39</incoming>
+            <outgoing>id-48</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-24">
+            <incoming>id-48</incoming>
+            <outgoing>id-40</outgoing>
+            <outgoing>id-41</outgoing>
+            <outgoing>id-42</outgoing>
+            <outgoing>id-43</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-25">
+            <outgoing>id-49</outgoing>
+        </startEvent>
+        <endEvent id="id-26">
+            <incoming>id-50</incoming>
+        </endEvent>
+        <endEvent id="id-27">
+            <incoming>id-51</incoming>
+        </endEvent>
+        <endEvent id="id-28">
+            <incoming>id-52</incoming>
+        </endEvent>
+        <endEvent id="id-29">
+            <incoming>id-53</incoming>
+        </endEvent>
+        <endEvent id="id-30">
+            <incoming>id-54</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-21" targetRef="id-8" name="" id="id-31"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-21" name="" id="id-32"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-33"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-34"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-11" name="" id="id-35"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-12" name="" id="id-36"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-22" name="" id="id-37"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-23" name="" id="id-38"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-23" name="" id="id-39"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-13" name="in case of rejection" id="id-40"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-14" name="" id="id-41"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-15" name="" id="id-42"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-17" name="" id="id-43"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-20" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-7" name="" id="id-49"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-26" name="" id="id-50"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-27" name="" id="id-51"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-28" name="" id="id-52"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-29" name="" id="id-53"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-30" name="" id="id-54"/>
+    </process>
+    <process name="supervisor" id="id-3">
+        <laneSet name="supervisor" id="id-4"/>
+    </process>
+    <process name="email" id="id-5">
+        <laneSet name="email" id="id-6"/>
+    </process>
+</definitions>

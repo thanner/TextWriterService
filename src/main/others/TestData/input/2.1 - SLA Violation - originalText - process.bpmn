@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="customer" id="id-2">
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+                <flowNodeRef>id-75</flowNodeRef>
+                <flowNodeRef>id-96</flowNodeRef>
+                <flowNodeRef>id-97</flowNodeRef>
+            </lane>
+            <lane name="employee" id="id-3">
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+                <flowNodeRef>id-18</flowNodeRef>
+                <flowNodeRef>id-19</flowNodeRef>
+                <flowNodeRef>id-20</flowNodeRef>
+                <flowNodeRef>id-21</flowNodeRef>
+                <flowNodeRef>id-22</flowNodeRef>
+                <flowNodeRef>id-23</flowNodeRef>
+                <flowNodeRef>id-24</flowNodeRef>
+                <flowNodeRef>id-25</flowNodeRef>
+                <flowNodeRef>id-76</flowNodeRef>
+                <flowNodeRef>id-77</flowNodeRef>
+                <flowNodeRef>id-78</flowNodeRef>
+                <flowNodeRef>id-98</flowNodeRef>
+            </lane>
+            <lane name="service management" id="id-4">
+                <flowNodeRef>id-26</flowNodeRef>
+                <flowNodeRef>id-27</flowNodeRef>
+                <flowNodeRef>id-28</flowNodeRef>
+                <flowNodeRef>id-29</flowNodeRef>
+                <flowNodeRef>id-30</flowNodeRef>
+                <flowNodeRef>id-31</flowNodeRef>
+                <flowNodeRef>id-32</flowNodeRef>
+                <flowNodeRef>id-33</flowNodeRef>
+                <flowNodeRef>id-34</flowNodeRef>
+                <flowNodeRef>id-35</flowNodeRef>
+                <flowNodeRef>id-36</flowNodeRef>
+                <flowNodeRef>id-37</flowNodeRef>
+                <flowNodeRef>id-47</flowNodeRef>
+                <flowNodeRef>id-48</flowNodeRef>
+                <flowNodeRef>id-49</flowNodeRef>
+                <flowNodeRef>id-50</flowNodeRef>
+                <flowNodeRef>id-51</flowNodeRef>
+                <flowNodeRef>id-52</flowNodeRef>
+                <flowNodeRef>id-53</flowNodeRef>
+                <flowNodeRef>id-54</flowNodeRef>
+                <flowNodeRef>id-55</flowNodeRef>
+                <flowNodeRef>id-56</flowNodeRef>
+                <flowNodeRef>id-57</flowNodeRef>
+                <flowNodeRef>id-58</flowNodeRef>
+                <flowNodeRef>id-59</flowNodeRef>
+                <flowNodeRef>id-79</flowNodeRef>
+                <flowNodeRef>id-80</flowNodeRef>
+                <flowNodeRef>id-81</flowNodeRef>
+                <flowNodeRef>id-82</flowNodeRef>
+                <flowNodeRef>id-89</flowNodeRef>
+                <flowNodeRef>id-90</flowNodeRef>
+                <flowNodeRef>id-91</flowNodeRef>
+                <flowNodeRef>id-99</flowNodeRef>
+                <flowNodeRef>id-100</flowNodeRef>
+                <flowNodeRef>id-101</flowNodeRef>
+            </lane>
+            <lane name="resource provisioning" id="id-5">
+                <flowNodeRef>id-38</flowNodeRef>
+                <flowNodeRef>id-39</flowNodeRef>
+                <flowNodeRef>id-40</flowNodeRef>
+                <flowNodeRef>id-41</flowNodeRef>
+                <flowNodeRef>id-42</flowNodeRef>
+                <flowNodeRef>id-43</flowNodeRef>
+                <flowNodeRef>id-44</flowNodeRef>
+                <flowNodeRef>id-45</flowNodeRef>
+                <flowNodeRef>id-46</flowNodeRef>
+                <flowNodeRef>id-60</flowNodeRef>
+                <flowNodeRef>id-61</flowNodeRef>
+                <flowNodeRef>id-62</flowNodeRef>
+                <flowNodeRef>id-63</flowNodeRef>
+                <flowNodeRef>id-64</flowNodeRef>
+                <flowNodeRef>id-65</flowNodeRef>
+                <flowNodeRef>id-66</flowNodeRef>
+                <flowNodeRef>id-67</flowNodeRef>
+                <flowNodeRef>id-83</flowNodeRef>
+                <flowNodeRef>id-84</flowNodeRef>
+                <flowNodeRef>id-85</flowNodeRef>
+                <flowNodeRef>id-86</flowNodeRef>
+                <flowNodeRef>id-87</flowNodeRef>
+                <flowNodeRef>id-88</flowNodeRef>
+                <flowNodeRef>id-92</flowNodeRef>
+                <flowNodeRef>id-93</flowNodeRef>
+            </lane>
+            <lane name="customer service" id="id-6">
+                <flowNodeRef>id-68</flowNodeRef>
+                <flowNodeRef>id-69</flowNodeRef>
+                <flowNodeRef>id-70</flowNodeRef>
+                <flowNodeRef>id-71</flowNodeRef>
+                <flowNodeRef>id-72</flowNodeRef>
+                <flowNodeRef>id-73</flowNodeRef>
+                <flowNodeRef>id-74</flowNodeRef>
+                <flowNodeRef>id-94</flowNodeRef>
+                <flowNodeRef>id-95</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="perceive that her subscribed service has degraded" id="id-13">
+            <incoming>id-188</incoming>
+            <outgoing>id-102</outgoing>
+        </task>
+        <task name="send list to the customer service department of teleco" id="id-14">
+            <incoming>id-102</incoming>
+            <outgoing>id-103</outgoing>
+        </task>
+        <task name="enter a problem" id="id-15">
+            <incoming>id-103</incoming>
+            <outgoing>id-104</outgoing>
+        </task>
+        <task name="compare the problem report to the customer sla to identify" id="id-16">
+            <incoming>id-104</incoming>
+            <outgoing>id-178</outgoing>
+        </task>
+        <task name="determine the necessary counter measures to include respective priorities" id="id-17">
+            <incoming>id-178</incoming>
+            <outgoing>id-105</outgoing>
+        </task>
+        <task name="determine the significance of the customer based on information that has been collected during the history of the contractual relationship" id="id-18">
+            <incoming>id-105</incoming>
+            <outgoing>id-106</outgoing>
+        </task>
+        <task name="collect that" id="id-19">
+            <incoming>id-106</incoming>
+            <outgoing>id-107</outgoing>
+        </task>
+        <task name="link to an extra problem" id="id-20">
+            <incoming>id-193</incoming>
+            <outgoing>id-108</outgoing>
+        </task>
+        <task name="fix process" id="id-21">
+            <incoming>id-108</incoming>
+            <outgoing>id-110</outgoing>
+        </task>
+        <task name="continue " id="id-22">
+            <incoming>id-109</incoming>
+            <outgoing>id-111</outgoing>
+        </task>
+        <task name="take together the information" id="id-23">
+            <incoming>id-180</incoming>
+            <outgoing>id-112</outgoing>
+        </task>
+        <task name="create a detailed problem report" id="id-24">
+            <incoming>id-112</incoming>
+            <outgoing>id-113</outgoing>
+        </task>
+        <task name="send detailed problem report to service management" id="id-25">
+            <incoming>id-113</incoming>
+            <outgoing>id-114</outgoing>
+        </task>
+        <task name="deal on a first level with violations of quality" id="id-26">
+            <incoming>id-114</incoming>
+            <outgoing>id-115</outgoing>
+        </task>
+        <task name="receive the detailed problem report" id="id-27">
+            <incoming>id-115</incoming>
+            <outgoing>id-116</outgoing>
+        </task>
+        <task name="investigate " id="id-28">
+            <incoming>id-116</incoming>
+            <outgoing>id-118</outgoing>
+        </task>
+        <intermediateThrowEvent name="locates the problem " id="id-29">
+            <incoming>id-117</incoming>
+            <outgoing>id-119</outgoing>
+            <messageEventDefinition/>
+        </intermediateThrowEvent>
+        <task name="to be " id="id-30">
+            <incoming>id-195</incoming>
+            <outgoing>id-120</outgoing>
+        </task>
+        <task name="send out the detailed problem report to resource provisioning" id="id-31">
+            <incoming>id-120</incoming>
+            <outgoing>id-121</outgoing>
+        </task>
+        <task name="perform the analysis" id="id-32">
+            <incoming>id-196</incoming>
+            <outgoing>id-122</outgoing>
+        </task>
+        <task name="perform based" id="id-33">
+            <incoming>id-122</incoming>
+            <outgoing>id-123</outgoing>
+        </task>
+        <task name="create a trouble report" id="id-34">
+            <incoming>id-123</incoming>
+            <outgoing>id-124</outgoing>
+        </task>
+        <task name="create a trouble report" id="id-35">
+            <incoming>id-124</incoming>
+            <outgoing>id-125</outgoing>
+        </task>
+        <task name="indicate the type of problem" id="id-36">
+            <incoming>id-125</incoming>
+            <outgoing>id-126</outgoing>
+        </task>
+        <task name="indicate the type of problem" id="id-37">
+            <incoming>id-126</incoming>
+            <outgoing>id-127</outgoing>
+        </task>
+        <task name="receive the detailed problem report" id="id-38">
+            <incoming>id-127</incoming>
+            <outgoing>id-128</outgoing>
+        </task>
+        <task name="check that" id="id-39">
+            <incoming>id-128</incoming>
+            <outgoing>id-129</outgoing>
+        </task>
+        <task name="create a notification about the normal service execution" id="id-40">
+            <incoming>id-198</incoming>
+            <outgoing>id-132</outgoing>
+        </task>
+        <task name="analyze this" id="id-41">
+            <incoming>id-199</incoming>
+            <outgoing>id-130</outgoing>
+        </task>
+        <task name="create a trouble report" id="id-42">
+            <incoming>id-130</incoming>
+            <outgoing>id-131</outgoing>
+        </task>
+        <task name="include trouble report in a status report" id="id-43">
+            <incoming>id-133</incoming>
+            <outgoing>id-136</outgoing>
+        </task>
+        <task name="include the normal execution in a status report" id="id-44">
+            <incoming>id-134</incoming>
+            <incoming>id-135</incoming>
+            <outgoing>id-137</outgoing>
+            <outgoing>id-138</outgoing>
+        </task>
+        <task name="send trouble report back to service management" id="id-45">
+            <incoming>id-139</incoming>
+            <outgoing>id-141</outgoing>
+        </task>
+        <task name="send the normal execution back to service management" id="id-46">
+            <incoming>id-140</incoming>
+            <outgoing>id-142</outgoing>
+        </task>
+        <task name="prepare the final status report based on the received information" id="id-47">
+            <incoming>id-184</incoming>
+            <outgoing>id-143</outgoing>
+        </task>
+        <task name="determine what counter measures should be taken depending on the information in the final status report" id="id-48">
+            <incoming>id-143</incoming>
+            <outgoing>id-144</outgoing>
+        </task>
+        <task name="take alternative three process paths" id="id-49">
+            <incoming>id-144</incoming>
+            <outgoing>id-146</outgoing>
+        </task>
+        <task name="send the actual service performance back to the customer service" id="id-50">
+            <incoming>id-145</incoming>
+            <outgoing>id-147</outgoing>
+        </task>
+        <task name="detect no problem" id="id-51">
+            <incoming>id-147</incoming>
+            <outgoing>id-151</outgoing>
+        </task>
+        <task name="require that" id="id-52">
+            <incoming>id-148</incoming>
+            <outgoing>id-156</outgoing>
+        </task>
+        <task name="undertake corrective actions" id="id-53">
+            <incoming>id-149</incoming>
+            <outgoing>id-152</outgoing>
+        </task>
+        <task name="create the problem resolution report" id="id-54">
+            <incoming>id-152</incoming>
+            <outgoing>id-153</outgoing>
+        </task>
+        <task name="send out the problem resolution report to customer service" id="id-55">
+            <incoming>id-153</incoming>
+            <outgoing>id-154</outgoing>
+        </task>
+        <task name="end " id="id-56">
+            <incoming>id-154</incoming>
+            <outgoing>id-157</outgoing>
+        </task>
+        <task name="create a request" id="id-57">
+            <incoming>id-150</incoming>
+            <outgoing>id-155</outgoing>
+        </task>
+        <task name="require automatic resource restoration" id="id-58">
+            <incoming>id-185</incoming>
+            <outgoing>id-158</outgoing>
+        </task>
+        <task name="send message to resource provisioning" id="id-59">
+            <incoming>id-158</incoming>
+            <outgoing>id-159</outgoing>
+        </task>
+        <task name="happen within 2 days" id="id-60">
+            <incoming>id-159</incoming>
+            <outgoing>id-162</outgoing>
+        </task>
+        <task name="send out the status report" id="id-61">
+            <incoming>id-160</incoming>
+            <outgoing>id-164</outgoing>
+        </task>
+        <task name="terminate the process" id="id-62">
+            <incoming>id-161</incoming>
+            <outgoing>id-163</outgoing>
+        </task>
+        <task name="receive the restoration request" id="id-63">
+            <incoming>id-186</incoming>
+            <outgoing>id-165</outgoing>
+        </task>
+        <task name="track possible errors" id="id-64">
+            <incoming>id-165</incoming>
+            <outgoing>id-179</outgoing>
+        </task>
+        <task name="undertake necessary corrective actions" id="id-65">
+            <incoming>id-179</incoming>
+            <outgoing>id-166</outgoing>
+        </task>
+        <task name="create a trouble-shooting report" id="id-66">
+            <incoming>id-166</incoming>
+            <outgoing>id-167</outgoing>
+        </task>
+        <task name="send out report to service management" id="id-67">
+            <incoming>id-167</incoming>
+            <outgoing>id-201</outgoing>
+        </task>
+        <task name="receive the actual service performance" id="id-68">
+            <incoming>id-168</incoming>
+            <outgoing>id-171</outgoing>
+        </task>
+        <task name="receive the problem resolution report" id="id-69">
+            <incoming>id-169</incoming>
+            <incoming>id-170</incoming>
+            <outgoing>id-172</outgoing>
+            <outgoing>id-173</outgoing>
+        </task>
+        <task name="trigger i.e." id="id-70">
+            <incoming>id-187</incoming>
+            <outgoing>id-174</outgoing>
+        </task>
+        <task name="trigger i.e." id="id-71">
+            <incoming>id-174</incoming>
+            <outgoing>id-175</outgoing>
+        </task>
+        <task name="report an sla violation rebate to billing" id="id-72">
+            <incoming>id-175</incoming>
+            <outgoing>id-176</outgoing>
+        </task>
+        <task name="send out report to the customer" id="id-73">
+            <incoming>id-176</incoming>
+            <outgoing>id-177</outgoing>
+        </task>
+        <task name="complete three activities" id="id-74">
+            <incoming>id-177</incoming>
+            <outgoing>id-202</outgoing>
+        </task>
+        <task name="receive the report about service performance" id="id-75">
+            <incoming>id-202</incoming>
+            <outgoing>id-203</outgoing>
+        </task>
+        <exclusiveGateway id="id-76">
+            <incoming>id-107</incoming>
+            <outgoing>id-189</outgoing>
+            <outgoing>id-193</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-77">
+            <incoming>id-110</incoming>
+            <outgoing>id-109</outgoing>
+            <outgoing>id-200</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-78">
+            <incoming>id-111</incoming>
+            <incoming>id-200</incoming>
+            <outgoing>id-180</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-79">
+            <incoming>id-118</incoming>
+            <outgoing>id-117</outgoing>
+            <outgoing>id-194</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-80">
+            <incoming>id-119</incoming>
+            <incoming>id-194</incoming>
+            <outgoing>id-181</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-81">
+            <incoming>id-181</incoming>
+            <outgoing>id-190</outgoing>
+            <outgoing>id-195</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-82">
+            <incoming>id-121</incoming>
+            <outgoing>id-191</outgoing>
+            <outgoing>id-196</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-83">
+            <incoming>id-129</incoming>
+            <outgoing>id-197</outgoing>
+            <outgoing>id-198</outgoing>
+            <outgoing>id-199</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-84">
+            <incoming>id-131</incoming>
+            <incoming>id-132</incoming>
+            <incoming>id-197</incoming>
+            <outgoing>id-182</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-85">
+            <incoming>id-182</incoming>
+            <outgoing>id-133</outgoing>
+            <outgoing>id-134</outgoing>
+            <outgoing>id-135</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-86">
+            <incoming>id-136</incoming>
+            <incoming>id-137</incoming>
+            <incoming>id-138</incoming>
+            <outgoing>id-183</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-87">
+            <incoming>id-183</incoming>
+            <outgoing>id-139</outgoing>
+            <outgoing>id-140</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-88">
+            <incoming>id-141</incoming>
+            <incoming>id-142</incoming>
+            <outgoing>id-184</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-89">
+            <incoming>id-146</incoming>
+            <outgoing>id-145</outgoing>
+            <outgoing>id-192</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-90">
+            <incoming>id-151</incoming>
+            <outgoing>id-148</outgoing>
+            <outgoing>id-149</outgoing>
+            <outgoing>id-150</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-91">
+            <incoming>id-155</incoming>
+            <incoming>id-156</incoming>
+            <incoming>id-157</incoming>
+            <outgoing>id-185</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-92">
+            <incoming>id-162</incoming>
+            <outgoing>id-160</outgoing>
+            <outgoing>id-161</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-93">
+            <incoming>id-163</incoming>
+            <incoming>id-164</incoming>
+            <outgoing>id-186</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-94">
+            <incoming>id-201</incoming>
+            <outgoing>id-168</outgoing>
+            <outgoing>id-169</outgoing>
+            <outgoing>id-170</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-95">
+            <incoming>id-171</incoming>
+            <incoming>id-172</incoming>
+            <incoming>id-173</incoming>
+            <outgoing>id-187</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-96">
+            <outgoing>id-188</outgoing>
+        </startEvent>
+        <endEvent id="id-97">
+            <incoming>id-203</incoming>
+        </endEvent>
+        <endEvent id="id-98">
+            <incoming>id-189</incoming>
+        </endEvent>
+        <endEvent id="id-99">
+            <incoming>id-190</incoming>
+        </endEvent>
+        <endEvent id="id-100">
+            <incoming>id-191</incoming>
+        </endEvent>
+        <endEvent id="id-101">
+            <incoming>id-192</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-102"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-103"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-104"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-105"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-106"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-76" name="" id="id-107"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-21" name="" id="id-108"/>
+        <sequenceFlow sourceRef="id-77" targetRef="id-22" name="" id="id-109"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-77" name="" id="id-110"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-78" name="" id="id-111"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-112"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-25" name="" id="id-113"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-26" name="" id="id-114"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-27" name="" id="id-115"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-28" name="" id="id-116"/>
+        <sequenceFlow sourceRef="id-79" targetRef="id-29" name="" id="id-117"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-79" name="" id="id-118"/>
+        <sequenceFlow sourceRef="id-29" targetRef="id-80" name="" id="id-119"/>
+        <sequenceFlow sourceRef="id-30" targetRef="id-31" name="" id="id-120"/>
+        <sequenceFlow sourceRef="id-31" targetRef="id-82" name="" id="id-121"/>
+        <sequenceFlow sourceRef="id-32" targetRef="id-33" name="" id="id-122"/>
+        <sequenceFlow sourceRef="id-33" targetRef="id-34" name="" id="id-123"/>
+        <sequenceFlow sourceRef="id-34" targetRef="id-35" name="" id="id-124"/>
+        <sequenceFlow sourceRef="id-35" targetRef="id-36" name="" id="id-125"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-37" name="" id="id-126"/>
+        <sequenceFlow sourceRef="id-37" targetRef="id-38" name="" id="id-127"/>
+        <sequenceFlow sourceRef="id-38" targetRef="id-39" name="" id="id-128"/>
+        <sequenceFlow sourceRef="id-39" targetRef="id-83" name="" id="id-129"/>
+        <sequenceFlow sourceRef="id-41" targetRef="id-42" name="" id="id-130"/>
+        <sequenceFlow sourceRef="id-42" targetRef="id-84" name="" id="id-131"/>
+        <sequenceFlow sourceRef="id-40" targetRef="id-84" name="" id="id-132"/>
+        <sequenceFlow sourceRef="id-85" targetRef="id-43" name="" id="id-133"/>
+        <sequenceFlow sourceRef="id-85" targetRef="id-44" name="" id="id-134"/>
+        <sequenceFlow sourceRef="id-85" targetRef="id-44" name="" id="id-135"/>
+        <sequenceFlow sourceRef="id-43" targetRef="id-86" name="" id="id-136"/>
+        <sequenceFlow sourceRef="id-44" targetRef="id-86" name="" id="id-137"/>
+        <sequenceFlow sourceRef="id-44" targetRef="id-86" name="" id="id-138"/>
+        <sequenceFlow sourceRef="id-87" targetRef="id-45" name="" id="id-139"/>
+        <sequenceFlow sourceRef="id-87" targetRef="id-46" name="" id="id-140"/>
+        <sequenceFlow sourceRef="id-45" targetRef="id-88" name="" id="id-141"/>
+        <sequenceFlow sourceRef="id-46" targetRef="id-88" name="" id="id-142"/>
+        <sequenceFlow sourceRef="id-47" targetRef="id-48" name="" id="id-143"/>
+        <sequenceFlow sourceRef="id-48" targetRef="id-49" name="" id="id-144"/>
+        <sequenceFlow sourceRef="id-89" targetRef="id-50" name="for the case that no problem was detected at all" id="id-145"/>
+        <sequenceFlow sourceRef="id-49" targetRef="id-89" name="" id="id-146"/>
+        <sequenceFlow sourceRef="id-50" targetRef="id-51" name="" id="id-147"/>
+        <sequenceFlow sourceRef="id-90" targetRef="id-52" name="" id="id-148"/>
+        <sequenceFlow sourceRef="id-90" targetRef="id-53" name="for the case that minor corrective actions are required" id="id-149"/>
+        <sequenceFlow sourceRef="id-90" targetRef="id-57" name="for the case that automatic resource restoration from resource provisioning is required" id="id-150"/>
+        <sequenceFlow sourceRef="id-51" targetRef="id-90" name="" id="id-151"/>
+        <sequenceFlow sourceRef="id-53" targetRef="id-54" name="" id="id-152"/>
+        <sequenceFlow sourceRef="id-54" targetRef="id-55" name="" id="id-153"/>
+        <sequenceFlow sourceRef="id-55" targetRef="id-56" name="" id="id-154"/>
+        <sequenceFlow sourceRef="id-57" targetRef="id-91" name="" id="id-155"/>
+        <sequenceFlow sourceRef="id-52" targetRef="id-91" name="" id="id-156"/>
+        <sequenceFlow sourceRef="id-56" targetRef="id-91" name="" id="id-157"/>
+        <sequenceFlow sourceRef="id-58" targetRef="id-59" name="" id="id-158"/>
+        <sequenceFlow sourceRef="id-59" targetRef="id-60" name="" id="id-159"/>
+        <sequenceFlow sourceRef="id-92" targetRef="id-61" name="" id="id-160"/>
+        <sequenceFlow sourceRef="id-92" targetRef="id-62" name="" id="id-161"/>
+        <sequenceFlow sourceRef="id-60" targetRef="id-92" name="" id="id-162"/>
+        <sequenceFlow sourceRef="id-62" targetRef="id-93" name="" id="id-163"/>
+        <sequenceFlow sourceRef="id-61" targetRef="id-93" name="" id="id-164"/>
+        <sequenceFlow sourceRef="id-63" targetRef="id-64" name="" id="id-165"/>
+        <sequenceFlow sourceRef="id-65" targetRef="id-66" name="" id="id-166"/>
+        <sequenceFlow sourceRef="id-66" targetRef="id-67" name="" id="id-167"/>
+        <sequenceFlow sourceRef="id-94" targetRef="id-68" name="" id="id-168"/>
+        <sequenceFlow sourceRef="id-94" targetRef="id-69" name="" id="id-169"/>
+        <sequenceFlow sourceRef="id-94" targetRef="id-69" name="" id="id-170"/>
+        <sequenceFlow sourceRef="id-68" targetRef="id-95" name="" id="id-171"/>
+        <sequenceFlow sourceRef="id-69" targetRef="id-95" name="" id="id-172"/>
+        <sequenceFlow sourceRef="id-69" targetRef="id-95" name="" id="id-173"/>
+        <sequenceFlow sourceRef="id-70" targetRef="id-71" name="" id="id-174"/>
+        <sequenceFlow sourceRef="id-71" targetRef="id-72" name="" id="id-175"/>
+        <sequenceFlow sourceRef="id-72" targetRef="id-73" name="" id="id-176"/>
+        <sequenceFlow sourceRef="id-73" targetRef="id-74" name="" id="id-177"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-178"/>
+        <sequenceFlow sourceRef="id-64" targetRef="id-65" name="" id="id-179"/>
+        <sequenceFlow sourceRef="id-78" targetRef="id-23" name="" id="id-180"/>
+        <sequenceFlow sourceRef="id-80" targetRef="id-81" name="" id="id-181"/>
+        <sequenceFlow sourceRef="id-84" targetRef="id-85" name="" id="id-182"/>
+        <sequenceFlow sourceRef="id-86" targetRef="id-87" name="" id="id-183"/>
+        <sequenceFlow sourceRef="id-88" targetRef="id-47" name="" id="id-184"/>
+        <sequenceFlow sourceRef="id-91" targetRef="id-58" name="" id="id-185"/>
+        <sequenceFlow sourceRef="id-93" targetRef="id-63" name="" id="id-186"/>
+        <sequenceFlow sourceRef="id-95" targetRef="id-70" name="" id="id-187"/>
+        <sequenceFlow sourceRef="id-96" targetRef="id-13" name="" id="id-188"/>
+        <sequenceFlow sourceRef="id-76" targetRef="id-98" name="" id="id-189"/>
+        <sequenceFlow sourceRef="id-81" targetRef="id-99" name="" id="id-190"/>
+        <sequenceFlow sourceRef="id-82" targetRef="id-100" name="" id="id-191"/>
+        <sequenceFlow sourceRef="id-89" targetRef="id-101" name="" id="id-192"/>
+        <sequenceFlow sourceRef="id-76" targetRef="id-20" name="the customer is premium " id="id-193"/>
+        <sequenceFlow sourceRef="id-79" targetRef="id-80" name="the problem is analyzable " id="id-194"/>
+        <sequenceFlow sourceRef="id-81" targetRef="id-30" name="service management assesses the problem to be not analyzable " id="id-195"/>
+        <sequenceFlow sourceRef="id-82" targetRef="id-32" name="service management is sure " id="id-196"/>
+        <sequenceFlow sourceRef="id-83" targetRef="id-84" name="possible problems  " id="id-197"/>
+        <sequenceFlow sourceRef="id-83" targetRef="id-40" name="detects no problems " id="id-198"/>
+        <sequenceFlow sourceRef="id-83" targetRef="id-41" name="detects a problem " id="id-199"/>
+        <sequenceFlow sourceRef="id-77" targetRef="id-78" name="" id="id-200"/>
+        <sequenceFlow sourceRef="id-67" targetRef="id-94" name="" id="id-201"/>
+        <sequenceFlow sourceRef="id-74" targetRef="id-75" name="" id="id-202"/>
+        <sequenceFlow sourceRef="id-75" targetRef="id-97" name="" id="id-203"/>
+    </process>
+    <process name="customer service department of teleco" id="id-7">
+        <laneSet name="customer service department of teleco" id="id-8"/>
+    </process>
+    <process name="that" id="id-9">
+        <laneSet name="that" id="id-10"/>
+    </process>
+    <process name="billing" id="id-11">
+        <laneSet name="billing" id="id-12"/>
+    </process>
+</definitions>

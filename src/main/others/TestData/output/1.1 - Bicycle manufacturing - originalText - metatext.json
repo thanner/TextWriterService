@@ -1,0 +1,360 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "small company"
+        },
+        {
+          "id": "id-3",
+          "name": "sales department"
+        },
+        {
+          "id": "id-4",
+          "name": "member of the sales department"
+        },
+        {
+          "id": "id-5",
+          "name": "storehouse"
+        },
+        {
+          "id": "id-6",
+          "name": "engineering department"
+        },
+        {
+          "id": "id-7",
+          "name": "sales department ships"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the small company manufactures the customized bicycles.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 78,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-34",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the sales department receives the order and then creates a new process instance.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 85,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-4",
+            "processElementId": "id-26",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the member of the sales department rejects the order.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 76,
+            "resourceId": "id-4",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the member of the sales department accepts the order.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 77,
+            "resourceId": "id-4",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the member of the sales department finishes the process instance in the former case and then informs the storehouse in the latter case.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 96,
+            "resourceId": "id-4",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 106,
+            "endIndex": 147,
+            "resourceId": "id-4",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-4",
+            "processElementId": "id-27",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it informs the engineering department in the latter case and then the storehouse processes the part list of the order.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 70,
+            "resourceId": "id-4",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 80,
+            "endIndex": 131,
+            "resourceId": "id-5",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the storehouse checks the required quantity of the part.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 61,
+            "resourceId": "id-5",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-5",
+            "processElementId": "id-28",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"the part is available\", the storehouse reserves the part.",
+        "snippetList": [
+          {
+            "startIndex": 28,
+            "endIndex": 60,
+            "resourceId": "id-5",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"part is not available\", the storehouse parts of the is back-ordered.",
+        "snippetList": [
+          {
+            "startIndex": 28,
+            "endIndex": 71,
+            "resourceId": "id-5",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 60,
+            "resourceId": "id-5",
+            "processElementId": "id-30",
+            "processElementType": "ANDSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-29",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The engineering department prepares the everything in the meantime.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 66,
+            "resourceId": "id-6",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the storehouse repeats the procedure.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 53,
+            "resourceId": "id-5",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, if required, the storehouse backs.",
+        "snippetList": [
+          {
+            "startIndex": 30,
+            "endIndex": 50,
+            "resourceId": "id-5",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "id-5",
+            "processElementId": "id-31",
+            "processElementType": "ANDJOIN"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 29,
+            "resourceId": "id-5",
+            "processElementId": "id-32",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the storehouse finishes and then the engineering department assembles the bicycle.",
+        "snippetList": [
+          {
+            "startIndex": 46,
+            "endIndex": 94,
+            "resourceId": "id-6",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-5",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-33",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the sales department ships finishes the process instance.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 70,
+            "resourceId": "id-7",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-7",
+            "processElementId": "id-35",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

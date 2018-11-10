@@ -1,0 +1,203 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "potential customers"
+        },
+        {
+          "id": "id-3",
+          "name": "marketing staff"
+        },
+        {
+          "id": "id-4",
+          "name": "call center staff"
+        },
+        {
+          "id": "id-5",
+          "name": "head of development"
+        },
+        {
+          "id": "id-6",
+          "name": "sales representative"
+        },
+        {
+          "id": "id-7",
+          "name": "pre-sales employee"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-8",
+      "name": "customer"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the potential customers determines the contact details of the potential customers.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 105,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "StartEvent 2",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "id-2",
+            "processElementId": "id-29",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the marketing staff participates in the exhibitions.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 75,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the potential customers buys the details.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 65,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the third procedure, the marketing staff happens to the know somebody.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 72,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the marketing staff interests the somebody in the product and then the call center staff calls the customer.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 70,
+            "resourceId": "id-3",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 80,
+            "endIndex": 120,
+            "resourceId": "id-4",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-3",
+            "processElementId": "id-30",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the call center staff determines the contact person and then determines the budget.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "id-4",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 73,
+            "endIndex": 94,
+            "resourceId": "id-4",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts the which is available and then conducts the which is available.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 48,
+            "resourceId": "id-4",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 48,
+            "resourceId": "id-4",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, it asks the customer.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 29,
+            "resourceId": "id-4",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

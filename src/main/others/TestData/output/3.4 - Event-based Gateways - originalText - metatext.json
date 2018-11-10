@@ -1,0 +1,138 @@
+{
+  "processList": [
+    {
+      "id": "id-0",
+      "name": "claimant"
+    },
+    {
+      "id": "id-2",
+      "name": "reminder"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-4",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 conducts a claim handling process is necessary.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 85,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-14",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it expects the claimant to return the questionnaire.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 sends a reminder to the claimant.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 sends the so.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 27,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 1 receives the completed questionnaire.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "id-15",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

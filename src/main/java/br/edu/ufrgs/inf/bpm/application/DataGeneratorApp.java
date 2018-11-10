@@ -27,14 +27,21 @@ public class DataGeneratorApp {
 
     public static void main(String[] args) {
         prepareLogger();
-        getInputFiles();
+        //getInputFiles();
         ApplicationStarter.startApplication();
 
         File folder = new File(Paths.LocalOthersPath + Paths.dataInputPath);
+        for (File fileEntry : folder.listFiles()) {
+            generateData(fileEntry, true);
+        }
 
-        // for (File fileEntry : folder.listFiles()) {
-        //     generateData(fileEntry, true);
-        // }
+        // Gera um gateway fora do processo (erro do textreader)
+        // File file = new File("src/main/others/TestData/input/10.2 - Process B3 - originalText - process.bpmn");
+        // generateData(file, false);
+
+        // TODO: Intermediate Marked
+        //File file = new File("src/main/others/TestData/input/2.1 - SLA Violation - originalText - process.bpmn");
+        //generateData(file, false);
 
         /*
         File file = new File("src/main/others/TestData/xor.bpmn");
@@ -60,8 +67,8 @@ public class DataGeneratorApp {
 
         // File file2 = new File("src/main/others/TestData/input/2009-2 Conduct Directions Hearing - process.bpmn");
 
-        File file2 = new File("src/main/others/TestData/3.2 - Conduct Directions Hearing - originalProcess.bpmn");
-        generateData(file2, false);
+        //File file2 = new File("src/main/others/TestData/3.2 - Conduct Directions Hearing - originalProcess.bpmn");
+        //generateData(file2, false);
 
         //generateData(file2, false);
 

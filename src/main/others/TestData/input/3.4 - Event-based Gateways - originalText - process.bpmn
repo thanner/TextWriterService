@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="claimant" id="id-0">
+        <laneSet name="claimant" id="id-1"/>
+    </process>
+    <process name="reminder" id="id-2">
+        <laneSet name="reminder" id="id-3"/>
+    </process>
+    <process id="id-4">
+        <task name="a claim handling process is necessary" id="id-5">
+            <incoming>id-25</incoming>
+            <outgoing>id-16</outgoing>
+        </task>
+        <task name="expect claimant to return the questionnaire" id="id-6">
+            <incoming>id-16</incoming>
+            <outgoing>id-19</outgoing>
+        </task>
+        <intermediateCatchEvent name="receives no response after five days" id="id-7">
+            <incoming>id-17</incoming>
+            <outgoing>id-20</outgoing>
+            <timerEventDefinition/>
+        </intermediateCatchEvent>
+        <task name="send a reminder to the claimant" id="id-8">
+            <incoming>id-20</incoming>
+            <outgoing>id-23</outgoing>
+        </task>
+        <intermediateCatchEvent name="no response is after another five days after another five days" id="id-9">
+            <incoming>id-18</incoming>
+            <outgoing>id-21</outgoing>
+            <timerEventDefinition/>
+        </intermediateCatchEvent>
+        <task name="send so" id="id-10">
+            <incoming>id-21</incoming>
+            <outgoing>id-22</outgoing>
+        </task>
+        <task name="receive the completed questionnaire" id="id-11">
+            <incoming>id-24</incoming>
+            <outgoing>id-26</outgoing>
+        </task>
+        <eventBasedGateway id="id-12">
+            <incoming>id-19</incoming>
+            <outgoing>id-17</outgoing>
+            <outgoing>id-18</outgoing>
+        </eventBasedGateway>
+        <exclusiveGateway id="id-13">
+            <incoming>id-22</incoming>
+            <incoming>id-23</incoming>
+            <outgoing>id-24</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-14">
+            <outgoing>id-25</outgoing>
+        </startEvent>
+        <endEvent id="id-15">
+            <incoming>id-26</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-16"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-7" name="" id="id-17"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-9" name="" id="id-18"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-12" name="" id="id-19"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-13" name="" id="id-22"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-13" name="" id="id-23"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-11" name="" id="id-24"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-5" name="" id="id-25"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-15" name="" id="id-26"/>
+    </process>
+</definitions>

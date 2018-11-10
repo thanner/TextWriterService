@@ -285,6 +285,7 @@ public class ProcessModelBuilder {
             // Add path to model
             processModel.addAlternativePath(alternativePathModel, exPI);
 
+            externalPathInitiators.remove(exPI);
         }
     }
 

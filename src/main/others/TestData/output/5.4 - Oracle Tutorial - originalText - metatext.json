@@ -1,0 +1,376 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "employee"
+        },
+        {
+          "id": "id-3",
+          "name": "supervisor"
+        },
+        {
+          "id": "id-4",
+          "name": "treasurer"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "id-2",
+            "processElementId": "id-25",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "resourceId": "id-2",
+            "processElementId": "id-35",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the employee purchases a product to the require.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 71,
+            "resourceId": "id-2",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the employee purchases the service to the require.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 74,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the employee submits the expense report and then the supervisor reviews the expense report.",
+        "snippetList": [
+          {
+            "startIndex": 62,
+            "endIndex": 103,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 52,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "id-26",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the supervisor approves the report and then conducts the company has expense rules.",
+        "snippetList": [
+          {
+            "startIndex": 50,
+            "endIndex": 88,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 40,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he automates the rules to reduce the workload.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 57,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "id-3",
+            "processElementId": "id-27",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"the supervisor rejects the report\", the supervisor gives a chance to the edit.",
+        "snippetList": [
+          {
+            "startIndex": 40,
+            "endIndex": 81,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"the supervisor approves the report\", the supervisor goes to the treasurer.",
+        "snippetList": [
+          {
+            "startIndex": 41,
+            "endIndex": 77,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the treasurer checks the items and then matches the items.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 43,
+            "resourceId": "id-4",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 53,
+            "endIndex": 70,
+            "resourceId": "id-4",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-3",
+            "processElementId": "id-28",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "id-4",
+            "processElementId": "id-29",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the treasurer accepts the expenses and then moves to the an automatic activity.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 58,
+            "resourceId": "id-4",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 68,
+            "endIndex": 102,
+            "resourceId": "id-4",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, he waits for the payment confirmation and then confirms the payment.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 49,
+            "resourceId": "id-4",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 59,
+            "endIndex": 79,
+            "resourceId": "id-4",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, if required, the treasurer does the not match the report.",
+        "snippetList": [
+          {
+            "startIndex": 38,
+            "endIndex": 81,
+            "resourceId": "id-4",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 37,
+            "resourceId": "id-4",
+            "processElementId": "id-30",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the treasurer sends back the report to the employee.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 64,
+            "resourceId": "id-4",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-4",
+            "processElementId": "id-31",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 1 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "id-4",
+            "processElementId": "id-32",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The treasurer sends a message and then goes to a supervisor.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 29,
+            "resourceId": "id-4",
+            "processElementId": "id-19",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 39,
+            "endIndex": 59,
+            "resourceId": "id-4",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "Next, the supervisor approves the report.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 40,
+            "resourceId": "id-3",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

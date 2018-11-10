@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="coordination unit" id="id-2">
+                <flowNodeRef>id-8</flowNodeRef>
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-12</flowNodeRef>
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+            </lane>
+            <lane name="support" id="id-3">
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-11</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="draft a schedule of meetings in november of year" id="id-8">
+            <incoming>id-23</incoming>
+            <outgoing>id-17</outgoing>
+        </task>
+        <task name="add draft dates to calendars" id="id-9">
+            <incoming>id-17</incoming>
+            <outgoing>id-18</outgoing>
+        </task>
+        <task name="check the dates" id="id-10">
+            <incoming>id-18</incoming>
+            <outgoing>id-19</outgoing>
+        </task>
+        <task name="suggest modifications" id="id-11">
+            <incoming>id-19</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <task name="rechecks dates" id="id-12">
+            <incoming>id-20</incoming>
+            <outgoing>id-21</outgoing>
+        </task>
+        <task name="look " id="id-13">
+            <incoming>id-21</incoming>
+            <outgoing>id-22</outgoing>
+        </task>
+        <task name="send final schedule of meeting dates to the independent committee members" id="id-14">
+            <incoming>id-22</incoming>
+            <outgoing>id-24</outgoing>
+        </task>
+        <startEvent id="id-15">
+            <outgoing>id-23</outgoing>
+        </startEvent>
+        <endEvent id="id-16">
+            <incoming>id-24</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-17"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-18"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-19"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-22"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-8" name="" id="id-23"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-16" name="" id="id-24"/>
+    </process>
+    <process name="dates" id="id-4">
+        <laneSet name="dates" id="id-5"/>
+    </process>
+    <process name="meeting dates" id="id-6">
+        <laneSet name="meeting dates" id="id-7"/>
+    </process>
+</definitions>

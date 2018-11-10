@@ -1,0 +1,149 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "ec"
+        },
+        {
+          "id": "id-3",
+          "name": "inq"
+        },
+        {
+          "id": "id-4",
+          "name": "ip"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-5",
+      "name": "ip of the change"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the ec tells an inq about change of the master data.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 75,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the inq notifies the ip of the change and then the ip checks.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 43,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 53,
+            "endIndex": 66,
+            "resourceId": "id-4",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 1 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-4",
+            "processElementId": "id-13",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "One of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "id-4",
+            "processElementId": "id-14",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the first procedure, the ip rejects the changes of the inq.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 61,
+            "resourceId": "id-4",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the ip confirms the changes of the inq.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 63,
+            "resourceId": "id-4",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

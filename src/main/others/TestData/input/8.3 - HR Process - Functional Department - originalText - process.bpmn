@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="functional department" id="id-2">
+                <flowNodeRef>id-6</flowNodeRef>
+                <flowNodeRef>id-7</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+            </lane>
+            <lane name="number of personnel requirements" id="id-3">
+                <flowNodeRef>id-8</flowNodeRef>
+            </lane>
+            <lane name="personnel department" id="id-4">
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+            </lane>
+            <lane name="corrections" id="id-5">
+                <flowNodeRef>id-11</flowNodeRef>
+                <flowNodeRef>id-12</flowNodeRef>
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="head the functional department" id="id-6">
+            <incoming>id-28</incoming>
+            <outgoing>id-18</outgoing>
+        </task>
+        <task name="detect a number of personnel requirements" id="id-7">
+            <incoming>id-18</incoming>
+            <outgoing>id-19</outgoing>
+        </task>
+        <task name="report the vacancy" id="id-8">
+            <incoming>id-19</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <task name="wait to get the job description" id="id-9">
+            <incoming>id-20</incoming>
+            <outgoing>id-23</outgoing>
+        </task>
+        <task name="ask again for corrections" id="id-10">
+            <incoming>id-21</incoming>
+            <outgoing>id-25</outgoing>
+        </task>
+        <task name="approve the job description" id="id-11">
+            <incoming>id-22</incoming>
+            <outgoing>id-24</outgoing>
+        </task>
+        <task name="happen that the colleague from the hr department still has questions about the tasks and requirements before he can describe the job" id="id-12">
+            <incoming>id-27</incoming>
+            <outgoing>id-26</outgoing>
+        </task>
+        <task name="corrections is available" id="id-13">
+            <incoming>id-26</incoming>
+            <outgoing>id-29</outgoing>
+        </task>
+        <exclusiveGateway id="id-14">
+            <incoming>id-23</incoming>
+            <outgoing>id-21</outgoing>
+            <outgoing>id-22</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-15">
+            <incoming>id-24</incoming>
+            <incoming>id-25</incoming>
+            <outgoing>id-27</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-16">
+            <outgoing>id-28</outgoing>
+        </startEvent>
+        <endEvent id="id-17">
+            <incoming>id-29</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-18"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-19"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-10" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-11" name="" id="id-22"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-14" name="" id="id-23"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-15" name="" id="id-24"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-15" name="" id="id-25"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-26"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-12" name="" id="id-27"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-6" name="" id="id-28"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-17" name="" id="id-29"/>
+    </process>
+</definitions>

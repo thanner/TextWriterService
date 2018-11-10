@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="inq" id="id-2">
+                <flowNodeRef>id-4</flowNodeRef>
+                <flowNodeRef>id-5</flowNodeRef>
+                <flowNodeRef>id-8</flowNodeRef>
+            </lane>
+            <lane name="ip" id="id-3">
+                <flowNodeRef>id-6</flowNodeRef>
+                <flowNodeRef>id-7</flowNodeRef>
+                <flowNodeRef>id-9</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="transmit the transaction" id="id-4">
+            <incoming>id-13</incoming>
+            <outgoing>id-10</outgoing>
+        </task>
+        <task name="request to the ip" id="id-5">
+            <incoming>id-10</incoming>
+            <outgoing>id-11</outgoing>
+        </task>
+        <task name="check the request of the inq" id="id-6">
+            <incoming>id-11</incoming>
+            <outgoing>id-12</outgoing>
+        </task>
+        <task name="answer the question of the inq" id="id-7">
+            <incoming>id-12</incoming>
+            <outgoing>id-14</outgoing>
+        </task>
+        <startEvent id="id-8">
+            <outgoing>id-13</outgoing>
+        </startEvent>
+        <endEvent id="id-9">
+            <incoming>id-14</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-4" targetRef="id-5" name="" id="id-10"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-11"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-12"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-4" name="" id="id-13"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-9" name="" id="id-14"/>
+    </process>
+</definitions>

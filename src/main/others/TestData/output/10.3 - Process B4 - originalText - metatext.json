@@ -1,0 +1,310 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "mpoo"
+        },
+        {
+          "id": "id-3",
+          "name": "go"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-4",
+      "name": "mspo"
+    },
+    {
+      "id": "id-6",
+      "name": "sp"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the mpoo conducts a deregisters at the go.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 65,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-29",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the go verifies the deregistration.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 40,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-3",
+            "processElementId": "id-24",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the go rejects the deregistration of the mpoo.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 69,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the go confirms the deregistration of the mpoo.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 71,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the go prepares the readmission of the measuring point and then obliges the mpoo to the continue.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 67,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 77,
+            "endIndex": 109,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-3",
+            "processElementId": "id-25",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it continues the operations.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 41,
+            "resourceId": "id-3",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the go continues the operation.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 49,
+            "resourceId": "id-3",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "id-3",
+            "processElementId": "id-26",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the mpoo confirms the continuation.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 46,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 54,
+            "resourceId": "id-3",
+            "processElementId": "id-27",
+            "processElementType": "ORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the go performs the equipment changes.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 61,
+            "resourceId": "id-3",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the go performs the equipment acquisition.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 66,
+            "resourceId": "id-3",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Afterwards, the go assigns the go and then informs the mpoo about end of the assignment of mpoo.",
+        "snippetList": [
+          {
+            "startIndex": 43,
+            "endIndex": 95,
+            "resourceId": "id-3",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 33,
+            "resourceId": "id-3",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 10,
+            "resourceId": "id-3",
+            "processElementId": "id-28",
+            "processElementType": "ORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it informs the beginning of the assignment of go and then informs the mspo about assignment of the go.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 54,
+            "resourceId": "id-3",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 107,
+            "resourceId": "id-3",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it informs the sp about assignment of the go.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 56,
+            "resourceId": "id-3",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

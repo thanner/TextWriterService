@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="customer" id="id-2">
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-22</flowNodeRef>
+            </lane>
+            <lane name="notification department" id="id-3">
+                <flowNodeRef>id-11</flowNodeRef>
+            </lane>
+            <lane name="handling department" id="id-4">
+                <flowNodeRef>id-12</flowNodeRef>
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+                <flowNodeRef>id-18</flowNodeRef>
+                <flowNodeRef>id-19</flowNodeRef>
+                <flowNodeRef>id-20</flowNodeRef>
+                <flowNodeRef>id-21</flowNodeRef>
+                <flowNodeRef>id-23</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="submit a claim" id="id-9">
+            <incoming>id-36</incoming>
+            <outgoing>id-24</outgoing>
+        </task>
+        <task name="send " id="id-10">
+            <incoming>id-24</incoming>
+            <outgoing>id-25</outgoing>
+        </task>
+        <task name="check the documents" id="id-11">
+            <incoming>id-25</incoming>
+            <outgoing>id-26</outgoing>
+        </task>
+        <task name="pick up the claim" id="id-12">
+            <incoming>id-26</incoming>
+            <outgoing>id-27</outgoing>
+        </task>
+        <task name="pick up checks" id="id-13">
+            <incoming>id-27</incoming>
+            <outgoing>id-28</outgoing>
+        </task>
+        <task name="perform an assessment" id="id-14">
+            <incoming>id-28</incoming>
+            <outgoing>id-30</outgoing>
+        </task>
+        <task name="phone a garage to authorise the repairs" id="id-15">
+            <incoming>id-38</incoming>
+            <outgoing>id-31</outgoing>
+        </task>
+        <task name="schedule the payment" id="id-16">
+            <incoming>id-31</incoming>
+            <outgoing>id-33</outgoing>
+        </task>
+        <task name="reject the claim" id="id-17">
+            <incoming>id-29</incoming>
+            <outgoing>id-32</outgoing>
+        </task>
+        <task name="send a letter to the customer" id="id-18">
+            <incoming>id-35</incoming>
+            <outgoing>id-34</outgoing>
+        </task>
+        <task name="consider the process to complete " id="id-19">
+            <incoming>id-34</incoming>
+            <outgoing>id-37</outgoing>
+        </task>
+        <exclusiveGateway id="id-20">
+            <incoming>id-30</incoming>
+            <outgoing>id-29</outgoing>
+            <outgoing>id-38</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-21">
+            <incoming>id-32</incoming>
+            <incoming>id-33</incoming>
+            <outgoing>id-35</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-22">
+            <outgoing>id-36</outgoing>
+        </startEvent>
+        <endEvent id="id-23">
+            <incoming>id-37</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-24"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-25"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-26"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-27"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-28"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-17" name="" id="id-29"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-20" name="" id="id-30"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-31"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-21" name="" id="id-32"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-21" name="" id="id-33"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-34"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-18" name="" id="id-35"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-9" name="" id="id-36"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-23" name="" id="id-37"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-15" name="the assessment is positive " id="id-38"/>
+    </process>
+    <process name="garage" id="id-5">
+        <laneSet name="garage" id="id-6"/>
+    </process>
+    <process name="letter" id="id-7">
+        <laneSet name="letter" id="id-8"/>
+    </process>
+</definitions>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="acme ag" id="id-2">
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-53</flowNodeRef>
+            </lane>
+            <lane name="secretariat" id="id-3">
+                <flowNodeRef>id-14</flowNodeRef>
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+                <flowNodeRef>id-18</flowNodeRef>
+                <flowNodeRef>id-19</flowNodeRef>
+                <flowNodeRef>id-20</flowNodeRef>
+                <flowNodeRef>id-21</flowNodeRef>
+                <flowNodeRef>id-22</flowNodeRef>
+                <flowNodeRef>id-23</flowNodeRef>
+                <flowNodeRef>id-24</flowNodeRef>
+                <flowNodeRef>id-25</flowNodeRef>
+                <flowNodeRef>id-26</flowNodeRef>
+                <flowNodeRef>id-27</flowNodeRef>
+                <flowNodeRef>id-28</flowNodeRef>
+                <flowNodeRef>id-29</flowNodeRef>
+                <flowNodeRef>id-30</flowNodeRef>
+                <flowNodeRef>id-31</flowNodeRef>
+                <flowNodeRef>id-32</flowNodeRef>
+                <flowNodeRef>id-49</flowNodeRef>
+                <flowNodeRef>id-52</flowNodeRef>
+                <flowNodeRef>id-55</flowNodeRef>
+            </lane>
+            <lane name="cost center manager" id="id-4">
+                <flowNodeRef>id-33</flowNodeRef>
+                <flowNodeRef>id-34</flowNodeRef>
+                <flowNodeRef>id-35</flowNodeRef>
+                <flowNodeRef>id-36</flowNodeRef>
+                <flowNodeRef>id-37</flowNodeRef>
+                <flowNodeRef>id-38</flowNodeRef>
+                <flowNodeRef>id-39</flowNodeRef>
+                <flowNodeRef>id-40</flowNodeRef>
+                <flowNodeRef>id-41</flowNodeRef>
+                <flowNodeRef>id-50</flowNodeRef>
+                <flowNodeRef>id-56</flowNodeRef>
+            </lane>
+            <lane name="board" id="id-5">
+                <flowNodeRef>id-42</flowNodeRef>
+                <flowNodeRef>id-43</flowNodeRef>
+                <flowNodeRef>id-44</flowNodeRef>
+                <flowNodeRef>id-51</flowNodeRef>
+            </lane>
+            <lane name="accounting employee" id="id-6">
+                <flowNodeRef>id-45</flowNodeRef>
+                <flowNodeRef>id-46</flowNodeRef>
+                <flowNodeRef>id-47</flowNodeRef>
+                <flowNodeRef>id-48</flowNodeRef>
+                <flowNodeRef>id-54</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="receive invoices" id="id-13">
+            <incoming>id-95</incoming>
+            <outgoing>id-57</outgoing>
+        </task>
+        <task name="receive invoices in the central inbox" id="id-14">
+            <incoming>id-57</incoming>
+            <outgoing>id-58</outgoing>
+        </task>
+        <task name="forward invoices to an accounting employee" id="id-15">
+            <incoming>id-58</incoming>
+            <outgoing>id-59</outgoing>
+        </task>
+        <task name="identify the charging suppliers in acme financial accounting" id="id-16">
+            <incoming>id-59</incoming>
+            <outgoing>id-60</outgoing>
+        </task>
+        <task name="create a new instance" id="id-17">
+            <incoming>id-60</incoming>
+            <outgoing>id-61</outgoing>
+        </task>
+        <task name="check the invoice items" id="id-18">
+            <incoming>id-61</incoming>
+            <outgoing>id-62</outgoing>
+        </task>
+        <task name="check notes" id="id-19">
+            <incoming>id-62</incoming>
+            <outgoing>id-63</outgoing>
+        </task>
+        <task name="go docket to the internal mail" id="id-20">
+            <incoming>id-63</incoming>
+            <outgoing>id-64</outgoing>
+        </task>
+        <task name="go the copy of the invoice to the internal mail" id="id-21">
+            <incoming>id-64</incoming>
+            <outgoing>id-65</outgoing>
+        </task>
+        <task name="send docket to the first cost center manager to the list" id="id-22">
+            <incoming>id-65</incoming>
+            <outgoing>id-66</outgoing>
+        </task>
+        <task name="send the copy of the invoice to the first cost center manager to the list" id="id-23">
+            <incoming>id-66</incoming>
+            <outgoing>id-67</outgoing>
+        </task>
+        <task name="review the content" id="id-24">
+            <incoming>id-67</incoming>
+            <outgoing>id-68</outgoing>
+        </task>
+        <task name="receive the copy of the invoice" id="id-25">
+            <incoming>id-68</incoming>
+            <outgoing>id-69</outgoing>
+        </task>
+        <task name="everything Should be in order" id="id-26">
+            <incoming>id-69</incoming>
+            <outgoing>id-70</outgoing>
+        </task>
+        <task name="note code one" id="id-27">
+            <incoming>id-70</incoming>
+            <outgoing>id-71</outgoing>
+        </task>
+        <task name="return the copy of the invoice to the internal mail" id="id-28">
+            <incoming>id-71</incoming>
+            <outgoing>id-72</outgoing>
+        </task>
+        <task name="pass on to the next cost center manager based on the docket" id="id-29">
+            <incoming>id-72</incoming>
+            <outgoing>id-94</outgoing>
+        </task>
+        <task name="move through the hands of cost center managers" id="id-30">
+            <incoming>id-86</incoming>
+            <outgoing>id-73</outgoing>
+        </task>
+        <task name="mark positions" id="id-31">
+            <incoming>id-73</incoming>
+            <outgoing>id-74</outgoing>
+        </task>
+        <task name="e.g. " id="id-32">
+            <incoming>id-99</incoming>
+            <outgoing>id-91</outgoing>
+        </task>
+        <task name="reject the ap" id="id-33">
+            <incoming>id-91</incoming>
+            <outgoing>id-75</outgoing>
+        </task>
+        <task name="send back the copy of the invoice directly to accounting" id="id-34">
+            <incoming>id-75</incoming>
+            <outgoing>id-92</outgoing>
+        </task>
+        <task name="proceede with the clarification with the vendor" id="id-35">
+            <incoming>id-92</incoming>
+            <outgoing>id-76</outgoing>
+        </task>
+        <task name="consult the cost center managers again" id="id-36">
+            <incoming>id-76</incoming>
+            <outgoing>id-77</outgoing>
+        </task>
+        <task name="resolve inconsistencies" id="id-37">
+            <incoming>id-77</incoming>
+            <outgoing>id-78</outgoing>
+        </task>
+        <task name="send the copy of the invoice again to the cost" id="id-38">
+            <incoming>id-78</incoming>
+            <outgoing>id-79</outgoing>
+        </task>
+        <task name="continue " id="id-39">
+            <incoming>id-79</incoming>
+            <outgoing>id-80</outgoing>
+        </task>
+        <task name="invoice items be AP" id="id-40">
+            <incoming>id-80</incoming>
+            <outgoing>id-81</outgoing>
+        </task>
+        <task name="make to approval for payment" id="id-41">
+            <incoming>id-81</incoming>
+            <outgoing>id-82</outgoing>
+        </task>
+        <task name="want to check 20,000 eur again" id="id-42">
+            <incoming>id-100</incoming>
+            <outgoing>id-84</outgoing>
+        </task>
+        <task name="move back" id="id-43">
+            <incoming>id-83</incoming>
+            <outgoing>id-85</outgoing>
+        </task>
+        <task name="Should there be a complaint" id="id-44">
+            <incoming>id-93</incoming>
+            <outgoing>id-87</outgoing>
+        </task>
+        <task name="resolve copy of the invoice including the docket" id="id-45">
+            <incoming>id-87</incoming>
+            <outgoing>id-88</outgoing>
+        </task>
+        <task name="complete the commercial audit" id="id-46">
+            <incoming>id-88</incoming>
+            <outgoing>id-89</outgoing>
+        </task>
+        <task name="give payment instructions" id="id-47">
+            <incoming>id-89</incoming>
+            <outgoing>id-90</outgoing>
+        </task>
+        <task name="close the instance in acme financial accounting" id="id-48">
+            <incoming>id-90</incoming>
+            <outgoing>id-96</outgoing>
+        </task>
+        <exclusiveGateway id="id-49">
+            <incoming>id-74</incoming>
+            <outgoing>id-97</outgoing>
+            <outgoing>id-99</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-50">
+            <incoming>id-82</incoming>
+            <outgoing>id-98</outgoing>
+            <outgoing>id-100</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-51">
+            <incoming>id-84</incoming>
+            <outgoing>id-83</outgoing>
+            <outgoing>id-93</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-52">
+            <incoming>id-85</incoming>
+            <incoming>id-94</incoming>
+            <outgoing>id-86</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-53">
+            <outgoing>id-95</outgoing>
+        </startEvent>
+        <endEvent id="id-54">
+            <incoming>id-96</incoming>
+        </endEvent>
+        <endEvent id="id-55">
+            <incoming>id-97</incoming>
+        </endEvent>
+        <endEvent id="id-56">
+            <incoming>id-98</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-57"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-58"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-59"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-60"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-61"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-62"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-20" name="" id="id-63"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-21" name="" id="id-64"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-22" name="" id="id-65"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-23" name="" id="id-66"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-67"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-25" name="" id="id-68"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-26" name="" id="id-69"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-27" name="" id="id-70"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-28" name="" id="id-71"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-29" name="" id="id-72"/>
+        <sequenceFlow sourceRef="id-30" targetRef="id-31" name="" id="id-73"/>
+        <sequenceFlow sourceRef="id-31" targetRef="id-49" name="" id="id-74"/>
+        <sequenceFlow sourceRef="id-33" targetRef="id-34" name="" id="id-75"/>
+        <sequenceFlow sourceRef="id-35" targetRef="id-36" name="" id="id-76"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-37" name="" id="id-77"/>
+        <sequenceFlow sourceRef="id-37" targetRef="id-38" name="" id="id-78"/>
+        <sequenceFlow sourceRef="id-38" targetRef="id-39" name="" id="id-79"/>
+        <sequenceFlow sourceRef="id-39" targetRef="id-40" name="" id="id-80"/>
+        <sequenceFlow sourceRef="id-40" targetRef="id-41" name="" id="id-81"/>
+        <sequenceFlow sourceRef="id-41" targetRef="id-50" name="" id="id-82"/>
+        <sequenceFlow sourceRef="id-51" targetRef="id-43" name="" id="id-83"/>
+        <sequenceFlow sourceRef="id-42" targetRef="id-51" name="" id="id-84"/>
+        <sequenceFlow sourceRef="id-43" targetRef="id-52" name="" id="id-85"/>
+        <sequenceFlow sourceRef="id-52" targetRef="id-30" name="" id="id-86"/>
+        <sequenceFlow sourceRef="id-44" targetRef="id-45" name="" id="id-87"/>
+        <sequenceFlow sourceRef="id-45" targetRef="id-46" name="" id="id-88"/>
+        <sequenceFlow sourceRef="id-46" targetRef="id-47" name="" id="id-89"/>
+        <sequenceFlow sourceRef="id-47" targetRef="id-48" name="" id="id-90"/>
+        <sequenceFlow sourceRef="id-32" targetRef="id-33" name="" id="id-91"/>
+        <sequenceFlow sourceRef="id-34" targetRef="id-35" name="" id="id-92"/>
+        <sequenceFlow sourceRef="id-51" targetRef="id-44" name="" id="id-93"/>
+        <sequenceFlow sourceRef="id-29" targetRef="id-52" name="" id="id-94"/>
+        <sequenceFlow sourceRef="id-53" targetRef="id-13" name="" id="id-95"/>
+        <sequenceFlow sourceRef="id-48" targetRef="id-54" name="" id="id-96"/>
+        <sequenceFlow sourceRef="id-49" targetRef="id-55" name="" id="id-97"/>
+        <sequenceFlow sourceRef="id-50" targetRef="id-56" name="" id="id-98"/>
+        <sequenceFlow sourceRef="id-49" targetRef="id-32" name="inconsistencies  " id="id-99"/>
+        <sequenceFlow sourceRef="id-50" targetRef="id-42" name="the bill amount exceeds 20,000 eur " id="id-100"/>
+    </process>
+    <process name="first cost center manager" id="id-7">
+        <laneSet name="first cost center manager" id="id-8"/>
+    </process>
+    <process name="cost center managers" id="id-9">
+        <laneSet name="cost center managers" id="id-10"/>
+    </process>
+    <process name="cost" id="id-11">
+        <laneSet name="cost" id="id-12"/>
+    </process>
+</definitions>

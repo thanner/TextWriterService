@@ -1,0 +1,300 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "2:30 pm"
+        },
+        {
+          "id": "id-3",
+          "name": "4:00 pm"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-4",
+      "name": "customers"
+    },
+    {
+      "id": "id-6",
+      "name": "management"
+    },
+    {
+      "id": "id-8",
+      "name": "supervisor"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the 2:30 pm checks a morning to see whether the \"account defaulter\" table has new records.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 113,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-29",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it backs up the morning.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 29,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-2",
+            "processElementId": "id-24",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If required, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 60,
+            "resourceId": "id-2",
+            "processElementId": "id-24",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the first procedure, the 2:30 pm registers the defaulting accounts and then registers the customers.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 69,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 79,
+            "endIndex": 102,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the 2:30 pm produces the table.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 55,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the 2:30 pm defaults the accounts and then sends to the account management.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 46,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 56,
+            "endIndex": 87,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "id-25",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, it accounts the management.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 40,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the 2:30 pm completes the all of the this.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 60,
+            "resourceId": "id-2",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "id-2",
+            "processElementId": "id-26",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, the 2:30 pm sends the alert to the supervisor.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 57,
+            "resourceId": "id-2",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the 2:30 pm checks the crm system to see whether new returns have been filed and then completes the account report.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 101,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 111,
+            "endIndex": 139,
+            "resourceId": "id-2",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, if required, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 74,
+            "resourceId": "id-3",
+            "processElementId": "id-28",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-2",
+            "processElementId": "id-27",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the 4:00 pm sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 51,
+            "resourceId": "id-3",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the 4:00 pm completes the this.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 55,
+            "resourceId": "id-3",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "mail processing unit"
+        },
+        {
+          "id": "id-3",
+          "name": "registry"
+        },
+        {
+          "id": "id-4",
+          "name": "assistant registry manager"
+        },
+        {
+          "id": "id-5",
+          "name": "cashier"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-6",
+      "name": "party"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the mail processing unit collects a mail.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 64,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-27",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it clerks the sorts into the various business areas and then distributes the mail.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 87,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the registry receives the mail and then opens the mail.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 42,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 52,
+            "endIndex": 66,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it sorts the mail into the groups and then the assistant registry manager performs a quality check.",
+        "snippetList": [
+          {
+            "startIndex": 57,
+            "endIndex": 112,
+            "resourceId": "id-4",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 47,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "id-4",
+            "processElementId": "id-23",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the assistant registry manager captures the matter details and then provides the matter details to the cashier.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 82,
+            "resourceId": "id-4",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 92,
+            "endIndex": 134,
+            "resourceId": "id-4",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the assistant registry manager explains the reason for the rejection.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 93,
+            "resourceId": "id-4",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the assistant registry manager puts the receipt into the an envelope and then puts the copied documents into the an envelope.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 81,
+            "resourceId": "id-4",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 91,
+            "endIndex": 137,
+            "resourceId": "id-4",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-4",
+            "processElementId": "id-24",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-4",
+            "processElementId": "id-25",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The cashier captures the party details.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 38,
+            "resourceId": "id-5",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the assistant registry manager posts the envelope to the party.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 79,
+            "resourceId": "id-4",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the cashier prints the physical court file.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 59,
+            "resourceId": "id-5",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "id-5",
+            "processElementId": "id-26",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-5",
+            "processElementId": "id-28",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

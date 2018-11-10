@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="mpon" id="id-2">
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-12</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+                <flowNodeRef>id-16</flowNodeRef>
+                <flowNodeRef>id-17</flowNodeRef>
+                <flowNodeRef>id-18</flowNodeRef>
+                <flowNodeRef>id-19</flowNodeRef>
+                <flowNodeRef>id-23</flowNodeRef>
+                <flowNodeRef>id-24</flowNodeRef>
+                <flowNodeRef>id-25</flowNodeRef>
+                <flowNodeRef>id-26</flowNodeRef>
+                <flowNodeRef>id-27</flowNodeRef>
+            </lane>
+            <lane name="mpoo" id="id-3">
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-11</flowNodeRef>
+                <flowNodeRef>id-13</flowNodeRef>
+                <flowNodeRef>id-15</flowNodeRef>
+                <flowNodeRef>id-21</flowNodeRef>
+                <flowNodeRef>id-22</flowNodeRef>
+            </lane>
+            <lane name="go" id="id-4">
+                <flowNodeRef>id-20</flowNodeRef>
+                <flowNodeRef>id-28</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="notify the mpoo about equipment change intentions" id="id-9">
+            <incoming>id-49</incoming>
+            <outgoing>id-31</outgoing>
+        </task>
+        <task name="announce self" id="id-10">
+            <incoming>id-29</incoming>
+            <outgoing>id-32</outgoing>
+        </task>
+        <task name="notify the mpon about no self-dismounting of the mpoo" id="id-11">
+            <incoming>id-30</incoming>
+            <outgoing>id-33</outgoing>
+        </task>
+        <task name="perform the final reading" id="id-12">
+            <incoming>id-34</incoming>
+            <outgoing>id-36</outgoing>
+        </task>
+        <task name="perform the final reading" id="id-13">
+            <incoming>id-35</incoming>
+            <outgoing>id-37</outgoing>
+        </task>
+        <task name="dismount the old equipment" id="id-14">
+            <incoming>id-38</incoming>
+            <outgoing>id-40</outgoing>
+        </task>
+        <task name="dismount the old equipment" id="id-15">
+            <incoming>id-39</incoming>
+            <outgoing>id-41</outgoing>
+        </task>
+        <task name="mount the new device" id="id-16">
+            <incoming>id-48</incoming>
+            <outgoing>id-42</outgoing>
+        </task>
+        <task name="read the meter count" id="id-17">
+            <incoming>id-42</incoming>
+            <outgoing>id-43</outgoing>
+        </task>
+        <task name="send the values of the final reading" id="id-18">
+            <incoming>id-43</incoming>
+            <outgoing>id-44</outgoing>
+        </task>
+        <task name="tell the go about the device changes" id="id-19">
+            <incoming>id-44</incoming>
+            <outgoing>id-45</outgoing>
+        </task>
+        <task name="notify the msp about the device changes" id="id-20">
+            <incoming>id-45</incoming>
+            <outgoing>id-50</outgoing>
+        </task>
+        <exclusiveGateway id="id-21">
+            <incoming>id-31</incoming>
+            <outgoing>id-29</outgoing>
+            <outgoing>id-30</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-22">
+            <incoming>id-32</incoming>
+            <incoming>id-33</incoming>
+            <outgoing>id-46</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-23">
+            <incoming>id-46</incoming>
+            <outgoing>id-34</outgoing>
+            <outgoing>id-35</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-24">
+            <incoming>id-36</incoming>
+            <incoming>id-37</incoming>
+            <outgoing>id-47</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-25">
+            <incoming>id-47</incoming>
+            <outgoing>id-38</outgoing>
+            <outgoing>id-39</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-26">
+            <incoming>id-40</incoming>
+            <incoming>id-41</incoming>
+            <outgoing>id-48</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-27">
+            <outgoing>id-49</outgoing>
+        </startEvent>
+        <endEvent id="id-28">
+            <incoming>id-50</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-21" targetRef="id-10" name="" id="id-29"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-11" name="" id="id-30"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-21" name="" id="id-31"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-22" name="" id="id-32"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-22" name="" id="id-33"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-12" name="" id="id-34"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-13" name="" id="id-35"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-24" name="" id="id-36"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-24" name="" id="id-37"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-14" name="" id="id-38"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-15" name="" id="id-39"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-26" name="" id="id-40"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-26" name="" id="id-41"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-42"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-43"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-20" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-23" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-25" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-16" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-9" name="" id="id-49"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-28" name="" id="id-50"/>
+    </process>
+    <process name="meter count" id="id-5">
+        <laneSet name="meter count" id="id-6"/>
+    </process>
+    <process name="msp" id="id-7">
+        <laneSet name="msp" id="id-8"/>
+    </process>
+</definitions>

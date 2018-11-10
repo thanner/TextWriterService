@@ -1,0 +1,177 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "functional department"
+        },
+        {
+          "id": "id-3",
+          "name": "number of personnel requirements"
+        },
+        {
+          "id": "id-4",
+          "name": "personnel department"
+        },
+        {
+          "id": "id-5",
+          "name": "corrections"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the functional department heads a functional department.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 79,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it detects a number of the personnel requirements and then the number of personnel requirements reports the vacancy.",
+        "snippetList": [
+          {
+            "startIndex": 65,
+            "endIndex": 121,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 55,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the personnel department waits to get the job description.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 69,
+            "resourceId": "id-4",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "id-4",
+            "processElementId": "id-14",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the corrections approves the job description.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 68,
+            "resourceId": "id-5",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the personnel department asks the again for the corrections.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 84,
+            "resourceId": "id-4",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the corrections happens the that the colleague from the hr department still has questions about the tasks and requirementses the before he can describe the job.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 172,
+            "resourceId": "id-5",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-15",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the corrections conducts the corrections is available.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 59,
+            "resourceId": "id-5",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-5",
+            "processElementId": "id-17",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

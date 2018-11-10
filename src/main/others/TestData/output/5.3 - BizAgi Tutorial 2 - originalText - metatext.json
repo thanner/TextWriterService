@@ -1,0 +1,356 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "employee of the organization"
+        },
+        {
+          "id": "id-3",
+          "name": "immediate supervisor of the employee"
+        },
+        {
+          "id": "id-4",
+          "name": "supervisor"
+        },
+        {
+          "id": "id-5",
+          "name": "purchase department"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-6",
+      "name": "vendor"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the employee of the organization submits an office supply request.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 89,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-33",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it registers the requirement and then the immediate supervisor of the employee receives the request to request the office supplies.",
+        "snippetList": [
+          {
+            "startIndex": 44,
+            "endIndex": 136,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 34,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-4",
+            "processElementId": "id-28",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the supervisor asks the request.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 55,
+            "resourceId": "id-4",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, if required, the supervisor returns the request to the petitioner\\/employee.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 89,
+            "resourceId": "id-4",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-4",
+            "processElementId": "id-29",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the supervisor approves the request and then goes the quotations to the purchase department.",
+        "snippetList": [
+          {
+            "startIndex": 70,
+            "endIndex": 116,
+            "resourceId": "id-4",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 60,
+            "resourceId": "id-4",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, he selects a vendor.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 25,
+            "resourceId": "id-4",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the purchase department chooses a different vendor.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 75,
+            "resourceId": "id-5",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "id-4",
+            "processElementId": "id-30",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the purchase department selects a vendor and then confirms a vendor.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 54,
+            "resourceId": "id-5",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 81,
+            "resourceId": "id-5",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, it generates a purchase order and then sends a purchase order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 35,
+            "resourceId": "id-5",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 45,
+            "endIndex": 67,
+            "resourceId": "id-5",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the to be deliver and then receives.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 41,
+            "resourceId": "id-5",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 51,
+            "endIndex": 59,
+            "resourceId": "id-5",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it sends a notification to let what the result was in case.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 72,
+            "resourceId": "id-5",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "id-5",
+            "processElementId": "id-31",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the purchase department requires.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "id-5",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the purchase department requires.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 57,
+            "resourceId": "id-5",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the third procedure, the purchase department requires.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "id-5",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the purchase department sends a notification.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 57,
+            "resourceId": "id-5",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-5",
+            "processElementId": "id-32",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "acme ag"
+        },
+        {
+          "id": "id-3",
+          "name": "secretariat"
+        },
+        {
+          "id": "id-4",
+          "name": "cost center manager"
+        },
+        {
+          "id": "id-5",
+          "name": "board"
+        },
+        {
+          "id": "id-6",
+          "name": "accounting employee"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-7",
+      "name": "first cost center manager"
+    },
+    {
+      "id": "id-9",
+      "name": "cost center managers"
+    },
+    {
+      "id": "id-11",
+      "name": "cost"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the acme ag receives the invoices.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 57,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-53",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the secretariat receives the invoices in the central inbox and then forwards the invoices to the an accounting employee.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 64,
+            "resourceId": "id-3",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 74,
+            "endIndex": 125,
+            "resourceId": "id-3",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it identifies the charging suppliers in acme financial accounting and then creates a new instance.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 77,
+            "resourceId": "id-3",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 87,
+            "endIndex": 109,
+            "resourceId": "id-3",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it checks the invoice items and then checks the notes.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 41,
+            "resourceId": "id-3",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 51,
+            "endIndex": 67,
+            "resourceId": "id-3",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it goes the docket to the internal mail and then goes the copy of invoice to internal mail.",
+        "snippetList": [
+          {
+            "startIndex": 55,
+            "endIndex": 96,
+            "resourceId": "id-3",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "id-3",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it sends the docket to the first cost center manager to list and then sends the copy of invoice to first cost center manager to list.",
+        "snippetList": [
+          {
+            "startIndex": 82,
+            "endIndex": 144,
+            "resourceId": "id-3",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 72,
+            "resourceId": "id-3",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it reviews the content and then receives the copy of the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 46,
+            "endIndex": 78,
+            "resourceId": "id-3",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 36,
+            "resourceId": "id-3",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts the everything should be in order and then notes the code one.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 51,
+            "resourceId": "id-3",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 61,
+            "endIndex": 79,
+            "resourceId": "id-3",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it returns the copy of invoice to internal mail and then passes on the to the next cost center manager based on the docket.",
+        "snippetList": [
+          {
+            "startIndex": 69,
+            "endIndex": 134,
+            "resourceId": "id-3",
+            "processElementId": "id-29",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "id-3",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the following alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 69,
+            "resourceId": "id-3",
+            "processElementId": "id-52",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}
