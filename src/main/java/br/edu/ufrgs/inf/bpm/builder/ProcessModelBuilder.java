@@ -77,21 +77,7 @@ public class ProcessModelBuilder {
                 }
             }
 
-            //System.out.println("Antes ================");
-            //processModel.print();
-
             removeExternalPathInitiators(process, processModel);
-        }
-
-        System.out.println();
-        System.out.println("Depois");
-        processModel.print();
-
-        System.out.println();
-        System.out.println("Depois alter");
-        for (HashMap.Entry<Integer, ProcessModel> p : processModel.getAlternativePaths().entrySet()) {
-            p.getValue().print();
-            System.out.println();
         }
 
         connectSubprocess(processModel);

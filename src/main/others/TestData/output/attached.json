@@ -90,13 +90,13 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 1 does the activity 4.",
+        "value": "In the first procedure, the Resource 1 does the activity 3.",
         "snippetList": [
           {
             "startIndex": 24,
             "endIndex": 58,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1tbfbx8",
+            "processElementId": "Task_13u69t8",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -104,13 +104,13 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 1 does the activity 3.",
+        "value": "In the second procedure, the Resource 1 does the activity 4.",
         "snippetList": [
           {
             "startIndex": 25,
             "endIndex": 59,
             "resourceId": "Lane 1",
-            "processElementId": "Task_13u69t8",
+            "processElementId": "Task_1tbfbx8",
             "processElementType": "ACTIVITY"
           }
         ],
