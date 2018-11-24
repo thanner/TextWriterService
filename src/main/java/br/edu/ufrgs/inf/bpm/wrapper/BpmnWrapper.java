@@ -47,20 +47,36 @@ public class BpmnWrapper {
     public TProcess getProcessByFlowElement(TFlowElement tFlowElement) {
         List<TProcess> processList = getProcessList();
         for (TProcess process : processList) {
-            for (TLaneSet laneSet : process.getLaneSet()) {
-                for (TLane lane : laneSet.getLane()) {
-                    for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
-                        if (flowNodeRefObject.getValue() instanceof TFlowNode) {
-                            TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
-                            if (tFlowElement.getId().equals(flowNodeAux.getId())) {
-                                return process;
-                            }
-                        }
+            for (JAXBElement<? extends TFlowElement> jaxbElement : process.getFlowElement()) {
+                TFlowElement flowElementAux = jaxbElement.getValue();
+                if (tFlowElement.getId().equals(flowElementAux.getId())) {
+                    return process;
+                }
+
+                if (flowElementAux instanceof TSubProcess) {
+                    if (subProcessContainsElement((TSubProcess) flowElementAux, tFlowElement)) {
+                        return process;
                     }
                 }
             }
         }
         return null;
+    }
+
+    private boolean subProcessContainsElement(TSubProcess tSubProcess, TFlowElement tFlowElement) {
+        for (JAXBElement<? extends TFlowElement> jaxbElement : tSubProcess.getFlowElement()) {
+            TFlowElement tFlowElementAux = jaxbElement.getValue();
+            if (tFlowElementAux.getId().equals(tFlowElement.getId())) {
+                return true;
+            }
+
+            if (tFlowElementAux instanceof TSubProcess) {
+                if (subProcessContainsElement((TSubProcess) tFlowElementAux, tFlowElement)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public TLane getLaneByFlowElement(TFlowElement tFlowElement) {
@@ -114,11 +130,17 @@ public class BpmnWrapper {
                     return tLane;
                 }
 
-                for (JAXBElement<Object> flowNodeRefObject : lane.getFlowNodeRef()) {
-                    if (flowNodeRefObject.getValue() instanceof TFlowNode) {
-                        TFlowNode flowNodeAux = (TFlowNode) flowNodeRefObject.getValue();
-                        if (tFlowElement.getId().equals(flowNodeAux.getId())) {
+                for (JAXBElement<Object> jaxbElement : lane.getFlowNodeRef()) {
+                    if (jaxbElement.getValue() instanceof TFlowElement) {
+                        TFlowElement flowElementAux = (TFlowElement) jaxbElement.getValue();
+                        if (tFlowElement.getId().equals(flowElementAux.getId())) {
                             return lane;
+                        }
+
+                        if (flowElementAux instanceof TSubProcess) {
+                            if (subProcessContainsElement((TSubProcess) flowElementAux, tFlowElement)) {
+                                return lane;
+                            }
                         }
                     }
                 }
@@ -435,6 +457,19 @@ public class BpmnWrapper {
 
     public TDefinitions getDefinitions() {
         return this.definitions;
+    }
+
+    public TActivity getTActivityAttached(TProcess process, String tActivityId) {
+        TActivity tActivity;
+        for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
+            if (flowElement.getValue() instanceof TActivity) {
+                tActivity = (TActivity) flowElement.getValue();
+                if (tActivity.getId().equals(tActivityId)) {
+                    return tActivity;
+                }
+            }
+        }
+        return null;
     }
 
 }

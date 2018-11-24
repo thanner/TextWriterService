@@ -81,7 +81,7 @@ public class DiscourseMarker {
         if (index > 0) {
             ExecutableFragment currentExecutableFragment = textPlan.get(index).getExecutableFragment();
             ExecutableFragment previousExecutableFragment = textPlan.get(index - 1).getExecutableFragment();
-            return currentExecutableFragment.sen_canAddDiscourseMarker && !currentExecutableFragment.sen_hasConnective && !previousExecutableFragment.isSentenceStartDecision;
+            return currentExecutableFragment.sen_canAddDiscourseMarker && !currentExecutableFragment.sen_hasConnective && !previousExecutableFragment.isSentenceStartDecision && !previousExecutableFragment.isIndividualSentence;
         }
         return false;
     }

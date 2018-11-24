@@ -28,8 +28,10 @@ public class BpmnPreProcessor {
         verifySequenceFlowsWithoutElements();
         adjustPools();
         adjustLanes();
+
         adjustStartEvents();
         adjustEndEvents();
+
         adjustActivityLabel();
     }
 
@@ -194,7 +196,7 @@ public class BpmnPreProcessor {
     private void adjustFlowNodeswithoutIncoming(TProcess tProcess) {
         List<TFlowNode> tFlowNodeWithoutIncoming = bpmnWrapper.getFlowNodesWithoutIncoming(tProcess);
         for (TFlowNode tFlowNode : tFlowNodeWithoutIncoming) {
-            if (!(tFlowNode instanceof TStartEvent)) {
+            if (!(tFlowNode instanceof TStartEvent) && !(tFlowNode instanceof TBoundaryEvent)) {
                 TStartEvent tStartEvent = createStartEvent(tProcess, bpmnWrapper.getLaneByFlowElement(tFlowNode));
                 createSequenceFlow(tStartEvent, tFlowNode, tProcess);
             }

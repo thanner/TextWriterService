@@ -56,7 +56,7 @@ public class SentenceAggregator {
                         !currentData.getFragment().sen_hasConnective && !previousData.getFragment().sen_hasConnective &&
                         currentData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN) &&
                         previousData.getdSynTSentence().getdSynTSentenceType().equals(DSynTSentenceType.MAIN) &&
-                        !previousData.getFragment().isJoinSentence;
+                        !previousData.getFragment().isJoinSentence && !previousData.getFragment().isIndividualSentence;
     }
 
 }

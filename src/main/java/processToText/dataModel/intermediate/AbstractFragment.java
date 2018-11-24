@@ -54,9 +54,10 @@ public abstract class AbstractFragment {
 
     public boolean sen_canAddDiscourseMarker = true;
 
-    public boolean isJoinSentence = false;
     public boolean isRigidPath = false;
     public boolean isSentenceStartDecision = false;
+    public boolean isJoinSentence = false;
+    public boolean isIndividualSentence = false;
     public boolean skip = false;
     public boolean isLoop = false;
 

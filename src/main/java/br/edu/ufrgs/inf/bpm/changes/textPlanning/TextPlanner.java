@@ -1233,7 +1233,7 @@ public class TextPlanner {
         }
 
         // Adjust level and add to sentence plan (first sentence not indented)
-        if (convRecord != null && convRecord.hasPreStatements() == true) {
+        if (convRecord != null && convRecord.hasPreStatements()) {
             for (int i = 0; i < convRecord.preStatements.size(); i++) {
 
                 DSynTSentence sen = convRecord.preStatements.get(i);
@@ -1243,7 +1243,7 @@ public class TextPlanner {
                     sen.getExecutableFragment().sen_level = level;
                 }
 
-                if (isTagWithBullet == true) {
+                if (isTagWithBullet) {
                     sen.getExecutableFragment().sen_hasBullet = true;
                     sen.getExecutableFragment().sen_level = level;
                     isTagWithBullet = false;

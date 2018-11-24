@@ -1,0 +1,151 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 does an activity 1.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0k8vo4q",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it does the steps 1.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 25,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0jjo8we",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "processElementId": "StartEvent_0ofin5g",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 does the activity 2 and then does the steps 2.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 34,
+            "processElementId": "Task_1buarre",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 44,
+            "endIndex": 60,
+            "processElementId": "Task_0u5kbe6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "processElementId": "StartEvent_1akil44",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 does the activity 3.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 34,
+            "processElementId": "Task_1gq6lna",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 38,
+            "processElementId": "EndEvent_0q9w3gp",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 40,
+            "processElementId": "EndEvent_16pw3vc",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_1q5vcrz",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -856,6 +856,7 @@ public class TextToIntermediateConverter {
         eFrag.bo_hasArticle = true;
         eFrag.add_hasArticle = false;
         eFrag.sen_hasBullet = true;
+        eFrag.isIndividualSentence = true;
         return getEventSentence(eFrag);
     }
 

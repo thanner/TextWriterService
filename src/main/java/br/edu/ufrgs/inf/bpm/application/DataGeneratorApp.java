@@ -30,10 +30,12 @@ public class DataGeneratorApp {
         getInputFiles();
         ApplicationStarter.startApplication();
 
+        /*
         File folder = new File(Paths.LocalOthersPath + Paths.dataInputPath);
         for (File fileEntry : folder.listFiles()) {
             generateData(fileEntry, true);
         }
+        */
 
         // Gera um gateway fora do processo (erro do textreader)
         // File file = new File("src/main/others/TestData/input/10.2 - Process B3 - originalText - process.bpmn");
@@ -43,10 +45,10 @@ public class DataGeneratorApp {
         //File file = new File("src/main/others/TestData/input/2.1 - SLA Violation - originalText - process.bpmn");
         //generateData(file, false);
 
-        /*
-        File file = new File("src/main/others/TestData/xor.bpmn");
+        File file = new File("src/main/others/TestData/attached.bpmn");
         generateData(file, false);
 
+        /*
         file = new File("src/main/others/TestData/xorAnd.bpmn");
         generateData(file, false);
 

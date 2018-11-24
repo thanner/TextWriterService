@@ -24,7 +24,7 @@ public class ProcessModelBuilder {
     private Map<String, Arc> tArcMap;
     private Map<Integer, Arc> arcMap;
 
-    private BpmnWrapper processModelWrapper;
+    private BpmnWrapper bpmnWrapper;
     private Map<Integer, Integer> externalPathInitiators;
 
     public ProcessModelBuilder() {
@@ -41,12 +41,12 @@ public class ProcessModelBuilder {
     }
 
     public ProcessModel buildProcess(TDefinitions definitions) {
-        processModelWrapper = new BpmnWrapper(definitions);
+        bpmnWrapper = new BpmnWrapper(definitions);
 
         int newId = generateModelId("ProcessModel1");
         ProcessModel processModel = new ProcessModel(newId, "Process Model");
 
-        List<TProcess> processList = processModelWrapper.getProcessList();
+        List<TProcess> processList = bpmnWrapper.getProcessList();
 
         for (TProcess process : processList) {
 
@@ -57,11 +57,11 @@ public class ProcessModelBuilder {
 
             for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
                 if (flowElement.getValue() instanceof TActivity) {
-                    processModel.addActivity(createActivity((TActivity) flowElement.getValue(), processModel));
+                    processModel.addActivity(createActivity((TActivity) flowElement.getValue(), processModel, null));
                 } else if (flowElement.getValue() instanceof TEvent) {
-                    processModel.addEvent(createEvent((TEvent) flowElement.getValue()));
+                    processModel.addEvent(createEvent((TEvent) flowElement.getValue(), null));
                 } else if (flowElement.getValue() instanceof TGateway) {
-                    processModel.addGateway(createGateway((TGateway) flowElement.getValue()));
+                    processModel.addGateway(createGateway((TGateway) flowElement.getValue(), null));
                 }
             }
 
@@ -77,15 +77,30 @@ public class ProcessModelBuilder {
                 }
             }
 
+            //System.out.println("Antes ================");
+            //processModel.print();
+
             removeExternalPathInitiators(process, processModel);
         }
 
+        System.out.println();
+        System.out.println("Depois");
+        processModel.print();
+
+        System.out.println();
+        System.out.println("Depois alter");
+        for (HashMap.Entry<Integer, ProcessModel> p : processModel.getAlternativePaths().entrySet()) {
+            p.getValue().print();
+            System.out.println();
+        }
+
+        connectSubprocess(processModel);
         return processModel;
     }
 
     private String createPool(TProcess process) {
         int newId = generateModelId(process.getId());
-        Pool modelPool = new Pool(newId, processModelWrapper.getProcessName(process));
+        Pool modelPool = new Pool(newId, bpmnWrapper.getProcessName(process));
         poolMap.put(process.getId(), modelPool);
         return modelPool.getName();
     }
@@ -106,15 +121,21 @@ public class ProcessModelBuilder {
         return modelLane.getName();
     }
 
-    private Activity createActivity(TActivity activity, ProcessModel processModel) {
+    private Activity createActivity(TActivity activity, ProcessModel processModel, TSubProcess tSubProcess) {
         try {
             int newId = generateModelId(activity.getId());
             int activityType = getActivityType(activity);
             Activity modelActivity = new Activity(newId, getName(activity.getName()), getLaneByObject(activity), getPoolByObject(activity), activityType);
             elementMap.put(activity.getId(), modelActivity);
-            if (activity instanceof TSubProcess) {
-                createSubProcessElements((TSubProcess) activity, modelActivity, processModel);
+
+            if (tSubProcess != null) {
+                modelActivity.setSubProcessID(elementMap.get(tSubProcess.getId()).getId());
             }
+
+            if (activity instanceof TSubProcess) {
+                createSubProcessElements((TSubProcess) activity, processModel);
+            }
+
             return modelActivity;
         } catch (IllegalArgumentException i) {
             i.printStackTrace();
@@ -122,23 +143,14 @@ public class ProcessModelBuilder {
         return null;
     }
 
-    // TODO: Todos os elementos dentro dele vão receber subprocessId
-    private void createSubProcessElements(TSubProcess tSubProcess, Activity activityModel, ProcessModel processModel) {
-        System.out.println();
-        /*
-        for (TLaneSet laneSet : tSubProcess.getLaneSet()) {
-            for (TLane lane : laneSet.getLane()) {
-                processModel.addLane(createLane(lane, tSubProcess));
-            }
-        }
-
+    private void createSubProcessElements(TSubProcess tSubProcess, ProcessModel processModel) {
         for (JAXBElement<? extends TFlowElement> flowElement : tSubProcess.getFlowElement()) {
             if (flowElement.getValue() instanceof TActivity) {
-                processModel.addActivity(createActivity((TActivity) flowElement.getValue(), processModel));
+                processModel.addActivity(createActivity((TActivity) flowElement.getValue(), processModel, tSubProcess));
             } else if (flowElement.getValue() instanceof TEvent) {
-                processModel.addEvent(createEvent((TEvent) flowElement.getValue()));
+                processModel.addEvent(createEvent((TEvent) flowElement.getValue(), tSubProcess));
             } else if (flowElement.getValue() instanceof TGateway) {
-                processModel.addGateway(createGateway((TGateway) flowElement.getValue()));
+                processModel.addGateway(createGateway((TGateway) flowElement.getValue(), tSubProcess));
             }
         }
 
@@ -148,22 +160,24 @@ public class ProcessModelBuilder {
             }
         }
 
+        /*
         for (JAXBElement<? extends TFlowElement> flowElement : tSubProcess.getFlowElement()) {
             if (flowElement.getValue() instanceof TBoundaryEvent) {
                 attachEvent(tSubProcess, processModel, (TBoundaryEvent) flowElement.getValue());
             }
         }
-
-        removeExternalPathInitiators(tSubProcess, processModel);
         */
     }
 
-    private Event createEvent(TEvent event) {
+    private Event createEvent(TEvent event, TSubProcess tSubProcess) {
         try {
             int newId = generateModelId(event.getId());
             int eventType = getEventType(event);
             Event modelEvent = new Event(newId, getName(event.getName()), getLaneByObject(event), getPoolByObject(event), eventType);
             elementMap.put(event.getId(), modelEvent);
+            if (tSubProcess != null) {
+                modelEvent.setSubProcessID(elementMap.get(tSubProcess.getId()).getId());
+            }
             return modelEvent;
         } catch (IllegalArgumentException i) {
             i.printStackTrace();
@@ -171,12 +185,15 @@ public class ProcessModelBuilder {
         return null;
     }
 
-    private Gateway createGateway(TGateway gateway) {
+    private Gateway createGateway(TGateway gateway, TSubProcess tSubProcess) {
         try {
             int newId = generateModelId(gateway.getId());
             int gatewayType = getGatewayType(gateway);
             Gateway modelGateway = new Gateway(newId, getName(gateway.getName()), getLaneByObject(gateway), getPoolByObject(gateway), gatewayType);
             elementMap.put(gateway.getId(), modelGateway);
+            if (tSubProcess != null) {
+                modelGateway.setSubProcessID(elementMap.get(tSubProcess.getId()).getId());
+            }
             return modelGateway;
         } catch (IllegalArgumentException i) {
             i.printStackTrace();
@@ -194,23 +211,23 @@ public class ProcessModelBuilder {
 
     private void attachEvent(TProcess process, ProcessModel processModel, TBoundaryEvent tBoundaryEvent) {
         String tActivityId = tBoundaryEvent.getAttachedToRef().getLocalPart();
-        Activity activity = (Activity) elementMap.get(tActivityId);
-        Event event = (Event) elementMap.get(tBoundaryEvent.getId());
+        Activity activityWithAttach = (Activity) elementMap.get(tActivityId);
+        Event boundaryEvent = (Event) elementMap.get(tBoundaryEvent.getId());
 
-        activity.addAttachedEvent(event.getId());
-        event.setAttached(true);
-        event.setIsAttachedTo(activity.getId());
+        activityWithAttach.addAttachedEvent(boundaryEvent.getId());
+        boundaryEvent.setAttached(true);
+        boundaryEvent.setIsAttachedTo(activityWithAttach.getId());
 
-        TActivity tActivity = getTActivityAttached(process, tActivityId);
-        if (tActivity != null) {
-            // if (tActivity.getOutgoing().size() > 1) {
+        TActivity tActivityWithAttach = bpmnWrapper.getTActivityAttached(process, tActivityId);
+        if (tActivityWithAttach != null) {
             // Attached event leads to alternative path
-            externalPathInitiators.put(event.getId(), activity.getId());
-            // } else {
+            //if (tBoundaryEvent.getOutgoing().size() > 0) {
+            //    externalPathInitiators.put(boundaryEvent.getId(), activityWithAttach.getId());
             // Attached event goes back to standard path
-            //     Arc arc = new Arc(generateModelId("newArc" + genericId), "", activity, event, "VirtualFlow");
-            //    processModel.addArc(arc);
-            // }
+            //} else {
+            Arc arc = new Arc(generateModelId("newArc" + genericId), "", activityWithAttach, boundaryEvent, "VirtualFlow");
+            processModel.addArc(arc);
+            //}
         }
     }
 
@@ -248,12 +265,12 @@ public class ProcessModelBuilder {
     }
 
     private Pool getPoolByObject(TFlowNode flowNode) {
-        TProcess process = processModelWrapper.getProcessByFlowElement(flowNode);
+        TProcess process = bpmnWrapper.getProcessByFlowElement(flowNode);
         return process != null ? poolMap.get(process.getId()) : null;
     }
 
     private Lane getLaneByObject(TFlowNode flowNode) {
-        TLane lane = processModelWrapper.getInternalLaneByFlowElement(flowNode);
+        TLane lane = bpmnWrapper.getInternalLaneByFlowElement(flowNode);
         return lane != null ? laneMap.get(lane.getId()) : null;
     }
 
@@ -289,19 +306,6 @@ public class ProcessModelBuilder {
         }
     }
 
-    private TActivity getTActivityAttached(TProcess process, String tActivityId) {
-        TActivity tActivity;
-        for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
-            if (flowElement.getValue() instanceof TActivity) {
-                tActivity = (TActivity) flowElement.getValue();
-                if (tActivity.getId().equals(tActivityId)) {
-                    return tActivity;
-                }
-            }
-        }
-        return null;
-    }
-
     private void buildAlternativePathModel(TProcess tProcess, int id, boolean isElement, ProcessModel model, ProcessModel alternative, int exPI) {
         if (isElement) {
             TFlowNode tFlowNode = getTFlowNode(tProcess, id);
@@ -309,24 +313,23 @@ public class ProcessModelBuilder {
                 for (QName qName : tFlowNode.getOutgoing()) {
                     String idOutgoing = qName.getLocalPart();
                     int idArc = tArcMap.get(idOutgoing).getId();
+
                     buildAlternativePathModel(tProcess, idArc, false, model, alternative, exPI);
 
                     Element element = model.getElem(id);
                     if (element != null) {
                         alternative.addElem(element);
-                        // elementMap.remove(id);
                         model.removeElem(id);
+                        //System.out.println("Element 1 reallocated: " + id + " " + element.getLabel() + " --> " + exPI);
                     }
-                    // System.out.println("Elem reallocated: " + id + " " + elem.getLabel() + " --> " + exPI);
                 }
             } else {
                 Element element = model.getElem(id);
                 if (element != null) {
                     alternative.addElem(element);
-                    // elementMap.remove(id);
                     model.removeElem(id);
+                    //System.out.println("Element 2 reallocated: " + id + " " + element.getLabel() + " --> " + exPI);
                 }
-                // System.out.println("Elem reallocated: " + id + " " + elem.getLabel() + " --> " + exPI);
             }
         } else {
             buildAlternativePathModel(tProcess, arcMap.get(id).getTarget().getId(), true, model, alternative, exPI);
@@ -334,10 +337,9 @@ public class ProcessModelBuilder {
             Arc arc = model.getArc(id);
             if (arc != null) {
                 alternative.addArc(arc);
-                //arcMap.remove(id);
                 model.removeArc(id);
+                //System.out.println("Arc reallocated: " + id + " --> " + exPI);
             }
-            // System.out.println("Arc reallocated: " + id + " --> " + exPI);
         }
     }
 
@@ -351,6 +353,48 @@ public class ProcessModelBuilder {
             }
         }
         return null;
+    }
+
+    public void connectSubprocess(ProcessModel model) {
+        // Connect inner of subproess to process model
+        for (processToText.dataModel.process.Activity a : model.getActivites().values()) {
+            if (a.getType() == processToText.dataModel.process.ActivityType.SUBPROCESS) {
+                int subProcesID = a.getId();
+                processToText.dataModel.process.Element out = null;
+                int removeout = -1;
+
+                // Remove arcs from subprocess activity
+                for (processToText.dataModel.process.Arc arc : model.getArcs().values()) {
+                    if (arc.getSource() == a) {
+                        out = arc.getTarget();
+                        removeout = arc.getId();
+                    }
+                }
+                model.removeArc(removeout);
+
+                // Check all activities belonging to subprocess
+                for (processToText.dataModel.process.Event subE : model.getEvents().values()) {
+                    if (subE.getSubProcessID() == subProcesID) {
+                        boolean hasInput = false;
+                        boolean hasOutput = false;
+                        for (processToText.dataModel.process.Arc arc : model.getArcs().values()) {
+                            if (arc.getSource() == subE) {
+                                hasOutput = true;
+                            }
+                            if (arc.getTarget() == subE) {
+                                hasInput = true;
+                            }
+                        }
+                        if (!hasInput) {
+                            model.addArc(new Arc(generateModelId("newArc" + genericId), "", a, subE, "SequenceFlow"));
+                        }
+                        if (!hasOutput) {
+                            model.addArc(new Arc(generateModelId("newArc" + genericId), "", subE, out, "SequenceFlow"));
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

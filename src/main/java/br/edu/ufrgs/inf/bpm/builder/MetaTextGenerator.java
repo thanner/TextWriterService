@@ -153,7 +153,7 @@ public class MetaTextGenerator {
         // Convert to RPST
         FormatConverter formatConverter = new FormatConverter();
         Process p = formatConverter.transformToRPSTFormat(model);
-        RPST<ControlFlow, Node> rpst = new RPST<ControlFlow, Node>(p);
+        RPST<ControlFlow, Node> rpst = new RPST<>(p);
 
         // Check for Rigids
         // boolean containsRigids = PlanningHelper.containsRigid(rpst.getRoot(), 1, rpst);

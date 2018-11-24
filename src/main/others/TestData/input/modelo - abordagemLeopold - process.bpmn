@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process id="id-0">
+        <task name="check the files" id="id-1">
+            <incoming>id-23</incoming>
+            <outgoing>id-13</outgoing>
+        </task>
+        <task name="initiate the search" id="id-2">
+            <incoming>id-22</incoming>
+            <outgoing>id-14</outgoing>
+        </task>
+        <task name="track the physical files" id="id-3">
+            <incoming>id-14</incoming>
+            <outgoing>id-15</outgoing>
+        </task>
+        <task name="split process into parallel 2 branches to the associate" id="id-4">
+            <incoming>id-15</incoming>
+            <outgoing>id-16</outgoing>
+        </task>
+        <task name="distribute lawlist" id="id-5">
+            <incoming>id-16</incoming>
+            <outgoing>id-17</outgoing>
+        </task>
+        <task name="execute 2 branches" id="id-6">
+            <incoming>id-17</incoming>
+            <outgoing>id-18</outgoing>
+        </task>
+        <task name="conduct the directions hearings" id="id-7">
+            <incoming>id-18</incoming>
+            <outgoing>id-19</outgoing>
+        </task>
+        <task name="finish process" id="id-8">
+            <incoming>id-19</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <exclusiveGateway id="id-9">
+            <incoming>id-13</incoming>
+            <outgoing>id-21</outgoing>
+            <outgoing>id-22</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-10">
+            <outgoing>id-23</outgoing>
+        </startEvent>
+        <endEvent id="id-11">
+            <incoming>id-20</incoming>
+        </endEvent>
+        <endEvent id="id-12">
+            <incoming>id-21</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-1" targetRef="id-9" name="" id="id-13"/>
+        <sequenceFlow sourceRef="id-2" targetRef="id-3" name="" id="id-14"/>
+        <sequenceFlow sourceRef="id-3" targetRef="id-4" name="" id="id-15"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-5" name="" id="id-16"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-17"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-18"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-19"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-11" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-12" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-2" name="the files is necessary " id="id-22"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-1" name="" id="id-23"/>
+    </process>
+</definitions>
