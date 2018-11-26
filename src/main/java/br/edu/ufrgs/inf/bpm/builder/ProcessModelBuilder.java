@@ -146,13 +146,11 @@ public class ProcessModelBuilder {
             }
         }
 
-        /*
         for (JAXBElement<? extends TFlowElement> flowElement : tSubProcess.getFlowElement()) {
             if (flowElement.getValue() instanceof TBoundaryEvent) {
-                attachEvent(tSubProcess, processModel, (TBoundaryEvent) flowElement.getValue());
+                attachEvent(bpmnWrapper.getProcessByFlowElement(tSubProcess), processModel, (TBoundaryEvent) flowElement.getValue());
             }
         }
-        */
     }
 
     private Event createEvent(TEvent event, TSubProcess tSubProcess) {

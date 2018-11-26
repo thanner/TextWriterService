@@ -187,9 +187,6 @@ public class TextPlanner {
         }
     }
 
-    // TODO: Próximo elemento é um gateway? (ver método isFollowedByGateway)
-    // TODO: 1) int currentPosition = orderedTopNodes.indexOf(node);
-    // TODO: 2) PlanningHelper.isBond(orderedTopNodes.get(currentPosition + 1);
     private boolean isNextElementAJoin(ConditionFragment conditionFragment) {
         TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(conditionFragment.getProcessElementId());
         if (tFlowElement instanceof TFlowNode) {

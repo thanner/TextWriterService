@@ -45,7 +45,7 @@ public class DataGeneratorApp {
         //File file = new File("src/main/others/TestData/input/2.1 - SLA Violation - originalText - process.bpmn");
         //generateData(file, false);
 
-        File file = new File("src/main/others/TestData/attached.bpmn");
+        File file = new File("src/main/others/TestData/sese22.bpmn");
         generateData(file, false);
 
         /*

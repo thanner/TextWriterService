@@ -1,0 +1,200 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent 3",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 does the activity 3.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0v0hhfn",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 does the activity 1 and then does the unlabeled subprocess (id: task 1esgdpz).",
+        "snippetList": [
+          {
+            "startIndex": 69,
+            "endIndex": 117,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1esgdpz",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0g9ac84",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent 2",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "One of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 does the activity 2.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1bczj7n",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the first procedure, the Resource 1 does the unlabeled task (id: task 19jaua8).",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 81,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_19jaua8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 4,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 does the activity 4.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0hqkw9u",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 4,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 5",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 4",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 4",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}
