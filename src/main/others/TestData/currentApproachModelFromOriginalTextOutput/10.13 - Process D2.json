@@ -1,0 +1,92 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "inq"
+        },
+        {
+          "id": "id-3",
+          "name": "ip"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the inq transmits a transaction.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 55,
+            "resourceId": "id-2",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it checks the request of the inq and then the ip answers the question of the inq.",
+        "snippetList": [
+          {
+            "startIndex": 48,
+            "endIndex": 86,
+            "resourceId": "id-3",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 38,
+            "resourceId": "id-2",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the ip finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 39,
+            "resourceId": "id-3",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

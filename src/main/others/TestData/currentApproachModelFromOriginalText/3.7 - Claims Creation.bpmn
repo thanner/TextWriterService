@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="claims handler" id="id-2">
+                <flowNodeRef>id-6</flowNodeRef>
+                <flowNodeRef>id-7</flowNodeRef>
+                <flowNodeRef>id-8</flowNodeRef>
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-13</flowNodeRef>
+            </lane>
+            <lane name="claims manager" id="id-3">
+                <flowNodeRef>id-10</flowNodeRef>
+                <flowNodeRef>id-11</flowNodeRef>
+                <flowNodeRef>id-12</flowNodeRef>
+                <flowNodeRef>id-14</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="search a police report related to the car accident" id="id-6">
+            <incoming>id-21</incoming>
+            <outgoing>id-15</outgoing>
+        </task>
+        <task name="put the police report related to the car accident in a file together with claim documentation" id="id-7">
+            <incoming>id-15</incoming>
+            <outgoing>id-16</outgoing>
+        </task>
+        <task name="serve an initial claim as input estimate" id="id-8">
+            <incoming>id-16</incoming>
+            <outgoing>id-17</outgoing>
+        </task>
+        <task name="create the available plan system" id="id-9">
+            <incoming>id-17</incoming>
+            <outgoing>id-18</outgoing>
+        </task>
+        <task name="try to negotiate a settlement" id="id-10">
+            <incoming>id-18</incoming>
+            <outgoing>id-19</outgoing>
+        </task>
+        <task name="inform the claimant" id="id-11">
+            <incoming>id-19</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <task name="finish the process" id="id-12">
+            <incoming>id-20</incoming>
+            <outgoing>id-22</outgoing>
+        </task>
+        <startEvent id="id-13">
+            <outgoing>id-21</outgoing>
+        </startEvent>
+        <endEvent id="id-14">
+            <incoming>id-22</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-15"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-16"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-17"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-18"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-19"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-6" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-14" name="" id="id-22"/>
+    </process>
+    <process name="claimant" id="id-4">
+        <laneSet name="claimant" id="id-5"/>
+    </process>
+</definitions>

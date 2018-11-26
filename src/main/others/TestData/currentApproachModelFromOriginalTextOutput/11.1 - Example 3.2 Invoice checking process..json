@@ -1,0 +1,172 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-0",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 receives an invoice.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "id-1",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it needs the check to the check check and then conducts the no mismatches.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "id-2",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 53,
+            "endIndex": 79,
+            "resourceId": "Lane 1",
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it corrects the mismatches and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 38,
+            "resourceId": "Lane 1",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 48,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts the invoice is re-sent and then conducts the mismatcheses .",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 58,
+            "endIndex": 83,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts the not then is not correct and then blocks the case.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it performs the one of the three activities and then invoices.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 65,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 37,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "id-14",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

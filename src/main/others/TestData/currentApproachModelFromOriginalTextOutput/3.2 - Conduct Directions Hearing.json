@@ -1,0 +1,186 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-0",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 needs a check to check check to make sure they are in order for the court hearing.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 120,
+            "resourceId": "Lane 1",
+            "processElementId": "id-1",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the Resource 1 initiates a search.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "id-2",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Resource 1 tracks the files to the intended location and then conducts the files.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 68,
+            "resourceId": "Lane 1",
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 96,
+            "resourceId": "Lane 1",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it executes the 2 procedures in the an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 68,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 distributes the judges lawlist to the relevant people.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 68,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the Resource 1 hands the files in the meantime to associate.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 76,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the Resource 1 conducts the directions hearings and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 74,
+            "endIndex": 106,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "organization"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-3",
+      "name": "claimant"
+    },
+    {
+      "id": "id-5",
+      "name": "claimant returns forms"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the organization receives a claim.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 57,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-21",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it checks a claim.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the organization executes the one of the alternative 2 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 90,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "id-2",
+            "processElementId": "id-20",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the organization informs the claimant in the first procedure and then evaluates the severity of claim in second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 74,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 84,
+            "endIndex": 135,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends the relevant forms in case to the claimant returns forms and then checks the severity of the claim.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 71,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 81,
+            "endIndex": 113,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it executes the one of the alternative 2 procedures and then informs the claimant to update in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 73,
+            "endIndex": 126,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it updates forms and then registers the claim in the second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 40,
+            "endIndex": 83,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 30,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it checks the claimant again in the case and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 46,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 56,
+            "endIndex": 88,
+            "resourceId": "id-2",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

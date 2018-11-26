@@ -1,0 +1,204 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "applicant"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-3",
+      "name": "acceptance pack"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the applicant executes the 2 procedures in the an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 89,
+            "resourceId": "id-2",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The applicant checks the credit history in the meantime.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 55,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the applicant appraises the property.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 53,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the applicant assesses the loan risk and then assesses the eligibility.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 53,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 63,
+            "endIndex": 87,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he executes the one of the alternative 2 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the applicant prepares the acceptance pack.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 69,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the applicant sends the acceptance pack and then rejects the application.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 78,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 47,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

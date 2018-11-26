@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process id="id-0">
+        <task name="receive a message" id="id-1">
+            <incoming>id-55</incoming>
+            <outgoing>id-53</outgoing>
+        </task>
+        <task name="take down the order" id="id-2">
+            <incoming>id-53</incoming>
+            <outgoing>id-30</outgoing>
+        </task>
+        <task name="execute 3 procedures in an arbitrary order" id="id-3">
+            <incoming>id-30</incoming>
+            <outgoing>id-32</outgoing>
+        </task>
+        <intermediateCatchEvent name="requires  " id="id-4">
+            <incoming>id-31</incoming>
+            <outgoing>id-33</outgoing>
+            <outgoing>id-44</outgoing>
+            <outgoing>id-51</outgoing>
+        </intermediateCatchEvent>
+        <task name="execute alternative 2 procedures" id="id-5">
+            <incoming>id-33</incoming>
+            <outgoing>id-34</outgoing>
+        </task>
+        <task name="fetch the wine in the first procedure" id="id-6">
+            <incoming>id-34</incoming>
+            <outgoing>id-35</outgoing>
+        </task>
+        <task name="conduct the preapre alcoholic beverages in the second procedure" id="id-7">
+            <incoming>id-35</incoming>
+            <outgoing>id-38</outgoing>
+        </task>
+        <task name="continue " id="id-8">
+            <incoming>id-36</incoming>
+            <outgoing>id-39</outgoing>
+        </task>
+        <task name="assign the order in the meantime to the waiter" id="id-9">
+            <incoming>id-37</incoming>
+            <outgoing>id-40</outgoing>
+        </task>
+        <task name="execute 2 procedures in an arbitrary order" id="id-10">
+            <incoming>id-54</incoming>
+            <outgoing>id-41</outgoing>
+        </task>
+        <task name="ready the cart" id="id-11">
+            <incoming>id-41</incoming>
+            <outgoing>id-56</outgoing>
+        </task>
+        <task name="prepare the non-alcoholic drinks" id="id-12">
+            <incoming>id-42</incoming>
+            <outgoing>id-45</outgoing>
+        </task>
+        <task name="submit the order ticket in the meantime to the kitchen" id="id-13">
+            <incoming>id-43</incoming>
+            <outgoing>id-46</outgoing>
+        </task>
+        <task name="prepare the meal" id="id-14">
+            <incoming>id-47</incoming>
+            <outgoing>id-48</outgoing>
+        </task>
+        <task name="deliver to room" id="id-15">
+            <incoming>id-48</incoming>
+            <outgoing>id-49</outgoing>
+        </task>
+        <task name="return to the room-service station" id="id-16">
+            <incoming>id-49</incoming>
+            <outgoing>id-50</outgoing>
+        </task>
+        <task name="debit account" id="id-17">
+            <incoming>id-50</incoming>
+            <outgoing>id-57</outgoing>
+        </task>
+        <task name="send a message" id="id-18">
+            <incoming>id-51</incoming>
+            <outgoing>id-52</outgoing>
+        </task>
+        <task name="finish the process in case" id="id-19">
+            <incoming>id-52</incoming>
+            <outgoing>id-58</outgoing>
+        </task>
+        <exclusiveGateway id="id-20">
+            <incoming>id-32</incoming>
+            <outgoing>id-31</outgoing>
+            <outgoing>id-59</outgoing>
+        </exclusiveGateway>
+        <parallelGateway id="id-21">
+            <incoming>id-38</incoming>
+            <outgoing>id-36</outgoing>
+            <outgoing>id-37</outgoing>
+        </parallelGateway>
+        <parallelGateway id="id-22">
+            <incoming>id-39</incoming>
+            <incoming>id-40</incoming>
+            <outgoing>id-54</outgoing>
+        </parallelGateway>
+        <parallelGateway id="id-23">
+            <incoming>id-44</incoming>
+            <outgoing>id-42</outgoing>
+            <outgoing>id-43</outgoing>
+        </parallelGateway>
+        <parallelGateway id="id-24">
+            <incoming>id-45</incoming>
+            <incoming>id-46</incoming>
+            <outgoing>id-47</outgoing>
+        </parallelGateway>
+        <startEvent id="id-25">
+            <outgoing>id-55</outgoing>
+        </startEvent>
+        <endEvent id="id-26">
+            <incoming>id-56</incoming>
+        </endEvent>
+        <endEvent id="id-27">
+            <incoming>id-57</incoming>
+        </endEvent>
+        <endEvent id="id-28">
+            <incoming>id-58</incoming>
+        </endEvent>
+        <endEvent id="id-29">
+            <incoming>id-59</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-2" targetRef="id-3" name="" id="id-30"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-4" name="" id="id-31"/>
+        <sequenceFlow sourceRef="id-3" targetRef="id-20" name="" id="id-32"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-5" name="" id="id-33"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-34"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-35"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-8" name="" id="id-36"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-9" name="" id="id-37"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-21" name="" id="id-38"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-22" name="" id="id-39"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-22" name="" id="id-40"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-41"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-12" name="" id="id-42"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-13" name="" id="id-43"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-23" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-24" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-24" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-14" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-49"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-50"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-18" name="" id="id-51"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-52"/>
+        <sequenceFlow sourceRef="id-1" targetRef="id-2" name="" id="id-53"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-10" name="" id="id-54"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-1" name="" id="id-55"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-26" name="" id="id-56"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-27" name="" id="id-57"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-28" name="" id="id-58"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-29" name="" id="id-59"/>
+    </process>
+</definitions>

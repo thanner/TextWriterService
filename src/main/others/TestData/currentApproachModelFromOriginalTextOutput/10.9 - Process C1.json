@@ -1,0 +1,162 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "sp\\/pu\\/go"
+        },
+        {
+          "id": "id-3",
+          "name": "mpo"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the sp\\/pu\\/go requests the changes of the mpo.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 70,
+            "resourceId": "id-2",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it causes a change and then the mpo reviews the change request.",
+        "snippetList": [
+          {
+            "startIndex": 34,
+            "endIndex": 68,
+            "resourceId": "id-3",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 24,
+            "resourceId": "id-2",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the mpo executes the one of the alternative 2 procedures and then confirms the request of sp\\/pu\\/go in first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 68,
+            "resourceId": "id-3",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 131,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it rejects the change of measuring point in second procedure and then performs the measuring point change in the case.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 74,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 84,
+            "endIndex": 131,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it executes the one of the alternative 2 procedures and then reports the implementation in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 116,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it notifies the sp\\/pu\\/go about failure of changes in second procedure and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 83,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 93,
+            "endIndex": 125,
+            "resourceId": "id-3",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-3",
+            "processElementId": "id-16",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,877 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "secretarial worker"
+        },
+        {
+          "id": "id-3",
+          "name": "family doctor of somebody"
+        },
+        {
+          "id": "id-4",
+          "name": "nursing officer"
+        },
+        {
+          "id": "id-5",
+          "name": "registration card"
+        },
+        {
+          "id": "id-6",
+          "name": "staff meeting of the entire medical team"
+        },
+        {
+          "id": "id-7",
+          "name": "medical team"
+        },
+        {
+          "id": "id-8",
+          "name": "team-leader"
+        },
+        {
+          "id": "id-9",
+          "name": "physicians"
+        },
+        {
+          "id": "id-10",
+          "name": "secretarial office"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-11",
+      "name": "building"
+    },
+    {
+      "id": "id-13",
+      "name": "letter"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the secretarial worker conducts an intakes .",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 66,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-89",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts the workflow starts with a notice and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 51,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 17,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the family doctor of somebody does notice and then the family doctor of somebody inquires the notice.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 65,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 75,
+            "endIndex": 124,
+            "resourceId": "id-3",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the family doctor of somebody puts through the doctor and then the nursing officer makes a full inquiry into the mental health.",
+        "snippetList": [
+          {
+            "startIndex": 77,
+            "endIndex": 140,
+            "resourceId": "id-4",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 67,
+            "resourceId": "id-3",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the nursing officer records the information and then stores the information.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 49,
+            "resourceId": "id-4",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 59,
+            "endIndex": 81,
+            "resourceId": "id-4",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it prints the information and then creates a patient file.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 37,
+            "resourceId": "id-4",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 47,
+            "endIndex": 69,
+            "resourceId": "id-4",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it stores the registration form and then conducts the building.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 45,
+            "resourceId": "id-4",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 76,
+            "resourceId": "id-4",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts the may not leave the building and then produces two registration cards.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 48,
+            "resourceId": "id-4",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 58,
+            "endIndex": 89,
+            "resourceId": "id-4",
+            "processElementId": "id-29",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the registration card contains a set of the basic patient data and then adds the new patient.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 74,
+            "resourceId": "id-5",
+            "processElementId": "id-30",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 84,
+            "endIndex": 104,
+            "resourceId": "id-5",
+            "processElementId": "id-31",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the staff meeting of the entire medical team takes place and then the medical team consists of the social-medical workers.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 70,
+            "resourceId": "id-6",
+            "processElementId": "id-32",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 80,
+            "endIndex": 135,
+            "resourceId": "id-7",
+            "processElementId": "id-33",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the team-leader assigns the new patients to the members of team and then assigns the patient to a social-medical worker.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 69,
+            "resourceId": "id-8",
+            "processElementId": "id-34",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 79,
+            "endIndex": 125,
+            "resourceId": "id-8",
+            "processElementId": "id-35",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the physicians acts the expertise and then takes the expertise.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 45,
+            "resourceId": "id-9",
+            "processElementId": "id-36",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 74,
+            "resourceId": "id-9",
+            "processElementId": "id-37",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it assigns the intakers into the account and then takes the region.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 54,
+            "resourceId": "id-9",
+            "processElementId": "id-38",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 80,
+            "resourceId": "id-9",
+            "processElementId": "id-39",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it assigns the intakers into the account and then assigns the intakers into the account.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 46,
+            "resourceId": "id-9",
+            "processElementId": "id-40",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 46,
+            "resourceId": "id-9",
+            "processElementId": "id-41",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it takes the earlier contacts and then takes the case load.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 41,
+            "resourceId": "id-9",
+            "processElementId": "id-42",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 51,
+            "endIndex": 70,
+            "resourceId": "id-9",
+            "processElementId": "id-43",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it assigns the intakers into the account and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 54,
+            "resourceId": "id-9",
+            "processElementId": "id-44",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 72,
+            "resourceId": "id-9",
+            "processElementId": "id-45",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts the region is responsible and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 43,
+            "resourceId": "id-9",
+            "processElementId": "id-46",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 17,
+            "resourceId": "id-9",
+            "processElementId": "id-47",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the region is responsible and then conducts the region is responsible.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 49,
+            "resourceId": "id-9",
+            "processElementId": "id-48",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 15,
+            "endIndex": 49,
+            "resourceId": "id-9",
+            "processElementId": "id-49",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 25,
+            "resourceId": "id-9",
+            "processElementId": "id-50",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 25,
+            "resourceId": "id-9",
+            "processElementId": "id-51",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts the region is responsible and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 43,
+            "resourceId": "id-9",
+            "processElementId": "id-52",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 17,
+            "resourceId": "id-9",
+            "processElementId": "id-53",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the teamleader might have had with the patient and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 70,
+            "resourceId": "id-9",
+            "processElementId": "id-54",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 15,
+            "endIndex": 23,
+            "resourceId": "id-9",
+            "processElementId": "id-55",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts the teamleader might have had with the patient and then conducts the teamleader might have had with the patient.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 72,
+            "resourceId": "id-9",
+            "processElementId": "id-56",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 72,
+            "resourceId": "id-9",
+            "processElementId": "id-57",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts and then conducts the assignments.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 51,
+            "resourceId": "id-9",
+            "processElementId": "id-59",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 17,
+            "resourceId": "id-9",
+            "processElementId": "id-58",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the teamleader might have had with the patient and then records the assignments.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 70,
+            "resourceId": "id-9",
+            "processElementId": "id-60",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 80,
+            "endIndex": 103,
+            "resourceId": "id-9",
+            "processElementId": "id-61",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it determines the assignments.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 43,
+            "resourceId": "id-9",
+            "processElementId": "id-62",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the physicians adds the information to the assignment list.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 77,
+            "resourceId": "id-9",
+            "processElementId": "id-63",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "id-9",
+            "processElementId": "id-88",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the secretarial office stores the assignment of the patient of assignment list and then passes the produced registration cards to the first.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 90,
+            "resourceId": "id-10",
+            "processElementId": "id-64",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 100,
+            "endIndex": 151,
+            "resourceId": "id-10",
+            "processElementId": "id-65",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it keeps the registration and then requires the medical file.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 39,
+            "resourceId": "id-10",
+            "processElementId": "id-66",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 49,
+            "endIndex": 74,
+            "resourceId": "id-10",
+            "processElementId": "id-67",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it prepares a letter requesting for a copy of the medical file and then sends a letter requesting for a copy of the medical file.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 68,
+            "resourceId": "id-10",
+            "processElementId": "id-68",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 134,
+            "resourceId": "id-10",
+            "processElementId": "id-69",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it receives the copy and then informs the second intaker.",
+        "snippetList": [
+          {
+            "startIndex": 42,
+            "endIndex": 68,
+            "resourceId": "id-10",
+            "processElementId": "id-71",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 32,
+            "resourceId": "id-10",
+            "processElementId": "id-70",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it adds the copy soon and then plans a meeting with the patient.",
+        "snippetList": [
+          {
+            "startIndex": 45,
+            "endIndex": 77,
+            "resourceId": "id-10",
+            "processElementId": "id-73",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 35,
+            "resourceId": "id-10",
+            "processElementId": "id-72",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it examines the patient to the use and then uses a standard checklist.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 40,
+            "resourceId": "id-10",
+            "processElementId": "id-74",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 50,
+            "endIndex": 75,
+            "resourceId": "id-10",
+            "processElementId": "id-75",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it fills out a standard checklist and then registers the additional observations.",
+        "snippetList": [
+          {
+            "startIndex": 55,
+            "endIndex": 92,
+            "resourceId": "id-10",
+            "processElementId": "id-77",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 45,
+            "resourceId": "id-10",
+            "processElementId": "id-76",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it puts a copy of notes in the file of a patient and then adds the standard checklist has dummy to the file plans.",
+        "snippetList": [
+          {
+            "startIndex": 72,
+            "endIndex": 127,
+            "resourceId": "id-10",
+            "processElementId": "id-79",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 62,
+            "resourceId": "id-10",
+            "processElementId": "id-78",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the physicians uses the dictaphones to record observations made during meetings with patients and thens the secretarial office types of out tapes.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 151,
+            "resourceId": "id-9",
+            "processElementId": "id-80",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the secretarial office adds the information to the patient file and then takes place.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 75,
+            "resourceId": "id-10",
+            "processElementId": "id-81",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 85,
+            "endIndex": 96,
+            "resourceId": "id-10",
+            "processElementId": "id-82",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it puts the patient and then provides the team-leader.",
+        "snippetList": [
+          {
+            "startIndex": 43,
+            "endIndex": 67,
+            "resourceId": "id-10",
+            "processElementId": "id-84",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 33,
+            "resourceId": "id-10",
+            "processElementId": "id-83",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it formulates a treatment plan together with the team-leader and then ends the intake procedure.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 66,
+            "resourceId": "id-10",
+            "processElementId": "id-85",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 76,
+            "endIndex": 101,
+            "resourceId": "id-10",
+            "processElementId": "id-86",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 47,
+            "resourceId": "id-10",
+            "processElementId": "id-87",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-0",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 forms a completness.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "id-1",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it returns the back the application to the applicant and then receives the updated application.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "id-2",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 68,
+            "endIndex": 100,
+            "resourceId": "Lane 1",
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the Resource 1 repeats the latter steps.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Resource 1 continues and then checks form completness.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 38,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 48,
+            "endIndex": 71,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 29,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

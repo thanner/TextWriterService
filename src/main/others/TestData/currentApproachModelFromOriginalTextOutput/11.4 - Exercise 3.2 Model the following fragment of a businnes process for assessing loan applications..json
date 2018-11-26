@@ -1,0 +1,184 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "applicants done automatically by a system, and (ii) the appraisal of the property for which the loan has been asked"
+        },
+        {
+          "id": "id-3",
+          "name": "financial officer"
+        },
+        {
+          "id": "id-4",
+          "name": "loan officer"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-5",
+      "name": "acceptance pack"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the applicants done automatically by a system, and (ii) the appraisal of the property for which the loan has been asked approves a loan application.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 171,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it carries out the history check and then requires the history check.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 38,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 48,
+            "endIndex": 74,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the financial officer performs the history check to perform the loan risk assessment and then performs the property appraisal.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 96,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 106,
+            "endIndex": 137,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the loan officer assesses the eligibility.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 55,
+            "resourceId": "id-4",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the loan officer rejects the application.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 59,
+            "resourceId": "id-4",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "id-4",
+            "processElementId": "id-17",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the loan officer prepares the acceptance pack and then sends the acceptance pack to the applicant.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 57,
+            "resourceId": "id-4",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 109,
+            "resourceId": "id-4",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 49,
+            "resourceId": "id-4",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

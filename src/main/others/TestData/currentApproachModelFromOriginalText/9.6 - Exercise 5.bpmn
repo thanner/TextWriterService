@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="other department" id="id-0">
+        <laneSet name="other department" id="id-1"/>
+    </process>
+    <process name="manufacturing process" id="id-2">
+        <laneSet name="manufacturing process" id="id-3"/>
+    </process>
+    <process id="id-4">
+        <task name="perform a task to locate" id="id-5">
+            <incoming>id-77</incoming>
+            <outgoing>id-44</outgoing>
+        </task>
+        <task name="to locate " id="id-6">
+            <incoming>id-44</incoming>
+            <outgoing>id-45</outgoing>
+        </task>
+        <task name="execute 2 procedures in an arbitrary order" id="id-7">
+            <incoming>id-45</incoming>
+            <outgoing>id-46</outgoing>
+        </task>
+        <task name="perform a task to distribute" id="id-8">
+            <incoming>id-46</incoming>
+            <outgoing>id-49</outgoing>
+        </task>
+        <task name="distribute relevant existing designs" id="id-9">
+            <incoming>id-47</incoming>
+            <outgoing>id-50</outgoing>
+        </task>
+        <task name="design the electrical and physicals systems in the meantime" id="id-10">
+            <incoming>id-48</incoming>
+            <outgoing>id-51</outgoing>
+        </task>
+        <task name="execute one of the alternative 2 procedures" id="id-11">
+            <incoming>id-74</incoming>
+            <outgoing>id-52</outgoing>
+        </task>
+        <task name="previouses the electrical and physicals designs in the first procedure" id="id-12">
+            <incoming>id-52</incoming>
+            <outgoing>id-73</outgoing>
+        </task>
+        <task name="the 1 resource is inputs" id="id-13">
+            <incoming>id-73</incoming>
+            <outgoing>id-53</outgoing>
+        </task>
+        <task name="interrupt the development of the design in case" id="id-14">
+            <incoming>id-53</incoming>
+            <outgoing>id-54</outgoing>
+        </task>
+        <task name="stop " id="id-15">
+            <incoming>id-80</incoming>
+            <outgoing>id-55</outgoing>
+        </task>
+        <task name="review the existing designs" id="id-16">
+            <incoming>id-55</incoming>
+            <outgoing>id-56</outgoing>
+        </task>
+        <task name="use the update plan" id="id-17">
+            <incoming>id-56</incoming>
+            <outgoing>id-57</outgoing>
+        </task>
+        <task name="use the existing draft of the electrical\/physical design" id="id-18">
+            <incoming>id-57</incoming>
+            <outgoing>id-58</outgoing>
+        </task>
+        <task name="create a revised design" id="id-19">
+            <incoming>id-58</incoming>
+            <outgoing>id-59</outgoing>
+        </task>
+        <task name="complete the revised design" id="id-20">
+            <incoming>id-59</incoming>
+            <outgoing>id-60</outgoing>
+        </task>
+        <task name="test the revised design" id="id-21">
+            <incoming>id-60</incoming>
+            <outgoing>id-61</outgoing>
+        </task>
+        <task name="execute one of the alternative 2 procedures" id="id-22">
+            <incoming>id-61</incoming>
+            <outgoing>id-62</outgoing>
+        </task>
+        <task name="send back the design to create a new update plan to the review" id="id-23">
+            <incoming>id-81</incoming>
+            <outgoing>id-63</outgoing>
+        </task>
+        <task name="send back the design" id="id-24">
+            <incoming>id-63</incoming>
+            <outgoing>id-65</outgoing>
+        </task>
+        <task name="tell the other department" id="id-25">
+            <incoming>id-82</incoming>
+            <outgoing>id-64</outgoing>
+        </task>
+        <task name="revise both of the designs in case" id="id-26">
+            <incoming>id-75</incoming>
+            <outgoing>id-66</outgoing>
+        </task>
+        <task name="combine both of the designs" id="id-27">
+            <incoming>id-66</incoming>
+            <outgoing>id-67</outgoing>
+        </task>
+        <task name="test both of the designs" id="id-28">
+            <incoming>id-67</incoming>
+            <outgoing>id-68</outgoing>
+        </task>
+        <task name="execute one of the alternative 2 procedures" id="id-29">
+            <incoming>id-68</incoming>
+            <outgoing>id-69</outgoing>
+        </task>
+        <task name="send back the combined design to initiate design cycle to the beginning" id="id-30">
+            <incoming>id-83</incoming>
+            <outgoing>id-72</outgoing>
+        </task>
+        <task name="deem to complete the designs" id="id-31">
+            <incoming>id-84</incoming>
+            <outgoing>id-70</outgoing>
+        </task>
+        <task name="send the designs to the manufacturing process" id="id-32">
+            <incoming>id-70</incoming>
+            <outgoing>id-71</outgoing>
+        </task>
+        <task name="finish the process in case" id="id-33">
+            <incoming>id-76</incoming>
+            <outgoing>id-78</outgoing>
+        </task>
+        <parallelGateway id="id-34">
+            <incoming>id-49</incoming>
+            <outgoing>id-47</outgoing>
+            <outgoing>id-48</outgoing>
+        </parallelGateway>
+        <parallelGateway id="id-35">
+            <incoming>id-50</incoming>
+            <incoming>id-51</incoming>
+            <outgoing>id-74</outgoing>
+        </parallelGateway>
+        <exclusiveGateway id="id-36">
+            <incoming>id-54</incoming>
+            <outgoing>id-79</outgoing>
+            <outgoing>id-80</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-37">
+            <incoming>id-62</incoming>
+            <outgoing>id-81</outgoing>
+            <outgoing>id-82</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-38">
+            <incoming>id-64</incoming>
+            <incoming>id-65</incoming>
+            <outgoing>id-75</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-39">
+            <incoming>id-69</incoming>
+            <outgoing>id-83</outgoing>
+            <outgoing>id-84</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-40">
+            <incoming>id-71</incoming>
+            <incoming>id-72</incoming>
+            <outgoing>id-76</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-41">
+            <outgoing>id-77</outgoing>
+        </startEvent>
+        <endEvent id="id-42">
+            <incoming>id-78</incoming>
+        </endEvent>
+        <endEvent id="id-43">
+            <incoming>id-79</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-34" targetRef="id-9" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-34" targetRef="id-10" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-34" name="" id="id-49"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-35" name="" id="id-50"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-35" name="" id="id-51"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-52"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-53"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-36" name="" id="id-54"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-55"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-56"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-57"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-58"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-20" name="" id="id-59"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-21" name="" id="id-60"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-22" name="" id="id-61"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-37" name="" id="id-62"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-63"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-38" name="" id="id-64"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-38" name="" id="id-65"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-27" name="" id="id-66"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-28" name="" id="id-67"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-29" name="" id="id-68"/>
+        <sequenceFlow sourceRef="id-29" targetRef="id-39" name="" id="id-69"/>
+        <sequenceFlow sourceRef="id-31" targetRef="id-32" name="" id="id-70"/>
+        <sequenceFlow sourceRef="id-32" targetRef="id-40" name="" id="id-71"/>
+        <sequenceFlow sourceRef="id-30" targetRef="id-40" name="" id="id-72"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-73"/>
+        <sequenceFlow sourceRef="id-35" targetRef="id-11" name="" id="id-74"/>
+        <sequenceFlow sourceRef="id-38" targetRef="id-26" name="" id="id-75"/>
+        <sequenceFlow sourceRef="id-40" targetRef="id-33" name="" id="id-76"/>
+        <sequenceFlow sourceRef="id-41" targetRef="id-5" name="" id="id-77"/>
+        <sequenceFlow sourceRef="id-33" targetRef="id-42" name="" id="id-78"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-43" name="" id="id-79"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-15" name="requires  " id="id-80"/>
+        <sequenceFlow sourceRef="id-37" targetRef="id-23" name="the design fails the test " id="id-81"/>
+        <sequenceFlow sourceRef="id-37" targetRef="id-25" name="the design passes the test " id="id-82"/>
+        <sequenceFlow sourceRef="id-39" targetRef="id-30" name="the combined design fails the test " id="id-83"/>
+        <sequenceFlow sourceRef="id-39" targetRef="id-31" name="the designs pass the test " id="id-84"/>
+    </process>
+</definitions>

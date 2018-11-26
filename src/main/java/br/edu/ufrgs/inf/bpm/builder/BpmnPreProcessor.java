@@ -128,7 +128,11 @@ public class BpmnPreProcessor {
             List<TActivity> tActivityList = bpmnWrapper.getFlowElementListDeep(TActivity.class, process);
             for (TActivity tActivity : tActivityList) {
                 String name = tActivity.getName();
-                if (name == null || name.replaceAll("\n", "").isEmpty()) {
+                if (name != null) {
+                    name = name.trim();
+                }
+
+                if (name == null || name.isEmpty()) {
                     String type = "activity";
                     if (tActivity instanceof TTask) {
                         type = "task";

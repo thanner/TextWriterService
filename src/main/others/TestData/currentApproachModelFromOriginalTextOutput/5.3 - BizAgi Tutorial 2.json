@@ -1,0 +1,132 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "employee of the organization"
+        },
+        {
+          "id": "id-3",
+          "name": "immediate supervisor of the employee"
+        },
+        {
+          "id": "id-4",
+          "name": "supervisor"
+        },
+        {
+          "id": "id-5",
+          "name": "purchase department"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-6",
+      "name": "vendor"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the employee of the organization submits an office supply request.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 89,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-34",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it registers the requirement and then the immediate supervisor of the employee receives the request to the request.",
+        "snippetList": [
+          {
+            "startIndex": 44,
+            "endIndex": 120,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 34,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the immediate supervisor of the employee requests the office supplies and then executes the one of the alternative 2 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 81,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 91,
+            "endIndex": 139,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the supervisor asks the request in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 68,
+            "resourceId": "id-4",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process id="id-0">
+        <task name="proceed to the security check" id="id-1">
+            <incoming>id-19</incoming>
+            <outgoing>id-11</outgoing>
+        </task>
+        <task name="execute 2 procedures in an arbitrary order" id="id-2">
+            <incoming>id-11</incoming>
+            <outgoing>id-14</outgoing>
+        </task>
+        <task name="pass the security screening" id="id-3">
+            <incoming>id-12</incoming>
+            <outgoing>id-15</outgoing>
+        </task>
+        <task name="pass the luggage screening in the meantime" id="id-4">
+            <incoming>id-13</incoming>
+            <outgoing>id-16</outgoing>
+        </task>
+        <task name="proceed to the departure level" id="id-5">
+            <incoming>id-18</incoming>
+            <outgoing>id-17</outgoing>
+        </task>
+        <task name="finish the process" id="id-6">
+            <incoming>id-17</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <parallelGateway id="id-7">
+            <incoming>id-14</incoming>
+            <outgoing>id-12</outgoing>
+            <outgoing>id-13</outgoing>
+        </parallelGateway>
+        <parallelGateway id="id-8">
+            <incoming>id-15</incoming>
+            <incoming>id-16</incoming>
+            <outgoing>id-18</outgoing>
+        </parallelGateway>
+        <startEvent id="id-9">
+            <outgoing>id-19</outgoing>
+        </startEvent>
+        <endEvent id="id-10">
+            <incoming>id-20</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-1" targetRef="id-2" name="" id="id-11"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-3" name="" id="id-12"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-4" name="" id="id-13"/>
+        <sequenceFlow sourceRef="id-2" targetRef="id-7" name="" id="id-14"/>
+        <sequenceFlow sourceRef="id-3" targetRef="id-8" name="" id="id-15"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-8" name="" id="id-16"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-17"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-5" name="" id="id-18"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-1" name="" id="id-19"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-10" name="" id="id-20"/>
+    </process>
+</definitions>

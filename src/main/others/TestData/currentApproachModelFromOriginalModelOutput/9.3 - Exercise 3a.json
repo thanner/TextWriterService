@@ -1,0 +1,221 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "members"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the members fulfils a time condition.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 60,
+            "resourceId": "id-2",
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-20",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it drafts the dates and then enters the calendar.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 25,
+            "resourceId": "id-2",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 35,
+            "endIndex": 54,
+            "resourceId": "id-2",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the checkses the calendar to suggest updates and then finalizes the calendar schedule.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 68,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 109,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 32,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 42,
+            "endIndex": 60,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it conducts the updateses the group calendars and then sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 51,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 61,
+            "endIndex": 76,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it finishes the process and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 35,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 45,
+            "endIndex": 53,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it checks the schedules and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 37,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 47,
+            "endIndex": 65,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 24,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 34,
+            "endIndex": 52,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it finishes the subprocess and then finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 38,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 48,
+            "endIndex": 68,
+            "resourceId": "id-2",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-2",
+            "processElementId": "id-21",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

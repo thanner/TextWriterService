@@ -1,0 +1,124 @@
+{
+  "processList": [
+    {
+      "id": "id-0",
+      "name": "reminder"
+    },
+    {
+      "id": "id-2",
+      "name": "1 resource"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-4",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 sends a questionnaire.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 60,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends the reminder.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 27,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the Resource 1 repeats the latter steps.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Resource 1 receives a message and then finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 57,
+            "endIndex": 77,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

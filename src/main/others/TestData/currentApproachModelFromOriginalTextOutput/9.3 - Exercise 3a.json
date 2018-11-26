@@ -1,0 +1,124 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "coordination unit"
+        },
+        {
+          "id": "id-3",
+          "name": "support"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-4",
+      "name": "meeting dates"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the coordination unit drafts a schedule of the meetings of year.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 87,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it adds the draft dates to the calendars and then the support suggests the modifications.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 46,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 56,
+            "endIndex": 94,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the rechecks dates and then looks at the final schedule of the meeting dates.",
+        "snippetList": [
+          {
+            "startIndex": 52,
+            "endIndex": 100,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 42,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it sends the final schedule of meeting dates to the independent committee members and then finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 95,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 105,
+            "endIndex": 125,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "2:30 pm"
+        },
+        {
+          "id": "id-3",
+          "name": "4:00 pm"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-4",
+      "name": "customers"
+    },
+    {
+      "id": "id-6",
+      "name": "account management"
+    },
+    {
+      "id": "id-8",
+      "name": "management"
+    },
+    {
+      "id": "id-10",
+      "name": "supervisor"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the 2:30 pm backs up.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-35",
+            "processElementType": "STARTEVENT"
+          },
+          {
+            "startIndex": 24,
+            "endIndex": 44,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it executes the one of the alternative 2 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

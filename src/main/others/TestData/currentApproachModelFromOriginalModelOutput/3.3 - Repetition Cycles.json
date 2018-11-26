@@ -1,0 +1,162 @@
+{
+  "processList": [
+    {
+      "id": "id-0",
+      "name": "1 resource"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-2",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 registers a claim.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it examines the claim in the case and then writes the recommendation.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 49,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it checks the recommendation.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 40,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the Resource 1 repeats the latter steps.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 66,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 continues and then writes the recommendation.",
+        "snippetList": [
+          {
+            "startIndex": 40,
+            "endIndex": 65,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 30,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it continues and then finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 34,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

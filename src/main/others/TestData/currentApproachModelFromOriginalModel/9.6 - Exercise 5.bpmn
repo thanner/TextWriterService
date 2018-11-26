@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="1 resource" id="id-0">
+        <laneSet name="1 resource" id="id-1"/>
+    </process>
+    <process id="id-2">
+        <task name="locate " id="id-3">
+            <incoming>id-75</incoming>
+            <outgoing>id-42</outgoing>
+        </task>
+        <task name="reuse " id="id-4">
+            <incoming>id-42</incoming>
+            <outgoing>id-43</outgoing>
+        </task>
+        <task name="execute 2 procedures in an arbitrary order" id="id-5">
+            <incoming>id-43</incoming>
+            <outgoing>id-44</outgoing>
+        </task>
+        <task name="create the electrical design" id="id-6">
+            <incoming>id-44</incoming>
+            <outgoing>id-74</outgoing>
+        </task>
+        <task name="contain the following steps" id="id-7">
+            <incoming>id-59</incoming>
+            <outgoing>id-45</outgoing>
+        </task>
+        <task name="review the previous designs" id="id-8">
+            <incoming>id-45</incoming>
+            <outgoing>id-46</outgoing>
+        </task>
+        <task name="test the electrical design" id="id-9">
+            <incoming>id-46</incoming>
+            <outgoing>id-47</outgoing>
+        </task>
+        <task name="design the 1 resource repeats" id="id-10">
+            <incoming>id-47</incoming>
+            <outgoing>id-48</outgoing>
+        </task>
+        <task name="continue " id="id-11">
+            <incoming>id-48</incoming>
+            <outgoing>id-49</outgoing>
+        </task>
+        <task name="review the previous designs" id="id-12">
+            <incoming>id-49</incoming>
+            <outgoing>id-79</outgoing>
+        </task>
+        <task name="send signals" id="id-13">
+            <incoming>id-79</incoming>
+            <outgoing>id-51</outgoing>
+        </task>
+        <intermediateCatchEvent name="requires the 1 resource " id="id-14">
+            <incoming>id-50</incoming>
+            <outgoing>id-52</outgoing>
+            <outgoing>id-64</outgoing>
+        </intermediateCatchEvent>
+        <task name="repeat the latter steps" id="id-15">
+            <incoming>id-52</incoming>
+            <outgoing>id-53</outgoing>
+        </task>
+        <task name="continue " id="id-16">
+            <incoming>id-53</incoming>
+            <outgoing>id-54</outgoing>
+        </task>
+        <task name="create the electrical design" id="id-17">
+            <incoming>id-54</incoming>
+            <outgoing>id-55</outgoing>
+        </task>
+        <task name="create the physical design" id="id-18">
+            <incoming>id-55</incoming>
+            <outgoing>id-57</outgoing>
+        </task>
+        <task name="contain the following steps" id="id-19">
+            <incoming>id-56</incoming>
+            <outgoing>id-58</outgoing>
+        </task>
+        <task name="review the previous designs" id="id-20">
+            <incoming>id-73</incoming>
+            <outgoing>id-60</outgoing>
+        </task>
+        <task name="test the physical design" id="id-21">
+            <incoming>id-60</incoming>
+            <outgoing>id-61</outgoing>
+        </task>
+        <task name="design the 1 resource repeats" id="id-22">
+            <incoming>id-61</incoming>
+            <outgoing>id-62</outgoing>
+        </task>
+        <task name="continue " id="id-23">
+            <incoming>id-62</incoming>
+            <outgoing>id-63</outgoing>
+        </task>
+        <task name="review the previous designs" id="id-24">
+            <incoming>id-63</incoming>
+            <outgoing>id-80</outgoing>
+        </task>
+        <task name="send signals" id="id-25">
+            <incoming>id-80</incoming>
+            <outgoing>id-76</outgoing>
+        </task>
+        <task name="repeat the latter steps" id="id-26">
+            <incoming>id-64</incoming>
+            <outgoing>id-65</outgoing>
+        </task>
+        <task name="continue " id="id-27">
+            <incoming>id-65</incoming>
+            <outgoing>id-66</outgoing>
+        </task>
+        <task name="create the physical design" id="id-28">
+            <incoming>id-66</incoming>
+            <outgoing>id-67</outgoing>
+        </task>
+        <task name="test the complete design" id="id-29">
+            <incoming>id-67</incoming>
+            <outgoing>id-68</outgoing>
+        </task>
+        <task name="send back the designs" id="id-30">
+            <incoming>id-68</incoming>
+            <outgoing>id-69</outgoing>
+        </task>
+        <task name="design the 1 resource repeats" id="id-31">
+            <incoming>id-69</incoming>
+            <outgoing>id-70</outgoing>
+        </task>
+        <task name="continue " id="id-32">
+            <incoming>id-70</incoming>
+            <outgoing>id-71</outgoing>
+        </task>
+        <task name="locate " id="id-33">
+            <incoming>id-71</incoming>
+            <outgoing>id-72</outgoing>
+        </task>
+        <task name="finish the process" id="id-34">
+            <incoming>id-72</incoming>
+            <outgoing>id-77</outgoing>
+        </task>
+        <exclusiveGateway id="id-35">
+            <incoming>id-51</incoming>
+            <outgoing>id-50</outgoing>
+            <outgoing>id-78</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-36">
+            <incoming>id-57</incoming>
+            <outgoing>id-56</outgoing>
+            <outgoing>id-73</outgoing>
+        </exclusiveGateway>
+        <exclusiveGateway id="id-37">
+            <incoming>id-58</incoming>
+            <incoming>id-74</incoming>
+            <outgoing>id-59</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-38">
+            <outgoing>id-75</outgoing>
+        </startEvent>
+        <endEvent id="id-39">
+            <incoming>id-76</incoming>
+        </endEvent>
+        <endEvent id="id-40">
+            <incoming>id-77</incoming>
+        </endEvent>
+        <endEvent id="id-41">
+            <incoming>id-78</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-3" targetRef="id-4" name="" id="id-42"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-5" name="" id="id-43"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-49"/>
+        <sequenceFlow sourceRef="id-35" targetRef="id-14" name="" id="id-50"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-35" name="" id="id-51"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-52"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-53"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-54"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-55"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-19" name="" id="id-56"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-36" name="" id="id-57"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-37" name="" id="id-58"/>
+        <sequenceFlow sourceRef="id-37" targetRef="id-7" name="" id="id-59"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-21" name="" id="id-60"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-22" name="" id="id-61"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-23" name="" id="id-62"/>
+        <sequenceFlow sourceRef="id-23" targetRef="id-24" name="" id="id-63"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-26" name="" id="id-64"/>
+        <sequenceFlow sourceRef="id-26" targetRef="id-27" name="" id="id-65"/>
+        <sequenceFlow sourceRef="id-27" targetRef="id-28" name="" id="id-66"/>
+        <sequenceFlow sourceRef="id-28" targetRef="id-29" name="" id="id-67"/>
+        <sequenceFlow sourceRef="id-29" targetRef="id-30" name="" id="id-68"/>
+        <sequenceFlow sourceRef="id-30" targetRef="id-31" name="" id="id-69"/>
+        <sequenceFlow sourceRef="id-31" targetRef="id-32" name="" id="id-70"/>
+        <sequenceFlow sourceRef="id-32" targetRef="id-33" name="" id="id-71"/>
+        <sequenceFlow sourceRef="id-33" targetRef="id-34" name="" id="id-72"/>
+        <sequenceFlow sourceRef="id-36" targetRef="id-20" name="" id="id-73"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-37" name="" id="id-74"/>
+        <sequenceFlow sourceRef="id-38" targetRef="id-3" name="" id="id-75"/>
+        <sequenceFlow sourceRef="id-25" targetRef="id-39" name="" id="id-76"/>
+        <sequenceFlow sourceRef="id-34" targetRef="id-40" name="" id="id-77"/>
+        <sequenceFlow sourceRef="id-35" targetRef="id-41" name="" id="id-78"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-79"/>
+        <sequenceFlow sourceRef="id-24" targetRef="id-25" name="" id="id-80"/>
+    </process>
+</definitions>

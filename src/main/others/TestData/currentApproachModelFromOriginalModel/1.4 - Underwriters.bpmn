@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process id="id-0">
+        <task name="receive a message" id="id-1">
+            <incoming>id-46</incoming>
+            <outgoing>id-45</outgoing>
+        </task>
+        <task name="execute one of the alternative 2 procedures" id="id-2">
+            <incoming>id-45</incoming>
+            <outgoing>id-26</outgoing>
+        </task>
+        <task name="present " id="id-3">
+            <incoming>id-26</incoming>
+            <outgoing>id-27</outgoing>
+        </task>
+        <task name="the 1 resource does the unlabeled subprocess" id="id-4">
+            <incoming>id-27</incoming>
+            <outgoing>id-29</outgoing>
+        </task>
+        <intermediateCatchEvent name="requires  " id="id-5">
+            <incoming>id-28</incoming>
+            <outgoing>id-30</outgoing>
+            <outgoing>id-40</outgoing>
+        </intermediateCatchEvent>
+        <task name="contain the following steps" id="id-6">
+            <incoming>id-30</incoming>
+            <outgoing>id-31</outgoing>
+        </task>
+        <task name="execute one of the alternative 2 procedures" id="id-7">
+            <incoming>id-31</incoming>
+            <outgoing>id-32</outgoing>
+        </task>
+        <task name="prepare the registration statement in the first procedure" id="id-8">
+            <incoming>id-32</incoming>
+            <outgoing>id-33</outgoing>
+        </task>
+        <task name="receive a message" id="id-9">
+            <incoming>id-33</incoming>
+            <outgoing>id-34</outgoing>
+        </task>
+        <task name="check the compliance with the laws in the second procedure" id="id-10">
+            <incoming>id-34</incoming>
+            <outgoing>id-35</outgoing>
+        </task>
+        <task name="talk to the potential investors" id="id-11">
+            <incoming>id-35</incoming>
+            <outgoing>id-36</outgoing>
+        </task>
+        <task name="execute one of the alternative 2 procedures" id="id-12">
+            <incoming>id-36</incoming>
+            <outgoing>id-37</outgoing>
+        </task>
+        <task name="receive a message" id="id-13">
+            <incoming>id-37</incoming>
+            <outgoing>id-38</outgoing>
+        </task>
+        <task name="send a message" id="id-14">
+            <incoming>id-38</incoming>
+            <outgoing>id-39</outgoing>
+        </task>
+        <task name="continue " id="id-15">
+            <incoming>id-39</incoming>
+            <outgoing>id-47</outgoing>
+        </task>
+        <task name="price " id="id-16">
+            <incoming>id-40</incoming>
+            <outgoing>id-41</outgoing>
+        </task>
+        <task name="buy the stock" id="id-17">
+            <incoming>id-41</incoming>
+            <outgoing>id-42</outgoing>
+        </task>
+        <task name="offer to the public" id="id-18">
+            <incoming>id-42</incoming>
+            <outgoing>id-43</outgoing>
+        </task>
+        <task name="finish the subprocess in case" id="id-19">
+            <incoming>id-43</incoming>
+            <outgoing>id-44</outgoing>
+        </task>
+        <task name="finish the process in case" id="id-20">
+            <incoming>id-44</incoming>
+            <outgoing>id-48</outgoing>
+        </task>
+        <exclusiveGateway id="id-21">
+            <incoming>id-29</incoming>
+            <outgoing>id-28</outgoing>
+            <outgoing>id-49</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-22">
+            <outgoing>id-46</outgoing>
+        </startEvent>
+        <endEvent id="id-23">
+            <incoming>id-47</incoming>
+        </endEvent>
+        <endEvent id="id-24">
+            <incoming>id-48</incoming>
+        </endEvent>
+        <endEvent id="id-25">
+            <incoming>id-49</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-2" targetRef="id-3" name="" id="id-26"/>
+        <sequenceFlow sourceRef="id-3" targetRef="id-4" name="" id="id-27"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-5" name="" id="id-28"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-21" name="" id="id-29"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-30"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-31"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-32"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-33"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-34"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-35"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-36"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-37"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-38"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-39"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-16" name="" id="id-40"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-41"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-42"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-43"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-20" name="" id="id-44"/>
+        <sequenceFlow sourceRef="id-1" targetRef="id-2" name="" id="id-45"/>
+        <sequenceFlow sourceRef="id-22" targetRef="id-1" name="" id="id-46"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-23" name="" id="id-47"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-24" name="" id="id-48"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-25" name="" id="id-49"/>
+    </process>
+</definitions>

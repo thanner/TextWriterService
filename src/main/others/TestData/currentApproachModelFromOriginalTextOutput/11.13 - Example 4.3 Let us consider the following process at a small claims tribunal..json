@@ -1,0 +1,162 @@
+{
+  "processList": [
+    {
+      "id": "id-0",
+      "name": "callover material"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-2",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 occurs an once to set down the matter.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 76,
+            "resourceId": "Lane 1",
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it executes the one of the alternative 2 procedures and then conducts the to determine .",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 92,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the Resource 1 conducts the to determine the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 85,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Resource 1 sets the callover in the second procedure and then defers the callover in case to the next available slot.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 80,
+            "endIndex": 134,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it prepares the callover material and then holds the callover.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 49,
+            "endIndex": 67,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

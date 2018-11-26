@@ -1,0 +1,137 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-0",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 monitors the price variations in a stock exchange.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 88,
+            "resourceId": "Lane 1",
+            "processElementId": "id-1",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it does the unlabeled task (id: id-2) and then changes the entity of the change.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "id-2",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 53,
+            "endIndex": 85,
+            "resourceId": "Lane 1",
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it determines the entity of the change.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 50,
+            "resourceId": "Lane 1",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the Resource 1 sends a high stock price alert.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 sends a low stock price alert and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 50,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 60,
+            "endIndex": 92,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

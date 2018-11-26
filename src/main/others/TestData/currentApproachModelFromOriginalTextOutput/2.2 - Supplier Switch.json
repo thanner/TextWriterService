@@ -1,0 +1,178 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "customer"
+        },
+        {
+          "id": "id-3",
+          "name": "customer service"
+        },
+        {
+          "id": "id-4",
+          "name": "cis"
+        },
+        {
+          "id": "id-5",
+          "name": "grid operator"
+        },
+        {
+          "id": "id-6",
+          "name": "old supplier"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-7",
+      "name": "involved suppliers"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the customer initiates a process.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-61",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he transmits the data to the customer service department of company and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 73,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 83,
+            "endIndex": 91,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the customer service centers and then receives the customer data.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 40,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 50,
+            "endIndex": 76,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts the customer data and then conducts the customer service bases customer data.",
+        "snippetList": [
+          {
+            "startIndex": 53,
+            "endIndex": 102,
+            "resourceId": "id-3",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 43,
+            "resourceId": "id-3",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it enters the data and then compares the data.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 24,
+            "resourceId": "id-3",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 34,
+            "endIndex": 51,
+            "resourceId": "id-3",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it checks the data.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 30,
+            "resourceId": "id-3",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

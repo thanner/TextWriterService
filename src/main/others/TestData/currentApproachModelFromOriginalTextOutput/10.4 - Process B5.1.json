@@ -1,0 +1,222 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "mpon"
+        },
+        {
+          "id": "id-3",
+          "name": "mpoo"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-4",
+      "name": "meter count"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the mpon notifies the mpoo about equipment change intentions.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 84,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-22",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it executes the one of the alternative 2 procedures and then the mpoo notifies the mpon about no self-dismounting of the mpoo in first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 67,
+            "endIndex": 150,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the mpoo announces the self in the second procedure and then executes the one of the alternative 2 procedures in case.",
+        "snippetList": [
+          {
+            "startIndex": 73,
+            "endIndex": 129,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the mpon performs the final reading in the first procedure and then the mpoo performs the final reading in the second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 82,
+            "endIndex": 141,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 72,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the mpoo executes the one of the alternative 2 procedures in case and then the mpon dismounts the old equipment in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 71,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 81,
+            "endIndex": 140,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it dismounts the old equipment in the second procedure and then the mpon mounts the new device in the case.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 66,
+            "resourceId": "id-3",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 76,
+            "endIndex": 118,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the mpon reads the meter count and then sends the values of the final reading to go about device changes.",
+        "snippetList": [
+          {
+            "startIndex": 54,
+            "endIndex": 118,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 44,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it tells the final reading and then goes the notifies msp about device changes.",
+        "snippetList": [
+          {
+            "startIndex": 42,
+            "endIndex": 84,
+            "resourceId": "id-2",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 32,
+            "resourceId": "id-2",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 35,
+            "resourceId": "id-2",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-2",
+            "processElementId": "id-23",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

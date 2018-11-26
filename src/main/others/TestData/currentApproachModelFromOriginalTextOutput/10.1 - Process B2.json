@@ -1,0 +1,113 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "mpon"
+        },
+        {
+          "id": "id-3",
+          "name": "mpoo"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the mpon sends a dismissal.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 50,
+            "resourceId": "id-2",
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the mpoo reviews the dismissal and then executes the one of the alternative 2 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 46,
+            "endIndex": 94,
+            "resourceId": "id-3",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 36,
+            "resourceId": "id-3",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it opposes the dismissal of the mpon in first procedure and then confirms the dismissal of the mpon in second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 67,
+            "resourceId": "id-3",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 77,
+            "endIndex": 131,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 49,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

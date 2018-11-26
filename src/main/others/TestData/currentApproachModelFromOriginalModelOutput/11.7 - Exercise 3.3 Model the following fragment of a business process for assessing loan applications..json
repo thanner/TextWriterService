@@ -1,0 +1,166 @@
+{
+  "processList": [
+    {
+      "id": "id-0",
+      "name": "acceptance pack"
+    },
+    {
+      "id": "id-2",
+      "name": "1 resource"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-4",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 prepares an acceptance pack.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 66,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-15",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the Resource 1 checks the 1 resource.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Resource 1 executes the alternative 2 procedures and then conducts the \"\u0027\u0027 .",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 74,
+            "endIndex": 90,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it sends the acceptance pack.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 42,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the Resource 1 sends the home insurance quote.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "Lane 1",
+            "processElementId": "id-14",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Resource 1 verifies the repayment agreement and then finishes the process.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 69,
+            "endIndex": 89,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

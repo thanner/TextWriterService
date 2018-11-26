@@ -1,0 +1,453 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "guest"
+        },
+        {
+          "id": "id-3",
+          "name": "room-service manager"
+        },
+        {
+          "id": "id-4",
+          "name": "waiter"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the guest conducts an upscale independent hotel.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 71,
+            "resourceId": "id-2",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-41",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he conducts the an evanstonian is an upscale independent hotel and then calls the room service.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 68,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 100,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the room-service manager takes down the order and then submits the order ticket to begin to prepare to the kitchen.",
+        "snippetList": [
+          {
+            "startIndex": 67,
+            "endIndex": 126,
+            "resourceId": "id-3",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 57,
+            "resourceId": "id-3",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it gives the order to the fetch and then fetches the wine to the sommelier.",
+        "snippetList": [
+          {
+            "startIndex": 55,
+            "endIndex": 88,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 45,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it gives the order to the prepare and then prepares the other alcoholic beverages to the sommelier.",
+        "snippetList": [
+          {
+            "startIndex": 49,
+            "endIndex": 104,
+            "resourceId": "id-3",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 39,
+            "resourceId": "id-3",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it executes the one of the alternative 2 procedures and then includes the other alcoholic beverage in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 73,
+            "endIndex": 133,
+            "resourceId": "id-3",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "id-3",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it includes the wine in the second procedure and then executes the 2 procedures in case in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 68,
+            "endIndex": 123,
+            "resourceId": "id-3",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 58,
+            "resourceId": "id-3",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "id-3",
+            "processElementId": "id-36",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The room-service manager assigns the order to the waiter.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 56,
+            "resourceId": "id-3",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the room-service manager conducts.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 50,
+            "resourceId": "id-3",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the room-service manager conducts the kitchen are doing tasks and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 78,
+            "resourceId": "id-3",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "id-3",
+            "processElementId": "id-37",
+            "processElementType": "ANDJOIN"
+          },
+          {
+            "startIndex": 42,
+            "endIndex": 50,
+            "resourceId": "id-3",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the sommelier are doing tasks and then the waiter readies a cart.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 53,
+            "resourceId": "id-3",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 63,
+            "endIndex": 88,
+            "resourceId": "id-4",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the waiter readies the gathers silverware and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 55,
+            "resourceId": "id-4",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 65,
+            "endIndex": 73,
+            "resourceId": "id-4",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he conducts the waiter is responsible and then executes the 3 procedures in the an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 53,
+            "endIndex": 104,
+            "resourceId": "id-4",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 43,
+            "resourceId": "id-4",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he conducts the waiter carts be ready and then conducts.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 49,
+            "resourceId": "id-4",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 15,
+            "endIndex": 23,
+            "resourceId": "id-4",
+            "processElementId": "id-29",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "id-4",
+            "processElementId": "id-38",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The waiter conducts the food is ready.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 37,
+            "resourceId": "id-4",
+            "processElementId": "id-30",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "At the same time, the waiter conducts the waiter wines be ready.",
+        "snippetList": [
+          {
+            "startIndex": 18,
+            "endIndex": 63,
+            "resourceId": "id-4",
+            "processElementId": "id-31",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the waiter delivers the cart to the room returns and then debits the guest.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 65,
+            "resourceId": "id-4",
+            "processElementId": "id-32",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 75,
+            "endIndex": 91,
+            "resourceId": "id-4",
+            "processElementId": "id-33",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "id-4",
+            "processElementId": "id-39",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the waiter waits to the dummy.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 48,
+            "resourceId": "id-4",
+            "processElementId": "id-34",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "id-4",
+            "processElementId": "id-40",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the waiter finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 55,
+            "resourceId": "id-4",
+            "processElementId": "id-35",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "customer"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-3",
+      "name": "approver web service"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the customer receives a customer request for a loan amount.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 82,
+            "resourceId": "id-2",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he invokes the risk assessment to the assess and then assesses the request.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 50,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 60,
+            "endIndex": 80,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he executes the one of the alternative 3 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the customer conducts.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 48,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the customer conducts the loan amount is for $10,000 or more and then sends the request in case to the approver web service.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 66,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 76,
+            "endIndex": 129,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he receives the feedback and then conducts the low risk in the second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 46,
+            "endIndex": 91,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, he conducts the customer is low risk and then denies the loan in the third procedure.",
+        "snippetList": [
+          {
+            "startIndex": 60,
+            "endIndex": 98,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 50,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 41,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

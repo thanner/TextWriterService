@@ -1,0 +1,187 @@
+{
+  "processList": [
+    {
+      "id": "id-0",
+      "name": "employee"
+    },
+    {
+      "id": "id-2",
+      "name": "employee account"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "id-4",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "id-17",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it executes the one of the alternative 2 procedures and then conducts the approval.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 88,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it advises the employee again to the start.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the Resource 1 reviews for the pre-approval.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "Lane 1",
+            "processElementId": "id-16",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 executes the one of the alternative 3 procedures and then sends for the payment transfers to the employee account.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 69,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 79,
+            "endIndex": 134,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it conducts the supervisor review in the second procedure and then sends for the payment.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 69,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 79,
+            "endIndex": 100,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it transfers to the employee account and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 50,
+            "resourceId": "Lane 1",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 60,
+            "endIndex": 92,
+            "resourceId": "Lane 1",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

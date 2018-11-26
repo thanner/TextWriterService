@@ -1,0 +1,296 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "counter"
+        },
+        {
+          "id": "id-3",
+          "name": "number of failed attempts"
+        },
+        {
+          "id": "id-4",
+          "name": "customer"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-5",
+      "name": "user"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the counter executes an one of the alternative 20 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 84,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-30",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he logs the invalid username in the first procedure and then validates the password in the second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 113,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he sets the number of the password trials in third procedure and then the number of failed attempts interrupts the procedure in the fourth procedure.",
+        "snippetList": [
+          {
+            "startIndex": 82,
+            "endIndex": 160,
+            "resourceId": "id-3",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 72,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, he interrupts the routine in the fifth procedure and then conducts the incremented password in the sixth procedure.",
+        "snippetList": [
+          {
+            "startIndex": 72,
+            "endIndex": 128,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 62,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the number of failed attempts conducts and then faileds the attempts.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 44,
+            "resourceId": "id-3",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 54,
+            "endIndex": 74,
+            "resourceId": "id-3",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it freezes the account in the eighth procedure and then the counter validates the username in the ninth procedure.",
+        "snippetList": [
+          {
+            "startIndex": 68,
+            "endIndex": 125,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 58,
+            "resourceId": "id-3",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the counter retrieves and then enters.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 35,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 45,
+            "endIndex": 51,
+            "resourceId": "id-2",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the number of failed attempts conducts and then conducts the not the server is not available.",
+        "snippetList": [
+          {
+            "startIndex": 54,
+            "endIndex": 98,
+            "resourceId": "id-3",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 44,
+            "resourceId": "id-3",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it notifies the user to try in the twelfth procedure and then conducts the to try .",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 64,
+            "resourceId": "id-3",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 74,
+            "endIndex": 93,
+            "resourceId": "id-3",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it interrupts the username in the thirteenth procedure and then interrupts the passwords in the thirteenth procedure.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 68,
+            "resourceId": "id-3",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 130,
+            "resourceId": "id-3",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the counter asks to enter again the password and then the customer closes the web-page resulting in the interruption of routine in fifteenth procedure.",
+        "snippetList": [
+          {
+            "startIndex": 60,
+            "endIndex": 156,
+            "resourceId": "id-4",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 50,
+            "resourceId": "id-2",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the number of failed attempts interrupts the routine in the sixteenth procedure and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 91,
+            "resourceId": "id-3",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 101,
+            "endIndex": 133,
+            "resourceId": "id-3",
+            "processElementId": "id-29",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "id-3",
+            "processElementId": "id-31",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="Pool" id="id-0">
+        <laneSet name="Pool" id="id-1">
+            <lane name="applicant" id="id-2">
+                <flowNodeRef>id-3</flowNodeRef>
+                <flowNodeRef>id-4</flowNodeRef>
+                <flowNodeRef>id-5</flowNodeRef>
+                <flowNodeRef>id-6</flowNodeRef>
+                <flowNodeRef>id-7</flowNodeRef>
+                <flowNodeRef>id-8</flowNodeRef>
+                <flowNodeRef>id-9</flowNodeRef>
+                <flowNodeRef>id-10</flowNodeRef>
+            </lane>
+        </laneSet>
+        <task name="couple a loan application" id="id-3">
+            <incoming>id-14</incoming>
+            <outgoing>id-11</outgoing>
+        </task>
+        <task name="express the interest in a home insurance plan" id="id-4">
+            <incoming>id-11</incoming>
+            <outgoing>id-12</outgoing>
+        </task>
+        <task name="continue " id="id-5">
+            <incoming>id-17</incoming>
+            <outgoing>id-13</outgoing>
+        </task>
+        <task name="finish the process in case" id="id-6">
+            <incoming>id-13</incoming>
+            <outgoing>id-15</outgoing>
+        </task>
+        <exclusiveGateway id="id-7">
+            <incoming>id-12</incoming>
+            <outgoing>id-16</outgoing>
+            <outgoing>id-17</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-8">
+            <outgoing>id-14</outgoing>
+        </startEvent>
+        <endEvent id="id-9">
+            <incoming>id-15</incoming>
+        </endEvent>
+        <endEvent id="id-10">
+            <incoming>id-16</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-3" targetRef="id-4" name="" id="id-11"/>
+        <sequenceFlow sourceRef="id-4" targetRef="id-7" name="" id="id-12"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-13"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-3" name="" id="id-14"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-9" name="" id="id-15"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-10" name="" id="id-16"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-5" name="requires  " id="id-17"/>
+    </process>
+</definitions>

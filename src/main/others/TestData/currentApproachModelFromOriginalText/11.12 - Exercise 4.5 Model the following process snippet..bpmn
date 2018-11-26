@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="blood" id="id-0">
+        <laneSet name="blood" id="id-1"/>
+    </process>
+    <process name="candidates" id="id-2">
+        <laneSet name="candidates" id="id-3"/>
+    </process>
+    <process id="id-4">
+        <task name="shortlist the candidates applications" id="id-5">
+            <incoming>id-38</incoming>
+            <outgoing>id-23</outgoing>
+        </task>
+        <task name="call the shortlisted to sit" id="id-6">
+            <incoming>id-23</incoming>
+            <outgoing>id-24</outgoing>
+        </task>
+        <task name="sit the following tests" id="id-7">
+            <incoming>id-24</incoming>
+            <outgoing>id-25</outgoing>
+        </task>
+        <task name="test the hearing" id="id-8">
+            <incoming>id-25</incoming>
+            <outgoing>id-26</outgoing>
+        </task>
+        <task name="test the blood" id="id-9">
+            <incoming>id-26</incoming>
+            <outgoing>id-27</outgoing>
+        </task>
+        <task name="test the urine" id="id-10">
+            <incoming>id-27</incoming>
+            <outgoing>id-28</outgoing>
+        </task>
+        <task name="test the weight" id="id-11">
+            <incoming>id-28</incoming>
+            <outgoing>id-29</outgoing>
+        </task>
+        <task name="require the hearing" id="id-12">
+            <incoming>id-29</incoming>
+            <outgoing>id-30</outgoing>
+        </task>
+        <task name="repeat some of tests in order to get" id="id-13">
+            <incoming>id-30</incoming>
+            <outgoing>id-31</outgoing>
+        </task>
+        <task name="to get " id="id-14">
+            <incoming>id-31</incoming>
+            <outgoing>id-32</outgoing>
+        </task>
+        <task name="pass the tests" id="id-15">
+            <incoming>id-32</incoming>
+            <outgoing>id-33</outgoing>
+        </task>
+        <task name="ask the candidates to sit a mental exam followed by an interview" id="id-16">
+            <incoming>id-33</incoming>
+            <outgoing>id-34</outgoing>
+        </task>
+        <task name="pass two exams" id="id-17">
+            <incoming>id-34</incoming>
+            <outgoing>id-35</outgoing>
+        </task>
+        <task name="perform well in the interview" id="id-18">
+            <incoming>id-35</incoming>
+            <outgoing>id-36</outgoing>
+        </task>
+        <task name="recruit those in the army" id="id-19">
+            <incoming>id-36</incoming>
+            <outgoing>id-37</outgoing>
+        </task>
+        <task name="finish the process" id="id-20">
+            <incoming>id-37</incoming>
+            <outgoing>id-39</outgoing>
+        </task>
+        <startEvent id="id-21">
+            <outgoing>id-38</outgoing>
+        </startEvent>
+        <endEvent id="id-22">
+            <incoming>id-39</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-23"/>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-24"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-25"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-9" name="" id="id-26"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-27"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-28"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-29"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-30"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-31"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-32"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-16" name="" id="id-33"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-17" name="" id="id-34"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-18" name="" id="id-35"/>
+        <sequenceFlow sourceRef="id-18" targetRef="id-19" name="" id="id-36"/>
+        <sequenceFlow sourceRef="id-19" targetRef="id-20" name="" id="id-37"/>
+        <sequenceFlow sourceRef="id-21" targetRef="id-5" name="" id="id-38"/>
+        <sequenceFlow sourceRef="id-20" targetRef="id-22" name="" id="id-39"/>
+    </process>
+</definitions>

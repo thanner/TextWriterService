@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI">
+    <process name="employee" id="id-0">
+        <laneSet name="employee" id="id-1"/>
+    </process>
+    <process name="employee account" id="id-2">
+        <laneSet name="employee account" id="id-3"/>
+    </process>
+    <process id="id-4">
+        <task name="receive a message" id="id-5">
+            <incoming>id-30</incoming>
+            <outgoing>id-29</outgoing>
+        </task>
+        <task name="execute one of the alternative 2 procedures" id="id-6">
+            <incoming>id-29</incoming>
+            <outgoing>id-20</outgoing>
+        </task>
+        <task name="conduct the approval" id="id-7">
+            <incoming>id-20</incoming>
+            <outgoing>id-21</outgoing>
+        </task>
+        <task name="advise the employee again to the start" id="id-8">
+            <incoming>id-21</incoming>
+            <outgoing>id-22</outgoing>
+        </task>
+        <task name="review for the pre-approval" id="id-9">
+            <incoming>id-33</incoming>
+            <outgoing>id-23</outgoing>
+        </task>
+        <task name="execute one of the alternative 3 procedures" id="id-10">
+            <incoming>id-23</incoming>
+            <outgoing>id-24</outgoing>
+        </task>
+        <task name="send for payment transfers to the employee account" id="id-11">
+            <incoming>id-24</incoming>
+            <outgoing>id-25</outgoing>
+        </task>
+        <task name="conduct the supervisor review in the second procedure" id="id-12">
+            <incoming>id-25</incoming>
+            <outgoing>id-26</outgoing>
+        </task>
+        <task name="send for the payment" id="id-13">
+            <incoming>id-26</incoming>
+            <outgoing>id-27</outgoing>
+        </task>
+        <task name="transfer to the employee account" id="id-14">
+            <incoming>id-27</incoming>
+            <outgoing>id-28</outgoing>
+        </task>
+        <task name="finish the process in case" id="id-15">
+            <incoming>id-28</incoming>
+            <outgoing>id-31</outgoing>
+        </task>
+        <exclusiveGateway id="id-16">
+            <incoming>id-22</incoming>
+            <outgoing>id-32</outgoing>
+            <outgoing>id-33</outgoing>
+        </exclusiveGateway>
+        <startEvent id="id-17">
+            <outgoing>id-30</outgoing>
+        </startEvent>
+        <endEvent id="id-18">
+            <incoming>id-31</incoming>
+        </endEvent>
+        <endEvent id="id-19">
+            <incoming>id-32</incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="id-6" targetRef="id-7" name="" id="id-20"/>
+        <sequenceFlow sourceRef="id-7" targetRef="id-8" name="" id="id-21"/>
+        <sequenceFlow sourceRef="id-8" targetRef="id-16" name="" id="id-22"/>
+        <sequenceFlow sourceRef="id-9" targetRef="id-10" name="" id="id-23"/>
+        <sequenceFlow sourceRef="id-10" targetRef="id-11" name="" id="id-24"/>
+        <sequenceFlow sourceRef="id-11" targetRef="id-12" name="" id="id-25"/>
+        <sequenceFlow sourceRef="id-12" targetRef="id-13" name="" id="id-26"/>
+        <sequenceFlow sourceRef="id-13" targetRef="id-14" name="" id="id-27"/>
+        <sequenceFlow sourceRef="id-14" targetRef="id-15" name="" id="id-28"/>
+        <sequenceFlow sourceRef="id-5" targetRef="id-6" name="" id="id-29"/>
+        <sequenceFlow sourceRef="id-17" targetRef="id-5" name="" id="id-30"/>
+        <sequenceFlow sourceRef="id-15" targetRef="id-18" name="" id="id-31"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-19" name="" id="id-32"/>
+        <sequenceFlow sourceRef="id-16" targetRef="id-9" name="requires  " id="id-33"/>
+    </process>
+</definitions>

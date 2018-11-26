@@ -1,0 +1,157 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "employee"
+        },
+        {
+          "id": "id-3",
+          "name": "service management"
+        },
+        {
+          "id": "id-4",
+          "name": "customer service"
+        },
+        {
+          "id": "id-5",
+          "name": "customer"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    },
+    {
+      "id": "id-6",
+      "name": "customer service department of teleco"
+    },
+    {
+      "id": "id-8",
+      "name": "provisioning resource"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the employee sends a list to the customer service department of teleco.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 94,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-87",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, he enters a problem and then compares the problem report to the identify.",
+        "snippetList": [
+          {
+            "startIndex": 35,
+            "endIndex": 78,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 25,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, he determines the necessary counter measures to the include and then includes the respective priorities.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 71,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 81,
+            "endIndex": 115,
+            "resourceId": "id-2",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, he determines the significance of customer based on information that has been collected during history of contractual relationship and thens the collects that the.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 176,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the employee collects that the and then collects that the .",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 19,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "id-2",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}
