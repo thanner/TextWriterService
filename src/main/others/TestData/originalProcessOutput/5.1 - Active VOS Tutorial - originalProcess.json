@@ -1,0 +1,88 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 invokes the risk assessor.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 46,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1673u3j",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the Resource 1 invokes the loan approval.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 65,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1l4gxnu",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1anvs5a",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -13,8 +13,8 @@ public class Paths {
 
     public final static String PackageBpmnPath = "org.omg.spec.bpmn._20100524.model";
 
-    public final static String dataInputPath = "/TestData/input/";
-    public final static String dataOutputPath = "/TestData/output/";
+    public final static String dataInputPath = "/TestData/originalProcess/";
+    public final static String dataOutputPath = "/TestData/originalProcessOutput/";
     public final static String dataGeneratorLogPath = "/TestData/log/dataGenerator.log";
     public final static String externalInputFiles = "/Users/thanner/IdeaProjects/textreader/src/main/others/TestData/output/";
 

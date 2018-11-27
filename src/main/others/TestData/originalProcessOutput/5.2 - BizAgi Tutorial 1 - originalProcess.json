@@ -1,0 +1,131 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0440c94",
+          "name": "Employee"
+        },
+        {
+          "id": "Lane_16y2amv",
+          "name": "Boss"
+        },
+        {
+          "id": "Lane_0ege8tq",
+          "name": "Human resource assistant"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Employee registers a vacation request.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 65,
+            "resourceId": "Lane_0440c94",
+            "processElementId": "Task_1jdebb8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane_0440c94",
+            "processElementId": "StartEvent_0zm1yeh",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Boss verifies the available vacation days and then approves the vacation request.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 51,
+            "resourceId": "Lane_16y2amv",
+            "processElementId": "Task_09zt0bc",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 61,
+            "endIndex": 90,
+            "resourceId": "Lane_16y2amv",
+            "processElementId": "Task_0ri0bub",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane_16y2amv",
+            "processElementId": "ExclusiveGateway_0o3prci",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"no\", the Employee informs the reject reason.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 47,
+            "resourceId": "Lane_0440c94",
+            "processElementId": "Task_0v5qcp0",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"yes\", the Human resource assistant makes the administrative task.",
+        "snippetList": [
+          {
+            "startIndex": 10,
+            "endIndex": 68,
+            "resourceId": "Lane_0ege8tq",
+            "processElementId": "Task_0gas056",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane_0ege8tq",
+            "processElementId": "EndEvent_0x4j5vx",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0ege8tq",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

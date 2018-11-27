@@ -1,0 +1,237 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0ejt60e",
+          "name": "Marketing"
+        },
+        {
+          "id": "Lane_0ynaq64",
+          "name": "Call-Center Employee"
+        },
+        {
+          "id": "Lane_13d4e47",
+          "name": "Head of Development"
+        },
+        {
+          "id": "Lane_0no84qr",
+          "name": "Sales Representative"
+        },
+        {
+          "id": "Lane_0i0i83m",
+          "name": "Pre-Sales Employee"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Marketing does an unlabeled subprocess (id: subprocess 0hls070).",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 91,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "SubProcess_0hls070",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "StartEvent_1bx1bn8",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "StartEvent_06zj2uf",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "One of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "ExclusiveGateway_1n56xnz",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"(25%)\", the Marketing visits the exhibition and then imports the excel-sheet with the customer data.",
+        "snippetList": [
+          {
+            "startIndex": 57,
+            "endIndex": 103,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "Task_0wx7bl3",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 47,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "Task_1alfts8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "If \"(30%)\", the Marketing buys the data.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 39,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "Task_0wnsdij",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "If \"(45%)\", the Marketing conducts the other sources.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 52,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "Task_127s7no",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 39,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "EndEvent_1cfsjnt",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "ExclusiveGateway_0c7gqxz",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Call-Center Employee determines the contact person.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 60,
+            "resourceId": "Lane_0ynaq64",
+            "processElementId": "Task_0euccka",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the Call-Center Employee determines the available project budget.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 89,
+            "resourceId": "Lane_0ynaq64",
+            "processElementId": "Task_0ohm2vp",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane_0ynaq64",
+            "processElementId": "ExclusiveGateway_1mmwh5n",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "Lane_0ynaq64",
+            "processElementId": "ExclusiveGateway_0249f0z",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"not interested (small budget) (20%)\", the Call-Center Employee remembers the customer for the follow-up.",
+        "snippetList": [
+          {
+            "startIndex": 42,
+            "endIndex": 107,
+            "resourceId": "Lane_0ynaq64",
+            "processElementId": "Task_08iby0g",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0ejt60e",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

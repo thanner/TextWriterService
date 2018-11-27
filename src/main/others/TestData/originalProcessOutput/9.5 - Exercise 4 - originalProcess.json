@@ -1,0 +1,193 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 conducts the approval in progress email and then advises the employee to the start again.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_12l9paa",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 103,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ibwr0f",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"no\", if required, the Resource 1 creates the account.",
+        "snippetList": [
+          {
+            "startIndex": 22,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_09j5hv0",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 21,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_04qlqgt",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, the Resource 1 reviews for the pre-approval.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0hoohby",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1mrqkz7",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 sends for the payment and then transfers to the employee account.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 60,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1s9avwx",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 70,
+            "endIndex": 103,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0lcp3xq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 conducts the supervisor review and then sends for the payment.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1aipab9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 80,
+            "endIndex": 101,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1s9avwx",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "Next, it transfers to the employee account.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 42,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0lcp3xq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_116ijx3",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

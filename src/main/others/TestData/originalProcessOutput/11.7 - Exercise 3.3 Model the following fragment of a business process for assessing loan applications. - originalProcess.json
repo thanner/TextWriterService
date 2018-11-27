@@ -1,0 +1,130 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 prepares an acceptance pack.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 66,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_04bup46",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it checks the if home insurance quote is requested.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0u40j6h",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0lziwb0",
+            "processElementType": "ORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"always\", the Resource 1 sends the acceptance pack.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0gb322v",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"home insurance quote requested\", the Resource 1 sends the home insurance quote.",
+        "snippetList": [
+          {
+            "startIndex": 37,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0a9cen7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Afterwards, the Resource 1 verifies the repayment agreement.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0iz69ax",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 10,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0dit9ys",
+            "processElementType": "ORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0ye8wly",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

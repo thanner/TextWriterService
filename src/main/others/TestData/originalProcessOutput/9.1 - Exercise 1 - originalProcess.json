@@ -1,0 +1,193 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a time condition is fulfilled the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 alerts the supervisor.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_10g3qxq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 does the unlabeled subprocess (id: subprocess 09l6ksw).",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 94,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_09l6ksw",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent 1",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "One of the 5 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the Resource 1 alerts the supervisor.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0tnuvqw",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the third procedure, the Resource 1 conducts the backup database.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 67,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0tgpnb8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 4",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 5",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Resource 1 checks the crm system and then reconciles with account defaulters table.",
+        "snippetList": [
+          {
+            "startIndex": 58,
+            "endIndex": 98,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0z68nd8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_10zlmuf",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 3",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 4",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

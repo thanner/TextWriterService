@@ -1,0 +1,126 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0hkysmd",
+          "name": "Account department"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane_1sxjtea",
+          "name": "Production"
+        }
+      ],
+      "id": "Process_0kjqy7u",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Account department processes an order.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 65,
+            "resourceId": "Lane_0hkysmd",
+            "processElementId": "Task_0jgpdze",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane_0hkysmd",
+            "processElementId": "StartEvent 1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 26,
+            "resourceId": "Lane_0hkysmd",
+            "processElementId": "Task_0gnhhnc",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane_0hkysmd",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a time condition is fulfilled the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 53,
+            "resourceId": "Lane_1sxjtea",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Production creates the order and then receives the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 38,
+            "resourceId": "Lane_1sxjtea",
+            "processElementId": "Task_16ycwj1",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 48,
+            "endIndex": 68,
+            "resourceId": "Lane_1sxjtea",
+            "processElementId": "Task_1oiga44",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane_1sxjtea",
+            "processElementId": "EndEvent_0j9999z",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

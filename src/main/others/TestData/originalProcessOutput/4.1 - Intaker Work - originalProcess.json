@@ -1,0 +1,300 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_061tqhc",
+          "name": "Nursing Officer"
+        },
+        {
+          "id": "Lane_0jcmpf8",
+          "name": "team-leader"
+        },
+        {
+          "id": "Lane_0qh45or",
+          "name": "second intaker"
+        },
+        {
+          "id": "Lane_05moj61",
+          "name": "Secretatial office"
+        },
+        {
+          "id": "Lane_03vfs7s",
+          "name": "First inteaker"
+        }
+      ],
+      "id": "Process_09tnl8n",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "StartEvent_0h8kp5p",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Secretatial office answers the notice and then determines the nursing officer.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 47,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0wcytqb",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 57,
+            "endIndex": 87,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0ku47x5",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Nursing Officer records the notice and then the Secretatial office stores.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 0,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0kxjgrd",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 50,
+            "resourceId": "Lane_061tqhc",
+            "processElementId": "Task_13fxil4",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the Secretatial office creates a patient file.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 72,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_16jg6iz",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "ExclusiveGateway_0d5e1y1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the Secretatial office closes the case and then the team-leader assigns the intakers.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 51,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_003f7ev",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 61,
+            "endIndex": 97,
+            "resourceId": "Lane_0jcmpf8",
+            "processElementId": "Task_06rgot2",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "ExclusiveGateway_03k2h6l",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it stores the assignment.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 30,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_173kzvb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 1 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "ExclusiveGateway_16r1nc8",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Secretatial office asks for the medical file and then hands out the cards.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 72,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_1sqjb3g",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 82,
+            "endIndex": 101,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0ch2g8e",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, the First inteaker plans the meeting first intaker and then meetings with the first intaker.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 64,
+            "resourceId": "Lane_03vfs7s",
+            "processElementId": "Task_0gkqvhb",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 74,
+            "endIndex": 105,
+            "resourceId": "Lane_03vfs7s",
+            "processElementId": "Task_154hk3q",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, it completes the file with the 1st info and then the Secretatial office updates the patient file.",
+        "snippetList": [
+          {
+            "startIndex": 55,
+            "endIndex": 102,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0c5vgz3",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "Lane_03vfs7s",
+            "processElementId": "Task_0k2pgiy",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, the second intaker plans the meeting second intaker and then meetings with the second intaker.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "Lane_0qh45or",
+            "processElementId": "Task_1bn460j",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 73,
+            "endIndex": 105,
+            "resourceId": "Lane_0qh45or",
+            "processElementId": "Task_0am3sx3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Secretatial office types of the out conversation and then the second intaker completes the file with the 2nd info.",
+        "snippetList": [
+          {
+            "startIndex": 76,
+            "endIndex": 131,
+            "resourceId": "Lane_0qh45or",
+            "processElementId": "Task_0mtrfo0",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 66,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0en706y",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the team-leader determines the treatment.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 46,
+            "resourceId": "Lane_0jcmpf8",
+            "processElementId": "Task_0e3vvz8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane_0jcmpf8",
+            "processElementId": "EndEvent_090nzl2",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

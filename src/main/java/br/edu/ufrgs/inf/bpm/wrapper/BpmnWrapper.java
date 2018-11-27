@@ -230,8 +230,10 @@ public class BpmnWrapper {
         List<TCollaboration> collaborationList = getCollaborationList();
         for (TCollaboration collaboration : collaborationList) {
             for (TParticipant participant : collaboration.getParticipant()) {
-                if (process.getId().equals(participant.getProcessRef().toString())) {
-                    return participant.getName();
+                if (participant.getProcessRef() != null) {
+                    if (process.getId().equals(participant.getProcessRef().toString())) {
+                        return participant.getName();
+                    }
                 }
             }
         }
@@ -242,8 +244,10 @@ public class BpmnWrapper {
         List<TCollaboration> collaborationList = getCollaborationList();
         for (TCollaboration collaboration : collaborationList) {
             for (TParticipant participant : collaboration.getParticipant()) {
-                if (tProcess.getId().equals(participant.getProcessRef().toString())) {
-                    return participant;
+                if (participant.getProcessRef() != null) {
+                    if (tProcess.getId().equals(participant.getProcessRef().toString())) {
+                        return participant;
+                    }
                 }
             }
         }
@@ -437,7 +441,7 @@ public class BpmnWrapper {
             if (tFlowElement instanceof TSubProcess) {
                 TFlowElement flowElementFind = getFlowElementById(flowElementId, (TSubProcess) tFlowElement);
                 if (flowElementFind != null) {
-                    return tFlowElement;
+                    return flowElementFind;
                 }
             }
         }

@@ -1,0 +1,402 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 shortlists an application.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1w2zzbz",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1e3kiof",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it does the unlabeled subprocess (id: subprocess 0jm87wv).",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 63,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_0jm87wv",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent 8",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "One of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 checks the fingerprints.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 62,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_160ps0w",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "One of the 5 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the first procedure, the Resource 1 tests the blood.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1p6z2lc",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 tests the urines.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1czo4pj",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In the third procedure, the Resource 1 tests the hearing.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1cnicd1",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In the fourth procedure, the Resource 1 checks the eyes and then tests the color vision.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_18s6wy4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 65,
+            "endIndex": 87,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_03c93ia",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In the fifth procedure, the Resource 1 checks the weight.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0je268b",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "After that, the Resource 1 holds the doctor examination.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1j7magv",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the Resource 1 tests for drug and alcohols.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 67,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1qwtcvf",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 4",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_07kpqli",
+            "processElementType": "ORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"there are candidates who failed some tests\", the Resource 1 notifies the failure.",
+        "snippetList": [
+          {
+            "startIndex": 49,
+            "endIndex": 84,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1hqcwh7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"there are candidates who passed all tests\", the Resource 1 schedules the exams and interviews.",
+        "snippetList": [
+          {
+            "startIndex": 48,
+            "endIndex": 97,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0h59yby",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "processElementId": "none",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 holds the mental exam.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_03kujn9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 holds the physical exam.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 38,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1j0bjf4",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the Resource 1 holds the interview.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 51,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_14q7rri",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1g4073y",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1f6b934",
+            "processElementType": "ORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "If \"there are unsuccessful candidates\", the Resource 1 notifies the failure.",
+        "snippetList": [
+          {
+            "startIndex": 40,
+            "endIndex": 75,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ptu75r",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "If \"there are successful candidates\", the Resource 1 recruits the applicant.",
+        "snippetList": [
+          {
+            "startIndex": 38,
+            "endIndex": 75,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_15cny7o",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 5",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 checks the customer details.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 66,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1gpvh6p",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_17xjtks",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 rejects the claim.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_08o2n2i",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 1 evaluates the severity and then sends the relevant forms.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 50,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0aq0t4q",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 60,
+            "endIndex": 84,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_02rh9hg",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1c4wa3z",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, it checks for the completeness.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 42,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0x04dvr",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1c4wa3z",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Resource 1 continues with sending the relevant forms.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 69,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1c4wa3z",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1c4wa3z",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 registers the claim.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 40,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1ke2ar3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

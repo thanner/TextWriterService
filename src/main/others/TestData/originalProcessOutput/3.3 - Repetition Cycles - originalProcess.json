@@ -1,0 +1,137 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 registers a claim.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_16g236j",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1kehlri",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, it examines the claim and then writes the recommendation.",
+        "snippetList": [
+          {
+            "startIndex": 44,
+            "endIndex": 69,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_16uxl88",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 34,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1itohjl",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1ee8z8x",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it checks the recommendation.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 34,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0e3ahez",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1ee8z8x",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Resource 1 continues with writing the recommendation.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 69,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1ee8z8x",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1ee8z8x",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0id4ayd",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

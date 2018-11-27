@@ -1,0 +1,137 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a time condition is fulfilled the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 prepares the callover list and then contacts the parties.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_10bhiat",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 57,
+            "endIndex": 77,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1jqbw7u",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1i2l3u7",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"not all parties agree\", the Resource 1 defers the callover.",
+        "snippetList": [
+          {
+            "startIndex": 28,
+            "endIndex": 62,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0tq61jg",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"all parties agree\", the Resource 1 sets the callover and then prepares the callover material.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1o19shi",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 66,
+            "endIndex": 96,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0pgndx6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, it holds the callover.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0vggwsn",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

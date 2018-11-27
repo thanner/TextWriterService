@@ -1,0 +1,255 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0psnb62",
+          "name": "Sales Department"
+        },
+        {
+          "id": "Lane_0prezrn",
+          "name": "Storehouse "
+        },
+        {
+          "id": "Lane_1vtbrsz",
+          "name": "Engineering Department"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Sales Department receives an order.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 62,
+            "resourceId": "Lane_0psnb62",
+            "processElementId": "Task_0t5q4dm",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane_0psnb62",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the Sales Department informs the storehouse and egineerings the department.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 93,
+            "resourceId": "Lane_0psnb62",
+            "processElementId": "Task_06lmhwx",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "Lane_0psnb62",
+            "processElementId": "ExclusiveGateway_0ouptvh",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "ExclusiveGateway_0keprhh",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Engineering Department prepares for assembling.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 50,
+            "resourceId": "Lane_1vtbrsz",
+            "processElementId": "Task_1tm1at2",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the Storehouse  checks the part quantity.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 57,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "Task_0mg6qyg",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "ExclusiveGateway_1ate8n8",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "If \"no\", the Storehouse  back-orders the part.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 45,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "Task_1cbz7mm",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "If \"yes\", the Storehouse  reserves the part.",
+        "snippetList": [
+          {
+            "startIndex": 10,
+            "endIndex": 43,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "Task_1i3w31i",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "ExclusiveGateway_1ate8n8",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Storehouse  selects the unchecked part.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 48,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "Task_19cdnaj",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "As long as any left is parted unchecked the Storehouse  repeats the latter steps and continues with checking the part quantity.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 126,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 33,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After each case, the Engineering Department assembles the bicycle and then the Sales Department ships the bicycle to the customer.",
+        "snippetList": [
+          {
+            "startIndex": 75,
+            "endIndex": 129,
+            "resourceId": "Lane_0psnb62",
+            "processElementId": "Task_057hs8n",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 65,
+            "resourceId": "Lane_1vtbrsz",
+            "processElementId": "Task_1t0l94d",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane_1vtbrsz",
+            "processElementId": "ExclusiveGateway_0r5hosp",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane_0psnb62",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0psnb62",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

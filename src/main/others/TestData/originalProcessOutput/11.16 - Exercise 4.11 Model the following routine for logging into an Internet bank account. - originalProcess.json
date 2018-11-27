@@ -1,0 +1,335 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 logs in the .",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 50,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_0wfqkd5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent 1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 66,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0b73d0c",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After that, the Resource 1 validates the username.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 49,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0679xfz",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 8 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 sets the attempts counter to the 0 and then validates the password.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_10d8jtx",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 83,
+            "endIndex": 105,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ac80zq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "Next, it notifies the user to the try again later.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 49,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1s2rqtb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the Resource 1 sets the attempts counter to the 0 and then validates the password.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_10d8jtx",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 84,
+            "endIndex": 106,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ac80zq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After that, it conducts the increment attempts counter and then tests the captcha.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0dcfwt5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 81,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0w2kvro",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In the third procedure, the Resource 1 notifies the user to the try again later.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 79,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1s2rqtb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the fourth procedure, the Resource 1 notifies the user to the try again later.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 80,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1s2rqtb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the fifth procedure, the Resource 1 validates the password and then notifies the user to the try again later.",
+        "snippetList": [
+          {
+            "startIndex": 71,
+            "endIndex": 111,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1s2rqtb",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 24,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ac80zq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Resource 1 freezes the bank account.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ig76e0",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "One of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 30,
+            "resourceId": "Lane 1",
+            "processElementId": "BoundaryEvent_1w20ece",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 logs the invalid username.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 40,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1e5mp5w",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 34,
+            "processElementId": "none",
+            "processElementType": "XORJOIN"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "processElementId": "",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 2",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 2"
+        }
+      ],
+      "id": "Process_10tz7zx",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 conducts a deregistration.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1lqmha4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0u0zm8t",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0obcyaf",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 34,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_03m76kj",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0ownna7",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0jhslh8",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_03y4z4r",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 2 conducts the preliminary confirmation of the deregistration and then assigns the go as msp.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 98,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1geahi9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 108,
+            "endIndex": 129,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1roknxs",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, it conducts the information about the new assignment and then conducts the information about the new assignment.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1n3e262",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 15,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0yywkjj",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts the information about the new assignment.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 66,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1t8sgaa",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the Resource 2 conducts the rejection of the deregistration.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 84,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1clrvjl",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

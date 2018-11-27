@@ -1,0 +1,215 @@
+{
+  "processList": [
+    {
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane_1fu1i12",
+          "name": "Mail Processing Unit"
+        },
+        {
+          "id": "Lane_1923ybd",
+          "name": "Registry"
+        },
+        {
+          "id": "Lane_0bd5qff",
+          "name": "Cashier"
+        },
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_0bbxore",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Mail Processing Unit collects a mail.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 64,
+            "resourceId": "Lane_1fu1i12",
+            "processElementId": "Task_03n0m55",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane_1fu1i12",
+            "processElementId": "StartEvent 1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sorts the unopened mail and then the Registry sorts the opened mail.",
+        "snippetList": [
+          {
+            "startIndex": 42,
+            "endIndex": 76,
+            "resourceId": "Lane_1923ybd",
+            "processElementId": "Task_1uh87pq",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 32,
+            "resourceId": "Lane_1fu1i12",
+            "processElementId": "Task_13dorr1",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Registry registers the mail and then checks the mail compliace.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 43,
+            "resourceId": "Lane_1923ybd",
+            "processElementId": "Task_0jnqn5y",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 53,
+            "endIndex": 78,
+            "resourceId": "Lane_1923ybd",
+            "processElementId": "Task_00j5a56",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 54,
+            "resourceId": "Lane_1923ybd",
+            "processElementId": "ExclusiveGateway_17kgp8n",
+            "processElementType": "ORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"Not acceptable\", the Registry compiles the mailed document requisition.",
+        "snippetList": [
+          {
+            "startIndex": 21,
+            "endIndex": 74,
+            "resourceId": "Lane_1923ybd",
+            "processElementId": "Task_0vd12il",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"Acceptable\", the Registry captures the mailed document matter details and then the Cashier receipts the p\u0026e fee payments.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 73,
+            "resourceId": "Lane_1923ybd",
+            "processElementId": "Task_18ezlzm",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 83,
+            "endIndex": 124,
+            "resourceId": "Lane_0bd5qff",
+            "processElementId": "Task_0yz8mca",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "processElementId": "none",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Cashier captures the p\u0026e party details and then prints the physical file.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 42,
+            "resourceId": "Lane_0bd5qff",
+            "processElementId": "Task_1shcbrp",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 52,
+            "endIndex": 76,
+            "resourceId": "Lane_0bd5qff",
+            "processElementId": "Task_1kct0tc",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "The Registry prepares the mailed document response.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 50,
+            "resourceId": "Lane_1923ybd",
+            "processElementId": "Task_13lgvdi",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane_1fu1i12",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_1fu1i12",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

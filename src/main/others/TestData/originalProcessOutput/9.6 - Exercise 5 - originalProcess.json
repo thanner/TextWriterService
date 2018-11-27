@@ -1,0 +1,367 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 locates and re-uses the designs.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0nl778q",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "processElementId": "none",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 creates the electrical design.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 44,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_0ypipb3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0tvp0kq",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 reviews the previous designs and then updates the electrical design.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_068h8u5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 53,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1asb9yd",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "After that, it tests the electrical design.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 42,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_13ws0lb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "As long as the ok is designed the Resource 1 repeats the latter steps and continues with reviewing the previous designs.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 119,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the process ends with a signal..",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0vbofsn",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 sends signals.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 34,
+            "resourceId": "Lane 1",
+            "processElementId": "BoundaryEvent_12kigjy",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Resource 1 continues with creating the electrical design.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 73,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 creates the physical design.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 42,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_1lyzpbm",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0oh1anb",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 reviews the previous designs and then updates the physical design.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1y8muqh",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 53,
+            "endIndex": 80,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0rasy7i",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "After that, it tests the physical design.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 40,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1jeolg9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "As long as the ok is designed the Resource 1 repeats the latter steps and continues with reviewing the previous designs.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 119,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the process ends with a signal..",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_03ezckh",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 sends signals.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 34,
+            "resourceId": "Lane 1",
+            "processElementId": "BoundaryEvent_1mdho4i",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Resource 1 continues with creating the physical design.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 71,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After each case, the Resource 1 tests the complete design and then sents back the designs.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0wq304q",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 89,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0kmm3vh",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1om1jdp",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "As long as the ok is designed the Resource 1 repeats the latter steps and continues with locating.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 97,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_02h3spp",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

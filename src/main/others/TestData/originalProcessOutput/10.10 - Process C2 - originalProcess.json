@@ -1,0 +1,280 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 2"
+        }
+      ],
+      "id": "Process_1yvbg7u",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_13kt8hf",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1l076yd",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 conducts the suspicion of fault.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0kp9enq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_162sftk",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 1 examines the failure report.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1rdtqoa",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0rxgm04",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_115rckw",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 conducts the rejection of failure report.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 79,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ipkmef",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 conducts the confirmation of failure report.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 83,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1ix089c",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 1 informs the go about failure and then informs the msp about failure.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_18wc6vp",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 66,
+            "endIndex": 95,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0ytu894",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1qztnpu",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it repairs of the fault and then conducts the information about the results of the repair or the fault.",
+        "snippetList": [
+          {
+            "startIndex": 45,
+            "endIndex": 114,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1i9j92u",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0w1kr9i",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts the information about the resolution of the interference and then conducts the information about the resolution of the interference.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1qyok8v",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_01wasaf",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0qp82z5",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The process starts when the Resource 2 reports of a failure.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0n0ck6f",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_07j5l8o",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1crga50",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 34,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_19zalaf",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0wv6xvq",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

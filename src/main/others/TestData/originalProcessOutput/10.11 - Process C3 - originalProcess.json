@@ -1,0 +1,280 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 2"
+        }
+      ],
+      "id": "Process_07bojf8",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 checks.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent 1",
+            "processElementType": "STARTEVENT"
+          },
+          {
+            "startIndex": 24,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_06wdh5n",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_17m9agm",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 conducts the rejection.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1u9xrj4",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 conducts the performance of measurements.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 80,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_01jgjki",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0wm0206",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 conducts the transmission of the measured values and then conducts the transmission of readings to the sp.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 87,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_02ftpso",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 97,
+            "endIndex": 144,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1rvsk98",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 conducts the information about the failure of the reading.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 97,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0pqj0qw",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The process starts when the Resource 2 requests the measurements.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1int4wb",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1caf32v",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0i0ao6u",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 2 receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0c3v6r7",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1gl34oz",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the first procedure, the Resource 2 processings of the measured values and then sendings of the changed values.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1axxvxm",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 83,
+            "endIndex": 113,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1r1bzba",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 2 receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_02sy0i2",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 2",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

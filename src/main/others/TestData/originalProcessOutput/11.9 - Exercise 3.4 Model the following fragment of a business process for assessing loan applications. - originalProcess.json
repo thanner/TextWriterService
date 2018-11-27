@@ -1,0 +1,102 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 checks the application form completness.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 78,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0qkd9dt",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it returns the application back to the applicant and then receives the updated application.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0kguzx8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 96,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_01facc3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_09cuz6v",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Resource 1 continues with checking the application form completness.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 84,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_09cuz6v",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_1ot8phq",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

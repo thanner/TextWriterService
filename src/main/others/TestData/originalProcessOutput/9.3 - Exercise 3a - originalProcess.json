@@ -1,0 +1,255 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0o76ud2",
+          "name": "Coordination Unit"
+        },
+        {
+          "id": "Lane_15av5w4",
+          "name": "Support Officer"
+        },
+        {
+          "id": "Lane_0dwsozf"
+        },
+        {
+          "id": "Lane_1p3vi1f"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1dzswaw",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a time condition is fulfilled the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 53,
+            "resourceId": "Lane_0dwsozf",
+            "processElementId": "StartEvent_0oz4rmt",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Town Planning Authority drafts the dates and then enters the onto next years calendar.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 50,
+            "resourceId": "Lane_0dwsozf",
+            "processElementId": "Task_19u174y",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 60,
+            "endIndex": 95,
+            "resourceId": "Lane_0dwsozf",
+            "processElementId": "Task_04qkjj9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it checkses the \u0026 suggests updates and then finalizes the calendar schedule.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 46,
+            "resourceId": "Lane_1p3vi1f",
+            "processElementId": "Task_02zk1ao",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 56,
+            "endIndex": 87,
+            "resourceId": "Lane_0dwsozf",
+            "processElementId": "Task_126kzvq",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, sends a message and then the Town Planning Authority receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 39,
+            "endIndex": 85,
+            "resourceId": "Lane_1p3vi1f",
+            "processElementId": "IntermediateThrowEvent_0jvsrn6",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 29,
+            "resourceId": "Lane_0dwsozf",
+            "processElementId": "IntermediateThrowEvent_1ugrhxi",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Town Planning Authority updateses the group calendars.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 63,
+            "resourceId": "Lane_1p3vi1f",
+            "processElementId": "Task_13u94j3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 27,
+            "resourceId": "Lane_1p3vi1f",
+            "processElementId": "IntermediateThrowEvent_0vkjknc",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane_1p3vi1f",
+            "processElementId": "EndEvent_0vcrrq4",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The process starts when the Resource 1 conducts the       members check schedules.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 81,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_1ezli0v",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent 1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0ha9fet",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 checks for the conflicts and then sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0f9k6un",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1ya1h1s",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, it receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1044mv2",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 40,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_03lhlh1",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

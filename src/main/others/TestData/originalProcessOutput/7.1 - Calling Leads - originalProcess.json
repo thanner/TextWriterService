@@ -1,0 +1,156 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0xv8i8n",
+          "name": "Manager"
+        },
+        {
+          "id": "Lane_11bsam4",
+          "name": "Sales Assistant"
+        },
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a time condition is fulfilled the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 53,
+            "resourceId": "Lane_0xv8i8n",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Manager checks the open leads and then selects the top five leads.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 39,
+            "resourceId": "Lane_0xv8i8n",
+            "processElementId": "Task_1m8tx9l",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 49,
+            "endIndex": 75,
+            "resourceId": "Lane_0xv8i8n",
+            "processElementId": "Task_11q7xi9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Sales Assistant calls the contact person.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 56,
+            "resourceId": "Lane_11bsam4",
+            "processElementId": "Task_1mfr2sl",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Sales Assistant continues with calling the contact person.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 74,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 35,
+            "processElementId": "none",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, if required, the Manager processes the lead.",
+        "snippetList": [
+          {
+            "startIndex": 19,
+            "endIndex": 49,
+            "resourceId": "Lane_0xv8i8n",
+            "processElementId": "Task_0nombxl",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 18,
+            "resourceId": "Lane_11bsam4",
+            "processElementId": "ExclusiveGateway_13ltw70",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane_0xv8i8n",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0xv8i8n",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

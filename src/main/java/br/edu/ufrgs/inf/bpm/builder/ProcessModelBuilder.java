@@ -221,7 +221,7 @@ public class ProcessModelBuilder {
 
     private int getActivityType(TActivity activity) throws IllegalArgumentException {
         try {
-            return ActivityType.valueOf(activity.getClass().getSimpleName()).getValue();
+            return ActivityType.getActivityType(activity);
         } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(activity);
         }
@@ -229,8 +229,7 @@ public class ProcessModelBuilder {
 
     private int getEventType(TEvent event) throws IllegalArgumentException {
         try {
-            EventType eventType = new EventType();
-            return eventType.getEventType(event);
+            return EventType.getEventType(event);
         } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(event);
         }
@@ -238,7 +237,7 @@ public class ProcessModelBuilder {
 
     private int getGatewayType(TGateway gateway) throws IllegalArgumentException {
         try {
-            return GatewayType.valueOf(gateway.getClass().getSimpleName()).getValue();
+            return GatewayType.getGatewayType(gateway);
         } catch (IllegalArgumentException e) {
             throw getIllegalTypeException(gateway);
         }

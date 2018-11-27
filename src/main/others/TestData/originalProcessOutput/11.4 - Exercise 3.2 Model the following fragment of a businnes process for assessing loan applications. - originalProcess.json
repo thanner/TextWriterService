@@ -1,0 +1,165 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1361h55",
+            "processElementType": "ANDSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 appraises the property.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 37,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0zge8ak",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the Resource 1 checks the credit history and then assesses the loan risk.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 57,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0025r7q",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 89,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1uwknvb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the Resource 1 assesses the eligibility.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1vh7kjk",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_002ojr6",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0bkpjdy",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"applicant elegible\", the Resource 1 prepares the acceptance pack and then sends the acceptance pack.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 68,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1b9y334",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 103,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1yqopkd",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"applicant nor elegible\", the Resource 1 rejects the application.",
+        "snippetList": [
+          {
+            "startIndex": 29,
+            "endIndex": 67,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0xu97or",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1hbj8fq",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 2"
+        }
+      ],
+      "id": "Process_0zogua2",
+      "name": "Process 2"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 3"
+        }
+      ],
+      "id": "Process_04vh40f",
+      "name": "Process 3"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0w41qhp",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1adpvn4",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 2 conducts the notification self dismounting.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 81,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1ty4bx9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 2 conducts the notification about no self-dismounting.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 91,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_04s6tgv",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 60,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_16p5u1m",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_140772a",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 2 sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 54,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1bve7xj",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0y5xcaz",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 2 conducts the final reading.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 66,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_12xdto2",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 60,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0lbx5ux",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1agquq9",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 2 dismountings of the old equipment.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1o8fd40",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 2 sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1q42704",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 65,
+            "endIndex": 83,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0lfgh67",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 2 mountings of the new device and then readings of meter count at installation.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_04ef5xp",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 65,
+            "endIndex": 104,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0xpr7w8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1500243",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, it sendings of values of final reading and then notifications the about the device changes, the master data.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 0,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0vraajb",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1lzjyp3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The process starts when the Resource 1 conducts the notification about equipment change intentions.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 98,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0t07elc",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1xj9dlt",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it receives a message and then conducts the final reading.",
+        "snippetList": [
+          {
+            "startIndex": 37,
+            "endIndex": 63,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0kdilqe",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 27,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_05nc3so",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, it sends a message and then dismountings of the old equipment.",
+        "snippetList": [
+          {
+            "startIndex": 37,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_007i73u",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 27,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0b8l0z6",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1mrw5ie",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the Resource 3 receives a message and then notifications the about the device changes, the master data, the meter count at dismounting.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 0,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1bgrv11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 42,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1jyq7ek",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

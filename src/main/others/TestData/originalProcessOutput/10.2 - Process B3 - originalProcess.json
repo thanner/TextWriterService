@@ -1,0 +1,619 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 2"
+        }
+      ],
+      "id": "Process_1ox2dmm",
+      "name": "Process 2"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 3"
+        }
+      ],
+      "id": "Process_0gsa0rm",
+      "name": "Process 3"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 conducts an application.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 62,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0nbt6l2",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_19iwxtb",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_078yltl",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 34,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0oehq5b",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0ixfhhj",
+            "processElementType": "ORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 conducts the equipment changes.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 69,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_05wpc41",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 conducts the equipment acquisition.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1k5dk8v",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Afterwards, the Resource 1 sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 42,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1dn4fup",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 10,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_12y1muv",
+            "processElementType": "ORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0rtm3f7",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 conducts the information about the failure of the entire process.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 103,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0dwu81k",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 conducts the information about the successful completion of the entire process and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 118,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_00j1orv",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 128,
+            "endIndex": 146,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0sf5pho",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1skwz31",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 2 reviews.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 28,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_09fxcv3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0a4r4au",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 2 conducts the rejection of the application of the mpon.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 92,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1cncut7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 2 conducts the confirmation of the application of the mpon and then conducts the information about the confirmation of the application.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 96,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0s5mqh5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 106,
+            "endIndex": 172,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0pj8jhx",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, it conducts the information about the registration of the mspo.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 76,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1fzex4w",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0ilhu6c",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 2 receives a message and then conducts the assingment of the mpon.",
+        "snippetList": [
+          {
+            "startIndex": 43,
+            "endIndex": 78,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0q593e8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateCatchEvent_13nrjxu",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After that, it conducts the confirmation of the assingment and then conducts the information about the assingment of the mpon.",
+        "snippetList": [
+          {
+            "startIndex": 68,
+            "endIndex": 125,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_010wc6u",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_12by632",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it conducts the information about the assingment of the mpon and then conducts the information about the assingment of the mpon.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_040n5fo",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0wq2h5s",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "One of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0ilhu6c",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 2 receives a message and then confirms the failure of the assingment.",
+        "snippetList": [
+          {
+            "startIndex": 43,
+            "endIndex": 81,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0tlie1w",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateCatchEvent_13gu85z",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 2 conducts the information about the failure of the overall transaction by deadline.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 96,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0fs06jb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 2 conducts the information about the failure of the assingment of the mpon and then conducts the information about the failure of the assingment of the mpon.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 100,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1lkxsir",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 28,
+            "endIndex": 100,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_05u2tqr",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_05idr9m",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 2",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_093wamn",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1skf3at",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 3 sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 30,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1haltpi",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 40,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0nprxdt",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, 2 alternative procedures may be executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 65,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_09ow8nh",
+            "processElementType": "ORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the first procedure, the Resource 3 conducts the equipment acquisition.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_04oikzl",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 3 conducts the equipment changes.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 70,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_161798s",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "Afterwards, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 10,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_09ow8nh",
+            "processElementType": "ORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After each case, the Resource 3 receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 50,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0lnem5w",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1ydh547",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_0mln8r6",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

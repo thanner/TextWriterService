@@ -1,0 +1,109 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 searches a police report database.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0pjg4n1",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it composes the file and then calculates the claim estimate.",
+        "snippetList": [
+          {
+            "startIndex": 36,
+            "endIndex": 65,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0r2d5nz",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 26,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1npikge",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it creates the action plan and then negotiates the estimate settlement.",
+        "snippetList": [
+          {
+            "startIndex": 48,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1ni8hvw",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 38,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_10lczo1",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it notifies the claimant.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 38,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_14yy9dm",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_02xgblr",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1e7iczs",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_0w9t5fq",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 does the unlabeled subprocess (id: subprocess 0nroi8v).",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 75,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_0nroi8v",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, 1 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "processElementId": "none",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1i4fi97",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0sswsqv",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 computes the travel plan.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0g6kp3b",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the Resource 1 estimates the trailer usage.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0jqpf8r",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the Resource 1 prepares the transportation quote.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 65,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_072hbgp",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1i4rxkx",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 40,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_1k2y2r0",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 2",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -36,7 +36,7 @@ public class EventType {
     public static final int INTM_COMPENSATION_CAT = 46;
 
 
-    public int getEventType(TEvent event) throws IllegalArgumentException {
+    public static int getEventType(TEvent event) throws IllegalArgumentException {
         if (event instanceof TStartEvent) {
             TStartEvent startEvent = (TStartEvent) event;
             return getStartEvent(startEvent);
@@ -57,7 +57,7 @@ public class EventType {
         }
     }
 
-    private int getStartEvent(TStartEvent startEvent) {
+    private static int getStartEvent(TStartEvent startEvent) {
         for (JAXBElement<? extends TEventDefinition> eventDefinition : startEvent.getEventDefinition()) {
             if (eventDefinition.getValue() instanceof TMessageEventDefinition) {
                 return START_MSG;
@@ -68,7 +68,7 @@ public class EventType {
         return START_EVENT;
     }
 
-    private int getIntermediateThrowEvent(TIntermediateThrowEvent intermediateThrowEvent) {
+    private static int getIntermediateThrowEvent(TIntermediateThrowEvent intermediateThrowEvent) {
         for (JAXBElement<? extends TEventDefinition> eventDefinition : intermediateThrowEvent.getEventDefinition()) {
             if (eventDefinition.getValue() instanceof TEscalationEventDefinition) {
                 return INTM_ESCALATION_THR;
@@ -83,7 +83,7 @@ public class EventType {
         return INTM;
     }
 
-    private int getIntermediateCatchEvent(TIntermediateCatchEvent intermediateCatchEvent) {
+    private static int getIntermediateCatchEvent(TIntermediateCatchEvent intermediateCatchEvent) {
         for (JAXBElement<? extends TEventDefinition> eventDefinition : intermediateCatchEvent.getEventDefinition()) {
             if (eventDefinition.getValue() instanceof TEscalationEventDefinition) {
                 return INTM_ESCALATION_CAT;
@@ -98,7 +98,7 @@ public class EventType {
         return INTM;
     }
 
-    private int getBoundaryEvent(TBoundaryEvent boundaryEvent) {
+    private static int getBoundaryEvent(TBoundaryEvent boundaryEvent) {
         for (JAXBElement<? extends TEventDefinition> eventDefinition : boundaryEvent.getEventDefinition()) {
             if (eventDefinition.getValue() instanceof TEscalationEventDefinition) {
                 return INTM_ESCALATION_THR;
@@ -115,7 +115,7 @@ public class EventType {
         return INTM;
     }
 
-    private int getEndEvent(TEndEvent endEvent) {
+    private static int getEndEvent(TEndEvent endEvent) {
         for (JAXBElement<? extends TEventDefinition> eventDefinition : endEvent.getEventDefinition()) {
             if (eventDefinition.getValue() instanceof TErrorEventDefinition) {
                 return END_ERROR;

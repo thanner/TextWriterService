@@ -1,0 +1,130 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 checks an invoice for the mismatches.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 75,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1xbzz6p",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0sptoqq",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"no mismatches\", the Resource 1 posts the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 20,
+            "endIndex": 52,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0mubck3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"mismatches exist but can be corrected\", the Resource 1 re-sends the invoice to the customer.",
+        "snippetList": [
+          {
+            "startIndex": 44,
+            "endIndex": 95,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_060ihkh",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"mismatches exist but cannot be corrected\", the Resource 1 blocks the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 47,
+            "endIndex": 80,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0imvafb",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 1 parks the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1atlipm",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1pqv95e",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_1vt6amy",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

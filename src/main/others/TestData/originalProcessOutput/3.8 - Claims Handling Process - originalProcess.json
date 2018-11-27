@@ -1,0 +1,170 @@
+{
+  "processList": [
+    {
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0tdvyhf",
+          "name": "Notification department"
+        },
+        {
+          "id": "Lane_0t57m5a",
+          "name": "Handling department"
+        }
+      ],
+      "id": "Process_0mmq3jq",
+      "name": "Process 2"
+    },
+    {
+      "id": "Process_0cpumm8",
+      "name": "Process 3"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Notification department checks a documentation.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 74,
+            "resourceId": "Lane_0tdvyhf",
+            "processElementId": "Task_04ejf52",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane_0tdvyhf",
+            "processElementId": "StartEvent_08jtu8e",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it registers the claim and then the Handling department checks the insurance.",
+        "snippetList": [
+          {
+            "startIndex": 38,
+            "endIndex": 82,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "Task_0e11484",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 28,
+            "resourceId": "Lane_0tdvyhf",
+            "processElementId": "Task_17lm115",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Handling department performs the assessment.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "Task_0sc5k3j",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 61,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "ExclusiveGateway_13l9agk",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Handling department arranges the repair and then schedules the payment.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 67,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "Task_0zuhqho",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 77,
+            "endIndex": 98,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "Task_1qx3l3u",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Handling department rejects the claim.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 66,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "Task_0nskyv2",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Handling department notifies the customer.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 58,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "Task_11ts8bo",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "ExclusiveGateway_1co6d55",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "EndEvent_1k2ngty",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}
