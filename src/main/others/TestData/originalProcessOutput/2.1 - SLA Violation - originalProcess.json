@@ -61,6 +61,258 @@
           {
             "startIndex": 0,
             "endIndex": 45,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-82B60472-FEAD-48C4-ACE2-5339794CDBE8",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 2 enters the problem report and then performs the plausibility check.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 46,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-E7566A4B-0D41-4F20-9D82-45C3C5AE636F",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 56,
+            "endIndex": 87,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-AF85E127-D887-46AF-81D2-F70620E864D7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "As long as is the Resource 2 repeats the latter steps and continues with entering the problem report.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 100,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 33,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Resource 2 determines the significance of the customer (based on customer data in problem report).",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 115,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-07D119E8-F6FD-440A-8440-CF1EC0637337",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-8A92647F-70A8-47A1-9CFB-17DF807EE081",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"yes\", the Resource 2 sends a signal.",
+        "snippetList": [
+          {
+            "startIndex": 10,
+            "endIndex": 39,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-4F0A137E-B6D3-498C-8636-B4D847CDED45",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"no\", the Resource 2 compares the customer sla and problems the report.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 73,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-C4004317-0E10-4D8C-8DD1-04C04F53E645",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, the Resource 2 determines the counter measures inclu. priorities and then creates the detailed problem report incl. contract commitment data + prioritized actions.",
+        "snippetList": [
+          {
+            "startIndex": 86,
+            "endIndex": 174,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-A08D6F01-02B6-45F0-8C92-B5ECD1CEA4C1",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 76,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-D4D2B1E8-EE44-4518-9DB5-0ABDC784EAE9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it sends a message and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 32,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-AA62FE54-F28C-4B1D-A8F5-CE4AC97C54AC",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 42,
+            "endIndex": 60,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-9A4FB8A5-0686-474C-AB53-7191AC114B26",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-EA7B8622-C18B-4961-B046-D1A1C9404EFD",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 2 creates the report for customer about performance and problems the resolution.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 92,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-4781654C-FBD8-4142-BFBA-9C2683C13C4F",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After that, the Resource 2 sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 42,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-57EB3F63-EE47-434F-8493-2696141FFE1C",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In the meantime, the Resource 2 reports the sla violation rebate to billing \u0026 colections for billing adjustment.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 111,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-0BAF774A-86C2-4A79-9DBA-3024780520A2",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "sid-EA7B8622-C18B-4961-B046-D1A1C9404EFD",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "EndEvent 2",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
             "resourceId": "sid-CCAB8087-E8F9-45BD-9C1E-6F6E9586F00E",
             "processElementId": "sid-4E2FD76E-6EC8-471D-AD51-187175A5E1C2",
             "processElementType": "STARTEVENT"
@@ -244,244 +496,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "sid-CCAB8087-E8F9-45BD-9C1E-6F6E9586F00E",
-            "processElementId": "ExclusiveGateway 3",
-            "processElementType": "XORJOIN"
-          }
-        ],
-        "level": 0,
-        "lateral": false
-      },
-      {
-        "value": "Once a message is received the process starts.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 45,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-82B60472-FEAD-48C4-ACE2-5339794CDBE8",
-            "processElementType": "STARTEVENT"
-          }
-        ],
-        "level": 0,
-        "lateral": false
-      },
-      {
-        "value": "Next, the Resource 2 enters the problem report and then performs the plausibility check.",
-        "snippetList": [
-          {
-            "startIndex": 6,
-            "endIndex": 46,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-E7566A4B-0D41-4F20-9D82-45C3C5AE636F",
-            "processElementType": "ACTIVITY"
-          },
-          {
-            "startIndex": 56,
-            "endIndex": 87,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-AF85E127-D887-46AF-81D2-F70620E864D7",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 0,
-        "lateral": false
-      },
-      {
-        "value": "As long as is the Resource 2 repeats the latter steps and continues with entering the problem report.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 100,
-            "processElementId": "sid-181BB89A-127F-4AA2-924B-A06DB46D8A7D",
-            "processElementType": "XORSPLIT"
-          }
-        ],
-        "level": 0,
-        "lateral": false
-      },
-      {
-        "value": "After that, the Resource 2 determines the significance of the customer (based on customer data in problem report).",
-        "snippetList": [
-          {
-            "startIndex": 12,
-            "endIndex": 113,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-07D119E8-F6FD-440A-8440-CF1EC0637337",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 0,
-        "lateral": false
-      },
-      {
-        "value": "Subsequently, one of the 2 alternative procedures is executed.",
-        "snippetList": [
-          {
-            "startIndex": 14,
-            "endIndex": 61,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-8A92647F-70A8-47A1-9CFB-17DF807EE081",
-            "processElementType": "XORSPLIT"
-          }
-        ],
-        "level": 0,
-        "lateral": false
-      },
-      {
-        "value": "If \"yes\", the Resource 2 sends a signal.",
-        "snippetList": [
-          {
-            "startIndex": 10,
-            "endIndex": 39,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-4F0A137E-B6D3-498C-8636-B4D847CDED45",
-            "processElementType": "INTERMEDIATEEVENT"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
-        "value": "If \"no\", the Resource 2 compares the customer sla and problems the report.",
-        "snippetList": [
-          {
-            "startIndex": 9,
-            "endIndex": 73,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-C4004317-0E10-4D8C-8DD1-04C04F53E645",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
-        "value": "Next, the Resource 2 determines the counter measures inclu. priorities and then creates the detailed problem report incl. contract commitment data + prioritized actions.",
-        "snippetList": [
-          {
-            "startIndex": 80,
-            "endIndex": 168,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-A08D6F01-02B6-45F0-8C92-B5ECD1CEA4C1",
-            "processElementType": "ACTIVITY"
-          },
-          {
-            "startIndex": 6,
-            "endIndex": 70,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-D4D2B1E8-EE44-4518-9DB5-0ABDC784EAE9",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "After that, it sends a message and then receives a message.",
-        "snippetList": [
-          {
-            "startIndex": 12,
-            "endIndex": 30,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-AA62FE54-F28C-4B1D-A8F5-CE4AC97C54AC",
-            "processElementType": "INTERMEDIATEEVENT"
-          },
-          {
-            "startIndex": 40,
-            "endIndex": 58,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-9A4FB8A5-0686-474C-AB53-7191AC114B26",
-            "processElementType": "INTERMEDIATEEVENT"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "Subsequently, 2 procedures are executed in an arbitrary order.",
-        "snippetList": [
-          {
-            "startIndex": 14,
-            "endIndex": 61,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-EA7B8622-C18B-4961-B046-D1A1C9404EFD",
-            "processElementType": "ANDSPLIT"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "The Resource 2 creates the report for customer about performance and problems the resolution.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 92,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-4781654C-FBD8-4142-BFBA-9C2683C13C4F",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 2,
-        "lateral": true
-      },
-      {
-        "value": "Next, the Resource 2 sends a message.",
-        "snippetList": [
-          {
-            "startIndex": 6,
-            "endIndex": 36,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-57EB3F63-EE47-434F-8493-2696141FFE1C",
-            "processElementType": "INTERMEDIATEEVENT"
-          }
-        ],
-        "level": 2,
-        "lateral": false
-      },
-      {
-        "value": "In the meantime, the Resource 2 reports the sla violation rebate to billing \u0026 colections for billing adjustment.",
-        "snippetList": [
-          {
-            "startIndex": 17,
-            "endIndex": 111,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-0BAF774A-86C2-4A79-9DBA-3024780520A2",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 2,
-        "lateral": true
-      },
-      {
-        "value": "After each case, the process continues.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 15,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "sid-EA7B8622-C18B-4961-B046-D1A1C9404EFD",
-            "processElementType": "ANDJOIN"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "In any case, the process is finished.",
-        "snippetList": [
-          {
-            "startIndex": 13,
-            "endIndex": 36,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "EndEvent 2",
-            "processElementType": "ENDEVENT"
-          },
-          {
-            "startIndex": 0,
-            "endIndex": 11,
-            "resourceId": "sid-56BD7714-E081-4B07-9EFA-B789F9D6C743",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 5",
             "processElementType": "XORJOIN"
           }
         ],
@@ -643,6 +658,20 @@
         "lateral": true
       },
       {
+        "value": "If \"minor corrective actions required\", the Resource 5 undertakes the corrective actions.",
+        "snippetList": [
+          {
+            "startIndex": 40,
+            "endIndex": 88,
+            "resourceId": "sid-CA53CEA5-0193-4AAA-A913-E1A37CFCF7DA",
+            "processElementId": "sid-5C70EF63-0671-4FCB-AAD6-E83640CA1E24",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
         "value": "If \"resource restoration required\", the Resource 5 creates for the automatic resource restoration and then sends a message.",
         "snippetList": [
           {
@@ -678,35 +707,28 @@
         "lateral": false
       },
       {
-        "value": "If \"minor corrective actions required\", the Resource 5 undertakes the corrective actions.",
+        "value": "In any case, the Resource 5 creates the problem resolution report and then sends a message.",
         "snippetList": [
           {
-            "startIndex": 40,
-            "endIndex": 88,
-            "resourceId": "sid-CA53CEA5-0193-4AAA-A913-E1A37CFCF7DA",
-            "processElementId": "sid-5C70EF63-0671-4FCB-AAD6-E83640CA1E24",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 3,
-        "lateral": true
-      },
-      {
-        "value": "Next, the Resource 5 creates the problem resolution report and then sends a message.",
-        "snippetList": [
-          {
-            "startIndex": 6,
-            "endIndex": 58,
+            "startIndex": 13,
+            "endIndex": 65,
             "resourceId": "sid-CA53CEA5-0193-4AAA-A913-E1A37CFCF7DA",
             "processElementId": "sid-50758C50-D42E-470A-8591-4EB90313ED85",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 68,
-            "endIndex": 83,
+            "startIndex": 75,
+            "endIndex": 90,
             "resourceId": "sid-CA53CEA5-0193-4AAA-A913-E1A37CFCF7DA",
             "processElementId": "sid-D15A9893-101B-42EF-85F1-04C37D110DC5",
             "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "sid-CA53CEA5-0193-4AAA-A913-E1A37CFCF7DA",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
           }
         ],
         "level": 2,
@@ -726,7 +748,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "sid-CA53CEA5-0193-4AAA-A913-E1A37CFCF7DA",
-            "processElementId": "ExclusiveGateway 2",
+            "processElementId": "ExclusiveGateway 4",
             "processElementType": "XORJOIN"
           }
         ],

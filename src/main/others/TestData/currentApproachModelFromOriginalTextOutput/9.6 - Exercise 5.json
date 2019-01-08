@@ -281,6 +281,20 @@
         "lateral": false
       },
       {
+        "value": "If \"the design passes the test\", the Resource 1 tells the other department.",
+        "snippetList": [
+          {
+            "startIndex": 33,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
         "value": "If \"the design fails the test\", the Resource 1 sends back the design to create a new update plan to the review and then sends back the design.",
         "snippetList": [
           {
@@ -295,20 +309,6 @@
             "endIndex": 68,
             "resourceId": "Lane 1",
             "processElementId": "id-24",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
-        "value": "If \"the design passes the test\", the Resource 1 tells the other department.",
-        "snippetList": [
-          {
-            "startIndex": 33,
-            "endIndex": 74,
-            "resourceId": "Lane 1",
-            "processElementId": "id-25",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -379,20 +379,6 @@
         "lateral": false
       },
       {
-        "value": "If \"the combined design fails the test\", the Resource 1 sends back the combined design to initiate design cycle to the beginning.",
-        "snippetList": [
-          {
-            "startIndex": 41,
-            "endIndex": 128,
-            "resourceId": "Lane 1",
-            "processElementId": "id-30",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
         "value": "If \"the designs pass the test\", the Resource 1 deems to complete the designs and then sends the designs to the manufacturing process.",
         "snippetList": [
           {
@@ -407,6 +393,20 @@
             "endIndex": 76,
             "resourceId": "Lane 1",
             "processElementId": "id-31",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"the combined design fails the test\", the Resource 1 sends back the combined design to initiate design cycle to the beginning.",
+        "snippetList": [
+          {
+            "startIndex": 41,
+            "endIndex": 128,
+            "resourceId": "Lane 1",
+            "processElementId": "id-30",
             "processElementType": "ACTIVITY"
           }
         ],

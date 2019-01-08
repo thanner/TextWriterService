@@ -122,18 +122,32 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 2 conducts the confirmation of registration and then conducts the assingment of the mspn.",
+        "value": "In the first procedure, the Resource 2 conducts the rejection of registration.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 80,
+            "endIndex": 77,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1yy44vg",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 2 conducts the confirmation of registration and then conducts the assingment of the mspn.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 81,
             "resourceId": "Lane 1",
             "processElementId": "Task_13bkxi4",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 90,
-            "endIndex": 125,
+            "startIndex": 91,
+            "endIndex": 126,
             "resourceId": "Lane 1",
             "processElementId": "Task_0zl68ci",
             "processElementType": "ACTIVITY"
@@ -176,20 +190,6 @@
         ],
         "level": 1,
         "lateral": false
-      },
-      {
-        "value": "In the second procedure, the Resource 2 conducts the rejection of registration.",
-        "snippetList": [
-          {
-            "startIndex": 25,
-            "endIndex": 78,
-            "resourceId": "Lane 1",
-            "processElementId": "Task_1yy44vg",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
       },
       {
         "value": "In any case, the process is finished.",

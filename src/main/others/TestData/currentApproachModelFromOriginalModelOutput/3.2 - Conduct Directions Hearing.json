@@ -91,13 +91,13 @@
         "lateral": false
       },
       {
-        "value": "The Resource 1 distributes the lawlist.",
+        "value": "The Resource 1 hands the file in the meantime.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 38,
+            "endIndex": 45,
             "resourceId": "Lane 1",
-            "processElementId": "id-5",
+            "processElementId": "id-6",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -105,13 +105,13 @@
         "lateral": true
       },
       {
-        "value": "In the meantime, the Resource 1 hands the file in the meantime.",
+        "value": "In the meantime, the Resource 1 distributes the lawlist.",
         "snippetList": [
           {
             "startIndex": 17,
-            "endIndex": 62,
+            "endIndex": 55,
             "resourceId": "Lane 1",
-            "processElementId": "id-6",
+            "processElementId": "id-5",
             "processElementType": "ACTIVITY"
           }
         ],

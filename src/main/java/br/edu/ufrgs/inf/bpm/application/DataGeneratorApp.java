@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.application;
 
 import br.edu.ufrgs.inf.bpm.builder.MetaTextGenerator;
-import br.edu.ufrgs.inf.bpm.metatext.TMetaText;
+import br.edu.ufrgs.inf.bpm.textmetadata.TTextMetadata;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.validation.Validation;
 import br.edu.ufrgs.inf.bpm.validation.ValidationDataText;
@@ -28,16 +28,27 @@ public class DataGeneratorApp {
     public static void main(String[] args) {
         prepareLogger();
         //getInputFiles();
+        /*
         ApplicationStarter.startApplication();
 
         File folder = new File(Paths.LocalOthersPath + Paths.dataInputPath);
         for (File fileEntry : folder.listFiles()) {
             generateData(fileEntry, true);
         }
+        */
+
+        // 2 inputs
+        generateData(new File("src/main/others/TestData/originalProcess/5.4 - Oracle Tutorial - originalProcess.bpmn"), false);
+        //generateData(new File("src/main/others/TestData/originalProcess/9.4 - New Exercise 3b - originalProcess.bpmn"), false);
+
+        // Diferente
+        //generateData(new File("src/main/others/TestData/originalProcess/1.2 - Computer repair - originalProcess.bpmn"), false);
 
         // Gera um gateway fora do processo (erro do textreader)
         // File file = new File("src/main/others/TestData/input/10.2 - Process B3 - originalText - process.bpmn");
         // generateData(file, false);
+
+        //generateData(new File("src/main/others/TestData/originalProcess/11.11 - Exercise 4.4 Model the following process fragment. - originalProcess.bpmn"), false);
 
         // TODO: Intermediate Marked
         //File file = new File("src/main/others/TestData/input/2.1 - SLA Violation - originalText - process.bpmn");
@@ -118,7 +129,7 @@ public class DataGeneratorApp {
             if (verifyOnlyNewFiles && processFile.exists()) {
                 logger.info("MetaText already exists");
             } else {
-                TMetaText metaText = MetaTextGenerator.generateMetaText(bpmnProcess);
+                TTextMetadata metaText = MetaTextGenerator.generateMetaText(bpmnProcess);
                 String metaTextString = JsonWrapper.getJson(metaText);
                 FileUtils.writeStringToFile(processFile, metaTextString, "UTF-8");
                 logger.info("MetaText - Done");

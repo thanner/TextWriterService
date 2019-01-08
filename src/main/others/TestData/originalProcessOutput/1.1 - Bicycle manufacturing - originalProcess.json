@@ -92,11 +92,11 @@
         "lateral": true
       },
       {
-        "value": "In the meantime, the Storehouse  checks the part quantity.",
+        "value": "In the second procedure, the Storehouse  checks the part quantity.",
         "snippetList": [
           {
-            "startIndex": 17,
-            "endIndex": 57,
+            "startIndex": 25,
+            "endIndex": 65,
             "resourceId": "Lane_0prezrn",
             "processElementId": "Task_0mg6qyg",
             "processElementType": "ACTIVITY"
@@ -120,20 +120,6 @@
         "lateral": false
       },
       {
-        "value": "If \"no\", the Storehouse  back-orders the part.",
-        "snippetList": [
-          {
-            "startIndex": 9,
-            "endIndex": 45,
-            "resourceId": "Lane_0prezrn",
-            "processElementId": "Task_1cbz7mm",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 2,
-        "lateral": true
-      },
-      {
         "value": "If \"yes\", the Storehouse  reserves the part.",
         "snippetList": [
           {
@@ -141,6 +127,20 @@
             "endIndex": 43,
             "resourceId": "Lane_0prezrn",
             "processElementId": "Task_1i3w31i",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "If \"no\", the Storehouse  back-orders the part.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 45,
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "Task_1cbz7mm",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -181,7 +181,8 @@
           {
             "startIndex": 0,
             "endIndex": 126,
-            "processElementId": "none",
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -194,7 +195,8 @@
           {
             "startIndex": 12,
             "endIndex": 33,
-            "processElementId": "none",
+            "resourceId": "Lane_0prezrn",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -243,7 +245,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane_0psnb62",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

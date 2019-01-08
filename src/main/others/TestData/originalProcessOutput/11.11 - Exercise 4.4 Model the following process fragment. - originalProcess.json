@@ -1,0 +1,78 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "sid-B06EFCC4-DD06-47E5-83C3-E5151AA026E0",
+          "name": "Resource 2"
+        },
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "sid-FE4D45CD-BEF6-4DE8-9E35-220FEE488247",
+      "name": "Insurance client"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 2 checks a witnesses.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 57,
+            "resourceId": "sid-B06EFCC4-DD06-47E5-83C3-E5151AA026E0",
+            "processElementId": "sid-181CA164-4087-404E-A155-0FFDB832BD23",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "sid-B06EFCC4-DD06-47E5-83C3-E5151AA026E0",
+            "processElementId": "sid-E465252D-2459-4E5E-9D0D-E4C57B76A0B8",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it obtains the statement from the witness and then lodges the insurance claim.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 47,
+            "resourceId": "sid-B06EFCC4-DD06-47E5-83C3-E5151AA026E0",
+            "processElementId": "sid-BFF88FDA-8CCB-41BF-BF5F-633356B18383",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 57,
+            "endIndex": 83,
+            "resourceId": "sid-B06EFCC4-DD06-47E5-83C3-E5151AA026E0",
+            "processElementId": "sid-8781B073-BD46-4A43-BD93-81CD671058F0",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "sid-B06EFCC4-DD06-47E5-83C3-E5151AA026E0",
+            "processElementId": "sid-E50F48A0-0D93-4EED-8A22-884139EF0896",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

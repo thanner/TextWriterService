@@ -5,7 +5,7 @@
 
     <grammars>
         <include href="schemas/BPMN20.xsd"/>
-        <include href="schemas/MetaText.xsd"/>
+        <include href="schemas/TextMetadata.xsd"/>
     </grammars>
 
     <resources>
@@ -19,7 +19,6 @@
                     </request>
                     <response>
                         <representation mediaType="application/json"/>
-                        <representation mediaType="application/xml"/>
                     </response>
                 </method>
             </resource>

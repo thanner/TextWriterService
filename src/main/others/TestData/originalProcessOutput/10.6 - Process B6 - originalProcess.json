@@ -122,13 +122,13 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 2 conducts the confirmation of dismissal.",
+        "value": "In the first procedure, the Resource 2 conducts the rejection of dismissal.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 77,
+            "endIndex": 74,
             "resourceId": "Lane 1",
-            "processElementId": "Task_0hymldp",
+            "processElementId": "Task_1lipxt5",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -136,13 +136,13 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 2 conducts the rejection of dismissal.",
+        "value": "In the second procedure, the Resource 2 conducts the confirmation of dismissal.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 75,
+            "endIndex": 78,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1lipxt5",
+            "processElementId": "Task_0hymldp",
             "processElementType": "ACTIVITY"
           }
         ],

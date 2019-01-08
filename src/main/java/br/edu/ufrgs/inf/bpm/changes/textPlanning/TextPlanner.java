@@ -3,7 +3,7 @@ package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 import br.edu.ufrgs.inf.bpm.builder.FragmentGenerator;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
-import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;

@@ -94,18 +94,6 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <sourceRoot>${basedir}/target/generated-sources</sourceRoot>
-                            <!--
-                            <wadlOptions>
-                                <wadlOption>
-                                    <wadl>${basedir}/src/resources/wadl/TextWriterContract.wadl</wadl>
-                                    <packagename>br.edu.ufrgs.bpm</packagename>
-                                    <schemaPackagenames>
-                                        <schemaPackagename>http://br/edu/ufrgs/inf/bpm=br.edu.ufrgs.inf.bpm
-                                        </schemaPackagename>
-                                    </schemaPackagenames>
-                                </wadlOption>
-                            </wadlOptions>
-                            -->
                         </configuration>
                         <goals>
                             <goal>wadl2java</goal>

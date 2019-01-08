@@ -76,7 +76,8 @@
           {
             "startIndex": 0,
             "endIndex": 48,
-            "processElementId": "none",
+            "resourceId": "Lane_11bsam4",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -89,7 +90,8 @@
           {
             "startIndex": 0,
             "endIndex": 74,
-            "processElementId": "none",
+            "resourceId": "Lane_11bsam4",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -102,7 +104,8 @@
           {
             "startIndex": 14,
             "endIndex": 35,
-            "processElementId": "none",
+            "resourceId": "Lane_11bsam4",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -144,7 +147,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane_0xv8i8n",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

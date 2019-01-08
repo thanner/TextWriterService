@@ -8,8 +8,8 @@ public class Lexemes {
         //add("then"); // Used in aggregation
         add("next");
         //add("afterwards"); // Used in OR Join
-        add("after that");
         add("subsequently");
+        add("after that");
     }};
 
     public static final ArrayList<String> PARALLEL_CONNECTIVES = new ArrayList<String>() {{

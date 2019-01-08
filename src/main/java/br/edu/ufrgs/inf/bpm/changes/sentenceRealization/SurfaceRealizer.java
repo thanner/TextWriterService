@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.changes.sentenceRealization;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
-import br.edu.ufrgs.inf.bpm.metatext.TSentence;
-import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
-import br.edu.ufrgs.inf.bpm.metatext.TText;
+import br.edu.ufrgs.inf.bpm.textmetadata.TSentence;
+import br.edu.ufrgs.inf.bpm.textmetadata.TSnippet;
+import br.edu.ufrgs.inf.bpm.textmetadata.TText;
 import com.cogentex.real.api.RealProMgr;
 import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;

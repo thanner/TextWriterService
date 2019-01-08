@@ -538,13 +538,13 @@
         "lateral": true
       },
       {
-        "value": "In the first procedure, the Resource 3 conducts the equipment acquisition.",
+        "value": "In the first procedure, the Resource 3 conducts the equipment changes.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 73,
+            "endIndex": 69,
             "resourceId": "Lane 1",
-            "processElementId": "Task_04oikzl",
+            "processElementId": "Task_161798s",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -552,13 +552,13 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 3 conducts the equipment changes.",
+        "value": "In the second procedure, the Resource 3 conducts the equipment acquisition.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 70,
+            "endIndex": 74,
             "resourceId": "Lane 1",
-            "processElementId": "Task_161798s",
+            "processElementId": "Task_04oikzl",
             "processElementType": "ACTIVITY"
           }
         ],

@@ -142,31 +142,32 @@
         "lateral": true
       },
       {
-        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "value": "Next, one of the 2 alternative procedures is executed.",
         "snippetList": [
           {
             "startIndex": 6,
             "endIndex": 53,
-            "processElementId": "none",
-            "processElementType": "ANDSPLIT"
+            "resourceId": "Lane_0bd5qff",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
           }
         ],
         "level": 1,
         "lateral": false
       },
       {
-        "value": "The Cashier captures the p\u0026e party details and then prints the physical file.",
+        "value": "In the first procedure, the Cashier captures the p\u0026e party details and then prints the physical file.",
         "snippetList": [
           {
-            "startIndex": 0,
-            "endIndex": 42,
+            "startIndex": 24,
+            "endIndex": 66,
             "resourceId": "Lane_0bd5qff",
             "processElementId": "Task_1shcbrp",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 52,
-            "endIndex": 76,
+            "startIndex": 76,
+            "endIndex": 100,
             "resourceId": "Lane_0bd5qff",
             "processElementId": "Task_1kct0tc",
             "processElementType": "ACTIVITY"
@@ -176,11 +177,11 @@
         "lateral": true
       },
       {
-        "value": "The Registry prepares the mailed document response.",
+        "value": "In the second procedure, the Registry prepares the mailed document response.",
         "snippetList": [
           {
-            "startIndex": 0,
-            "endIndex": 50,
+            "startIndex": 25,
+            "endIndex": 75,
             "resourceId": "Lane_1923ybd",
             "processElementId": "Task_13lgvdi",
             "processElementType": "ACTIVITY"
@@ -203,7 +204,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane_1fu1i12",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

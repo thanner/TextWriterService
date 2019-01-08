@@ -1,0 +1,235 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_1guwgn3",
+          "name": "Coordination Unit"
+        },
+        {
+          "id": "Lane_1ue0f44",
+          "name": "Support Officer"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1qc5r3l",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_01q5awb",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Resource 1 meetings the takes place and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_17whix9",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_1ketxnt",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_06xtmdk",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Once a time condition is fulfilled the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 53,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Support Officer creates the meeting folder and then uploads all relevant documents.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 52,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "Task_1hv185d",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 62,
+            "endIndex": 92,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "Task_01b96cm",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it sends a message and then attendses the meeting.",
+        "snippetList": [
+          {
+            "startIndex": 40,
+            "endIndex": 61,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "Task_0y36leg",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 30,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "IntermediateThrowEvent_0slr1uu",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, it prepares the meeting minutes and then the Coordination Unit conducts the qa check.",
+        "snippetList": [
+          {
+            "startIndex": 54,
+            "endIndex": 97,
+            "resourceId": "Lane_1guwgn3",
+            "processElementId": "Task_0wann8h",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 44,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "Task_1aj2dd7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_1guwgn3",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it reminds the coordination unit.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 46,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "Task_1971rn7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane_1guwgn3",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Coordination Unit continues with conducting the qa check.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 73,
+            "resourceId": "Lane_1guwgn3",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Support Officer sends a message.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 41,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "IntermediateThrowEvent_0z6xk0u",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane_1ue0f44",
+            "processElementId": "EndEvent_098j7sq",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

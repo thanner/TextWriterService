@@ -35,24 +35,25 @@
         "lateral": false
       },
       {
-        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "value": "Next, one of the 2 alternative procedures is executed.",
         "snippetList": [
           {
             "startIndex": 6,
             "endIndex": 53,
-            "processElementId": "none",
-            "processElementType": "ANDSPLIT"
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 6",
+            "processElementType": "XORSPLIT"
           }
         ],
         "level": 0,
         "lateral": false
       },
       {
-        "value": "The Resource 1 creates the electrical design.",
+        "value": "In the first procedure, the Resource 1 creates the electrical design.",
         "snippetList": [
           {
-            "startIndex": 0,
-            "endIndex": 44,
+            "startIndex": 24,
+            "endIndex": 68,
             "resourceId": "Lane 1",
             "processElementId": "SubProcess_0ypipb3",
             "processElementType": "ACTIVITY"
@@ -116,7 +117,8 @@
           {
             "startIndex": 0,
             "endIndex": 119,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 3",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -124,11 +126,25 @@
         "lateral": false
       },
       {
-        "value": "Subsequently, the process ends with a signal..",
+        "value": "Subsequently, the process continues.",
         "snippetList": [
           {
             "startIndex": 14,
-            "endIndex": 45,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the process ends with a signal..",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 37,
             "resourceId": "Lane 1",
             "processElementId": "EndEvent_0vbofsn",
             "processElementType": "INTERMEDIATEEVENT"
@@ -138,11 +154,11 @@
         "lateral": false
       },
       {
-        "value": "Next, the Resource 1 sends signals.",
+        "value": "After that, the Resource 1 sends signals.",
         "snippetList": [
           {
-            "startIndex": 6,
-            "endIndex": 34,
+            "startIndex": 12,
+            "endIndex": 40,
             "resourceId": "Lane 1",
             "processElementId": "BoundaryEvent_12kigjy",
             "processElementType": "INTERMEDIATEEVENT"
@@ -157,7 +173,8 @@
           {
             "startIndex": 0,
             "endIndex": 48,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -170,7 +187,8 @@
           {
             "startIndex": 0,
             "endIndex": 73,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -178,11 +196,25 @@
         "lateral": false
       },
       {
-        "value": "The Resource 1 creates the physical design.",
+        "value": "Subsequently, the process continues.",
         "snippetList": [
           {
-            "startIndex": 0,
-            "endIndex": 42,
+            "startIndex": 14,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the Resource 1 creates the physical design.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 67,
             "resourceId": "Lane 1",
             "processElementId": "SubProcess_1lyzpbm",
             "processElementType": "ACTIVITY"
@@ -227,11 +259,11 @@
         "lateral": false
       },
       {
-        "value": "After that, it tests the physical design.",
+        "value": "Next, it tests the physical design.",
         "snippetList": [
           {
-            "startIndex": 12,
-            "endIndex": 40,
+            "startIndex": 6,
+            "endIndex": 34,
             "resourceId": "Lane 1",
             "processElementId": "Task_1jeolg9",
             "processElementType": "ACTIVITY"
@@ -246,7 +278,22 @@
           {
             "startIndex": 0,
             "endIndex": 119,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 5",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 5",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -287,7 +334,8 @@
           {
             "startIndex": 0,
             "endIndex": 48,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 4",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -300,7 +348,22 @@
           {
             "startIndex": 0,
             "endIndex": 71,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 4",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 4",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -341,7 +404,8 @@
           {
             "startIndex": 0,
             "endIndex": 97,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],

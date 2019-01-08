@@ -45,28 +45,28 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 1 conducts the suspicion of fault.",
+        "value": "In the first procedure, the Resource 1 receives a message.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 70,
+            "endIndex": 57,
             "resourceId": "Lane 1",
-            "processElementId": "Task_0kp9enq",
-            "processElementType": "ACTIVITY"
+            "processElementId": "IntermediateThrowEvent_162sftk",
+            "processElementType": "INTERMEDIATEEVENT"
           }
         ],
         "level": 1,
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 1 receives a message.",
+        "value": "In the second procedure, the Resource 1 conducts the suspicion of fault.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 58,
+            "endIndex": 71,
             "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_162sftk",
-            "processElementType": "INTERMEDIATEEVENT"
+            "processElementId": "Task_0kp9enq",
+            "processElementType": "ACTIVITY"
           }
         ],
         "level": 1,

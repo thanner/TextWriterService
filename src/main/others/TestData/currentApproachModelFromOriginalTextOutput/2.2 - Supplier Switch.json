@@ -153,6 +153,454 @@
         "lateral": false
       },
       {
+        "value": "Subsequently, if required, one of the 7 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 74,
+            "resourceId": "id-3",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-3",
+            "processElementId": "id-60",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the customer service conducts the not generate the contract documents and then analyzes the causing issues.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 93,
+            "resourceId": "id-3",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 103,
+            "endIndex": 130,
+            "resourceId": "id-3",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, it resolves the causing issues and then generates the contract documents again.",
+        "snippetList": [
+          {
+            "startIndex": 46,
+            "endIndex": 84,
+            "resourceId": "id-3",
+            "processElementId": "id-29",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 36,
+            "resourceId": "id-3",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the customer service corrects the data and then conducts the comparison of the data to prevent individual customer data being stored multiple times.",
+        "snippetList": [
+          {
+            "startIndex": 73,
+            "endIndex": 172,
+            "resourceId": "id-3",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 63,
+            "resourceId": "id-3",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the third procedure, the grid operator informs the involved suppliers and then demands the resolution of the conflict.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 72,
+            "resourceId": "id-5",
+            "processElementId": "id-35",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 82,
+            "endIndex": 120,
+            "resourceId": "id-5",
+            "processElementId": "id-36",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, it communicates the termination of the sales agreement between customer and then carries out the termination of the sales agreement between customer.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 83,
+            "resourceId": "id-5",
+            "processElementId": "id-37",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 93,
+            "endIndex": 160,
+            "resourceId": "id-5",
+            "processElementId": "id-38",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the fourth procedure, the customer service sends out a confirmation document to the customer stating that switch-over to new supplier can be executed and then the cis sends out the request to the grid operator.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 152,
+            "resourceId": "id-3",
+            "processElementId": "id-30",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 162,
+            "endIndex": 212,
+            "resourceId": "id-4",
+            "processElementId": "id-31",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, the cis puts the question.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 39,
+            "resourceId": "id-4",
+            "processElementId": "id-32",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the fifth procedure, the grid operator checks the switch-over request and then transmits a response comment.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 72,
+            "resourceId": "id-5",
+            "processElementId": "id-33",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 82,
+            "endIndex": 110,
+            "resourceId": "id-5",
+            "processElementId": "id-34",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the sixth procedure, the customer service creates a cis contract and then executes the one of the alternative 2 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 77,
+            "endIndex": 125,
+            "resourceId": "id-3",
+            "processElementId": "id-40",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 24,
+            "endIndex": 67,
+            "resourceId": "id-3",
+            "processElementId": "id-39",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, the customer decides to withdraw the switch contract and then decides to confirm the switch contract.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 58,
+            "resourceId": "id-2",
+            "processElementId": "id-41",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 68,
+            "endIndex": 106,
+            "resourceId": "id-2",
+            "processElementId": "id-42",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, he depends on the process flow in the case and then conducts the acceptance\\/rejection.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 54,
+            "resourceId": "id-2",
+            "processElementId": "id-43",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 98,
+            "resourceId": "id-2",
+            "processElementId": "id-44",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, he conducts the customer is regard and then continues.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 48,
+            "resourceId": "id-2",
+            "processElementId": "id-45",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 58,
+            "endIndex": 67,
+            "resourceId": "id-2",
+            "processElementId": "id-46",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, he conducts and then conducts the not the not confirmation message is not necessary.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 89,
+            "resourceId": "id-2",
+            "processElementId": "id-48",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 17,
+            "resourceId": "id-2",
+            "processElementId": "id-47",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, he counts to accept after 7 days in way switch process and then speeds up the switch process.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 66,
+            "resourceId": "id-2",
+            "processElementId": "id-49",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 76,
+            "endIndex": 104,
+            "resourceId": "id-2",
+            "processElementId": "id-50",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, he begins and then the grid operator transmits the meter data to the customer service.",
+        "snippetList": [
+          {
+            "startIndex": 33,
+            "endIndex": 99,
+            "resourceId": "id-5",
+            "processElementId": "id-52",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 23,
+            "resourceId": "id-2",
+            "processElementId": "id-51",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the grid operator computes the final billing based on the meter data and then sends the final billing based on the meter data to old supplier.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 74,
+            "resourceId": "id-5",
+            "processElementId": "id-53",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 84,
+            "endIndex": 147,
+            "resourceId": "id-5",
+            "processElementId": "id-54",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, the old supplier creates the final billing and then sends the final billing to the customer.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 54,
+            "resourceId": "id-6",
+            "processElementId": "id-55",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 103,
+            "resourceId": "id-6",
+            "processElementId": "id-56",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it receives the meter data and then the customer service imports the meter data to the systems.",
+        "snippetList": [
+          {
+            "startIndex": 50,
+            "endIndex": 108,
+            "resourceId": "id-3",
+            "processElementId": "id-58",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 40,
+            "resourceId": "id-6",
+            "processElementId": "id-57",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the customer service finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 59,
+            "resourceId": "id-3",
+            "processElementId": "id-59",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the seventh procedure, the customer service creates a new customer object and then remains the data object of the interest.",
+        "snippetList": [
+          {
+            "startIndex": 26,
+            "endIndex": 76,
+            "resourceId": "id-3",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 86,
+            "endIndex": 125,
+            "resourceId": "id-3",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, it uses the generated customer object to prepare the contract documents in combination and then carries out the automated check of the contract documents.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 98,
+            "resourceId": "id-3",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 108,
+            "endIndex": 165,
+            "resourceId": "id-3",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
         "value": "In any case, the process is finished.",
         "snippetList": [
           {
@@ -166,7 +614,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "id-2",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

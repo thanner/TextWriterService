@@ -5,7 +5,7 @@ import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.changes.templates.Phrases;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoader;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
-import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
 import de.hpi.bpt.process.ControlFlow;
@@ -591,8 +591,8 @@ public class TextToIntermediateConverter {
         }
 
         // Statement about negative case (process is finished)
-        ExecutableFragment eFrag2 = new ExecutableFragment("finish", "process instance", "", "");
-        eFrag2.verb_IsPassive = true;
+        ExecutableFragment eFrag2 = new ExecutableFragment("end", "process instance", "", "");
+        //eFrag2.verb_IsPassive = true;
         eFrag2.bo_isSubject = true;
         ConditionFragment cFrag2 = new ConditionFragment("be", "case", "this", "", ConditionFragment.TYPE_IF, new HashMap<>());
         cFrag2.verb_isNegated = true;
@@ -891,11 +891,11 @@ public class TextToIntermediateConverter {
     private ConverterRecord handleEndEvent(Event event) {
         ExecutableFragment eFrag;
         if (event.getSubProcessID() > 0) {
-            eFrag = new ExecutableFragment("finish", "subprocess", "", "");
+            eFrag = new ExecutableFragment("end", "subprocess", "", "");
         } else {
-            eFrag = new ExecutableFragment("finish", "process", "", "");
+            eFrag = new ExecutableFragment("end", "process", "", "");
         }
-        eFrag.verb_IsPassive = true;
+        //eFrag.verb_IsPassive = true;
         eFrag.bo_isSubject = true;
         eFrag.bo_hasArticle = true;
         return getEventSentence(eFrag);

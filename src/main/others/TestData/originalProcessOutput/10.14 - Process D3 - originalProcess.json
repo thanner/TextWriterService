@@ -65,20 +65,20 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 1 conducts the transmission of the bill (metering point operations) and then receives a message.",
+        "value": "In the first procedure, the Resource 1 conducts the transmission of the bill (equipment acquisition) and then receives a message.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 104,
+            "endIndex": 100,
             "resourceId": "Lane 1",
-            "processElementId": "Task_0em7e6b",
+            "processElementId": "Task_11fhaz3",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 114,
-            "endIndex": 132,
+            "startIndex": 110,
+            "endIndex": 128,
             "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_1i72zo5",
+            "processElementId": "IntermediateThrowEvent_136im4c",
             "processElementType": "INTERMEDIATEEVENT"
           }
         ],
@@ -86,20 +86,20 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 1 conducts the transmission of the bill (equipment acquisition) and then receives a message.",
+        "value": "In the second procedure, the Resource 1 conducts the transmission of the bill (metering point operations) and then receives a message.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 101,
+            "endIndex": 105,
             "resourceId": "Lane 1",
-            "processElementId": "Task_11fhaz3",
+            "processElementId": "Task_0em7e6b",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 111,
-            "endIndex": 129,
+            "startIndex": 115,
+            "endIndex": 133,
             "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_136im4c",
+            "processElementId": "IntermediateThrowEvent_1i72zo5",
             "processElementType": "INTERMEDIATEEVENT"
           }
         ],
@@ -240,13 +240,13 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 3 conducts the transmission of the bill (additional readings).",
+        "value": "In the first procedure, the Resource 3 conducts the transmission of the bill (measurements).",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 98,
+            "endIndex": 91,
             "resourceId": "Lane 1",
-            "processElementId": "SendTask_1ebc8jq",
+            "processElementId": "SendTask_1mfu16q",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -254,13 +254,13 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 3 conducts the transmission of the bill (measurements).",
+        "value": "In the second procedure, the Resource 3 conducts the transmission of the bill (additional readings).",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 92,
+            "endIndex": 99,
             "resourceId": "Lane 1",
-            "processElementId": "SendTask_1mfu16q",
+            "processElementId": "SendTask_1ebc8jq",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -330,21 +330,7 @@
             "startIndex": 0,
             "endIndex": 33,
             "resourceId": "Lane 1",
-            "processElementId": "IntermediateCatchEvent_1ljc464",
-            "processElementType": "INTERMEDIATEEVENT"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
-        "value": "The Resource 2 receives a message.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 33,
-            "resourceId": "Lane 1",
-            "processElementId": "IntermediateCatchEvent_0jz4xjr",
+            "processElementId": "IntermediateCatchEvent_13zoiit",
             "processElementType": "INTERMEDIATEEVENT"
           }
         ],
@@ -372,7 +358,21 @@
             "startIndex": 0,
             "endIndex": 33,
             "resourceId": "Lane 1",
-            "processElementId": "IntermediateCatchEvent_13zoiit",
+            "processElementId": "IntermediateCatchEvent_1ljc464",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 2 receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateCatchEvent_0jz4xjr",
             "processElementType": "INTERMEDIATEEVENT"
           }
         ],
@@ -415,13 +415,13 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 2 conducts the confirmation of the bill.",
+        "value": "In the first procedure, the Resource 2 conducts the rejection of the bill.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 76,
+            "endIndex": 73,
             "resourceId": "Lane 1",
-            "processElementId": "Task_0nrtaez",
+            "processElementId": "Task_1v28jud",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -429,13 +429,13 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 2 conducts the rejection of the bill.",
+        "value": "In the second procedure, the Resource 2 conducts the confirmation of the bill.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 74,
+            "endIndex": 77,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1v28jud",
+            "processElementId": "Task_0nrtaez",
             "processElementType": "ACTIVITY"
           }
         ],

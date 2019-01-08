@@ -28,32 +28,39 @@
         "lateral": false
       },
       {
-        "value": "Next, the Resource 1 emails the invoice to the customer and then debits the outstanding amount.",
+        "value": "In any case, the Resource 1 emails the invoice to the customer and then debits the outstanding amount.",
         "snippetList": [
           {
-            "startIndex": 6,
-            "endIndex": 55,
+            "startIndex": 13,
+            "endIndex": 62,
             "resourceId": "Lane 1",
             "processElementId": "Task_0be3fu6",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 65,
-            "endIndex": 94,
+            "startIndex": 72,
+            "endIndex": 101,
             "resourceId": "Lane 1",
             "processElementId": "Task_0j8ogck",
             "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
           }
         ],
         "level": 0,
         "lateral": false
       },
       {
-        "value": "After that, it notifies the customer.",
+        "value": "Next, it notifies the customer.",
         "snippetList": [
           {
-            "startIndex": 12,
-            "endIndex": 36,
+            "startIndex": 6,
+            "endIndex": 30,
             "resourceId": "Lane 1",
             "processElementId": "Task_1ru8821",
             "processElementType": "ACTIVITY"
@@ -68,7 +75,8 @@
           {
             "startIndex": 0,
             "endIndex": 48,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -81,7 +89,8 @@
           {
             "startIndex": 0,
             "endIndex": 74,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -89,12 +98,13 @@
         "lateral": false
       },
       {
-        "value": "Subsequently, the process continues.",
+        "value": "After that, the process continues.",
         "snippetList": [
           {
-            "startIndex": 14,
-            "endIndex": 35,
-            "processElementId": "none",
+            "startIndex": 12,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -102,18 +112,18 @@
         "lateral": false
       },
       {
-        "value": "Next, if required, the Resource 1 applies the late fee.",
+        "value": "Subsequently, if required, the Resource 1 applies the late fee.",
         "snippetList": [
           {
-            "startIndex": 19,
-            "endIndex": 54,
+            "startIndex": 27,
+            "endIndex": 62,
             "resourceId": "Lane 1",
             "processElementId": "Task_1hfscp7",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 6,
-            "endIndex": 18,
+            "startIndex": 14,
+            "endIndex": 26,
             "resourceId": "Lane 1",
             "processElementId": "ExclusiveGateway_05ff8e4",
             "processElementType": "XORSPLIT"
@@ -123,18 +133,18 @@
         "lateral": false
       },
       {
-        "value": "After that, the Resource 1 suspends the internet service and then closes the account .",
+        "value": "Next, the Resource 1 suspends the internet service and then closes the account .",
         "snippetList": [
           {
-            "startIndex": 12,
-            "endIndex": 56,
+            "startIndex": 6,
+            "endIndex": 50,
             "resourceId": "Lane 1",
             "processElementId": "Task_15pfu0m",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 66,
-            "endIndex": 85,
+            "startIndex": 60,
+            "endIndex": 79,
             "resourceId": "Lane 1",
             "processElementId": "Task_1a6cmso",
             "processElementType": "ACTIVITY"
@@ -144,18 +154,18 @@
         "lateral": false
       },
       {
-        "value": "Subsequently, it applies the disconnection fee and then starts the debt recovery.",
+        "value": "After that, it applies the disconnection fee and then starts the debt recovery.",
         "snippetList": [
           {
-            "startIndex": 14,
-            "endIndex": 46,
+            "startIndex": 12,
+            "endIndex": 44,
             "resourceId": "Lane 1",
             "processElementId": "Task_0jsz6dp",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 56,
-            "endIndex": 80,
+            "startIndex": 54,
+            "endIndex": 78,
             "resourceId": "Lane 1",
             "processElementId": "Task_00mc6u7",
             "processElementType": "ACTIVITY"
@@ -178,7 +188,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

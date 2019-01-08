@@ -49,20 +49,6 @@
         "lateral": false
       },
       {
-        "value": "If \"order contains Amsterdam products\", the Resource 1 forwards the sub-order to the amsterdam warehouse.",
-        "snippetList": [
-          {
-            "startIndex": 40,
-            "endIndex": 104,
-            "resourceId": "Lane 1",
-            "processElementId": "Task_1cmdijv",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
         "value": "If \"order contains Hamburg products\", the Resource 1 forwards the sub-order to the hamburg warehouse.",
         "snippetList": [
           {
@@ -70,6 +56,20 @@
             "endIndex": 100,
             "resourceId": "Lane 1",
             "processElementId": "Task_0wl674y",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"order contains Amsterdam products\", the Resource 1 forwards the sub-order to the amsterdam warehouse.",
+        "snippetList": [
+          {
+            "startIndex": 40,
+            "endIndex": 104,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1cmdijv",
             "processElementType": "ACTIVITY"
           }
         ],

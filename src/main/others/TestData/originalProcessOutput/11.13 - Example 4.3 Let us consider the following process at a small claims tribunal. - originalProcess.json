@@ -63,20 +63,6 @@
         "lateral": false
       },
       {
-        "value": "If \"not all parties agree\", the Resource 1 defers the callover.",
-        "snippetList": [
-          {
-            "startIndex": 28,
-            "endIndex": 62,
-            "resourceId": "Lane 1",
-            "processElementId": "Task_0tq61jg",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
         "value": "If \"all parties agree\", the Resource 1 sets the callover and then prepares the callover material.",
         "snippetList": [
           {
@@ -110,6 +96,20 @@
         ],
         "level": 1,
         "lateral": false
+      },
+      {
+        "value": "If \"not all parties agree\", the Resource 1 defers the callover.",
+        "snippetList": [
+          {
+            "startIndex": 28,
+            "endIndex": 62,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0tq61jg",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
       },
       {
         "value": "In any case, the process is finished.",

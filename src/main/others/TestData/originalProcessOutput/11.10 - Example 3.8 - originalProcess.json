@@ -106,27 +106,6 @@
         "lateral": false
       },
       {
-        "value": "If \"raw materials provided by Supplier 2\", the Seller requests the raw materials from the supplier 2 and then obtains the raw materials from the supplier 2.",
-        "snippetList": [
-          {
-            "startIndex": 43,
-            "endIndex": 100,
-            "resourceId": "Lane_1encldp",
-            "processElementId": "Task_1hndmka",
-            "processElementType": "ACTIVITY"
-          },
-          {
-            "startIndex": 110,
-            "endIndex": 155,
-            "resourceId": "Lane_1encldp",
-            "processElementId": "Task_0vw2k2e",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 2,
-        "lateral": true
-      },
-      {
         "value": "If \"raw materials provided by Supplier 1\", the Seller requests the raw materials from the supplier 1 and then obtains the raw materials from the supplier 1.",
         "snippetList": [
           {
@@ -141,6 +120,27 @@
             "endIndex": 155,
             "resourceId": "Lane_1encldp",
             "processElementId": "Task_0rcpbjh",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "If \"raw materials provided by Supplier 2\", the Seller requests the raw materials from the supplier 2 and then obtains the raw materials from the supplier 2.",
+        "snippetList": [
+          {
+            "startIndex": 43,
+            "endIndex": 100,
+            "resourceId": "Lane_1encldp",
+            "processElementId": "Task_1hndmka",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 110,
+            "endIndex": 155,
+            "resourceId": "Lane_1encldp",
+            "processElementId": "Task_0vw2k2e",
             "processElementType": "ACTIVITY"
           }
         ],

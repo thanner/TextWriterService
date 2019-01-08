@@ -105,6 +105,20 @@
         "lateral": false
       },
       {
+        "value": "If \"applicant nor elegible\", the Resource 1 rejects the application.",
+        "snippetList": [
+          {
+            "startIndex": 29,
+            "endIndex": 67,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0xu97or",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
         "value": "If \"applicant elegible\", the Resource 1 prepares the acceptance pack and then sends the acceptance pack.",
         "snippetList": [
           {
@@ -119,20 +133,6 @@
             "endIndex": 103,
             "resourceId": "Lane 1",
             "processElementId": "Task_1yqopkd",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
-        "value": "If \"applicant nor elegible\", the Resource 1 rejects the application.",
-        "snippetList": [
-          {
-            "startIndex": 29,
-            "endIndex": 67,
-            "resourceId": "Lane 1",
-            "processElementId": "Task_0xu97or",
             "processElementType": "ACTIVITY"
           }
         ],

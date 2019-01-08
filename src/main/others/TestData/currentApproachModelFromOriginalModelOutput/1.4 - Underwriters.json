@@ -70,6 +70,188 @@
         "lateral": false
       },
       {
+        "value": "Subsequently, if required, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "Lane 1",
+            "processElementId": "id-21",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 prices and then buys the stock.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 55,
+            "endIndex": 69,
+            "resourceId": "Lane 1",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, it offers to the public and then finishes the subprocess in the case.",
+        "snippetList": [
+          {
+            "startIndex": 39,
+            "endIndex": 74,
+            "resourceId": "Lane 1",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 29,
+            "resourceId": "Lane 1",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, it finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the Resource 1 contains the following steps and then executes the one of the alternative 2 procedures.",
+        "snippetList": [
+          {
+            "startIndex": 78,
+            "endIndex": 126,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 68,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, it prepares the registration statement in the first procedure and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 75,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 85,
+            "endIndex": 103,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, it checks the compliance with the laws in second procedure and then talks to the potential investors.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 64,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 74,
+            "endIndex": 106,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, it executes the one of the alternative 2 procedures and then receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 63,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 73,
+            "endIndex": 91,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, it sends a message and then continues.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 32,
+            "resourceId": "Lane 1",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 42,
+            "endIndex": 51,
+            "resourceId": "Lane 1",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
         "value": "In any case, the process is finished.",
         "snippetList": [
           {
@@ -83,7 +265,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

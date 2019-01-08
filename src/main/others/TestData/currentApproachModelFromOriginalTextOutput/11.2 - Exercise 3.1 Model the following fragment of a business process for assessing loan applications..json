@@ -117,20 +117,6 @@
         "lateral": false
       },
       {
-        "value": "If \"the applicant agrees\", the loan provider approves the application.",
-        "snippetList": [
-          {
-            "startIndex": 27,
-            "endIndex": 69,
-            "resourceId": "id-2",
-            "processElementId": "id-12",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
         "value": "If \"the applicant disagrees with the repayment schedule\", the applicant verifies the repayment agreement and then the loan provider cancels the application.",
         "snippetList": [
           {
@@ -145,6 +131,20 @@
             "endIndex": 155,
             "resourceId": "id-2",
             "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"the applicant agrees\", the loan provider approves the application.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 69,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
             "processElementType": "ACTIVITY"
           }
         ],

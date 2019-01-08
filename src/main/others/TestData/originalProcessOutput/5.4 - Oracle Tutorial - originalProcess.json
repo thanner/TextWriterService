@@ -1,0 +1,118 @@
+{
+  "processList": [
+    {
+      "id": "Id_aaa3c5d0-a840-4b6d-a75a-64f3d3e57a36",
+      "name": "Main Process"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Id_b1ed8258-8285-404d-adb8-dfda50850c86",
+          "name": "Employee"
+        },
+        {
+          "id": "Id_195bfc85-bc3c-445e-bca1-e31e73ef7bef",
+          "name": "Supervisor"
+        },
+        {
+          "id": "Id_ad3fc1a7-509a-4535-98a6-68c59550f986",
+          "name": "Treasurer"
+        },
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Id_f8cf398c-9869-4ccf-b317-2f6c472485d7",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Id_b1ed8258-8285-404d-adb8-dfda50850c86",
+            "processElementId": "ExclusiveGateway 8",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "resourceId": "Id_b1ed8258-8285-404d-adb8-dfda50850c86",
+            "processElementId": "StartEvent 2",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 creates the expense report.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 65,
+            "resourceId": "Lane 1",
+            "processElementId": "Id_f5af5f4f-928d-4085-b36c-e304518518df",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, one of the following alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 processes the expense.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 60,
+            "resourceId": "Lane 1",
+            "processElementId": "Id_b432a5fd-a466-43d8-a177-05be3c9e1d6c",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Id_b1ed8258-8285-404d-adb8-dfda50850c86",
+            "processElementId": "EndEvent 2",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Id_b1ed8258-8285-404d-adb8-dfda50850c86",
+            "processElementId": "ExclusiveGateway 9",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

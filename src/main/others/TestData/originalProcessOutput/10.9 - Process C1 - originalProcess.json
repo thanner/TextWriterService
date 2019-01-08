@@ -35,13 +35,13 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 1 causeses a change by the itself.",
+        "value": "In the first procedure, the Resource 1 requests a change.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 70,
+            "endIndex": 56,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1mbzq1z",
+            "processElementId": "Task_0y2cxhx",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -49,13 +49,13 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 1 requests a change.",
+        "value": "In the second procedure, the Resource 1 causeses a change by the itself.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 57,
+            "endIndex": 71,
             "resourceId": "Lane 1",
-            "processElementId": "Task_0y2cxhx",
+            "processElementId": "Task_1mbzq1z",
             "processElementType": "ACTIVITY"
           }
         ],

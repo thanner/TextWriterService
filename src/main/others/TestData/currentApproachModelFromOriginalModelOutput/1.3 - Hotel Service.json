@@ -56,6 +56,244 @@
         "lateral": false
       },
       {
+        "value": "After that, if required, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane 1",
+            "processElementId": "id-20",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 executes the alternative 2 procedures and then fetches the wine in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 76,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 86,
+            "endIndex": 125,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, it conducts the preapre alcoholic beverages in the second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 81,
+            "resourceId": "Lane 1",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "id-21",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 1 assigns the order in the meantime to waiter.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 58,
+            "resourceId": "Lane 1",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the Resource 1 continues.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 41,
+            "resourceId": "Lane 1",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the Resource 1 executes the 2 procedures in the an arbitrary order and then readies the cart.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 83,
+            "resourceId": "Lane 1",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 93,
+            "endIndex": 109,
+            "resourceId": "Lane 1",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "id-22",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the Resource 1 sends a message and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 65,
+            "endIndex": 97,
+            "resourceId": "Lane 1",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 55,
+            "resourceId": "Lane 1",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the third procedure, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 71,
+            "resourceId": "Lane 1",
+            "processElementId": "id-23",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The Resource 1 prepares the non-alcoholic drinks.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "At the same time, the Resource 1 submits the order ticket in the meantime to kitchen.",
+        "snippetList": [
+          {
+            "startIndex": 18,
+            "endIndex": 84,
+            "resourceId": "Lane 1",
+            "processElementId": "id-13",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the Resource 1 prepares the meal and then delivers to the room.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 49,
+            "resourceId": "Lane 1",
+            "processElementId": "id-14",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 59,
+            "endIndex": 79,
+            "resourceId": "Lane 1",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "Lane 1",
+            "processElementId": "id-24",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "After that, it returns to the room-service station and then debits the account.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 50,
+            "resourceId": "Lane 1",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 60,
+            "endIndex": 78,
+            "resourceId": "Lane 1",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
         "value": "In any case, the process is finished.",
         "snippetList": [
           {
@@ -69,7 +307,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

@@ -49,13 +49,13 @@
         "lateral": false
       },
       {
-        "value": "The Resource 1 passes the luggage screening.",
+        "value": "The Resource 1 passes the security screening.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 43,
+            "endIndex": 44,
             "resourceId": "Lane 1",
-            "processElementId": "Task_076fytq",
+            "processElementId": "Task_1dv9t4t",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -63,13 +63,13 @@
         "lateral": true
       },
       {
-        "value": "In the meantime, the Resource 1 passes the security screening.",
+        "value": "In the meantime, the Resource 1 passes the luggage screening.",
         "snippetList": [
           {
             "startIndex": 17,
-            "endIndex": 61,
+            "endIndex": 60,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1dv9t4t",
+            "processElementId": "Task_076fytq",
             "processElementType": "ACTIVITY"
           }
         ],

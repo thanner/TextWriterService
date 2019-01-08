@@ -42,19 +42,6 @@
         "lateral": false
       },
       {
-        "value": "After that, 1 procedures are executed in an arbitrary order.",
-        "snippetList": [
-          {
-            "startIndex": 12,
-            "endIndex": 59,
-            "processElementId": "none",
-            "processElementType": "ANDSPLIT"
-          }
-        ],
-        "level": 0,
-        "lateral": false
-      },
-      {
         "value": "The subprocess contains the following steps.",
         "snippetList": [
           {
@@ -65,7 +52,7 @@
             "processElementType": "INTERMEDIATEEVENT"
           }
         ],
-        "level": 2,
+        "level": 1,
         "lateral": true
       },
       {
@@ -79,7 +66,7 @@
             "processElementType": "ANDSPLIT"
           }
         ],
-        "level": 1,
+        "level": 0,
         "lateral": false
       },
       {
@@ -93,7 +80,7 @@
             "processElementType": "ACTIVITY"
           }
         ],
-        "level": 3,
+        "level": 2,
         "lateral": true
       },
       {
@@ -107,7 +94,7 @@
             "processElementType": "ACTIVITY"
           }
         ],
-        "level": 3,
+        "level": 2,
         "lateral": true
       },
       {
@@ -128,39 +115,32 @@
             "processElementType": "ANDJOIN"
           }
         ],
-        "level": 2,
+        "level": 1,
         "lateral": false
       },
       {
-        "value": "Subsequently, the subprocess is finished.",
+        "value": "After that, the subprocess is finished.",
         "snippetList": [
           {
-            "startIndex": 14,
-            "endIndex": 40,
+            "startIndex": 12,
+            "endIndex": 38,
             "resourceId": "Lane 1",
             "processElementId": "EndEvent_1k2y2r0",
             "processElementType": "INTERMEDIATEEVENT"
           }
         ],
-        "level": 2,
+        "level": 1,
         "lateral": false
       },
       {
-        "value": "In any case, the process is finished.",
+        "value": "Finally, the process ends with a message.",
         "snippetList": [
           {
-            "startIndex": 13,
-            "endIndex": 36,
+            "startIndex": 9,
+            "endIndex": 40,
             "resourceId": "Lane 1",
-            "processElementId": "EndEvent 2",
+            "processElementId": "EndEvent_0zwwp4b",
             "processElementType": "ENDEVENT"
-          },
-          {
-            "startIndex": 0,
-            "endIndex": 11,
-            "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
-            "processElementType": "XORJOIN"
           }
         ],
         "level": 0,

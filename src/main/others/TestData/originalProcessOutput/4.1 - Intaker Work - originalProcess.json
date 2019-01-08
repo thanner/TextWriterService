@@ -163,20 +163,20 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Secretatial office asks for the medical file and then hands out the cards.",
+        "value": "In the first procedure, the Secretatial office hands out the cards and then asks for the medical file.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 72,
+            "endIndex": 66,
             "resourceId": "Lane_05moj61",
-            "processElementId": "Task_1sqjb3g",
+            "processElementId": "Task_0ch2g8e",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 82,
+            "startIndex": 76,
             "endIndex": 101,
             "resourceId": "Lane_05moj61",
-            "processElementId": "Task_0ch2g8e",
+            "processElementId": "Task_1sqjb3g",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -184,60 +184,39 @@
         "lateral": true
       },
       {
-        "value": "Subsequently, the First inteaker plans the meeting first intaker and then meetings with the first intaker.",
+        "value": "Subsequently, it updates the patient file and then the second intaker plans the meeting second intaker.",
         "snippetList": [
           {
-            "startIndex": 14,
-            "endIndex": 64,
-            "resourceId": "Lane_03vfs7s",
-            "processElementId": "Task_0gkqvhb",
-            "processElementType": "ACTIVITY"
-          },
-          {
-            "startIndex": 74,
-            "endIndex": 105,
-            "resourceId": "Lane_03vfs7s",
-            "processElementId": "Task_154hk3q",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "Next, it completes the file with the 1st info and then the Secretatial office updates the patient file.",
-        "snippetList": [
-          {
-            "startIndex": 55,
+            "startIndex": 51,
             "endIndex": 102,
-            "resourceId": "Lane_05moj61",
-            "processElementId": "Task_0c5vgz3",
-            "processElementType": "ACTIVITY"
-          },
-          {
-            "startIndex": 6,
-            "endIndex": 45,
-            "resourceId": "Lane_03vfs7s",
-            "processElementId": "Task_0k2pgiy",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "After that, the second intaker plans the meeting second intaker and then meetings with the second intaker.",
-        "snippetList": [
-          {
-            "startIndex": 12,
-            "endIndex": 63,
             "resourceId": "Lane_0qh45or",
             "processElementId": "Task_1bn460j",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 73,
-            "endIndex": 105,
+            "startIndex": 14,
+            "endIndex": 41,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0c5vgz3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the second intaker meetings with the second intaker and then the Secretatial office types of the out conversation.",
+        "snippetList": [
+          {
+            "startIndex": 67,
+            "endIndex": 119,
+            "resourceId": "Lane_05moj61",
+            "processElementId": "Task_0en706y",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 57,
             "resourceId": "Lane_0qh45or",
             "processElementId": "Task_0am3sx3",
             "processElementType": "ACTIVITY"
@@ -247,20 +226,41 @@
         "lateral": false
       },
       {
-        "value": "Subsequently, the Secretatial office types of the out conversation and then the second intaker completes the file with the 2nd info.",
+        "value": "After that, it completes the file with the 2nd info and then the First inteaker plans the meeting first intaker.",
         "snippetList": [
           {
-            "startIndex": 76,
-            "endIndex": 131,
-            "resourceId": "Lane_0qh45or",
-            "processElementId": "Task_0mtrfo0",
+            "startIndex": 61,
+            "endIndex": 111,
+            "resourceId": "Lane_03vfs7s",
+            "processElementId": "Task_0gkqvhb",
             "processElementType": "ACTIVITY"
           },
           {
+            "startIndex": 12,
+            "endIndex": 51,
+            "resourceId": "Lane_0qh45or",
+            "processElementId": "Task_0mtrfo0",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the First inteaker meetings with the first intaker and then completes the file with the 1st info.",
+        "snippetList": [
+          {
             "startIndex": 14,
-            "endIndex": 66,
-            "resourceId": "Lane_05moj61",
-            "processElementId": "Task_0en706y",
+            "endIndex": 64,
+            "resourceId": "Lane_03vfs7s",
+            "processElementId": "Task_154hk3q",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 74,
+            "endIndex": 110,
+            "resourceId": "Lane_03vfs7s",
+            "processElementId": "Task_0k2pgiy",
             "processElementType": "ACTIVITY"
           }
         ],

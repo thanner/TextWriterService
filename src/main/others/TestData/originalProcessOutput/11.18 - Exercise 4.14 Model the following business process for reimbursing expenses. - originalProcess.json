@@ -20,7 +20,7 @@
             "startIndex": 25,
             "endIndex": 72,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 4",
             "processElementType": "XORSPLIT"
           },
           {
@@ -272,7 +272,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 3",
+            "processElementId": "ExclusiveGateway 6",
             "processElementType": "XORJOIN"
           }
         ],
@@ -306,7 +306,8 @@
           {
             "startIndex": 0,
             "endIndex": 48,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -319,7 +320,22 @@
           {
             "startIndex": 0,
             "endIndex": 63,
-            "processElementId": "none",
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 27,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -340,7 +356,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 2",
+            "processElementId": "ExclusiveGateway 5",
             "processElementType": "XORJOIN"
           }
         ],

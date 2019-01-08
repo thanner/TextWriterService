@@ -1,8 +1,8 @@
 package br.edu.ufrgs.inf.bpm.application;
 
 import br.edu.ufrgs.inf.bpm.builder.MetaTextGenerator;
-import br.edu.ufrgs.inf.bpm.metatext.TMetaText;
-import br.edu.ufrgs.inf.bpm.metatext.TSentence;
+import br.edu.ufrgs.inf.bpm.textmetadata.TSentence;
+import br.edu.ufrgs.inf.bpm.textmetadata.TTextMetadata;
 import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import net.didion.jwnl.JWNLException;
 import org.apache.commons.io.FileUtils;
@@ -18,7 +18,7 @@ public class TestBpmnXml {
     }
 
     public static String getStructuredText() {
-        TMetaText metaText = new TMetaText();
+        TTextMetadata metaText = new TTextMetadata();
         try {
             String bpmnProcess = FileUtils.readFileToString(new File("src/main/others/leopold.bpmn"), "UTF-8");
             // metaText = TextGenerator.generateMetaText(bpmnProcess);

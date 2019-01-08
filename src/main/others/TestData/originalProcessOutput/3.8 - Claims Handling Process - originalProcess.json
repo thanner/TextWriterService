@@ -96,20 +96,13 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Handling department arranges the repair and then schedules the payment.",
+        "value": "In the first procedure, the Handling department rejects the claim.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 67,
+            "endIndex": 65,
             "resourceId": "Lane_0t57m5a",
-            "processElementId": "Task_0zuhqho",
-            "processElementType": "ACTIVITY"
-          },
-          {
-            "startIndex": 77,
-            "endIndex": 98,
-            "resourceId": "Lane_0t57m5a",
-            "processElementId": "Task_1qx3l3u",
+            "processElementId": "Task_0nskyv2",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -117,13 +110,20 @@
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Handling department rejects the claim.",
+        "value": "In the second procedure, the Handling department arranges the repair and then schedules the payment.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 66,
+            "endIndex": 68,
             "resourceId": "Lane_0t57m5a",
-            "processElementId": "Task_0nskyv2",
+            "processElementId": "Task_0zuhqho",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 78,
+            "endIndex": 99,
+            "resourceId": "Lane_0t57m5a",
+            "processElementId": "Task_1qx3l3u",
             "processElementType": "ACTIVITY"
           }
         ],

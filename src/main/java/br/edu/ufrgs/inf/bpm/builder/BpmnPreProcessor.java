@@ -26,8 +26,11 @@ public class BpmnPreProcessor {
         verifySequenceFlowsWithoutElements();
         adjustPools();
         adjustLanes();
+        adjustBoundaryEvents();
+        adjustIncomingAndOutgoing();
         adjustStartEvents();
         adjustEndEvents();
+        adjustLabel();
         adjustActivityLabel();
     }
 
@@ -123,24 +126,70 @@ public class BpmnPreProcessor {
         return tLaneSet;
     }
 
-    private void adjustActivityLabel() {
-        for (TProcess process : bpmnWrapper.getProcessList()) {
-            List<TActivity> tActivityList = bpmnWrapper.getFlowElementListDeep(TActivity.class, process);
-            for (TActivity tActivity : tActivityList) {
-                String name = tActivity.getName();
-                if (name != null) {
-                    name = name.trim();
+    private void adjustBoundaryEvents() {
+        for (TProcess tProcess : bpmnWrapper.getProcessList()) {
+            for (TFlowElement tFlowElement : bpmnWrapper.getFlowElementListDeep(tProcess)) {
+                if (tFlowElement instanceof TBoundaryEvent) {
+                    TBoundaryEvent tBoundaryEvent = (TBoundaryEvent) tFlowElement;
+                    TActivity tActivityWithAttach = bpmnWrapper.getTActivityAttached(tProcess, tBoundaryEvent);
+                    createSequenceFlow(tActivityWithAttach, tBoundaryEvent, tProcess);
                 }
+            }
+        }
+    }
 
-                if (name == null || name.isEmpty()) {
-                    String type = "activity";
-                    if (tActivity instanceof TTask) {
-                        type = "task";
-                    } else if (tActivity instanceof TSubProcess) {
-                        type = "subprocess";
+    private void adjustIncomingAndOutgoing() {
+        for (TProcess tProcess : bpmnWrapper.getProcessList()) {
+            adjustFlowElementWithMultipleIncoming(tProcess);
+            adjustFlowElementWithMultipleOutgoing(tProcess);
+        }
+    }
+
+    private void adjustFlowElementWithMultipleOutgoing(TProcess tProcess) {
+        for (TFlowElement tFlowElement : bpmnWrapper.getFlowElementListDeep(tProcess)) {
+            if (tFlowElement instanceof TFlowNode) {
+                TFlowNode tFlowNode = (TFlowNode) tFlowElement;
+                if (!(tFlowElement instanceof TGateway)) {
+                    List<TFlowElement> targetElementList = bpmnWrapper.getFlowNodeTargetList(tFlowNode);
+                    if (targetElementList.size() > 1) {
+                        for (TSequenceFlow tSequenceFlow : bpmnWrapper.getSequenceFlowTargetList(tFlowNode)) {
+                            bpmnWrapper.deleteSequenceFlow(tSequenceFlow);
+                        }
+
+                        TExclusiveGateway tExclusiveGateway = createExclusiveGateway(tProcess, bpmnWrapper.getBaseElement(tFlowNode));
+                        createSequenceFlow(tFlowNode, tExclusiveGateway, tProcess);
+                        for (TFlowElement targetElement : targetElementList) {
+                            if (targetElement instanceof TFlowNode) {
+                                TFlowNode targetNode = (TFlowNode) targetElement;
+                                createSequenceFlow(tExclusiveGateway, targetNode, tProcess);
+                            }
+                        }
                     }
-                    String label = ("Do unlabeled @type (id: " + tActivity.getId() + ")\n").replace("@type", type);
-                    tActivity.setName(label);
+                }
+            }
+        }
+    }
+
+    private void adjustFlowElementWithMultipleIncoming(TProcess tProcess) {
+        for (TFlowElement tFlowElement : bpmnWrapper.getFlowElementListDeep(tProcess)) {
+            if (tFlowElement instanceof TFlowNode) {
+                TFlowNode tFlowNode = (TFlowNode) tFlowElement;
+                if (!(tFlowElement instanceof TGateway)) {
+                    List<TFlowElement> sourceElementList = bpmnWrapper.getFlowNodeSourceList(tFlowNode);
+                    if (sourceElementList.size() > 1) {
+                        for (TSequenceFlow tSequenceFlow : bpmnWrapper.getSequenceFlowSourceList(tFlowNode)) {
+                            bpmnWrapper.deleteSequenceFlow(tSequenceFlow);
+                        }
+
+                        TExclusiveGateway tExclusiveGateway = createExclusiveGateway(tProcess, bpmnWrapper.getBaseElement(tFlowNode));
+                        createSequenceFlow(tExclusiveGateway, tFlowNode, tProcess);
+                        for (TFlowElement sourceElement : sourceElementList) {
+                            if (sourceElement instanceof TFlowNode) {
+                                TFlowNode sourceNode = (TFlowNode) sourceElement;
+                                createSequenceFlow(sourceNode, tExclusiveGateway, tProcess);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -148,7 +197,7 @@ public class BpmnPreProcessor {
 
     private void adjustStartEvents() {
         for (TProcess tProcess : bpmnWrapper.getProcessList()) {
-            adjustStartEventsWithMultipleOutgoing(tProcess);
+            //adjustStartEventsWithMultipleOutgoing(tProcess);
             adjustFlowNodeswithoutIncoming(tProcess);
             adjustNumberStartEvents(tProcess);
         }
@@ -156,12 +205,13 @@ public class BpmnPreProcessor {
 
     private void adjustEndEvents() {
         for (TProcess tProcess : bpmnWrapper.getProcessList()) {
-            adjustEndEventsWithMultipleIncoming(tProcess);
+            //adjustEndEventsWithMultipleIncoming(tProcess);
             adjustFlowNodeswithoutOutgoing(tProcess);
             adjustNumberEndEvents(tProcess);
         }
     }
 
+    /*
     private void adjustStartEventsWithMultipleOutgoing(TProcess tProcess) {
         for (TStartEvent tStartEvent : bpmnWrapper.getFlowElementListDeep(TStartEvent.class, tProcess)) {
             List<TFlowElement> targetElementList = bpmnWrapper.getFlowNodeTargetList(tStartEvent);
@@ -201,6 +251,7 @@ public class BpmnPreProcessor {
             }
         }
     }
+    */
 
     private void adjustFlowNodeswithoutIncoming(TProcess tProcess) {
         List<TFlowNode> tFlowNodeWithoutIncoming = bpmnWrapper.getFlowNodesWithoutIncomingDeep(tProcess);
@@ -385,6 +436,42 @@ public class BpmnPreProcessor {
             ((TLane) tBaseElement).getFlowNodeRef().add(new ObjectFactory().createTLaneFlowNodeRef(tFlowNode));
         } else if (tBaseElement instanceof TSubProcess) {
             ((TSubProcess) tBaseElement).getFlowElement().add(jaxbFlowNode);
+        }
+    }
+
+    private void adjustLabel() {
+        for (TProcess process : bpmnWrapper.getProcessList()) {
+            for (TFlowElement tFlowElement : bpmnWrapper.getFlowElementListDeep(process)) {
+                if (tFlowElement != null) {
+                    String name = tFlowElement.getName();
+                    if (name != null) {
+                        tFlowElement.setName(tFlowElement.getName().replaceAll("\n", " ").replaceAll("  ", " ").trim());
+                    }
+                }
+            }
+        }
+    }
+
+    private void adjustActivityLabel() {
+        for (TProcess process : bpmnWrapper.getProcessList()) {
+            List<TActivity> tActivityList = bpmnWrapper.getFlowElementListDeep(TActivity.class, process);
+            for (TActivity tActivity : tActivityList) {
+                String name = tActivity.getName();
+                if (name != null) {
+                    name = name.trim();
+                }
+
+                if (name == null || name.isEmpty()) {
+                    String type = "activity";
+                    if (tActivity instanceof TTask) {
+                        type = "task";
+                    } else if (tActivity instanceof TSubProcess) {
+                        type = "subprocess";
+                    }
+                    String label = ("Do unlabeled @type (id: " + tActivity.getId() + ")\n").replace("@type", type);
+                    tActivity.setName(label);
+                }
+            }
         }
     }
 

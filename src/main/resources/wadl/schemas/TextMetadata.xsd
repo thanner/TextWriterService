@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:mt="http://br/edu/ufrgs/inf/bpm/metatext"
-           targetNamespace="http://br/edu/ufrgs/inf/bpm/metatext">
+           xmlns:mt="http://br/edu/ufrgs/inf/bpm/textmetadata"
+           targetNamespace="http://br/edu/ufrgs/inf/bpm/textmetadata">
 
-    <xs:element name="metaText" type="mt:tMetaText"/>
-    <xs:complexType name="tMetaText">
+    <xs:element name="textMetadata" type="mt:tTextMetadata"/>
+    <xs:complexType name="tTextMetadata">
         <xs:sequence>
             <xs:element name="processList" type="mt:tProcess" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="text" type="mt:tText"/>

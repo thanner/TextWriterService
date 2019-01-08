@@ -2,7 +2,7 @@ package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
-import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import com.ibm.icu.text.RuleBasedNumberFormat;
@@ -209,7 +209,7 @@ public class DiscourseMarker {
             TFlowElement tFlowElement = bpmnWrapper.getFlowElementById(processElement.getProcessElementId());
             if (tFlowElement instanceof TFlowNode) {
                 for (TFlowElement tFlowElementSource : bpmnWrapper.getFlowNodeSourceList((TFlowNode) tFlowElement)) {
-                    if (tFlowElementSource instanceof TExclusiveGateway || tFlowElementSource instanceof TInclusiveGateway) {
+                    if (tFlowElementSource instanceof TExclusiveGateway || tFlowElementSource instanceof TInclusiveGateway || tFlowElementSource instanceof TBoundaryEvent) {
                         return true;
                     }
                 }

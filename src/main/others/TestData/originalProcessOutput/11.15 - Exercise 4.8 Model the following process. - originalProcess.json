@@ -123,7 +123,7 @@
           }
         ],
         "level": 1,
-        "lateral": true
+        "lateral": false
       },
       {
         "value": "In any case, the process is finished.",

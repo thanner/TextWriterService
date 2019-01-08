@@ -70,11 +70,67 @@
         "lateral": true
       },
       {
-        "value": "After that, the Resource 1 approves the job description.",
+        "value": "In any case, the Resource 1 receives a message and then reviews the job description.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 46,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_035dem9",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 56,
+            "endIndex": 83,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_138f57n",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, it asks for the corrections.",
         "snippetList": [
           {
             "startIndex": 12,
-            "endIndex": 55,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0hqp3t1",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "As long as is the Resource 1 repeats the latter steps and continues with continuing the loop.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 92,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Resource 1 approves the job description.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 57,
             "resourceId": "Lane 1",
             "processElementId": "Task_0y0vy9q",
             "processElementType": "ACTIVITY"

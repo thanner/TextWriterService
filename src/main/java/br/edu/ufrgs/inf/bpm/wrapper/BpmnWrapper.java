@@ -6,6 +6,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BpmnWrapper {
 
@@ -649,6 +650,32 @@ public class BpmnWrapper {
             }
         }
         return null;
+    }
+
+    public TActivity getTActivityAttached(TProcess process, TBoundaryEvent boundaryEvent) {
+        return getTActivityAttached(process, boundaryEvent.getAttachedToRef().getLocalPart());
+    }
+
+
+    public void print() {
+        for (TProcess tProcess : getProcessList()) {
+            System.out.println("Process: " + tProcess.getName() + " (" + tProcess.getId() + ")");
+            for (TFlowElement flowElement : getFlowElementListDeep(tProcess)) {
+                if (flowElement instanceof TFlowNode) {
+                    System.out.println("\t" + getFlowElementName(flowElement));
+                    TFlowNode tFlowNode = (TFlowNode) flowElement;
+                    List<TFlowElement> flowElementSourceList = getFlowNodeSourceList(tFlowNode);
+                    System.out.println("\t\tSource: " + flowElementSourceList.stream().map(this::getFlowElementName).collect(Collectors.joining(", ")));
+                    List<TFlowElement> flowElementTargetList = getFlowNodeTargetList(tFlowNode);
+                    System.out.println("\t\tTarget: " + flowElementTargetList.stream().map(this::getFlowElementName).collect(Collectors.joining(", ")));
+                }
+            }
+            System.out.println("==================================");
+        }
+    }
+
+    public String getFlowElementName(TFlowElement flowElement) {
+        return flowElement.getClass().getSimpleName() + ": " + flowElement.getName(); // + " (" + flowElement.getId() + ") ";
     }
 
 }

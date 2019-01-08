@@ -49,6 +49,104 @@
         "lateral": false
       },
       {
+        "value": "After that, if required, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "id-2",
+            "processElementId": "id-13",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the supplier needses to estimate a full track-load half track-load in order prepare and then estimates the trailer usage to the prepare.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 107,
+            "resourceId": "id-2",
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 117,
+            "endIndex": 159,
+            "resourceId": "id-2",
+            "processElementId": "id-9",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, he dispatches within the four days and then implies that the transportation quotes have to be prepared within 48 hours from receipt of order to remain within terms of contract.",
+        "snippetList": [
+          {
+            "startIndex": 58,
+            "endIndex": 189,
+            "resourceId": "id-2",
+            "processElementId": "id-11",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 48,
+            "resourceId": "id-2",
+            "processElementId": "id-10",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, he finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 41,
+            "resourceId": "id-2",
+            "processElementId": "id-12",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the supplier needs to compute a full track-load half track-load in order to prepare and then prepares the quote.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 108,
+            "resourceId": "id-2",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 118,
+            "endIndex": 136,
+            "resourceId": "id-2",
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
         "value": "In any case, the process is finished.",
         "snippetList": [
           {
@@ -62,7 +160,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "id-2",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

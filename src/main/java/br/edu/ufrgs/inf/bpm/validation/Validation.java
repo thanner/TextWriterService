@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.validation;
 
-import br.edu.ufrgs.inf.bpm.metatext.ProcessElementType;
-import br.edu.ufrgs.inf.bpm.metatext.TSentence;
-import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
-import br.edu.ufrgs.inf.bpm.metatext.TText;
+import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.textmetadata.TSentence;
+import br.edu.ufrgs.inf.bpm.textmetadata.TSnippet;
+import br.edu.ufrgs.inf.bpm.textmetadata.TText;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import br.edu.ufrgs.inf.bpm.wrapper.JaxbWrapper;
 import org.omg.spec.bpmn._20100524.model.*;

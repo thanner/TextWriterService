@@ -49,7 +49,7 @@
         "lateral": false
       },
       {
-        "value": "After that, one of the 1 alternative procedures is executed.",
+        "value": "After that, one of the 3 alternative procedures is executed.",
         "snippetList": [
           {
             "startIndex": 12,
@@ -84,6 +84,27 @@
         "lateral": true
       },
       {
+        "value": "In the second procedure, the Resource 1 can the be not correct mismatches and then blocks the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 83,
+            "endIndex": 101,
+            "resourceId": "Lane 1",
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
         "value": "In any case, the process is finished.",
         "snippetList": [
           {
@@ -97,7 +118,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

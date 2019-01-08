@@ -25,7 +25,7 @@ public class ProcessModelBuilder {
     private Map<Integer, Arc> arcMap;
 
     private BpmnWrapper bpmnWrapper;
-    private Map<Integer, Integer> externalPathInitiators;
+    //private Map<Integer, Integer> externalPathInitiators;
 
     public ProcessModelBuilder() {
         genericId = 0;
@@ -37,7 +37,7 @@ public class ProcessModelBuilder {
         tArcMap = new HashMap<>();
         arcMap = new HashMap<>();
 
-        externalPathInitiators = new HashMap<>();
+        //externalPathInitiators = new HashMap<>();
     }
 
     public ProcessModel buildProcess(TDefinitions definitions) {
@@ -71,6 +71,7 @@ public class ProcessModelBuilder {
                 }
             }
 
+            /*
             for (JAXBElement<? extends TFlowElement> flowElement : process.getFlowElement()) {
                 if (flowElement.getValue() instanceof TBoundaryEvent) {
                     attachEvent(process, processModel, (TBoundaryEvent) flowElement.getValue());
@@ -78,9 +79,11 @@ public class ProcessModelBuilder {
             }
 
             removeExternalPathInitiators(process, processModel);
+            */
         }
 
         connectSubprocess(processModel);
+
         return processModel;
     }
 
@@ -146,11 +149,13 @@ public class ProcessModelBuilder {
             }
         }
 
+        /*
         for (JAXBElement<? extends TFlowElement> flowElement : tSubProcess.getFlowElement()) {
             if (flowElement.getValue() instanceof TBoundaryEvent) {
                 attachEvent(bpmnWrapper.getProcessByFlowElement(tSubProcess), processModel, (TBoundaryEvent) flowElement.getValue());
             }
         }
+        */
     }
 
     private Event createEvent(TEvent event, TSubProcess tSubProcess) {
@@ -193,6 +198,7 @@ public class ProcessModelBuilder {
         return modelArc;
     }
 
+    /*
     private void attachEvent(TProcess process, ProcessModel processModel, TBoundaryEvent tBoundaryEvent) {
         String tActivityId = tBoundaryEvent.getAttachedToRef().getLocalPart();
         Activity activityWithAttach = (Activity) elementMap.get(tActivityId);
@@ -206,7 +212,7 @@ public class ProcessModelBuilder {
         if (tActivityWithAttach != null) {
             // Attached event leads to alternative path
             //if (tBoundaryEvent.getOutgoing().size() > 0) {
-            //    externalPathInitiators.put(boundaryEvent.getId(), activityWithAttach.getId());
+            // externalPathInitiators.put(boundaryEvent.getId(), activityWithAttach.getId());
             // Attached event goes back to standard path
             //} else {
             Arc arc = new Arc(generateModelId("newArc" + genericId), "", activityWithAttach, boundaryEvent, "VirtualFlow");
@@ -214,6 +220,7 @@ public class ProcessModelBuilder {
             //}
         }
     }
+    */
 
     private String getName(String name) {
         return name != null ? name : "";
@@ -267,6 +274,7 @@ public class ProcessModelBuilder {
         return bpmnIdMap;
     }
 
+    /*
     private void removeExternalPathInitiators(TProcess tProcess, ProcessModel processModel) {
         for (int exPI : externalPathInitiators.keySet()) {
             ProcessModel alternativePathModel = new ProcessModel(exPI, "");
@@ -288,6 +296,7 @@ public class ProcessModelBuilder {
             externalPathInitiators.remove(exPI);
         }
     }
+    */
 
     private void buildAlternativePathModel(TProcess tProcess, int id, boolean isElement, ProcessModel model, ProcessModel alternative, int exPI) {
         if (isElement) {

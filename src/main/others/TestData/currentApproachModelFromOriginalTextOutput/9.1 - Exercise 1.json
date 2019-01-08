@@ -69,6 +69,237 @@
         "lateral": false
       },
       {
+        "value": "After that, if required, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "id-2",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "id-2",
+            "processElementId": "id-31",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the 2:30 pm executes the one of the alternative 2 procedures and then registers the defaulting accounts in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 84,
+            "resourceId": "id-2",
+            "processElementId": "id-15",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 94,
+            "endIndex": 150,
+            "resourceId": "id-2",
+            "processElementId": "id-16",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Subsequently, it registers the customers and then produces the table in the second procedure.",
+        "snippetList": [
+          {
+            "startIndex": 50,
+            "endIndex": 92,
+            "resourceId": "id-2",
+            "processElementId": "id-18",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 40,
+            "resourceId": "id-2",
+            "processElementId": "id-17",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "id-2",
+            "processElementId": "id-32",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The 2:30 pm sends to the account management.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "id-2",
+            "processElementId": "id-20",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, the 2:30 pm sends to the account management.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 60,
+            "resourceId": "id-2",
+            "processElementId": "id-19",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After each case, the 2:30 pm accounts the management.",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 52,
+            "resourceId": "id-2",
+            "processElementId": "id-21",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "resourceId": "id-2",
+            "processElementId": "id-33",
+            "processElementType": "ANDJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the second procedure, the 2:30 pm completes the all of the this and then sends the alert to the supervisor.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 66,
+            "resourceId": "id-2",
+            "processElementId": "id-22",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 76,
+            "endIndex": 109,
+            "resourceId": "id-2",
+            "processElementId": "id-23",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, it checks the crm system to see in the second procedure and then conducts the to see.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 67,
+            "resourceId": "id-2",
+            "processElementId": "id-24",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 77,
+            "endIndex": 96,
+            "resourceId": "id-2",
+            "processElementId": "id-25",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, if required, the 2:30 pm completes the account report.",
+        "snippetList": [
+          {
+            "startIndex": 27,
+            "endIndex": 67,
+            "resourceId": "id-2",
+            "processElementId": "id-26",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 26,
+            "resourceId": "id-2",
+            "processElementId": "id-34",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the third procedure, the 2:30 pm executes the one of the alternative 2 procedures and then the 4:00 pm completes the this in the first procedure.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 84,
+            "resourceId": "id-2",
+            "processElementId": "id-27",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 94,
+            "endIndex": 147,
+            "resourceId": "id-3",
+            "processElementId": "id-28",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, the 4:00 pm sends a message in the second procedure and then finishes the process in the case.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 57,
+            "resourceId": "id-3",
+            "processElementId": "id-29",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 99,
+            "resourceId": "id-3",
+            "processElementId": "id-30",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
         "value": "In any case, the process is finished.",
         "snippetList": [
           {
@@ -82,7 +313,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "id-2",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

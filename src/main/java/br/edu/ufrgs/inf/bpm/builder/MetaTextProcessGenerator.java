@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
-import br.edu.ufrgs.inf.bpm.metatext.TProcess;
-import br.edu.ufrgs.inf.bpm.metatext.TResource;
+import br.edu.ufrgs.inf.bpm.textmetadata.TProcess;
+import br.edu.ufrgs.inf.bpm.textmetadata.TResource;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import org.omg.spec.bpmn._20100524.model.TDefinitions;
 import org.omg.spec.bpmn._20100524.model.TLane;

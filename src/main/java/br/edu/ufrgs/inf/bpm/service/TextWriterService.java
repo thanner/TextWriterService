@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.service;
 
 import br.edu.ufrgs.inf.bpm.builder.MetaTextGenerator;
-import br.edu.ufrgs.inf.bpm.metatext.TMetaText;
+import br.edu.ufrgs.inf.bpm.textmetadata.TTextMetadata;
 import br.edu.ufrgs.inf.bpm.wrapper.JsonWrapper;
 import io.swagger.annotations.Api;
 import net.didion.jwnl.JWNLException;
@@ -17,8 +17,8 @@ public class TextWriterService implements ITextWriterService {
     @Override
     public Response generateText(String bpmnString) {
         try {
-            TMetaText tMetaText = MetaTextGenerator.generateMetaText(bpmnString);
-            return Response.ok().entity(JsonWrapper.getJson(tMetaText)).build();
+            TTextMetadata TTextMetadata = MetaTextGenerator.generateMetaText(bpmnString);
+            return Response.ok().entity(JsonWrapper.getJson(TTextMetadata)).build();
         } catch (IOException | JWNLException e) {
             return Response.serverError().entity(e.getMessage()).build();
         }

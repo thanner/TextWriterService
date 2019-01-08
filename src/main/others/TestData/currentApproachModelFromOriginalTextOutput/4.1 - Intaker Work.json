@@ -54,11 +54,11 @@
   "text": {
     "sentenceList": [
       {
-        "value": "The process starts when the secretarial worker conducts an intakes .",
+        "value": "The process starts when the secretarial worker conducts the intakes.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 66,
+            "endIndex": 67,
             "resourceId": "id-2",
             "processElementId": "id-15",
             "processElementType": "ACTIVITY"

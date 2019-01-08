@@ -34,7 +34,7 @@
             "startIndex": 6,
             "endIndex": 53,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 4",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -63,18 +63,18 @@
         "lateral": true
       },
       {
-        "value": "If \"no\", if required, the Resource 1 creates the account.",
+        "value": "In the second procedure, if required, the Resource 1 creates the account.",
         "snippetList": [
           {
-            "startIndex": 22,
-            "endIndex": 56,
+            "startIndex": 38,
+            "endIndex": 72,
             "resourceId": "Lane 1",
             "processElementId": "Task_09j5hv0",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 9,
-            "endIndex": 21,
+            "startIndex": 25,
+            "endIndex": 37,
             "resourceId": "Lane 1",
             "processElementId": "ExclusiveGateway_04qlqgt",
             "processElementType": "XORSPLIT"
@@ -84,25 +84,32 @@
         "lateral": true
       },
       {
-        "value": "After that, the Resource 1 reviews for the pre-approval.",
+        "value": "In any case, the Resource 1 reviews for the pre-approval.",
         "snippetList": [
           {
-            "startIndex": 12,
-            "endIndex": 55,
+            "startIndex": 13,
+            "endIndex": 56,
             "resourceId": "Lane 1",
             "processElementId": "Task_0hoohby",
             "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
           }
         ],
         "level": 1,
         "lateral": false
       },
       {
-        "value": "Subsequently, one of the 3 alternative procedures is executed.",
+        "value": "After that, one of the 3 alternative procedures is executed.",
         "snippetList": [
           {
-            "startIndex": 14,
-            "endIndex": 61,
+            "startIndex": 12,
+            "endIndex": 59,
             "resourceId": "Lane 1",
             "processElementId": "ExclusiveGateway_1mrqkz7",
             "processElementType": "XORSPLIT"
@@ -154,11 +161,11 @@
         "lateral": true
       },
       {
-        "value": "Next, it transfers to the employee account.",
+        "value": "Subsequently, it transfers to the employee account.",
         "snippetList": [
           {
-            "startIndex": 6,
-            "endIndex": 42,
+            "startIndex": 14,
+            "endIndex": 50,
             "resourceId": "Lane 1",
             "processElementId": "Task_0lcp3xq",
             "processElementType": "ACTIVITY"
@@ -181,7 +188,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 2",
+            "processElementId": "ExclusiveGateway 1",
             "processElementType": "XORJOIN"
           }
         ],

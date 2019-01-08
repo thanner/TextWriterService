@@ -77,7 +77,7 @@
         "lateral": false
       },
       {
-        "value": "Subsequently, it executes the one of the alternative 2 procedures and then conducts the \"\u0027\u0027 .",
+        "value": "Subsequently, it executes the one of the alternative 2 procedures and then conducts the \"\u0027\u0027.",
         "snippetList": [
           {
             "startIndex": 14,
@@ -98,7 +98,7 @@
         "lateral": false
       },
       {
-        "value": "Next, it conducts the withdrawal from the switch contract and then conducts the \"\u0027\u0027 .",
+        "value": "Next, it conducts the withdrawal from the switch contract and then conducts the \"\u0027\u0027.",
         "snippetList": [
           {
             "startIndex": 6,
@@ -217,13 +217,13 @@
         "lateral": false
       },
       {
-        "value": "The Resource 1 computes the final billing.",
+        "value": "The Resource 1 sends the meter data in the meantime.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 41,
+            "endIndex": 51,
             "resourceId": "Lane 1",
-            "processElementId": "id-18",
+            "processElementId": "id-19",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -231,13 +231,13 @@
         "lateral": true
       },
       {
-        "value": "In the meantime, the Resource 1 sends the meter data in the meantime.",
+        "value": "In the meantime, the Resource 1 computes the final billing.",
         "snippetList": [
           {
             "startIndex": 17,
-            "endIndex": 68,
+            "endIndex": 58,
             "resourceId": "Lane 1",
-            "processElementId": "id-19",
+            "processElementId": "id-18",
             "processElementType": "ACTIVITY"
           }
         ],

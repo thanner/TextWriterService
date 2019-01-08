@@ -70,20 +70,14 @@
         "lateral": true
       },
       {
-        "value": "If required, the subprocess contains the following steps.",
+        "value": "The subprocess contains the following steps.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 56,
+            "endIndex": 43,
             "resourceId": "Lane 1",
             "processElementId": "StartEvent_1p8otxm",
             "processElementType": "INTERMEDIATEEVENT"
-          },
-          {
-            "startIndex": 0,
-            "endIndex": 0,
-            "processElementId": "none",
-            "processElementType": "XORSPLIT"
           }
         ],
         "level": 2,
@@ -139,7 +133,7 @@
         "lateral": true
       },
       {
-        "value": "In any case, the Resource 1 talks to the potential investors.",
+        "value": "In any case, the Resource 1 talks to the potential investors and then receives a message.",
         "snippetList": [
           {
             "startIndex": 13,
@@ -147,6 +141,13 @@
             "resourceId": "Lane 1",
             "processElementId": "Task_1g9denv",
             "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 70,
+            "endIndex": 88,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_01imxqd",
+            "processElementType": "INTERMEDIATEEVENT"
           },
           {
             "startIndex": 0,
@@ -160,78 +161,18 @@
         "lateral": false
       },
       {
-        "value": "After that, one of the 2 alternative procedures is executed.",
+        "value": "After that, if required, the Resource 1 fixes the issue price.",
         "snippetList": [
           {
-            "startIndex": 12,
-            "endIndex": 59,
-            "processElementId": "none",
-            "processElementType": "XORSPLIT"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "The Resource 1 receives a message.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 33,
-            "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_01imxqd",
-            "processElementType": "INTERMEDIATEEVENT"
-          }
-        ],
-        "level": 3,
-        "lateral": true
-      },
-      {
-        "value": "The Resource 1 sends a message.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 30,
-            "resourceId": "Lane 1",
-            "processElementId": "BoundaryEvent_1dif89y",
-            "processElementType": "INTERMEDIATEEVENT"
-          }
-        ],
-        "level": 3,
-        "lateral": true
-      },
-      {
-        "value": "In any case, the process continues.",
-        "snippetList": [
-          {
-            "startIndex": 13,
-            "endIndex": 34,
-            "processElementId": "none",
-            "processElementType": "XORJOIN"
-          },
-          {
-            "startIndex": 0,
-            "endIndex": 11,
-            "processElementId": "",
-            "processElementType": "XORJOIN"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "Subsequently, if required, the Resource 1 fixes the issue price.",
-        "snippetList": [
-          {
-            "startIndex": 27,
-            "endIndex": 63,
+            "startIndex": 25,
+            "endIndex": 61,
             "resourceId": "Lane 1",
             "processElementId": "Task_1obbqa9",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 14,
-            "endIndex": 26,
+            "startIndex": 12,
+            "endIndex": 24,
             "resourceId": "Lane 1",
             "processElementId": "ExclusiveGateway_0o6fne6",
             "processElementType": "XORSPLIT"
@@ -241,18 +182,18 @@
         "lateral": false
       },
       {
-        "value": "Next, the Resource 1 buys the stock and then offers to the public.",
+        "value": "Subsequently, the Resource 1 buys the stock and then offers to the public.",
         "snippetList": [
           {
-            "startIndex": 6,
-            "endIndex": 35,
+            "startIndex": 14,
+            "endIndex": 43,
             "resourceId": "Lane 1",
             "processElementId": "Task_0s4shhq",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 45,
-            "endIndex": 65,
+            "startIndex": 53,
+            "endIndex": 73,
             "resourceId": "Lane 1",
             "processElementId": "Task_1mn5wcj",
             "processElementType": "ACTIVITY"
@@ -262,8 +203,15 @@
         "lateral": false
       },
       {
-        "value": "In any case, the subprocess is finished.",
+        "value": "In any case, the subprocess is finished and then the Resource 1 sends a message.",
         "snippetList": [
+          {
+            "startIndex": 49,
+            "endIndex": 79,
+            "resourceId": "Lane 1",
+            "processElementId": "BoundaryEvent_1dif89y",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
           {
             "startIndex": 13,
             "endIndex": 39,
@@ -275,11 +223,39 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 2",
+            "processElementId": "ExclusiveGateway 3",
             "processElementType": "XORJOIN"
           }
         ],
         "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0o6fne6",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Next, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 27,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0o6fne6",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
         "lateral": false
       },
       {
@@ -296,7 +272,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORJOIN"
           }
         ],

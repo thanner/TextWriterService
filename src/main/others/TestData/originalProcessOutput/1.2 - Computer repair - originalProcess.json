@@ -1,0 +1,357 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    },
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 2"
+        }
+      ],
+      "id": "Process_0sg1k6o",
+      "name": "Process 2"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 brings in the defective computer.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 71,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_18lgn2n",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it receives the repair cost calculation.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 45,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0nve4or",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 59,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_1wkh305",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If \"yes\", the Resource 1 continues the process.",
+        "snippetList": [
+          {
+            "startIndex": 10,
+            "endIndex": 46,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0n381r6",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"no\", the Resource 1 takes the computer home.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1m2koiz",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The process starts when the Resource 2 prepares a repair cost calculation.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0add6fd",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_1hszjhk",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0dtiid0",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Resource 2 receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 33,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateCatchEvent_03448c2",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Resource 2 receives a message and then does the unlabeled subprocess (id: subprocess 10qhs16).",
+        "snippetList": [
+          {
+            "startIndex": 56,
+            "endIndex": 110,
+            "resourceId": "Lane 1",
+            "processElementId": "SubProcess_10qhs16",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 46,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateCatchEvent_0wnctmd",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "resourceId": "Lane 1",
+            "processElementId": "StartEvent_15dl79h",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "One of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_00if6bz",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Resource 2 checks and configures the software.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 73,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_1nkk0dn",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Resource 2 checks and repairs the hardware.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 71,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0orpz5t",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 3,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the subprocess is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 39,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent_1a0xu1t",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway_0dn8xvq",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Resource 2 tests the system funcionality.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 56,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_0vasqm2",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Resource 2 continues with do the unlabeled subprocess (id: subprocess 10qhs16).",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 95,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 35,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane 1",
+            "processElementId": "EndEvent 2",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane 1",
+            "processElementId": "ExclusiveGateway 4",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

@@ -84,20 +84,6 @@
         "lateral": false
       },
       {
-        "value": "If \"applicant agree\", the Resource 1 approves the application.",
-        "snippetList": [
-          {
-            "startIndex": 22,
-            "endIndex": 61,
-            "resourceId": "Lane 1",
-            "processElementId": "Task_083m1f5",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
         "value": "If \"applicant disagree\", the Resource 1 cancels the application.",
         "snippetList": [
           {
@@ -105,6 +91,20 @@
             "endIndex": 63,
             "resourceId": "Lane 1",
             "processElementId": "Task_1xun01m",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "If \"applicant agree\", the Resource 1 approves the application.",
+        "snippetList": [
+          {
+            "startIndex": 22,
+            "endIndex": 61,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_083m1f5",
             "processElementType": "ACTIVITY"
           }
         ],

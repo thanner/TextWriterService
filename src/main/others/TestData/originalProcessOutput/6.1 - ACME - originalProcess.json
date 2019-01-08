@@ -1,0 +1,388 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0cbwn5w",
+          "name": "Cost Center Manager"
+        },
+        {
+          "id": "Lane_1mnepbf",
+          "name": "commercial manager"
+        },
+        {
+          "id": "Lane_1839j3u",
+          "name": "Board"
+        },
+        {
+          "id": "Lane_1xo5qxu",
+          "name": "Accounting"
+        },
+        {
+          "id": "Lane_13haja6",
+          "name": "Internal Mail"
+        },
+        {
+          "id": "Lane_1d7h9tf",
+          "name": "Secreteriat"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "Once a message is received the process starts.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane_1d7h9tf",
+            "processElementId": "StartEvent_0llf7fr",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Secreteriat conducts the visual inspection and then the Accounting identifies the charging supplier.",
+        "snippetList": [
+          {
+            "startIndex": 62,
+            "endIndex": 109,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_1r7q0ot",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 6,
+            "endIndex": 52,
+            "resourceId": "Lane_1d7h9tf",
+            "processElementId": "Task_1weppr4",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Accounting creates the instance and then checks the invoice items.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 47,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_06bvsp8",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 57,
+            "endIndex": 81,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_0rjhy9r",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, it creates the docket and then the Internal Mail delivers the copy of invoice \u0026 docket.",
+        "snippetList": [
+          {
+            "startIndex": 44,
+            "endIndex": 99,
+            "resourceId": "Lane_13haja6",
+            "processElementId": "Task_1mqmh2w",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 34,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_0xb1ieg",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_13haja6",
+            "processElementId": "ExclusiveGateway_1pljjw1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Cost Center Manager conducts the check and then conducts the rejection (note, explanatory statement).",
+        "snippetList": [
+          {
+            "startIndex": 66,
+            "endIndex": 118,
+            "resourceId": "Lane_0cbwn5w",
+            "processElementId": "Task_16jcwck",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 56,
+            "resourceId": "Lane_0cbwn5w",
+            "processElementId": "Task_0drstoe",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, the Accounting clarifies the inconsistencies.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 50,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_0kl8y60",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane_0cbwn5w",
+            "processElementId": "ExclusiveGateway_0e78xck",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Cost Center Manager continues with conducting the check.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 72,
+            "resourceId": "Lane_0cbwn5w",
+            "processElementId": "ExclusiveGateway_0e78xck",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, the Cost Center Manager conducts the ap.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 51,
+            "resourceId": "Lane_0cbwn5w",
+            "processElementId": "Task_0oy6623",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane_13haja6",
+            "processElementId": "ExclusiveGateway_1pljjw1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In that case the Internal Mail continues with delivering the copy of the invoice \u0026 docket.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 89,
+            "resourceId": "Lane_13haja6",
+            "processElementId": "ExclusiveGateway_1pljjw1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the process continues.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 35,
+            "resourceId": "Lane_13haja6",
+            "processElementId": "ExclusiveGateway_1pljjw1",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the Accounting forwards the copy of the invoice and then the commercial manager conducts the commercial audit.",
+        "snippetList": [
+          {
+            "startIndex": 70,
+            "endIndex": 122,
+            "resourceId": "Lane_1mnepbf",
+            "processElementId": "Task_1r8utn4",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 60,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_1lch7jt",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_1mnepbf",
+            "processElementId": "ExclusiveGateway_036olvj",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, it clarifies the inconsistencies.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 38,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_0abe29h",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "If it is required, the latter steps are repeated.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 48,
+            "resourceId": "Lane_1mnepbf",
+            "processElementId": "ExclusiveGateway_036olvj",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In that case the commercial manager continues with conducting the commercial audit.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 82,
+            "resourceId": "Lane_1mnepbf",
+            "processElementId": "ExclusiveGateway_036olvj",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "After that, if required, the Board conducts the check.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 53,
+            "resourceId": "Lane_1839j3u",
+            "processElementId": "Task_1dug66x",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 24,
+            "resourceId": "Lane_1mnepbf",
+            "processElementId": "ExclusiveGateway_1v78xg3",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the commercial manager conducts the issure the approval for payment and then the Accounting gives the payment instructions.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 80,
+            "resourceId": "Lane_1mnepbf",
+            "processElementId": "Task_0y04v4g",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 90,
+            "endIndex": 135,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_1qqp61h",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_1mnepbf",
+            "processElementId": "ExclusiveGateway_1vlccqi",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Accounting closes the instance.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 48,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "Task_119o56i",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Finally, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 32,
+            "resourceId": "Lane_1xo5qxu",
+            "processElementId": "EndEvent_14swlea",
+            "processElementType": "ENDEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

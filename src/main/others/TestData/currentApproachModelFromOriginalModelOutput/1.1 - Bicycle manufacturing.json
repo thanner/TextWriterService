@@ -113,13 +113,13 @@
         "lateral": false
       },
       {
-        "value": "The engineering department assembles.",
+        "value": "The storehouse checks the part quantity in the meantime.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 36,
-            "resourceId": "id-3",
-            "processElementId": "id-10",
+            "endIndex": 55,
+            "resourceId": "id-4",
+            "processElementId": "id-11",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -127,13 +127,13 @@
         "lateral": true
       },
       {
-        "value": "In the meantime, the storehouse checks the part quantity in the meantime.",
+        "value": "In the meantime, the engineering department assembles.",
         "snippetList": [
           {
             "startIndex": 17,
-            "endIndex": 72,
-            "resourceId": "id-4",
-            "processElementId": "id-11",
+            "endIndex": 53,
+            "resourceId": "id-3",
+            "processElementId": "id-10",
             "processElementType": "ACTIVITY"
           }
         ],

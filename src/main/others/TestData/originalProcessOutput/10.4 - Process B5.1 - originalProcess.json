@@ -111,35 +111,35 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 2 sends a message and then receives a message.",
+        "value": "In the first procedure, the Resource 2 conducts the final reading.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 54,
+            "endIndex": 65,
             "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_1bve7xj",
-            "processElementType": "INTERMEDIATEEVENT"
-          },
-          {
-            "startIndex": 64,
-            "endIndex": 82,
-            "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_0y5xcaz",
-            "processElementType": "INTERMEDIATEEVENT"
+            "processElementId": "Task_12xdto2",
+            "processElementType": "ACTIVITY"
           }
         ],
         "level": 1,
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 2 conducts the final reading.",
+        "value": "In the second procedure, the Resource 2 sends a message and then receives a message.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 66,
+            "endIndex": 55,
             "resourceId": "Lane 1",
-            "processElementId": "Task_12xdto2",
-            "processElementType": "ACTIVITY"
+            "processElementId": "IntermediateThrowEvent_1bve7xj",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 65,
+            "endIndex": 83,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0y5xcaz",
+            "processElementType": "INTERMEDIATEEVENT"
           }
         ],
         "level": 1,
@@ -167,35 +167,35 @@
         "lateral": false
       },
       {
-        "value": "In the first procedure, the Resource 2 dismountings of the old equipment.",
+        "value": "In the first procedure, the Resource 2 sends a message and then receives a message.",
         "snippetList": [
           {
             "startIndex": 24,
-            "endIndex": 72,
+            "endIndex": 54,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1o8fd40",
-            "processElementType": "ACTIVITY"
+            "processElementId": "IntermediateThrowEvent_1q42704",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 82,
+            "resourceId": "Lane 1",
+            "processElementId": "IntermediateThrowEvent_0lfgh67",
+            "processElementType": "INTERMEDIATEEVENT"
           }
         ],
         "level": 1,
         "lateral": true
       },
       {
-        "value": "In the second procedure, the Resource 2 sends a message and then receives a message.",
+        "value": "In the second procedure, the Resource 2 dismountings of the old equipment.",
         "snippetList": [
           {
             "startIndex": 25,
-            "endIndex": 55,
+            "endIndex": 73,
             "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_1q42704",
-            "processElementType": "INTERMEDIATEEVENT"
-          },
-          {
-            "startIndex": 65,
-            "endIndex": 83,
-            "resourceId": "Lane 1",
-            "processElementId": "IntermediateThrowEvent_0lfgh67",
-            "processElementType": "INTERMEDIATEEVENT"
+            "processElementId": "Task_1o8fd40",
+            "processElementType": "ACTIVITY"
           }
         ],
         "level": 1,

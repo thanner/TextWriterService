@@ -189,20 +189,20 @@
         "lateral": false
       },
       {
-        "value": "The Resource 1 emits the invoice and then receives the payment.",
+        "value": "The Resource 1 gets the shipment address and then ships the product.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 32,
+            "endIndex": 40,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1v7pomc",
+            "processElementId": "Task_1uskfds",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 42,
-            "endIndex": 62,
+            "startIndex": 50,
+            "endIndex": 67,
             "resourceId": "Lane 1",
-            "processElementId": "Task_16m9z20",
+            "processElementId": "Task_0394rj1",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -210,20 +210,20 @@
         "lateral": true
       },
       {
-        "value": "In the meantime, the Resource 1 gets the shipment address and then ships the product.",
+        "value": "In the meantime, the Resource 1 emits the invoice and then receives the payment.",
         "snippetList": [
           {
             "startIndex": 17,
-            "endIndex": 57,
+            "endIndex": 49,
             "resourceId": "Lane 1",
-            "processElementId": "Task_1uskfds",
+            "processElementId": "Task_1v7pomc",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 67,
-            "endIndex": 84,
+            "startIndex": 59,
+            "endIndex": 79,
             "resourceId": "Lane 1",
-            "processElementId": "Task_0394rj1",
+            "processElementId": "Task_16m9z20",
             "processElementType": "ACTIVITY"
           }
         ],

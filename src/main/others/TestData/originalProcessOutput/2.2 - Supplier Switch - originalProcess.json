@@ -44,7 +44,7 @@
             "startIndex": 0,
             "endIndex": 55,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 1",
+            "processElementId": "ExclusiveGateway 3",
             "processElementType": "XORSPLIT"
           }
         ],
@@ -65,7 +65,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 2",
+            "processElementId": "ExclusiveGateway 4",
             "processElementType": "XORJOIN"
           }
         ],
@@ -129,20 +129,6 @@
         "lateral": false
       },
       {
-        "value": "If \"reject\", the Resource 2 conducts the withdrawal from switch contract.",
-        "snippetList": [
-          {
-            "startIndex": 13,
-            "endIndex": 72,
-            "resourceId": "Lane 1",
-            "processElementId": "Task_08u84wv",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
         "value": "If \"accept\", the Resource 2 confirms the switch contract and then receives a message.",
         "snippetList": [
           {
@@ -164,6 +150,20 @@
         "lateral": true
       },
       {
+        "value": "If \"reject\", the Resource 2 conducts the withdrawal from switch contract.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 72,
+            "resourceId": "Lane 1",
+            "processElementId": "Task_08u84wv",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
         "value": "In any case, the process is finished.",
         "snippetList": [
           {
@@ -177,7 +177,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 3",
+            "processElementId": "ExclusiveGateway 5",
             "processElementType": "XORJOIN"
           }
         ],
@@ -262,13 +262,13 @@
         "lateral": true
       },
       {
-        "value": "The Resource 3 computes the final billing.",
+        "value": "The Resource 3 sends the meter data.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 41,
+            "endIndex": 35,
             "resourceId": "Lane 1",
-            "processElementId": "Task_18ux7i8",
+            "processElementId": "Task_05a8m3k",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -276,13 +276,13 @@
         "lateral": true
       },
       {
-        "value": "In the meantime, the Resource 3 sends the meter data.",
+        "value": "In the meantime, the Resource 3 computes the final billing.",
         "snippetList": [
           {
             "startIndex": 17,
-            "endIndex": 52,
+            "endIndex": 58,
             "resourceId": "Lane 1",
-            "processElementId": "Task_05a8m3k",
+            "processElementId": "Task_18ux7i8",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -317,7 +317,7 @@
             "startIndex": 0,
             "endIndex": 11,
             "resourceId": "Lane 1",
-            "processElementId": "ExclusiveGateway 4",
+            "processElementId": "ExclusiveGateway 6",
             "processElementType": "XORJOIN"
           }
         ],

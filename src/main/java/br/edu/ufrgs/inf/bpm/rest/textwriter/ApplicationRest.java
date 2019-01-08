@@ -2,7 +2,7 @@
 package br.edu.ufrgs.inf.bpm.rest.textwriter;
 
 import br.edu.ufrgs.inf.bpm.builder.TextGenerator;
-import br.edu.ufrgs.inf.bpm.metatext.TText;
+import br.edu.ufrgs.inf.bpm.textmetadata.TText;
 import net.didion.jwnl.JWNLException;
 
 import javax.ws.rs.*;

@@ -1,0 +1,162 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0wd9yo5",
+          "name": "Customer Service Representative"
+        },
+        {
+          "id": "Lane_1p599w8",
+          "name": "Administration"
+        }
+      ],
+      "id": "Process_098d1ua",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Customer Service Representative sends out a mortgage offer.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 86,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "Task_1n8um9i",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "StartEvent_0w3088t",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "Next, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "ExclusiveGateway_0o8ati2",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "One of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 47,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "ExclusiveGateway_0o8ati2",
+            "processElementType": "GATEWAYBASEDEVENTSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "The Customer Service Representative receives a message.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 54,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "IntermediateCatchEvent_04yix41",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the Customer Service Representative updates the case file and archives.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 83,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "Task_0tl3c5b",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Customer Service Representative receives a message and then the Administration assesses the mortgage details.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 54,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "IntermediateCatchEvent_1wdlao3",
+            "processElementType": "INTERMEDIATEEVENT"
+          },
+          {
+            "startIndex": 64,
+            "endIndex": 112,
+            "resourceId": "Lane_1p599w8",
+            "processElementId": "Task_15gq4vn",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "After that, one of the following alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 12,
+            "endIndex": 67,
+            "resourceId": "Lane_1p599w8",
+            "processElementId": "ExclusiveGateway_0gpqncu",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "EndEvent 1",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0wd9yo5",
+            "processElementId": "ExclusiveGateway 3",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

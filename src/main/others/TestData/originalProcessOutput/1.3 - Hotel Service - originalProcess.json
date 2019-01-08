@@ -80,81 +80,18 @@
         "lateral": false
       },
       {
-        "value": "The Hotel assigns the order to the waiter.",
+        "value": "The Hotel submits the order ticket to the kitchen and then prepares the meal.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 41,
-            "resourceId": "Lane_0xxbvpf",
-            "processElementId": "Task_1ior19z",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 1,
-        "lateral": true
-      },
-      {
-        "value": "Subsequently, 2 procedures are executed in an arbitrary order.",
-        "snippetList": [
-          {
-            "startIndex": 14,
-            "endIndex": 61,
-            "resourceId": "Lane_0dmogwg",
-            "processElementId": "ExclusiveGateway_0kyeeo8",
-            "processElementType": "ANDSPLIT"
-          }
-        ],
-        "level": 1,
-        "lateral": false
-      },
-      {
-        "value": "The Hotel readies the cart.",
-        "snippetList": [
-          {
-            "startIndex": 0,
-            "endIndex": 26,
-            "resourceId": "Lane_0dmogwg",
-            "processElementId": "Task_0lk5v5a",
-            "processElementType": "ACTIVITY"
-          }
-        ],
-        "level": 2,
-        "lateral": true
-      },
-      {
-        "value": "In the meantime, if required, the Hotel prepares the non-alcoholic drinks.",
-        "snippetList": [
-          {
-            "startIndex": 30,
-            "endIndex": 73,
-            "resourceId": "Lane_0dmogwg",
-            "processElementId": "Task_1i8z2gp",
-            "processElementType": "ACTIVITY"
-          },
-          {
-            "startIndex": 17,
-            "endIndex": 29,
-            "resourceId": "Lane_0dmogwg",
-            "processElementId": "ExclusiveGateway_19wj8a7",
-            "processElementType": "XORSPLIT"
-          }
-        ],
-        "level": 2,
-        "lateral": true
-      },
-      {
-        "value": "At the same time, the Hotel submits the order ticket to the kitchen and then prepares the meal.",
-        "snippetList": [
-          {
-            "startIndex": 18,
-            "endIndex": 67,
+            "endIndex": 49,
             "resourceId": "Lane_0xxbvpf",
             "processElementId": "Task_1n3osmy",
             "processElementType": "ACTIVITY"
           },
           {
-            "startIndex": 77,
-            "endIndex": 94,
+            "startIndex": 59,
+            "endIndex": 76,
             "resourceId": "Lane_0b1ill6",
             "processElementId": "Task_16q8eq4",
             "processElementType": "ACTIVITY"
@@ -185,11 +122,11 @@
         "lateral": true
       },
       {
-        "value": "Next, 2 alternative procedures may be executed.",
+        "value": "Subsequently, 2 alternative procedures may be executed.",
         "snippetList": [
           {
-            "startIndex": 6,
-            "endIndex": 46,
+            "startIndex": 14,
+            "endIndex": 54,
             "resourceId": "Lane_1ul465q",
             "processElementId": "ExclusiveGateway_0jg4qja",
             "processElementType": "ORSPLIT"
@@ -239,6 +176,69 @@
         ],
         "level": 1,
         "lateral": false
+      },
+      {
+        "value": "At the same time, the Hotel assigns the order to the waiter.",
+        "snippetList": [
+          {
+            "startIndex": 18,
+            "endIndex": 59,
+            "resourceId": "Lane_0xxbvpf",
+            "processElementId": "Task_1ior19z",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, 2 procedures are executed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane_0dmogwg",
+            "processElementId": "ExclusiveGateway_0kyeeo8",
+            "processElementType": "ANDSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "The Hotel readies the cart.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 26,
+            "resourceId": "Lane_0dmogwg",
+            "processElementId": "Task_0lk5v5a",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the meantime, if required, the Hotel prepares the non-alcoholic drinks.",
+        "snippetList": [
+          {
+            "startIndex": 30,
+            "endIndex": 73,
+            "resourceId": "Lane_0dmogwg",
+            "processElementId": "Task_1i8z2gp",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 29,
+            "resourceId": "Lane_0dmogwg",
+            "processElementId": "ExclusiveGateway_19wj8a7",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 2,
+        "lateral": true
       },
       {
         "value": "After each case, the Hotel delivers to the guest\u0027s room and then returns to the room-service station.",
@@ -295,7 +295,8 @@
           {
             "startIndex": 0,
             "endIndex": 0,
-            "processElementId": "none",
+            "resourceId": "Lane_1f04ddk",
+            "processElementId": "ExclusiveGateway 2",
             "processElementType": "XORSPLIT"
           }
         ],

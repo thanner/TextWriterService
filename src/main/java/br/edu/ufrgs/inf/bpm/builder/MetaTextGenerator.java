@@ -5,10 +5,10 @@ import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.ReferringExpressionGenerato
 import br.edu.ufrgs.inf.bpm.changes.sentencePlanning.SentenceAggregator;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
 import br.edu.ufrgs.inf.bpm.changes.textPlanning.TextPlanner;
-import br.edu.ufrgs.inf.bpm.metatext.TMetaText;
-import br.edu.ufrgs.inf.bpm.metatext.TSentence;
-import br.edu.ufrgs.inf.bpm.metatext.TSnippet;
-import br.edu.ufrgs.inf.bpm.metatext.TText;
+import br.edu.ufrgs.inf.bpm.textmetadata.TSentence;
+import br.edu.ufrgs.inf.bpm.textmetadata.TSnippet;
+import br.edu.ufrgs.inf.bpm.textmetadata.TText;
+import br.edu.ufrgs.inf.bpm.textmetadata.TTextMetadata;
 import br.edu.ufrgs.inf.bpm.util.Paths;
 import br.edu.ufrgs.inf.bpm.util.ResourceLoader;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
@@ -39,13 +39,13 @@ public class MetaTextGenerator {
     public static EnglishLabelHelper lHelper;
     public static EnglishLabelDeriver lDeriver;
 
-    public static TMetaText generateMetaText(String bpmnString) throws IOException, JWNLException {
+    public static TTextMetadata generateMetaText(String bpmnString) throws IOException, JWNLException {
         Dictionary dictionary = WordNetWrapper.getDictionary();
         MaxentTagger maxentTagger = new MaxentTagger(ResourceLoader.getResource(Paths.StanfordBidirectionalDistsimPath));
         lHelper = new EnglishLabelHelper(dictionary, maxentTagger);
         lDeriver = new EnglishLabelDeriver(lHelper);
 
-        TMetaText tMetaText = new TMetaText();
+        TTextMetadata TTextMetadata = new TTextMetadata();
         TText text = new TText();
 
         TDefinitions definitions = JaxbWrapper.convertXMLToObject(bpmnString);
@@ -84,10 +84,10 @@ public class MetaTextGenerator {
             }
         }
 
-        tMetaText.setText(text);
-        tMetaText.getProcessList().addAll(MetaTextProcessGenerator.generateMetaTextProcess(definitions));
+        TTextMetadata.setText(text);
+        TTextMetadata.getProcessList().addAll(MetaTextProcessGenerator.generateMetaTextProcess(definitions));
 
-        return tMetaText;
+        return TTextMetadata;
     }
 
     public static void generateOriginalText(String bpmnString) throws IOException, JWNLException {

@@ -1,0 +1,201 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane_0huzh2h",
+          "name": "Employee"
+        },
+        {
+          "id": "Lane_0gu2ddf",
+          "name": "Boss"
+        },
+        {
+          "id": "Lane_1tq4r3o",
+          "name": "Purchase Department"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, one of the 2 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 72,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "ExclusiveGateway 1",
+            "processElementType": "XORSPLIT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "StartEvent 2",
+            "processElementType": "STARTEVENT"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      },
+      {
+        "value": "The Purchase Department processes the invoice.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 45,
+            "resourceId": "Lane_1tq4r3o",
+            "processElementId": "Task_1yj2ero",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Employee registers the office supply request and then the Boss approves the office supply request.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 73,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "Task_152bkru",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 83,
+            "endIndex": 126,
+            "resourceId": "Lane_0gu2ddf",
+            "processElementId": "Task_16ori8y",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 1,
+        "lateral": true
+      },
+      {
+        "value": "Next, one of the 3 alternative procedures is executed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 53,
+            "resourceId": "Lane_0gu2ddf",
+            "processElementId": "ExclusiveGateway_0fvgeci",
+            "processElementType": "XORSPLIT"
+          }
+        ],
+        "level": 1,
+        "lateral": false
+      },
+      {
+        "value": "In the first procedure, the Boss notifies the rejection.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 55,
+            "resourceId": "Lane_0gu2ddf",
+            "processElementId": "Task_0zerc5x",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In the second procedure, the Purchase Department notifies the approval and then conducts the quotations.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 70,
+            "resourceId": "Lane_1tq4r3o",
+            "processElementId": "Task_1xzgovo",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 80,
+            "endIndex": 103,
+            "resourceId": "Lane_1tq4r3o",
+            "processElementId": "Task_0noccd3",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "After that, it generates the purchase order and then the Employee receives the products.",
+        "snippetList": [
+          {
+            "startIndex": 53,
+            "endIndex": 87,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "Task_0pwpoiz",
+            "processElementType": "ACTIVITY"
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 43,
+            "resourceId": "Lane_1tq4r3o",
+            "processElementId": "Task_19jl7ez",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "Subsequently, the Employee sends a signal.",
+        "snippetList": [
+          {
+            "startIndex": 14,
+            "endIndex": 41,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "IntermediateThrowEvent_063nmm6",
+            "processElementType": "INTERMEDIATEEVENT"
+          }
+        ],
+        "level": 2,
+        "lateral": false
+      },
+      {
+        "value": "In the third procedure, the Employee notifies the change required.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 65,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "Task_0heij4v",
+            "processElementType": "ACTIVITY"
+          }
+        ],
+        "level": 2,
+        "lateral": true
+      },
+      {
+        "value": "In any case, the process is finished.",
+        "snippetList": [
+          {
+            "startIndex": 13,
+            "endIndex": 36,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "EndEvent 3",
+            "processElementType": "ENDEVENT"
+          },
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "resourceId": "Lane_0huzh2h",
+            "processElementId": "ExclusiveGateway 2",
+            "processElementType": "XORJOIN"
+          }
+        ],
+        "level": 0,
+        "lateral": false
+      }
+    ]
+  }
+}

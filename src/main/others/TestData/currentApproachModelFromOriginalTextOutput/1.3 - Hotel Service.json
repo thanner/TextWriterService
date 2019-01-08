@@ -337,13 +337,13 @@
         "lateral": false
       },
       {
-        "value": "The waiter conducts the food is ready.",
+        "value": "The waiter conducts the waiter wines be ready.",
         "snippetList": [
           {
             "startIndex": 0,
-            "endIndex": 37,
+            "endIndex": 45,
             "resourceId": "id-4",
-            "processElementId": "id-30",
+            "processElementId": "id-31",
             "processElementType": "ACTIVITY"
           }
         ],
@@ -351,13 +351,13 @@
         "lateral": true
       },
       {
-        "value": "At the same time, the waiter conducts the waiter wines be ready.",
+        "value": "At the same time, the waiter conducts the food is ready.",
         "snippetList": [
           {
             "startIndex": 18,
-            "endIndex": 63,
+            "endIndex": 55,
             "resourceId": "id-4",
-            "processElementId": "id-31",
+            "processElementId": "id-30",
             "processElementType": "ACTIVITY"
           }
         ],
