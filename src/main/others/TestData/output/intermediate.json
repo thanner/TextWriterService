@@ -1,0 +1,72 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 does a subprocess 1.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          },
+          {
+            "startIndex": 24,
+            "endIndex": 58,
+            "processElementId": "Task_165mzu5",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "Next, it does the activity 1.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 28,
+            "processElementId": "Task_1rn4gjm",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "Finally, the process ends.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 25,
+            "processElementId": "EndEvent_0ndsl9x",
+            "processElementType": "ENDEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      }
+    ]
+  }
+}

@@ -9,7 +9,9 @@ import org.w3c.dom.Document;
 import processToText.dataModel.dsynt.DSynTSentence;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class SurfaceRealizer {
@@ -32,10 +34,11 @@ public class SurfaceRealizer {
         TText tText = new TText();
         for (DSynTSentence s : sentencePlan) {
             TSentence sentence = new TSentence();
-            sentence.setLevel(s.getExecutableFragment().sen_level);
-            sentence.setLateral(s.getExecutableFragment().sen_hasBullet);
+            sentence.setNewSplitPath(s.getExecutableFragment().sen_hasBullet);
             sentence.setValue(realizeSentence(s.getDSynT()));
-            sentence.getSnippetList().addAll(getSnippetList(s, sentence.getValue()));
+
+            List<TSnippet> snippetList = getSnippetList(s, sentence.getValue());
+            sentence.getSnippetList().addAll(snippetList);
             tText.getSentenceList().add(sentence);
         }
 
@@ -46,6 +49,8 @@ public class SurfaceRealizer {
         List<TSnippet> snippetList = new ArrayList<>();
         sentence = getSentenceForIndex(sentence).toLowerCase();
 
+        int level = s.getExecutableFragment().sen_level;
+
         List<ProcessElementDocument> documentList = s.getProcessElementDocumentList();
         documentList.sort(ProcessElementDocument.PER_LENGTH);
 
@@ -53,10 +58,10 @@ public class SurfaceRealizer {
         for (ProcessElementDocument processElementDocument : documentList) {
             TSnippet snippet = new TSnippet();
             snippet.setProcessElementId(processElementDocument.getProcessElementId());
-            snippet.setProcessElementType(processElementDocument.getProcessElementType());
+            snippet.setProcessElementType(processElementDocument.getProcessElementType().value());
+            snippet.setLevel(level);
 
             String sentenceSnippet = getSentenceForIndex(processElementDocument.getSentence()).toLowerCase();
-
             Integer startIndex = getIndexStart(sentence, sentenceSnippet, collisionPointsList, 0);
             Integer endIndex = getIndexEnd(startIndex, sentenceSnippet);
 
@@ -72,6 +77,8 @@ public class SurfaceRealizer {
 
             snippetList.add(snippet);
         }
+
+        snippetList = snippetList.stream().sorted(Comparator.comparingInt(TSnippet::getStartIndex)).collect(Collectors.toList());
 
         return snippetList;
     }

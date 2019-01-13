@@ -1,6 +1,6 @@
 package br.edu.ufrgs.inf.bpm.validation;
 
-import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.builder.elementType.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.textmetadata.TSentence;
 import br.edu.ufrgs.inf.bpm.textmetadata.TSnippet;
 import br.edu.ufrgs.inf.bpm.textmetadata.TText;
@@ -95,7 +95,7 @@ public class Validation {
 
         for (TSentence sentence : metaText.getSentenceList()) {
             for (TSnippet snippet : sentence.getSnippetList()) {
-                if (snippet.getProcessElementType().value().equals(elementTypeName)) {
+                if (snippet.getProcessElementType().equals(elementTypeName)) {
                     elementTypeIds.add(snippet.getProcessElementId());
                 }
             }

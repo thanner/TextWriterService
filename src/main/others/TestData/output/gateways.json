@@ -1,0 +1,204 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "When the process starts, one of the 2 alternative procedures is performed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 24,
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 73,
+            "processElementId": "ExclusiveGateway_0hzunbb",
+            "processElementType": "XORJOIN",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 does the unlabeled task (id: task 1ysz2h5).",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 81,
+            "processElementId": "Task_1ysz2h5",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 does the unlabeled task (id: task 17k8bu4).",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 82,
+            "processElementId": "Task_17k8bu4",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "In any case, 2 procedures are performed in an arbitrary order.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "processElementId": "ExclusiveGateway_0n9dlo6",
+            "processElementType": "XORJOIN",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 61,
+            "processElementId": "ExclusiveGateway_1q6ofz2",
+            "processElementType": "ANDSPLIT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "The Resource 1 does the unlabeled task (id: task 1cn97wk).",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 57,
+            "processElementId": "Task_1cn97wk",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "In the meantime, the Resource 1 does the unlabeled task (id: task 0tmco1r).",
+        "snippetList": [
+          {
+            "startIndex": 17,
+            "endIndex": 74,
+            "processElementId": "Task_0tmco1r",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "After each case, 2 alternative procedures may be performed.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 15,
+            "processElementId": "ExclusiveGateway_03j136z",
+            "processElementType": "ANDJOIN",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          },
+          {
+            "startIndex": 17,
+            "endIndex": 58,
+            "processElementId": "ExclusiveGateway_0vu0l7n",
+            "processElementType": "ORSPLIT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "In the first procedure, the Resource 1 does the unlabeled task (id: task 09hkfa5).",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 81,
+            "processElementId": "Task_09hkfa5",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "In the second procedure, the Resource 1 does the unlabeled task (id: task 15ge3l8).",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 82,
+            "processElementId": "Task_15ge3l8",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "Afterwards, the process ends.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 10,
+            "processElementId": "ExclusiveGateway_14ogosb",
+            "processElementType": "ORJOIN",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          },
+          {
+            "startIndex": 12,
+            "endIndex": 28,
+            "processElementId": "EndEvent_00iedil",
+            "processElementType": "ENDEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      }
+    ]
+  }
+}

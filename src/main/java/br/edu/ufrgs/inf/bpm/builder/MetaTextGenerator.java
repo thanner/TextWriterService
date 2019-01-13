@@ -198,7 +198,7 @@ public class MetaTextGenerator {
 
         tText = surfaceRealizer.postProcessText(tText);
 
-        addResourceIds(tText, tDefinitions);
+        addResourceAndProcessIds(tText, tDefinitions);
 
         /*
         if (!model.getPools().isEmpty()) {
@@ -213,14 +213,14 @@ public class MetaTextGenerator {
         return tText;
     }
 
-    private static void addResourceIds(TText tText, TDefinitions tDefinitions) {
+    private static void addResourceAndProcessIds(TText tText, TDefinitions tDefinitions) {
         BpmnWrapper bpmnWrapper = new BpmnWrapper(tDefinitions);
         for (TSentence tSentence : tText.getSentenceList()) {
             for (TSnippet tSnippet : tSentence.getSnippetList()) {
                 tSnippet.setResourceId(bpmnWrapper.getInternalLaneIdByFlowElementId(tSnippet.getProcessElementId()));
+                tSnippet.setProcessId(bpmnWrapper.getProcessIdByFlowElementId(tSnippet.getProcessElementId()));
             }
         }
     }
-
 
 }

@@ -1,0 +1,150 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "id-2",
+          "name": "technician"
+        }
+      ],
+      "id": "id-0",
+      "name": "Pool"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the technician performs an evaluation.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "processElementId": "id-11",
+            "processElementType": "STARTEVENT",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 0
+          },
+          {
+            "startIndex": 24,
+            "endIndex": 61,
+            "processElementId": "id-3",
+            "processElementType": "ACTIVITY",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "Next, one of the 3 alternative procedures is performed.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 54,
+            "processElementId": "id-9",
+            "processElementType": "XORJOIN",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "If \"founds no problem\", the technician makes the no modification to the computer.",
+        "snippetList": [
+          {
+            "startIndex": 24,
+            "endIndex": 80,
+            "processElementId": "id-7",
+            "processElementType": "ACTIVITY",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "If \"a software problem\", the technician formats the computer.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 60,
+            "processElementId": "id-4",
+            "processElementType": "ACTIVITY",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "If \"a hardware problem\", the technician replaces the part and then fills out the part replacement form.",
+        "snippetList": [
+          {
+            "startIndex": 25,
+            "endIndex": 57,
+            "processElementId": "id-5",
+            "processElementType": "ACTIVITY",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 1
+          },
+          {
+            "startIndex": 67,
+            "endIndex": 102,
+            "processElementId": "id-6",
+            "processElementType": "ACTIVITY",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "In any case, the technician completes the repair form.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 11,
+            "processElementId": "id-10",
+            "processElementType": "XORJOIN",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 0
+          },
+          {
+            "startIndex": 13,
+            "endIndex": 53,
+            "processElementId": "id-8",
+            "processElementType": "ACTIVITY",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "Finally, the process ends.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 25,
+            "processElementId": "id-12",
+            "processElementType": "ENDEVENT",
+            "resourceId": "id-2",
+            "processId": "id-0",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      }
+    ]
+  }
+}

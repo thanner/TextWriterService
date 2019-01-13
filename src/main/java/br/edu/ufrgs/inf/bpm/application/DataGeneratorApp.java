@@ -28,17 +28,21 @@ public class DataGeneratorApp {
     public static void main(String[] args) {
         prepareLogger();
         //getInputFiles();
-        /*
         ApplicationStarter.startApplication();
 
+        /*
         File folder = new File(Paths.LocalOthersPath + Paths.dataInputPath);
         for (File fileEntry : folder.listFiles()) {
             generateData(fileEntry, true);
         }
         */
 
+        //generateData(new File("src/main/others/TestData/dissertation-example.bpmn"), false);
+        //generateData(new File("src/main/others/TestData/gateways.bpmn"), false);
+
+
         // 2 inputs
-        generateData(new File("src/main/others/TestData/originalProcess/5.4 - Oracle Tutorial - originalProcess.bpmn"), false);
+        //generateData(new File("src/main/others/TestData/originalProcess/5.4 - Oracle Tutorial - originalProcess.bpmn"), false);
         //generateData(new File("src/main/others/TestData/originalProcess/9.4 - New Exercise 3b - originalProcess.bpmn"), false);
 
         // Diferente
@@ -49,6 +53,8 @@ public class DataGeneratorApp {
         // generateData(file, false);
 
         //generateData(new File("src/main/others/TestData/originalProcess/11.11 - Exercise 4.4 Model the following process fragment. - originalProcess.bpmn"), false);
+        //generateData(new File("src/main/others/TestData/intermediate.bpmn"), false);
+        generateData(new File("src/main/others/TestData/subprocessintermediate.bpmn"), false);
 
         // TODO: Intermediate Marked
         //File file = new File("src/main/others/TestData/input/2.1 - SLA Violation - originalText - process.bpmn");

@@ -202,6 +202,17 @@ public class BpmnWrapper {
         return null;
     }
 
+    public String getProcessIdByFlowElementId(String elementId) {
+        TFlowElement tFlowElement = getFlowElementById(elementId);
+        if (tFlowElement != null) {
+            TProcess tProcess = getProcessByFlowElement(tFlowElement);
+            if (tProcess != null) {
+                return tProcess.getId();
+            }
+        }
+        return null;
+    }
+
     public List<TCollaboration> getCollaborationList() {
         List<TCollaboration> collaborationList = new ArrayList<>();
         List<JAXBElement<? extends TRootElement>> rootElementList = definitions.getRootElement();

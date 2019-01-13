@@ -39,34 +39,18 @@
             <xs:element name="value" type="xs:string"/>
             <xs:element name="snippetList" type="mt:tSnippet" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="level" type="xs:int"/>
-        <xs:attribute name="lateral" type="xs:boolean"/>
+        <xs:attribute name="newSplitPath" type="xs:boolean"/>
     </xs:complexType>
 
     <xs:element name="snippet" type="mt:tSnippet"/>
     <xs:complexType name="tSnippet">
         <xs:attribute name="startIndex" type="xs:int"/>
         <xs:attribute name="endIndex" type="xs:int"/>
-        <xs:attribute name="resourceId" type="xs:string"/>
         <xs:attribute name="processElementId" type="xs:string"/>
-        <xs:attribute name="processElementType" type="mt:processElementType"/>
+        <xs:attribute name="processElementType" type="xs:string"/>
+        <xs:attribute name="resourceId" type="xs:string"/>
+        <xs:attribute name="processId" type="xs:string"/>
+        <xs:attribute name="level" type="xs:int"/>
     </xs:complexType>
-
-    <xs:simpleType name="processElementType" final="restriction">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="activity"/>
-            <xs:enumeration value="startevent"/>
-            <xs:enumeration value="intermediateevent"/>
-            <xs:enumeration value="endevent"/>
-            <xs:enumeration value="xorsplit"/>
-            <xs:enumeration value="xorjoin"/>
-            <xs:enumeration value="andsplit"/>
-            <xs:enumeration value="andjoin"/>
-            <xs:enumeration value="orsplit"/>
-            <xs:enumeration value="orjoin"/>
-            <xs:enumeration value="gatewaybasedeventsplit"/>
-            <xs:enumeration value="unknown"/>
-        </xs:restriction>
-    </xs:simpleType>
 
 </xs:schema>

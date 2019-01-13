@@ -1,6 +1,7 @@
 package br.edu.ufrgs.inf.bpm.validation;
 
-import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
+
+import br.edu.ufrgs.inf.bpm.builder.elementType.ProcessElementType;
 
 import java.util.List;
 import java.util.Map;

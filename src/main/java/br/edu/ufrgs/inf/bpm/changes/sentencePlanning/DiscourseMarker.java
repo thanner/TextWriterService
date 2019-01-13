@@ -1,8 +1,8 @@
 package br.edu.ufrgs.inf.bpm.changes.sentencePlanning;
 
 import br.edu.ufrgs.inf.bpm.builder.ProcessElementDocument;
+import br.edu.ufrgs.inf.bpm.builder.elementType.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
-import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.type.DSynTSentenceType;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import com.ibm.icu.text.RuleBasedNumberFormat;

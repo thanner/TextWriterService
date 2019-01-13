@@ -1,6 +1,6 @@
 package processToText.dataModel.intermediate;
 
-import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
+import br.edu.ufrgs.inf.bpm.builder.elementType.ProcessElementType;
 import processToText.dataModel.Pair;
 import processToText.textPlanning.recordClasses.ModifierRecord;
 

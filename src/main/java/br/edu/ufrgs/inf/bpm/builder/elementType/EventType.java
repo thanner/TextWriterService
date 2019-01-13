@@ -69,32 +69,60 @@ public class EventType {
     }
 
     private static int getIntermediateThrowEvent(TIntermediateThrowEvent intermediateThrowEvent) {
-        for (JAXBElement<? extends TEventDefinition> eventDefinition : intermediateThrowEvent.getEventDefinition()) {
-            if (eventDefinition.getValue() instanceof TEscalationEventDefinition) {
+        for (JAXBElement<? extends TEventDefinition> jaxbEventDefinition : intermediateThrowEvent.getEventDefinition()) {
+            TEventDefinition eventDefinition = jaxbEventDefinition.getValue();
+            if (eventDefinition instanceof TEscalationEventDefinition) {
                 return INTM_ESCALATION_THR;
-            } else if (eventDefinition.getValue() instanceof TSignalEventDefinition) {
+            } else if (eventDefinition instanceof TSignalEventDefinition) {
                 return INTM_SIGNAL_THR;
-            } else if (eventDefinition.getValue() instanceof TLinkEventDefinition) {
+            } else if (eventDefinition instanceof TLinkEventDefinition) {
                 return INTM_LINK_THR;
-            } else if (eventDefinition.getValue() instanceof TMessageEventDefinition) {
+            } else if (eventDefinition instanceof TMessageEventDefinition) {
                 return INTM_MSG_THR;
+            } else {
+                int element = getIntermediate(eventDefinition);
+                if (element != INTM) {
+                    return element;
+                }
             }
         }
         return INTM;
     }
 
     private static int getIntermediateCatchEvent(TIntermediateCatchEvent intermediateCatchEvent) {
-        for (JAXBElement<? extends TEventDefinition> eventDefinition : intermediateCatchEvent.getEventDefinition()) {
-            if (eventDefinition.getValue() instanceof TEscalationEventDefinition) {
+        for (JAXBElement<? extends TEventDefinition> jaxbEventDefinition : intermediateCatchEvent.getEventDefinition()) {
+            TEventDefinition eventDefinition = jaxbEventDefinition.getValue();
+            if (eventDefinition instanceof TEscalationEventDefinition) {
                 return INTM_ESCALATION_CAT;
-            } else if (eventDefinition.getValue() instanceof TLinkEventDefinition) {
+            } else if (eventDefinition instanceof TLinkEventDefinition) {
                 return INTM_LINK_CAT;
-            } else if (eventDefinition.getValue() instanceof TMessageEventDefinition) {
+            } else if (eventDefinition instanceof TMessageEventDefinition) {
                 return INTM_MSG_CAT;
-            } else if (eventDefinition.getValue() instanceof TCompensateEventDefinition) {
+            } else if (eventDefinition instanceof TCompensateEventDefinition) {
                 return INTM_COMPENSATION_CAT;
+            } else {
+                int element = getIntermediate(eventDefinition);
+                if (element != INTM) {
+                    return element;
+                }
             }
         }
+        return INTM;
+    }
+
+    private static int getIntermediate(TEventDefinition eventDefinition) {
+        if (eventDefinition instanceof TTimerEventDefinition) {
+            return INTM_TIMER;
+        } else if (eventDefinition instanceof TCancelEventDefinition) {
+            return INTM_CANCEL;
+        } else if (eventDefinition instanceof TConditionalEventDefinition) {
+            return INTM_CONDITIONAL;
+        } else if (eventDefinition instanceof TEscalationEventDefinition) {
+            return INTM_ESCALATION;
+        } else if (eventDefinition instanceof TErrorEventDefinition) {
+            return INTM_ERROR;
+        }
+
         return INTM;
     }
 

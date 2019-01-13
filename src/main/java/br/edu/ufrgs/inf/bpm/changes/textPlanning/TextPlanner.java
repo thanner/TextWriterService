@@ -1,9 +1,9 @@
 package br.edu.ufrgs.inf.bpm.changes.textPlanning;
 
 import br.edu.ufrgs.inf.bpm.builder.FragmentGenerator;
+import br.edu.ufrgs.inf.bpm.builder.elementType.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.changes.templates.Lexemes;
 import br.edu.ufrgs.inf.bpm.changes.templates.TemplateLoaderType;
-import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.wrapper.BpmnWrapper;
 import de.hpi.bpt.graph.algo.rpst.RPST;
 import de.hpi.bpt.graph.algo.rpst.RPSTNode;
@@ -1265,24 +1265,36 @@ public class TextPlanner {
                     }
                 }
 
+                ProcessElementType processElementType = getProcessElementEvent(event);
+
                 if (passedFragments.size() > 0) {
-                    DSynTConditionSentence dsyntSentence = getDSyntConditionSentence(sen.getExecutableFragment(), passedFragments, ProcessElementType.INTERMEDIATEEVENT);
-                    dsyntSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.INTERMEDIATEEVENT);
+                    DSynTConditionSentence dsyntSentence = getDSyntConditionSentence(sen.getExecutableFragment(), passedFragments, processElementType);
+                    dsyntSentence.addProcessElementDocument(getProcessElementId(event.getId()), processElementType);
                     sentencePlan.add(dsyntSentence);
                     passedFragments.clear();
                 } else {
                     if (sen.getClass().toString().endsWith("DSynTConditionSentence")) {
                         DSynTConditionSentence dsyntSentence = new DSynTConditionSentence(sen.getExecutableFragment(), ((DSynTConditionSentence) sen).getConditionFragment());
-                        dsyntSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.INTERMEDIATEEVENT);
+                        dsyntSentence.addProcessElementDocument(getProcessElementId(event.getId()), processElementType);
                         sentencePlan.add(dsyntSentence);
                     } else {
                         DSynTMainSentence dsyntSentence = new DSynTMainSentence(sen.getExecutableFragment());
-                        dsyntSentence.addProcessElementDocument(getProcessElementId(event.getId()), ProcessElementType.INTERMEDIATEEVENT);
+                        dsyntSentence.addProcessElementDocument(getProcessElementId(event.getId()), processElementType);
                         sentencePlan.add(dsyntSentence);
                     }
                 }
 
             }
+        }
+    }
+
+    private ProcessElementType getProcessElementEvent(Event event) {
+        if (EventType.isStartEvent(event.getType())) {
+            return ProcessElementType.STARTEVENT;
+        } else if (EventType.isEndEvent(event.getType())) {
+            return ProcessElementType.ENDEVENT;
+        } else {
+            return ProcessElementType.INTERMEDIATEEVENT;
         }
     }
 

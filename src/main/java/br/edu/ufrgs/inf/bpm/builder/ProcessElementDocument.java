@@ -1,7 +1,7 @@
 package br.edu.ufrgs.inf.bpm.builder;
 
+import br.edu.ufrgs.inf.bpm.builder.elementType.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.changes.sentenceRealization.SurfaceRealizer;
-import br.edu.ufrgs.inf.bpm.textmetadata.ProcessElementType;
 import br.edu.ufrgs.inf.bpm.util.XmlFormat;
 import org.w3c.dom.Document;
 

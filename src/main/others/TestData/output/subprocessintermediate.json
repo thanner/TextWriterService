@@ -1,0 +1,111 @@
+{
+  "processList": [
+    {
+      "resourceList": [
+        {
+          "id": "Lane 1",
+          "name": "Resource 1"
+        }
+      ],
+      "id": "Process_1",
+      "name": "Process 1"
+    }
+  ],
+  "text": {
+    "sentenceList": [
+      {
+        "value": "The process starts when the Resource 1 does a subprocess.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 23,
+            "processElementId": "StartEvent_1",
+            "processElementType": "STARTEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          },
+          {
+            "startIndex": 24,
+            "endIndex": 56,
+            "processElementId": "Task_165mzu5",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "The subprocess contains the following steps.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 43,
+            "processElementId": "StartEvent_0fhljy7",
+            "processElementType": "STARTEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": true
+      },
+      {
+        "value": "The Resource 1 does the activity 1 and then waits up to a certain time.",
+        "snippetList": [
+          {
+            "startIndex": 0,
+            "endIndex": 34,
+            "processElementId": "Task_1rn4gjm",
+            "processElementType": "ACTIVITY",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          },
+          {
+            "startIndex": 44,
+            "endIndex": 70,
+            "processElementId": "IntermediateThrowEvent_0aubn7a",
+            "processElementType": "INTERMEDIATEEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "Next, the subprocess ends.",
+        "snippetList": [
+          {
+            "startIndex": 6,
+            "endIndex": 25,
+            "processElementId": "EndEvent_0r3i1pn",
+            "processElementType": "ENDEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 1
+          }
+        ],
+        "newSplitPath": false
+      },
+      {
+        "value": "Finally, the process ends.",
+        "snippetList": [
+          {
+            "startIndex": 9,
+            "endIndex": 25,
+            "processElementId": "EndEvent_0ndsl9x",
+            "processElementType": "ENDEVENT",
+            "resourceId": "Lane 1",
+            "processId": "Process_1",
+            "level": 0
+          }
+        ],
+        "newSplitPath": false
+      }
+    ]
+  }
+}
